@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UTC−12:00</key>
+	<dict>
+		<key>UTC−12:00</key>
+		<string>Baker Island, Howland Island (both uninhabited)</string>
+	</dict>
+	<key>UTC−11:00</key>
+	<dict>
+		<key>UTC−11:00</key>
+		<string>American Samoa, Niue</string>
+	</dict>
+	<key>UTC−10:00</key>
+	<dict>
+		<key>UTC−10:00</key>
+		<string>United States (Hawaii)</string>
+	</dict>
+	<key>UTC−09:30</key>
+	<dict>
+		<key>UTC−09:30</key>
+		<string>Marquesas Islands</string>
+	</dict>
+	<key>UTC−09:00</key>
+	<dict>
+		<key>UTC−09:00</key>
+		<string>Gambier Islands</string>
+	</dict>
+	<key>UTC−07:00 </key>
+	<dict>
+		<key>UTC−07:00 </key>
+		<string>Canada (northeastern British Columbia), Mexico (Sonora), United States (Arizona)</string>
+	</dict>
+	<key>UTC−06:00</key>
+	<dict>
+		<key>UTC−06:00</key>
+		<string>Canada (almost all of Saskatchewan), Costa Rica, El Salvador, Ecuador (Galápagos Islands), Guatemala, Honduras, Mexico (most), Nicaragua</string>
+	</dict>
+	<key>UTC−05:00</key>
+	<dict>
+		<key>UTC−05:00</key>
+		<string>Colombia, Cuba, Ecuador (continental), Jamaica, Panama, Peru</string>
+	</dict>
+	<key>UTC−04:30</key>
+	<dict>
+		<key>UTC−04:30</key>
+		<string>Venezuela</string>
+	</dict>
+	<key>UTC−04:00</key>
+	<dict>
+		<key>UTC−04:00</key>
+		<string>Bolivia, Brazil (Amazonas), Chile (continental), Dominican Republic, Canada (Nova Scotia), Puerto Rico, Barbados, Trinidad and Tobago</string>
+	</dict>
+	<key>UTC−03:00</key>
+	<dict>
+		<key>UTC−03:00</key>
+		<string>Argentina, Paraguay</string>
+	</dict>
+	<key>UTC−02:00</key>
+	<dict>
+		<key>UTC−02:00</key>
+		<string>Brazil (Fernando de Noronha), South Georgia and the South Sandwich Islands</string>
+	</dict>
+	<key>UTC−01:00</key>
+	<dict>
+		<key>UTC−01:00</key>
+		<string>Cape Verde</string>
+	</dict>
+	<key>UTC 00:00</key>
+	<dict>
+		<key>UTC 00:00</key>
+		<string>Côte d&apos;Ivoire, Faroe Islands, Ghana, Iceland, Senegal</string>
+	</dict>
+	<key>UTC+01:00</key>
+	<dict>
+		<key>UTC+01:00</key>
+		<string>Algeria, Angola, Benin, Cameroon, Gabon, Niger, Nigeria, Democratic Republic of the Congo (west), Tunisia</string>
+	</dict>
+	<key>UTC+02:00</key>
+	<dict>
+		<key>UTC+02:00</key>
+		<string>Egypt, Malawi, Mozambique, South Africa, Swaziland, Zambia, Zimbabwe</string>
+	</dict>
+	<key>UTC+03:00</key>
+	<dict>
+		<key>UTC+03:00</key>
+		<string>Belarus, Djibouti, Eritrea, Ethiopia, Iraq, Kenya, Madagascar, Russia (Kaliningrad Oblast), Saudi Arabia, South Sudan, Sudan, Somalia, Somaliland, Tanzania, Uganda, Yemen</string>
+	</dict>
+	<key>UTC+04:00</key>
+	<dict>
+		<key>UTC+04:00</key>
+		<string>Armenia, Azerbaijan, Georgia, Mauritius, Oman, Russia (European), Seychelles, United Arab Emirates</string>
+	</dict>
+	<key>UTC+04:30</key>
+	<dict>
+		<key>UTC+04:30</key>
+		<string>Afghanistan</string>
+	</dict>
+	<key>UTC+05:00</key>
+	<dict>
+		<key>UTC+05:00</key>
+		<string>Kazakhstan (west), Maldives, Pakistan, Uzbekistan</string>
+	</dict>
+	<key>UTC+05:30</key>
+	<dict>
+		<key>UTC+05:30</key>
+		<string>India, Sri Lanka</string>
+	</dict>
+	<key>UTC+05:45</key>
+	<dict>
+		<key>UTC+05:45</key>
+		<string>Nepal</string>
+	</dict>
+	<key>UTC+06:00</key>
+	<dict>
+		<key>UTC+06:00</key>
+		<string>Kazakhstan (most), Bangladesh, Bhutan, Russia (Ural: Sverdlovsk Oblast, Chelyabinsk Oblast)</string>
+	</dict>
+	<key>UTC+06:30</key>
+	<dict>
+		<key>UTC+06:30</key>
+		<string>Cocos Islands, Myanmar</string>
+	</dict>
+	<key>UTC+07:00</key>
+	<dict>
+		<key>UTC+07:00</key>
+		<string>Western Indonesia, Russia (Novosibirsk Oblast), Thailand, Vietnam, Cambodia</string>
+	</dict>
+	<key>UTC+08:00</key>
+	<dict>
+		<key>UTC+08:00</key>
+		<string>Hong Kong, Central Indonesia, China, Russia (Krasnoyarsk Krai), Malaysia, Philippines, Singapore, Taiwan, most of Mongolia, Australia (Western Australia), (Eucla) official, Macau</string>
+	</dict>
+	<key>UTC+08:45</key>
+	<dict>
+		<key>UTC+08:45</key>
+		<string>Australia (Eucla) unofficial</string>
+	</dict>
+	<key>UTC+09:00</key>
+	<dict>
+		<key>UTC+09:00</key>
+		<string>Eastern Indonesia, East Timor, Russia (Irkutsk Oblast), Japan, North Korea, South Korea</string>
+	</dict>
+	<key>UTC+09:30</key>
+	<dict>
+		<key>UTC+09:30</key>
+		<string>Australia (Northern Territory)</string>
+	</dict>
+	<key>UTC+10:00</key>
+	<dict>
+		<key>UTC+10:00</key>
+		<string>Russia (Zabaykalsky Krai), Papua New Guinea, Australia (Queensland)</string>
+	</dict>
+	<key>UTC+11:00</key>
+	<dict>
+		<key>UTC+11:00</key>
+		<string>New Caledonia, Russia (Primorsky Krai), Solomon Islands</string>
+	</dict>
+	<key>UTC+11:30</key>
+	<dict>
+		<key>UTC+11:30</key>
+		<string>Norfolk Island</string>
+	</dict>
+	<key>UTC+12:00</key>
+	<dict>
+		<key>UTC+12:00</key>
+		<string>Kiribati (Gilbert Islands), Fiji, Russia (Kamchatka Krai)</string>
+	</dict>
+	<key>UTC+13:00</key>
+	<dict>
+		<key>UTC+13:00</key>
+		<string>Kiribati (Phoenix Islands), Tonga, Tokelau</string>
+	</dict>
+	<key>UTC+14:00</key>
+	<dict>
+		<key>UTC+14:00</key>
+		<string>Kiribati (Line Islands)</string>
+	</dict>
+</dict>
+</plist>

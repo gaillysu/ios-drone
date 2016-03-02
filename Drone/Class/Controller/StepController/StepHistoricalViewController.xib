@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9532"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StepHistoricalViewController" customModule="Nevo" customModuleProvider="target">
+            <connections>
+                <outlet property="lineChart" destination="EbH-yW-kHY" id="E6Y-R4-NXL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbH-yW-kHY" customClass="LineChartView" customModule="Nevo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="325"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="EbH-yW-kHY" secondAttribute="bottom" constant="243" id="4Zz-xJ-RMr"/>
+                <constraint firstAttribute="trailing" secondItem="EbH-yW-kHY" secondAttribute="trailing" id="IAF-8r-4Dy"/>
+                <constraint firstItem="EbH-yW-kHY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vyS-N3-dp3"/>
+                <constraint firstItem="EbH-yW-kHY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wxh-ob-CWh"/>
+            </constraints>
+            <point key="canvasLocation" x="220" y="289"/>
+        </view>
+    </objects>
+</document>
