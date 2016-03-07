@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import HealthKit
+import Alamofire
+import FMDB
 
 let nevoDBDFileURL:String = "nevoDBName";
 let nevoDBNames:String = "nevo.sqlite";
@@ -34,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
 
-    private let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-
     class func getAppDelegate()->AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
@@ -50,9 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         }else{
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstLaunch")
         }
-
-        manager.requestSerializer.timeoutInterval = 30;
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["image/jpeg", "application/json", "text/html", "text/json", "text"]) as Set<NSObject>
 
         UserNotification.defaultNotificationColor()
 
@@ -139,13 +136,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
      :param: resultHandler 请求后返回的数据块
      */
     func getRequestNetwork(requestURL:String,parameters:AnyObject,resultHandler:((result:AnyObject?,error:NSError?) -> Void)){
-        manager.POST(requestURL, parameters: parameters, success: { (operation, responseObject) -> Void in
-            AppTheme.DLog("responseObject=====\(responseObject)")
-            resultHandler(result: responseObject,error: nil)
-            }) { (operation, error) -> Void in
-                AppTheme.DLog("error=====\(error)")
-                resultHandler(result: nil,error: error)
+        Alamofire.request(Method.POST, requestURL, parameters: parameters as? [String : AnyObject]).responseJSON { (response) -> Void in
+            if response.result.isSuccess {
+                NSLog("getJSON: \(response.result.value)")
+                resultHandler(result: response.result.value, error: nil)
+            }else if (response.result.isFailure){
+                resultHandler(result: response.result.value, error: nil)
+            }else{
+                resultHandler(result: nil, error: nil)
+            }
         }
+        
     }
 
     // MARK: -AppDelegate SET Function

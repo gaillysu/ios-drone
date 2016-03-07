@@ -12,7 +12,7 @@
 #import "IntelHex2BinConverter.h"
 #import "FXBlurView.h"
 #import "MBProgressHUD+MJ.h"
-#import "FMDB.h"
+//#import "FMDB.h"
 #import "NevoDBModel.h"
 #import "WaterWaveView.h"
 #import "WaveProgressView.h"
