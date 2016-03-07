@@ -34,78 +34,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
 
-    private let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-
+ 
     class func getAppDelegate()->AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        UINavigationBar.appearance().tintColor = AppTheme.NEVO_SOLAR_YELLOW()
-        //Start the logo for the first time
-        if(!NSUserDefaults.standardUserDefaults().boolForKey("everLaunched")){
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "everLaunched")
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
-        }else{
-            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstLaunch")
-        }
-
-        manager.requestSerializer.timeoutInterval = 30;
-        manager.responseSerializer.acceptableContentTypes = NSSet(array: ["image/jpeg", "application/json", "text/html", "text/json", "text"]) as Set<NSObject>
-
-        UserNotification.defaultNotificationColor()
-
-        mConnectionController = ConnectionControllerImpl()
-        mConnectionController?.setDelegate(self)
-
-
-        let stepsController:StepController = StepController()
-        let stepsNav:UINavigationController = UINavigationController(rootViewController: stepsController)
-        stepsNav.tabBarItem.image = UIImage(named: "new_iOS_steps_icon")
-
-        let stepsHistorical:StepHistoricalViewController = StepHistoricalViewController()
-        let stepsHistoricalNav:UINavigationController = UINavigationController(rootViewController: stepsHistorical)
-        stepsHistoricalNav.tabBarItem.image = UIImage(named: "new_iOS_alarm_icon")
-
-        let settingController:SettingViewController = SettingViewController()
-        let settingNav:UINavigationController = UINavigationController(rootViewController: settingController)
-        settingNav.tabBarItem.image = UIImage(named: "new_iOS_setting_icon")
-
-        let tabbarController:MainTabBarController = MainTabBarController()
-        tabbarController.viewControllers = [stepsNav,stepsHistoricalNav,settingNav]
-
+         UINavigationBar.appearance().tintColor = AppTheme.NEVO_SOLAR_YELLOW()
+       
+        let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = tabbarController
-        self.window?.backgroundColor = UIColor.whiteColor()
-        self.window?.makeKeyAndVisible()
-
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible() 
         return true
+
     }
 
     func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in }
         
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
     }
 
     func application(application: UIApplication , didReceiveLocalNotification notification: UILocalNotification ) {
@@ -131,21 +91,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         let dbpath:String = docsdir.stringByAppendingString(nevoDBNames)
         return dbpath;
     }
-
-    /**
-     获取网络数据函数,对AFNetworking的二次封装
-
-     :param: requestURL    请求目的的URL 字符串
-     :param: resultHandler 请求后返回的数据块
-     */
+ 
     func getRequestNetwork(requestURL:String,parameters:AnyObject,resultHandler:((result:AnyObject?,error:NSError?) -> Void)){
-        manager.POST(requestURL, parameters: parameters, success: { (operation, responseObject) -> Void in
-            AppTheme.DLog("responseObject=====\(responseObject)")
-            resultHandler(result: responseObject,error: nil)
-            }) { (operation, error) -> Void in
-                AppTheme.DLog("error=====\(error)")
-                resultHandler(result: nil,error: error)
-        }
+        //manager.POST(requestURL, parameters: parameters, success: { (operation, responseObject) -> Void in
+          //  AppTheme.DLog("responseObject=====\(responseObject)")
+           // resultHandler(result: responseObject,error: nil)
+           // }) { (operation, error) -> Void in
+            //    AppTheme.DLog("error=====\(error)")
+//                resultHandler(result: nil,error: error)
+//        }
     }
 
     // MARK: -AppDelegate SET Function
