@@ -13,4 +13,9 @@ class MenuViewCell: UICollectionViewCell {
     @IBOutlet weak var menuItemLabel: UILabel!
     @IBOutlet weak var menuBackgroundImage: UIImageView!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
 }

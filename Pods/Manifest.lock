@@ -1,15 +1,23 @@
 PODS:
   - Alamofire (3.2.1)
+  - Charts (2.2.3):
+    - Charts/Core (= 2.2.3)
+  - Charts/Core (2.2.3)
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
+  - GSMessages (1.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - Charts
   - FMDB
+  - GSMessages
 
 SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  Charts: f54267bb3f0f0e74520c6f248517cf5074dfd6fc
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
+  GSMessages: 92a2aadb81bd7505e7375d7f70a58a2f49eb6e25
 
 COCOAPODS: 0.38.2

@@ -13,10 +13,17 @@ class MenuViewController: UIViewController, UICollectionViewDataSource, UICollec
     let identifier = "menu_cell_identifier"
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
+    init() {
+        super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.registerClass(MenuViewCell.self, forCellWithReuseIdentifier: identifier)
         collectionView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: identifier)
         print(self.navigationController?.navigationBar.frame.size.height)
     }
@@ -31,7 +38,7 @@ class MenuViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell:MenuViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! MenuViewCell
-//        cell.menuItemLabel.text = "my title"
+        cell.menuItemLabel.text = "my title"
         return cell
     }
 }

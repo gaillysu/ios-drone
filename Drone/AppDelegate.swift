@@ -42,9 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
          UINavigationBar.appearance().tintColor = AppTheme.NEVO_SOLAR_YELLOW()
-       
-        let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
-        
+
         // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = AppTheme.NEVO_SOLAR_YELLOW()
         //Start the logo for the first time
@@ -77,6 +75,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         tabbarController.viewControllers = [stepsNav,stepsHistoricalNav,settingNav]
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible() 
         return true

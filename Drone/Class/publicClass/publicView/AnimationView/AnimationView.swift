@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 
 protocol ButtonManagerCallBack {
@@ -469,7 +470,7 @@ class CircleSleepProgressView: CAShapeLayer {
                         endDate = cal.dateBySettingHour(l, minute: lastTimer+weakTimerArray[l]+lightTimerArray[l]  , second:0, ofDate: todayDate, options: NSCalendarOptions())!
                     }
                     sleepChartArray.append([startDate!,endDate!])
-                    sleepChartColorArray.append(ChartColorTemplates.getLightSleepColor().CGColor)
+                    sleepChartColorArray.append(AppTheme.getLightSleepColor().CGColor)
                     //AppTheme.DLog("Light startDate____\(startDate) or endDate______\(endDate)")
                     startDate = endDate
                     if(lastTimer+weakTimerArray[l]+lightTimerArray[l]+deepTimerArray[l] == 60){
@@ -482,7 +483,7 @@ class CircleSleepProgressView: CAShapeLayer {
                         endDate = cal.dateBySettingHour(l, minute: lastTimer+weakTimerArray[l]+lightTimerArray[l]+deepTimerArray[l]  , second:0, ofDate: todayDate, options: NSCalendarOptions())!
                     }
                     sleepChartArray.append([startDate!,endDate!])
-                    sleepChartColorArray.append(ChartColorTemplates.getDeepSleepColor().CGColor)
+                    sleepChartColorArray.append(AppTheme.getDeepSleepColor().CGColor)
                     //AppTheme.DLog("Deep startDate____\(startDate) or endDate______\(endDate)")
                 }
                 break
@@ -506,7 +507,7 @@ class CircleSleepProgressView: CAShapeLayer {
                     endDate = cal.dateBySettingHour(l, minute: lightTimerArray[l]+weakTimerArray[l] , second:0, ofDate: todayDate, options: NSCalendarOptions())!
                 }
                 sleepChartArray.append([startDate!,endDate!])
-                sleepChartColorArray.append(ChartColorTemplates.getLightSleepColor().CGColor)
+                sleepChartColorArray.append(AppTheme.getLightSleepColor().CGColor)
                 //AppTheme.DLog("Light startDate____\(startDate) or endDate______\(endDate)")
 
                 startDate = endDate
@@ -516,7 +517,7 @@ class CircleSleepProgressView: CAShapeLayer {
                     endDate = cal.dateBySettingHour(l, minute: lightTimerArray[l]+weakTimerArray[l]+deepTimerArray[l] , second:0, ofDate: todayDate, options: NSCalendarOptions())!
                 }
                 sleepChartArray.append([startDate!,endDate!])
-                sleepChartColorArray.append(ChartColorTemplates.getDeepSleepColor().CGColor)
+                sleepChartColorArray.append(AppTheme.getDeepSleepColor().CGColor)
                 //AppTheme.DLog("Deep startDate____\(startDate) or endDate______\(endDate)")
             }
         }else{
@@ -547,7 +548,7 @@ class CircleSleepProgressView: CAShapeLayer {
                     endDate = cal.dateBySettingHour(l, minute: lightTimerArray[l]+weakTimerArray[l] , second:0, ofDate: todayDate, options: NSCalendarOptions())!
                 }
                 sleepChartArray.append([startDate!,endDate!])
-                sleepChartColorArray.append(ChartColorTemplates.getLightSleepColor().CGColor)
+                sleepChartColorArray.append(AppTheme.getLightSleepColor().CGColor)
 
                 startDate = endDate
                 if(lightTimerArray[l]+weakTimerArray[l]+deepTimerArray[l] == 60){
@@ -560,7 +561,7 @@ class CircleSleepProgressView: CAShapeLayer {
                     }
                 }
                 sleepChartArray.append([startDate!,endDate!])
-                sleepChartColorArray.append(ChartColorTemplates.getDeepSleepColor().CGColor)
+                sleepChartColorArray.append(AppTheme.getDeepSleepColor().CGColor)
             }
         }
 

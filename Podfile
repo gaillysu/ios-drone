@@ -4,9 +4,10 @@ pod 'FMDB'
 platform :ios, '8.0'
 use_frameworks!
 pod 'Alamofire', '~> 3.0'
-#pod 'GSMessages'
-
-#pod 'Charts' 
+use_frameworks!
+pod 'Charts'
+use_frameworks!
+pod 'GSMessages'
 
 # pod 'FMDB/FTS'   # FMDB with FTS
 # pod 'FMDB/standalone'   # FMDB with latest SQLite amalgamation source

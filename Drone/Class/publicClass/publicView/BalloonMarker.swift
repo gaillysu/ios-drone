@@ -13,6 +13,7 @@
 
 import Foundation
 import UIKit;
+import Charts
 
 public class BalloonMarker: ChartMarker
 {
@@ -85,7 +86,7 @@ public class BalloonMarker: ChartMarker
         rect.origin.y += self.insets.top
         rect.size.height -= self.insets.top + self.insets.bottom
 
-        UIGraphicsPushContext(context)
+        UIGraphicsPushContext(context!)
 
         labelns?.drawInRect(rect, withAttributes: _drawAttributes)
 
