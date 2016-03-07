@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FMDB
 
 class AlarmModel: UserDatabaseHelper {
     var timer:NSTimeInterval = 0.0

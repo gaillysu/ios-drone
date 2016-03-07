@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; };
+		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; };
 		00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A691C868B15003DA5E2 /* AppDelegate.swift */; };
 		00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00982A701C868B15003DA5E2 /* Assets.xcassets */; };
 		00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */; };
@@ -271,7 +273,7 @@
 		00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFD1C86A350003DA5E2 /* localTimeZone.plist */; };
 		00982D191C86A36C003DA5E2 /* Firmwares in Resources */ = {isa = PBXBuildFile; fileRef = 00982D181C86A36C003DA5E2 /* Firmwares */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
-		015B579E7B3CFE2830B043B8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBD9D9716525914A17EBA4B /* libPods.a */; };
+		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +301,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		008C5EDA1C8D64F800DCD12D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		008C5EDB1C8D64F800DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
+		008C5EDE1C8D655700DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
 		00982A661C868B15003DA5E2 /* Drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A691C868B15003DA5E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00982A701C868B15003DA5E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -581,7 +586,7 @@
 		00982D181C86A36C003DA5E2 /* Firmwares */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Firmwares; sourceTree = "<group>"; };
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		162629CC61821D5C419DE763 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		7FBD9D9716525914A17EBA4B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50E933362E2354AB07386 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -590,7 +595,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				015B579E7B3CFE2830B043B8 /* libPods.a in Frameworks */,
+				008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */,
+				008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */,
+				04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1585,7 +1592,10 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7FBD9D9716525914A17EBA4B /* libPods.a */,
+				008C5EDE1C8D655700DCD12D /* FMDB.framework */,
+				008C5EDA1C8D64F800DCD12D /* Alamofire.framework */,
+				008C5EDB1C8D64F800DCD12D /* FMDB.framework */,
+				3551B5D0AAFC39213D5071A3 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1602,6 +1612,7 @@
 				00982A631C868B15003DA5E2 /* Frameworks */,
 				00982A641C868B15003DA5E2 /* Resources */,
 				E5975E7C8B63B07CE581497F /* Copy Pods Resources */,
+				DB0DC6546D18BCC6D408E5E0 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1792,6 +1803,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DB0DC6546D18BCC6D408E5E0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E5975E7C8B63B07CE581497F /* Copy Pods Resources */ = {
@@ -2175,6 +2201,10 @@
 			baseConfigurationReference = 162629CC61821D5C419DE763 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Drone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medcorp.Drone;
@@ -2188,6 +2218,10 @@
 			baseConfigurationReference = 8BB50E933362E2354AB07386 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Drone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medcorp.Drone;

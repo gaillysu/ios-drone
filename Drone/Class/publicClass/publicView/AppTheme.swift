@@ -219,17 +219,7 @@ class AppTheme {
     */
     class func getAppStoreVersion(resulVersion:((stringVersion:NSString?,version:Double?) -> Void)){
         let url:NSString = NSString(string: "https://itunes.apple.com/lookup?id=977526892")
-        let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        manager.requestSerializer.timeoutInterval = 30;
-        manager.GET((url as String), parameters:nil, success: { (operation,responseObject) -> Void in
-            let arr: NSDictionary! = responseObject as! NSDictionary
-            let versionString: NSString = ((arr.objectForKey("results") as! NSArray).objectAtIndex(0) as! NSDictionary).objectForKey("version") as! NSString
-            let string:NSString = versionString.stringByReplacingOccurrencesOfString(".", withString: "")
-            let version:Float = string.floatValue
-            resulVersion(stringVersion: versionString,version:Double(version))
-            }) { (operation,error) -> Void in
-                resulVersion(stringVersion:"",version:0.0)
-        }
+        
     }
 
     /**

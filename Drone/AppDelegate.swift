@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import HealthKit
+import Alamofire
+import FMDB
 
 let nevoDBDFileURL:String = "nevoDBName";
 let nevoDBNames:String = "nevo.sqlite";
@@ -34,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
 
- 
     class func getAppDelegate()->AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
@@ -44,6 +45,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
        
         let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
         
+        // Override point for customization after application launch.
+        UINavigationBar.appearance().tintColor = AppTheme.NEVO_SOLAR_YELLOW()
+        //Start the logo for the first time
+        if(!NSUserDefaults.standardUserDefaults().boolForKey("everLaunched")){
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "everLaunched")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
+        }else{
+            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstLaunch")
+        }
+
+        UserNotification.defaultNotificationColor()
+
+        mConnectionController = ConnectionControllerImpl()
+        mConnectionController?.setDelegate(self)
+
+
+        let stepsController:StepController = StepController()
+        let stepsNav:UINavigationController = UINavigationController(rootViewController: stepsController)
+        stepsNav.tabBarItem.image = UIImage(named: "new_iOS_steps_icon")
+
+        let stepsHistorical:StepHistoricalViewController = StepHistoricalViewController()
+        let stepsHistoricalNav:UINavigationController = UINavigationController(rootViewController: stepsHistorical)
+        stepsHistoricalNav.tabBarItem.image = UIImage(named: "new_iOS_alarm_icon")
+
+        let settingController:SettingViewController = SettingViewController()
+        let settingNav:UINavigationController = UINavigationController(rootViewController: settingController)
+        settingNav.tabBarItem.image = UIImage(named: "new_iOS_setting_icon")
+
+        let tabbarController:MainTabBarController = MainTabBarController()
+        tabbarController.viewControllers = [stepsNav,stepsHistoricalNav,settingNav]
+
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible() 
@@ -93,13 +125,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
  
     func getRequestNetwork(requestURL:String,parameters:AnyObject,resultHandler:((result:AnyObject?,error:NSError?) -> Void)){
-        //manager.POST(requestURL, parameters: parameters, success: { (operation, responseObject) -> Void in
-          //  AppTheme.DLog("responseObject=====\(responseObject)")
-           // resultHandler(result: responseObject,error: nil)
-           // }) { (operation, error) -> Void in
-            //    AppTheme.DLog("error=====\(error)")
-//                resultHandler(result: nil,error: error)
-//        }
+        Alamofire.request(Method.POST, requestURL, parameters: parameters as? [String : AnyObject]).responseJSON { (response) -> Void in
+            if response.result.isSuccess {
+                NSLog("getJSON: \(response.result.value)")
+                resultHandler(result: response.result.value, error: nil)
+            }else if (response.result.isFailure){
+                resultHandler(result: response.result.value, error: nil)
+            }else{
+                resultHandler(result: nil, error: nil)
+            }
+        }
+        
     }
 
     // MARK: -AppDelegate SET Function

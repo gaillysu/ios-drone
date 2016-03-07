@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import FMDB
 
 /** SQLite Five types of data */
 let SQLTEXT = "TEXT"
