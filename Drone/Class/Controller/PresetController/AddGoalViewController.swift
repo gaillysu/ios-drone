@@ -8,13 +8,13 @@
 
 import UIKit
 
-class AddPresetViewController: UIViewController,ButtonManagerCallBack {
+class AddGoalViewController: UIViewController,ButtonManagerCallBack {
 
-    @IBOutlet weak var addPresetView: AddPresetView!
+    @IBOutlet weak var addGoalView: AddGoalView!
     var addDelegate:AddPresetDelegate?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: "AddPresetViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "AddGoalViewController", bundle: NSBundle.mainBundle())
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -23,36 +23,25 @@ class AddPresetViewController: UIViewController,ButtonManagerCallBack {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPresetView.bulidAddPresetView(self.navigationItem, delegate: self)
+        addGoalView.bulidAddGoalView(self.navigationItem, delegate: self)
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - ButtonManagerDelegate
     func controllManager(sender:AnyObject){
-        let number:NSString = addPresetView.presetNumber.text! as NSString
+        let number:NSString = addGoalView.goalNumber.text! as NSString
         let length:Int = number.length
         if(length >= 4){
-            addDelegate?.onAddPresetNumber(Int(addPresetView.presetNumber.text!)!, name: addPresetView.presetName.text!)
+            addDelegate?.onAddPresetNumber(Int(addGoalView.goalNumber.text!)!, name: addGoalView.goalName.text!)
             self.navigationController?.popViewControllerAnimated(true)
         }else{
             let aler:UIAlertView = UIAlertView(title: "", message: NSLocalizedString("Preset Number can't be empty, or you set less than four digits", comment: ""), delegate: nil, cancelButtonTitle: NSLocalizedString("Cancel", comment: ""))
             aler.show()
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

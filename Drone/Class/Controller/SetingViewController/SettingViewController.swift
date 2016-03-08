@@ -113,7 +113,7 @@ class SettingViewController: UIViewController,SyncControllerDelegate,ButtonManag
 
             if(isEqualString("\(titleArray[indexPath.row])",string2: NSLocalizedString("Preset-goals", comment: ""))){
                 AppTheme.DLog("Preset-goals")
-                let presetView:PresetTableViewController = PresetTableViewController()
+                let presetView:GoalTableViewController = GoalTableViewController()
                 presetView.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(presetView, animated: true)
             }

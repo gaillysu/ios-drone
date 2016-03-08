@@ -8,17 +8,17 @@
 
 import UIKit
 
-class PresetTableViewCell: UITableViewCell,ButtonManagerCallBack {
+class GoalTableViewCell: UITableViewCell,ButtonManagerCallBack {
 
-    @IBOutlet weak var presetSteps: UILabel!
-    @IBOutlet weak var presetName: UILabel!
-    @IBOutlet weak var presetStates: UISwitch!
+    @IBOutlet weak var goalSteps: UILabel!
+    @IBOutlet weak var goalName: UILabel!
+    @IBOutlet weak var goalStates: UISwitch!
     var delegate:ButtonManagerCallBack?
 
 
     @IBAction func controllManager(sender: AnyObject) {
        delegate?.controllManager(sender)
-        if(presetStates.on){
+        if(goalStates.on){
             self.backgroundColor = UIColor.whiteColor()
         }else{
             self.backgroundColor = UIColor.clearColor()

@@ -13,9 +13,9 @@ protocol AddPresetDelegate {
 
 }
 
-class PresetTableViewController: UITableViewController,ButtonManagerCallBack,AddPresetDelegate {
+class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPresetDelegate {
         
-    @IBOutlet weak var presetView: PresetView!
+    @IBOutlet weak var goalView: GoalView!
     var prestArray:[Presets] = []
 
     init() {
@@ -28,7 +28,7 @@ class PresetTableViewController: UITableViewController,ButtonManagerCallBack,Add
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presetView.bulidPresetView(self.navigationItem,delegateB: self)
+        goalView.bulidPresetView(self.navigationItem,delegateB: self)
 
         let array:NSArray = Presets.getAll()
         for pArray in array {
@@ -59,9 +59,9 @@ class PresetTableViewController: UITableViewController,ButtonManagerCallBack,Add
 
     // MARK: - ButtonManagerCallBack
     func controllManager(sender:AnyObject){
-        if(sender.isEqual(presetView.leftButton)){
+        if(sender.isEqual(goalView.leftButton)){
             //let removeAll:Bool = Presets.removeAll()
-            let addPreset:AddPresetViewController = AddPresetViewController()
+            let addPreset:AddGoalViewController = AddGoalViewController()
             addPreset.addDelegate = self
             self.navigationController?.pushViewController(addPreset, animated: true)
         }
@@ -86,10 +86,9 @@ class PresetTableViewController: UITableViewController,ButtonManagerCallBack,Add
         return prestArray.count
     }
 
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        return presetView.getPresetTableViewCell(indexPath, tableView: tableView,presetArray: prestArray, delegate: self)
+        return goalView.getPresetTableViewCell(indexPath, tableView: tableView,goalArray: prestArray, delegate: self)
     }
 
 
@@ -98,8 +97,6 @@ class PresetTableViewController: UITableViewController,ButtonManagerCallBack,Add
         // Return false if you do not want the specified item to be editable.
         return true
     }
-
-
 
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -114,7 +111,6 @@ class PresetTableViewController: UITableViewController,ButtonManagerCallBack,Add
         }    
     }
 
-
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
 
@@ -125,15 +121,4 @@ class PresetTableViewController: UITableViewController,ButtonManagerCallBack,Add
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
 }

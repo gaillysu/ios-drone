@@ -20,15 +20,6 @@
 		00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */; };
 		00982A7F1C868B16003DA5E2 /* DroneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A7E1C868B16003DA5E2 /* DroneTests.swift */; };
 		00982A8A1C868B16003DA5E2 /* DroneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A891C868B16003DA5E2 /* DroneUITests.swift */; };
-		00982BE21C868C8A003DA5E2 /* AddAlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A9A1C868C89003DA5E2 /* AddAlarmController.swift */; };
-		00982BE31C868C8A003DA5E2 /* AddAlarmController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982A9B1C868C89003DA5E2 /* AddAlarmController.xib */; };
-		00982BE41C868C8A003DA5E2 /* AddAlarmSystemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A9E1C868C89003DA5E2 /* AddAlarmSystemCell.swift */; };
-		00982BE51C868C8A003DA5E2 /* AddAlarmSystemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982A9F1C868C89003DA5E2 /* AddAlarmSystemCell.xib */; };
-		00982BE61C868C8A003DA5E2 /* AddAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AA01C868C89003DA5E2 /* AddAlarmTableViewCell.swift */; };
-		00982BE71C868C8A003DA5E2 /* AddAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AA11C868C89003DA5E2 /* AddAlarmTableViewCell.xib */; };
-		00982BE81C868C8A003DA5E2 /* AddAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AA21C868C89003DA5E2 /* AddAlarmView.swift */; };
-		00982BE91C868C8A003DA5E2 /* AlarmClockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AA31C868C89003DA5E2 /* AlarmClockController.swift */; };
-		00982BEA1C868C8A003DA5E2 /* alarmClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AA51C868C89003DA5E2 /* alarmClockView.swift */; };
 		00982BEB1C868C8A003DA5E2 /* BPMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AA71C868C89003DA5E2 /* BPMController.swift */; };
 		00982BEC1C868C8A003DA5E2 /* BPMController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AA81C868C89003DA5E2 /* BPMController.xib */; };
 		00982BED1C868C8A003DA5E2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AAA1C868C89003DA5E2 /* LoginController.swift */; };
@@ -44,14 +35,14 @@
 		00982BF71C868C8A003DA5E2 /* SelectFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB81C868C89003DA5E2 /* SelectFileView.swift */; };
 		00982BF81C868C8A003DA5E2 /* NevoOtaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB91C868C89003DA5E2 /* NevoOtaViewController.swift */; };
 		00982BF91C868C8A003DA5E2 /* NevoOtaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ABA1C868C89003DA5E2 /* NevoOtaViewController.xib */; };
-		00982BFA1C868C8A003DA5E2 /* AddPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ABC1C868C89003DA5E2 /* AddPresetViewController.swift */; };
-		00982BFB1C868C8A003DA5E2 /* AddPresetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ABD1C868C89003DA5E2 /* AddPresetViewController.xib */; };
-		00982BFC1C868C8A003DA5E2 /* PresetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ABE1C868C89003DA5E2 /* PresetTableViewController.swift */; };
-		00982BFD1C868C8A003DA5E2 /* PresetTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ABF1C868C89003DA5E2 /* PresetTableViewController.xib */; };
-		00982BFE1C868C8A003DA5E2 /* AddPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC11C868C89003DA5E2 /* AddPresetView.swift */; };
-		00982BFF1C868C8A003DA5E2 /* PresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC21C868C89003DA5E2 /* PresetTableViewCell.swift */; };
-		00982C001C868C8A003DA5E2 /* PresetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC31C868C89003DA5E2 /* PresetTableViewCell.xib */; };
-		00982C011C868C8A003DA5E2 /* PresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC41C868C89003DA5E2 /* PresetView.swift */; };
+		00982BFA1C868C8A003DA5E2 /* AddGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ABC1C868C89003DA5E2 /* AddGoalViewController.swift */; };
+		00982BFB1C868C8A003DA5E2 /* AddGoalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ABD1C868C89003DA5E2 /* AddGoalViewController.xib */; };
+		00982BFC1C868C8A003DA5E2 /* GoalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ABE1C868C89003DA5E2 /* GoalTableViewController.swift */; };
+		00982BFD1C868C8A003DA5E2 /* GoalTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ABF1C868C89003DA5E2 /* GoalTableViewController.xib */; };
+		00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC11C868C89003DA5E2 /* AddGoalView.swift */; };
+		00982BFF1C868C8A003DA5E2 /* GoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC21C868C89003DA5E2 /* GoalTableViewCell.swift */; };
+		00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */; };
+		00982C011C868C8A003DA5E2 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC41C868C89003DA5E2 /* GoalView.swift */; };
 		00982C021C868C8A003DA5E2 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC61C868C89003DA5E2 /* ProfileController.swift */; };
 		00982C031C868C8A003DA5E2 /* ProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC71C868C89003DA5E2 /* ProfileController.xib */; };
 		00982C041C868C8A003DA5E2 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC91C868C89003DA5E2 /* RegisterController.swift */; };
@@ -62,8 +53,6 @@
 		00982C0A1C868C8A003DA5E2 /* SleepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AD31C868C89003DA5E2 /* SleepController.swift */; };
 		00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ADA1C868C89003DA5E2 /* SleepTrackingView.swift */; };
 		00982C111C868C8A003DA5E2 /* StepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ADC1C868C89003DA5E2 /* StepController.swift */; };
-		00982C121C868C8A003DA5E2 /* StepHistoricalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ADD1C868C89003DA5E2 /* StepHistoricalViewController.swift */; };
-		00982C131C868C8A003DA5E2 /* StepHistoricalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ADE1C868C89003DA5E2 /* StepHistoricalViewController.xib */; };
 		00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */; };
 		00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */; };
 		00982C161C868C8A003DA5E2 /* AddWorldClockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE31C868C89003DA5E2 /* AddWorldClockController.swift */; };
@@ -103,8 +92,6 @@
 		00982C381C868C8A003DA5E2 /* WorldClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B131C868C89003DA5E2 /* WorldClock.swift */; };
 		00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B151C868C89003DA5E2 /* HttpPostRequest.swift */; };
 		00982C3A1C868C8A003DA5E2 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B171C868C89003DA5E2 /* MainTabBarController.swift */; };
-		00982C3B1C868C8A003DA5E2 /* PublicClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B181C868C89003DA5E2 /* PublicClassController.swift */; };
-		00982C3C1C868C8A003DA5E2 /* PublicClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B191C868C89003DA5E2 /* PublicClassTableViewController.swift */; };
 		00982C3D1C868C8A003DA5E2 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1C1C868C89003DA5E2 /* AnimationView.swift */; };
 		00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1D1C868C89003DA5E2 /* AppTheme.swift */; };
 		00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */; };
@@ -168,7 +155,7 @@
 		00982CD31C868C8A003DA5E2 /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BDF1C868C8A003DA5E2 /* NSDateComponents+Timepiece.swift */; };
 		00982CD41C868C8A003DA5E2 /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BE01C868C8A003DA5E2 /* NSTimeInterval+Timepiece.swift */; };
 		00982CD51C868C8A003DA5E2 /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BE11C868C8A003DA5E2 /* String+Timepiece.swift */; };
-		00982CDA1C868CF5003DA5E2 /* StepController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CD91C868CF5003DA5E2 /* StepController.xib */; };
+		00982CDA1C868CF5003DA5E2 /* StepsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CD91C868CF5003DA5E2 /* StepsController.xib */; };
 		00982CDF1C868F62003DA5E2 /* SleepController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CDE1C868F62003DA5E2 /* SleepController.xib */; };
 		00982CE11C868FE6003DA5E2 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CE01C868FE6003DA5E2 /* SettingViewController.xib */; };
 		00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982CE51C8695AD003DA5E2 /* SetingView.swift */; };
@@ -230,15 +217,6 @@
 		00982A851C868B16003DA5E2 /* DroneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DroneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A891C868B16003DA5E2 /* DroneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneUITests.swift; sourceTree = "<group>"; };
 		00982A8B1C868B16003DA5E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00982A9A1C868C89003DA5E2 /* AddAlarmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmController.swift; sourceTree = "<group>"; };
-		00982A9B1C868C89003DA5E2 /* AddAlarmController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddAlarmController.xib; sourceTree = "<group>"; };
-		00982A9E1C868C89003DA5E2 /* AddAlarmSystemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmSystemCell.swift; sourceTree = "<group>"; };
-		00982A9F1C868C89003DA5E2 /* AddAlarmSystemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddAlarmSystemCell.xib; sourceTree = "<group>"; };
-		00982AA01C868C89003DA5E2 /* AddAlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmTableViewCell.swift; sourceTree = "<group>"; };
-		00982AA11C868C89003DA5E2 /* AddAlarmTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddAlarmTableViewCell.xib; sourceTree = "<group>"; };
-		00982AA21C868C89003DA5E2 /* AddAlarmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmView.swift; sourceTree = "<group>"; };
-		00982AA31C868C89003DA5E2 /* AlarmClockController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmClockController.swift; sourceTree = "<group>"; };
-		00982AA51C868C89003DA5E2 /* alarmClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = alarmClockView.swift; sourceTree = "<group>"; };
 		00982AA71C868C89003DA5E2 /* BPMController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMController.swift; sourceTree = "<group>"; };
 		00982AA81C868C89003DA5E2 /* BPMController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPMController.xib; sourceTree = "<group>"; };
 		00982AAA1C868C89003DA5E2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -254,14 +232,14 @@
 		00982AB81C868C89003DA5E2 /* SelectFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFileView.swift; sourceTree = "<group>"; };
 		00982AB91C868C89003DA5E2 /* NevoOtaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOtaViewController.swift; sourceTree = "<group>"; };
 		00982ABA1C868C89003DA5E2 /* NevoOtaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NevoOtaViewController.xib; sourceTree = "<group>"; };
-		00982ABC1C868C89003DA5E2 /* AddPresetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPresetViewController.swift; sourceTree = "<group>"; };
-		00982ABD1C868C89003DA5E2 /* AddPresetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPresetViewController.xib; sourceTree = "<group>"; };
-		00982ABE1C868C89003DA5E2 /* PresetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetTableViewController.swift; sourceTree = "<group>"; };
-		00982ABF1C868C89003DA5E2 /* PresetTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresetTableViewController.xib; sourceTree = "<group>"; };
-		00982AC11C868C89003DA5E2 /* AddPresetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPresetView.swift; sourceTree = "<group>"; };
-		00982AC21C868C89003DA5E2 /* PresetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetTableViewCell.swift; sourceTree = "<group>"; };
-		00982AC31C868C89003DA5E2 /* PresetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresetTableViewCell.xib; sourceTree = "<group>"; };
-		00982AC41C868C89003DA5E2 /* PresetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetView.swift; sourceTree = "<group>"; };
+		00982ABC1C868C89003DA5E2 /* AddGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalViewController.swift; sourceTree = "<group>"; };
+		00982ABD1C868C89003DA5E2 /* AddGoalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGoalViewController.xib; sourceTree = "<group>"; };
+		00982ABE1C868C89003DA5E2 /* GoalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTableViewController.swift; sourceTree = "<group>"; };
+		00982ABF1C868C89003DA5E2 /* GoalTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalTableViewController.xib; sourceTree = "<group>"; };
+		00982AC11C868C89003DA5E2 /* AddGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalView.swift; sourceTree = "<group>"; };
+		00982AC21C868C89003DA5E2 /* GoalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTableViewCell.swift; sourceTree = "<group>"; };
+		00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalTableViewCell.xib; sourceTree = "<group>"; };
+		00982AC41C868C89003DA5E2 /* GoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		00982AC61C868C89003DA5E2 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		00982AC71C868C89003DA5E2 /* ProfileController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileController.xib; sourceTree = "<group>"; };
 		00982AC91C868C89003DA5E2 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -272,13 +250,11 @@
 		00982AD31C868C89003DA5E2 /* SleepController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepController.swift; sourceTree = "<group>"; };
 		00982ADA1C868C89003DA5E2 /* SleepTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepTrackingView.swift; sourceTree = "<group>"; };
 		00982ADC1C868C89003DA5E2 /* StepController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepController.swift; sourceTree = "<group>"; };
-		00982ADD1C868C89003DA5E2 /* StepHistoricalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepHistoricalViewController.swift; sourceTree = "<group>"; };
-		00982ADE1C868C89003DA5E2 /* StepHistoricalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepHistoricalViewController.xib; sourceTree = "<group>"; };
 		00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepGoalSetingView.swift; sourceTree = "<group>"; };
 		00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepHistoricalView.swift; sourceTree = "<group>"; };
 		00982AE31C868C89003DA5E2 /* AddWorldClockController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWorldClockController.swift; sourceTree = "<group>"; };
 		00982AE41C868C89003DA5E2 /* AddWorldClockController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddWorldClockController.xib; sourceTree = "<group>"; };
-		00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWorldClockView.swift; sourceTree = "<group>"; };
+		00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockView.swift; path = Controller/WorldClockController/AddWorldClockView.swift; sourceTree = "<group>"; };
 		00982AE71C868C89003DA5E2 /* WorldClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockCell.swift; sourceTree = "<group>"; };
 		00982AE81C868C89003DA5E2 /* WorldClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockCell.xib; sourceTree = "<group>"; };
 		00982AE91C868C89003DA5E2 /* WorldClockController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockController.swift; sourceTree = "<group>"; };
@@ -315,8 +291,6 @@
 		00982B131C868C89003DA5E2 /* WorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClock.swift; sourceTree = "<group>"; };
 		00982B151C868C89003DA5E2 /* HttpPostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpPostRequest.swift; sourceTree = "<group>"; };
 		00982B171C868C89003DA5E2 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		00982B181C868C89003DA5E2 /* PublicClassController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicClassController.swift; sourceTree = "<group>"; };
-		00982B191C868C89003DA5E2 /* PublicClassTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicClassTableViewController.swift; sourceTree = "<group>"; };
 		00982B1C1C868C89003DA5E2 /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		00982B1D1C868C89003DA5E2 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -386,7 +360,7 @@
 		00982BDF1C868C8A003DA5E2 /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
 		00982BE01C868C8A003DA5E2 /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
 		00982BE11C868C8A003DA5E2 /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
-		00982CD91C868CF5003DA5E2 /* StepController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepController.xib; sourceTree = "<group>"; };
+		00982CD91C868CF5003DA5E2 /* StepsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsController.xib; sourceTree = "<group>"; };
 		00982CDB1C868E0B003DA5E2 /* Drone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drone-Bridging-Header.h"; sourceTree = "<group>"; };
 		00982CDE1C868F62003DA5E2 /* SleepController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SleepController.xib; sourceTree = "<group>"; };
 		00982CE01C868FE6003DA5E2 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
@@ -501,6 +475,7 @@
 		00982A971C868C89003DA5E2 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				CBA06BEB1C8EB2C800E3257B /* View */,
 				00982A981C868C89003DA5E2 /* Controller */,
 				00982AEB1C868C89003DA5E2 /* Model */,
 				00982B141C868C89003DA5E2 /* Network */,
@@ -513,64 +488,21 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */,
-				008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */,
-				008C5EE41C8D7CC900DCD12D /* MenuViewController.swift */,
-				008C5EE51C8D7CC900DCD12D /* MenuViewController.xib */,
-				00982A991C868C89003DA5E2 /* AlarmController */,
+				CBA06BED1C8EC27E00E3257B /* AddWorldClockController */,
 				00982AA61C868C89003DA5E2 /* BPMController */,
+				00982ABB1C868C89003DA5E2 /* GoalController */,
 				00982AA91C868C89003DA5E2 /* LoginController */,
+				CBA06BE91C8EB2A900E3257B /* MenuViewController */,
 				00982AAC1C868C89003DA5E2 /* MyDroneController */,
 				00982AB31C868C89003DA5E2 /* NevoOtaController */,
-				00982ABB1C868C89003DA5E2 /* PresetController */,
 				00982AC51C868C89003DA5E2 /* ProfileController */,
 				00982AC81C868C89003DA5E2 /* RegisterController */,
 				00982ACB1C868C89003DA5E2 /* SettingViewController */,
 				00982ACF1C868C89003DA5E2 /* SleepController */,
-				00982ADB1C868C89003DA5E2 /* StepController */,
+				00982ADB1C868C89003DA5E2 /* StepsController */,
 				00982AE21C868C89003DA5E2 /* WorldClockController */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		00982A991C868C89003DA5E2 /* AlarmController */ = {
-			isa = PBXGroup;
-			children = (
-				00982A9A1C868C89003DA5E2 /* AddAlarmController.swift */,
-				00982A9B1C868C89003DA5E2 /* AddAlarmController.xib */,
-				00982A9C1C868C89003DA5E2 /* AddAlarmView */,
-				00982AA31C868C89003DA5E2 /* AlarmClockController.swift */,
-				00982AA41C868C89003DA5E2 /* AlarmView */,
-			);
-			path = AlarmController;
-			sourceTree = "<group>";
-		};
-		00982A9C1C868C89003DA5E2 /* AddAlarmView */ = {
-			isa = PBXGroup;
-			children = (
-				00982A9D1C868C89003DA5E2 /* AddAlarmTableViewCell */,
-				00982AA21C868C89003DA5E2 /* AddAlarmView.swift */,
-			);
-			path = AddAlarmView;
-			sourceTree = "<group>";
-		};
-		00982A9D1C868C89003DA5E2 /* AddAlarmTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				00982A9E1C868C89003DA5E2 /* AddAlarmSystemCell.swift */,
-				00982A9F1C868C89003DA5E2 /* AddAlarmSystemCell.xib */,
-				00982AA01C868C89003DA5E2 /* AddAlarmTableViewCell.swift */,
-				00982AA11C868C89003DA5E2 /* AddAlarmTableViewCell.xib */,
-			);
-			path = AddAlarmTableViewCell;
-			sourceTree = "<group>";
-		};
-		00982AA41C868C89003DA5E2 /* AlarmView */ = {
-			isa = PBXGroup;
-			children = (
-				00982AA51C868C89003DA5E2 /* alarmClockView.swift */,
-			);
-			path = AlarmView;
 			sourceTree = "<group>";
 		};
 		00982AA61C868C89003DA5E2 /* BPMController */ = {
@@ -596,7 +528,6 @@
 			children = (
 				00982AAD1C868C89003DA5E2 /* MyDroneController.swift */,
 				00982AAE1C868C89003DA5E2 /* MyDroneController.xib */,
-				00982AAF1C868C89003DA5E2 /* MyDroneView */,
 			);
 			path = MyDroneController;
 			sourceTree = "<group>";
@@ -608,14 +539,14 @@
 				00982AB11C868C89003DA5E2 /* MyNevoHeaderView.xib */,
 				00982AB21C868C89003DA5E2 /* MyNevoView.swift */,
 			);
-			path = MyDroneView;
+			name = MyDroneView;
+			path = Controller/MyDroneController/MyDroneView;
 			sourceTree = "<group>";
 		};
 		00982AB31C868C89003DA5E2 /* NevoOtaController */ = {
 			isa = PBXGroup;
 			children = (
 				00982AB41C868C89003DA5E2 /* NevoOtaController.swift */,
-				00982AB51C868C89003DA5E2 /* NevoOtaView */,
 				00982AB91C868C89003DA5E2 /* NevoOtaViewController.swift */,
 				00982ABA1C868C89003DA5E2 /* NevoOtaViewController.xib */,
 			);
@@ -629,30 +560,32 @@
 				00982AB71C868C89003DA5E2 /* NevoOtaView.swift */,
 				00982AB81C868C89003DA5E2 /* SelectFileView.swift */,
 			);
-			path = NevoOtaView;
+			name = NevoOtaView;
+			path = Controller/NevoOtaController/NevoOtaView;
 			sourceTree = "<group>";
 		};
-		00982ABB1C868C89003DA5E2 /* PresetController */ = {
+		00982ABB1C868C89003DA5E2 /* GoalController */ = {
 			isa = PBXGroup;
 			children = (
-				00982ABC1C868C89003DA5E2 /* AddPresetViewController.swift */,
-				00982ABD1C868C89003DA5E2 /* AddPresetViewController.xib */,
-				00982ABE1C868C89003DA5E2 /* PresetTableViewController.swift */,
-				00982ABF1C868C89003DA5E2 /* PresetTableViewController.xib */,
-				00982AC01C868C89003DA5E2 /* PresetView */,
+				00982ABC1C868C89003DA5E2 /* AddGoalViewController.swift */,
+				00982ABD1C868C89003DA5E2 /* AddGoalViewController.xib */,
+				00982ABE1C868C89003DA5E2 /* GoalTableViewController.swift */,
+				00982ABF1C868C89003DA5E2 /* GoalTableViewController.xib */,
 			);
+			name = GoalController;
 			path = PresetController;
 			sourceTree = "<group>";
 		};
 		00982AC01C868C89003DA5E2 /* PresetView */ = {
 			isa = PBXGroup;
 			children = (
-				00982AC11C868C89003DA5E2 /* AddPresetView.swift */,
-				00982AC21C868C89003DA5E2 /* PresetTableViewCell.swift */,
-				00982AC31C868C89003DA5E2 /* PresetTableViewCell.xib */,
-				00982AC41C868C89003DA5E2 /* PresetView.swift */,
+				00982AC11C868C89003DA5E2 /* AddGoalView.swift */,
+				00982AC21C868C89003DA5E2 /* GoalTableViewCell.swift */,
+				00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */,
+				00982AC41C868C89003DA5E2 /* GoalView.swift */,
 			);
-			path = PresetView;
+			name = PresetView;
+			path = Controller/PresetController/PresetView;
 			sourceTree = "<group>";
 		};
 		00982AC51C868C89003DA5E2 /* ProfileController */ = {
@@ -676,7 +609,6 @@
 		00982ACB1C868C89003DA5E2 /* SettingViewController */ = {
 			isa = PBXGroup;
 			children = (
-				00982ACC1C868C89003DA5E2 /* SetingView */,
 				00982ACE1C868C89003DA5E2 /* SettingViewController.swift */,
 				00982CE01C868FE6003DA5E2 /* SettingViewController.xib */,
 			);
@@ -689,16 +621,15 @@
 			children = (
 				00982CE51C8695AD003DA5E2 /* SetingView.swift */,
 			);
-			path = SetingView;
+			name = SetingView;
+			path = Controller/SetingViewController/SetingView;
 			sourceTree = "<group>";
 		};
 		00982ACF1C868C89003DA5E2 /* SleepController */ = {
 			isa = PBXGroup;
 			children = (
-				00982AD01C868C89003DA5E2 /* queryTableviewCell */,
 				00982AD31C868C89003DA5E2 /* SleepController.swift */,
 				00982CDE1C868F62003DA5E2 /* SleepController.xib */,
-				00982AD91C868C89003DA5E2 /* SleepView */,
 			);
 			path = SleepController;
 			sourceTree = "<group>";
@@ -709,7 +640,8 @@
 				00982AD11C868C89003DA5E2 /* queryTableviewCell.swift */,
 				00982AD21C868C89003DA5E2 /* queryTableviewCell.xib */,
 			);
-			path = queryTableviewCell;
+			name = queryTableviewCell;
+			path = Controller/SleepController/queryTableviewCell;
 			sourceTree = "<group>";
 		};
 		00982AD91C868C89003DA5E2 /* SleepView */ = {
@@ -717,18 +649,17 @@
 			children = (
 				00982ADA1C868C89003DA5E2 /* SleepTrackingView.swift */,
 			);
-			path = SleepView;
+			name = SleepView;
+			path = Controller/SleepController/SleepView;
 			sourceTree = "<group>";
 		};
-		00982ADB1C868C89003DA5E2 /* StepController */ = {
+		00982ADB1C868C89003DA5E2 /* StepsController */ = {
 			isa = PBXGroup;
 			children = (
 				00982ADC1C868C89003DA5E2 /* StepController.swift */,
-				00982CD91C868CF5003DA5E2 /* StepController.xib */,
-				00982ADD1C868C89003DA5E2 /* StepHistoricalViewController.swift */,
-				00982ADE1C868C89003DA5E2 /* StepHistoricalViewController.xib */,
-				00982ADF1C868C89003DA5E2 /* StepView */,
+				00982CD91C868CF5003DA5E2 /* StepsController.xib */,
 			);
+			name = StepsController;
 			path = StepController;
 			sourceTree = "<group>";
 		};
@@ -738,29 +669,27 @@
 				00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */,
 				00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */,
 			);
-			path = StepView;
+			name = StepView;
+			path = Controller/StepController/StepView;
 			sourceTree = "<group>";
 		};
 		00982AE21C868C89003DA5E2 /* WorldClockController */ = {
 			isa = PBXGroup;
 			children = (
-				00982AE31C868C89003DA5E2 /* AddWorldClockController.swift */,
-				00982AE41C868C89003DA5E2 /* AddWorldClockController.xib */,
-				00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */,
-				00982AE61C868C89003DA5E2 /* View */,
 				00982AE91C868C89003DA5E2 /* WorldClockController.swift */,
 				00982AEA1C868C89003DA5E2 /* WorldClockController.xib */,
 			);
 			path = WorldClockController;
 			sourceTree = "<group>";
 		};
-		00982AE61C868C89003DA5E2 /* View */ = {
+		00982AE61C868C89003DA5E2 /* WorldClockView */ = {
 			isa = PBXGroup;
 			children = (
 				00982AE71C868C89003DA5E2 /* WorldClockCell.swift */,
 				00982AE81C868C89003DA5E2 /* WorldClockCell.xib */,
 			);
-			path = View;
+			name = WorldClockView;
+			path = Controller/WorldClockController/View;
 			sourceTree = "<group>";
 		};
 		00982AEB1C868C89003DA5E2 /* Model */ = {
@@ -892,8 +821,6 @@
 			isa = PBXGroup;
 			children = (
 				00982B171C868C89003DA5E2 /* MainTabBarController.swift */,
-				00982B181C868C89003DA5E2 /* PublicClassController.swift */,
-				00982B191C868C89003DA5E2 /* PublicClassTableViewController.swift */,
 				00982B1A1C868C89003DA5E2 /* publicView */,
 			);
 			path = publicClass;
@@ -1179,6 +1106,59 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CBA06BE91C8EB2A900E3257B /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				008C5EE41C8D7CC900DCD12D /* MenuViewController.swift */,
+				008C5EE51C8D7CC900DCD12D /* MenuViewController.xib */,
+			);
+			name = MenuViewController;
+			sourceTree = "<group>";
+		};
+		CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */,
+				008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */,
+			);
+			name = MenuViewCell;
+			sourceTree = "<group>";
+		};
+		CBA06BEB1C8EB2C800E3257B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
+				CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */,
+				00982AAF1C868C89003DA5E2 /* MyDroneView */,
+				00982AB51C868C89003DA5E2 /* NevoOtaView */,
+				00982AC01C868C89003DA5E2 /* PresetView */,
+				00982AD01C868C89003DA5E2 /* queryTableviewCell */,
+				00982ACC1C868C89003DA5E2 /* SetingView */,
+				00982AD91C868C89003DA5E2 /* SleepView */,
+				00982ADF1C868C89003DA5E2 /* StepView */,
+				00982AE61C868C89003DA5E2 /* WorldClockView */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CBA06BED1C8EC27E00E3257B /* AddWorldClockController */ = {
+			isa = PBXGroup;
+			children = (
+				00982AE31C868C89003DA5E2 /* AddWorldClockController.swift */,
+				00982AE41C868C89003DA5E2 /* AddWorldClockController.xib */,
+			);
+			name = AddWorldClockController;
+			path = WorldClockController;
+			sourceTree = "<group>";
+		};
+		CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */ = {
+			isa = PBXGroup;
+			children = (
+				00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */,
+			);
+			name = AddWorldClockView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1250,6 +1230,7 @@
 				TargetAttributes = {
 					00982A651C868B15003DA5E2 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = WEGPWR9LDA;
 					};
 					00982A791C868B16003DA5E2 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1294,7 +1275,7 @@
 				00982C091C868C8A003DA5E2 /* queryTableviewCell.xib in Resources */,
 				00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */,
 				00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */,
-				00982BFD1C868C8A003DA5E2 /* PresetTableViewController.xib in Resources */,
+				00982BFD1C868C8A003DA5E2 /* GoalTableViewController.xib in Resources */,
 				00982D191C86A36C003DA5E2 /* Firmwares in Resources */,
 				00982CE11C868FE6003DA5E2 /* SettingViewController.xib in Resources */,
 				00982D101C86A350003DA5E2 /* nevo_wacth.png in Resources */,
@@ -1305,10 +1286,8 @@
 				00982D111C86A350003DA5E2 /* nevo_wacth_selected.png in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
 				00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */,
-				00982BE31C868C8A003DA5E2 /* AddAlarmController.xib in Resources */,
 				00982D131C86A350003DA5E2 /* NevoPicture960.png in Resources */,
 				00982C031C868C8A003DA5E2 /* ProfileController.xib in Resources */,
-				00982BE71C868C8A003DA5E2 /* AddAlarmTableViewCell.xib in Resources */,
 				008C5EE71C8D7CC900DCD12D /* MenuViewController.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */,
 				00982D0D1C86A350003DA5E2 /* clockViewMinute.png in Resources */,
@@ -1316,23 +1295,21 @@
 				00982D0B1C86A350003DA5E2 /* clockview600_color.png in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
 				00982CDF1C868F62003DA5E2 /* SleepController.xib in Resources */,
-				00982BFB1C868C8A003DA5E2 /* AddPresetViewController.xib in Resources */,
+				00982BFB1C868C8A003DA5E2 /* AddGoalViewController.xib in Resources */,
 				00982D071C86A350003DA5E2 /* SFCompactDisplay-Bold.ttf in Resources */,
-				00982CDA1C868CF5003DA5E2 /* StepController.xib in Resources */,
-				00982BE51C868C8A003DA5E2 /* AddAlarmSystemCell.xib in Resources */,
+				00982CDA1C868CF5003DA5E2 /* StepsController.xib in Resources */,
 				00982BF91C868C8A003DA5E2 /* NevoOtaViewController.xib in Resources */,
 				00982D0E1C86A350003DA5E2 /* firmware_clock.png in Resources */,
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
 				00982CC51C868C8A003DA5E2 /* MBProgressHUD.bundle in Resources */,
-				00982C131C868C8A003DA5E2 /* StepHistoricalViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				00982D151C86A350003DA5E2 /* upgrade_clock.png in Resources */,
 				00982D0F1C86A350003DA5E2 /* Nevo660.png in Resources */,
 				00982D0C1C86A350003DA5E2 /* clockViewHour.png in Resources */,
 				00982BEC1C868C8A003DA5E2 /* BPMController.xib in Resources */,
-				00982C001C868C8A003DA5E2 /* PresetTableViewCell.xib in Resources */,
+				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1405,7 +1382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00982BFC1C868C8A003DA5E2 /* PresetTableViewController.swift in Sources */,
+				00982BFC1C868C8A003DA5E2 /* GoalTableViewController.swift in Sources */,
 				00982C5B1C868C8A003DA5E2 /* NevoOTAModeProfile.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				00982C481C868C8A003DA5E2 /* AppConfigRequest.swift in Sources */,
@@ -1424,7 +1401,6 @@
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				00982C671C868C8A003DA5E2 /* SetProfileRequest.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
-				00982BE91C868C8A003DA5E2 /* AlarmClockController.swift in Sources */,
 				00982BEB1C868C8A003DA5E2 /* BPMController.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
@@ -1434,20 +1410,17 @@
 				00982CCE1C868C8A003DA5E2 /* Duration.swift in Sources */,
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* User.swift in Sources */,
-				00982BFE1C868C8A003DA5E2 /* AddPresetView.swift in Sources */,
+				00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
 				00982BEF1C868C8A003DA5E2 /* MyDroneController.swift in Sources */,
 				00982C161C868C8A003DA5E2 /* AddWorldClockController.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepController.swift in Sources */,
-				00982BEA1C868C8A003DA5E2 /* alarmClockView.swift in Sources */,
 				00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */,
-				00982C121C868C8A003DA5E2 /* StepHistoricalViewController.swift in Sources */,
 				00982C311C868C8A003DA5E2 /* UserNotification.swift in Sources */,
 				00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */,
 				00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */,
-				00982BE81C868C8A003DA5E2 /* AddAlarmView.swift in Sources */,
 				00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */,
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
 				00982C421C868C8A003DA5E2 /* WaveProgressView.m in Sources */,
@@ -1490,14 +1463,12 @@
 				00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* ReadWorldClockRequest.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
-				00982BE21C868C8A003DA5E2 /* AddAlarmController.swift in Sources */,
 				00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */,
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,
 				00982C341C868C8A003DA5E2 /* Goal.swift in Sources */,
 				00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				00982BF81C868C8A003DA5E2 /* NevoOtaViewController.swift in Sources */,
-				00982BE41C868C8A003DA5E2 /* AddAlarmSystemCell.swift in Sources */,
 				00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */,
 				00982C251C868C8A003DA5E2 /* UserDatabaseHelper.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* NevoProfile.swift in Sources */,
@@ -1517,26 +1488,23 @@
 				00982C611C868C8A003DA5E2 /* DailyTrackerInfoNevoPacket.swift in Sources */,
 				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */,
-				00982C3C1C868C8A003DA5E2 /* PublicClassTableViewController.swift in Sources */,
 				00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */,
-				00982C3B1C868C8A003DA5E2 /* PublicClassController.swift in Sources */,
 				00982CCF1C868C8A003DA5E2 /* Int+Timepiece.swift in Sources */,
 				00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */,
 				00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */,
-				00982BFA1C868C8A003DA5E2 /* AddPresetViewController.swift in Sources */,
+				00982BFA1C868C8A003DA5E2 /* AddGoalViewController.swift in Sources */,
 				00982C231C868C8A003DA5E2 /* NevoDBHelper.m in Sources */,
 				00982CD31C868C8A003DA5E2 /* NSDateComponents+Timepiece.swift in Sources */,
 				00982C431C868C8A003DA5E2 /* ClockRefreshManager.swift in Sources */,
 				00982C1D1C868C8A003DA5E2 /* DailySteps.swift in Sources */,
 				00982C411C868C8A003DA5E2 /* WaterWaveView.m in Sources */,
-				00982BFF1C868C8A003DA5E2 /* PresetTableViewCell.swift in Sources */,
+				00982BFF1C868C8A003DA5E2 /* GoalTableViewCell.swift in Sources */,
 				00982C041C868C8A003DA5E2 /* RegisterController.swift in Sources */,
-				00982BE61C868C8A003DA5E2 /* AddAlarmTableViewCell.swift in Sources */,
 				00982C551C868C8A003DA5E2 /* SetWorldClockRequest.swift in Sources */,
 				00982BF61C868C8A003DA5E2 /* NevoOtaView.swift in Sources */,
 				00982C301C868C8A003DA5E2 /* UserModel.swift in Sources */,
 				00982C371C868C8A003DA5E2 /* TestMode.swift in Sources */,
-				00982C011C868C8A003DA5E2 /* PresetView.swift in Sources */,
+				00982C011C868C8A003DA5E2 /* GoalView.swift in Sources */,
 				00982C491C868C8A003DA5E2 /* GetActivityRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1678,6 +1646,7 @@
 			baseConfigurationReference = 162629CC61821D5C419DE763 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -1695,6 +1664,7 @@
 			baseConfigurationReference = 8BB50E933362E2354AB07386 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",

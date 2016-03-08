@@ -27,22 +27,10 @@ class MainTabBarController: UITabBarController,UITabBarControllerDelegate {
         let viewArray:[AnyObject] = self.viewControllers!
         for nav in viewArray {
             let contll = (nav as! UINavigationController).topViewController
-            if contll!.isKindOfClass(AlarmClockController){
-                (nav as! UINavigationController).tabBarItem.title = NSLocalizedString("Alarm", comment: "")
-                AppTheme.DLog("AlarmClockController:\(contll)")
-
-            }
-
             if contll!.isKindOfClass(StepController){
                 (nav as! UINavigationController).tabBarItem.title = NSLocalizedString("Steps", comment: "")
                 AppTheme.DLog("StepController:\(contll)")
             }
-
-            if contll!.isKindOfClass(StepHistoricalViewController){
-                (nav as! UINavigationController).tabBarItem.title = NSLocalizedString("History", comment: "")
-                AppTheme.DLog("SetingViewController:\(contll)")
-            }
-
             if contll!.isKindOfClass(SettingViewController){
                 (nav as! UINavigationController).tabBarItem.title = NSLocalizedString("Setting", comment: "")
                 AppTheme.DLog("SetingViewController:\(contll)")

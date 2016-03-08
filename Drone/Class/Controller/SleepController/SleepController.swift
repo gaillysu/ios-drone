@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SleepController: PublicClassController {
+class SleepController: UIViewController {
 
     init() {
         super.init(nibName: "SleepController", bundle: NSBundle.mainBundle())

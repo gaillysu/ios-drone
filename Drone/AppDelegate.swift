@@ -57,23 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
-
-
-        let stepsController:StepController = StepController()
-        let stepsNav:UINavigationController = UINavigationController(rootViewController: stepsController)
-        stepsNav.tabBarItem.image = UIImage(named: "new_iOS_steps_icon")
-
-        let stepsHistorical:StepHistoricalViewController = StepHistoricalViewController()
-        let stepsHistoricalNav:UINavigationController = UINavigationController(rootViewController: stepsHistorical)
-        stepsHistoricalNav.tabBarItem.image = UIImage(named: "new_iOS_alarm_icon")
-
-        let settingController:SettingViewController = SettingViewController()
-        let settingNav:UINavigationController = UINavigationController(rootViewController: settingController)
-        settingNav.tabBarItem.image = UIImage(named: "new_iOS_setting_icon")
-
-        let tabbarController:MainTabBarController = MainTabBarController()
-        tabbarController.viewControllers = [stepsNav,stepsHistoricalNav,settingNav]
-
+ 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
         let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())

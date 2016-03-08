@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>GSMessages.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>10BAFB1A2F636E603F859A0C8466FB59</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2D5697212013D0FB26364BE423750F70</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>80DA4E69A2828CAB36759A5216F88ACD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DFE82ED18876385C28CC8DF0B0552CF1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E9ACE42CD6F1AA87A3C27C80FD3D0664</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
