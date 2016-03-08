@@ -8,6 +8,7 @@ use_frameworks!
 pod 'Charts'
 use_frameworks!
 pod 'GSMessages'
+pod 'SwiftEventBus', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
 
 # pod 'FMDB/FTS'   # FMDB with FTS
 # pod 'FMDB/standalone'   # FMDB with latest SQLite amalgamation source

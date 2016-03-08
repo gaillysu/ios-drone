@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReadBatteryLevelNevoRequest: NevoRequest {
+class GetBatteryRequest: NevoRequest {
     /**
     batt_level
     0 - low battery level
@@ -24,7 +24,7 @@ class ReadBatteryLevelNevoRequest: NevoRequest {
     
     override func getRawDataEx() -> NSArray {
         
-        let values1 :[UInt8] = [0x80,ReadBatteryLevelNevoRequest.HEADER(),
+        let values1 :[UInt8] = [0x80,GetBatteryRequest.HEADER(),
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         
         return NSArray(array: [NSData(bytes: values1, length: values1.count)])

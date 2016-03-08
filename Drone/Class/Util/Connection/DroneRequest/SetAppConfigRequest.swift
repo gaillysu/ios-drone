@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppConfigRequest: NevoRequest {
+class SetAppConfigRequest: NevoRequest {
     class func HEADER() -> UInt8 {
         return 0x04
     }
@@ -16,10 +16,10 @@ class AppConfigRequest: NevoRequest {
     override func getRawDataEx() -> NSArray {
         let isActivityTracking:UInt8 = 0x01
         let appState:UInt8 = 0x01
-        let values1 :[UInt8] = [0x80,AppConfigRequest.HEADER(),
+        let values1 :[UInt8] = [0x80,SetAppConfigRequest.HEADER(),
             isActivityTracking,
             appState,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        let values2 :[UInt8] = [0x80,AppConfigRequest.HEADER(),
+        let values2 :[UInt8] = [0x80,SetAppConfigRequest.HEADER(),
             0x02,
             appState,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 

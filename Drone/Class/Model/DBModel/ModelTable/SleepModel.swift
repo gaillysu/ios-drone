@@ -13,7 +13,7 @@ class SleepModel: UserDatabaseHelper {
 
     var date:NSTimeInterval = 0
     var totalSleepTime:Int = 0;
-    var hourlySleepTime:String = "";
+    var hourlySleepTime:String = ""; // jsonarray of int[24] 
     var totalWakeTime:Int = 0;
     var hourlyWakeTime:String = "";
     var totalLightTime:Int = 0;
