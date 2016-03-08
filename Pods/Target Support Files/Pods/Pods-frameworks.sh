@@ -56,10 +56,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods/Charts.framework'
   install_framework 'Pods/FMDB.framework'
   install_framework 'Pods/GSMessages.framework'
+  install_framework 'Pods/SwiftEventBus.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods/Alamofire.framework'
   install_framework 'Pods/Charts.framework'
   install_framework 'Pods/FMDB.framework'
   install_framework 'Pods/GSMessages.framework'
+  install_framework 'Pods/SwiftEventBus.framework'
 fi

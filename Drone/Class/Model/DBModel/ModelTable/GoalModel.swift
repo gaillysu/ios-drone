@@ -1,18 +1,17 @@
 //
-//  NotificationModel.swift
+//  PresetsModel.swift
 //  Nevo
 //
-//  Created by leiyuncun on 15/12/16.
+//  Created by leiyuncun on 15/11/25.
 //  Copyright © 2015年 Nevo. All rights reserved.
 //
 
 import UIKit
 import FMDB
 
-class NotificationModel: UserDatabaseHelper {
-
-    var clock:Int = 0
-    var NotificationType:String = ""
+class GoalModel: UserDatabaseHelper {
+    var goalSteps:Int = 0
+    var label:String = ""
     var status:Bool = false
 
     override init() {
@@ -34,7 +33,7 @@ class NotificationModel: UserDatabaseHelper {
             let sql:String = "SELECT * FROM \(tableName) \(criteria)"
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
-                let model:NotificationModel = NotificationModel()
+                let model:GoalModel = GoalModel()
 
                 for (var i:Int = 0; i < model.columeNames.count; i++) {
                     let columeName:NSString = (model.columeNames.objectAtIndex(i) as! NSString)
@@ -65,7 +64,7 @@ class NotificationModel: UserDatabaseHelper {
             let sql:String = "SELECT * FROM \(tableName)"
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
-                let model:NotificationModel = NotificationModel()
+                let model:GoalModel = GoalModel()
 
                 for (var i:Int = 0; i < model.columeNames.count; i++) {
                     let columeName:NSString = model.columeNames.objectAtIndex(i) as! NSString
@@ -78,7 +77,7 @@ class NotificationModel: UserDatabaseHelper {
                 }
                 users.addObject(model)
             }
-            
+
         }
         return users;
     }

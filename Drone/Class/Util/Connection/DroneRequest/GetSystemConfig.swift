@@ -1,22 +1,22 @@
 //
-//  readSystemStatus.swift
+//  ReadSystemConfig.swift
 //  Nevo
 //
-//  Created by leiyuncun on 15/12/24.
+//  Created by leiyuncun on 15/12/29.
 //  Copyright © 2015年 Nevo. All rights reserved.
 //
 
 import UIKit
 
-class readSystemStatus: NevoRequest {
+class GetSystemConfig: NevoRequest {
 
     class func HEADER() -> UInt8 {
-        return 0x01
+        return 0x10
     }
 
     override func getRawDataEx() -> NSArray {
 
-        let values1 :[UInt8] = [0x80,readSystemStatus.HEADER(),
+        let values1 :[UInt8] = [0x80,GetSystemConfig.HEADER(),
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
         return NSArray(array: [NSData(bytes: values1, length: values1.count)])

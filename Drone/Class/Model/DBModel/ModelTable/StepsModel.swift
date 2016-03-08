@@ -12,15 +12,7 @@ import FMDB
 class StepsModel: UserDatabaseHelper {
 
     var steps:Int = 0
-    var distance:Int = 0
     var hourlysteps:String = ""
-    var hourlydistance:String = ""
-    var calories:Double = 0
-    var hourlycalories:String = ""
-    var inZoneTime:Int = 0;
-    var outZoneTime:Int = 0;
-    var inactivityTime:Int = 0;
-    var goalreach:Double = 0;
     var date:NSTimeInterval = 0
 
     override init() {

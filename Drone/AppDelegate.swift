@@ -53,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstLaunch")
         }
 
-        UserNotification.defaultNotificationColor()
 
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
@@ -140,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     // MARK: -AppDelegate SET Function
     func readsystemStatus() {
-        sendRequest(readSystemStatus())
+        sendRequest(GetSystemStatus())
     }
 
     func setSystemConfig() {
@@ -152,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func setAppConfig() {
-        sendRequest(AppConfigRequest())
+        sendRequest(SetAppConfigRequest())
     }
 
     func setGoal(goal:Goal) {
@@ -194,7 +193,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
 
     func ReadBatteryLevel() {
-        sendRequest(ReadBatteryLevelNevoRequest())
+        sendRequest(GetBatteryRequest())
     }
 
     func GET_TodaySleepData()->NSArray{
@@ -300,7 +299,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 delegate.packetReceived(packet)
             }
 
-            if(packet.getHeader() == readSystemStatus.HEADER()) {
+            if(packet.getHeader() == GetSystemStatus.HEADER()) {
                 let data:[UInt8] = NSData2Bytes(packet.getRawData())
                 let systemStatus:Int = Int(data[2])<<8
                 let systemReset:Int = Int(data[3])
@@ -328,7 +327,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 //setAppConfig()
             }
 
-            if(packet.getHeader() == AppConfigRequest.HEADER()) {
+            if(packet.getHeader() == SetAppConfigRequest.HEADER()) {
                 //step3: start set user default goal
                 setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
             }

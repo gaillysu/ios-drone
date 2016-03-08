@@ -15,6 +15,7 @@
 		008C5EE71C8D7CC900DCD12D /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C5EE51C8D7CC900DCD12D /* MenuViewController.xib */; };
 		008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */; };
 		008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */; };
+		0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */; };
 		00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A691C868B15003DA5E2 /* AppDelegate.swift */; };
 		00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00982A701C868B15003DA5E2 /* Assets.xcassets */; };
 		00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */; };
@@ -83,17 +84,14 @@
 		00982C241C868C8A003DA5E2 /* NevoDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF91C868C89003DA5E2 /* NevoDBModel.m */; };
 		00982C251C868C8A003DA5E2 /* UserDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFA1C868C89003DA5E2 /* UserDatabaseHelper.swift */; };
 		00982C261C868C8A003DA5E2 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFC1C868C89003DA5E2 /* AlarmModel.swift */; };
-		00982C271C868C8A003DA5E2 /* DaySleepSaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFD1C868C89003DA5E2 /* DaySleepSaveModel.swift */; };
 		00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFE1C868C89003DA5E2 /* HealthModel.swift */; };
-		00982C291C868C8A003DA5E2 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFF1C868C89003DA5E2 /* NotificationModel.swift */; };
-		00982C2A1C868C8A003DA5E2 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B001C868C89003DA5E2 /* Presets.swift */; };
-		00982C2B1C868C8A003DA5E2 /* PresetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B011C868C89003DA5E2 /* PresetsModel.swift */; };
+		00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B001C868C89003DA5E2 /* UserGoal.swift */; };
+		00982C2B1C868C8A003DA5E2 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B011C868C89003DA5E2 /* GoalModel.swift */; };
 		00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B021C868C89003DA5E2 /* SleepModel.swift */; };
 		00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B031C868C89003DA5E2 /* StepsModel.swift */; };
 		00982C2E1C868C8A003DA5E2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B041C868C89003DA5E2 /* User.swift */; };
 		00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B051C868C89003DA5E2 /* UserAlarm.swift */; };
 		00982C301C868C8A003DA5E2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B061C868C89003DA5E2 /* UserModel.swift */; };
-		00982C311C868C8A003DA5E2 /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B071C868C89003DA5E2 /* UserNotification.swift */; };
 		00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B081C868C89003DA5E2 /* UserSleep.swift */; };
 		00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B091C868C89003DA5E2 /* UserSteps.swift */; };
 		00982C341C868C8A003DA5E2 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B0B1C868C89003DA5E2 /* Goal.swift */; };
@@ -115,16 +113,16 @@
 		00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B291C868C89003DA5E2 /* ConnectionController.swift */; };
 		00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B2A1C868C89003DA5E2 /* ConnectionControllerImpl.swift */; };
 		00982C461C868C8A003DA5E2 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B2B1C868C89003DA5E2 /* ConnectionManager.swift */; };
-		00982C471C868C8A003DA5E2 /* ActivityTrackingConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B2D1C868C89003DA5E2 /* ActivityTrackingConfigRequest.swift */; };
-		00982C481C868C8A003DA5E2 /* AppConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B2E1C868C89003DA5E2 /* AppConfigRequest.swift */; };
+		00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B2D1C868C89003DA5E2 /* GetConfigRequest.swift */; };
+		00982C481C868C8A003DA5E2 /* SetAppConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B2E1C868C89003DA5E2 /* SetAppConfigRequest.swift */; };
 		00982C491C868C8A003DA5E2 /* GetActivityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B2F1C868C89003DA5E2 /* GetActivityRequest.swift */; };
 		00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B301C868C89003DA5E2 /* GetStepsGoalRequest.swift */; };
 		00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B311C868C89003DA5E2 /* NevoRequest.swift */; };
-		00982C4C1C868C8A003DA5E2 /* ReadBatteryLevelNevoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B321C868C89003DA5E2 /* ReadBatteryLevelNevoRequest.swift */; };
+		00982C4C1C868C8A003DA5E2 /* GetBatteryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B321C868C89003DA5E2 /* GetBatteryRequest.swift */; };
 		00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B331C868C89003DA5E2 /* ReadDailyTracker.swift */; };
 		00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B341C868C89003DA5E2 /* ReadDailyTrackerInfo.swift */; };
-		00982C4F1C868C8A003DA5E2 /* ReadSystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B351C868C89003DA5E2 /* ReadSystemConfig.swift */; };
-		00982C501C868C8A003DA5E2 /* readSystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B361C868C89003DA5E2 /* readSystemStatus.swift */; };
+		00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B351C868C89003DA5E2 /* GetSystemConfig.swift */; };
+		00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B361C868C89003DA5E2 /* GetSystemStatus.swift */; };
 		00982C511C868C8A003DA5E2 /* ReadWorldClockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B371C868C89003DA5E2 /* ReadWorldClockRequest.swift */; };
 		00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B381C868C89003DA5E2 /* SetGoalRequest.swift */; };
 		00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B391C868C89003DA5E2 /* SetRTCRequest.swift */; };
@@ -219,6 +217,7 @@
 		008C5EE51C8D7CC900DCD12D /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Drone/Class/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewCell.xib; path = Drone/Class/MenuViewCell.xib; sourceTree = SOURCE_ROOT; };
+		0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftEventBus.framework; path = "Pods/../build/Debug-iphoneos/SwiftEventBus.framework"; sourceTree = "<group>"; };
 		00982A661C868B15003DA5E2 /* Drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A691C868B15003DA5E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00982A701C868B15003DA5E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -295,17 +294,14 @@
 		00982AF91C868C89003DA5E2 /* NevoDBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NevoDBModel.m; sourceTree = "<group>"; };
 		00982AFA1C868C89003DA5E2 /* UserDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabaseHelper.swift; sourceTree = "<group>"; };
 		00982AFC1C868C89003DA5E2 /* AlarmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
-		00982AFD1C868C89003DA5E2 /* DaySleepSaveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySleepSaveModel.swift; sourceTree = "<group>"; };
 		00982AFE1C868C89003DA5E2 /* HealthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthModel.swift; sourceTree = "<group>"; };
-		00982AFF1C868C89003DA5E2 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
-		00982B001C868C89003DA5E2 /* Presets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
-		00982B011C868C89003DA5E2 /* PresetsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetsModel.swift; sourceTree = "<group>"; };
+		00982B001C868C89003DA5E2 /* UserGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGoal.swift; sourceTree = "<group>"; };
+		00982B011C868C89003DA5E2 /* GoalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
 		00982B021C868C89003DA5E2 /* SleepModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepModel.swift; sourceTree = "<group>"; };
 		00982B031C868C89003DA5E2 /* StepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
 		00982B041C868C89003DA5E2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00982B051C868C89003DA5E2 /* UserAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAlarm.swift; sourceTree = "<group>"; };
 		00982B061C868C89003DA5E2 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		00982B071C868C89003DA5E2 /* UserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
 		00982B081C868C89003DA5E2 /* UserSleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSleep.swift; sourceTree = "<group>"; };
 		00982B091C868C89003DA5E2 /* UserSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSteps.swift; sourceTree = "<group>"; };
 		00982B0B1C868C89003DA5E2 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
@@ -329,16 +325,16 @@
 		00982B291C868C89003DA5E2 /* ConnectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
 		00982B2A1C868C89003DA5E2 /* ConnectionControllerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionControllerImpl.swift; sourceTree = "<group>"; };
 		00982B2B1C868C89003DA5E2 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
-		00982B2D1C868C89003DA5E2 /* ActivityTrackingConfigRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTrackingConfigRequest.swift; sourceTree = "<group>"; };
-		00982B2E1C868C89003DA5E2 /* AppConfigRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigRequest.swift; sourceTree = "<group>"; };
+		00982B2D1C868C89003DA5E2 /* GetConfigRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetConfigRequest.swift; sourceTree = "<group>"; };
+		00982B2E1C868C89003DA5E2 /* SetAppConfigRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAppConfigRequest.swift; sourceTree = "<group>"; };
 		00982B2F1C868C89003DA5E2 /* GetActivityRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivityRequest.swift; sourceTree = "<group>"; };
 		00982B301C868C89003DA5E2 /* GetStepsGoalRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStepsGoalRequest.swift; sourceTree = "<group>"; };
 		00982B311C868C89003DA5E2 /* NevoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoRequest.swift; sourceTree = "<group>"; };
-		00982B321C868C89003DA5E2 /* ReadBatteryLevelNevoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadBatteryLevelNevoRequest.swift; sourceTree = "<group>"; };
+		00982B321C868C89003DA5E2 /* GetBatteryRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBatteryRequest.swift; sourceTree = "<group>"; };
 		00982B331C868C89003DA5E2 /* ReadDailyTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDailyTracker.swift; sourceTree = "<group>"; };
 		00982B341C868C89003DA5E2 /* ReadDailyTrackerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDailyTrackerInfo.swift; sourceTree = "<group>"; };
-		00982B351C868C89003DA5E2 /* ReadSystemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadSystemConfig.swift; sourceTree = "<group>"; };
-		00982B361C868C89003DA5E2 /* readSystemStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = readSystemStatus.swift; sourceTree = "<group>"; };
+		00982B351C868C89003DA5E2 /* GetSystemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSystemConfig.swift; sourceTree = "<group>"; };
+		00982B361C868C89003DA5E2 /* GetSystemStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSystemStatus.swift; sourceTree = "<group>"; };
 		00982B371C868C89003DA5E2 /* ReadWorldClockRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWorldClockRequest.swift; sourceTree = "<group>"; };
 		00982B381C868C89003DA5E2 /* SetGoalRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetGoalRequest.swift; sourceTree = "<group>"; };
 		00982B391C868C89003DA5E2 /* SetRTCRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetRTCRequest.swift; sourceTree = "<group>"; };
@@ -418,6 +414,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */,
 				008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */,
 				008C5EE31C8D7A3600DCD12D /* GSMessages.framework in Frameworks */,
 				008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */,
@@ -823,17 +820,14 @@
 			isa = PBXGroup;
 			children = (
 				00982AFC1C868C89003DA5E2 /* AlarmModel.swift */,
-				00982AFD1C868C89003DA5E2 /* DaySleepSaveModel.swift */,
 				00982AFE1C868C89003DA5E2 /* HealthModel.swift */,
-				00982AFF1C868C89003DA5E2 /* NotificationModel.swift */,
-				00982B001C868C89003DA5E2 /* Presets.swift */,
-				00982B011C868C89003DA5E2 /* PresetsModel.swift */,
+				00982B001C868C89003DA5E2 /* UserGoal.swift */,
+				00982B011C868C89003DA5E2 /* GoalModel.swift */,
 				00982B021C868C89003DA5E2 /* SleepModel.swift */,
 				00982B031C868C89003DA5E2 /* StepsModel.swift */,
 				00982B041C868C89003DA5E2 /* User.swift */,
 				00982B051C868C89003DA5E2 /* UserAlarm.swift */,
 				00982B061C868C89003DA5E2 /* UserModel.swift */,
-				00982B071C868C89003DA5E2 /* UserNotification.swift */,
 				00982B081C868C89003DA5E2 /* UserSleep.swift */,
 				00982B091C868C89003DA5E2 /* UserSteps.swift */,
 			);
@@ -951,11 +945,11 @@
 		00982B281C868C89003DA5E2 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
+				00982B3E1C868C89003DA5E2 /* NevoProfile.swift */,
 				00982B291C868C89003DA5E2 /* ConnectionController.swift */,
 				00982B2A1C868C89003DA5E2 /* ConnectionControllerImpl.swift */,
 				00982B2B1C868C89003DA5E2 /* ConnectionManager.swift */,
 				00982B2C1C868C89003DA5E2 /* DroneRequest */,
-				00982B3E1C868C89003DA5E2 /* NevoProfile.swift */,
 				00982B3F1C868C89003DA5E2 /* OTA */,
 				00982B481C868C89003DA5E2 /* Packet */,
 				00982B4F1C868C89003DA5E2 /* Request */,
@@ -966,16 +960,16 @@
 		00982B2C1C868C89003DA5E2 /* DroneRequest */ = {
 			isa = PBXGroup;
 			children = (
-				00982B2D1C868C89003DA5E2 /* ActivityTrackingConfigRequest.swift */,
-				00982B2E1C868C89003DA5E2 /* AppConfigRequest.swift */,
+				00982B311C868C89003DA5E2 /* NevoRequest.swift */,
+				00982B2D1C868C89003DA5E2 /* GetConfigRequest.swift */,
+				00982B2E1C868C89003DA5E2 /* SetAppConfigRequest.swift */,
 				00982B2F1C868C89003DA5E2 /* GetActivityRequest.swift */,
 				00982B301C868C89003DA5E2 /* GetStepsGoalRequest.swift */,
-				00982B311C868C89003DA5E2 /* NevoRequest.swift */,
-				00982B321C868C89003DA5E2 /* ReadBatteryLevelNevoRequest.swift */,
+				00982B321C868C89003DA5E2 /* GetBatteryRequest.swift */,
 				00982B331C868C89003DA5E2 /* ReadDailyTracker.swift */,
 				00982B341C868C89003DA5E2 /* ReadDailyTrackerInfo.swift */,
-				00982B351C868C89003DA5E2 /* ReadSystemConfig.swift */,
-				00982B361C868C89003DA5E2 /* readSystemStatus.swift */,
+				00982B351C868C89003DA5E2 /* GetSystemConfig.swift */,
+				00982B361C868C89003DA5E2 /* GetSystemStatus.swift */,
 				00982B371C868C89003DA5E2 /* ReadWorldClockRequest.swift */,
 				00982B381C868C89003DA5E2 /* SetGoalRequest.swift */,
 				00982B391C868C89003DA5E2 /* SetRTCRequest.swift */,
@@ -1169,6 +1163,7 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */,
 				008C5EE01C8D7A3600DCD12D /* Charts.framework */,
 				008C5EE11C8D7A3600DCD12D /* GSMessages.framework */,
 				008C5EDE1C8D655700DCD12D /* FMDB.framework */,
@@ -1408,7 +1403,7 @@
 				00982BFC1C868C8A003DA5E2 /* PresetTableViewController.swift in Sources */,
 				00982C5B1C868C8A003DA5E2 /* NevoOTAModeProfile.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
-				00982C481C868C8A003DA5E2 /* AppConfigRequest.swift in Sources */,
+				00982C481C868C8A003DA5E2 /* SetAppConfigRequest.swift in Sources */,
 				00982BF31C868C8A003DA5E2 /* MyNevoView.swift in Sources */,
 				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
@@ -1417,9 +1412,9 @@
 				00982C561C868C8A003DA5E2 /* WorldClockReadConfigRequest.swift in Sources */,
 				00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */,
 				00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */,
-				00982C4F1C868C8A003DA5E2 /* ReadSystemConfig.swift in Sources */,
+				00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */,
 				00982C071C868C8A003DA5E2 /* SettingViewController.swift in Sources */,
-				00982C471C868C8A003DA5E2 /* ActivityTrackingConfigRequest.swift in Sources */,
+				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
 				00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				00982C671C868C8A003DA5E2 /* SetProfileRequest.swift in Sources */,
@@ -1444,7 +1439,6 @@
 				00982BEA1C868C8A003DA5E2 /* alarmClockView.swift in Sources */,
 				00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */,
 				00982C121C868C8A003DA5E2 /* StepHistoricalViewController.swift in Sources */,
-				00982C311C868C8A003DA5E2 /* UserNotification.swift in Sources */,
 				00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */,
 				00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */,
 				00982BE81C868C8A003DA5E2 /* AddAlarmView.swift in Sources */,
@@ -1456,18 +1450,16 @@
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
 				00982BED1C868C8A003DA5E2 /* LoginController.swift in Sources */,
 				00982C5C1C868C8A003DA5E2 /* NevoOTAPacketProfile.swift in Sources */,
-				00982C2A1C868C8A003DA5E2 /* Presets.swift in Sources */,
-				00982C4C1C868C8A003DA5E2 /* ReadBatteryLevelNevoRequest.swift in Sources */,
-				00982C2B1C868C8A003DA5E2 /* PresetsModel.swift in Sources */,
-				00982C271C868C8A003DA5E2 /* DaySleepSaveModel.swift in Sources */,
+				00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */,
+				00982C4C1C868C8A003DA5E2 /* GetBatteryRequest.swift in Sources */,
+				00982C2B1C868C8A003DA5E2 /* GoalModel.swift in Sources */,
 				00982CD11C868C8A003DA5E2 /* NSCalendarUnit+Timepiece.swift in Sources */,
 				00982CC61C868C8A003DA5E2 /* MBProgressHUD.m in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00982C651C868C8A003DA5E2 /* SetAlarmRequest.swift in Sources */,
 				00982C241C868C8A003DA5E2 /* NevoDBModel.m in Sources */,
 				00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */,
-				00982C291C868C8A003DA5E2 /* NotificationModel.swift in Sources */,
-				00982C501C868C8A003DA5E2 /* readSystemStatus.swift in Sources */,
+				00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */,
 				00982BF51C868C8A003DA5E2 /* DeviceScannerView.swift in Sources */,
 				00982CCC1C868C8A003DA5E2 /* NevoHK.swift in Sources */,
 				00982C381C868C8A003DA5E2 /* WorldClock.swift in Sources */,

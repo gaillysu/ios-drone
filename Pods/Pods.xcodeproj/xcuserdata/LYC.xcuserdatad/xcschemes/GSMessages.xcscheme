@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "331D4F490AB0E6A99AEE239F"
+               BlueprintIdentifier = "CD1914AAE262A98B5E8E7BB7"
                BuildableName = "GSMessages.framework"
                BlueprintName = "GSMessages"
                ReferencedContainer = "container:Pods.xcodeproj">
