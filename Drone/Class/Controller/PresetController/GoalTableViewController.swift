@@ -16,7 +16,7 @@ protocol AddPresetDelegate {
 class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPresetDelegate {
         
     @IBOutlet weak var goalView: GoalView!
-    var prestArray:[Presets] = []
+    var goalArray:[UserGoal] = []
 
     init() {
         super.init(nibName: "PresetTableViewController", bundle: NSBundle.mainBundle())
@@ -30,9 +30,9 @@ class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPr
         super.viewDidLoad()
         goalView.bulidPresetView(self.navigationItem,delegateB: self)
 
-        let array:NSArray = Presets.getAll()
+        let array:NSArray = UserGoal.getAll()
         for pArray in array {
-            prestArray.append(pArray as! Presets)
+            goalArray.append(pArray as! UserGoal)
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -49,10 +49,10 @@ class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPr
     // MARK: - AddPresetDelegate
     func onAddPresetNumber(number:Int,name:String){
         NSLog("onAddPresetNumber:\(number),name:\(name)")
-        let prestModel:Presets = Presets(keyDict: ["id":0,"steps":number,"label":"\(name)","status":true])
+        let prestModel:UserGoal = UserGoal(keyDict: ["id":0,"steps":number,"label":"\(name)","status":true])
         prestModel.add { (id, completion) -> Void in
             prestModel.id = id!
-            self.prestArray.append(prestModel)
+            self.goalArray.append(prestModel)
             self.tableView.reloadData()
         }
     }
@@ -68,9 +68,9 @@ class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPr
 
         if(sender.isKindOfClass(UISwitch.classForCoder())){
             let switchSender:UISwitch = sender as! UISwitch
-            let preModel:Presets = prestArray[switchSender.tag]
+            let preModel:UserGoal = goalArray[switchSender.tag]
             preModel.status = switchSender.on
-            let isUpdate:Bool = preModel.update()
+            preModel.update()
         }
     }
 
@@ -83,12 +83,12 @@ class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPr
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return prestArray.count
+        return goalArray.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        return goalView.getPresetTableViewCell(indexPath, tableView: tableView,goalArray: prestArray, delegate: self)
+        return goalView.getPresetTableViewCell(indexPath, tableView: tableView,goalArray: goalArray, delegate: self)
     }
 
 
@@ -102,9 +102,9 @@ class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPr
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            let preModel:Presets = prestArray[indexPath.row]
+            let preModel:UserGoal = goalArray[indexPath.row]
             let isUpdate:Bool = preModel.remove()
-            prestArray.removeAtIndex(indexPath.row)
+            goalArray.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

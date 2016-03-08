@@ -20,7 +20,7 @@ class GoalView: UITableView {
         navigation.rightBarButtonItem = leftButton
     }
 
-    func getPresetTableViewCell(indexPath:NSIndexPath,tableView:UITableView,goalArray:[Presets],delegate:ButtonManagerCallBack)->UITableViewCell{
+    func getPresetTableViewCell(indexPath:NSIndexPath,tableView:UITableView,goalArray:[UserGoal],delegate:ButtonManagerCallBack)->UITableViewCell{
         let endCellID:String = "PresetTableViewCell"
         var endCell = tableView.dequeueReusableCellWithIdentifier(endCellID)
         if (endCell == nil) {
@@ -32,8 +32,8 @@ class GoalView: UITableView {
         (endCell as! GoalTableViewCell).delegate = delegate
         (endCell as! GoalTableViewCell).goalStates.tag = indexPath.row
         
-        let goalModel:Presets = goalArray[indexPath.row]
-        (endCell as! GoalTableViewCell).goalSteps.text = "\(goalModel.steps)"
+        let goalModel:UserGoal = goalArray[indexPath.row]
+        (endCell as! GoalTableViewCell).goalSteps.text = "\(goalModel.goalSteps)"
         (endCell as! GoalTableViewCell).goalName.text = goalModel.label
         (endCell as! GoalTableViewCell).goalStates.on = goalModel.status
         if(!goalModel.status){
