@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol AddPresetDelegate {
-    func onAddPresetNumber(number:Int,name:String)
+protocol AddGoalDelegate {
+    func onAddGoalNumber(number:Int,name:String)
 
 }
 
-class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPresetDelegate {
+class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddGoalDelegate {
         
     @IBOutlet weak var goalView: GoalView!
     var goalArray:[UserGoal] = []
 
     init() {
-        super.init(nibName: "PresetTableViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "GoalTableViewController", bundle: NSBundle.mainBundle())
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -39,7 +39,7 @@ class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPr
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+    } 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,12 +47,12 @@ class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddPr
     }
 
     // MARK: - AddPresetDelegate
-    func onAddPresetNumber(number:Int,name:String){
-        NSLog("onAddPresetNumber:\(number),name:\(name)")
-        let prestModel:UserGoal = UserGoal(keyDict: ["id":0,"steps":number,"label":"\(name)","status":true])
-        prestModel.add { (id, completion) -> Void in
-            prestModel.id = id!
-            self.goalArray.append(prestModel)
+    func onAddGoalNumber(number:Int,name:String){
+        NSLog("onAddGoalNumber:\(number),name:\(name)")
+        let goalModel:UserGoal = UserGoal(keyDict: ["id":0,"steps":number,"label":"\(name)","status":true])
+        goalModel.add { (id, completion) -> Void in
+            goalModel.id = id!
+            self.goalArray.append(goalModel)
             self.tableView.reloadData()
         }
     }

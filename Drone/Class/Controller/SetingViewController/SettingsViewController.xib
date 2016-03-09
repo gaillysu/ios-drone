@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="Drone" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="Drone" customModuleProvider="target">
             <connections>
                 <outlet property="tableListView" destination="Use-wH-MHd" id="wJz-6X-qfy"/>
-                <outlet property="view" destination="iN0-l3-epB" id="ExE-T9-mM2"/>
+                <outlet property="view" destination="iN0-l3-epB" id="LCc-5H-7mc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
