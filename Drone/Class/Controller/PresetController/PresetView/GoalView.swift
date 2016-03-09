@@ -10,17 +10,16 @@ import UIKit
 
 class GoalView: UITableView {
 
-    var mDelegate:ButtonManagerCallBack?
+
     var leftButton:UIBarButtonItem?
 
-    func bulidPresetView(navigation:UINavigationItem,delegateB:ButtonManagerCallBack){
-        mDelegate = delegateB
+    func bulidPresetView(navigation:UINavigationItem){
         navigation.title = NSLocalizedString("Preset", comment: "")
         leftButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("controllManager:"))
         navigation.rightBarButtonItem = leftButton
     }
 
-    func getPresetTableViewCell(indexPath:NSIndexPath,tableView:UITableView,goalArray:[UserGoal],delegate:ButtonManagerCallBack)->UITableViewCell{
+    func getPresetTableViewCell(indexPath:NSIndexPath,tableView:UITableView,goalArray:[UserGoal])->UITableViewCell{
         let endCellID:String = "PresetTableViewCell"
         var endCell = tableView.dequeueReusableCellWithIdentifier(endCellID)
         if (endCell == nil) {
@@ -29,7 +28,6 @@ class GoalView: UITableView {
             (endCell as! GoalTableViewCell).goalStates.tintColor = AppTheme.NEVO_SOLAR_YELLOW()
             (endCell as! GoalTableViewCell).goalStates.onTintColor = AppTheme.NEVO_SOLAR_YELLOW()
         }
-        (endCell as! GoalTableViewCell).delegate = delegate
         (endCell as! GoalTableViewCell).goalStates.tag = indexPath.row
         
         let goalModel:UserGoal = goalArray[indexPath.row]
@@ -42,8 +40,5 @@ class GoalView: UITableView {
         endCell?.selectionStyle = UITableViewCellSelectionStyle.None;
         return endCell!
     }
-
-    func controllManager(sender:AnyObject){
-        mDelegate?.controllManager(sender)
-    }
+ 
 }

@@ -22,6 +22,7 @@ class ConnectionManager: NSObject {
             case connected = "Connected"
             case disconnected = "Disconnect"
         }
+        
         enum connectionLocalMsgType:String {
             case connected = "Connected"
             case disconnected = "Disconnect"

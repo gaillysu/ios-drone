@@ -13,7 +13,7 @@ protocol AddGoalDelegate {
 
 }
 
-class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddGoalDelegate {
+class GoalTableViewController: UITableViewController, AddGoalDelegate {
         
     @IBOutlet weak var goalView: GoalView!
     var goalArray:[UserGoal] = []
@@ -28,7 +28,7 @@ class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddGo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        goalView.bulidPresetView(self.navigationItem,delegateB: self)
+        goalView.bulidPresetView(self.navigationItem)
 
         let array:NSArray = UserGoal.getAll()
         for pArray in array {
@@ -88,7 +88,7 @@ class GoalTableViewController: UITableViewController,ButtonManagerCallBack,AddGo
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        return goalView.getPresetTableViewCell(indexPath, tableView: tableView,goalArray: goalArray, delegate: self)
+        return goalView.getPresetTableViewCell(indexPath, tableView: tableView,goalArray: goalArray)
     }
 
 

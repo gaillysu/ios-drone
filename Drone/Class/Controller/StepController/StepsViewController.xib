@@ -21,14 +21,34 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNF-Nb-2J4" customClass="CircleProgressView" customModule="Drone" customModuleProvider="target">
+                    <rect key="frame" x="76" y="222" width="223" height="223"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="refreshRate">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="trackBorderWidth">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.98431372549999996" green="1" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="co1-Jn-9tl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MpA-jM-92x"/>
                 <constraint firstItem="co1-Jn-9tl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="RnX-sd-PKD"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="476" y="407"/>
+            <point key="canvasLocation" x="475.5" y="406.5"/>
         </view>
     </objects>
 </document>
