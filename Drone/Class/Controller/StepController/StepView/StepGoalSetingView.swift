@@ -21,7 +21,7 @@ class StepGoalSetingView: UIView {
 
     //Put all UI operation HomeView inside
     private let mClockTimerView = ClockView(frame:CGRectMake(0, 0, UIScreen.mainScreen().bounds.width-60, UIScreen.mainScreen().bounds.width-60), hourImage:  UIImage(named: "clockViewHour")!, minuteImage: UIImage(named: "clockViewMinute")!, dialImage: UIImage(named: "clockView600")!);//init "ClockView" ,Use the code relative layout
-    var progressView:CircleProgressView?
+
     var progresValue:CGFloat = 0.0
 
     func bulidStepGoalView(navigation:UINavigationItem){
@@ -32,10 +32,6 @@ class StepGoalSetingView: UIView {
         mClockTimerView.frame = CGRectMake(mClockTimerView.frame.origin.x, 45, mClockTimerView.frame.size.width, mClockTimerView.frame.size.height)
         //self.addSubview(mClockTimerView)
 
-        progressView = CircleProgressView()
-        progressView?.setProgressColor(AppTheme.NEVO_SOLAR_YELLOW())
-        progressView?.frame = CGRectMake(mClockTimerView.frame.origin.x-5, mClockTimerView.frame.origin.y-5, UIScreen.mainScreen().bounds.width-50, UIScreen.mainScreen().bounds.width-50)
-        progressView?.setProgress(0.0)
         //self.layer.addSublayer(progressView!)
     }
 
@@ -51,7 +47,6 @@ class StepGoalSetingView: UIView {
      */
     func setProgress(progress: Float,dailySteps:Int,dailyStepGoal:Int){
         progresValue = CGFloat(progress)
-        progressView?.setProgress(progresValue, Steps: dailySteps, GoalStep: dailyStepGoal)
     }
 
     // MARK: - toolbarSegmentedDelegate

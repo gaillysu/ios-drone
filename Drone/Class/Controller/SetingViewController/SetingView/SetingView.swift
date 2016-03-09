@@ -10,18 +10,12 @@ import UIKit
 
 class SetingView: UIView {
 
-    private var mDelegate:ButtonManagerCallBack?
     //var animationView:AnimationView!
     var mSendLocalNotificationSwitchButton:UISwitch!
 
-    func bulidNotificationViewUI(delegate:ButtonManagerCallBack){
-        mDelegate = delegate
-        
-    }
 
 
     @IBAction func buttonAction(sender: AnyObject) {
-        mDelegate?.controllManager(sender)
     }
     
     /**

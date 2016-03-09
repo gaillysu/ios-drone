@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: BaseViewController,SyncControllerDelegate,ButtonManagerCallBack,UIAlertViewDelegate {
+class SettingsViewController: BaseViewController,SyncControllerDelegate,UIAlertViewDelegate {
 
     var sources:[String] = []
     var sourcesImage:[String] = []
@@ -24,7 +24,7 @@ class SettingsViewController: BaseViewController,SyncControllerDelegate,ButtonMa
         super.viewDidLoad()
         self.navigationItem.title = "Settings"
 
-        AppDelegate.getAppDelegate().startConnect(false, delegate: self)
+        AppDelegate.getAppDelegate().startConnect(false)
 
         sources = [NSLocalizedString("Link-Loss Notifications", comment: ""),NSLocalizedString("My Drone", comment: "")]
         sourcesImage = ["new_iOS_link_icon","new_iOS_mynevo_iocn"]

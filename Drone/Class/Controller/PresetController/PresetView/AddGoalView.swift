@@ -9,13 +9,11 @@
 import UIKit
 
 class AddGoalView: UIView {
-    var mDelegate:ButtonManagerCallBack?
-    
     @IBOutlet weak var goalNumber: UITextField!
     @IBOutlet weak var goalName: UITextField!
     
-    func bulidAddGoalView(navigation:UINavigationItem,delegate:ButtonManagerCallBack){
-        mDelegate = delegate
+    func bulidAddGoalView(navigation:UINavigationItem){
+
         navigation.title = NSLocalizedString("AddPreset", comment: "")
         self.backgroundColor = AppTheme.hexStringToColor("#f4f2f1")//AppTheme.NEVO_CUSTOM_COLOR(Red: 241.0, Green: 240.0, Blue: 241.0)
         
@@ -41,8 +39,5 @@ class AddGoalView: UIView {
         goalName.placeholder = NSLocalizedString("Preset Name", comment: "")
         goalName.backgroundColor = UIColor.whiteColor()
     }
-    
-    func controllManager(sender:AnyObject){
-        mDelegate?.controllManager(sender)
-    }
+     
 }

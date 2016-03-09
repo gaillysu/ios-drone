@@ -8,16 +8,14 @@
 
 import UIKit
 
-class GoalTableViewCell: UITableViewCell,ButtonManagerCallBack {
+class GoalTableViewCell: UITableViewCell{
 
     @IBOutlet weak var goalSteps: UILabel!
     @IBOutlet weak var goalName: UILabel!
     @IBOutlet weak var goalStates: UISwitch!
-    var delegate:ButtonManagerCallBack?
 
 
     @IBAction func controllManager(sender: AnyObject) {
-       delegate?.controllManager(sender)
         if(goalStates.on){
             self.backgroundColor = UIColor.whiteColor()
         }else{

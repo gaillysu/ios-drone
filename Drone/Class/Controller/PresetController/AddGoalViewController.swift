@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddGoalViewController: BaseViewController,ButtonManagerCallBack {
+class AddGoalViewController: BaseViewController {
 
     @IBOutlet weak var addGoalView: AddGoalView!
     var addDelegate:AddGoalDelegate?
@@ -23,7 +23,7 @@ class AddGoalViewController: BaseViewController,ButtonManagerCallBack {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addGoalView.bulidAddGoalView(self.navigationItem, delegate: self)
+        addGoalView.bulidAddGoalView(self.navigationItem)
         
     } 
 
