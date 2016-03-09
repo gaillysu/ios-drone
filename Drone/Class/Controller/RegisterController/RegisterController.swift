@@ -9,6 +9,6 @@
 import UIKit
 import GSMessages
 
-class RegisterController: UIViewController {
+class RegisterController: BaseViewController {
 
 }

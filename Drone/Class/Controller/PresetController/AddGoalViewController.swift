@@ -8,10 +8,10 @@
 
 import UIKit
 
-class AddGoalViewController: UIViewController,ButtonManagerCallBack {
+class AddGoalViewController: BaseViewController,ButtonManagerCallBack {
 
     @IBOutlet weak var addGoalView: AddGoalView!
-    var addDelegate:AddPresetDelegate?
+    var addDelegate:AddGoalDelegate?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: "AddGoalViewController", bundle: NSBundle.mainBundle())
@@ -25,18 +25,14 @@ class AddGoalViewController: UIViewController,ButtonManagerCallBack {
         super.viewDidLoad()
         addGoalView.bulidAddGoalView(self.navigationItem, delegate: self)
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    } 
 
     // MARK: - ButtonManagerDelegate
     func controllManager(sender:AnyObject){
         let number:NSString = addGoalView.goalNumber.text! as NSString
         let length:Int = number.length
         if(length >= 4){
-            addDelegate?.onAddPresetNumber(Int(addGoalView.goalNumber.text!)!, name: addGoalView.goalName.text!)
+            addDelegate?.onAddGoalNumber(Int(addGoalView.goalNumber.text!)!, name: addGoalView.goalName.text!)
             self.navigationController?.popViewControllerAnimated(true)
         }else{
             let aler:UIAlertView = UIAlertView(title: "", message: NSLocalizedString("Preset Number can't be empty, or you set less than four digits", comment: ""), delegate: nil, cancelButtonTitle: NSLocalizedString("Cancel", comment: ""))

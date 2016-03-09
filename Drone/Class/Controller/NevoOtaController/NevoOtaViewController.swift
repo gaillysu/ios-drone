@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NevoOtaViewController: UIViewController,NevoOtaControllerDelegate,ButtonManagerCallBack,PtlSelectFile,UIAlertViewDelegate  {
+class NevoOtaViewController: BaseViewController,NevoOtaControllerDelegate,ButtonManagerCallBack,PtlSelectFile,UIAlertViewDelegate  {
 
     @IBOutlet var nevoOtaView: NevoOtaView!
 
@@ -117,12 +117,7 @@ class NevoOtaViewController: UIViewController,NevoOtaControllerDelegate,ButtonMa
             mNevoOtaController!.reset(true)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     //MARK: - UIAlertViewDelegate
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if(buttonIndex==1) {

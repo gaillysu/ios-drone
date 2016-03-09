@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import GSMessages
-
-class LoginController: UIViewController {
+class LoginController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

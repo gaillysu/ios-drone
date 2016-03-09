@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController,SyncControllerDelegate,ButtonManagerCallBack,UIAlertViewDelegate {
+class SettingsViewController: BaseViewController,SyncControllerDelegate,ButtonManagerCallBack,UIAlertViewDelegate {
 
     var sources:[String] = []
     var sourcesImage:[String] = []
@@ -19,15 +19,7 @@ class SettingViewController: UIViewController,SyncControllerDelegate,ButtonManag
     //this action take lot power and we maybe told customer less to use it
     var mFindMydeviceDatetime:NSDate = NSDate(timeIntervalSinceNow: -6)
     @IBOutlet var tableListView: UITableView?
-
-    init() {
-        super.init(nibName: "SettingViewController", bundle: NSBundle.mainBundle())
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Settings"
@@ -250,7 +242,15 @@ class SettingViewController: UIViewController,SyncControllerDelegate,ButtonManag
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-
+    }
+    
+    init() {
+        super.init(nibName: "SettingsViewController", bundle: NSBundle.mainBundle())
+        
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

@@ -27,11 +27,11 @@ class MainTabBarController: UITabBarController,UITabBarControllerDelegate {
         let viewArray:[AnyObject] = self.viewControllers!
         for nav in viewArray {
             let contll = (nav as! UINavigationController).topViewController
-            if contll!.isKindOfClass(StepController){
+            if contll!.isKindOfClass(StepsViewController){
                 (nav as! UINavigationController).tabBarItem.title = NSLocalizedString("Steps", comment: "")
                 AppTheme.DLog("StepController:\(contll)")
             }
-            if contll!.isKindOfClass(SettingViewController){
+            if contll!.isKindOfClass(SettingsViewController){
                 (nav as! UINavigationController).tabBarItem.title = NSLocalizedString("Setting", comment: "")
                 AppTheme.DLog("SetingViewController:\(contll)")
             }

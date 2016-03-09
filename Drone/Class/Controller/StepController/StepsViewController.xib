@@ -14,7 +14,19 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="co1-Jn-9tl">
+                    <rect key="frame" x="165" y="323" width="44" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.98431372549999996" green="1" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="co1-Jn-9tl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MpA-jM-92x"/>
+                <constraint firstItem="co1-Jn-9tl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="RnX-sd-PKD"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="476" y="407"/>
         </view>

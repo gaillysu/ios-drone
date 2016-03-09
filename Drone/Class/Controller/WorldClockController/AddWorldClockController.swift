@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddWorldClockController: UIViewController {
+class AddWorldClockController: BaseViewController {
 
     @IBOutlet weak var addClockView: AddWorldClockView!
     var mDelegate:didSelectedDelegate?

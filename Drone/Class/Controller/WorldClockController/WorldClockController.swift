@@ -12,7 +12,7 @@ protocol didSelectedDelegate:NSObjectProtocol {
     func didSelectedLocalTimeZone(ietm:NSDictionary)
 }
 
-class WorldClockController: UIViewController,didSelectedDelegate {
+class WorldClockController: BaseViewController,didSelectedDelegate {
 
     @IBOutlet weak var worldClockTableview: UITableView!
     var wordclockArray:[NSDictionary] = []
