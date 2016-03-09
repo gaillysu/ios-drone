@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ReadWorldClockRequest: NevoRequest {
+class GetWorldClockRequest: NevoRequest {
     class func HEADER() -> UInt8 {
         return 0x07
     }
 
     override func getRawDataEx() -> NSArray {
 
-        let values1 :[UInt8] = [0x80,ReadWorldClockRequest.HEADER(),
+        let values1 :[UInt8] = [0x80,GetWorldClockRequest.HEADER(),
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
         return NSArray(array: [NSData(bytes: values1, length: values1.count)])

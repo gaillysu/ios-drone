@@ -21,8 +21,6 @@
 		00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */; };
 		00982A7F1C868B16003DA5E2 /* DroneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A7E1C868B16003DA5E2 /* DroneTests.swift */; };
 		00982A8A1C868B16003DA5E2 /* DroneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A891C868B16003DA5E2 /* DroneUITests.swift */; };
-		00982BEB1C868C8A003DA5E2 /* BPMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AA71C868C89003DA5E2 /* BPMViewController.swift */; };
-		00982BEC1C868C8A003DA5E2 /* BPMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AA81C868C89003DA5E2 /* BPMViewController.xib */; };
 		00982BED1C868C8A003DA5E2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AAA1C868C89003DA5E2 /* LoginController.swift */; };
 		00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AAB1C868C89003DA5E2 /* LoginController.xib */; };
 		00982BEF1C868C8A003DA5E2 /* MyDroneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AAD1C868C89003DA5E2 /* MyDroneController.swift */; };
@@ -110,12 +108,11 @@
 		00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B341C868C89003DA5E2 /* ReadDailyTrackerInfo.swift */; };
 		00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B351C868C89003DA5E2 /* GetSystemConfig.swift */; };
 		00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B361C868C89003DA5E2 /* GetSystemStatus.swift */; };
-		00982C511C868C8A003DA5E2 /* ReadWorldClockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B371C868C89003DA5E2 /* ReadWorldClockRequest.swift */; };
+		00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B371C868C89003DA5E2 /* GetWorldClockRequest.swift */; };
 		00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B381C868C89003DA5E2 /* SetGoalRequest.swift */; };
 		00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B391C868C89003DA5E2 /* SetRTCRequest.swift */; };
 		00982C541C868C8A003DA5E2 /* SetSystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3A1C868C89003DA5E2 /* SetSystemConfig.swift */; };
 		00982C551C868C8A003DA5E2 /* SetWorldClockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3B1C868C89003DA5E2 /* SetWorldClockRequest.swift */; };
-		00982C561C868C8A003DA5E2 /* WorldClockReadConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3C1C868C89003DA5E2 /* WorldClockReadConfigRequest.swift */; };
 		00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3D1C868C89003DA5E2 /* WriteSettingRequest.swift */; };
 		00982C581C868C8A003DA5E2 /* NevoProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3E1C868C89003DA5E2 /* NevoProfile.swift */; };
 		00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982B421C868C89003DA5E2 /* IntelHex2BinConverter.m */; };
@@ -222,8 +219,6 @@
 		00982A851C868B16003DA5E2 /* DroneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DroneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A891C868B16003DA5E2 /* DroneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneUITests.swift; sourceTree = "<group>"; };
 		00982A8B1C868B16003DA5E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00982AA71C868C89003DA5E2 /* BPMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BPMViewController.swift; sourceTree = "<group>"; };
-		00982AA81C868C89003DA5E2 /* BPMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPMViewController.xib; sourceTree = "<group>"; };
 		00982AAA1C868C89003DA5E2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		00982AAB1C868C89003DA5E2 /* LoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		00982AAD1C868C89003DA5E2 /* MyDroneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDroneController.swift; sourceTree = "<group>"; };
@@ -315,12 +310,11 @@
 		00982B341C868C89003DA5E2 /* ReadDailyTrackerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDailyTrackerInfo.swift; sourceTree = "<group>"; };
 		00982B351C868C89003DA5E2 /* GetSystemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSystemConfig.swift; sourceTree = "<group>"; };
 		00982B361C868C89003DA5E2 /* GetSystemStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSystemStatus.swift; sourceTree = "<group>"; };
-		00982B371C868C89003DA5E2 /* ReadWorldClockRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWorldClockRequest.swift; sourceTree = "<group>"; };
+		00982B371C868C89003DA5E2 /* GetWorldClockRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetWorldClockRequest.swift; sourceTree = "<group>"; };
 		00982B381C868C89003DA5E2 /* SetGoalRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetGoalRequest.swift; sourceTree = "<group>"; };
 		00982B391C868C89003DA5E2 /* SetRTCRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetRTCRequest.swift; sourceTree = "<group>"; };
 		00982B3A1C868C89003DA5E2 /* SetSystemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSystemConfig.swift; sourceTree = "<group>"; };
 		00982B3B1C868C89003DA5E2 /* SetWorldClockRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetWorldClockRequest.swift; sourceTree = "<group>"; };
-		00982B3C1C868C89003DA5E2 /* WorldClockReadConfigRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockReadConfigRequest.swift; sourceTree = "<group>"; };
 		00982B3D1C868C89003DA5E2 /* WriteSettingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteSettingRequest.swift; sourceTree = "<group>"; };
 		00982B3E1C868C89003DA5E2 /* NevoProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoProfile.swift; sourceTree = "<group>"; };
 		00982B411C868C89003DA5E2 /* IntelHex2BinConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntelHex2BinConverter.h; sourceTree = "<group>"; };
@@ -500,7 +494,6 @@
 				CBA06BF01C8ECD1200E3257B /* ActivityViewController */,
 				CBA06BED1C8EC27E00E3257B /* AddWorldClockController */,
 				CBA06BFA1C8ECE4300E3257B /* BaseViewController */,
-				00982AA61C868C89003DA5E2 /* BPMViewController */,
 				CBA06BF51C8ECD9F00E3257B /* BuddyViewController */,
 				00982ABB1C868C89003DA5E2 /* GoalController */,
 				00982AA91C868C89003DA5E2 /* LoginController */,
@@ -515,16 +508,6 @@
 				00982AE21C868C89003DA5E2 /* WorldClockController */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		00982AA61C868C89003DA5E2 /* BPMViewController */ = {
-			isa = PBXGroup;
-			children = (
-				00982AA71C868C89003DA5E2 /* BPMViewController.swift */,
-				00982AA81C868C89003DA5E2 /* BPMViewController.xib */,
-			);
-			name = BPMViewController;
-			path = BPMController;
 			sourceTree = "<group>";
 		};
 		00982AA91C868C89003DA5E2 /* LoginController */ = {
@@ -916,12 +899,11 @@
 				00982B341C868C89003DA5E2 /* ReadDailyTrackerInfo.swift */,
 				00982B351C868C89003DA5E2 /* GetSystemConfig.swift */,
 				00982B361C868C89003DA5E2 /* GetSystemStatus.swift */,
-				00982B371C868C89003DA5E2 /* ReadWorldClockRequest.swift */,
+				00982B371C868C89003DA5E2 /* GetWorldClockRequest.swift */,
 				00982B381C868C89003DA5E2 /* SetGoalRequest.swift */,
 				00982B391C868C89003DA5E2 /* SetRTCRequest.swift */,
 				00982B3A1C868C89003DA5E2 /* SetSystemConfig.swift */,
 				00982B3B1C868C89003DA5E2 /* SetWorldClockRequest.swift */,
-				00982B3C1C868C89003DA5E2 /* WorldClockReadConfigRequest.swift */,
 				00982B3D1C868C89003DA5E2 /* WriteSettingRequest.swift */,
 			);
 			path = DroneRequest;
@@ -1350,7 +1332,6 @@
 				00982D0F1C86A350003DA5E2 /* Nevo660.png in Resources */,
 				CBA06BF41C8ECD4700E3257B /* ActivityViewController.xib in Resources */,
 				00982D0C1C86A350003DA5E2 /* clockViewHour.png in Resources */,
-				00982BEC1C868C8A003DA5E2 /* BPMViewController.xib in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1433,7 +1414,6 @@
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
 				00982C621C868C8A003DA5E2 /* DailyTrackerNevoPacket.swift in Sources */,
 				00982CD51C868C8A003DA5E2 /* String+Timepiece.swift in Sources */,
-				00982C561C868C8A003DA5E2 /* WorldClockReadConfigRequest.swift in Sources */,
 				00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */,
 				00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */,
 				00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */,
@@ -1443,7 +1423,6 @@
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				00982C671C868C8A003DA5E2 /* SetProfileRequest.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
-				00982BEB1C868C8A003DA5E2 /* BPMViewController.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
 				00982CD41C868C8A003DA5E2 /* NSTimeInterval+Timepiece.swift in Sources */,
@@ -1502,7 +1481,7 @@
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
 				00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */,
-				00982C511C868C8A003DA5E2 /* ReadWorldClockRequest.swift in Sources */,
+				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
 				00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */,
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,

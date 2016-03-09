@@ -10,6 +10,8 @@ import UIKit
 
 class SleepViewController: BaseViewController {
 
+    // TODO eventbus big sync
+
     init() {
         super.init(nibName: "SleepViewController", bundle: NSBundle.mainBundle())
         self.tabBarItem.title = "Sleep"

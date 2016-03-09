@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: BaseViewController,SyncControllerDelegate,ButtonManagerCallBack,UIAlertViewDelegate {
+class SettingsViewController: BaseViewController,UIAlertViewDelegate {
 
     var sources:[String] = []
     var sourcesImage:[String] = []
@@ -24,7 +24,7 @@ class SettingsViewController: BaseViewController,SyncControllerDelegate,ButtonMa
         super.viewDidLoad()
         self.navigationItem.title = "Settings"
 
-        AppDelegate.getAppDelegate().startConnect(false, delegate: self)
+        AppDelegate.getAppDelegate().startConnect(false)
 
         sources = [NSLocalizedString("Link-Loss Notifications", comment: ""),NSLocalizedString("My Drone", comment: "")]
         sourcesImage = ["new_iOS_link_icon","new_iOS_mynevo_iocn"]
@@ -51,31 +51,6 @@ class SettingsViewController: BaseViewController,SyncControllerDelegate,ButtonMa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - ButtonManagerCallBack
-    func controllManager(sender:AnyObject){
-
-
-    }
-
-    // MARK: - SyncControllerDelegate
-    func receivedRSSIValue(number:NSNumber){
-
-    }
-
-    func packetReceived(packet:RawPacket) {
-
-    }
-
-    func connectionStateChanged(isConnected : Bool) {
-        //Maybe we just got disconnected, let's check
-        checkConnection()
-    }
-
-    func syncFinished(){
-
-    }
-
 
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

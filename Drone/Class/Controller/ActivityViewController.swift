@@ -13,7 +13,6 @@ class ActivityViewController: UITabBarController {
     override func viewDidLoad() {
         let stepsController = StepsViewController()
         let sleepController = SleepViewController()
-        let bpmController = BPMViewController ()
-        setViewControllers([stepsController, sleepController, bpmController], animated: true)
+        setViewControllers([stepsController, sleepController], animated: true)
     }
 }
