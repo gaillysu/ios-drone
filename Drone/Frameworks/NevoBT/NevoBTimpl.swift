@@ -46,7 +46,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     There might be for example 10 peripherals known to the device, but one only is in range
     So we need to try to connect to all of them
     */
-    private var mTryingToConnectPeripherals : [CBPeripheral]?
+    private var mTryingToConnectPeripherals : [CBPeripheral] = []
     
     /**
     The GATT profile we are looking for
@@ -61,30 +61,23 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
     Ble firmware version
     */
-    private var mFirmwareVersion:NSString?
+    private var mFirmwareVersion:NSString = ""
     
     /**
     MCU Software version
     */
-    private var mSoftwareVersion:NSString?
+    private var mSoftwareVersion:NSString = ""
 
     private var redRssiTimer:NSTimer = NSTimer()
     /**
     Basic constructor, just a Delegate handsake
     */
     init(externalDelegate : NevoBTDelegate, acceptableDevice : Profile) {
-        
-        mDelegate = externalDelegate
-        
-        mProfile = acceptableDevice
-        
-        mTryingToConnectPeripherals = []
-        
-        mFirmwareVersion = NSString()
-        mSoftwareVersion = NSString()
-        
         super.init()
-        
+        mDelegate = externalDelegate
+
+        mProfile = acceptableDevice
+
         mManager=CBCentralManager(delegate:self, queue:nil)
         
         mManager?.delegate = self
@@ -235,18 +228,18 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     
         
         else if(characteristic.UUID==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
-            mFirmwareVersion = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)
+            mFirmwareVersion = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)!
             AppTheme.DLog("get firmware version char : \(characteristic.UUID.UUIDString), version : \(mFirmwareVersion)")
             //tell OTA new version
-            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.APPLICATION, version: mFirmwareVersion!)
+            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.APPLICATION, version: mFirmwareVersion)
         }
         else if(characteristic.UUID==CBUUID(string: "00002a28-0000-1000-8000-00805f9b34fb")) {
             if(characteristic.value != nil){
-                mSoftwareVersion = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)
+                mSoftwareVersion = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)!
             }
 
             AppTheme.DLog("get software version char : \(characteristic.UUID.UUIDString), version : \(mSoftwareVersion)")
-            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.SOFTDEVICE, version: mSoftwareVersion!)
+            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.SOFTDEVICE, version: mSoftwareVersion)
         }
 
     }
@@ -457,15 +450,15 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
     See NevoBT protocol
     */
-    func getFirmwareVersion() -> NSString! {
-        return mFirmwareVersion!
+    func getFirmwareVersion() -> NSString {
+        return mFirmwareVersion
     }
     
     /**
     See NevoBT protocol
     */
-    func getSoftwareVersion() -> NSString! {
-        return mSoftwareVersion!
+    func getSoftwareVersion() -> NSString {
+        return mSoftwareVersion
     }
 
     // MARK: - Red RSSI NSTimer
@@ -488,7 +481,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             //We don't knopw were this peripheral come from,
             //There might be for example 10 peripherals known to the device, but one only is in range
             //So we need to try to connect to all of them, and hence we need to save all of them
-            mTryingToConnectPeripherals?.append(aPeripheral)
+            mTryingToConnectPeripherals.append(aPeripheral)
 
             mManager?.connectPeripheral(aPeripheral,options:nil)
 

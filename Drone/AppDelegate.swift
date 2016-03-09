@@ -11,9 +11,15 @@ import CoreData
 import HealthKit
 import Alamofire
 import FMDB
+import SwiftEventBus
 
 let nevoDBDFileURL:String = "nevoDBName";
 let nevoDBNames:String = "nevo.sqlite";
+
+let RAWPACKET_DATA_KEY:String = "RAWPACKET_DATA_KEY"
+let CONNECTION_STATE_CHANGED_KEY:String = "CONNECTION_STATE_CHANGED_KEY"
+let FIRMWARE_VERSION_RECEIVED_KEY:String = "FIRMWARE_VERSION_RECEIVED_KEY"
+let RECEIVED_RSSI_VALUE_KEY:String = "RECEIVED_RSSI_VALUE_KEY"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
@@ -148,9 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         }
     }
 
-    func startConnect(forceScan:Bool,delegate:SyncControllerDelegate){
-        AppTheme.DLog("New delegate : \(delegate)")
-        mDelegates.append(delegate)
+    func startConnect(forceScan:Bool){
         if forceScan{
             mConnectionController?.forgetSavedAddress()
         }
@@ -218,17 +222,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         userDefaults.synchronize()
     }
 
-    /**
-     Remove MyNevoDelegate
-     */
-    func removeMyNevoDelegate(){
-        for(var i:Int = 0; i < mDelegates.count; i++){
-            if mDelegates[i] is MyDroneController{
-                mDelegates.removeAtIndex(i)
-            }
-        }
-    }
-
     // MARK: - UIAlertViewDelegate
     /**
     See UIAlertViewDelegate
@@ -279,9 +272,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     func packetReceived(packet: RawPacket) {
 
         if(!packet.isLastPacket()) {
-            for delegate in mDelegates {
-                delegate.packetReceived(packet)
-            }
+            SwiftEventBus.post(RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
 
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
                 let data:[UInt8] = NSData2Bytes(packet.getRawData())
@@ -332,10 +323,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                     if(stepsArray.count>0) {
                         let step:UserSteps = stepsArray[0] as! UserSteps
                         AppTheme.DLog("Data that has been saved····")
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(dailySteps)", "distance":"0", "hourlysteps": "\(dailySteps)", "hourlydistance":"0", "calories":"0" , "hourlycalories":"0", "inZoneTime":0, "outZoneTime":0, "inactivityTime":0, "goalreach":false, "date":timerInterval])
+                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(dailySteps)", "hourlysteps": "\(dailySteps)","date":timerInterval])
                         stepsModel.update()
                     }else {
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(dailySteps)", "distance":"0", "hourlysteps": "\(dailySteps)", "hourlydistance":"0", "calories":"0" , "hourlycalories":"0", "inZoneTime":0, "outZoneTime":0, "inactivityTime":0, "goalreach":false, "date":timerInterval])
+                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(dailySteps)",  "hourlysteps": "\(dailySteps)", "date":timerInterval])
                         stepsModel.add({ (id, completion) -> Void in
 
                         })
@@ -351,16 +342,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func connectionStateChanged(isConnected : Bool) {
-        //send local notification
-        if isConnected {
-            ConnectionManager.sharedInstance.checkConnectSendNotification(ConnectionManager.Const.connectionStatus.connected)
-        }else {
-            ConnectionManager.sharedInstance.checkConnectSendNotification(ConnectionManager.Const.connectionStatus.disconnected)
-        }
-
-        for delegate in mDelegates {
-            delegate.connectionStateChanged(isConnected)
-        }
+        SwiftEventBus.post(CONNECTION_STATE_CHANGED_KEY, sender:isConnected)
 
         if(isConnected) {
             let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
@@ -382,6 +364,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         let blever = AppTheme.GET_FIRMWARE_VERSION()
 
         AppTheme.DLog("Build in software version: \(mcuver), firmware version: \(blever)")
+        SwiftEventBus.post(FIRMWARE_VERSION_RECEIVED_KEY, sender:version)
 
         if ((whichfirmware == DfuFirmwareTypes.SOFTDEVICE  && version.integerValue == mcuver)
             || (whichfirmware == DfuFirmwareTypes.APPLICATION  && version.integerValue == blever)) {
@@ -398,9 +381,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
      *  Receiving the current device signal strength value
      */
     func receivedRSSIValue(number:NSNumber){
-        for delegate in mDelegates {
-            delegate.receivedRSSIValue(number)
-        }
+        SwiftEventBus.post(RECEIVED_RSSI_VALUE_KEY, sender:number)
     }
 
 }

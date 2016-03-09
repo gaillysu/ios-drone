@@ -232,17 +232,17 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See ConnectionController protocol
     */
-    func  getFirmwareVersion() -> NSString!
+    func  getFirmwareVersion() -> NSString
     {
-        return mNevoBT?.getFirmwareVersion()!
+        return mNevoBT!.getFirmwareVersion()
     }
     
     /**
     See ConnectionController protocol
     */
-    func  getSoftwareVersion() -> NSString!
+    func  getSoftwareVersion() -> NSString
     {
-        return mNevoBT?.getSoftwareVersion()!
+        return mNevoBT!.getSoftwareVersion()
     }
     
     

@@ -80,12 +80,12 @@ protocol ConnectionController {
     /**
     get Nevo 's ble firmware version
     */
-    func  getFirmwareVersion() -> NSString!
+    func  getFirmwareVersion() -> NSString
     
     /**
     get Nevo 's MCU software version
     */
-    func  getSoftwareVersion() -> NSString!
+    func  getSoftwareVersion() -> NSString
     
 }
 
