@@ -13,7 +13,7 @@ class AddGoalViewController: BaseViewController {
     @IBOutlet weak var addGoalView: AddGoalView!
     var addDelegate:AddGoalDelegate?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    init() {
         super.init(nibName: "AddGoalViewController", bundle: NSBundle.mainBundle())
     }
 

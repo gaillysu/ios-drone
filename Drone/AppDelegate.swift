@@ -278,16 +278,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 let data:[UInt8] = NSData2Bytes(packet.getRawData())
                 let systemStatus:Int = Int(data[2])<<8
                 let systemReset:Int = Int(data[3])
-                if(systemStatus == 8) {
+                //SystemStatus.SystemReset
+                switch systemStatus {
+                case SystemStatus.SystemReset.rawValue:
                     setSystemConfig()
-                }
-
-                if(systemStatus == 3) {
+                case SystemStatus.InvalidTime.rawValue:
                     setRTC()
-                }
-
-                if(systemStatus == 1) {
+                case SystemStatus.GoalCompleted.rawValue:
                     syncActivityData()
+                default:
+                    break
                 }
             }
 

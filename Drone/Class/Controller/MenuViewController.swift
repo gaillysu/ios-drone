@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftEventBus
 
 class MenuViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     
@@ -31,7 +32,11 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: identifier)
-        print(self.navigationController?.navigationBar.frame.size.height)
+        AppDelegate.getAppDelegate().startConnect(false)
+
+        SwiftEventBus.onMainThread(self, name: RAWPACKET_DATA_KEY) { (notification) -> Void in
+            NSLog("RAWPACKET_DATA_KEY  :\(NSData2Bytes((notification.object as! RawPacketImpl).getRawData()))")
+        }
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

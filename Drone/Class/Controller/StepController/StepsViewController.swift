@@ -11,7 +11,10 @@ import UIKit
 let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
 
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
-   
+
+    // TODO eventbus: Steps, small & big sync
+
+    
     init() {
         super.init(nibName: "StepsViewController", bundle: NSBundle.mainBundle())
         self.tabBarItem.title="Steps"
