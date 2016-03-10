@@ -23,6 +23,7 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         self.menuItems.append(MenuItem(controller: BuddyViewController(), title: "Buddy"));
         self.menuItems.append(MenuItem(controller: ProfileViewController(), title: "Profile"));
         self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings"));
+        self.title = "Drone"
     }
 
     required init(coder aDecoder: NSCoder) {

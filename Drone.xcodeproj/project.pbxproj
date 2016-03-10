@@ -166,7 +166,7 @@
 		00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFD1C86A350003DA5E2 /* localTimeZone.plist */; };
 		00982D191C86A36C003DA5E2 /* Firmwares in Resources */ = {isa = PBXBuildFile; fileRef = 00982D181C86A36C003DA5E2 /* Firmwares */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
-		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
+		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */; };
 		CBA06BF21C8ECD2700E3257B /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BF11C8ECD2700E3257B /* ActivityViewController.swift */; };
 		CBA06BF41C8ECD4700E3257B /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA06BF31C8ECD4700E3257B /* ActivityViewController.xib */; };
