@@ -16,10 +16,11 @@ import SwiftEventBus
 let nevoDBDFileURL:String = "nevoDBName";
 let nevoDBNames:String = "nevo.sqlite";
 
-let RAWPACKET_DATA_KEY:String = "RAWPACKET_DATA_KEY"
-let CONNECTION_STATE_CHANGED_KEY:String = "CONNECTION_STATE_CHANGED_KEY"
-let FIRMWARE_VERSION_RECEIVED_KEY:String = "FIRMWARE_VERSION_RECEIVED_KEY"
-let RECEIVED_RSSI_VALUE_KEY:String = "RECEIVED_RSSI_VALUE_KEY"
+let RAWPACKET_DATA_KEY:String = "RAWPACKET_DATA_KEY" //All packet data
+let CONNECTION_STATE_CHANGED_KEY:String = "CONNECTION_STATE_CHANGED_KEY" //Bluetooth state
+let FIRMWARE_VERSION_RECEIVED_KEY:String = "FIRMWARE_VERSION_RECEIVED_KEY" //Received the firmware version
+let RECEIVED_RSSI_VALUE_KEY:String = "RECEIVED_RSSI_VALUE_KEY" //Received the bluetooth signal
+let GET_SYSTEM_STATUS_KEY:String = "GET_SYSTEM_STATUS_KEY" // system state
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
@@ -271,22 +272,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     func packetReceived(packet: RawPacket) {
 
         if(!packet.isLastPacket()) {
-            SwiftEventBus.post(RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
+            //SwiftEventBus.post(RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
 
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
+                SwiftEventBus.post(GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
+
                 let data:[UInt8] = NSData2Bytes(packet.getRawData())
-                let systemStatus:Int = Int(data[2])<<8
-                let systemReset:Int = Int(data[3])
-                //SystemStatus.SystemReset
-                switch systemStatus {
-                case SystemStatus.SystemReset.rawValue:
-                    setSystemConfig()
-                case SystemStatus.InvalidTime.rawValue:
+                let systemStatus:Int = Int(data[2])
+                NSLog("SystemStatus :\(systemStatus)")
+                if(systemStatus == SystemStatus.SystemReset.rawValue) {
+                    self.setSystemConfig()
+                }
+
+                if(systemStatus == SystemStatus.InvalidTime.rawValue) {
                     setRTC()
-                case SystemStatus.GoalCompleted.rawValue:
-                    syncActivityData()
-                default:
-                    break
+                }
+
+                if(systemStatus == SystemStatus.GoalCompleted.rawValue) {
+                    setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
                 }
             }
 
@@ -297,8 +300,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
             if(packet.getHeader() == SetRTCRequest.HEADER()) {
                 //setp3:start set AppConfig
-                syncActivityData()
-                //setAppConfig()
+                //syncActivityData()
+                setAppConfig()
             }
 
             if(packet.getHeader() == SetAppConfigRequest.HEADER()) {
@@ -348,8 +351,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                 //setp1: cmd 0x01, set RTC, for every connected Nevo
                 self.mPacketsbuffer = []
-                self.setRTC()
-                //self.readsystemStatus()
+                //self.setRTC()
+                self.readsystemStatus()
             })
 
         }else {
