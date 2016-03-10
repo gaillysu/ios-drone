@@ -32,11 +32,32 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: identifier)
-        AppDelegate.getAppDelegate().startConnect(false)
+        AppDelegate.getAppDelegate().startConnect(true)
+
 
         SwiftEventBus.onMainThread(self, name: RAWPACKET_DATA_KEY) { (notification) -> Void in
-            NSLog("RAWPACKET_DATA_KEY  :\(NSData2Bytes((notification.object as! RawPacketImpl).getRawData()))")
+            let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
+            NSLog("RAWPACKET_DATA_KEY  :\(data)")
         }
+
+        SwiftEventBus.onMainThread(self, name: GET_SYSTEM_STATUS_KEY) { (notification) -> Void in
+            let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
+            NSLog("GET_SYSTEM_STATUS_KEY  :\(data)")
+        }
+
+        SwiftEventBus.onMainThread(self, name: CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
+            let connectionState:Bool = notification.object as! Bool
+            NSLog("CONNECTION_STATE_CHANGED_KEY  :\(connectionState)")
+            if(connectionState){
+
+                let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC)))
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    //setp1: cmd 0x01, set RTC, for every connected Nevo
+                    AppDelegate.getAppDelegate().readsystemStatus()
+                })
+            }
+        }
+    }
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
