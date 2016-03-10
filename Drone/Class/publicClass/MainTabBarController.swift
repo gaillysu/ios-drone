@@ -18,7 +18,7 @@ class MainTabBarController: UITabBarController,UITabBarControllerDelegate {
         super.viewDidLoad()
 
         self.delegate = self
-        self.tabBar.tintColor = AppTheme.NEVO_SOLAR_YELLOW()
+        self.tabBar.tintColor = AppTheme.BASE_COLOR()
         // Do any additional setup after loading the view.
 
     }

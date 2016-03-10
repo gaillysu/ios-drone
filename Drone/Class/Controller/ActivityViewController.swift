@@ -16,10 +16,6 @@ class ActivityViewController: UITabBarController, UITabBarControllerDelegate {
         setViewControllers([stepsController, sleepController], animated: true)
         self.title = "Steps";
         
-        let uiBusy = UIActivityIndicatorView(activityIndicatorStyle: .White)
-        uiBusy.hidesWhenStopped = true
-        uiBusy.startAnimating()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: uiBusy)
     }
 
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {

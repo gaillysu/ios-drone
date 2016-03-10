@@ -23,6 +23,5 @@ class SleepViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.title = "Steps"
     }
 }

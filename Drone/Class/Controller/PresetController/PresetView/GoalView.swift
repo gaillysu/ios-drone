@@ -25,8 +25,8 @@ class GoalView: UITableView {
         if (endCell == nil) {
             let nibs:NSArray = NSBundle.mainBundle().loadNibNamed("PresetTableViewCell", owner: self, options: nil)
             endCell = nibs.objectAtIndex(0) as? GoalTableViewCell;
-            (endCell as! GoalTableViewCell).goalStates.tintColor = AppTheme.NEVO_SOLAR_YELLOW()
-            (endCell as! GoalTableViewCell).goalStates.onTintColor = AppTheme.NEVO_SOLAR_YELLOW()
+            (endCell as! GoalTableViewCell).goalStates.tintColor = AppTheme.BASE_COLOR()
+            (endCell as! GoalTableViewCell).goalStates.onTintColor = AppTheme.BASE_COLOR()
         }
         (endCell as! GoalTableViewCell).goalStates.tag = indexPath.row
         

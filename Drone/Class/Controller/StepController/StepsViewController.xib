@@ -29,13 +29,13 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2j-Z4-I7O">
                                     <rect key="frame" x="0.0" y="42" width="133" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hx-LZ-YH3">
                                     <rect key="frame" x="0.0" y="70" width="133" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -64,16 +64,16 @@
                             <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="trackBackgroundColor">
-                            <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="value" red="0.8901960784313725" green="0.75686274509803919" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                            <color key="value" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="value" red="0.58823529411764708" green="0.43137254901960786" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="progress">
                             <real key="value" value="0.69999999999999996"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="centerFillColor">
-                            <color key="value" red="0.98431372549999996" green="1" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="value" red="0.29803921568627451" green="0.29803921568627451" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
@@ -84,13 +84,14 @@
                         <segment title="Weekly"/>
                         <segment title="Monthly"/>
                     </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKD-6u-SD9" customClass="BarChartView" customModule="Charts">
                     <rect key="frame" x="8" y="392" width="398" height="287"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.98431372549999996" green="1" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.29803921568627451" green="0.29803921568627451" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="hKD-6u-SD9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="00V-47-7QO"/>
                 <constraint firstItem="UUQ-TC-WJl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="76" id="43f-er-Ifu"/>
@@ -103,8 +104,10 @@
                 <constraint firstAttribute="trailing" secondItem="hKD-6u-SD9" secondAttribute="trailing" constant="8" id="mVX-e8-Awx"/>
                 <constraint firstAttribute="trailing" secondItem="UUQ-TC-WJl" secondAttribute="trailing" constant="76" id="niR-hd-Fqx"/>
             </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <point key="canvasLocation" x="309" y="15"/>
         </view>

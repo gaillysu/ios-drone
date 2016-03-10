@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftEventBus
+import NVActivityIndicatorView
 
 class MenuViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     
@@ -24,6 +25,12 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         self.menuItems.append(MenuItem(controller: ProfileViewController(), title: "Profile"));
         self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings"));
         self.title = "Drone"
+        
+        let uiBusy = NVActivityIndicatorView(frame:CGRectMake(0, 0, 10, 10),color:AppTheme.BASE_COLOR(), type:.BallClipRotatePulse)
+        uiBusy.size = CGSizeMake(25, 25)
+        uiBusy.startAnimation()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: uiBusy)
     }
 
     required init(coder aDecoder: NSCoder) {

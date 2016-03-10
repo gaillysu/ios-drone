@@ -27,12 +27,12 @@ class AppTheme {
     This color should be used app wide on all actionable elements
     sRGB value : #ff9933
     */
-    class func NEVO_SOLAR_YELLOW() -> UIColor {
-        return UIColor(red: 129/255.0, green: 150/255.0, blue: 248/255.0, alpha: 1)
+    class func BASE_COLOR() -> UIColor {
+        return UIColor(red: 76/255.0, green: 76/255.0, blue: 112/255.0, alpha: 1)
     }
 
-    class func NEVO_SOLAR_GRAY() -> UIColor {
-        return UIColor(red: 186/255.0, green: 185/255.0, blue: 182/255.0, alpha: 1)
+    class func BASE_COLOR_TINT() -> UIColor {
+        return UIColor(red: 160/255.0, green: 154/255.0, blue: 99/255.0, alpha: 1)
     }
 
     /**
@@ -88,7 +88,6 @@ class AppTheme {
         let isiPhone4S:Bool = (UIScreen.instancesRespondToSelector(Selector("currentMode")) ? CGSizeEqualToSize(CGSizeMake(640, 960), UIScreen.mainScreen().currentMode!.size) : false)
         return isiPhone4S
     }
-
 
     /**
     Local notifications

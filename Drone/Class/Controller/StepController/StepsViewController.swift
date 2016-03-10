@@ -20,6 +20,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
     @IBOutlet weak var barChart: BarChartView!
     @IBOutlet weak var percentageLabel: UILabel!
+
     init() {
         super.init(nibName: "StepsViewController", bundle: NSBundle.mainBundle())
         self.tabBarItem.title="Steps"
@@ -31,7 +32,5 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.title = "Steps"
-    
     }
 }

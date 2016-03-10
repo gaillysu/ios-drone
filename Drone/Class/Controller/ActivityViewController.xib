@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="YYl-8p-rf9"/>
+                    <tabBarItem key="tabBarItem" title="Item 1" image="walking" selectedImage="walking" id="YYl-8p-rf9"/>
                 </viewController>
                 <viewController id="pr2-Ub-gS3">
                     <layoutGuides>
@@ -40,22 +40,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="QPl-a3-apF"/>
-                </viewController>
-                <viewController id="TaT-dF-fra" userLabel="Item 3">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KiD-cA-UG7"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Hl-NR-fsW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="A1w-YQ-Jtm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="GTT-hh-lCf"/>
+                    <tabBarItem key="tabBarItem" title="Item 2" image="sleeping" selectedImage="sleeping" id="QPl-a3-apF"/>
                 </viewController>
             </viewControllers>
             <point key="canvasLocation" x="443" y="289"/>
         </tabBarController>
     </objects>
+    <resources>
+        <image name="sleeping" width="32" height="32"/>
+        <image name="walking" width="32" height="32"/>
+    </resources>
 </document>

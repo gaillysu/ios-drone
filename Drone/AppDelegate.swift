@@ -47,10 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-         UINavigationBar.appearance().tintColor = AppTheme.NEVO_SOLAR_YELLOW()
-
         // Override point for customization after application launch.
-        UINavigationBar.appearance().tintColor = AppTheme.NEVO_SOLAR_YELLOW()
+        UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
+        
         //Start the logo for the first time
         if(!NSUserDefaults.standardUserDefaults().boolForKey("everLaunched")){
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "everLaunched")
