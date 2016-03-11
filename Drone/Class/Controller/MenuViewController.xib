@@ -19,7 +19,7 @@
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" indicatorStyle="black" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ABh-lf-gG5">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CMZ-zV-bcl">
-                        <size key="itemSize" width="150" height="150"/>
+                        <size key="itemSize" width="500" height="150"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
@@ -37,7 +37,7 @@
                 <constraint firstAttribute="bottom" secondItem="ABh-lf-gG5" secondAttribute="bottom" id="QrS-j3-cCJ"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <point key="canvasLocation" x="97" y="170"/>
+            <point key="canvasLocation" x="-325" y="-587"/>
         </view>
     </objects>
 </document>

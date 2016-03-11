@@ -22,15 +22,19 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
         self.menuItems.append(MenuItem(controller: ActivityViewController(), title: "Activity"));
         self.menuItems.append(MenuItem(controller: BuddyViewController(), title: "Buddy"));
-        self.menuItems.append(MenuItem(controller: ProfileViewController(), title: "Profile"));
         self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings"));
         self.title = "Drone"
-        
         let uiBusy = NVActivityIndicatorView(frame:CGRectMake(0, 0, 10, 10),color:AppTheme.BASE_COLOR(), type:.BallClipRotatePulse)
         uiBusy.size = CGSizeMake(25, 25)
         uiBusy.startAnimation()
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: uiBusy)
+        let profileButton = UIButton()
+        profileButton.setImage(UIImage(named: "user"), forState: .Normal)
+        profileButton.frame = CGRectMake(0, 0, 30, 30)
+        profileButton.addTarget(self, action: Selector("profileAction"), forControlEvents: .TouchUpInside)
+        let leftBarButton = UIBarButtonItem()
+        leftBarButton.customView = profileButton
+        self.navigationItem.leftBarButtonItem = leftBarButton
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -66,7 +70,6 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
             }
         }
     }
-    }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1;
@@ -83,9 +86,16 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width - 20, height: (self.view.frame.height/3) - 31)
+    }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let item:MenuItem = self.menuItems[indexPath.row]
         self.navigationController?.pushViewController(item.menuViewControllerItem, animated: true)
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+    }
+    
+    func profileAction(){
+        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
 }
