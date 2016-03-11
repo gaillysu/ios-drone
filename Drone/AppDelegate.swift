@@ -21,6 +21,13 @@ let CONNECTION_STATE_CHANGED_KEY:String = "CONNECTION_STATE_CHANGED_KEY" //Bluet
 let FIRMWARE_VERSION_RECEIVED_KEY:String = "FIRMWARE_VERSION_RECEIVED_KEY" //Received the firmware version
 let RECEIVED_RSSI_VALUE_KEY:String = "RECEIVED_RSSI_VALUE_KEY" //Received the bluetooth signal
 let GET_SYSTEM_STATUS_KEY:String = "GET_SYSTEM_STATUS_KEY" // system state
+let GOAL_COMPLETED:String = "GOAL_COMPLETED" //
+let BIG_SYNCACTIVITY_DATA:String = "BIG_SYNCACTIVITY_DATA"
+let BEGIN_BIG_SYNCACTIVITY:String = "BEGIN_BIG_SYNCACTIVITY"
+let END_BIG_SYNCACTIVITY:String = "END_BIG_SYNCACTIVITY"
+let BEGIN_SMALL_SYNCACTIVITY:String = "BEGIN_SMALL_SYNCACTIVITY"
+let SMALL_SYNCACTIVITY_DATA:String = "SMALL_SYNCACTIVITY_DATA"
+let BATTERY_STATUS_CHANGED:String = "BATTERY_STATUS_CHANGED"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
@@ -272,7 +279,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     func packetReceived(packet: RawPacket) {
 
         if(!packet.isLastPacket()) {
-            //SwiftEventBus.post(RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
+            SwiftEventBus.post(RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
 
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
                 SwiftEventBus.post(GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
@@ -293,6 +300,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 }
             }
 
+            if(packet.getHeader() == SystemEventCommand.HEADER()) {
+                let data:[UInt8] = NSData2Bytes(packet.getRawData())
+                let eventCommandStatus:Int = Int(data[2])
+                NSLog("eventCommandStatus :\(eventCommandStatus)")
+                if(eventCommandStatus == SystemEventStatus.GoalCompleted.rawValue) {
+                    SwiftEventBus.post(GOAL_COMPLETED, sender:nil)
+                }
+
+                if(eventCommandStatus == SystemEventStatus.LowMemory.rawValue) {
+                    SwiftEventBus.post(BEGIN_SMALL_SYNCACTIVITY, sender:nil)
+                }
+
+                if(eventCommandStatus == SystemEventStatus.ActivityDataAvailable.rawValue) {
+                    SwiftEventBus.post(BEGIN_BIG_SYNCACTIVITY, sender:nil)
+                    syncActivityData()
+                }
+
+                if(eventCommandStatus == SystemEventStatus.BatteryStatusChanged.rawValue) {
+                    sendRequest(GetBatteryRequest())
+                }
+            }
+
             if(packet.getHeader() == SetSystemConfig.HEADER()) {
                 //setp2:start set RTC
                 setRTC()
@@ -300,7 +329,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
             if(packet.getHeader() == SetRTCRequest.HEADER()) {
                 //setp3:start set AppConfig
-                //syncActivityData()
                 setAppConfig()
             }
 
@@ -309,16 +337,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
             }
 
+            if(packet.getHeader() == SetGoalRequest.HEADER()) {
+                //step4: get big syncactivity Activity data
+                SwiftEventBus.post(BEGIN_BIG_SYNCACTIVITY, sender:nil)
+                syncActivityData()
+            }
+
+            if(packet.getHeader() == GetBatteryRequest.HEADER()) {
+                let data:[UInt8] = NSData2Bytes(packet.getRawData())
+                let batteryStatus:Int = Int(data[1])
+                SwiftEventBus.post(BATTERY_STATUS_CHANGED, sender:batteryStatus)
+            }
+
+            if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
+                let data:[UInt8] = NSData2Bytes(packet.getRawData())
+                var dailySteps:Int = Int(data[7])
+                dailySteps =  dailySteps + Int(data[8])<<8
+                dailySteps =  dailySteps + Int(data[9])<<16
+                dailySteps =  dailySteps + Int(data[10])<<24
+
+                var goal:Int = Int(data[2] )
+                goal =  goal + Int(data[3])<<8
+                goal =  goal + Int(data[4])<<16
+                goal =  goal + Int(data[5])<<24
+                let stepsDict:[String:Int] = ["dailySteps":dailySteps,"goal":goal]
+
+                SwiftEventBus.post(SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
+            }
+
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
                 let syncStatus:[UInt8] = NSData2Bytes(packet.getRawData())
-                let status:Int = Int(syncStatus[2])
-                var dailySteps:Int = Int(syncStatus[6])
-                dailySteps =  dailySteps + Int(syncStatus[7])<<8
-
                 var timerInterval:Int = Int(syncStatus[2])
                 timerInterval =  timerInterval + Int(syncStatus[3])<<8
                 timerInterval =  timerInterval + Int(syncStatus[4])<<16
                 timerInterval =  timerInterval + Int(syncStatus[5])<<24
+
+                var dailySteps:Int = Int(syncStatus[6])
+                dailySteps =  dailySteps + Int(syncStatus[7])<<8
+
+                let status:Int = Int(syncStatus[8])
+
+                NSLog("dailySteps:\(dailySteps),dailyStepsDate:\(timerInterval),status:\(status)")
 
                 if (dailySteps != 0) {
                     let stepsArray = UserSteps.getCriteria("WHERE date = \(timerInterval)")
@@ -334,9 +393,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                         })
                     }
                 }
+                SwiftEventBus.post(BIG_SYNCACTIVITY_DATA, sender:nil)
 
-                if(status == 1) {
+                //download more data
+                if(status == ActivityDataStatus.MoreData.rawValue) {
                     syncActivityData()
+                }else{
+                    SwiftEventBus.post(END_BIG_SYNCACTIVITY, sender:nil)
                 }
             }
 

@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum ActivityDataStatus:Int {
+    case EmptyData = 0,
+    MoreData = 1
+}
+
 class GetActivityRequest: NevoRequest {
     
     /*
