@@ -9,6 +9,7 @@
 import UIKit
 import CircleProgressView
 import Charts
+import Timepiece
 
 let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
 
