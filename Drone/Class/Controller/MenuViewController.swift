@@ -24,17 +24,6 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         self.menuItems.append(MenuItem(controller: BuddyViewController(), title: "Buddy"));
         self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings"));
         self.title = "Drone"
-        let uiBusy = NVActivityIndicatorView(frame:CGRectMake(0, 0, 10, 10),color:AppTheme.BASE_COLOR(), type:.BallClipRotatePulse)
-        uiBusy.size = CGSizeMake(25, 25)
-        uiBusy.startAnimation()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: uiBusy)
-        let profileButton = UIButton()
-        profileButton.setImage(UIImage(named: "user"), forState: .Normal)
-        profileButton.frame = CGRectMake(0, 0, 30, 30)
-        profileButton.addTarget(self, action: Selector("profileAction"), forControlEvents: .TouchUpInside)
-        let leftBarButton = UIBarButtonItem()
-        leftBarButton.customView = profileButton
-        self.navigationItem.leftBarButtonItem = leftBarButton
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -46,7 +35,7 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         collectionView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: identifier)
         AppDelegate.getAppDelegate().startConnect(true)
 
-
+        self.slideMenuController()?.addLeftBarButtonWithImage(UIImage(named: "user")!)
         SwiftEventBus.onMainThread(self, name: RAWPACKET_DATA_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
             NSLog("RAWPACKET_DATA_KEY  :\(data)")
@@ -69,6 +58,10 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
                 })
             }
         }
+        
+        if let controller = self.navigationController?.slideMenuController() {
+            controller.openLeft()
+        }
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -83,11 +76,12 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         let cell:MenuViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! MenuViewCell
         let item:MenuItem = self.menuItems[indexPath.row]
         cell.menuItemLabel.text = item.menuTitle
+        cell.selected = true;
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width - 20, height: (self.view.frame.height/3) - 31)
+        return CGSize(width: self.view.frame.width, height: (collectionView.frame.height/3) - 21)
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let item:MenuItem = self.menuItems[indexPath.row]

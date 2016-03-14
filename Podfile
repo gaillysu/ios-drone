@@ -18,3 +18,4 @@ pod 'Timepiece'
 use_frameworks!
 pod 'TextFieldEffects'
 pod 'SMSegmentView', '~> 1.1'
+pod 'SlideMenuControllerSwift'

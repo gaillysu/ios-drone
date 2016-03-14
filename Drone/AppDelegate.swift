@@ -12,6 +12,7 @@ import HealthKit
 import Alamofire
 import FMDB
 import SwiftEventBus
+import SlideMenuControllerSwift
 
 let nevoDBDFileURL:String = "nevoDBName";
 let nevoDBNames:String = "nevo.sqlite";
@@ -78,14 +79,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstLaunch")
         }
 
-
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
- 
+        SlideMenuOptions.hideStatusBar = false
+        SlideMenuOptions.opacityViewBackgroundColor = UIColor.whiteColor()
+        SlideMenuOptions.leftViewWidth = UIScreen.mainScreen().bounds.size.width
+        SlideMenuOptions.rightViewWidth = UIScreen.mainScreen().bounds.size.width
+        
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-
         let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
-        self.window?.rootViewController = navigationController
+        let slideMenuViewController:SlideMenuController = SlideMenuController(mainViewController: navigationController, leftMenuViewController: ProfileViewController(),rightMenuViewController: SettingsViewController())
+        self.window?.rootViewController = slideMenuViewController
+
         self.window?.makeKeyAndVisible() 
         return true
 
