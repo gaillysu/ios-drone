@@ -393,9 +393,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                         })
                     }
                 }
-                SwiftEventBus.post(BIG_SYNCACTIVITY_DATA, sender:nil)
+                let bigData:[String:Int] = ["timerInterval":timerInterval,"dailySteps":dailySteps]
+                SwiftEventBus.post(BIG_SYNCACTIVITY_DATA, sender:bigData)
 
-                //download more data
+                //Download more data
                 if(status == ActivityDataStatus.MoreData.rawValue) {
                     syncActivityData()
                 }else{
