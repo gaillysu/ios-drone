@@ -16,17 +16,29 @@ import SwiftEventBus
 let nevoDBDFileURL:String = "nevoDBName";
 let nevoDBNames:String = "nevo.sqlite";
 
-let RAWPACKET_DATA_KEY:String = "RAWPACKET_DATA_KEY" //All packet data
-let CONNECTION_STATE_CHANGED_KEY:String = "CONNECTION_STATE_CHANGED_KEY" //Bluetooth state
-let FIRMWARE_VERSION_RECEIVED_KEY:String = "FIRMWARE_VERSION_RECEIVED_KEY" //Received the firmware version
-let RECEIVED_RSSI_VALUE_KEY:String = "RECEIVED_RSSI_VALUE_KEY" //Received the bluetooth signal
-let GET_SYSTEM_STATUS_KEY:String = "GET_SYSTEM_STATUS_KEY" // system state
-let GOAL_COMPLETED:String = "GOAL_COMPLETED" //
+/// Cases: SwiftEventBus.post(RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
+let RAWPACKET_DATA_KEY:String = "RAWPACKET_DATA_KEY"
+/// Cases: SwiftEventBus.post(CONNECTION_STATE_CHANGED_KEY, sender:Bool<Bluetooth state>)
+let CONNECTION_STATE_CHANGED_KEY:String = "CONNECTION_STATE_CHANGED_KEY"
+/// Cases: SwiftEventBus.post(FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.APPLICATION ? ["BLE":Received the firmware version]:["MCU":Received the firmware version])
+let FIRMWARE_VERSION_RECEIVED_KEY:String = "FIRMWARE_VERSION_RECEIVED_KEY"
+/// Cases: SwiftEventBus.post(RECEIVED_RSSI_VALUE_KEY, sender:<bluetooth signal value format:NSNumber>)
+let RECEIVED_RSSI_VALUE_KEY:String = "RECEIVED_RSSI_VALUE_KEY"
+/// Cases: SwiftEventBus.post(GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
+let GET_SYSTEM_STATUS_KEY:String = "GET_SYSTEM_STATUS_KEY"
+/// Cases: SwiftEventBus.post(GOAL_COMPLETED, sender:nil)
+let GOAL_COMPLETED:String = "GOAL_COMPLETED"
+///get watch the data  Cases:let bigData:[String:Int] = ["timerInterval":timerInterval,"dailySteps":dailySteps] SwiftEventBus.post(BIG_SYNCACTIVITY_DATA, sender:bigData)
 let BIG_SYNCACTIVITY_DATA:String = "BIG_SYNCACTIVITY_DATA"
+///Will be big sync activity data. Cases: SwiftEventBus.post(BEGIN_BIG_SYNCACTIVITY, sender:nil)
 let BEGIN_BIG_SYNCACTIVITY:String = "BEGIN_BIG_SYNCACTIVITY"
+///end big sync activity data. Cases: SwiftEventBus.post(END_BIG_SYNCACTIVITY, sender:nil)
 let END_BIG_SYNCACTIVITY:String = "END_BIG_SYNCACTIVITY"
-let BEGIN_SMALL_SYNCACTIVITY:String = "BEGIN_SMALL_SYNCACTIVITY"
+///Will be small sync activity data. Cases: SwiftEventBus.post(BEGIN_SMALL_SYNCACTIVITY, sender:nil)
+let BEGIN_SMALL_SYNCACTIVITY:String = "BEGIN_SMALL_SYNCACTIVITY" //Will be small sync activity data
+///get small the data  Cases:let stepsDict:[String:Int] = ["dailySteps":dailySteps,"goal":goal] SwiftEventBus.post(SMALL_SYNCACTIVITY_DATA, sender:bigData)
 let SMALL_SYNCACTIVITY_DATA:String = "SMALL_SYNCACTIVITY_DATA"
+///Battery change prompts Cases: SwiftEventBus.post(BATTERY_STATUS_CHANGED, sender:<battery value>)
 let BATTERY_STATUS_CHANGED:String = "BATTERY_STATUS_CHANGED"
 
 @UIApplicationMain
@@ -430,7 +442,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         let blever = AppTheme.GET_FIRMWARE_VERSION()
 
         AppTheme.DLog("Build in software version: \(mcuver), firmware version: \(blever)")
-        SwiftEventBus.post(FIRMWARE_VERSION_RECEIVED_KEY, sender:version)
+        SwiftEventBus.post(FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.APPLICATION ? ["BLE":version]:["MCU":version])
 
         if ((whichfirmware == DfuFirmwareTypes.SOFTDEVICE  && version.integerValue == mcuver)
             || (whichfirmware == DfuFirmwareTypes.APPLICATION  && version.integerValue == blever)) {
