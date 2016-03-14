@@ -26,25 +26,14 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
 
         AppDelegate.getAppDelegate().startConnect(false)
 
-        sources = [NSLocalizedString("Link-Loss Notifications", comment: ""),NSLocalizedString("My Drone", comment: "")]
-        sourcesImage = ["new_iOS_link_icon","new_iOS_mynevo_iocn"]
+        sources = [NSLocalizedString("My Drone", comment: "")]
+        sourcesImage = ["new_iOS_mynevo_iocn"]
         titleArray = [NSLocalizedString("Preset-goals", comment: ""),NSLocalizedString("Find device", comment: ""),NSLocalizedString("World Clock", comment: "")]
         titleArrayImage = ["new_iOS_goals_icon","new_iOS_findmywatch_icon","new_iOS_findmywatch_icon"]
     }
 
     override func viewDidAppear(animated: Bool) {
         checkConnection()
-
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if(defaults.objectForKey("User_Logged_In") != nil){
-            if(defaults.objectForKey("User_Logged_In") as! Bool){
-                let indexPath = NSIndexPath(forRow: 0, inSection: 2)
-                let tableViewCell: UITableViewCell = tableListView!.cellForRowAtIndexPath(indexPath)!
-                tableViewCell.backgroundColor=UIColor(red:255/255.0, green: 149/255.0, blue: 38/255.0, alpha: 1.0)
-                let loginLabel = tableViewCell.contentView.viewWithTag(1900)
-                (loginLabel as! UILabel).text = "Logout"
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,29 +79,6 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
                 worldClock.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(worldClock, animated: true)
             }
-        case 2:
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if(defaults.objectForKey("User_Logged_In") != nil){
-                if(defaults.objectForKey("User_Logged_In") as! Bool){
-                    defaults.setBool(false, forKey: "User_Logged_In")
-                    defaults.setValue("", forKey: "User_Logged_In_UID")
-                    defaults.setValue("", forKey: "User_Logged_In_Token")
-                    let indexPath = NSIndexPath(forRow: 0, inSection: 2)
-                    let tableViewCell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-                    tableViewCell.accessoryType = UITableViewCellAccessoryType.None
-                    tableViewCell.backgroundColor=UIColor(red:129.0/255.0, green: 150.0/255.0, blue: 248.0/255.0, alpha: 1.0)
-                    let loginLabel = tableViewCell.contentView.viewWithTag(1900)
-                    (loginLabel as! UILabel).text = "Login"
-                }else{
-                    let loginController:LoginController = LoginController()
-                    loginController.hidesBottomBarWhenPushed = true
-                    self.navigationController?.pushViewController(loginController, animated: true)
-                }
-            }else{
-                let loginController:LoginController = LoginController()
-                loginController.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(loginController, animated: true)
-            }
             //WorldClockController
             break
         default: break
@@ -122,7 +88,7 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
 
     // MARK: - UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int{
-        return 3
+        return 2
 
     }
 
@@ -143,31 +109,7 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
 
         case 1:
             return SetingView.NotificationSystemTableViewCell(indexPath, tableView: tableView, title: titleArray[indexPath.row] ,imageName:titleArrayImage[indexPath.row])
-        case 2:
-            let cell = SetingView.NotificationSystemTableViewCell(indexPath, tableView: tableView, title:"" ,imageName:"")
-            cell.accessoryType = UITableViewCellAccessoryType.None
-            cell.backgroundColor=UIColor(red:129.0/255.0, green: 150.0/255.0, blue: 248.0/255.0, alpha: 1.0)
-
-            var loginLabel = cell.contentView.viewWithTag(1900)
-            if(loginLabel == nil){
-                loginLabel = UILabel(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,cell.frame.size.height))
-                loginLabel?.backgroundColor = UIColor.clearColor()
-                loginLabel?.tag = 1900
-                (loginLabel as! UILabel).textColor = UIColor.whiteColor()
-                (loginLabel as! UILabel).textAlignment = NSTextAlignment.Center
-                (loginLabel as! UILabel).text = "Login"
-                cell.contentView.addSubview(loginLabel!)
-            }
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if(defaults.objectForKey("User_Logged_In") != nil){
-                if(defaults.objectForKey("User_Logged_In") as! Bool){
-                    cell.backgroundColor=UIColor(red:255/255.0, green: 149/255.0, blue: 38/255.0, alpha: 1.0)
-                    (loginLabel as! UILabel).text = "Logout"
-                }
-            }
-            return cell
-
-        default: return SetingView.NotificationSystemTableViewCell(indexPath, tableView: tableView, title: sources[1] ,imageName:titleArrayImage[indexPath.row]);
+        default: return SetingView.NotificationSystemTableViewCell(indexPath, tableView: tableView, title: sources[0] ,imageName:titleArrayImage[indexPath.row]);
         }
     }
 
@@ -184,13 +126,8 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
         mFindMydeviceDatetime = NSDate()
     }
 
-    /**
-     Checks if any device is currently connected
-     */
     func checkConnection() {
-
         if !AppDelegate.getAppDelegate().isConnected() {
-            //We are currently not connected
             reconnect()
         }
     }
@@ -221,7 +158,6 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
     
     init() {
         super.init(nibName: "SettingsViewController", bundle: NSBundle.mainBundle())
-        
     }
     
     required init(coder aDecoder: NSCoder) {

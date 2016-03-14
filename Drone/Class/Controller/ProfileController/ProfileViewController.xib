@@ -1,20 +1,178 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileController" customModule="Drone" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Drone" customModuleProvider="target">
             <connections>
+                <outlet property="ageTextField" destination="98S-al-o4l" id="DuK-Nr-izg"/>
+                <outlet property="firstNameTextField" destination="140-ic-Tzp" id="3uM-iy-LlU"/>
+                <outlet property="lastNameTextField" destination="sEE-j2-cuT" id="ZWy-q3-Fds"/>
+                <outlet property="lengthTextField" destination="Goa-Bq-FHb" id="I6T-X8-WLF"/>
+                <outlet property="metricsSegment" destination="zvX-5d-uL6" id="zxc-4g-eiy"/>
+                <outlet property="sexSegment" destination="b9f-bT-0Jg" id="VQe-9a-7UK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="140-ic-Tzp" customClass="AkiraTextField" customModule="TextFieldEffects">
+                    <rect key="frame" x="8" y="109" width="359" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="L1D-c7-wtv"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                            <color key="value" red="0.23529411759999999" green="0.23529411759999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                            <color key="value" red="0.23529411759999999" green="0.23529411759999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sEE-j2-cuT" customClass="AkiraTextField" customModule="TextFieldEffects">
+                    <rect key="frame" x="8" y="167" width="359" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Slx-1k-F6U"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Le4-cq-An9">
+                    <rect key="frame" x="8" y="80" width="150" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="JBx-c2-dPB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l33-Cj-eO4">
+                    <rect key="frame" x="8" y="347" width="34" height="30"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Save"/>
+                    <connections>
+                        <action selector="saveButtonAction:" destination="-1" eventType="touchUpInside" id="beE-Yw-cBi"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvX-5d-uL6" userLabel="metrics segment">
+                    <rect key="frame" x="192" y="298" width="175" height="35"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="12d-ep-71T"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Age" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98S-al-o4l" customClass="AkiraTextField" customModule="TextFieldEffects">
+                    <rect key="frame" x="8" y="225" width="176" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="0RO-ht-0Jc"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9f-bT-0Jg" userLabel="sex segment">
+                    <rect key="frame" x="192" y="240" width="175" height="35"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="JZn-g4-AaT"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Length" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Goa-Bq-FHb" customClass="AkiraTextField" customModule="TextFieldEffects">
+                    <rect key="frame" x="8" y="283" width="176" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="CMc-NS-kZd"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="sEE-j2-cuT" secondAttribute="trailing" constant="8" id="7fg-VX-hBV"/>
+                <constraint firstItem="sEE-j2-cuT" firstAttribute="top" secondItem="140-ic-Tzp" secondAttribute="bottom" constant="8" id="7nC-eG-Rv6"/>
+                <constraint firstItem="98S-al-o4l" firstAttribute="top" secondItem="sEE-j2-cuT" secondAttribute="bottom" constant="8" id="Cbf-6D-nHX"/>
+                <constraint firstItem="zvX-5d-uL6" firstAttribute="top" secondItem="b9f-bT-0Jg" secondAttribute="bottom" constant="23" id="E72-Vt-eOh"/>
+                <constraint firstItem="l33-Cj-eO4" firstAttribute="top" secondItem="Goa-Bq-FHb" secondAttribute="bottom" constant="14" id="EdZ-03-7BO"/>
+                <constraint firstItem="Goa-Bq-FHb" firstAttribute="top" secondItem="98S-al-o4l" secondAttribute="bottom" constant="8" id="HVO-ZC-fl5"/>
+                <constraint firstItem="98S-al-o4l" firstAttribute="leading" secondItem="sEE-j2-cuT" secondAttribute="leading" id="JVg-A3-BN5"/>
+                <constraint firstItem="zvX-5d-uL6" firstAttribute="width" secondItem="Goa-Bq-FHb" secondAttribute="width" id="NKe-GQ-vGy"/>
+                <constraint firstAttribute="trailing" secondItem="sEE-j2-cuT" secondAttribute="trailing" constant="8" id="PSl-SI-1Zb"/>
+                <constraint firstItem="Goa-Bq-FHb" firstAttribute="trailing" secondItem="98S-al-o4l" secondAttribute="trailing" id="PiU-FC-lAa"/>
+                <constraint firstItem="Le4-cq-An9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="QiA-Bw-JHZ"/>
+                <constraint firstItem="98S-al-o4l" firstAttribute="top" secondItem="sEE-j2-cuT" secondAttribute="bottom" constant="8" id="Tyq-2d-Qp1"/>
+                <constraint firstItem="l33-Cj-eO4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Uec-Ja-Wy1"/>
+                <constraint firstItem="Le4-cq-An9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="VmX-HH-apd"/>
+                <constraint firstItem="b9f-bT-0Jg" firstAttribute="leading" secondItem="98S-al-o4l" secondAttribute="trailing" constant="8" id="Vqf-ub-GyS"/>
+                <constraint firstItem="sEE-j2-cuT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Zds-Fb-rgh"/>
+                <constraint firstItem="Goa-Bq-FHb" firstAttribute="leading" secondItem="98S-al-o4l" secondAttribute="leading" id="aDc-xU-qdR"/>
+                <constraint firstItem="sEE-j2-cuT" firstAttribute="top" secondItem="140-ic-Tzp" secondAttribute="bottom" constant="8" id="fqL-pr-UTq"/>
+                <constraint firstItem="b9f-bT-0Jg" firstAttribute="trailing" secondItem="sEE-j2-cuT" secondAttribute="trailing" id="gUT-g1-G8O"/>
+                <constraint firstItem="b9f-bT-0Jg" firstAttribute="top" secondItem="sEE-j2-cuT" secondAttribute="bottom" constant="23" id="h3t-ss-ncc"/>
+                <constraint firstItem="zvX-5d-uL6" firstAttribute="trailing" secondItem="b9f-bT-0Jg" secondAttribute="trailing" id="hXA-gw-g1d"/>
+                <constraint firstItem="zvX-5d-uL6" firstAttribute="leading" secondItem="b9f-bT-0Jg" secondAttribute="leading" id="lJA-Vs-3wU"/>
+                <constraint firstItem="b9f-bT-0Jg" firstAttribute="top" secondItem="sEE-j2-cuT" secondAttribute="bottom" constant="23" id="lPc-S4-gkU"/>
+                <constraint firstItem="140-ic-Tzp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="mP3-Kw-Vzb"/>
+                <constraint firstItem="140-ic-Tzp" firstAttribute="top" secondItem="Le4-cq-An9" secondAttribute="bottom" constant="8" id="n9U-8I-BX4"/>
+                <constraint firstItem="b9f-bT-0Jg" firstAttribute="width" secondItem="98S-al-o4l" secondAttribute="width" id="pjg-4G-fX0"/>
+                <constraint firstAttribute="trailing" secondItem="140-ic-Tzp" secondAttribute="trailing" constant="8" id="yZY-IO-E2i"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="123.5" y="64.5"/>
         </view>
     </objects>
 </document>

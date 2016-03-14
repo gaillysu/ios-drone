@@ -9,6 +9,7 @@
 import UIKit
 import CircleProgressView
 import Charts
+import Timepiece
 
 let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
 
@@ -49,7 +50,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
         let stepsArray: NSMutableArray = NSMutableArray();
         let now = NSDate();
-        
+
         for var j = 0; j < 100; j++ {
             let steps = Int(arc4random_uniform(6000) + 1000)
             let date:NSDate = now - j.day;

@@ -28,11 +28,11 @@ class AppTheme {
     sRGB value : #ff9933
     */
     class func BASE_COLOR() -> UIColor {
-        return UIColor(red: 76/255.0, green: 76/255.0, blue: 112/255.0, alpha: 1)
+        return UIColor(red: 60/255.0, green: 60/255.0, blue: 165/255.0, alpha: 1)
     }
 
     class func BASE_COLOR_TINT() -> UIColor {
-        return UIColor(red: 160/255.0, green: 154/255.0, blue: 99/255.0, alpha: 1)
+        return UIColor(red: 236/255.0, green: 220/255.0, blue: 59/255.0, alpha: 1)
     }
 
     /**

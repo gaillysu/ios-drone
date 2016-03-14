@@ -15,3 +15,6 @@ pod 'NVActivityIndicatorView'
 pod 'SwiftEventBus', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
 pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
 pod 'Timepiece'
+use_frameworks!
+pod 'TextFieldEffects'
+pod 'SMSegmentView', '~> 1.1'

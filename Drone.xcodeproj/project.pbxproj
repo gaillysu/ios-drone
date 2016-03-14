@@ -160,8 +160,10 @@
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		00BC14961C925BC100E43F44 /* SystemEventCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC14951C925BC100E43F44 /* SystemEventCommand.swift */; };
 		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; };
-		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
 		9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */; };
+		9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C51C966E300000E024 /* TextFieldEffects.framework */; };
+		9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C71C9678E30000E024 /* SMSegmentView.framework */; };
 		CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */; };
 		CBA06BF21C8ECD2700E3257B /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BF11C8ECD2700E3257B /* ActivityViewController.swift */; };
 		CBA06BF41C8ECD4700E3257B /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA06BF31C8ECD4700E3257B /* ActivityViewController.xib */; };
@@ -362,6 +364,8 @@
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50E933362E2354AB07386 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "Pods/../build/Debug-iphoneos/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
+		9EB474C51C966E300000E024 /* TextFieldEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextFieldEffects.framework; path = "Pods/../build/Debug-iphoneos/TextFieldEffects.framework"; sourceTree = "<group>"; };
+		9EB474C71C9678E30000E024 /* SMSegmentView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SMSegmentView.framework; path = "Pods/../build/Debug-iphoneos/SMSegmentView.framework"; sourceTree = "<group>"; };
 		CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircleProgressView.framework; path = "Pods/../build/Debug-iphoneos/CircleProgressView.framework"; sourceTree = "<group>"; };
 		CBA06BF11C8ECD2700E3257B /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		CBA06BF31C8ECD4700E3257B /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
@@ -376,6 +380,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */,
+				9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */,
 				00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */,
 				9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */,
 				CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */,
@@ -1048,6 +1054,8 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9EB474C71C9678E30000E024 /* SMSegmentView.framework */,
+				9EB474C51C966E300000E024 /* TextFieldEffects.framework */,
 				00BC14971C9292DE00E43F44 /* Timepiece.framework */,
 				9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */,
 				CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */,
