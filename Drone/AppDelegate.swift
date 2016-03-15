@@ -17,31 +17,6 @@ import SlideMenuControllerSwift
 let nevoDBDFileURL:String = "nevoDBName";
 let nevoDBNames:String = "nevo.sqlite";
 
-/// Cases: SwiftEventBus.post(RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
-let RAWPACKET_DATA_KEY:String = "RAWPACKET_DATA_KEY"
-/// Cases: SwiftEventBus.post(CONNECTION_STATE_CHANGED_KEY, sender:Bool<Bluetooth state>)
-let CONNECTION_STATE_CHANGED_KEY:String = "CONNECTION_STATE_CHANGED_KEY"
-/// Cases: SwiftEventBus.post(FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.APPLICATION ? ["BLE":Received the firmware version]:["MCU":Received the firmware version])
-let FIRMWARE_VERSION_RECEIVED_KEY:String = "FIRMWARE_VERSION_RECEIVED_KEY"
-/// Cases: SwiftEventBus.post(RECEIVED_RSSI_VALUE_KEY, sender:<bluetooth signal value format:NSNumber>)
-let RECEIVED_RSSI_VALUE_KEY:String = "RECEIVED_RSSI_VALUE_KEY"
-/// Cases: SwiftEventBus.post(GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
-let GET_SYSTEM_STATUS_KEY:String = "GET_SYSTEM_STATUS_KEY"
-/// Cases: SwiftEventBus.post(GOAL_COMPLETED, sender:nil)
-let GOAL_COMPLETED:String = "GOAL_COMPLETED"
-///get watch the data  Cases:let bigData:[String:Int] = ["timerInterval":timerInterval,"dailySteps":dailySteps] SwiftEventBus.post(BIG_SYNCACTIVITY_DATA, sender:bigData)
-let BIG_SYNCACTIVITY_DATA:String = "BIG_SYNCACTIVITY_DATA"
-///Will be big sync activity data. Cases: SwiftEventBus.post(BEGIN_BIG_SYNCACTIVITY, sender:nil)
-let BEGIN_BIG_SYNCACTIVITY:String = "BEGIN_BIG_SYNCACTIVITY"
-///end big sync activity data. Cases: SwiftEventBus.post(END_BIG_SYNCACTIVITY, sender:nil)
-let END_BIG_SYNCACTIVITY:String = "END_BIG_SYNCACTIVITY"
-///Will be small sync activity data. Cases: SwiftEventBus.post(BEGIN_SMALL_SYNCACTIVITY, sender:nil)
-let BEGIN_SMALL_SYNCACTIVITY:String = "BEGIN_SMALL_SYNCACTIVITY" //Will be small sync activity data
-///get small the data  Cases:let stepsDict:[String:Int] = ["dailySteps":dailySteps,"goal":goal] SwiftEventBus.post(SMALL_SYNCACTIVITY_DATA, sender:bigData)
-let SMALL_SYNCACTIVITY_DATA:String = "SMALL_SYNCACTIVITY_DATA"
-///Battery change prompts Cases: SwiftEventBus.post(BATTERY_STATUS_CHANGED, sender:<battery value>)
-let BATTERY_STATUS_CHANGED:String = "BATTERY_STATUS_CHANGED"
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
 
@@ -297,10 +272,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     func packetReceived(packet: RawPacket) {
 
         if(!packet.isLastPacket()) {
-            SwiftEventBus.post(RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
+            SwiftEventBus.post(SWIFTEVENT_BUS_RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
 
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
-                SwiftEventBus.post(GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
+                SwiftEventBus.post(SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
 
                 let data:[UInt8] = NSData2Bytes(packet.getRawData())
                 let systemStatus:Int = Int(data[2])
@@ -323,15 +298,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 let eventCommandStatus:Int = Int(data[2])
                 NSLog("eventCommandStatus :\(eventCommandStatus)")
                 if(eventCommandStatus == SystemEventStatus.GoalCompleted.rawValue) {
-                    SwiftEventBus.post(GOAL_COMPLETED, sender:nil)
+                    SwiftEventBus.post(SWIFTEVENT_BUS_GOAL_COMPLETED, sender:nil)
                 }
 
                 if(eventCommandStatus == SystemEventStatus.LowMemory.rawValue) {
-                    SwiftEventBus.post(BEGIN_SMALL_SYNCACTIVITY, sender:nil)
+                    SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_SMALL_SYNCACTIVITY, sender:nil)
                 }
 
                 if(eventCommandStatus == SystemEventStatus.ActivityDataAvailable.rawValue) {
-                    SwiftEventBus.post(BEGIN_BIG_SYNCACTIVITY, sender:nil)
+                    SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
                     syncActivityData()
                 }
 
@@ -357,14 +332,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
             if(packet.getHeader() == SetGoalRequest.HEADER()) {
                 //step4: get big syncactivity Activity data
-                SwiftEventBus.post(BEGIN_BIG_SYNCACTIVITY, sender:nil)
+                SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
                 syncActivityData()
             }
 
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
                 let data:[UInt8] = NSData2Bytes(packet.getRawData())
                 let batteryStatus:Int = Int(data[1])
-                SwiftEventBus.post(BATTERY_STATUS_CHANGED, sender:batteryStatus)
+                SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:batteryStatus)
             }
 
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
@@ -380,7 +355,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 goal =  goal + Int(data[5])<<24
                 let stepsDict:[String:Int] = ["dailySteps":dailySteps,"goal":goal]
 
-                SwiftEventBus.post(SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
+                SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
             }
 
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
@@ -412,13 +387,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                     }
                 }
                 let bigData:[String:Int] = ["timerInterval":timerInterval,"dailySteps":dailySteps]
-                SwiftEventBus.post(BIG_SYNCACTIVITY_DATA, sender:bigData)
+                SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:bigData)
 
                 //Download more data
                 if(status == ActivityDataStatus.MoreData.rawValue) {
                     syncActivityData()
                 }else{
-                    SwiftEventBus.post(END_BIG_SYNCACTIVITY, sender:nil)
+                    SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
                 }
             }
 
@@ -426,7 +401,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func connectionStateChanged(isConnected : Bool) {
-        SwiftEventBus.post(CONNECTION_STATE_CHANGED_KEY, sender:isConnected)
+        SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:isConnected)
 
         if(isConnected) {
             let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
@@ -448,7 +423,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         let blever = AppTheme.GET_FIRMWARE_VERSION()
 
         AppTheme.DLog("Build in software version: \(mcuver), firmware version: \(blever)")
-        SwiftEventBus.post(FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.APPLICATION ? ["BLE":version]:["MCU":version])
+        SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.APPLICATION ? ["BLE":version]:["MCU":version])
 
         if ((whichfirmware == DfuFirmwareTypes.SOFTDEVICE  && version.integerValue == mcuver)
             || (whichfirmware == DfuFirmwareTypes.APPLICATION  && version.integerValue == blever)) {
@@ -465,7 +440,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
      *  Receiving the current device signal strength value
      */
     func receivedRSSIValue(number:NSNumber){
-        SwiftEventBus.post(RECEIVED_RSSI_VALUE_KEY, sender:number)
+        SwiftEventBus.post(SWIFTEVENT_BUS_RECEIVED_RSSI_VALUE_KEY, sender:number)
     }
 
 }

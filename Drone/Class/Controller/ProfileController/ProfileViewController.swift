@@ -10,8 +10,8 @@ import UIKit
 import TextFieldEffects
 import SMSegmentView
 
-class ProfileViewController: BaseViewController, SMSegmentViewDelegate {
 
+class ProfileViewController: BaseViewController, SMSegmentViewDelegate {
 
     @IBOutlet weak var ageTextField: AkiraTextField!
     @IBOutlet weak var lengthTextField: AkiraTextField!
@@ -19,6 +19,14 @@ class ProfileViewController: BaseViewController, SMSegmentViewDelegate {
     @IBOutlet weak var lastNameTextField: AkiraTextField!
     @IBOutlet weak var sexSegment: UIView!
     @IBOutlet weak var metricsSegment: UIView!
+
+    init() {
+        super.init(nibName: "ProfileViewController", bundle: NSBundle.mainBundle())
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,17 +42,11 @@ class ProfileViewController: BaseViewController, SMSegmentViewDelegate {
         sexSegment.addSubview(sexSegmentView)
         sexSegmentView.delegate = self
     }
- 
-    init() {
-        super.init(nibName: "ProfileViewController", bundle: NSBundle.mainBundle())
-    }
-    
+
     @IBAction func saveButtonAction(sender: AnyObject) {
+
     }
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
         
     }

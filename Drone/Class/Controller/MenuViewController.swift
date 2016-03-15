@@ -36,19 +36,19 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         AppDelegate.getAppDelegate().startConnect(true)
 
         self.slideMenuController()?.addLeftBarButtonWithImage(UIImage(named: "user")!)
-        SwiftEventBus.onMainThread(self, name: RAWPACKET_DATA_KEY) { (notification) -> Void in
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_RAWPACKET_DATA_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
-            NSLog("RAWPACKET_DATA_KEY  :\(data)")
+            NSLog("SWIFTEVENT_BUS_RAWPACKET_DATA_KEY  :\(data)")
         }
 
-        SwiftEventBus.onMainThread(self, name: GET_SYSTEM_STATUS_KEY) { (notification) -> Void in
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
-            NSLog("GET_SYSTEM_STATUS_KEY  :\(data)")
+            NSLog("SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY  :\(data)")
         }
 
-        SwiftEventBus.onMainThread(self, name: CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
-            NSLog("CONNECTION_STATE_CHANGED_KEY  :\(connectionState)")
+            NSLog("SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY  :\(connectionState)")
             if(connectionState){
 
                 let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC)))

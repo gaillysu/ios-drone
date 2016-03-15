@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028F1401C97C08000C8E742 /* EventBusKeys.swift */; };
 		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; };
 		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; };
 		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; };
@@ -160,7 +161,7 @@
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		00BC14961C925BC100E43F44 /* SystemEventCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC14951C925BC100E43F44 /* SystemEventCommand.swift */; };
 		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; };
-		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
+		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */; };
 		9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C51C966E300000E024 /* TextFieldEffects.framework */; };
 		9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C71C9678E30000E024 /* SMSegmentView.framework */; };
@@ -192,6 +193,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0028F1401C97C08000C8E742 /* EventBusKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusKeys.swift; sourceTree = "<group>"; };
 		008C5EDA1C8D64F800DCD12D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		008C5EDB1C8D64F800DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
 		008C5EDE1C8D655700DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
@@ -840,6 +842,7 @@
 				00982B261C868C89003DA5E2 /* ClockRefresh */,
 				00982B281C868C89003DA5E2 /* Connection */,
 				00982B531C868C89003DA5E2 /* SyncQueue.swift */,
+				0028F1401C97C08000C8E742 /* EventBusKeys.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1466,6 +1469,7 @@
 				00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */,
 				CBA06BFC1C8ECE5700E3257B /* BaseViewController.swift in Sources */,
 				008C5EE61C8D7CC900DCD12D /* MenuViewController.swift in Sources */,
+				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
 				00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */,
 				00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */,
 				00982C0A1C868C8A003DA5E2 /* SleepViewController.swift in Sources */,
