@@ -4,18 +4,13 @@ pod 'FMDB'
 platform :ios, '8.0'
 use_frameworks!
 pod 'Alamofire', '~> 3.0'
-use_frameworks!
 pod 'Charts'
-use_frameworks!
 pod 'GSMessages'
-use_frameworks!
 pod 'Charts'
-use_frameworks!
 pod 'NVActivityIndicatorView'
 pod 'SwiftEventBus', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
 pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
 pod 'Timepiece'
-use_frameworks!
 pod 'TextFieldEffects'
 pod 'SMSegmentView', '~> 1.1'
 pod 'SlideMenuControllerSwift'

@@ -158,15 +158,10 @@
 		00982D0B1C86A350003DA5E2 /* clockview600_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF11C86A350003DA5E2 /* clockview600_color.png */; };
 		00982D0C1C86A350003DA5E2 /* clockViewHour.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF21C86A350003DA5E2 /* clockViewHour.png */; };
 		00982D0D1C86A350003DA5E2 /* clockViewMinute.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF31C86A350003DA5E2 /* clockViewMinute.png */; };
-		00982D0E1C86A350003DA5E2 /* firmware_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF41C86A350003DA5E2 /* firmware_clock.png */; };
-		00982D0F1C86A350003DA5E2 /* Nevo660.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF51C86A350003DA5E2 /* Nevo660.png */; };
 		00982D101C86A350003DA5E2 /* nevo_wacth.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF61C86A350003DA5E2 /* nevo_wacth.png */; };
 		00982D111C86A350003DA5E2 /* nevo_wacth_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF71C86A350003DA5E2 /* nevo_wacth_selected.png */; };
-		00982D121C86A350003DA5E2 /* NevoPicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF81C86A350003DA5E2 /* NevoPicture.png */; };
-		00982D131C86A350003DA5E2 /* NevoPicture960.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF91C86A350003DA5E2 /* NevoPicture960.png */; };
 		00982D151C86A350003DA5E2 /* upgrade_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFB1C86A350003DA5E2 /* upgrade_clock.png */; };
 		00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFD1C86A350003DA5E2 /* localTimeZone.plist */; };
-		00982D191C86A36C003DA5E2 /* Firmwares in Resources */ = {isa = PBXBuildFile; fileRef = 00982D181C86A36C003DA5E2 /* Firmwares */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		00BC14961C925BC100E43F44 /* SystemEventCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC14951C925BC100E43F44 /* SystemEventCommand.swift */; };
 		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; };
@@ -370,15 +365,10 @@
 		00982CF11C86A350003DA5E2 /* clockview600_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockview600_color.png; sourceTree = "<group>"; };
 		00982CF21C86A350003DA5E2 /* clockViewHour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockViewHour.png; sourceTree = "<group>"; };
 		00982CF31C86A350003DA5E2 /* clockViewMinute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockViewMinute.png; sourceTree = "<group>"; };
-		00982CF41C86A350003DA5E2 /* firmware_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firmware_clock.png; sourceTree = "<group>"; };
-		00982CF51C86A350003DA5E2 /* Nevo660.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nevo660.png; sourceTree = "<group>"; };
 		00982CF61C86A350003DA5E2 /* nevo_wacth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nevo_wacth.png; sourceTree = "<group>"; };
 		00982CF71C86A350003DA5E2 /* nevo_wacth_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nevo_wacth_selected.png; sourceTree = "<group>"; };
-		00982CF81C86A350003DA5E2 /* NevoPicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NevoPicture.png; sourceTree = "<group>"; };
-		00982CF91C86A350003DA5E2 /* NevoPicture960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NevoPicture960.png; sourceTree = "<group>"; };
 		00982CFB1C86A350003DA5E2 /* upgrade_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upgrade_clock.png; sourceTree = "<group>"; };
 		00982CFD1C86A350003DA5E2 /* localTimeZone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = localTimeZone.plist; sourceTree = "<group>"; };
-		00982D181C86A36C003DA5E2 /* Firmwares */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Firmwares; sourceTree = "<group>"; };
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00BC14951C925BC100E43F44 /* SystemEventCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemEventCommand.swift; sourceTree = "<group>"; };
 		00BC14971C9292DE00E43F44 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Pods/../build/Debug-iphoneos/Timepiece.framework"; sourceTree = "<group>"; };
@@ -1025,7 +1015,6 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				00982D181C86A36C003DA5E2 /* Firmwares */,
 				00982CEB1C86A350003DA5E2 /* Font */,
 				00982CEF1C86A350003DA5E2 /* image */,
 				00982CFC1C86A350003DA5E2 /* localTimeZone */,
@@ -1051,12 +1040,8 @@
 				00982CF11C86A350003DA5E2 /* clockview600_color.png */,
 				00982CF21C86A350003DA5E2 /* clockViewHour.png */,
 				00982CF31C86A350003DA5E2 /* clockViewMinute.png */,
-				00982CF41C86A350003DA5E2 /* firmware_clock.png */,
-				00982CF51C86A350003DA5E2 /* Nevo660.png */,
 				00982CF61C86A350003DA5E2 /* nevo_wacth.png */,
 				00982CF71C86A350003DA5E2 /* nevo_wacth_selected.png */,
-				00982CF81C86A350003DA5E2 /* NevoPicture.png */,
-				00982CF91C86A350003DA5E2 /* NevoPicture960.png */,
 				00982CFB1C86A350003DA5E2 /* upgrade_clock.png */,
 			);
 			path = image;
@@ -1303,17 +1288,14 @@
 				00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */,
 				00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */,
 				00982BFD1C868C8A003DA5E2 /* GoalTableViewController.xib in Resources */,
-				00982D191C86A36C003DA5E2 /* Firmwares in Resources */,
 				00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */,
 				00982D101C86A350003DA5E2 /* nevo_wacth.png in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
-				00982D121C86A350003DA5E2 /* NevoPicture.png in Resources */,
 				00982BF01C868C8A003DA5E2 /* MyDroneController.xib in Resources */,
 				00982D081C86A350003DA5E2 /* SFCompactDisplay-Light.ttf in Resources */,
 				00982D111C86A350003DA5E2 /* nevo_wacth_selected.png in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
 				00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */,
-				00982D131C86A350003DA5E2 /* NevoPicture960.png in Resources */,
 				00982C031C868C8A003DA5E2 /* ProfileViewController.xib in Resources */,
 				008C5EE71C8D7CC900DCD12D /* MenuViewController.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */,
@@ -1325,7 +1307,6 @@
 				00982BFB1C868C8A003DA5E2 /* AddGoalViewController.xib in Resources */,
 				00982D071C86A350003DA5E2 /* SFCompactDisplay-Bold.ttf in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
-				00982D0E1C86A350003DA5E2 /* firmware_clock.png in Resources */,
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
 				00982CC51C868C8A003DA5E2 /* MBProgressHUD.bundle in Resources */,
@@ -1333,7 +1314,6 @@
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				CBA06BF91C8ECDDA00E3257B /* BuddyViewController.xib in Resources */,
 				00982D151C86A350003DA5E2 /* upgrade_clock.png in Resources */,
-				00982D0F1C86A350003DA5E2 /* Nevo660.png in Resources */,
 				CBA06BF41C8ECD4700E3257B /* ActivityViewController.xib in Resources */,
 				00982D0C1C86A350003DA5E2 /* clockViewHour.png in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,

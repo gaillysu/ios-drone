@@ -11,14 +11,16 @@ import TextFieldEffects
 import SMSegmentView
 
 
-class ProfileViewController: BaseViewController, SMSegmentViewDelegate {
+class ProfileViewController: BaseViewController {
 
     @IBOutlet weak var ageTextField: AkiraTextField!
     @IBOutlet weak var lengthTextField: AkiraTextField!
     @IBOutlet weak var firstNameTextField: AkiraTextField!
     @IBOutlet weak var lastNameTextField: AkiraTextField!
-    @IBOutlet weak var sexSegment: UIView!
-    @IBOutlet weak var metricsSegment: UIView!
+    @IBOutlet weak var weightTextField: AkiraTextField!
+    @IBOutlet weak var stridelengthTextField: AkiraTextField!
+    @IBOutlet weak var sexSegment: UISegmentedControl!
+    @IBOutlet weak var metricsSegment: UISegmentedControl!
 
     init() {
         super.init(nibName: "ProfileViewController", bundle: NSBundle.mainBundle())
@@ -31,23 +33,30 @@ class ProfileViewController: BaseViewController, SMSegmentViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let segmentProperties = ["OnSelectionBackgroundColour": UIColor.whiteColor(),"OffSelectionBackgroundColour": AppTheme.BASE_COLOR(),"OnSelectionTextColour": AppTheme.BASE_COLOR(),"OffSelectionTextColour": UIColor.whiteColor()]
-        let sexSegmentView = SMSegmentView(frame: CGRect(x: 2, y: 2, width: sexSegment.frame.size.width - 4, height: sexSegment.frame.size.height - 4), separatorColour: UIColor.whiteColor(), separatorWidth: 2, segmentProperties: segmentProperties)
-        sexSegmentView.addSegmentWithTitle("Male", onSelectionImage: nil, offSelectionImage: nil)
-        sexSegmentView.addSegmentWithTitle("Female", onSelectionImage: nil, offSelectionImage: nil)
-        let metricsSegmentView = SMSegmentView(frame: CGRect(x: 2, y: 2, width: metricsSegment.frame.size.width - 4, height: metricsSegment.frame.size.height - 4), separatorColour: UIColor.whiteColor(), separatorWidth: 2, segmentProperties: segmentProperties)
-        metricsSegmentView.addSegmentWithTitle("Metrics", onSelectionImage: nil, offSelectionImage: nil)
-        metricsSegmentView.addSegmentWithTitle("Imperical", onSelectionImage: nil, offSelectionImage: nil)
-        metricsSegment.addSubview(metricsSegmentView)
-        metricsSegmentView.delegate = self
-        sexSegment.addSubview(sexSegmentView)
-        sexSegmentView.delegate = self
     }
 
     @IBAction func saveButtonAction(sender: AnyObject) {
+        for value:AkiraTextField in [weightTextField,lengthTextField,stridelengthTextField] {
+            if(value.text!.isEmpty){
+                let alert:UIAlertView = UIAlertView(title: value.placeholder!+" is nil", message: nil, delegate: nil, cancelButtonTitle: "Cancel")
+                alert.show()
+                return
+            }
+        }
 
+        let weight:Int = Int(weightTextField.text!)!
+        let height:Int = Int(lengthTextField.text!)!
+        let gender:Bool = !Bool(sexSegment.selectedSegmentIndex)
+        let stridelength:Int = Int(stridelengthTextField.text!)!
+        AppDelegate.getAppDelegate().sendRequest(SetUserProfileRequest(weight: weight, height: height, gender: Int(gender), stridelength: stridelength))
     }
 
-    func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
-        
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        ageTextField.resignFirstResponder()
+        lengthTextField.resignFirstResponder()
+        firstNameTextField.resignFirstResponder()
+        lastNameTextField.resignFirstResponder()
+        weightTextField.resignFirstResponder()
+        stridelengthTextField.resignFirstResponder()
     }
 }
