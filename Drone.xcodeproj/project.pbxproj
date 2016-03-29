@@ -699,7 +699,6 @@
 				00982AF11C868C89003DA5E2 /* Alarm */,
 				00982AF31C868C89003DA5E2 /* DBModel */,
 				00982B0A1C868C89003DA5E2 /* Goal */,
-				00982B0D1C868C89003DA5E2 /* NotificationType */,
 				00982B0E1C868C89003DA5E2 /* Sleep */,
 				00982B101C868C89003DA5E2 /* TestMode */,
 				00982B121C868C89003DA5E2 /* WorldClock */,
@@ -774,13 +773,6 @@
 				00982B0C1C868C89003DA5E2 /* NumberOfStepsGoal.swift */,
 			);
 			path = Goal;
-			sourceTree = "<group>";
-		};
-		00982B0D1C868C89003DA5E2 /* NotificationType */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NotificationType;
 			sourceTree = "<group>";
 		};
 		00982B0E1C868C89003DA5E2 /* Sleep */ = {
