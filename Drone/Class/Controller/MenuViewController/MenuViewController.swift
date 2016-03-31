@@ -60,7 +60,7 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(MenuViewController.leftAction(_:)))
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Bookmarks, target: self, action: #selector(MenuViewController.rightAction(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(MenuViewController.rightAction(_:)))
     }
 
     // MARK: - left or right Action

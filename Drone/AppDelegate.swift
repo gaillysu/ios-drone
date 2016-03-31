@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
         sideViewController.rootViewController = UINavigationController(rootViewController: MenuViewController());
         sideViewController.leftViewController = ProfileViewController();
-        sideViewController.rightViewController = UINavigationController(rootViewController: SettingsViewController());
+        sideViewController.rightViewController = UINavigationController(rootViewController: MyDroneController());
         sideViewController.leftViewShowWidth = UIScreen.mainScreen().bounds.size.width
         sideViewController.rightViewShowWidth = UIScreen.mainScreen().bounds.size.width
         sideViewController.showBoundsShadow = false

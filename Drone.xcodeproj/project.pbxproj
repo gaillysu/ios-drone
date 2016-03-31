@@ -17,15 +17,13 @@
 		0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
-		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; };
-		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; };
-		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; };
-		008C5EE31C8D7A3600DCD12D /* GSMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE11C8D7A3600DCD12D /* GSMessages.framework */; };
-		008C5EE61C8D7CC900DCD12D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE41C8D7CC900DCD12D /* MenuViewController.swift */; };
-		008C5EE71C8D7CC900DCD12D /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C5EE51C8D7CC900DCD12D /* MenuViewController.xib */; };
+		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		008C5EE31C8D7A3600DCD12D /* GSMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE11C8D7A3600DCD12D /* GSMessages.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */; };
 		008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */; };
-		0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */; };
+		0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A691C868B15003DA5E2 /* AppDelegate.swift */; };
 		00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00982A701C868B15003DA5E2 /* Assets.xcassets */; };
 		00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */; };
@@ -164,20 +162,23 @@
 		00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFD1C86A350003DA5E2 /* localTimeZone.plist */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		00BC14961C925BC100E43F44 /* SystemEventCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC14951C925BC100E43F44 /* SystemEventCommand.swift */; };
-		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; };
+		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
-		00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */; };
+		00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		00F1AF441CACD82600CB9A15 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */; };
+		00F1AF451CACD82600CB9A15 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3B1CACD82600CB9A15 /* ActivityViewController.xib */; };
+		00F1AF461CACD82600CB9A15 /* AddDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */; };
+		00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */; };
+		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
+		00F1AF491CACD82600CB9A15 /* BuddyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF421CACD82600CB9A15 /* BuddyViewController.swift */; };
+		00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF431CACD82600CB9A15 /* BuddyViewController.xib */; };
+		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
+		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
 		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
-		9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */; };
-		9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C51C966E300000E024 /* TextFieldEffects.framework */; };
-		9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C71C9678E30000E024 /* SMSegmentView.framework */; };
-		9EDE1DE81C96B07D0050A0C9 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDE1DE71C96B07D0050A0C9 /* SlideMenuControllerSwift.framework */; };
-		CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */; };
-		CBA06BF21C8ECD2700E3257B /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BF11C8ECD2700E3257B /* ActivityViewController.swift */; };
-		CBA06BF41C8ECD4700E3257B /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA06BF31C8ECD4700E3257B /* ActivityViewController.xib */; };
-		CBA06BF71C8ECDCF00E3257B /* BuddyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BF61C8ECDCF00E3257B /* BuddyViewController.swift */; };
-		CBA06BF91C8ECDDA00E3257B /* BuddyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA06BF81C8ECDDA00E3257B /* BuddyViewController.xib */; };
-		CBA06BFC1C8ECE5700E3257B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFB1C8ECE5700E3257B /* BaseViewController.swift */; };
+		9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C51C966E300000E024 /* TextFieldEffects.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C71C9678E30000E024 /* SMSegmentView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
 /* End PBXBuildFile section */
 
@@ -214,8 +215,6 @@
 		008C5EDE1C8D655700DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
 		008C5EE01C8D7A3600DCD12D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
 		008C5EE11C8D7A3600DCD12D /* GSMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GSMessages.framework; path = "Pods/../build/Debug-iphoneos/GSMessages.framework"; sourceTree = "<group>"; };
-		008C5EE41C8D7CC900DCD12D /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		008C5EE51C8D7CC900DCD12D /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Drone/Class/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewCell.xib; path = Drone/Class/MenuViewCell.xib; sourceTree = SOURCE_ROOT; };
 		0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftEventBus.framework; path = "Pods/../build/Debug-iphoneos/SwiftEventBus.framework"; sourceTree = "<group>"; };
@@ -375,6 +374,15 @@
 		00BC14971C9292DE00E43F44 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Pods/../build/Debug-iphoneos/Timepiece.framework"; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
 		00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YRSideViewController.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/YRSideViewController.framework"; sourceTree = "<group>"; };
+		00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		00F1AF3B1CACD82600CB9A15 /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
+		00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceController.swift; sourceTree = "<group>"; };
+		00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceController.xib; sourceTree = "<group>"; };
+		00F1AF401CACD82600CB9A15 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		00F1AF421CACD82600CB9A15 /* BuddyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyViewController.swift; sourceTree = "<group>"; };
+		00F1AF431CACD82600CB9A15 /* BuddyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuddyViewController.xib; sourceTree = "<group>"; };
+		00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		162629CC61821D5C419DE763 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50E933362E2354AB07386 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -383,11 +391,6 @@
 		9EB474C71C9678E30000E024 /* SMSegmentView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SMSegmentView.framework; path = "Pods/../build/Debug-iphoneos/SMSegmentView.framework"; sourceTree = "<group>"; };
 		9EDE1DE71C96B07D0050A0C9 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = "Pods/../build/Debug-iphoneos/SlideMenuControllerSwift.framework"; sourceTree = "<group>"; };
 		CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircleProgressView.framework; path = "Pods/../build/Debug-iphoneos/CircleProgressView.framework"; sourceTree = "<group>"; };
-		CBA06BF11C8ECD2700E3257B /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
-		CBA06BF31C8ECD4700E3257B /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
-		CBA06BF61C8ECDCF00E3257B /* BuddyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyViewController.swift; sourceTree = "<group>"; };
-		CBA06BF81C8ECDDA00E3257B /* BuddyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuddyViewController.xib; sourceTree = "<group>"; };
-		CBA06BFB1C8ECE5700E3257B /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,7 +400,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */,
-				9EDE1DE81C96B07D0050A0C9 /* SlideMenuControllerSwift.framework in Frameworks */,
 				9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */,
 				9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */,
 				00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */,
@@ -500,13 +502,14 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CBA06BF01C8ECD1200E3257B /* ActivityViewController */,
+				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
+				00F1AF391CACD82600CB9A15 /* ActivityViewController */,
+				00F1AF3C1CACD82600CB9A15 /* AddDeviceController */,
+				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
+				00F1AF411CACD82600CB9A15 /* BuddyViewController */,
 				CBA06BED1C8EC27E00E3257B /* AddWorldClockController */,
-				CBA06BFA1C8ECE4300E3257B /* BaseViewController */,
-				CBA06BF51C8ECD9F00E3257B /* BuddyViewController */,
 				00982ABB1C868C89003DA5E2 /* GoalController */,
 				00982AA91C868C89003DA5E2 /* LoginController */,
-				CBA06BE91C8EB2A900E3257B /* MenuViewController */,
 				00982AAC1C868C89003DA5E2 /* MyDroneController */,
 				00982AB31C868C89003DA5E2 /* NevoOtaController */,
 				00982AC51C868C89003DA5E2 /* ProfileViewController */,
@@ -1058,6 +1061,50 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
+		00F1AF391CACD82600CB9A15 /* ActivityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */,
+				00F1AF3B1CACD82600CB9A15 /* ActivityViewController.xib */,
+			);
+			path = ActivityViewController;
+			sourceTree = "<group>";
+		};
+		00F1AF3C1CACD82600CB9A15 /* AddDeviceController */ = {
+			isa = PBXGroup;
+			children = (
+				00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */,
+				00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */,
+			);
+			path = AddDeviceController;
+			sourceTree = "<group>";
+		};
+		00F1AF3F1CACD82600CB9A15 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00F1AF401CACD82600CB9A15 /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		00F1AF411CACD82600CB9A15 /* BuddyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00F1AF421CACD82600CB9A15 /* BuddyViewController.swift */,
+				00F1AF431CACD82600CB9A15 /* BuddyViewController.xib */,
+			);
+			path = BuddyViewController;
+			sourceTree = "<group>";
+		};
+		00F1AF4B1CACD9A100CB9A15 /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */,
+				00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */,
+			);
+			path = MenuViewController;
+			sourceTree = "<group>";
+		};
 		2C0678C290560E05E19DAFCE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1086,15 +1133,6 @@
 				3551B5D0AAFC39213D5071A3 /* Pods.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CBA06BE91C8EB2A900E3257B /* MenuViewController */ = {
-			isa = PBXGroup;
-			children = (
-				008C5EE41C8D7CC900DCD12D /* MenuViewController.swift */,
-				008C5EE51C8D7CC900DCD12D /* MenuViewController.xib */,
-			);
-			name = MenuViewController;
 			sourceTree = "<group>";
 		};
 		CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */ = {
@@ -1139,32 +1177,6 @@
 				00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */,
 			);
 			name = AddWorldClockView;
-			sourceTree = "<group>";
-		};
-		CBA06BF01C8ECD1200E3257B /* ActivityViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CBA06BF11C8ECD2700E3257B /* ActivityViewController.swift */,
-				CBA06BF31C8ECD4700E3257B /* ActivityViewController.xib */,
-			);
-			name = ActivityViewController;
-			sourceTree = "<group>";
-		};
-		CBA06BF51C8ECD9F00E3257B /* BuddyViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CBA06BF61C8ECDCF00E3257B /* BuddyViewController.swift */,
-				CBA06BF81C8ECDDA00E3257B /* BuddyViewController.xib */,
-			);
-			name = BuddyViewController;
-			sourceTree = "<group>";
-		};
-		CBA06BFA1C8ECE4300E3257B /* BaseViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CBA06BFB1C8ECE5700E3257B /* BaseViewController.swift */,
-			);
-			name = BaseViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1285,19 +1297,21 @@
 				00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */,
 				00982BFD1C868C8A003DA5E2 /* GoalTableViewController.xib in Resources */,
 				00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */,
+				00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */,
 				00982D101C86A350003DA5E2 /* nevo_wacth.png in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				00982BF01C868C8A003DA5E2 /* MyDroneController.xib in Resources */,
 				00982D081C86A350003DA5E2 /* SFCompactDisplay-Light.ttf in Resources */,
 				00982D111C86A350003DA5E2 /* nevo_wacth_selected.png in Resources */,
+				00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
 				00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */,
 				00982C031C868C8A003DA5E2 /* ProfileViewController.xib in Resources */,
-				008C5EE71C8D7CC900DCD12D /* MenuViewController.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */,
 				00982D0D1C86A350003DA5E2 /* clockViewMinute.png in Resources */,
 				00982D091C86A350003DA5E2 /* SFCompactDisplay-Thin.ttf in Resources */,
 				00982D0B1C86A350003DA5E2 /* clockview600_color.png in Resources */,
+				00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
 				00982CDF1C868F62003DA5E2 /* SleepViewController.xib in Resources */,
 				00982BFB1C868C8A003DA5E2 /* AddGoalViewController.xib in Resources */,
@@ -1306,11 +1320,10 @@
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
 				00982CC51C868C8A003DA5E2 /* MBProgressHUD.bundle in Resources */,
+				00F1AF451CACD82600CB9A15 /* ActivityViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
-				CBA06BF91C8ECDDA00E3257B /* BuddyViewController.xib in Resources */,
 				00982D151C86A350003DA5E2 /* upgrade_clock.png in Resources */,
-				CBA06BF41C8ECD4700E3257B /* ActivityViewController.xib in Resources */,
 				00982D0C1C86A350003DA5E2 /* clockViewHour.png in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
 			);
@@ -1392,6 +1405,7 @@
 				00982C481C868C8A003DA5E2 /* SetAppConfigRequest.swift in Sources */,
 				00982BF31C868C8A003DA5E2 /* MyNevoView.swift in Sources */,
 				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
+				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
 				00982C621C868C8A003DA5E2 /* DailyTrackerNevoPacket.swift in Sources */,
 				00BC14961C925BC100E43F44 /* SystemEventCommand.swift in Sources */,
@@ -1416,6 +1430,7 @@
 				00982BEF1C868C8A003DA5E2 /* MyDroneController.swift in Sources */,
 				00982C161C868C8A003DA5E2 /* AddWorldClockController.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
+				00F1AF461CACD82600CB9A15 /* AddDeviceController.swift in Sources */,
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */,
 				00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */,
@@ -1428,13 +1443,13 @@
 				00982C1E1C868C8A003DA5E2 /* DaySleep.swift in Sources */,
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
 				00982BED1C868C8A003DA5E2 /* LoginController.swift in Sources */,
-				CBA06BF71C8ECDCF00E3257B /* BuddyViewController.swift in Sources */,
 				00982C5C1C868C8A003DA5E2 /* NevoOTAPacketProfile.swift in Sources */,
 				00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */,
 				00982C4C1C868C8A003DA5E2 /* GetBatteryRequest.swift in Sources */,
 				00982C2B1C868C8A003DA5E2 /* GoalModel.swift in Sources */,
 				00982CC61C868C8A003DA5E2 /* MBProgressHUD.m in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
+				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
 				00982C651C868C8A003DA5E2 /* SetAlarmRequest.swift in Sources */,
 				00982C241C868C8A003DA5E2 /* NevoDBModel.m in Sources */,
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
@@ -1443,7 +1458,6 @@
 				00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */,
 				00982BF51C868C8A003DA5E2 /* DeviceScannerView.swift in Sources */,
 				0043FBE61CA131BD00638BD1 /* UpdateNotificationRequest.swift in Sources */,
-				CBA06BF21C8ECD2700E3257B /* ActivityViewController.swift in Sources */,
 				00982CCC1C868C8A003DA5E2 /* NevoHK.swift in Sources */,
 				00982C381C868C8A003DA5E2 /* WorldClock.swift in Sources */,
 				00982C261C868C8A003DA5E2 /* AlarmModel.swift in Sources */,
@@ -1463,6 +1477,7 @@
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
 				00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
+				00F1AF441CACD82600CB9A15 /* ActivityViewController.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
 				00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */,
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,
@@ -1480,8 +1495,6 @@
 				008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */,
 				00982C1B1C868C8A003DA5E2 /* WorldClockController.swift in Sources */,
 				00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */,
-				CBA06BFC1C8ECE5700E3257B /* BaseViewController.swift in Sources */,
-				008C5EE61C8D7CC900DCD12D /* MenuViewController.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
 				00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */,
 				00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */,
@@ -1500,6 +1513,7 @@
 				00982C411C868C8A003DA5E2 /* WaterWaveView.m in Sources */,
 				00982BFF1C868C8A003DA5E2 /* GoalTableViewCell.swift in Sources */,
 				00982C041C868C8A003DA5E2 /* RegisterController.swift in Sources */,
+				00F1AF491CACD82600CB9A15 /* BuddyViewController.swift in Sources */,
 				0043FBE41CA12A6D00638BD1 /* GetNotificationRequest.swift in Sources */,
 				00982C551C868C8A003DA5E2 /* SetWorldClockRequest.swift in Sources */,
 				005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */,
