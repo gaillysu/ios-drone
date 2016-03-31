@@ -166,6 +166,7 @@
 		00BC14961C925BC100E43F44 /* SystemEventCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC14951C925BC100E43F44 /* SystemEventCommand.swift */; };
 		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
+		00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */; };
 		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
 		9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */; };
 		9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C51C966E300000E024 /* TextFieldEffects.framework */; };
@@ -373,6 +374,7 @@
 		00BC14951C925BC100E43F44 /* SystemEventCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemEventCommand.swift; sourceTree = "<group>"; };
 		00BC14971C9292DE00E43F44 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Pods/../build/Debug-iphoneos/Timepiece.framework"; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
+		00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YRSideViewController.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/YRSideViewController.framework"; sourceTree = "<group>"; };
 		162629CC61821D5C419DE763 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50E933362E2354AB07386 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */,
 				9EDE1DE81C96B07D0050A0C9 /* SlideMenuControllerSwift.framework in Frameworks */,
 				9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */,
 				9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */,
@@ -1067,6 +1070,7 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */,
 				9EDE1DE71C96B07D0050A0C9 /* SlideMenuControllerSwift.framework */,
 				9EB474C71C9678E30000E024 /* SMSegmentView.framework */,
 				9EB474C51C966E300000E024 /* TextFieldEffects.framework */,

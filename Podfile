@@ -13,4 +13,4 @@ pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProg
 pod 'Timepiece'
 pod 'TextFieldEffects'
 pod 'SMSegmentView', '~> 1.1'
-pod 'SlideMenuControllerSwift'
+pod 'YRSideViewController', '~> 1.0'

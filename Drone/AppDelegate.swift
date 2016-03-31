@@ -12,7 +12,7 @@ import HealthKit
 import Alamofire
 import FMDB
 import SwiftEventBus
-import SlideMenuControllerSwift
+import YRSideViewController
 
 let nevoDBDFileURL:String = "nevoDBName";
 let nevoDBNames:String = "nevo.sqlite";
@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     private var todaySleepData:NSMutableArray = NSMutableArray(capacity: 2)
     private var disConnectAlert:UIAlertView?
+    let sideViewController:YRSideViewController = YRSideViewController()
 
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
@@ -44,29 +45,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
-        
-        //Start the logo for the first time
-        if(!NSUserDefaults.standardUserDefaults().boolForKey("everLaunched")){
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "everLaunched")
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
-        }else{
-            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstLaunch")
-        }
-
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
-        SlideMenuOptions.hideStatusBar = false
-        SlideMenuOptions.opacityViewBackgroundColor = UIColor.whiteColor()
-        SlideMenuOptions.leftViewWidth = UIScreen.mainScreen().bounds.size.width
-        SlideMenuOptions.rightViewWidth = UIScreen.mainScreen().bounds.size.width
-        
-        
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
-        let slideMenuViewController:SlideMenuController = SlideMenuController(mainViewController: navigationController, leftMenuViewController: ProfileViewController(),rightMenuViewController: SettingsViewController())
-        self.window?.rootViewController = slideMenuViewController
 
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
+
+        sideViewController.rootViewController = UINavigationController(rootViewController: MenuViewController());
+        sideViewController.leftViewController = ProfileViewController();
+        sideViewController.rightViewController = UINavigationController(rootViewController: SettingsViewController());
+        sideViewController.leftViewShowWidth = UIScreen.mainScreen().bounds.size.width
+        sideViewController.rightViewShowWidth = UIScreen.mainScreen().bounds.size.width
+        sideViewController.showBoundsShadow = false
+        sideViewController.needSwipeShowMenu = true
+        sideViewController.rootViewMoveBlock = { (rootView, orginFrame, xoffset) -> Void in
+            rootView.frame=CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
+        }
+
+        self.window?.rootViewController = sideViewController
         self.window?.makeKeyAndVisible() 
         return true
 
@@ -133,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func setSystemConfig() {
-        sendRequest(SetSystemConfig())
+        //sendRequest(SetSystemConfig())
     }
 
     func setRTC() {

@@ -9,11 +9,11 @@ PODS:
   - FMDB/standard (2.6)
   - GSMessages (1.2.0)
   - NVActivityIndicatorView (2.3)
-  - SlideMenuControllerSwift (2.0.5)
   - SMSegmentView (1.1)
   - SwiftEventBus (1.1.0)
   - TextFieldEffects (1.1.1)
   - Timepiece (0.4.2)
+  - YRSideViewController (1.0.6)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -22,11 +22,11 @@ DEPENDENCIES:
   - FMDB
   - GSMessages
   - NVActivityIndicatorView
-  - SlideMenuControllerSwift
   - SMSegmentView (~> 1.1)
   - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
   - TextFieldEffects
   - Timepiece
+  - YRSideViewController (~> 1.0)
 
 EXTERNAL SOURCES:
   CircleProgressView:
@@ -49,10 +49,10 @@ SPEC CHECKSUMS:
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   GSMessages: 92a2aadb81bd7505e7375d7f70a58a2f49eb6e25
   NVActivityIndicatorView: c7ef25ef527ab5e51b00322cb1ddd58681bcf2a3
-  SlideMenuControllerSwift: 9dcae36265e14c4f42e729f212463beb60d2cf96
   SMSegmentView: a99862f36ea73478558ae665c209cb80c0d4f059
   SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
   TextFieldEffects: a1a78efeb93b65c611ad287b28a068c9a4a5f5b4
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
+  YRSideViewController: 08a659ef4b2c1c32dc31d1d8ee46d6019de1363a
 
 COCOAPODS: 0.39.0

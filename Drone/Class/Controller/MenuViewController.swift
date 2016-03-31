@@ -35,7 +35,6 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         collectionView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: identifier)
         AppDelegate.getAppDelegate().startConnect(true)
 
-        self.slideMenuController()?.addLeftBarButtonWithImage(UIImage(named: "user")!)
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_RAWPACKET_DATA_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
             NSLog("SWIFTEVENT_BUS_RAWPACKET_DATA_KEY  :\(data)")
@@ -58,12 +57,22 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
                 })
             }
         }
-        
-        if let controller = self.navigationController?.slideMenuController() {
-            controller.openLeft()
-        }
+
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(MenuViewController.leftAction(_:)))
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Bookmarks, target: self, action: #selector(MenuViewController.rightAction(_:)))
     }
-    
+
+    // MARK: - left or right Action
+    func leftAction(item:UIBarButtonItem) {
+        AppDelegate.getAppDelegate().sideViewController.showLeftViewController(true)
+    }
+
+    func rightAction(item:UIBarButtonItem) {
+        AppDelegate.getAppDelegate().sideViewController.showRightViewController(true)
+    }
+
+    // MARK: - UICollectionViewDataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1;
     }
@@ -79,13 +88,18 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
         cell.selected = true;
         return cell
     }
-    
+
+    // MARK: - UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width, height: (collectionView.frame.height/3) - 21)
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let item:MenuItem = self.menuItems[indexPath.row]
         self.navigationController?.pushViewController(item.menuViewControllerItem, animated: true)
+//        self.presentViewController(UINavigationController(rootViewController: item.menuViewControllerItem), animated: true) { 
+//
+//        }
+        
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
     }
     
