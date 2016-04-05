@@ -339,54 +339,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
 
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
-                let data:[UInt8] = NSData2Bytes(packet.getRawData())
-                var dailySteps:Int = Int(data[7])
-                dailySteps =  dailySteps + Int(data[8])<<8
-                dailySteps =  dailySteps + Int(data[9])<<16
-                dailySteps =  dailySteps + Int(data[10])<<24
-
-                var goal:Int = Int(data[2] )
-                goal =  goal + Int(data[3])<<8
-                goal =  goal + Int(data[4])<<16
-                goal =  goal + Int(data[5])<<24
-                let stepsDict:[String:Int] = ["dailySteps":dailySteps,"goal":goal]
+                let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
+                let stepsDict:[String:Int] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal()]
 
                 SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
             }
 
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
-                let syncStatus:[UInt8] = NSData2Bytes(packet.getRawData())
-                var timerInterval:Int = Int(syncStatus[2])
-                timerInterval =  timerInterval + Int(syncStatus[3])<<8
-                timerInterval =  timerInterval + Int(syncStatus[4])<<16
-                timerInterval =  timerInterval + Int(syncStatus[5])<<24
+                let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
 
-                var dailySteps:Int = Int(syncStatus[6])
-                dailySteps =  dailySteps + Int(syncStatus[7])<<8
+                NSLog("dailySteps:\(activityPacket.getStepCount()),dailyStepsDate:\(activityPacket.gettimerInterval()),status:\(activityPacket.getFIFOStatus())")
 
-                let status:Int = Int(syncStatus[8])
-
-                NSLog("dailySteps:\(dailySteps),dailyStepsDate:\(timerInterval),status:\(status)")
-
-                if (dailySteps != 0) {
-                    let stepsArray = UserSteps.getCriteria("WHERE date = \(timerInterval)")
+                if (activityPacket.getStepCount() != 0) {
+                    let stepsArray = UserSteps.getCriteria("WHERE date = \(activityPacket.gettimerInterval())")
                     if(stepsArray.count>0) {
                         let step:UserSteps = stepsArray[0] as! UserSteps
                         AppTheme.DLog("Data that has been saved····")
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(dailySteps)", "hourlysteps": "\(dailySteps)","date":timerInterval])
+                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(activityPacket.getStepCount())", "hourlysteps": "\(activityPacket.getStepCount())","date":activityPacket.gettimerInterval()])
                         stepsModel.update()
                     }else {
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(dailySteps)",  "hourlysteps": "\(dailySteps)", "date":timerInterval])
+                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(activityPacket.getStepCount())",  "hourlysteps": "\(activityPacket.getStepCount())", "date":activityPacket.gettimerInterval()])
                         stepsModel.add({ (id, completion) -> Void in
 
                         })
                     }
                 }
-                let bigData:[String:Int] = ["timerInterval":timerInterval,"dailySteps":dailySteps]
+                let bigData:[String:Int] = ["timerInterval":activityPacket.gettimerInterval(),"dailySteps":activityPacket.getStepCount()]
                 SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:bigData)
 
                 //Download more data
-                if(status == ActivityDataStatus.MoreData.rawValue) {
+                if(activityPacket.getFIFOStatus() == ActivityDataStatus.MoreData.rawValue) {
                     syncActivityData()
                 }else{
                     SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)

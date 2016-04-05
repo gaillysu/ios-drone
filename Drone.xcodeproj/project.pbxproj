@@ -15,6 +15,8 @@
 		0043FBEA1CA1404500638BD1 /* GetContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */; };
 		0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */; };
 		0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */; };
+		004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */; };
+		004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E91CB35DDA009D053C /* ActivityPacket.swift */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
 		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -208,6 +210,8 @@
 		0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsApplicationsRequest.swift; sourceTree = "<group>"; };
+		004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsGoalPacket.swift; sourceTree = "<group>"; };
+		004ED1E91CB35DDA009D053C /* ActivityPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPacket.swift; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
 		005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
 		008C5EDA1C8D64F800DCD12D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
@@ -943,6 +947,8 @@
 				00982B4C1C868C89003DA5E2 /* DailyTrackerNevoPacket.swift */,
 				00982B4D1C868C89003DA5E2 /* NevoPacket.swift */,
 				00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */,
+				004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */,
+				004ED1E91CB35DDA009D053C /* ActivityPacket.swift */,
 			);
 			path = Packet;
 			sourceTree = "<group>";
@@ -1448,6 +1454,7 @@
 				00982C4C1C868C8A003DA5E2 /* GetBatteryRequest.swift in Sources */,
 				00982C2B1C868C8A003DA5E2 /* GoalModel.swift in Sources */,
 				00982CC61C868C8A003DA5E2 /* MBProgressHUD.m in Sources */,
+				004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
 				00982C651C868C8A003DA5E2 /* SetAlarmRequest.swift in Sources */,
@@ -1491,6 +1498,7 @@
 				00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
 				00982C3A1C868C8A003DA5E2 /* MainTabBarController.swift in Sources */,
+				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,
 				00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */,
 				008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */,
 				00982C1B1C868C8A003DA5E2 /* WorldClockController.swift in Sources */,
