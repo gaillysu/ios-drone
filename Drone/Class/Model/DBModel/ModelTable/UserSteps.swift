@@ -11,7 +11,7 @@ import UIKit
 class UserSteps: NSObject,BaseEntryDatabaseHelper {
     var id:Int = 0
     var steps:Int = 0
-    var hourlysteps:String = ""
+    var distance:Int = 0
     var date:NSTimeInterval = 0
 
     private var stepsModel:StepsModel = StepsModel()
@@ -20,13 +20,13 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
         super.init()
         self.setValue(keyDict.objectForKey("id"), forKey: "id")
         self.setValue(keyDict.objectForKey("steps"), forKey: "steps")
-        self.setValue(keyDict.objectForKey("hourlysteps"), forKey: "hourlysteps")
+        self.setValue(keyDict.objectForKey("distance"), forKey: "distance")
         self.setValue(keyDict.objectForKey("date"), forKey: "date")
     }
 
     func add(result:((id:Int?,completion:Bool?) -> Void)){
         stepsModel.steps = steps
-        stepsModel.hourlysteps = hourlysteps
+        stepsModel.distance = distance
         stepsModel.date = date
 
         stepsModel.add { (id, completion) -> Void in
@@ -37,7 +37,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
     func update()->Bool{
         stepsModel.id = id
         stepsModel.steps = steps
-        stepsModel.hourlysteps = hourlysteps
+        stepsModel.distance = distance
         stepsModel.date = date
         return stepsModel.update()
     }
@@ -56,7 +56,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let stepsModel:StepsModel = model as! StepsModel
-            let presets:UserSteps = UserSteps(keyDict: ["id":stepsModel.id, "steps":stepsModel.steps, "hourlysteps":stepsModel.hourlysteps, "date":stepsModel.date])
+            let presets:UserSteps = UserSteps(keyDict: ["id":stepsModel.id, "steps":stepsModel.steps, "distance":stepsModel.distance, "date":stepsModel.date])
             allArray.addObject(presets)
         }
         return allArray
@@ -67,7 +67,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let stepsModel:StepsModel = model as! StepsModel
-            let presets:UserSteps = UserSteps(keyDict: ["id":stepsModel.id, "steps":stepsModel.steps,  "hourlysteps":stepsModel.hourlysteps, "date":stepsModel.date])
+            let presets:UserSteps = UserSteps(keyDict: ["id":stepsModel.id, "steps":stepsModel.steps,  "distance":stepsModel.distance, "date":stepsModel.date])
             allArray.addObject(presets)
         }
         return allArray

@@ -218,16 +218,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         userDefaults.synchronize()
     }
 
-    // MARK: - UIAlertViewDelegate
-    /**
-    See UIAlertViewDelegate
-    */
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int){
-
-        disConnectAlert = nil
-
-    }
-
     // MARK: - ConnectionController protocol
     func  getFirmwareVersion() -> NSString{
         return isConnected() ? self.mConnectionController!.getFirmwareVersion() : NSString()
@@ -355,10 +345,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                     if(stepsArray.count>0) {
                         let step:UserSteps = stepsArray[0] as! UserSteps
                         AppTheme.DLog("Data that has been saved····")
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(activityPacket.getStepCount())", "hourlysteps": "\(activityPacket.getStepCount())","date":activityPacket.gettimerInterval()])
+                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(activityPacket.getStepCount())", "distance": "\(activityPacket.getStepDistance())","date":activityPacket.gettimerInterval()])
                         stepsModel.update()
                     }else {
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(activityPacket.getStepCount())",  "hourlysteps": "\(activityPacket.getStepCount())", "date":activityPacket.gettimerInterval()])
+                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(activityPacket.getStepCount())",  "distance": "\(activityPacket.getStepDistance())", "date":activityPacket.gettimerInterval()])
                         stepsModel.add({ (id, completion) -> Void in
 
                         })
@@ -402,16 +392,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
         AppTheme.DLog("Build in software version: \(mcuver), firmware version: \(blever)")
         SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.APPLICATION ? ["BLE":version]:["MCU":version])
-
-        if ((whichfirmware == DfuFirmwareTypes.SOFTDEVICE  && version.integerValue == mcuver)
-            || (whichfirmware == DfuFirmwareTypes.APPLICATION  && version.integerValue == blever)) {
-            //for tutorial screen, don't popup update dialog
-            if !mAlertUpdateFW {
-                mAlertUpdateFW = true
-                let alert :UIAlertView = UIAlertView(title: NSLocalizedString("Firmware Upgrade", comment: ""), message: NSLocalizedString("FirmwareAlertMessage", comment: ""), delegate: nil, cancelButtonTitle: NSLocalizedString("ok", comment: ""))
-                alert.show()
-            }
-        }
     }
 
     /**

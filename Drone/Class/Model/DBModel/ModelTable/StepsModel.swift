@@ -12,7 +12,7 @@ import FMDB
 class StepsModel: UserDatabaseHelper {
 
     var steps:Int = 0
-    var hourlysteps:String = ""
+    var distance:String = ""
     var date:NSTimeInterval = 0
 
     override init() {
