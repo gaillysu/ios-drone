@@ -14,7 +14,7 @@ This is the regular Nevo Profile
 It is used to send most common commands to Nevo
 🚧🚧🚧Backbone Class : Modify with care🚧🚧🚧
 */
-class NevoProfile : Profile {
+class DroneProfile : Profile {
 
     var CONTROL_SERVICE:CBUUID {
         return CBUUID(string: "F0BA3020-6CAC-4C99-9089-4B0A1DF45002");

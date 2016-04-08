@@ -14,7 +14,7 @@ All requests that should be sent to nevo have to extend this class
 */
 class NevoRequest : Request {
     func getTargetProfile() -> Profile {
-        return NevoProfile()
+        return DroneProfile()
     }
     
     func getRawData() -> NSData {

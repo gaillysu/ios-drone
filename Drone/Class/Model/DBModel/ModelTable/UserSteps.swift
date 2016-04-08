@@ -26,7 +26,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
 
     func add(result:((id:Int?,completion:Bool?) -> Void)){
         stepsModel.steps = steps
-        stepsModel.distance = distance
+        stepsModel.distance = "\(distance)"
         stepsModel.date = date
 
         stepsModel.add { (id, completion) -> Void in
@@ -37,7 +37,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
     func update()->Bool{
         stepsModel.id = id
         stepsModel.steps = steps
-        stepsModel.distance = distance
+        stepsModel.distance = "\(distance)"
         stepsModel.date = date
         return stepsModel.update()
     }

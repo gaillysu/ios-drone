@@ -362,4 +362,46 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         }
         return users;
     }
+
+    /**
+     * update Table
+     * succes return true, failure return false
+     */
+    class func updateTable()->Bool {
+        let db:FMDatabase = FMDatabase(path: AppDelegate.dbPath())
+        if(db.open()) {
+            NSLog("数据库打开失败!数据库路径:\(AppDelegate.dbPath())");
+            return false;
+        }
+
+        var tableName:NSString = NSStringFromClass(self.classForCoder())
+        tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
+        let columns:NSMutableArray = NSMutableArray()
+        let resultSet:FMResultSet = db.getTableSchema(tableName as String)
+        while (resultSet.next()) {
+            let column:NSString = resultSet.stringForColumn("name")
+            columns.addObject(column)
+        }
+
+        let dict:NSDictionary = self.getAllProperties();
+        let properties:NSArray = dict.objectForKey("name") as! NSArray
+        let filterPredicate:NSPredicate = NSPredicate(format: "NOT (SELF IN %@)",columns)
+        //过滤数组
+        let resultArray:NSArray = properties.filteredArrayUsingPredicate(filterPredicate)
+
+        for column in resultArray {
+            let index:Int = properties.indexOfObject(column)
+            let proType:String = (dict.objectForKey("type") as! NSArray).objectAtIndex(index) as! String
+            let fieldSql:String = "\(column) \(proType)"
+            //[NSString stringWithFormat:@"%@ %@",column,proType];
+            let sql:String = String(format: "ALTER TABLE %@ ADD COLUMN %@ ",tableName,fieldSql)
+            var args:CVaListPointer?
+            if (db.executeUpdate(sql, withVAList: args!)) {
+                return false;
+            }
+        }
+        db.close();
+        return true
+    }
+
 }

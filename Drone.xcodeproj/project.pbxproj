@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */; };
+		0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */; };
 		0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028F1401C97C08000C8E742 /* EventBusKeys.swift */; };
 		0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBE11CA11C9800638BD1 /* SetNotificationRequest.swift */; };
 		0043FBE41CA12A6D00638BD1 /* GetNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBE31CA12A6D00638BD1 /* GetNotificationRequest.swift */; };
@@ -73,16 +75,13 @@
 		00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF01C868C89003DA5E2 /* RealTimeCountSteps.swift */; };
 		00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF21C868C89003DA5E2 /* Alarm.swift */; };
 		00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF51C868C89003DA5E2 /* BaseEntryDatabaseHelper.swift */; };
-		00982C231C868C8A003DA5E2 /* NevoDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF71C868C89003DA5E2 /* NevoDBHelper.m */; };
-		00982C241C868C8A003DA5E2 /* NevoDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF91C868C89003DA5E2 /* NevoDBModel.m */; };
-		00982C251C868C8A003DA5E2 /* UserDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFA1C868C89003DA5E2 /* UserDatabaseHelper.swift */; };
 		00982C261C868C8A003DA5E2 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFC1C868C89003DA5E2 /* AlarmModel.swift */; };
 		00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFE1C868C89003DA5E2 /* HealthModel.swift */; };
 		00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B001C868C89003DA5E2 /* UserGoal.swift */; };
 		00982C2B1C868C8A003DA5E2 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B011C868C89003DA5E2 /* GoalModel.swift */; };
 		00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B021C868C89003DA5E2 /* SleepModel.swift */; };
 		00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B031C868C89003DA5E2 /* StepsModel.swift */; };
-		00982C2E1C868C8A003DA5E2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B041C868C89003DA5E2 /* User.swift */; };
+		00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B041C868C89003DA5E2 /* UserProfile.swift */; };
 		00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B051C868C89003DA5E2 /* UserAlarm.swift */; };
 		00982C301C868C8A003DA5E2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B061C868C89003DA5E2 /* UserModel.swift */; };
 		00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B081C868C89003DA5E2 /* UserSleep.swift */; };
@@ -119,7 +118,7 @@
 		00982C541C868C8A003DA5E2 /* SetSystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3A1C868C89003DA5E2 /* SetSystemConfig.swift */; };
 		00982C551C868C8A003DA5E2 /* SetWorldClockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3B1C868C89003DA5E2 /* SetWorldClockRequest.swift */; };
 		00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3D1C868C89003DA5E2 /* WriteSettingRequest.swift */; };
-		00982C581C868C8A003DA5E2 /* NevoProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3E1C868C89003DA5E2 /* NevoProfile.swift */; };
+		00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3E1C868C89003DA5E2 /* DroneProfile.swift */; };
 		00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982B421C868C89003DA5E2 /* IntelHex2BinConverter.m */; };
 		00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B431C868C89003DA5E2 /* NevoOTAControllerProfile.swift */; };
 		00982C5B1C868C8A003DA5E2 /* NevoOTAModeProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B441C868C89003DA5E2 /* NevoOTAModeProfile.swift */; };
@@ -202,6 +201,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfileModel.swift; sourceTree = "<group>"; };
+		0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabaseHelper.swift; sourceTree = "<group>"; };
 		0028F1401C97C08000C8E742 /* EventBusKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusKeys.swift; sourceTree = "<group>"; };
 		0043FBE11CA11C9800638BD1 /* SetNotificationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNotificationRequest.swift; sourceTree = "<group>"; };
 		0043FBE31CA12A6D00638BD1 /* GetNotificationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNotificationRequest.swift; sourceTree = "<group>"; };
@@ -275,18 +276,13 @@
 		00982AF01C868C89003DA5E2 /* RealTimeCountSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeCountSteps.swift; sourceTree = "<group>"; };
 		00982AF21C868C89003DA5E2 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		00982AF51C868C89003DA5E2 /* BaseEntryDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntryDatabaseHelper.swift; sourceTree = "<group>"; };
-		00982AF61C868C89003DA5E2 /* NevoDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NevoDBHelper.h; sourceTree = "<group>"; };
-		00982AF71C868C89003DA5E2 /* NevoDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NevoDBHelper.m; sourceTree = "<group>"; };
-		00982AF81C868C89003DA5E2 /* NevoDBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NevoDBModel.h; sourceTree = "<group>"; };
-		00982AF91C868C89003DA5E2 /* NevoDBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NevoDBModel.m; sourceTree = "<group>"; };
-		00982AFA1C868C89003DA5E2 /* UserDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabaseHelper.swift; sourceTree = "<group>"; };
 		00982AFC1C868C89003DA5E2 /* AlarmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		00982AFE1C868C89003DA5E2 /* HealthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthModel.swift; sourceTree = "<group>"; };
 		00982B001C868C89003DA5E2 /* UserGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGoal.swift; sourceTree = "<group>"; };
 		00982B011C868C89003DA5E2 /* GoalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
 		00982B021C868C89003DA5E2 /* SleepModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepModel.swift; sourceTree = "<group>"; };
 		00982B031C868C89003DA5E2 /* StepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
-		00982B041C868C89003DA5E2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		00982B041C868C89003DA5E2 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		00982B051C868C89003DA5E2 /* UserAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAlarm.swift; sourceTree = "<group>"; };
 		00982B061C868C89003DA5E2 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		00982B081C868C89003DA5E2 /* UserSleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSleep.swift; sourceTree = "<group>"; };
@@ -325,7 +321,7 @@
 		00982B3A1C868C89003DA5E2 /* SetSystemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSystemConfig.swift; sourceTree = "<group>"; };
 		00982B3B1C868C89003DA5E2 /* SetWorldClockRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetWorldClockRequest.swift; sourceTree = "<group>"; };
 		00982B3D1C868C89003DA5E2 /* WriteSettingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteSettingRequest.swift; sourceTree = "<group>"; };
-		00982B3E1C868C89003DA5E2 /* NevoProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoProfile.swift; sourceTree = "<group>"; };
+		00982B3E1C868C89003DA5E2 /* DroneProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfile.swift; sourceTree = "<group>"; };
 		00982B411C868C89003DA5E2 /* IntelHex2BinConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntelHex2BinConverter.h; sourceTree = "<group>"; };
 		00982B421C868C89003DA5E2 /* IntelHex2BinConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntelHex2BinConverter.m; sourceTree = "<group>"; };
 		00982B431C868C89003DA5E2 /* NevoOTAControllerProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAControllerProfile.swift; sourceTree = "<group>"; };
@@ -749,11 +745,7 @@
 			isa = PBXGroup;
 			children = (
 				00982AF51C868C89003DA5E2 /* BaseEntryDatabaseHelper.swift */,
-				00982AF61C868C89003DA5E2 /* NevoDBHelper.h */,
-				00982AF71C868C89003DA5E2 /* NevoDBHelper.m */,
-				00982AF81C868C89003DA5E2 /* NevoDBModel.h */,
-				00982AF91C868C89003DA5E2 /* NevoDBModel.m */,
-				00982AFA1C868C89003DA5E2 /* UserDatabaseHelper.swift */,
+				0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */,
 			);
 			path = DBHelper;
 			sourceTree = "<group>";
@@ -763,11 +755,12 @@
 			children = (
 				00982AFC1C868C89003DA5E2 /* AlarmModel.swift */,
 				00982AFE1C868C89003DA5E2 /* HealthModel.swift */,
-				00982B001C868C89003DA5E2 /* UserGoal.swift */,
 				00982B011C868C89003DA5E2 /* GoalModel.swift */,
 				00982B021C868C89003DA5E2 /* SleepModel.swift */,
 				00982B031C868C89003DA5E2 /* StepsModel.swift */,
-				00982B041C868C89003DA5E2 /* User.swift */,
+				0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */,
+				00982B041C868C89003DA5E2 /* UserProfile.swift */,
+				00982B001C868C89003DA5E2 /* UserGoal.swift */,
 				00982B051C868C89003DA5E2 /* UserAlarm.swift */,
 				00982B061C868C89003DA5E2 /* UserModel.swift */,
 				00982B081C868C89003DA5E2 /* UserSleep.swift */,
@@ -870,7 +863,7 @@
 		00982B281C868C89003DA5E2 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				00982B3E1C868C89003DA5E2 /* NevoProfile.swift */,
+				00982B3E1C868C89003DA5E2 /* DroneProfile.swift */,
 				00982B291C868C89003DA5E2 /* ConnectionController.swift */,
 				00982B2A1C868C89003DA5E2 /* ConnectionControllerImpl.swift */,
 				00982B2B1C868C89003DA5E2 /* ConnectionManager.swift */,
@@ -1430,7 +1423,7 @@
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
-				00982C2E1C868C8A003DA5E2 /* User.swift in Sources */,
+				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
 				00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
 				00982BEF1C868C8A003DA5E2 /* MyDroneController.swift in Sources */,
@@ -1458,7 +1451,6 @@
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
 				00982C651C868C8A003DA5E2 /* SetAlarmRequest.swift in Sources */,
-				00982C241C868C8A003DA5E2 /* NevoDBModel.m in Sources */,
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
 				00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */,
 				0043FBE81CA13CED00638BD1 /* SetContactsFilterRequest.swift in Sources */,
@@ -1492,11 +1484,11 @@
 				00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */,
-				00982C251C868C8A003DA5E2 /* UserDatabaseHelper.swift in Sources */,
-				00982C581C868C8A003DA5E2 /* NevoProfile.swift in Sources */,
+				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
 				00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
+				0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */,
 				00982C3A1C868C8A003DA5E2 /* MainTabBarController.swift in Sources */,
 				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,
 				00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */,
@@ -1512,10 +1504,10 @@
 				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */,
 				00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */,
+				0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */,
 				00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */,
 				00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */,
 				00982BFA1C868C8A003DA5E2 /* AddGoalViewController.swift in Sources */,
-				00982C231C868C8A003DA5E2 /* NevoDBHelper.m in Sources */,
 				00982C431C868C8A003DA5E2 /* ClockRefreshManager.swift in Sources */,
 				00982C1D1C868C8A003DA5E2 /* DailySteps.swift in Sources */,
 				00982C411C868C8A003DA5E2 /* WaterWaveView.m in Sources */,

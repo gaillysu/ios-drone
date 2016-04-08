@@ -57,7 +57,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     override init() {
         super.init()
         
-        mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: NevoProfile())
+        mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
         setOTAMode(false,Disconnect:true)
     }
     
@@ -221,7 +221,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         {
             AppTheme.DLog("ERROR ! The ConnectionController is in OTA mode, impossible to send a normal nevo request !")
             
-        } else if (!getOTAMode() && request.getTargetProfile().CONTROL_SERVICE != NevoProfile().CONTROL_SERVICE) {
+        } else if (!getOTAMode() && request.getTargetProfile().CONTROL_SERVICE != DroneProfile().CONTROL_SERVICE) {
             
             AppTheme.DLog("ERROR ! The ConnectionController is NOT in OTA mode, impossible to send an OTA nevo request !")
             
@@ -276,7 +276,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
             else
             { mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: NevoOTAControllerProfile())}
         } else {
-            mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: NevoProfile())
+            mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
         }
 
     }
