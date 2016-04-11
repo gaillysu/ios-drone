@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00233D4C1CBB43C200824E64 /* XCGLogger.framework */; };
 		0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */; };
 		0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */; };
 		0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028F1401C97C08000C8E742 /* EventBusKeys.swift */; };
@@ -201,6 +202,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00233D4C1CBB43C200824E64 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "Pods/../build/Debug-iphoneos/XCGLogger.framework"; sourceTree = "<group>"; };
 		0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfileModel.swift; sourceTree = "<group>"; };
 		0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabaseHelper.swift; sourceTree = "<group>"; };
 		0028F1401C97C08000C8E742 /* EventBusKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusKeys.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */,
 				00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */,
 				9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */,
 				9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */,
@@ -1116,6 +1119,7 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00233D4C1CBB43C200824E64 /* XCGLogger.framework */,
 				00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */,
 				9EDE1DE71C96B07D0050A0C9 /* SlideMenuControllerSwift.framework */,
 				9EB474C71C9678E30000E024 /* SMSegmentView.framework */,

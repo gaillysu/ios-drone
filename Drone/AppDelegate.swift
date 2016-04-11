@@ -13,6 +13,7 @@ import Alamofire
 import FMDB
 import SwiftEventBus
 import YRSideViewController
+import XCGLogger
 
 let nevoDBDFileURL:String = "nevoDBName";
 let nevoDBNames:String = "nevo.sqlite";
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     private var todaySleepData:NSMutableArray = NSMutableArray(capacity: 2)
     private var disConnectAlert:UIAlertView?
+    private let log = XCGLogger.defaultInstance()
     let sideViewController:YRSideViewController = YRSideViewController()
 
 
@@ -48,9 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
 
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
-
         sideViewController.rootViewController = UINavigationController(rootViewController: MenuViewController());
         sideViewController.leftViewController = ProfileViewController();
         sideViewController.rightViewController = UINavigationController(rootViewController: MyDroneController());
@@ -62,8 +61,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             rootView.frame=CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
         }
 
+
+        log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
+
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
         self.window?.rootViewController = sideViewController
-        self.window?.makeKeyAndVisible() 
+        self.window?.makeKeyAndVisible()
+
         return true
 
     }
@@ -108,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         let dbpath:String = docsdir.stringByAppendingString(nevoDBNames)
         return dbpath;
     }
- 
+
     func getRequestNetwork(requestURL:String,parameters:AnyObject,resultHandler:((result:AnyObject?,error:NSError?) -> Void)){
         Alamofire.request(Method.POST, requestURL, parameters: parameters as? [String : AnyObject]).responseJSON { (response) -> Void in
             if response.result.isSuccess {
@@ -129,7 +134,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func setSystemConfig() {
-        //sendRequest(SetSystemConfig())
+
+        sendRequest(SetSystemConfig(autoStart: NSDate().timeIntervalSince1970, autoEnd: NSDate.tomorrow().timeIntervalSince1970))
     }
 
     func setRTC() {
@@ -163,12 +169,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         return mConnectionController!
     }
 
-    func  getDailyTrackerInfo(){
+    func getActivity(){
         sendRequest(GetActivityRequest())
-    }
-
-    func  getDailyTracker(trackerno:UInt8){
-        sendRequest(ReadDailyTracker(trackerno:trackerno))
     }
 
     func getGoal(){
@@ -199,7 +201,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         if( NSDate().timeIntervalSince1970-lastSync > SYNC_INTERVAL) {
             //We haven't synched for a while, let's sync now !
             AppTheme.DLog("*** Sync started ! ***")
-            self.getDailyTrackerInfo()
+            //self.getDailyTrackerInfo()
         }
 
     }
@@ -209,7 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
      */
     func syncFinished() {
 
-        AppTheme.DLog("*** Sync finished ***")
+        log.debug("*** Sync finished ***")
 
         let userDefaults = NSUserDefaults.standardUserDefaults();
 
@@ -238,11 +240,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     func sendRequest(r:Request) {
         if(isConnected()){
-            SyncQueue.sharedInstance.post( { (Void) -> (Void) in
-
-                self.mConnectionController?.sendRequest(r)
-
-            } )
+            self.mConnectionController?.sendRequest(r)
+//            SyncQueue.sharedInstance.post( { (Void) -> (Void) in
+//            } )
         }else {
             //tell caller
             for delegate in mDelegates {
@@ -265,9 +265,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
                 let data:[UInt8] = NSData2Bytes(packet.getRawData())
                 let systemStatus:Int = Int(data[2])
-                NSLog("SystemStatus :\(systemStatus)")
+                log.debug("SystemStatus :\(systemStatus)")
                 if(systemStatus == SystemStatus.SystemReset.rawValue) {
                     self.setSystemConfig()
+                    self.setRTC()
                 }
 
                 if(systemStatus == SystemStatus.InvalidTime.rawValue) {
@@ -277,14 +278,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 if(systemStatus == SystemStatus.GoalCompleted.rawValue) {
                     setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
                 }
+
+                if(systemStatus == SystemStatus.ActivityDataAvailable.rawValue) {
+                    self.getActivity()
+                }
             }
 
             if(packet.getHeader() == SystemEventCommand.HEADER()) {
                 let data:[UInt8] = NSData2Bytes(packet.getRawData())
                 let eventCommandStatus:Int = Int(data[2])
-                NSLog("eventCommandStatus :\(eventCommandStatus)")
+                log.debug("eventCommandStatus :\(eventCommandStatus)")
                 if(eventCommandStatus == SystemEventStatus.GoalCompleted.rawValue) {
                     SwiftEventBus.post(SWIFTEVENT_BUS_GOAL_COMPLETED, sender:nil)
+
                 }
 
                 if(eventCommandStatus == SystemEventStatus.LowMemory.rawValue) {
@@ -293,7 +299,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
                 if(eventCommandStatus == SystemEventStatus.ActivityDataAvailable.rawValue) {
                     SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
-                    syncActivityData()
+                    self.getActivity()
                 }
 
                 if(eventCommandStatus == SystemEventStatus.BatteryStatusChanged.rawValue) {

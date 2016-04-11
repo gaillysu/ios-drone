@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreBluetooth
+import XCGLogger
 
 /*
 See NevoBT protocol
@@ -69,6 +70,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     private var mSoftwareVersion:NSString = ""
 
     private var redRssiTimer:NSTimer = NSTimer()
+    private var log = XCGLogger.defaultInstance()
     /**
     Basic constructor, just a Delegate handsake
     */
@@ -81,7 +83,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         mManager=CBCentralManager(delegate:self, queue:nil)
         
         mManager?.delegate = self
-
     }
 
 
@@ -107,8 +108,8 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     Discover available services on the peripheral and notifies our delegate
     */
     func centralManager(central: CBCentralManager, didConnectPeripheral aPeripheral: CBPeripheral) {
-        
-        AppTheme.DLog("***Peripheral connected : \(aPeripheral.name)***")
+
+        log.debug("***Peripheral connected : \(aPeripheral.name)***")
         
         //We save this periphral for later use
         setPeripheral(aPeripheral)
@@ -122,7 +123,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         if(redRssiTimer.valid){
             redRssiTimer.invalidate()
         }
-        redRssiTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("redRSSI:"), userInfo: nil, repeats: true)
+        redRssiTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(NevoBTImpl.redRSSI(_:)), userInfo: nil, repeats: true)
     }
 
     /**
@@ -131,10 +132,10 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     */
     func centralManager(central: CBCentralManager, didDisconnectPeripheral aPeripheral: CBPeripheral, error : NSError?) {
 
-        AppTheme.DLog("***Peripheral disconnected : \(aPeripheral.name)***")
+        log.debug("***Peripheral disconnected : \(aPeripheral.name)***")
 
         if(error != nil) {
-            AppTheme.DLog("Error : \(error!.localizedDescription) for peripheral : \(aPeripheral.name)")
+            log.debug("Error : \(error!.localizedDescription) for peripheral : \(aPeripheral.name)")
         }
 
 
@@ -159,7 +160,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         if let services:[CBService] = aPeripheral.services{
         
             for aService:CBService in services {
-                AppTheme.DLog("Service found with UUID : \(aService.UUID.UUIDString)")
+                debugPrint("Service found with UUID : \(aService.UUID.UUIDString)")
     
                 if (aService.UUID == mProfile?.CONTROL_SERVICE) {
                     aPeripheral.discoverCharacteristics(nil,forService:aService)
@@ -170,7 +171,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 }
             }
         } else {
-            AppTheme.DLog("No services found for \(aPeripheral.identifier.UUIDString), connection impossible")
+            log.debug("No services found for \(aPeripheral.identifier.UUIDString), connection impossible")
         }
     }
     
@@ -181,7 +182,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     */
     func peripheral(aPeripheral:CBPeripheral, didDiscoverCharacteristicsForService service:CBService, error :NSError?) {
     
-        AppTheme.DLog("Service : \(service.UUID.UUIDString)")
+        log.debug("Service : \(service.UUID.UUIDString)")
     
         if let characteristics:[CBCharacteristic] = service.characteristics {
             for aChar:CBCharacteristic in characteristics {
@@ -189,21 +190,21 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 if(aChar.UUID==mProfile?.CALLBACK_CHARACTERISTIC ) {
                     mPeripheral?.setNotifyValue(true,forCharacteristic:aChar)
             
-                    AppTheme.DLog("Callback char : \(aChar.UUID.UUIDString)")
+                    log.debug("Callback char : \(aChar.UUID.UUIDString)")
                     mDelegate?.connectionStateChanged(true, fromAddress: aPeripheral.identifier)
                 }
                 
                 else if(aChar.UUID==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
                     mPeripheral?.readValueForCharacteristic(aChar)
-                    AppTheme.DLog("read firmware version char : \(aChar.UUID.UUIDString)")
+                    log.debug("read firmware version char : \(aChar.UUID.UUIDString)")
                 }
                 else if(aChar.UUID==CBUUID(string: "00002a28-0000-1000-8000-00805f9b34fb")) {
                     mPeripheral?.readValueForCharacteristic(aChar)
-                    AppTheme.DLog("read software version char : \(aChar.UUID.UUIDString)")
+                    log.debug("read software version char : \(aChar.UUID.UUIDString)")
                 }
             }
         } else {
-            AppTheme.DLog("No characteristics found for \(service.UUID.UUIDString), can't listen to notifications")
+            log.debug("No characteristics found for \(service.UUID.UUIDString), can't listen to notifications")
         }
       
     
@@ -219,7 +220,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         {
             
             if error == nil && characteristic.value != nil {
-                AppTheme.DLog("Received : \(characteristic.UUID.UUIDString) \(hexString(characteristic.value!))")
+                log.debug("Received : \(characteristic.UUID.UUIDString) \(hexString(characteristic.value!))")
                 
                 /* It is valid data, let's return it to our delegate */
                 mDelegate?.packetReceived( RawPacketImpl(data: characteristic.value! , profile: mProfile!) ,  fromAddress : aPeripheral.identifier )
@@ -229,7 +230,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         
         else if(characteristic.UUID==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
             mFirmwareVersion = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)!
-            AppTheme.DLog("get firmware version char : \(characteristic.UUID.UUIDString), version : \(mFirmwareVersion)")
+            log.debug("get firmware version char : \(characteristic.UUID.UUIDString), version : \(mFirmwareVersion)")
             //tell OTA new version
             mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.APPLICATION, version: mFirmwareVersion)
         }
@@ -238,7 +239,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 mSoftwareVersion = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)!
             }
 
-            AppTheme.DLog("get software version char : \(characteristic.UUID.UUIDString), version : \(mSoftwareVersion)")
+            log.debug("get software version char : \(characteristic.UUID.UUIDString), version : \(mSoftwareVersion)")
             mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.SOFTDEVICE, version: mSoftwareVersion)
         }
 
@@ -250,9 +251,9 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     func peripheral(_peripheral:CBPeripheral, didWriteValueForCharacteristic characteristic:CBCharacteristic, error :NSError?) {
     
         if (error != nil) {
-            AppTheme.DLog("Failed to write value for characteristic \(characteristic), reason: \(error)")
+            log.debug("Failed to write value for characteristic \(characteristic), reason: \(error)")
         } else {
-            AppTheme.DLog("Did write value for characterstic \(characteristic), new value: \(characteristic.value)")
+            log.debug("Did write value for characterstic \(characteristic), new value: \(characteristic.value)")
         }
 
     }
@@ -281,14 +282,14 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             //We can't just search for all services, because that's not allowed when the app is in the background
             mManager?.scanForPeripheralsWithServices(services,options:nil)
 
-            AppTheme.DLog("Scan started.")
+            log.debug("Scan started.")
 
 
             //The scan will stop X sec later
             //We scehduele or re-schdeuele the stop scanning
             mTimer?.invalidate()
 
-            mTimer = NSTimer.scheduledTimerWithTimeInterval(SCANNING_DURATION, target: self, selector: Selector("stopScan"), userInfo: nil, repeats: false)
+            mTimer = NSTimer.scheduledTimerWithTimeInterval(SCANNING_DURATION, target: self, selector: #selector(NevoBTImpl.stopScan), userInfo: nil, repeats: false)
 
 
 
@@ -310,7 +311,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
 
         } else {
             //Maybe the Manager is not ready yet, let's try again after a delay
-            AppTheme.DLog("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
+            log.debug("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
 
             let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(RETRY_DURATION * Double(NSEC_PER_SEC)))
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
@@ -329,7 +330,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         if(self.isBluetoothEnabled()) {
 
 
-            AppTheme.DLog("Connecting to : \(peripheralAddress.UUIDString)")
+            log.debug("Connecting to : \(peripheralAddress.UUIDString)")
 
 
             //Here, we try to retreive the given peripheral
@@ -350,7 +351,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
 
         } else {
             //Maybe the Manager is not ready yet, let's try again after a delay
-            AppTheme.DLog("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
+            log.debug("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
 
             let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(RETRY_DURATION * Double(NSEC_PER_SEC)))
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
@@ -368,7 +369,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             
             if( mProfile?.CALLBACK_CHARACTERISTIC != request.getTargetProfile().CALLBACK_CHARACTERISTIC ) {
                 //We didn't subscribe to this profile's CallbackCharacteristic, there have to be a mistake somewhere
-                AppTheme.DLog("The target profile is incompatible with the profile given on this NevoBT's initalisation.")
+                log.debug("The target profile is incompatible with the profile given on this NevoBT's initalisation.")
                 return ;
             }
     
@@ -385,7 +386,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     
                                 if request.getRawDataEx().count == 0
                                 {
-                                    AppTheme.DLog("Request raw data :\(request.getRawData())")
+                                    log.debug("Request raw data :\(request.getRawData())")
                                     //OTA control CHAR, need a response
                                     if mProfile is NevoOTAControllerProfile && request.getTargetProfile().CONTROL_CHARACTERISTIC == mProfile?.CONTROL_CHARACTERISTIC
                                     {
@@ -397,14 +398,14 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                                     }
                                 }else{
                                     for data in request.getRawDataEx() {
-                                        AppTheme.DLog("Request raw data Ex:\(data)")
+                                        log.debug("Request raw data Ex:\(data)")
                                         mPeripheral?.writeValue(data as! NSData,forCharacteristic:charac,type:CBCharacteristicWriteType.WithoutResponse)
                                     }
                                 }
                             }
                         }
                     } else {
-                        AppTheme.DLog("No Characteristics found for : \(service.UUID.UUIDString), can't send packet")
+                        log.debug("No Characteristics found for : \(service.UUID.UUIDString), can't send packet")
                     }
                     
                 }
@@ -413,9 +414,9 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         } else {
             
             if(mPeripheral != nil) {
-                AppTheme.DLog("No services found for : \(mPeripheral), can't send packet")
+                log.debug("No services found for : \(mPeripheral), can't send packet")
             } else {
-                AppTheme.DLog("No peripheral connected, can't send packet")
+                log.debug("No peripheral connected, can't send packet")
             }
         }
     }
@@ -472,7 +473,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     */
     private func matchingPeripheralFound( aPeripheral : CBPeripheral ){
 
-        AppTheme.DLog("Connecting to :\(aPeripheral.description)")
+        log.debug("Connecting to :\(aPeripheral.description)")
 
         //If it's not connected already, let's connect to it
         if(aPeripheral.state==CBPeripheralState.Disconnected){
@@ -517,7 +518,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     func stopScan() {
         mManager?.stopScan()
 
-        AppTheme.DLog("Scan stopped.")
+        log.debug("Scan stopped.")
 
     }
 
@@ -543,19 +544,19 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             return true
 
         case CBCentralManagerState.Unsupported:
-            AppTheme.DLog("The platform/hardware doesn't support Bluetooth Low Energy.")
+            log.debug("The platform/hardware doesn't support Bluetooth Low Energy.")
             break
 
         case CBCentralManagerState.Unauthorized:
-            AppTheme.DLog("The app is not authorized to use Bluetooth Low Energy.")
+            log.debug("The app is not authorized to use Bluetooth Low Energy.")
             break
 
         case CBCentralManagerState.PoweredOff:
-            AppTheme.DLog("Bluetooth is currently powered off.")
+            log.debug("Bluetooth is currently powered off.")
             break
 
         default:
-            AppTheme.DLog("Unknown device state")
+            log.debug("Unknown device state")
             break
 
         }
