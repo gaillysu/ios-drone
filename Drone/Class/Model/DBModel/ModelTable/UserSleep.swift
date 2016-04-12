@@ -12,14 +12,9 @@ class UserSleep: NSObject,BaseEntryDatabaseHelper {
 
     var id:Int = 0
     var date:NSTimeInterval = 0
-    var totalSleepTime:Int = 0;
-    var hourlySleepTime:String = "";
-    var totalWakeTime:Int = 0;
-    var hourlyWakeTime:String = "";
-    var totalLightTime:Int = 0;
-    var hourlyLightTime:String = "";
-    var totalDeepTime:Int = 0;
-    var hourlyDeepTime:String = "";
+    var wakeup_time:Int = 0;
+    var light_sleep_time:Int = 0;
+    var deep_sleep_time:Int = 0;
     private var sleepModel:SleepModel = SleepModel()
 
     override init() {
@@ -28,28 +23,16 @@ class UserSleep: NSObject,BaseEntryDatabaseHelper {
 
     init(keyDict:NSDictionary) {
         super.init()
-        self.setValue(keyDict.objectForKey("id"), forKey: "id")
-        self.setValue(keyDict.objectForKey("date"), forKey: "date")
-        self.setValue(keyDict.objectForKey("totalSleepTime"), forKey: "totalSleepTime")
-        self.setValue(keyDict.objectForKey("hourlySleepTime"), forKey: "hourlySleepTime")
-        self.setValue(keyDict.objectForKey("totalWakeTime"), forKey: "totalWakeTime")
-        self.setValue(keyDict.objectForKey("hourlyWakeTime"), forKey: "hourlyWakeTime")
-        self.setValue(keyDict.objectForKey("totalLightTime"), forKey: "totalLightTime")
-        self.setValue(keyDict.objectForKey("hourlyLightTime"), forKey: "hourlyLightTime")
-        self.setValue(keyDict.objectForKey("totalDeepTime"), forKey: "totalDeepTime")
-        self.setValue(keyDict.objectForKey("hourlyDeepTime"), forKey: "hourlyDeepTime")
+        keyDict.enumerateKeysAndObjectsUsingBlock { (key, value, stop) in
+            self.setValue(value, forKey: key as! String)
+        }
     }
 
     func add(result:((id:Int?,completion:Bool?) -> Void)){
         sleepModel.date = date
-        sleepModel.totalSleepTime = totalSleepTime
-        sleepModel.hourlySleepTime = hourlySleepTime
-        sleepModel.totalWakeTime = totalWakeTime
-        sleepModel.hourlyWakeTime = hourlyWakeTime
-        sleepModel.totalLightTime = totalLightTime
-        sleepModel.hourlyLightTime = hourlyLightTime
-        sleepModel.totalDeepTime = totalDeepTime
-        sleepModel.hourlyDeepTime = hourlyDeepTime
+        sleepModel.wakeup_time = wakeup_time
+        sleepModel.light_sleep_time = light_sleep_time
+        sleepModel.deep_sleep_time = deep_sleep_time
 
         sleepModel.add { (id, completion) -> Void in
             result(id: id, completion: completion)
@@ -58,14 +41,9 @@ class UserSleep: NSObject,BaseEntryDatabaseHelper {
 
     func update()->Bool{
         sleepModel.date = date
-        sleepModel.totalSleepTime = totalSleepTime
-        sleepModel.hourlySleepTime = hourlySleepTime
-        sleepModel.totalWakeTime = totalWakeTime
-        sleepModel.hourlyWakeTime = hourlyWakeTime
-        sleepModel.totalLightTime = totalLightTime
-        sleepModel.hourlyLightTime = hourlyLightTime
-        sleepModel.totalDeepTime = totalDeepTime
-        sleepModel.hourlyDeepTime = hourlyDeepTime
+        sleepModel.wakeup_time = wakeup_time
+        sleepModel.light_sleep_time = light_sleep_time
+        sleepModel.deep_sleep_time = deep_sleep_time
         return sleepModel.update()
     }
 
@@ -83,8 +61,8 @@ class UserSleep: NSObject,BaseEntryDatabaseHelper {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let sleepModel:SleepModel = model as! SleepModel
-            let presets:UserSleep = UserSleep(keyDict: ["id":sleepModel.id, "date":sleepModel.date, "totalSleepTime":sleepModel.totalSleepTime, "hourlySleepTime":sleepModel.hourlySleepTime, "totalWakeTime":sleepModel.totalWakeTime, "hourlyWakeTime":sleepModel.hourlyWakeTime , "totalLightTime":sleepModel.totalLightTime, "hourlyLightTime":sleepModel.hourlyLightTime, "totalDeepTime":sleepModel.totalDeepTime, "totalDeepTime":sleepModel.totalDeepTime, "hourlyDeepTime":sleepModel.hourlyDeepTime])
-            allArray.addObject(presets)
+            let sleep:UserSleep = UserSleep(keyDict: ["id":sleepModel.id, "date":sleepModel.date, "wakeup_time":sleepModel.wakeup_time, "light_sleep_time":sleepModel.light_sleep_time, "deep_sleep_time":sleepModel.deep_sleep_time])
+            allArray.addObject(sleep)
         }
         return allArray
     }
@@ -94,8 +72,8 @@ class UserSleep: NSObject,BaseEntryDatabaseHelper {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let sleepModel:SleepModel = model as! SleepModel
-            let presets:UserSleep = UserSleep(keyDict: ["id":sleepModel.id, "date":sleepModel.date, "totalSleepTime":sleepModel.totalSleepTime, "hourlySleepTime":sleepModel.hourlySleepTime, "totalWakeTime":sleepModel.totalWakeTime, "hourlyWakeTime":sleepModel.hourlyWakeTime , "totalLightTime":sleepModel.totalLightTime, "hourlyLightTime":sleepModel.hourlyLightTime, "totalDeepTime":sleepModel.totalDeepTime, "totalDeepTime":sleepModel.totalDeepTime, "hourlyDeepTime":sleepModel.hourlyDeepTime])
-            allArray.addObject(presets)
+            let sleep:UserSleep = UserSleep(keyDict: ["id":sleepModel.id, "date":sleepModel.date, "wakeup_time":sleepModel.wakeup_time, "light_sleep_time":sleepModel.light_sleep_time, "deep_sleep_time":sleepModel.deep_sleep_time])
+            allArray.addObject(sleep)
         }
         return allArray
     }

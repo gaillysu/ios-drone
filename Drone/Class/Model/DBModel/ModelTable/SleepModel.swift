@@ -12,14 +12,9 @@ import FMDB
 class SleepModel: UserDatabaseHelper {
 
     var date:NSTimeInterval = 0
-    var totalSleepTime:Int = 0;
-    var hourlySleepTime:String = ""; // jsonarray of int[24] 
-    var totalWakeTime:Int = 0;
-    var hourlyWakeTime:String = "";
-    var totalLightTime:Int = 0;
-    var hourlyLightTime:String = "";
-    var totalDeepTime:Int = 0;
-    var hourlyDeepTime:String = "";
+    var wakeup_time:Int = 0;
+    var light_sleep_time:Int = 0;
+    var deep_sleep_time:Int = 0;
 
     override init() {
 
@@ -41,7 +36,7 @@ class SleepModel: UserDatabaseHelper {
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
                 let model:SleepModel = SleepModel()
-                for (var i:Int = 0; i < model.columeNames.count; i++) {
+                for i:Int in 0 ..< model.columeNames.count {
                     let columeName:NSString = (model.columeNames.objectAtIndex(i) as! NSString)
                     let columeType:NSString = (model.columeTypes.objectAtIndex(i) as! NSString)
                     if (columeType.isEqualToString(SQLTEXT)) {
@@ -71,7 +66,7 @@ class SleepModel: UserDatabaseHelper {
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
                 let model:SleepModel = SleepModel()
-                for (var i:Int = 0; i < model.columeNames.count; i++) {
+                for i:Int in 0 ..< model.columeNames.count {
                     let columeName:NSString = model.columeNames.objectAtIndex(i) as! NSString
                     let columeType:NSString = model.columeTypes.objectAtIndex(i) as! NSString
                     if (columeType.isEqualToString(SQLTEXT)) {
