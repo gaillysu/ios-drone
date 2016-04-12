@@ -324,17 +324,17 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
     See NevoBT protocol
     */
-    func connectToAddress(peripheralAddress : NSUUID) {
+    func connectToAddress(peripheralAddress : [NSUUID]) {
 
         //We can't be sure if the Manager is ready, so let's try
         if(self.isBluetoothEnabled()) {
 
 
-            log.debug("Connecting to : \(peripheralAddress.UUIDString)")
+            log.debug("Connecting to : \(peripheralAddress)")
 
 
             //Here, we try to retreive the given peripheral
-            if let potentialMatches:[CBPeripheral] = mManager?.retrievePeripheralsWithIdentifiers([peripheralAddress]){
+            if let potentialMatches:[CBPeripheral] = mManager?.retrievePeripheralsWithIdentifiers(peripheralAddress){
 
                 for peripheral in potentialMatches {
 

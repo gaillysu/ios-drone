@@ -30,7 +30,7 @@ protocol NevoBT {
     /**
     Tries to connect to the given address
     */
-    func connectToAddress(peripheralAddress : NSUUID)
+    func connectToAddress(peripheralAddress : [NSUUID])
     
     /**
     Disconnects the given peripheral

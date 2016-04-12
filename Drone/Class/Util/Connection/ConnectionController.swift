@@ -27,32 +27,12 @@ protocol ConnectionController {
     Tries to connect to a Nevo
     Myabe it will scan for nearby nevo, maybe it will simply connect to a known nevo
     */
-    func connect()
+    func connect(addres:[String])
     
     /**
     Checks if there's a device currently connected
     */
     func isConnected() -> Bool
-    
-    /**
-    Checks if there is a preffered device.
-    If the answer is yes, then we will systematically connect to this device.
-    If it is no, then we will scan for a new device
-    */
-    func hasSavedAddress() -> Bool
-    
-    /**
-    Forgets the currently saved address.
-    Next time connect is called, we will have to scan for nearby devices
-    */
-    func forgetSavedAddress()
-    
-    /**
-    restore the saved address. BLE OTA use it
-    Usage:forgetSavedAddress()/restoreSavedAddress(), if not call forgetSavedAddress()
-    before call it, do nothing
-    */
-    func restoreSavedAddress()
     
     /**
     Tries to send a request, you can't be sure that it will effectively be sent

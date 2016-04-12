@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import XCGLogger
 
 /*
 See ConnectionController
@@ -15,13 +16,6 @@ See ConnectionController
 class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate {
     private var mNevoBT:NevoBT?
     private var mDelegate:ConnectionControllerDelegate?
-
-    let SAVED_ADDRESS_KEY = "SAVED_ADDRESS"
-    
-    //use this struct for other class to read
-    struct Const {
-        static let SAVED_ADDRESS_KEY = "SAVED_ADDRESS"
-    }
     
     /**
     This procedure explain the scan procedure
@@ -50,7 +44,9 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     so, after finisned BLE ota, must restore it to normal 's address
     */
     private var savedAddress:String?
-    
+
+    private let log = XCGLogger.defaultInstance()
+
     /**
     No initialisation outside of this class, this is a singleton
     */
@@ -65,7 +61,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     See ConnectionController protocol
     */
     func setDelegate(delegate:ConnectionControllerDelegate) {
-        AppTheme.DLog("New delegate : \(delegate)")
+        log.debug("New delegate : \(delegate)")
         
         mDelegate = delegate
     }
@@ -73,31 +69,25 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See ConnectionController protocol
     */
-    func connect() {
-        
-        initRetryTimer()
-
+    func connect(addres:[String]) {
         //If we're already connected, no need to reconnect
         if isConnected() {
-            
             return;
         }
         
         //We're not connected, let's connect
-        if hasSavedAddress() {
-            
-            AppTheme.DLog("We have a saved address, let's connect to it directly : \(NSUserDefaults.standardUserDefaults().objectForKey(SAVED_ADDRESS_KEY))")
-
-            mNevoBT?.connectToAddress(
-                NSUUID(UUIDString:
-                    NSUserDefaults.standardUserDefaults().objectForKey(SAVED_ADDRESS_KEY) as! String
-                    )!
-            )
-
+        if addres.count>0 {
+            log.debug("We have a saved address, let's connect to it directly : \(addres)")
+            var uuidArray:[NSUUID] = []
+            for addresString:String in addres {
+                let uuid = NSUUID(UUIDString: addresString)
+                if (uuid != nil) {
+                    uuidArray.append(uuid!)
+                }
+            }
+            mNevoBT?.connectToAddress(uuidArray)
         } else {
-            
-            AppTheme.DLog("We don't have a saved address, let's scan for nearby devices.")
-
+            log.debug("We don't have a saved address, let's scan for nearby devices.")
             mNevoBT?.scanAndConnect()
         }
 
@@ -107,26 +97,16 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     See NevoBTDelegate
     */
     func connectionStateChanged(isConnected : Bool, fromAddress : NSUUID!) {
-
-      
         mDelegate?.connectionStateChanged(isConnected)
-       
         
         if (!isConnected) {
-            connect()
+            connect([fromAddress.UUIDString])
         } else {
             //Let's save this address
-            
-            if let address = fromAddress?.UUIDString {
-                
-                let userDefaults = NSUserDefaults.standardUserDefaults();
-                
-                userDefaults.setObject(address,forKey:SAVED_ADDRESS_KEY)
-                
-                userDefaults.synchronize()
-                
-            }
-            
+            let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.UUIDString)","connectionTimer":NSDate().timeIntervalSince1970])
+            userDevice.add({ (id, completion) in
+
+            })
         }
         
     }
@@ -134,8 +114,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See NevoBTDelegate
     */
-    func firmwareVersionReceived(whichfirmware:DfuFirmwareTypes, version:NSString)
-    {
+    func firmwareVersionReceived(whichfirmware:DfuFirmwareTypes, version:NSString) {
        mDelegate?.firmwareVersionReceived(whichfirmware, version: version)
     }
 
@@ -144,7 +123,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
 
     :param: number, Signal strength value
     */
-    func receivedRSSIValue(number:NSNumber){
+    func receivedRSSIValue(number:NSNumber) {
         //AppTheme.DLog("Red RSSI Value:\(number)")
         mDelegate?.receivedRSSIValue(number)
     }
@@ -163,53 +142,8 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See ConnectionController protocol
     */
-    func forgetSavedAddress() {
-        
-        if hasSavedAddress()
-        {
-            savedAddress = NSUserDefaults.standardUserDefaults().objectForKey(SAVED_ADDRESS_KEY) as? String
-        }
-
-        let userDefaults = NSUserDefaults.standardUserDefaults();
-
-        userDefaults.setObject("",forKey:SAVED_ADDRESS_KEY)
-        
-        userDefaults.synchronize()
-
-    }
-    /**
-    See ConnectionController protocol
-    */
-    func restoreSavedAddress()
-    {
-        if( savedAddress != nil)
-        {
-        let userDefaults = NSUserDefaults.standardUserDefaults();
-        
-        userDefaults.setObject(savedAddress,forKey:SAVED_ADDRESS_KEY)
-        
-        userDefaults.synchronize()
-        }
-
-    }
-    
-    /**
-    See ConnectionController protocol
-    */
     func isConnected() -> Bool {
         return mNevoBT!.isConnected()
-    }
-    
-    /**
-    See ConnectionController protocol
-    */
-    func hasSavedAddress() -> Bool {
-        
-        if let saved = NSUserDefaults.standardUserDefaults().objectForKey(SAVED_ADDRESS_KEY) as? String {
-            return !saved.isEmpty
-        }
-        
-        return false
     }
     
     /**
@@ -280,54 +214,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         }
 
     }
-    
-    private func initRetryTimer() {
-        if mRetryTimer != nil {
-            //If we already have initialised it, no need to continue
-            return;
-        }
-        
-        mScanProcedureStatus = 0
-        
-        mRetryTimer = NSTimer.scheduledTimerWithTimeInterval(SCAN_PROCEDURE[mScanProcedureStatus], target: self, selector:Selector("retryTimer"), userInfo: nil, repeats: false)
-        
-    }
-    
-    func retryTimer() {
-        
-        //The retry timer will follow a certain procedure to retry connecting
-        //First, we check if we are currently connected
-        if isConnected() {
-            //We are connected, so we'll run this rety time in 1 sec, to see if it is still the case
-            //This corresponds to the status "0" of the procedure
-            
-            mScanProcedureStatus = 0
 
-        } else {
-            
-            //We are currently not connected. First, let's try to connect
-            connect()
-            
-            //Then, let's reschedule a retry, to do so, let's increase the procedure status
-            mScanProcedureStatus++
-            
-            //The retry status is an index on the SCAN_PROCEDURE, so we can't have it too long (array out of bound etc...)
-            if mScanProcedureStatus >= SCAN_PROCEDURE.count {
-                
-               mScanProcedureStatus = SCAN_PROCEDURE.count - 1
-                
-            }
-            
-            AppTheme.DLog("Connection lost detected ! Retrying in : \(SCAN_PROCEDURE[mScanProcedureStatus])")
-        }
-        
-        
-        //Ok, let's launch the retry timer
-        mRetryTimer?.invalidate()
-        
-        mRetryTimer = NSTimer.scheduledTimerWithTimeInterval(SCAN_PROCEDURE[mScanProcedureStatus], target: self, selector:Selector("retryTimer"), userInfo: nil, repeats: false)
-        
-    }
     
     func getOTAMode() -> Bool {
         if let profile = mNevoBT?.getProfile() {

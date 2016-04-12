@@ -24,7 +24,7 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
         super.viewDidLoad()
         self.navigationItem.title = "Settings"
 
-        AppDelegate.getAppDelegate().startConnect(false)
+        AppDelegate.getAppDelegate().startConnect()
 
         sources = [NSLocalizedString("My Drone", comment: "")]
         sourcesImage = ["new_iOS_mynevo_iocn"]

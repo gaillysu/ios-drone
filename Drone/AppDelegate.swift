@@ -15,8 +15,8 @@ import SwiftEventBus
 import YRSideViewController
 import XCGLogger
 
-let nevoDBDFileURL:String = "nevoDBName";
-let nevoDBNames:String = "nevo.sqlite";
+let DRONEDBFILE:String = "droneDBFile";
+let DRONEDBNAME:String = "drone.sqlite";
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
@@ -98,8 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     class func dbPath()->String{
         var docsdir:String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!
         let filemanage:NSFileManager = NSFileManager.defaultManager()
-        //nevoDBDFileURL
-        docsdir = docsdir.stringByAppendingFormat("%@%@/", "/",nevoDBDFileURL)
+        //drone DB FileURL
+        docsdir = docsdir.stringByAppendingFormat("%@%@/", "/",DRONEDBFILE)
         var isDir : ObjCBool = false
         let exit:Bool = filemanage.fileExistsAtPath(docsdir, isDirectory:&isDir )
         if (!exit || !isDir) {
@@ -110,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
 
         }
-        let dbpath:String = docsdir.stringByAppendingString(nevoDBNames)
+        let dbpath:String = docsdir.stringByAppendingString(DRONEDBNAME)
         return dbpath;
     }
 
@@ -156,11 +156,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         }
     }
 
-    func startConnect(forceScan:Bool){
-        if forceScan{
-            mConnectionController?.forgetSavedAddress()
+    /**
+     Connect BLE Device
+     */
+    func startConnect(){
+        let userDevice:NSArray = UserDevice.getAll()
+        if(userDevice.count>0) {
+            var deviceAddres:[String] = []
+            for device in userDevice {
+                let deviceModel:UserDevice = device as! UserDevice;
+                deviceAddres.append(deviceModel.identifiers)
+            }
+            mConnectionController?.connect(deviceAddres)
+
+        }else{
+            mConnectionController?.connect([])
         }
-        mConnectionController?.connect()
     }
 
     // MARK: -AppDelegate GET Function
@@ -230,7 +241,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func connect() {
-        self.mConnectionController?.connect()
+        self.startConnect()
     }
 
     func isConnected() -> Bool{

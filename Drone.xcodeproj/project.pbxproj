@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA4D1CBC830C00820B1F /* DeviceModel.swift */; };
+		0015CA501CBC835900820B1F /* UserDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA4F1CBC835900820B1F /* UserDevice.swift */; };
 		00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00233D4C1CBB43C200824E64 /* XCGLogger.framework */; };
 		0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */; };
 		0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */; };
@@ -202,6 +204,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0015CA4D1CBC830C00820B1F /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		0015CA4F1CBC835900820B1F /* UserDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDevice.swift; sourceTree = "<group>"; };
 		00233D4C1CBB43C200824E64 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "Pods/../build/Debug-iphoneos/XCGLogger.framework"; sourceTree = "<group>"; };
 		0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfileModel.swift; sourceTree = "<group>"; };
 		0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabaseHelper.swift; sourceTree = "<group>"; };
@@ -762,12 +766,14 @@
 				00982B021C868C89003DA5E2 /* SleepModel.swift */,
 				00982B031C868C89003DA5E2 /* StepsModel.swift */,
 				0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */,
+				0015CA4D1CBC830C00820B1F /* DeviceModel.swift */,
 				00982B041C868C89003DA5E2 /* UserProfile.swift */,
 				00982B001C868C89003DA5E2 /* UserGoal.swift */,
 				00982B051C868C89003DA5E2 /* UserAlarm.swift */,
 				00982B061C868C89003DA5E2 /* UserModel.swift */,
 				00982B081C868C89003DA5E2 /* UserSleep.swift */,
 				00982B091C868C89003DA5E2 /* UserSteps.swift */,
+				0015CA4F1CBC835900820B1F /* UserDevice.swift */,
 			);
 			path = ModelTable;
 			sourceTree = "<group>";
@@ -1424,6 +1430,7 @@
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
 				00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */,
+				0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */,
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
@@ -1462,6 +1469,7 @@
 				00982BF51C868C8A003DA5E2 /* DeviceScannerView.swift in Sources */,
 				0043FBE61CA131BD00638BD1 /* UpdateNotificationRequest.swift in Sources */,
 				00982CCC1C868C8A003DA5E2 /* NevoHK.swift in Sources */,
+				0015CA501CBC835900820B1F /* UserDevice.swift in Sources */,
 				00982C381C868C8A003DA5E2 /* WorldClock.swift in Sources */,
 				00982C261C868C8A003DA5E2 /* AlarmModel.swift in Sources */,
 				00982C461C868C8A003DA5E2 /* ConnectionManager.swift in Sources */,
