@@ -71,4 +71,8 @@ class UserDevice: NSObject,BaseEntryDatabaseHelper {
         }
         return allArray
     }
+
+    class func isExistInTable()->Bool {
+        return DeviceModel.isExistInTable()
+    }
 }

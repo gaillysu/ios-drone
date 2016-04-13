@@ -153,11 +153,11 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         if(getOTAMode() && (request.getTargetProfile().CONTROL_SERVICE != NevoOTAModeProfile().CONTROL_SERVICE
                         && request.getTargetProfile().CONTROL_SERVICE != NevoOTAControllerProfile().CONTROL_SERVICE))
         {
-            AppTheme.DLog("ERROR ! The ConnectionController is in OTA mode, impossible to send a normal nevo request !")
+            NSLog("ERROR ! The ConnectionController is in OTA mode, impossible to send a normal nevo request !")
             
         } else if (!getOTAMode() && request.getTargetProfile().CONTROL_SERVICE != DroneProfile().CONTROL_SERVICE) {
             
-            AppTheme.DLog("ERROR ! The ConnectionController is NOT in OTA mode, impossible to send an OTA nevo request !")
+            NSLog("ERROR ! The ConnectionController is NOT in OTA mode, impossible to send an OTA nevo request !")
             
         }
         mNevoBT?.sendRequest(request)

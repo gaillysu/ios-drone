@@ -89,7 +89,7 @@ class ConnectionManager: NSObject {
             //if disconnecttime and connectedtime not more than 20 seconds, not show the connected msg
             if let preDisconnectTime = ConnectionManager.Const.disconnectTime {
                 if nowTime - preDisconnectTime > Int(ConnectionManager.Const.maxReconnectTime) {
-                    AppTheme.DLog("show the connected msg")
+                    NSLog("show the connected msg")
                     let connectedMsg = AppTheme.LocalNotificationBody(NSLocalizedString(ConnectionManager.Const.connectionStatus.connected.rawValue,comment: ""))
                     mConnectedLocalMsg.append(connectedMsg)
                 }
@@ -99,12 +99,12 @@ class ConnectionManager: NSObject {
         
         //if disconnecttime and connectedtime not more than 20 seconds, cancel the disconnect msg
         if let preDisconnectedTime = ConnectionManager.Const.disconnectTime {
-            AppTheme.DLog("checkConnectSendNotification connected time \(nowTime) offset: \(nowTime - preDisconnectedTime)")
+            NSLog("checkConnectSendNotification connected time \(nowTime) offset: \(nowTime - preDisconnectedTime)")
             if nowTime - preDisconnectedTime < Int(ConnectionManager.Const.maxReconnectTime) {
                 var arrayIndex = 0
                 for disMsg in mDisconnectedLocalMsg {
                     let disMsgTimer:NSDate = disMsg.fireDate!
-                    AppTheme.DLog("cancel disconnect msg \(disMsgTimer.timeIntervalSince1970)")
+                    NSLog("cancel disconnect msg \(disMsgTimer.timeIntervalSince1970)")
                     //if the msg is not show , cancel it
                     if NSDate().timeIntervalSince1970 - disMsgTimer.timeIntervalSince1970 < 0 {
                         UIApplication.sharedApplication().cancelLocalNotification(disMsg)
@@ -148,7 +148,7 @@ class ConnectionManager: NSObject {
         removeAllConnectionMsgBefore(ConnectionManager.Const.connectionLocalMsgType.disconnected)
         ConnectionManager.Const.disconnectTime = timeInter
         if let connectedTime = ConnectionManager.Const.connectedTime {
-            AppTheme.DLog("checkConnectSendNotification disconnected time \(timeInter) offset: \(timeInter - connectedTime)")
+            NSLog("checkConnectSendNotification disconnected time \(timeInter) offset: \(timeInter - connectedTime)")
         }
         let disconnectMsg = AppTheme.LocalNotificationBody(NSLocalizedString(ConnectionManager.Const.connectionStatus.disconnected.rawValue,comment: ""), delay: ConnectionManager.Const.maxReconnectTime)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("aWindowBecameMain"), name: UILocalNotificationDefaultSoundName, object: nil)
@@ -166,19 +166,19 @@ class ConnectionManager: NSObject {
     func checkConnectSendNotification(type:ConnectionManager.Const.connectionStatus){
         //if not open the send local notification , not go on
         if getIsSendLocalMsg() == false {
-            AppTheme.DLog("checkConnectSendNotification local notification not open")
+            NSLog("checkConnectSendNotification local notification not open")
             return
         }
         let nowTime = Int(NSDate().timeIntervalSince1970)
         switch type {
         case .connected:
-            AppTheme.DLog("checkConnectSendNotification connected time \(nowTime)")
+            NSLog("checkConnectSendNotification connected time \(nowTime)")
             setConnectedTime(nowTime)
         case .disconnected:
-            AppTheme.DLog("checkConnectSendNotification disconnected time \(nowTime)")
+            NSLog("checkConnectSendNotification disconnected time \(nowTime)")
             setDisconnectTime(nowTime)
         default:
-            AppTheme.DLog("checkConnectSendNotification default")
+            NSLog("checkConnectSendNotification default")
         }
     }
     

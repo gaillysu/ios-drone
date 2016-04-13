@@ -8,16 +8,6 @@
 
 import UIKit
 
-
-enum SystemStatus:Int {
-    case LowMemory = 0,
-    InvalidTime = 3,
-    GoalCompleted = 4,
-    ActivityDataAvailable = 5,
-    SubscribedToNotifications = 7,
-    SystemReset = 8
-}
-
 class GetSystemStatus: NevoRequest {
 
     class func HEADER() -> UInt8 {

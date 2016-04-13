@@ -18,10 +18,9 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
     
     init(keyDict:NSDictionary) {
         super.init()
-        self.setValue(keyDict.objectForKey("id"), forKey: "id")
-        self.setValue(keyDict.objectForKey("steps"), forKey: "steps")
-        self.setValue(keyDict.objectForKey("distance"), forKey: "distance")
-        self.setValue(keyDict.objectForKey("date"), forKey: "date")
+        keyDict.enumerateKeysAndObjectsUsingBlock { (key, value, stop) in
+            self.setValue(value, forKey: key as! String)
+        }
     }
 
     func add(result:((id:Int?,completion:Bool?) -> Void)){

@@ -55,7 +55,7 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
         switch (indexPath.section){
         case 0:
             if(isEqualString("\(sources[indexPath.row])",string2: NSLocalizedString("My Drone", comment: ""))){
-                AppTheme.DLog("My Drone")
+                NSLog("My Drone")
                 let mynevo:MyDroneController = MyDroneController()
                 mynevo.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(mynevo, animated: true)
@@ -63,12 +63,12 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
             break
         case 1:
             if(isEqualString("\(titleArray[indexPath.row])",string2: NSLocalizedString("Find device", comment: ""))){
-                AppTheme.DLog("Find device")
+                NSLog("Find device")
                 findMydevice()
             }
 
             if(isEqualString("\(titleArray[indexPath.row])",string2: NSLocalizedString("Preset-goals", comment: ""))){
-                AppTheme.DLog("Preset-goals")
+                NSLog("Preset-goals")
                 let presetView:GoalTableViewController = GoalTableViewController()
                 presetView.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(presetView, animated: true)
@@ -118,7 +118,7 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
     func findMydevice(){
         let minDelay:Double = 6
         let offset:Double = (NSDate().timeIntervalSince1970 - mFindMydeviceDatetime.timeIntervalSince1970)
-        AppTheme.DLog("findMydevice offset:\(offset)")
+        NSLog("findMydevice offset:\(offset)")
         if (offset < minDelay) {
             return
         }

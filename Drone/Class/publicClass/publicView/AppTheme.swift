@@ -15,14 +15,6 @@ Colors, fonts etc...
 */
 class AppTheme {
 
-    #if DEBUG
-    class func DLog(message: String, filename: String = __FILE__, function: String = __FUNCTION__, line: Int = __LINE__) {
-        NSLog("[\((filename as NSString).lastPathComponent):\(line)] \(function) - \(message)")
-    }
-    #else
-    class func DLog(message: String, filename: String = __FILE__, function: String = __FUNCTION__, line: Int = __LINE__) {
-    }
-    #endif
     /**
     This color should be used app wide on all actionable elements
     sRGB value : #ff9933
@@ -405,16 +397,16 @@ class AppTheme {
         var  fileNames:[String] = []
         do {
             fileNames = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(firmwaresDirectoryPath as String)
-            AppTheme.DLog("number of files in directory \(fileNames.count)");
+            NSLog("number of files in directory \(fileNames.count)");
             for fileName in fileNames {
-                AppTheme.DLog("Found file in directory: \(fileName)");
+                NSLog("Found file in directory: \(fileName)");
                 let filePath:String = firmwaresDirectoryPath.stringByAppendingPathComponent(fileName)
                 let fileURL:NSURL = NSURL.fileURLWithPath(filePath)
                 AllFilesNames.addObject(fileURL)
             }
             return AllFilesNames.copy() as! NSArray
         }catch{
-            AppTheme.DLog("error in opening directory path: \(firmwaresDirectoryPath)");
+            NSLog("error in opening directory path: \(firmwaresDirectoryPath)");
             return NSArray()
         }
     }

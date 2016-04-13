@@ -51,10 +51,10 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         let stepsArray: NSMutableArray = NSMutableArray();
         let now = NSDate();
 
-        for var j = 0; j < 100; j++ {
+        for j in 0 ..< 100 {
             let steps = Int(arc4random_uniform(6000) + 1000)
             let date:NSDate = now - j.day;
-            stepsArray.addObject(UserSteps(keyDict:["id":j,"steps":steps,"hourlysteps":"","date":(date.timeIntervalSince1970)]));
+            stepsArray.addObject(UserSteps(keyDict:["id":j,"steps":steps,"distance":0,"date":(date.timeIntervalSince1970)]));
         }
         // Need to get some Goal somewhere arround, for now Goal is 10000
         let goal = 10000;
@@ -69,7 +69,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         var xVals = [String]();
         var yVals = [ChartDataEntry]();
         
-        for var i = 0; i < stepsArray.count; i++ {
+        for i in 0 ..< stepsArray.count {
             let steps:UserSteps = stepsArray[i] as! UserSteps
             yVals.append(BarChartDataEntry(value: Double(steps.steps), xIndex:i));
             let dateOfSteps:NSDate = NSDate(timeIntervalSinceReferenceDate: steps.date)

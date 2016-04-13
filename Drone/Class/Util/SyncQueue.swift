@@ -99,7 +99,7 @@ class SyncQueue : NSObject {
     * Locks the handler
     */
     private func lock(){
-        AppTheme.DLog("SyncController : Waiting for a response...")
+        NSLog("SyncController : Waiting for a response...")
         mLock = true
     
         //Here we reset the Timeout timer
@@ -113,7 +113,7 @@ class SyncQueue : NSObject {
     * Unlocks the handler.
     */
     private func unlock(){
-        AppTheme.DLog("SyncController : Response received or timeout")
+        NSLog("SyncController : Response received or timeout")
         mLock = false
     
         //Here we reset the Timeout timer

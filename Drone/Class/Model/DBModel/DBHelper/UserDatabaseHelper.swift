@@ -219,7 +219,7 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
             let sql:NSString = NSString(format: "INSERT INTO %@(%@) VALUES (%@);", tableName, keyString, valueString)
             res = db.executeUpdate("\(sql)", withArgumentsInArray: insertValues as [AnyObject])
             self.id = res ? NSNumber(longLong: db.lastInsertRowId()).integerValue : 0
-            AppTheme.DLog("\(res ? "Insert success" : "Insert failed"),SQL:\(sql)");
+            NSLog("\(res ? "Insert success" : "Insert failed"),SQL:\(sql)");
             result(id: self.id,completion: res)
         }
     }

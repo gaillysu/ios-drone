@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA4D1CBC830C00820B1F /* DeviceModel.swift */; };
 		0015CA501CBC835900820B1F /* UserDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA4F1CBC835900820B1F /* UserDevice.swift */; };
+		0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */; };
 		00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00233D4C1CBB43C200824E64 /* XCGLogger.framework */; };
 		0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */; };
 		0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */; };
@@ -165,7 +166,6 @@
 		00982D151C86A350003DA5E2 /* upgrade_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFB1C86A350003DA5E2 /* upgrade_clock.png */; };
 		00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFD1C86A350003DA5E2 /* localTimeZone.plist */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
-		00BC14961C925BC100E43F44 /* SystemEventCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC14951C925BC100E43F44 /* SystemEventCommand.swift */; };
 		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
 		00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -206,6 +206,7 @@
 /* Begin PBXFileReference section */
 		0015CA4D1CBC830C00820B1F /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		0015CA4F1CBC835900820B1F /* UserDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDevice.swift; sourceTree = "<group>"; };
+		0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemEventPacket.swift; sourceTree = "<group>"; };
 		00233D4C1CBB43C200824E64 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "Pods/../build/Debug-iphoneos/XCGLogger.framework"; sourceTree = "<group>"; };
 		0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfileModel.swift; sourceTree = "<group>"; };
 		0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabaseHelper.swift; sourceTree = "<group>"; };
@@ -376,7 +377,6 @@
 		00982CFB1C86A350003DA5E2 /* upgrade_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upgrade_clock.png; sourceTree = "<group>"; };
 		00982CFD1C86A350003DA5E2 /* localTimeZone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = localTimeZone.plist; sourceTree = "<group>"; };
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		00BC14951C925BC100E43F44 /* SystemEventCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemEventCommand.swift; sourceTree = "<group>"; };
 		00BC14971C9292DE00E43F44 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Pods/../build/Debug-iphoneos/Timepiece.framework"; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
 		00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YRSideViewController.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/YRSideViewController.framework"; sourceTree = "<group>"; };
@@ -903,7 +903,6 @@
 				00982B3A1C868C89003DA5E2 /* SetSystemConfig.swift */,
 				00982B3B1C868C89003DA5E2 /* SetWorldClockRequest.swift */,
 				00982B3D1C868C89003DA5E2 /* WriteSettingRequest.swift */,
-				00BC14951C925BC100E43F44 /* SystemEventCommand.swift */,
 				005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */,
 				005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */,
 				0043FBE11CA11C9800638BD1 /* SetNotificationRequest.swift */,
@@ -948,6 +947,7 @@
 				00982B4B1C868C89003DA5E2 /* DailyTrackerInfoNevoPacket.swift */,
 				00982B4C1C868C89003DA5E2 /* DailyTrackerNevoPacket.swift */,
 				00982B4D1C868C89003DA5E2 /* NevoPacket.swift */,
+				0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */,
 				00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */,
 				004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */,
 				004ED1E91CB35DDA009D053C /* ActivityPacket.swift */,
@@ -1417,7 +1417,6 @@
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
 				00982C621C868C8A003DA5E2 /* DailyTrackerNevoPacket.swift in Sources */,
-				00BC14961C925BC100E43F44 /* SystemEventCommand.swift in Sources */,
 				00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */,
 				00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */,
 				00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */,
@@ -1488,6 +1487,7 @@
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
 				00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
+				0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */,
 				00F1AF441CACD82600CB9A15 /* ActivityViewController.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
 				00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */,

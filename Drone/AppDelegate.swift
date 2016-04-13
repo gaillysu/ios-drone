@@ -134,7 +134,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func setSystemConfig() {
-
         sendRequest(SetSystemConfig(autoStart: NSDate().timeIntervalSince1970, autoEnd: NSDate.tomorrow().timeIntervalSince1970))
     }
 
@@ -211,7 +210,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
         if( NSDate().timeIntervalSince1970-lastSync > SYNC_INTERVAL) {
             //We haven't synched for a while, let's sync now !
-            AppTheme.DLog("*** Sync started ! ***")
+            NSLog("*** Sync started ! ***")
             //self.getDailyTrackerInfo()
         }
 
@@ -361,7 +360,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                     let stepsArray = UserSteps.getCriteria("WHERE date = \(activityPacket.gettimerInterval())")
                     if(stepsArray.count>0) {
                         let step:UserSteps = stepsArray[0] as! UserSteps
-                        AppTheme.DLog("Data that has been saved····")
+                        NSLog("Data that has been saved····")
                         let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(activityPacket.getStepCount())", "distance": "\(activityPacket.getStepDistance())","date":activityPacket.gettimerInterval()])
                         stepsModel.update()
                     }else {
@@ -407,7 +406,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         let mcuver = AppTheme.GET_SOFTWARE_VERSION()
         let blever = AppTheme.GET_FIRMWARE_VERSION()
 
-        AppTheme.DLog("Build in software version: \(mcuver), firmware version: \(blever)")
+        NSLog("Build in software version: \(mcuver), firmware version: \(blever)")
         SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.APPLICATION ? ["BLE":version]:["MCU":version])
     }
 
