@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     //Let's sync every days
     let SYNC_INTERVAL:NSTimeInterval = 0*30*60 //unit is second in iOS, every 30min, do sync
     let LAST_SYNC_DATE_KEY = "LAST_SYNC_DATE_KEY"
-    private var mDelegates:[SyncControllerDelegate] = []
     private var mConnectionController : ConnectionControllerImpl?
     private var mPacketsbuffer:[NSData] = []
     private let mHealthKitStore:HKHealthStore = HKHealthStore()
@@ -149,6 +148,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         sendRequest(SetGoalRequest(goal: goal))
     }
 
+    func setUserProfile() {
+        sendRequest(SetUserProfileRequest(weight: 6000, height: 165, gender: 1, stridelength: 65))
+    }
+
     func setWorldClock(clock:[SetWorldClockRequest]) {
         for worldclock in clock{
             sendRequest(worldclock)
@@ -196,26 +199,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         return todaySleepData;
     }
 
-    // MARK: -AppDelegate syncActivityData
-    /**
-     This function will syncrhonise activity data with the watch.
-     It is a long process and hence shouldn't be done too often, so we save the date of previous sync.
-     The watch should be emptied after all data have been saved.
-     */
-    func syncActivityData() {
-        var lastSync = 0.0
-        if let lastSyncSaved = NSUserDefaults.standardUserDefaults().objectForKey(LAST_SYNC_DATE_KEY) as? Double {
-            lastSync = lastSyncSaved
-        }
-
-        if( NSDate().timeIntervalSince1970-lastSync > SYNC_INTERVAL) {
-            //We haven't synched for a while, let's sync now !
-            NSLog("*** Sync started ! ***")
-            //self.getDailyTrackerInfo()
-        }
-
-    }
-
     /**
      When the sync process is finished, le't refresh the date of sync
      */
@@ -251,13 +234,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     func sendRequest(r:Request) {
         if(isConnected()){
             self.mConnectionController?.sendRequest(r)
-//            SyncQueue.sharedInstance.post( { (Void) -> (Void) in
-//            } )
         }else {
             //tell caller
-            for delegate in mDelegates {
-                delegate.connectionStateChanged(false)
-            }
+            SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:false)
         }
     }
 
@@ -271,14 +250,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             SwiftEventBus.post(SWIFTEVENT_BUS_RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
 
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
-                SwiftEventBus.post(SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
-
-                let data:[UInt8] = NSData2Bytes(packet.getRawData())
-                let systemStatus:Int = Int(data[2])
+                setGoal(NumberOfStepsGoal(steps: 100))
+                let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
                 log.debug("SystemStatus :\(systemStatus)")
                 if(systemStatus == SystemStatus.SystemReset.rawValue) {
+                    //step1 : Set systemconfig
                     self.setSystemConfig()
+                    //step2: Set RTC
                     self.setRTC()
+                    //step3: Set appconfig
+                    self.setAppConfig()
+                    //step4: Set user profile
+                    self.setUserProfile()
                 }
 
                 if(systemStatus == SystemStatus.InvalidTime.rawValue) {
@@ -292,11 +275,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 if(systemStatus == SystemStatus.ActivityDataAvailable.rawValue) {
                     self.getActivity()
                 }
+
+                SwiftEventBus.post(SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
             }
 
-            if(packet.getHeader() == SystemEventCommand.HEADER()) {
-                let data:[UInt8] = NSData2Bytes(packet.getRawData())
-                let eventCommandStatus:Int = Int(data[2])
+            if(packet.getHeader() == SystemEventPacket.HEADER()) {
+                let eventCommandStatus:Int = SystemEventPacket(data: packet.getRawData()).getSystemEventStatus()
                 log.debug("eventCommandStatus :\(eventCommandStatus)")
                 if(eventCommandStatus == SystemEventStatus.GoalCompleted.rawValue) {
                     SwiftEventBus.post(SWIFTEVENT_BUS_GOAL_COMPLETED, sender:nil)
@@ -329,13 +313,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
             if(packet.getHeader() == SetAppConfigRequest.HEADER()) {
                 //step3: start set user default goal
-                setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+                setGoal(NumberOfStepsGoal(steps: 1000))
             }
 
             if(packet.getHeader() == SetGoalRequest.HEADER()) {
                 //step4: get big syncactivity Activity data
                 SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
-                syncActivityData()
+                self.getActivity()
             }
 
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
@@ -352,30 +336,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
 
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
-                let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
+                let syncStatus:[UInt8] = NSData2Bytes(packet.getRawData())
+                var timerInterval:Int = Int(syncStatus[2])
+                timerInterval =  timerInterval + Int(syncStatus[3])<<8
+                timerInterval =  timerInterval + Int(syncStatus[4])<<16
+                timerInterval =  timerInterval + Int(syncStatus[5])<<24
 
-                NSLog("dailySteps:\(activityPacket.getStepCount()),dailyStepsDate:\(activityPacket.gettimerInterval()),status:\(activityPacket.getFIFOStatus())")
+                var stepCount:Int = Int(syncStatus[6])
+                stepCount =  stepCount + Int(syncStatus[7])<<8
 
-                if (activityPacket.getStepCount() != 0) {
-                    let stepsArray = UserSteps.getCriteria("WHERE date = \(activityPacket.gettimerInterval())")
+                let status:Int = Int(syncStatus[8])
+
+                //let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
+
+                NSLog("dailySteps:\(stepCount),dailyStepsDate:\(timerInterval),status:\(status)")
+
+                if (stepCount != 0) {
+                    let stepsArray = UserSteps.getCriteria("WHERE date = \(timerInterval)")
                     if(stepsArray.count>0) {
                         let step:UserSteps = stepsArray[0] as! UserSteps
                         NSLog("Data that has been saved····")
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(activityPacket.getStepCount())", "distance": "\(activityPacket.getStepDistance())","date":activityPacket.gettimerInterval()])
+                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(stepCount)", "distance": "\(0)","date":timerInterval])
                         stepsModel.update()
                     }else {
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(activityPacket.getStepCount())",  "distance": "\(activityPacket.getStepDistance())", "date":activityPacket.gettimerInterval()])
+                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(stepCount)",  "distance": "\(0)", "date":timerInterval])
                         stepsModel.add({ (id, completion) -> Void in
 
                         })
                     }
                 }
-                let bigData:[String:Int] = ["timerInterval":activityPacket.gettimerInterval(),"dailySteps":activityPacket.getStepCount()]
+                let bigData:[String:Int] = ["timerInterval":timerInterval,"dailySteps":stepCount]
                 SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:bigData)
 
                 //Download more data
-                if(activityPacket.getFIFOStatus() == ActivityDataStatus.MoreData.rawValue) {
-                    syncActivityData()
+                if(status == ActivityDataStatus.MoreData.rawValue) {
+                    self.getActivity()
                 }else{
                     SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
                 }
