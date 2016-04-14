@@ -10,5 +10,18 @@ import UIKit
 import GSMessages
 
 class RegisterController: BaseViewController {
+    @IBOutlet weak var backB: UIButton!
+    @IBOutlet weak var nextB: UIButton!
+    @IBOutlet weak var emailT: UITextField!
+    @IBOutlet weak var passwordT: UITextField!
+    @IBOutlet weak var registerL: UILabel!
+    @IBOutlet weak var googleB: UIButton!
+    @IBOutlet weak var facebookB: UIButton!
+    @IBOutlet weak var twitterB: UIButton!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
 
 }
