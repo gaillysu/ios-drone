@@ -26,13 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     let SYNC_INTERVAL:NSTimeInterval = 0*30*60 //unit is second in iOS, every 30min, do sync
     let LAST_SYNC_DATE_KEY = "LAST_SYNC_DATE_KEY"
     private var mConnectionController : ConnectionControllerImpl?
-    private var mPacketsbuffer:[NSData] = []
     private let mHealthKitStore:HKHealthStore = HKHealthStore()
-    private var savedDailyHistory:[NevoPacket.DailyHistory] = []
     private var currentDay:UInt8 = 0
     private var mAlertUpdateFW = false
 
-    private var todaySleepData:NSMutableArray = NSMutableArray(capacity: 2)
     private var disConnectAlert:UIAlertView?
     private let log = XCGLogger.defaultInstance()
     let sideViewController:YRSideViewController = YRSideViewController()
@@ -195,24 +192,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         sendRequest(GetBatteryRequest())
     }
 
-    func GET_TodaySleepData()->NSArray{
-        return todaySleepData;
-    }
-
-    /**
-     When the sync process is finished, le't refresh the date of sync
-     */
-    func syncFinished() {
-
-        log.debug("*** Sync finished ***")
-
-        let userDefaults = NSUserDefaults.standardUserDefaults();
-
-        userDefaults.setObject(NSDate().timeIntervalSince1970,forKey:LAST_SYNC_DATE_KEY)
-
-        userDefaults.synchronize()
-    }
-
     // MARK: - ConnectionController protocol
     func  getFirmwareVersion() -> NSString{
         return isConnected() ? self.mConnectionController!.getFirmwareVersion() : NSString()
@@ -220,10 +199,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     func  getSoftwareVersion() -> NSString{
         return isConnected() ? self.mConnectionController!.getSoftwareVersion() : NSString()
-    }
-
-    func connect() {
-        self.startConnect()
     }
 
     func isConnected() -> Bool{
@@ -383,17 +358,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:isConnected)
 
         if(isConnected) {
-            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
+            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.6 * Double(NSEC_PER_SEC)))
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                //setp1: cmd 0x01, set RTC, for every connected Nevo
-                self.mPacketsbuffer = []
-                //self.setRTC()
+                //setp1: cmd:0x01 read system status
                 self.readsystemStatus()
             })
-
-        }else {
-            SyncQueue.sharedInstance.clear()
-            mPacketsbuffer = []
         }
     }
 

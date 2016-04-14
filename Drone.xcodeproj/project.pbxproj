@@ -31,6 +31,8 @@
 		008C5EE31C8D7A3600DCD12D /* GSMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE11C8D7A3600DCD12D /* GSMessages.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */; };
 		008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */; };
+		009201DC1CBE2B6600C51707 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009201DA1CBE2B6600C51707 /* HomeViewController.swift */; };
+		009201DD1CBE2B6600C51707 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009201DB1CBE2B6600C51707 /* HomeViewController.xib */; };
 		0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A691C868B15003DA5E2 /* AppDelegate.swift */; };
 		00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00982A701C868B15003DA5E2 /* Assets.xcassets */; };
@@ -229,6 +231,8 @@
 		008C5EE11C8D7A3600DCD12D /* GSMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GSMessages.framework; path = "Pods/../build/Debug-iphoneos/GSMessages.framework"; sourceTree = "<group>"; };
 		008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Drone/Class/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewCell.xib; path = Drone/Class/MenuViewCell.xib; sourceTree = SOURCE_ROOT; };
+		009201DA1CBE2B6600C51707 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		009201DB1CBE2B6600C51707 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftEventBus.framework; path = "Pods/../build/Debug-iphoneos/SwiftEventBus.framework"; sourceTree = "<group>"; };
 		00982A661C868B15003DA5E2 /* Drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A691C868B15003DA5E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -438,6 +442,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		009201D91CBE2B5200C51707 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				009201DA1CBE2B6600C51707 /* HomeViewController.swift */,
+				009201DB1CBE2B6600C51707 /* HomeViewController.xib */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
 		00982A5D1C868B15003DA5E2 = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +522,7 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				009201D91CBE2B5200C51707 /* HomeViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				00F1AF391CACD82600CB9A15 /* ActivityViewController */,
 				00F1AF3C1CACD82600CB9A15 /* AddDeviceController */,
@@ -517,10 +531,10 @@
 				CBA06BED1C8EC27E00E3257B /* AddWorldClockController */,
 				00982ABB1C868C89003DA5E2 /* GoalController */,
 				00982AA91C868C89003DA5E2 /* LoginController */,
+				00982AC81C868C89003DA5E2 /* RegisterController */,
 				00982AAC1C868C89003DA5E2 /* MyDroneController */,
 				00982AB31C868C89003DA5E2 /* NevoOtaController */,
 				00982AC51C868C89003DA5E2 /* ProfileViewController */,
-				00982AC81C868C89003DA5E2 /* RegisterController */,
 				00982ACB1C868C89003DA5E2 /* SettingsViewController */,
 				00982ACF1C868C89003DA5E2 /* SleepViewController */,
 				00982ADB1C868C89003DA5E2 /* StepsViewController */,
@@ -1335,6 +1349,7 @@
 				00982D151C86A350003DA5E2 /* upgrade_clock.png in Resources */,
 				00982D0C1C86A350003DA5E2 /* clockViewHour.png in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
+				009201DD1CBE2B6600C51707 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1466,6 +1481,7 @@
 				0043FBE81CA13CED00638BD1 /* SetContactsFilterRequest.swift in Sources */,
 				00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */,
 				00982BF51C868C8A003DA5E2 /* DeviceScannerView.swift in Sources */,
+				009201DC1CBE2B6600C51707 /* HomeViewController.swift in Sources */,
 				0043FBE61CA131BD00638BD1 /* UpdateNotificationRequest.swift in Sources */,
 				00982CCC1C868C8A003DA5E2 /* NevoHK.swift in Sources */,
 				0015CA501CBC835900820B1F /* UserDevice.swift in Sources */,
