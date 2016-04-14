@@ -133,7 +133,7 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
     }
 
     func reconnect() {
-        AppDelegate.getAppDelegate().connect()
+        
     }
 
 

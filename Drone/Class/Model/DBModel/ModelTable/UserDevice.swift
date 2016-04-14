@@ -62,7 +62,7 @@ class UserDevice: NSObject,BaseEntryDatabaseHelper {
     }
 
     class func getAll()->NSArray{
-        let modelArray:NSArray = StepsModel.getAll()
+        let modelArray:NSArray = DeviceModel.getAll()
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let deviceModel:DeviceModel = model as! DeviceModel
