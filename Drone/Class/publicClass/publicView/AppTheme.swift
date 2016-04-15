@@ -67,7 +67,7 @@ class AppTheme {
     :returns: Return to obtain images of the object
     */
     class func GET_RESOURCES_IMAGE(imageName:String) -> UIImage {
-        let imagePath:String = NSBundle.mainBundle().pathForResource(imageName, ofType: "png")!
+        let imagePath:String = NSBundle.mainBundle().pathForResource(imageName, ofType: "jpg")!
         return UIImage(contentsOfFile: imagePath)!
 
     }
@@ -474,5 +474,35 @@ class AppTheme {
 
     class func getDeepSleepColor () -> UIColor{
         return UIColor(red: 252/255.0, green: 182/255.0, blue: 0/255.0, alpha: 1.0)
+    }
+
+    /**
+     Get or get the resource path of the array
+
+     :param: folderName Resource folder name
+
+     :returns: Return path array
+     */
+    class func GET_RESOURCE_FILES(folderName:String) -> NSArray {
+
+        let AllFilesNames:NSMutableArray = NSMutableArray()
+        let appPath:NSString  = NSBundle.mainBundle().resourcePath!
+        let firmwaresDirectoryPath:NSString = appPath.stringByAppendingPathComponent(folderName)
+
+        var  fileNames:[String] = []
+        do {
+            fileNames = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(firmwaresDirectoryPath as String)
+            debugPrint("number of files in directory \(fileNames.count)");
+            for fileName in fileNames {
+                debugPrint("Found file in directory: \(fileName)");
+                let filePath:String = firmwaresDirectoryPath.stringByAppendingPathComponent(fileName)
+                let fileURL:NSURL = NSURL.fileURLWithPath(filePath)
+                AllFilesNames.addObject(fileURL)
+            }
+            return AllFilesNames.copy() as! NSArray
+        }catch{
+            debugPrint("error in opening directory path: \(firmwaresDirectoryPath)");
+            return NSArray()
+        }
     }
 }

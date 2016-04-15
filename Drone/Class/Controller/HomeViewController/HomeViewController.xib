@@ -7,6 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Drone" customModuleProvider="target">
             <connections>
+                <outlet property="headerImage" destination="zck-yo-tYr" id="2VQ-Mb-8zd"/>
+                <outlet property="loginB" destination="8z3-QM-qWQ" id="3mI-s8-K6n"/>
+                <outlet property="registB" destination="Fxx-u5-HNV" id="dwX-KX-U3B"/>
+                <outlet property="scrollView" destination="Non-g5-1bJ" id="5QX-Kv-Cp4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,33 +19,70 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbr-6T-vhs">
-                    <rect key="frame" x="0.0" y="75" width="600" height="375"/>
-                </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8z3-QM-qWQ">
-                    <rect key="frame" x="40" y="455" width="520" height="35"/>
-                    <state key="normal" title="LOGIN"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dronelogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="zck-yo-tYr">
+                    <rect key="frame" x="40" y="40" width="520" height="65"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="PzG-Hz-KhF"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="PzG-Hz-KhF"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Non-g5-1bJ">
+                    <rect key="frame" x="0.0" y="105" width="600" height="342"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8z3-QM-qWQ">
+                    <rect key="frame" x="75" y="452" width="450" height="34"/>
+                    <state key="normal" title="LOGIN">
+                        <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="MiB-n6-Me2"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxx-u5-HNV">
-                    <rect key="frame" x="40" y="500" width="520" height="35"/>
-                    <state key="normal" title="REGIST"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxx-u5-HNV">
+                    <rect key="frame" x="75" y="501" width="450" height="34"/>
+                    <state key="normal" title="REGIST">
+                        <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="bbA-dl-URE"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="qbr-6T-vhs" firstAttribute="height" secondItem="8z3-QM-qWQ" secondAttribute="height" constant="340" id="6ld-bk-wzE"/>
-                <constraint firstItem="8z3-QM-qWQ" firstAttribute="height" secondItem="Fxx-u5-HNV" secondAttribute="height" id="92I-po-22o"/>
-                <constraint firstItem="8z3-QM-qWQ" firstAttribute="top" secondItem="qbr-6T-vhs" secondAttribute="bottom" constant="5" id="9ak-U7-sp6"/>
-                <constraint firstItem="qbr-6T-vhs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="AGR-nb-KNm"/>
-                <constraint firstItem="qbr-6T-vhs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="afP-3O-ddL"/>
-                <constraint firstAttribute="trailing" secondItem="qbr-6T-vhs" secondAttribute="trailing" id="bh3-25-EMR"/>
-                <constraint firstAttribute="trailing" secondItem="8z3-QM-qWQ" secondAttribute="trailing" constant="40" id="mHd-zh-4Z8"/>
-                <constraint firstItem="Fxx-u5-HNV" firstAttribute="top" secondItem="8z3-QM-qWQ" secondAttribute="bottom" constant="10" id="nrA-sW-1ub"/>
-                <constraint firstItem="Fxx-u5-HNV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="pE9-sO-okl"/>
-                <constraint firstAttribute="bottom" secondItem="Fxx-u5-HNV" secondAttribute="bottom" constant="65" id="rJC-vH-mcQ"/>
-                <constraint firstItem="8z3-QM-qWQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="tEb-z3-lZE"/>
-                <constraint firstAttribute="trailing" secondItem="Fxx-u5-HNV" secondAttribute="trailing" constant="40" id="v1o-bl-eMA"/>
+                <constraint firstAttribute="trailing" secondItem="Non-g5-1bJ" secondAttribute="trailing" id="2W2-U6-oCl"/>
+                <constraint firstItem="8z3-QM-qWQ" firstAttribute="height" secondItem="Fxx-u5-HNV" secondAttribute="height" id="2eK-ka-34h"/>
+                <constraint firstItem="zck-yo-tYr" firstAttribute="height" secondItem="Non-g5-1bJ" secondAttribute="height" id="BfZ-Td-iVu"/>
+                <constraint firstAttribute="trailing" secondItem="8z3-QM-qWQ" secondAttribute="trailing" constant="75" id="Daw-EW-Vqw"/>
+                <constraint firstItem="Non-g5-1bJ" firstAttribute="top" secondItem="zck-yo-tYr" secondAttribute="bottom" id="FtW-ED-uXM"/>
+                <constraint firstItem="Non-g5-1bJ" firstAttribute="height" secondItem="8z3-QM-qWQ" secondAttribute="height" constant="310" id="Gp8-Gs-7DX"/>
+                <constraint firstItem="Non-g5-1bJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tl1-n7-fuM"/>
+                <constraint firstItem="Fxx-u5-HNV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="75" id="WCZ-iX-FeU"/>
+                <constraint firstAttribute="trailing" secondItem="zck-yo-tYr" secondAttribute="trailing" constant="40" id="XD5-Fd-kPh"/>
+                <constraint firstItem="8z3-QM-qWQ" firstAttribute="top" secondItem="Non-g5-1bJ" secondAttribute="bottom" constant="5" id="bbf-00-ei7"/>
+                <constraint firstItem="zck-yo-tYr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="dN6-ru-kVB"/>
+                <constraint firstItem="Non-g5-1bJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="105" id="ee5-ew-epB"/>
+                <constraint firstItem="zck-yo-tYr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="evZ-zA-aea"/>
+                <constraint firstItem="Fxx-u5-HNV" firstAttribute="top" secondItem="8z3-QM-qWQ" secondAttribute="bottom" constant="15" id="fqU-Hy-zdm"/>
+                <constraint firstItem="8z3-QM-qWQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="75" id="tCL-7Q-bgT"/>
+                <constraint firstAttribute="bottom" secondItem="Fxx-u5-HNV" secondAttribute="bottom" constant="65" id="w5q-11-flF"/>
+                <constraint firstAttribute="trailing" secondItem="Fxx-u5-HNV" secondAttribute="trailing" constant="75" id="zE8-bA-pSp"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="BfZ-Td-iVu"/>
+                    <exclude reference="Gp8-Gs-7DX"/>
+                    <exclude reference="2eK-ka-34h"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="dronelogo.png" width="560" height="140"/>
+    </resources>
 </document>

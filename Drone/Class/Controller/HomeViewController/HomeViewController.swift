@@ -7,15 +7,52 @@
 //
 
 import UIKit
+import SDCycleScrollView
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var scrollView: UIView!
+    @IBOutlet weak var loginB: UIButton!
+    @IBOutlet weak var registB: UIButton!
+
+
+    init() {
+        super.init(nibName: "HomeViewController", bundle: NSBundle.mainBundle())
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginB.layer.borderWidth = 0.5
+        loginB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).CGColor
+
+        registB.layer.borderWidth = 0.5
+        registB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).CGColor
 
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidLayoutSubviews() {
+        let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, scrollView.bounds.size.width, scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [AppTheme.GET_RESOURCES_IMAGE("drone1"),AppTheme.GET_RESOURCES_IMAGE("drone2"),AppTheme.GET_RESOURCES_IMAGE("drone3")])
+        scrollView.addSubview(sdView)
+    }
+
+
+    @IBAction func buttonActionManager(sender: AnyObject) {
+        if loginB.isEqual(sender) {
+            let logoin:LoginController = LoginController()
+            self.navigationController?.pushViewController(logoin, animated: true)
+        }
+
+        if registB.isEqual(sender) {
+            let register:RegisterController = RegisterController()
+            self.navigationController?.pushViewController(register, animated: true)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

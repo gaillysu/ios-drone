@@ -25,6 +25,10 @@
 		004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E91CB35DDA009D053C /* ActivityPacket.swift */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
+		0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA6E1CC089BF005AB9DE /* drone1.jpg */; };
+		0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA701CC089BF005AB9DE /* drone3.jpg */; };
+		0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA741CC089F4005AB9DE /* drone2.jpg */; };
+		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
 		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -156,16 +160,6 @@
 		00982CDF1C868F62003DA5E2 /* SleepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CDE1C868F62003DA5E2 /* SleepViewController.xib */; };
 		00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CE01C868FE6003DA5E2 /* SettingsViewController.xib */; };
 		00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982CE51C8695AD003DA5E2 /* SetingView.swift */; };
-		00982D071C86A350003DA5E2 /* SFCompactDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00982CEC1C86A350003DA5E2 /* SFCompactDisplay-Bold.ttf */; };
-		00982D081C86A350003DA5E2 /* SFCompactDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00982CED1C86A350003DA5E2 /* SFCompactDisplay-Light.ttf */; };
-		00982D091C86A350003DA5E2 /* SFCompactDisplay-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00982CEE1C86A350003DA5E2 /* SFCompactDisplay-Thin.ttf */; };
-		00982D0A1C86A350003DA5E2 /* clockView600.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF01C86A350003DA5E2 /* clockView600.png */; };
-		00982D0B1C86A350003DA5E2 /* clockview600_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF11C86A350003DA5E2 /* clockview600_color.png */; };
-		00982D0C1C86A350003DA5E2 /* clockViewHour.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF21C86A350003DA5E2 /* clockViewHour.png */; };
-		00982D0D1C86A350003DA5E2 /* clockViewMinute.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF31C86A350003DA5E2 /* clockViewMinute.png */; };
-		00982D101C86A350003DA5E2 /* nevo_wacth.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF61C86A350003DA5E2 /* nevo_wacth.png */; };
-		00982D111C86A350003DA5E2 /* nevo_wacth_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CF71C86A350003DA5E2 /* nevo_wacth_selected.png */; };
-		00982D151C86A350003DA5E2 /* upgrade_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFB1C86A350003DA5E2 /* upgrade_clock.png */; };
 		00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFD1C86A350003DA5E2 /* localTimeZone.plist */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -224,6 +218,10 @@
 		004ED1E91CB35DDA009D053C /* ActivityPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPacket.swift; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
 		005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
+		0064CA6E1CC089BF005AB9DE /* drone1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone1.jpg; sourceTree = "<group>"; };
+		0064CA701CC089BF005AB9DE /* drone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone3.jpg; sourceTree = "<group>"; };
+		0064CA741CC089F4005AB9DE /* drone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone2.jpg; sourceTree = "<group>"; };
+		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
 		008C5EDA1C8D64F800DCD12D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		008C5EDB1C8D64F800DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
 		008C5EDE1C8D655700DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
@@ -369,16 +367,6 @@
 		00982CDE1C868F62003DA5E2 /* SleepViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SleepViewController.xib; sourceTree = "<group>"; };
 		00982CE01C868FE6003DA5E2 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		00982CE51C8695AD003DA5E2 /* SetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetingView.swift; sourceTree = "<group>"; };
-		00982CEC1C86A350003DA5E2 /* SFCompactDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFCompactDisplay-Bold.ttf"; sourceTree = "<group>"; };
-		00982CED1C86A350003DA5E2 /* SFCompactDisplay-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFCompactDisplay-Light.ttf"; sourceTree = "<group>"; };
-		00982CEE1C86A350003DA5E2 /* SFCompactDisplay-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFCompactDisplay-Thin.ttf"; sourceTree = "<group>"; };
-		00982CF01C86A350003DA5E2 /* clockView600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockView600.png; sourceTree = "<group>"; };
-		00982CF11C86A350003DA5E2 /* clockview600_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockview600_color.png; sourceTree = "<group>"; };
-		00982CF21C86A350003DA5E2 /* clockViewHour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockViewHour.png; sourceTree = "<group>"; };
-		00982CF31C86A350003DA5E2 /* clockViewMinute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockViewMinute.png; sourceTree = "<group>"; };
-		00982CF61C86A350003DA5E2 /* nevo_wacth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nevo_wacth.png; sourceTree = "<group>"; };
-		00982CF71C86A350003DA5E2 /* nevo_wacth_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nevo_wacth_selected.png; sourceTree = "<group>"; };
-		00982CFB1C86A350003DA5E2 /* upgrade_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upgrade_clock.png; sourceTree = "<group>"; };
 		00982CFD1C86A350003DA5E2 /* localTimeZone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = localTimeZone.plist; sourceTree = "<group>"; };
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00BC14971C9292DE00E43F44 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Pods/../build/Debug-iphoneos/Timepiece.framework"; sourceTree = "<group>"; };
@@ -1035,7 +1023,6 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				00982CEB1C86A350003DA5E2 /* Font */,
 				00982CEF1C86A350003DA5E2 /* image */,
 				00982CFC1C86A350003DA5E2 /* localTimeZone */,
 				00982CFE1C86A350003DA5E2 /* Strings */,
@@ -1043,26 +1030,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		00982CEB1C86A350003DA5E2 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				00982CEC1C86A350003DA5E2 /* SFCompactDisplay-Bold.ttf */,
-				00982CED1C86A350003DA5E2 /* SFCompactDisplay-Light.ttf */,
-				00982CEE1C86A350003DA5E2 /* SFCompactDisplay-Thin.ttf */,
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
 		00982CEF1C86A350003DA5E2 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				00982CF01C86A350003DA5E2 /* clockView600.png */,
-				00982CF11C86A350003DA5E2 /* clockview600_color.png */,
-				00982CF21C86A350003DA5E2 /* clockViewHour.png */,
-				00982CF31C86A350003DA5E2 /* clockViewMinute.png */,
-				00982CF61C86A350003DA5E2 /* nevo_wacth.png */,
-				00982CF71C86A350003DA5E2 /* nevo_wacth_selected.png */,
-				00982CFB1C86A350003DA5E2 /* upgrade_clock.png */,
+				0064CA761CC08D60005AB9DE /* dronelogo.png */,
+				0064CA741CC089F4005AB9DE /* drone2.jpg */,
+				0064CA6E1CC089BF005AB9DE /* drone1.jpg */,
+				0064CA701CC089BF005AB9DE /* drone3.jpg */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -1314,31 +1288,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00982D0A1C86A350003DA5E2 /* clockView600.png in Resources */,
+				0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */,
+				0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */,
 				00982C091C868C8A003DA5E2 /* queryTableviewCell.xib in Resources */,
 				00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */,
 				00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */,
+				0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */,
+				0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */,
 				00982BFD1C868C8A003DA5E2 /* GoalTableViewController.xib in Resources */,
 				00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */,
 				00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */,
-				00982D101C86A350003DA5E2 /* nevo_wacth.png in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				00982BF01C868C8A003DA5E2 /* MyDroneController.xib in Resources */,
-				00982D081C86A350003DA5E2 /* SFCompactDisplay-Light.ttf in Resources */,
-				00982D111C86A350003DA5E2 /* nevo_wacth_selected.png in Resources */,
 				00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
 				00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */,
 				00982C031C868C8A003DA5E2 /* ProfileViewController.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */,
-				00982D0D1C86A350003DA5E2 /* clockViewMinute.png in Resources */,
-				00982D091C86A350003DA5E2 /* SFCompactDisplay-Thin.ttf in Resources */,
-				00982D0B1C86A350003DA5E2 /* clockview600_color.png in Resources */,
 				00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
 				00982CDF1C868F62003DA5E2 /* SleepViewController.xib in Resources */,
 				00982BFB1C868C8A003DA5E2 /* AddGoalViewController.xib in Resources */,
-				00982D071C86A350003DA5E2 /* SFCompactDisplay-Bold.ttf in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
@@ -1346,8 +1316,6 @@
 				00F1AF451CACD82600CB9A15 /* ActivityViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
-				00982D151C86A350003DA5E2 /* upgrade_clock.png in Resources */,
-				00982D0C1C86A350003DA5E2 /* clockViewHour.png in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
 				009201DD1CBE2B6600C51707 /* HomeViewController.xib in Resources */,
 			);

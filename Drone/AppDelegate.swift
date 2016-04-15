@@ -46,23 +46,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
 
-        sideViewController.rootViewController = UINavigationController(rootViewController: MenuViewController());
-        sideViewController.leftViewController = ProfileViewController();
-        sideViewController.rightViewController = UINavigationController(rootViewController: MyDroneController());
-        sideViewController.leftViewShowWidth = UIScreen.mainScreen().bounds.size.width
-        sideViewController.rightViewShowWidth = UIScreen.mainScreen().bounds.size.width
-        sideViewController.showBoundsShadow = false
-        sideViewController.needSwipeShowMenu = true
-        sideViewController.rootViewMoveBlock = { (rootView, orginFrame, xoffset) -> Void in
-            rootView.frame=CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
-        }
-
-
+        //sideViewController.rootViewController = UINavigationController(rootViewController: MenuViewController());
+        //sideViewController.leftViewController = ProfileViewController();
+        //sideViewController.rightViewController = UINavigationController(rootViewController: MyDroneController());
+        //sideViewController.leftViewShowWidth = UIScreen.mainScreen().bounds.size.width
+        //sideViewController.rightViewShowWidth = UIScreen.mainScreen().bounds.size.width
+        //sideViewController.showBoundsShadow = false
+        //sideViewController.needSwipeShowMenu = true
+        //sideViewController.rootViewMoveBlock = { (rootView, orginFrame, xoffset) -> Void in
+            //rootView.frame=CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
+        //}
         log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
-        self.window?.rootViewController = sideViewController
+        let nav:UINavigationController = UINavigationController(rootViewController: HomeViewController())
+        nav.navigationBarHidden = true
+        self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
 
         return true
