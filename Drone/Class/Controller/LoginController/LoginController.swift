@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import AutocompleteField
+
 class LoginController: UIViewController {
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!
     @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var usernameT: UITextField!
-    @IBOutlet weak var passwordT: UITextField!
     @IBOutlet weak var loginL: UILabel!
+    @IBOutlet weak var textfiledBG: UIView!
     @IBOutlet weak var googleB: UIButton!
     @IBOutlet weak var facebookB: UIButton!
     @IBOutlet weak var twitterB: UIButton!
+    var usernameT: AutocompleteField?
+    var passwordT: AutocompleteField?
 
     init() {
         super.init(nibName: "LoginController", bundle: NSBundle.mainBundle())
@@ -29,6 +32,23 @@ class LoginController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+
+    override func viewDidLayoutSubviews() {
+        if (usernameT == nil) {
+            usernameT = AutocompleteField(frame: CGRectMake(0, 0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
+            usernameT!.padding = 5.0
+            usernameT!.placeholder = "Username"
+            usernameT?.backgroundColor = UIColor.whiteColor()
+            textfiledBG.addSubview(usernameT!)
+
+            passwordT = AutocompleteField(frame: CGRectMake(0, textfiledBG.frame.size.height/2.0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
+            passwordT!.padding = 5.0
+            passwordT!.placeholder = "Password"
+            passwordT?.backgroundColor = UIColor.whiteColor()
+            textfiledBG.addSubview(passwordT!)
+        }
 
     }
 
@@ -52,6 +72,11 @@ class LoginController: UIViewController {
         if twitterB.isEqual(sender) {
 
         }
+    }
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        usernameT?.resignFirstResponder()
+        passwordT?.resignFirstResponder()
     }
 
 }

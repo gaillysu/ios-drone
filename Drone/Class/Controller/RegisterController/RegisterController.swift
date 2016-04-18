@@ -39,7 +39,8 @@ class RegisterController: BaseViewController {
         }
 
         if nextB.isEqual(sender) {
-
+            let profile:ProfileViewController = ProfileViewController()
+            self.navigationController?.pushViewController(profile, animated: true)
         }
 
         if googleB.isEqual(sender) {

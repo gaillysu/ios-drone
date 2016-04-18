@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.2.1)
+  - AutocompleteField (1.1)
   - Charts (2.2.3):
     - Charts/Core (= 2.2.3)
   - Charts/Core (2.2.3)
@@ -23,6 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - AutocompleteField (~> 1.1)
   - Charts
   - CircleProgressView (from `https://github.com/CardinalNow/iOS-CircleProgressView.git`)
   - FMDB
@@ -52,6 +54,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  AutocompleteField: 212b36bef0218f22c05d80035be2d382acd5a4e2
   Charts: f54267bb3f0f0e74520c6f248517cf5074dfd6fc
   CircleProgressView: fb5cd84be2abd908459d8dd087d94c4bdb7e60cf
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e

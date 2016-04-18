@@ -25,6 +25,8 @@
 		004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E91CB35DDA009D053C /* ActivityPacket.swift */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
+		005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */; };
+		005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */; };
 		0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA6E1CC089BF005AB9DE /* drone1.jpg */; };
 		0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA701CC089BF005AB9DE /* drone3.jpg */; };
 		0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA741CC089F4005AB9DE /* drone2.jpg */; };
@@ -218,6 +220,9 @@
 		004ED1E91CB35DDA009D053C /* ActivityPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPacket.swift; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
 		005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
+		005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutocompleteField.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/AutocompleteField.framework"; sourceTree = "<group>"; };
+		005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/SDCycleScrollView.framework"; sourceTree = "<group>"; };
+		005AC1E01CC4783000C5DE2C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
 		0064CA6E1CC089BF005AB9DE /* drone1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone1.jpg; sourceTree = "<group>"; };
 		0064CA701CC089BF005AB9DE /* drone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone3.jpg; sourceTree = "<group>"; };
 		0064CA741CC089F4005AB9DE /* drone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone2.jpg; sourceTree = "<group>"; };
@@ -397,6 +402,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */,
+				005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */,
 				00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */,
 				00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */,
 				9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */,
@@ -1113,6 +1120,9 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */,
+				005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */,
+				005AC1E01CC4783000C5DE2C /* SDWebImage.framework */,
 				00233D4C1CBB43C200824E64 /* XCGLogger.framework */,
 				00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */,
 				9EDE1DE71C96B07D0050A0C9 /* SlideMenuControllerSwift.framework */,
