@@ -45,11 +45,27 @@ class RegisterController: BaseViewController {
 
             passwordT = AutocompleteField(frame: CGRectMake(0, textfiledBG.frame.size.height/2.0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
             passwordT!.padding = 5.0
+            passwordT!.secureTextEntry = true
             passwordT!.placeholder = "Password"
             passwordT?.backgroundColor = UIColor.whiteColor()
             textfiledBG.addSubview(passwordT!)
+
+            let displaypassword:UIButton = UIButton(type: UIButtonType.Custom)
+            displaypassword.frame = CGRectMake(0, 0, 30, 30)
+            displaypassword.setImage(UIImage(named: "check"), forState: UIControlState.Normal)
+            displaypassword.addTarget(self, action: #selector(RegisterController.displayPasswordAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            passwordT.rightViewMode = UITextFieldViewMode.Always
+            passwordT.rightView = displaypassword
         }
         
+    }
+
+    func displayPasswordAction(sender:UIButton) {
+        if passwordT!.secureTextEntry {
+            passwordT!.secureTextEntry = false
+        }else{
+            passwordT!.secureTextEntry = true
+        }
     }
 
     @IBAction func buttonActionManager(sender: AnyObject) {

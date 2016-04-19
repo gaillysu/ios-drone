@@ -41,7 +41,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register with your email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRm-gp-DQM">
-                    <rect key="frame" x="55" y="178" width="490" height="30"/>
+                    <rect key="frame" x="30" y="170" width="540" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="gBX-hS-tnm"/>
                     </constraints>
@@ -50,7 +50,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaA-Pa-aZT">
-                    <rect key="frame" x="55" y="221" width="490" height="91"/>
+                    <rect key="frame" x="30" y="220" width="540" height="91"/>
                     <color key="backgroundColor" red="0.87450987099999999" green="0.87450987099999999" blue="0.87450987099999999" alpha="1" colorSpace="deviceRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -59,7 +59,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or register with your social media" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBe-de-6hS">
-                    <rect key="frame" x="55" y="331" width="490" height="30"/>
+                    <rect key="frame" x="30" y="331" width="540" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="LFU-R3-m3R"/>
                     </constraints>
@@ -96,31 +96,31 @@
                 <constraint firstItem="jDp-yz-ebe" firstAttribute="width" secondItem="yEX-7b-lNR" secondAttribute="width" id="1zb-Nf-fex"/>
                 <constraint firstItem="yEX-7b-lNR" firstAttribute="top" secondItem="xBe-de-6hS" secondAttribute="bottom" constant="7" id="5Wq-je-lXo"/>
                 <constraint firstItem="hLA-KM-6CR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-60" id="GPV-Ah-1al"/>
-                <constraint firstItem="WRm-gp-DQM" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-107" id="IWF-sK-AOi"/>
+                <constraint firstItem="WRm-gp-DQM" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-115" id="IWF-sK-AOi"/>
                 <constraint firstItem="WRm-gp-DQM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MhW-31-uog"/>
                 <constraint firstItem="IaA-Pa-aZT" firstAttribute="height" secondItem="xBe-de-6hS" secondAttribute="height" constant="61" id="Oei-EO-2My"/>
-                <constraint firstAttribute="trailing" secondItem="xBe-de-6hS" secondAttribute="trailing" constant="55" id="UlD-tS-LAz"/>
+                <constraint firstAttribute="trailing" secondItem="xBe-de-6hS" secondAttribute="trailing" constant="30" id="UlD-tS-LAz"/>
                 <constraint firstItem="jDp-yz-ebe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="W08-Iy-BSA"/>
                 <constraint firstItem="WRm-gp-DQM" firstAttribute="height" secondItem="IaA-Pa-aZT" secondAttribute="height" constant="-61" id="WVm-Nw-uhD"/>
                 <constraint firstItem="hLA-KM-6CR" firstAttribute="width" secondItem="jDp-yz-ebe" secondAttribute="width" id="Wt9-85-v8Y"/>
                 <constraint firstItem="m1G-bw-OwK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="b8I-ql-0pQ"/>
-                <constraint firstItem="xBe-de-6hS" firstAttribute="top" secondItem="IaA-Pa-aZT" secondAttribute="bottom" constant="19" id="bZc-oA-uNQ"/>
+                <constraint firstItem="xBe-de-6hS" firstAttribute="top" secondItem="IaA-Pa-aZT" secondAttribute="bottom" constant="20" id="bZc-oA-uNQ"/>
                 <constraint firstItem="hLA-KM-6CR" firstAttribute="top" secondItem="xBe-de-6hS" secondAttribute="bottom" constant="7" id="dYI-li-ElP"/>
                 <constraint firstItem="yEX-7b-lNR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="60" id="fOR-a4-mSI"/>
-                <constraint firstAttribute="trailing" secondItem="IaA-Pa-aZT" secondAttribute="trailing" constant="55" id="hAJ-go-ix1"/>
-                <constraint firstItem="xBe-de-6hS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="55" id="i8h-6E-t5K"/>
+                <constraint firstAttribute="trailing" secondItem="IaA-Pa-aZT" secondAttribute="trailing" constant="30" id="hAJ-go-ix1"/>
+                <constraint firstItem="xBe-de-6hS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="i8h-6E-t5K"/>
                 <constraint firstItem="m1G-bw-OwK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="l8b-El-qtN"/>
-                <constraint firstItem="WRm-gp-DQM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="55" id="m2u-0i-a2s"/>
+                <constraint firstItem="WRm-gp-DQM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="m2u-0i-a2s"/>
                 <constraint firstAttribute="trailing" secondItem="rSD-t7-6t9" secondAttribute="trailing" constant="5" id="nWT-e0-uKg"/>
                 <constraint firstItem="xBe-de-6hS" firstAttribute="height" secondItem="yEX-7b-lNR" secondAttribute="height" constant="-20" id="oZT-3r-Iq8"/>
-                <constraint firstItem="IaA-Pa-aZT" firstAttribute="top" secondItem="WRm-gp-DQM" secondAttribute="bottom" constant="13" id="ojC-fr-Nri"/>
+                <constraint firstItem="IaA-Pa-aZT" firstAttribute="top" secondItem="WRm-gp-DQM" secondAttribute="bottom" constant="20" id="ojC-fr-Nri"/>
                 <constraint firstItem="xBe-de-6hS" firstAttribute="height" secondItem="jDp-yz-ebe" secondAttribute="height" constant="-20" id="p7n-6W-PMd"/>
                 <constraint firstItem="xBe-de-6hS" firstAttribute="height" secondItem="hLA-KM-6CR" secondAttribute="height" constant="-20" id="re7-iL-X0O"/>
                 <constraint firstItem="m1G-bw-OwK" firstAttribute="width" secondItem="m1G-bw-OwK" secondAttribute="height" multiplier="1:1" id="tqf-8V-Y6B"/>
-                <constraint firstItem="IaA-Pa-aZT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="55" id="wNc-Qk-kXZ"/>
-                <constraint firstAttribute="trailing" secondItem="WRm-gp-DQM" secondAttribute="trailing" constant="55" id="yGg-WG-57v"/>
+                <constraint firstItem="IaA-Pa-aZT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="wNc-Qk-kXZ"/>
+                <constraint firstAttribute="trailing" secondItem="WRm-gp-DQM" secondAttribute="trailing" constant="30" id="yGg-WG-57v"/>
             </constraints>
-            <point key="canvasLocation" x="232.5" y="370.5"/>
+            <point key="canvasLocation" x="232" y="370"/>
         </view>
     </objects>
     <resources>
