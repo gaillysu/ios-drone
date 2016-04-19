@@ -19,8 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dronelogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="zck-yo-tYr">
-                    <rect key="frame" x="40" y="40" width="520" height="65"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dronelogo" translatesAutoresizingMaskIntoConstraints="NO" id="zck-yo-tYr">
+                    <rect key="frame" x="40" y="40" width="520" height="55"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="65" id="PzG-Hz-KhF"/>
                     </constraints>
@@ -59,7 +59,7 @@
                 <constraint firstItem="8z3-QM-qWQ" firstAttribute="height" secondItem="Fxx-u5-HNV" secondAttribute="height" id="2eK-ka-34h"/>
                 <constraint firstItem="zck-yo-tYr" firstAttribute="height" secondItem="Non-g5-1bJ" secondAttribute="height" id="BfZ-Td-iVu"/>
                 <constraint firstAttribute="trailing" secondItem="8z3-QM-qWQ" secondAttribute="trailing" constant="75" id="Daw-EW-Vqw"/>
-                <constraint firstItem="Non-g5-1bJ" firstAttribute="top" secondItem="zck-yo-tYr" secondAttribute="bottom" id="FtW-ED-uXM"/>
+                <constraint firstItem="Non-g5-1bJ" firstAttribute="top" secondItem="zck-yo-tYr" secondAttribute="bottom" constant="10" id="FtW-ED-uXM"/>
                 <constraint firstItem="Non-g5-1bJ" firstAttribute="height" secondItem="8z3-QM-qWQ" secondAttribute="height" constant="310" id="Gp8-Gs-7DX"/>
                 <constraint firstItem="Non-g5-1bJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tl1-n7-fuM"/>
                 <constraint firstItem="Fxx-u5-HNV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="75" id="WCZ-iX-FeU"/>
@@ -83,6 +83,6 @@
         </view>
     </objects>
     <resources>
-        <image name="dronelogo.png" width="560" height="140"/>
+        <image name="dronelogo" width="150" height="28"/>
     </resources>
 </document>

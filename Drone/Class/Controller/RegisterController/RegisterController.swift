@@ -8,16 +8,19 @@
 
 import UIKit
 import GSMessages
+import AutocompleteField
 
 class RegisterController: BaseViewController {
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!
-    @IBOutlet weak var emailT: UITextField!
-    @IBOutlet weak var passwordT: UITextField!
+    @IBOutlet weak var textfiledBG: UIView!
     @IBOutlet weak var registerL: UILabel!
     @IBOutlet weak var googleB: UIButton!
     @IBOutlet weak var facebookB: UIButton!
     @IBOutlet weak var twitterB: UIButton!
+
+    var emailT: AutocompleteField!
+    var passwordT: AutocompleteField!
 
     init() {
         super.init(nibName: "RegisterController", bundle: NSBundle.mainBundle())
@@ -30,6 +33,23 @@ class RegisterController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+
+    override func viewDidLayoutSubviews() {
+        if (emailT == nil) {
+            emailT = AutocompleteField(frame: CGRectMake(0, 0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
+            emailT!.padding = 5.0
+            emailT!.placeholder = "Email"
+            emailT?.backgroundColor = UIColor.whiteColor()
+            textfiledBG.addSubview(emailT!)
+
+            passwordT = AutocompleteField(frame: CGRectMake(0, textfiledBG.frame.size.height/2.0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
+            passwordT!.padding = 5.0
+            passwordT!.placeholder = "Password"
+            passwordT?.backgroundColor = UIColor.whiteColor()
+            textfiledBG.addSubview(passwordT!)
+        }
+        
     }
 
     @IBAction func buttonActionManager(sender: AnyObject) {
@@ -54,6 +74,11 @@ class RegisterController: BaseViewController {
         if twitterB.isEqual(sender) {
 
         }
+    }
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        emailT.resignFirstResponder()
+        passwordT.resignFirstResponder()
     }
     
 }

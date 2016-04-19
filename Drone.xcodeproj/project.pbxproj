@@ -21,6 +21,7 @@
 		0043FBEA1CA1404500638BD1 /* GetContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */; };
 		0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */; };
 		0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */; };
+		004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */; };
 		004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */; };
 		004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E91CB35DDA009D053C /* ActivityPacket.swift */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
@@ -104,7 +105,6 @@
 		00982C371C868C8A003DA5E2 /* TestMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B111C868C89003DA5E2 /* TestMode.swift */; };
 		00982C381C868C8A003DA5E2 /* WorldClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B131C868C89003DA5E2 /* WorldClock.swift */; };
 		00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B151C868C89003DA5E2 /* HttpPostRequest.swift */; };
-		00982C3A1C868C8A003DA5E2 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B171C868C89003DA5E2 /* MainTabBarController.swift */; };
 		00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1D1C868C89003DA5E2 /* AppTheme.swift */; };
 		00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */; };
 		00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1F1C868C89003DA5E2 /* ClockView.swift */; };
@@ -147,10 +147,6 @@
 		00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B511C868C89003DA5E2 /* SetCardioRequest.swift */; };
 		00982C671C868C8A003DA5E2 /* SetProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B521C868C89003DA5E2 /* SetProfileRequest.swift */; };
 		00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B531C868C89003DA5E2 /* SyncQueue.swift */; };
-		00982CC01C868C8A003DA5E2 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982BC31C868C89003DA5E2 /* FXBlurView.m */; };
-		00982CC41C868C8A003DA5E2 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982BCC1C868C89003DA5E2 /* MBProgressHUD+MJ.m */; };
-		00982CC51C868C8A003DA5E2 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 00982BCD1C868C89003DA5E2 /* MBProgressHUD.bundle */; };
-		00982CC61C868C8A003DA5E2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982BCF1C868C89003DA5E2 /* MBProgressHUD.m */; };
 		00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD11C868C89003DA5E2 /* NevoBT.swift */; };
 		00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD21C868C89003DA5E2 /* NevoBTimpl.swift */; };
 		00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD31C868C89003DA5E2 /* Profile.swift */; };
@@ -216,6 +212,7 @@
 		0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsApplicationsRequest.swift; sourceTree = "<group>"; };
+		004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_Hex_Swift.framework; path = "Pods/../build/Debug-iphoneos/UIColor_Hex_Swift.framework"; sourceTree = "<group>"; };
 		004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsGoalPacket.swift; sourceTree = "<group>"; };
 		004ED1E91CB35DDA009D053C /* ActivityPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPacket.swift; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
@@ -307,7 +304,6 @@
 		00982B111C868C89003DA5E2 /* TestMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMode.swift; sourceTree = "<group>"; };
 		00982B131C868C89003DA5E2 /* WorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClock.swift; sourceTree = "<group>"; };
 		00982B151C868C89003DA5E2 /* HttpPostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpPostRequest.swift; sourceTree = "<group>"; };
-		00982B171C868C89003DA5E2 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		00982B1D1C868C89003DA5E2 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		00982B1F1C868C89003DA5E2 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
@@ -353,13 +349,6 @@
 		00982B511C868C89003DA5E2 /* SetCardioRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCardioRequest.swift; sourceTree = "<group>"; };
 		00982B521C868C89003DA5E2 /* SetProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetProfileRequest.swift; sourceTree = "<group>"; };
 		00982B531C868C89003DA5E2 /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
-		00982BC21C868C89003DA5E2 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
-		00982BC31C868C89003DA5E2 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
-		00982BCB1C868C89003DA5E2 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
-		00982BCC1C868C89003DA5E2 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
-		00982BCD1C868C89003DA5E2 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
-		00982BCE1C868C89003DA5E2 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		00982BCF1C868C89003DA5E2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		00982BD11C868C89003DA5E2 /* NevoBT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoBT.swift; sourceTree = "<group>"; };
 		00982BD21C868C89003DA5E2 /* NevoBTimpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoBTimpl.swift; sourceTree = "<group>"; };
 		00982BD31C868C89003DA5E2 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -402,6 +391,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */,
 				005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */,
 				005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */,
 				00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */,
@@ -831,7 +821,6 @@
 		00982B161C868C89003DA5E2 /* publicClass */ = {
 			isa = PBXGroup;
 			children = (
-				00982B171C868C89003DA5E2 /* MainTabBarController.swift */,
 				00982B1A1C868C89003DA5E2 /* publicView */,
 			);
 			path = publicClass;
@@ -977,33 +966,10 @@
 		00982B541C868C89003DA5E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				00982BC11C868C89003DA5E2 /* FXBlurView */,
-				00982BCA1C868C89003DA5E2 /* MBProgressHUD */,
 				00982BD01C868C89003DA5E2 /* NevoBT */,
 				00982BD61C868C8A003DA5E2 /* NevoHK */,
 			);
 			path = Frameworks;
-			sourceTree = "<group>";
-		};
-		00982BC11C868C89003DA5E2 /* FXBlurView */ = {
-			isa = PBXGroup;
-			children = (
-				00982BC21C868C89003DA5E2 /* FXBlurView.h */,
-				00982BC31C868C89003DA5E2 /* FXBlurView.m */,
-			);
-			path = FXBlurView;
-			sourceTree = "<group>";
-		};
-		00982BCA1C868C89003DA5E2 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				00982BCB1C868C89003DA5E2 /* MBProgressHUD+MJ.h */,
-				00982BCC1C868C89003DA5E2 /* MBProgressHUD+MJ.m */,
-				00982BCD1C868C89003DA5E2 /* MBProgressHUD.bundle */,
-				00982BCE1C868C89003DA5E2 /* MBProgressHUD.h */,
-				00982BCF1C868C89003DA5E2 /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		00982BD01C868C89003DA5E2 /* NevoBT */ = {
@@ -1120,6 +1086,7 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */,
 				005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */,
 				005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */,
 				005AC1E01CC4783000C5DE2C /* SDWebImage.framework */,
@@ -1322,7 +1289,6 @@
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
-				00982CC51C868C8A003DA5E2 /* MBProgressHUD.bundle in Resources */,
 				00F1AF451CACD82600CB9A15 /* ActivityViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
@@ -1449,7 +1415,6 @@
 				00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */,
 				00982C4C1C868C8A003DA5E2 /* GetBatteryRequest.swift in Sources */,
 				00982C2B1C868C8A003DA5E2 /* GoalModel.swift in Sources */,
-				00982CC61C868C8A003DA5E2 /* MBProgressHUD.m in Sources */,
 				004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
@@ -1468,13 +1433,11 @@
 				00982C461C868C8A003DA5E2 /* ConnectionManager.swift in Sources */,
 				00982BF71C868C8A003DA5E2 /* SelectFileView.swift in Sources */,
 				0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */,
-				00982CC01C868C8A003DA5E2 /* FXBlurView.m in Sources */,
 				00982C541C868C8A003DA5E2 /* SetSystemConfig.swift in Sources */,
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
 				00982C601C868C8A003DA5E2 /* DailyStepsNevoPacket.swift in Sources */,
 				00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */,
 				00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */,
-				00982CC41C868C8A003DA5E2 /* MBProgressHUD+MJ.m in Sources */,
 				00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */,
 				00982C5F1C868C8A003DA5E2 /* BatteryLevelNevoPacket.swift in Sources */,
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
@@ -1495,7 +1458,6 @@
 				00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
 				0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */,
-				00982C3A1C868C8A003DA5E2 /* MainTabBarController.swift in Sources */,
 				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,
 				00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */,
 				008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */,

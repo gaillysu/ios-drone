@@ -19,6 +19,7 @@ PODS:
   - SwiftEventBus (1.1.0)
   - TextFieldEffects (1.1.1)
   - Timepiece (0.4.2)
+  - UIColor_Hex_Swift (2.1)
   - XCGLogger (3.3)
   - YRSideViewController (1.0.6)
 
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
   - TextFieldEffects
   - Timepiece
+  - UIColor_Hex_Swift (~> 2.1)
   - XCGLogger (~> 3.3)
   - YRSideViewController (~> 1.0)
 
@@ -66,6 +68,7 @@ SPEC CHECKSUMS:
   SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
   TextFieldEffects: a1a78efeb93b65c611ad287b28a068c9a4a5f5b4
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
+  UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
   XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
   YRSideViewController: 08a659ef4b2c1c32dc31d1d8ee46d6019de1363a
 

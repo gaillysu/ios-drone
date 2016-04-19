@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerImage.contentMode = UIViewContentMode.ScaleAspectFit;
+        
         loginB.layer.borderWidth = 0.5
         loginB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).CGColor
 
