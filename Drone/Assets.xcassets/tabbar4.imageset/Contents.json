@@ -3,12 +3,6 @@
     {
       "idiom" : "universal",
       "filename" : "userprofile.pdf"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "user.png",
-      "unassigned" : true,
-      "scale" : "2x"
     }
   ],
   "info" : {
