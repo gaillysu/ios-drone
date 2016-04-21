@@ -38,13 +38,15 @@ class LoginController: UIViewController {
     override func viewDidLayoutSubviews() {
         if (usernameT == nil) {
             usernameT = AutocompleteField(frame: CGRectMake(0, 0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
-            usernameT!.padding = 5.0
+            usernameT!.padding = 15.0
+            usernameT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             usernameT!.placeholder = "Username"
             usernameT?.backgroundColor = UIColor.whiteColor()
             textfiledBG.addSubview(usernameT!)
 
             passwordT = AutocompleteField(frame: CGRectMake(0, textfiledBG.frame.size.height/2.0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
-            passwordT!.padding = 5.0
+            passwordT!.padding = 15.0
+            passwordT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             passwordT!.placeholder = "Password"
             passwordT?.backgroundColor = UIColor.whiteColor()
             textfiledBG.addSubview(passwordT!)

@@ -178,6 +178,7 @@
 		9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C71C9678E30000E024 /* SMSegmentView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
+		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -384,6 +385,7 @@
 		9EDE1DE71C96B07D0050A0C9 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = "Pods/../build/Debug-iphoneos/SlideMenuControllerSwift.framework"; sourceTree = "<group>"; };
 		CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircleProgressView.framework; path = "Pods/../build/Debug-iphoneos/CircleProgressView.framework"; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +393,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */,
 				004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */,
 				005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */,
 				005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */,
@@ -1086,6 +1089,7 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */,
 				004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */,
 				005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */,
 				005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */,
