@@ -3,10 +3,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectionViewController" customModule="Drone" customModuleProvider="target">
             <connections>
+                <outlet property="nextB" destination="H11-RY-ahu" id="MYj-wp-ajD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -103,17 +105,29 @@
                         <constraint firstAttribute="trailing" secondItem="Zqm-Ys-Dfg" secondAttribute="trailing" id="xgm-XN-e2r"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H11-RY-ahu">
+                    <rect key="frame" x="550" y="20" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="H11-RY-ahu" secondAttribute="height" multiplier="1:1" id="Dpk-ke-55h"/>
+                    </constraints>
+                    <state key="normal" image="right_back_BT"/>
+                    <connections>
+                        <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="DaT-K5-zmm"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Pwv-Q2-2pc" secondAttribute="trailing" constant="30" id="0Wb-Aq-u4v"/>
                 <constraint firstItem="8nZ-yR-qdN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="2SO-m8-dN7"/>
+                <constraint firstAttribute="trailing" secondItem="H11-RY-ahu" secondAttribute="trailing" constant="15" id="9Vn-gf-Zlw"/>
                 <constraint firstItem="owU-NB-0hd" firstAttribute="height" secondItem="Pwv-Q2-2pc" secondAttribute="height" constant="150" id="Bfw-IY-3CO"/>
                 <constraint firstItem="lGf-9t-aCb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="ER5-Pf-jfz"/>
                 <constraint firstItem="Pwv-Q2-2pc" firstAttribute="top" secondItem="owU-NB-0hd" secondAttribute="bottom" constant="10" id="EbS-XR-Mh6"/>
                 <constraint firstAttribute="bottom" secondItem="lGf-9t-aCb" secondAttribute="bottom" constant="40" id="IxX-nx-fd5"/>
                 <constraint firstAttribute="trailing" secondItem="8nZ-yR-qdN" secondAttribute="trailing" constant="30" id="NSu-uR-Cx8"/>
                 <constraint firstAttribute="bottom" secondItem="Pwv-Q2-2pc" secondAttribute="bottom" constant="40" id="NV5-Ob-vlF"/>
+                <constraint firstItem="H11-RY-ahu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="OBz-zr-9uv"/>
                 <constraint firstAttribute="trailing" secondItem="lGf-9t-aCb" secondAttribute="trailing" constant="30" id="acj-89-Ssy"/>
                 <constraint firstItem="Pwv-Q2-2pc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="cof-vp-e7L"/>
                 <constraint firstItem="lGf-9t-aCb" firstAttribute="top" secondItem="owU-NB-0hd" secondAttribute="bottom" constant="10" id="dZw-z9-TSJ"/>
@@ -129,5 +143,6 @@
     </objects>
     <resources>
         <image name="drone2.jpg" width="800" height="800"/>
+        <image name="right_back_BT" width="35" height="35"/>
     </resources>
 </document>

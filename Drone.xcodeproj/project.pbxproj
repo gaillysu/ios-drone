@@ -37,6 +37,8 @@
 		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
 		0065AC091CC86A9B00DC3096 /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */; };
 		0065AC0A1CC86A9B00DC3096 /* ConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */; };
+		0065AC121CC8ADF800DC3096 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC111CC8ADF800DC3096 /* MapKit.framework */; };
+		0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */; };
 		008931011CC7157C0013E6D8 /* DroneTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */; };
 		0089310A1CC779B30013E6D8 /* YouDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931081CC779B30013E6D8 /* YouDeviceViewController.swift */; };
 		0089310D1CC77D1C0013E6D8 /* YouDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */; };
@@ -237,6 +239,8 @@
 		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
 		0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 		0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionViewController.xib; sourceTree = "<group>"; };
+		0065AC111CC8ADF800DC3096 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYKeyboardManager.framework; path = "Pods/../build/Debug-iphoneos/YYKeyboardManager.framework"; sourceTree = "<group>"; };
 		008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTabbarItem.swift; sourceTree = "<group>"; };
 		008931081CC779B30013E6D8 /* YouDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouDeviceViewController.swift; sourceTree = "<group>"; };
 		0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouDeviceViewController.xib; sourceTree = "<group>"; };
@@ -407,6 +411,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */,
 				004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */,
 				005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */,
 				005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */,
@@ -416,6 +421,7 @@
 				9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */,
 				00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */,
 				9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */,
+				0065AC121CC8ADF800DC3096 /* MapKit.framework in Frameworks */,
 				CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */,
 				0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */,
 				008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */,
@@ -1134,6 +1140,8 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */,
+				0065AC111CC8ADF800DC3096 /* MapKit.framework */,
 				004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */,
 				005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */,
 				005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */,
@@ -1273,6 +1281,11 @@
 					00982A651C868B15003DA5E2 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = WEGPWR9LDA;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					00982A791C868B16003DA5E2 = {
 						CreatedOnToolsVersion = 7.2.1;

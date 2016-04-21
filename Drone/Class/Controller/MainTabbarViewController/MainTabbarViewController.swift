@@ -15,6 +15,7 @@ let nDroneBtnHeight:CGFloat = 50
 
 class MainTabbarViewController: UITabBarController {
 
+    
     init() {
         super.init(nibName: "MainTabbarViewController", bundle: NSBundle.mainBundle())
     }
@@ -47,10 +48,19 @@ class MainTabbarViewController: UITabBarController {
         analysisBtn.addTarget(self, action: #selector(MainTabbarViewController.cameraClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         analysisView.addSubview(analysisBtn)
         self.view.addSubview(analysisView)
+
+        self.initViewController()
     }
 
     func cameraClick(sender:UIButton) {
 
+    }
+
+    func initViewController() {
+        let nav1:UINavigationController = UINavigationController(rootViewController: WorldClockController())
+        let nav2:UINavigationController = UINavigationController(rootViewController: StepsViewController())
+        let nav3:UINavigationController = UINavigationController(rootViewController: SleepViewController())
+        self.setViewControllers([nav1,nav2,nav3], animated: true)
     }
 
     override func didReceiveMemoryWarning() {

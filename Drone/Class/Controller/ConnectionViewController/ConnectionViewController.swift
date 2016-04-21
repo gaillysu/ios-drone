@@ -10,6 +10,7 @@ import UIKit
 
 class ConnectionViewController: UIViewController {
 
+    @IBOutlet weak var nextB: UIButton!
     init() {
         super.init(nibName: "ConnectionViewController", bundle: NSBundle.mainBundle())
     }
@@ -30,6 +31,9 @@ class ConnectionViewController: UIViewController {
     }
     
 
+    @IBAction func buttonActionManager(sender: AnyObject) {
+        AppDelegate.getAppDelegate().rootTabbarController()
+    }
     /*
     // MARK: - Navigation
 
