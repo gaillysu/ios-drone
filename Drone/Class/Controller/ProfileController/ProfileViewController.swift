@@ -63,7 +63,7 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
         }
 
         if (nextB.isEqual(sender)) {
-            let maintabbar:MainTabbarViewController = MainTabbarViewController()
+            let maintabbar:YouDeviceViewController = YouDeviceViewController()
             self.navigationController?.pushViewController(maintabbar, animated: true)
         }
     }

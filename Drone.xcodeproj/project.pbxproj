@@ -35,7 +35,11 @@
 		0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA701CC089BF005AB9DE /* drone3.jpg */; };
 		0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA741CC089F4005AB9DE /* drone2.jpg */; };
 		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
+		0065AC091CC86A9B00DC3096 /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */; };
+		0065AC0A1CC86A9B00DC3096 /* ConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */; };
 		008931011CC7157C0013E6D8 /* DroneTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */; };
+		0089310A1CC779B30013E6D8 /* YouDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931081CC779B30013E6D8 /* YouDeviceViewController.swift */; };
+		0089310D1CC77D1C0013E6D8 /* YouDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */; };
 		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -231,7 +235,11 @@
 		0064CA701CC089BF005AB9DE /* drone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone3.jpg; sourceTree = "<group>"; };
 		0064CA741CC089F4005AB9DE /* drone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone2.jpg; sourceTree = "<group>"; };
 		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
+		0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
+		0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionViewController.xib; sourceTree = "<group>"; };
 		008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTabbarItem.swift; sourceTree = "<group>"; };
+		008931081CC779B30013E6D8 /* YouDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouDeviceViewController.swift; sourceTree = "<group>"; };
+		0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouDeviceViewController.xib; sourceTree = "<group>"; };
 		008C5EDA1C8D64F800DCD12D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		008C5EDB1C8D64F800DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
 		008C5EDE1C8D655700DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
@@ -446,6 +454,24 @@
 			path = MainTabbarViewController;
 			sourceTree = "<group>";
 		};
+		0065AC061CC86A8100DC3096 /* ConnectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */,
+				0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */,
+			);
+			path = ConnectionViewController;
+			sourceTree = "<group>";
+		};
+		008931071CC7799F0013E6D8 /* YouDeviceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				008931081CC779B30013E6D8 /* YouDeviceViewController.swift */,
+				0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */,
+			);
+			path = YouDeviceViewController;
+			sourceTree = "<group>";
+		};
 		009201D91CBE2B5200C51707 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +552,8 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0065AC061CC86A8100DC3096 /* ConnectionViewController */,
+				008931071CC7799F0013E6D8 /* YouDeviceViewController */,
 				004D575E1CC61952000F83A8 /* MainTabbarViewController */,
 				009201D91CBE2B5200C51707 /* HomeViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
@@ -1307,11 +1335,13 @@
 				00982CDF1C868F62003DA5E2 /* SleepViewController.xib in Resources */,
 				00982BFB1C868C8A003DA5E2 /* AddGoalViewController.xib in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
+				0089310D1CC77D1C0013E6D8 /* YouDeviceViewController.xib in Resources */,
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
 				00F1AF451CACD82600CB9A15 /* ActivityViewController.xib in Resources */,
 				004D57621CC61978000F83A8 /* MainTabbarViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
+				0065AC0A1CC86A9B00DC3096 /* ConnectionViewController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
 				009201DD1CBE2B6600C51707 /* HomeViewController.xib in Resources */,
@@ -1455,6 +1485,7 @@
 				00982BF71C868C8A003DA5E2 /* SelectFileView.swift in Sources */,
 				0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */,
 				00982C541C868C8A003DA5E2 /* SetSystemConfig.swift in Sources */,
+				0089310A1CC779B30013E6D8 /* YouDeviceViewController.swift in Sources */,
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
 				00982C601C868C8A003DA5E2 /* DailyStepsNevoPacket.swift in Sources */,
 				00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */,
@@ -1466,6 +1497,7 @@
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
 				00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
+				0065AC091CC86A9B00DC3096 /* ConnectionViewController.swift in Sources */,
 				0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */,
 				00F1AF441CACD82600CB9A15 /* ActivityViewController.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
