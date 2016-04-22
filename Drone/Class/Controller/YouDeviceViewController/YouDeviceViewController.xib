@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YouDeviceViewController" customModule="Drone" customModuleProvider="target">
+            <connections>
+                <outlet property="backB" destination="LZd-6q-Zy2" id="dJT-48-U4a"/>
+                <outlet property="collectionView" destination="JcL-Pa-iUn" id="v0q-u8-n0c"/>
+                <outlet property="view" destination="iN0-l3-epB" id="iIL-IH-aLR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZd-6q-Zy2">
+                    <rect key="frame" x="5" y="20" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="LZd-6q-Zy2" secondAttribute="height" multiplier="1:1" id="9ex-mM-wf3"/>
+                    </constraints>
+                    <state key="normal" image="left_back_BT"/>
+                    <connections>
+                        <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="71h-3C-MvA"/>
+                    </connections>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="JcL-Pa-iUn">
+                    <rect key="frame" x="50" y="180" width="500" height="350"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A7p-CR-fuc">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="IMr-hK-C1n"/>
+                        <outlet property="delegate" destination="-1" id="rku-m1-3Dp"/>
+                    </connections>
+                </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting up your device." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="que-eS-QIk">
+                    <rect key="frame" x="50" y="70" width="500" height="35"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have a device yet?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dz-QM-pFH">
+                    <rect key="frame" x="50" y="110" width="500" height="25"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy your Drone here?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0L-xc-v6v">
+                    <rect key="frame" x="50" y="140" width="500" height="25"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.87450987099999999" green="0.87450987099999999" blue="0.87450987099999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="que-eS-QIk" firstAttribute="height" secondItem="5Dz-QM-pFH" secondAttribute="height" constant="10" id="3gw-Xk-P1c"/>
+                <constraint firstAttribute="trailing" secondItem="JcL-Pa-iUn" secondAttribute="trailing" constant="50" id="4i8-QW-WLi"/>
+                <constraint firstItem="5Dz-QM-pFH" firstAttribute="height" secondItem="X0L-xc-v6v" secondAttribute="height" id="8f7-Za-0wr"/>
+                <constraint firstItem="5Dz-QM-pFH" firstAttribute="top" secondItem="que-eS-QIk" secondAttribute="bottom" constant="5" id="Dhl-ah-vwy"/>
+                <constraint firstAttribute="trailing" secondItem="X0L-xc-v6v" secondAttribute="trailing" constant="50" id="E1I-jj-tPp"/>
+                <constraint firstAttribute="trailing" secondItem="5Dz-QM-pFH" secondAttribute="trailing" constant="50" id="JSm-2z-M06"/>
+                <constraint firstItem="JcL-Pa-iUn" firstAttribute="top" secondItem="X0L-xc-v6v" secondAttribute="bottom" constant="15" id="MCf-vH-S0h"/>
+                <constraint firstItem="que-eS-QIk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="Moe-7x-zPf"/>
+                <constraint firstItem="LZd-6q-Zy2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="ScJ-Se-ibP"/>
+                <constraint firstAttribute="bottom" secondItem="JcL-Pa-iUn" secondAttribute="bottom" constant="70" id="T6p-7W-Qxd"/>
+                <constraint firstItem="que-eS-QIk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="70" id="Xdy-zh-590"/>
+                <constraint firstItem="JcL-Pa-iUn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="Xlv-7A-g3b"/>
+                <constraint firstItem="X0L-xc-v6v" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="iDY-A4-4T6"/>
+                <constraint firstItem="X0L-xc-v6v" firstAttribute="top" secondItem="5Dz-QM-pFH" secondAttribute="bottom" constant="5" id="mxt-RH-GV6"/>
+                <constraint firstItem="LZd-6q-Zy2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="rYY-uO-14g"/>
+                <constraint firstItem="X0L-xc-v6v" firstAttribute="height" secondItem="JcL-Pa-iUn" secondAttribute="height" constant="-325" id="rjA-Rr-c8H"/>
+                <constraint firstAttribute="trailing" secondItem="que-eS-QIk" secondAttribute="trailing" constant="50" id="uJU-sv-Krd"/>
+                <constraint firstItem="5Dz-QM-pFH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="xts-a1-4Vj"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="left_back_BT" width="35" height="35"/>
+    </resources>
+</document>

@@ -22,16 +22,28 @@
 		0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */; };
 		0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */; };
 		004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */; };
+		004D57611CC61978000F83A8 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */; };
+		004D57621CC61978000F83A8 /* MainTabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004D57601CC61978000F83A8 /* MainTabbarViewController.xib */; };
 		004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */; };
 		004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E91CB35DDA009D053C /* ActivityPacket.swift */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
 		005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */; };
 		005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */; };
+		005B41FA1CC639260049007A /* DroneTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B41F91CC639260049007A /* DroneTabbar.swift */; };
 		0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA6E1CC089BF005AB9DE /* drone1.jpg */; };
 		0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA701CC089BF005AB9DE /* drone3.jpg */; };
 		0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA741CC089F4005AB9DE /* drone2.jpg */; };
 		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
+		0065AC091CC86A9B00DC3096 /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */; };
+		0065AC0A1CC86A9B00DC3096 /* ConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */; };
+		0065AC121CC8ADF800DC3096 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC111CC8ADF800DC3096 /* MapKit.framework */; };
+		0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */; };
+		006F942E1CC9B8A60073C150 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F942D1CC9B8A60073C150 /* ActivityViewController.xib */; };
+		006F94301CCA0C320073C150 /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 006F942F1CCA0C310073C150 /* white_background.png */; };
+		008931011CC7157C0013E6D8 /* DroneTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */; };
+		0089310A1CC779B30013E6D8 /* YouDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931081CC779B30013E6D8 /* YouDeviceViewController.swift */; };
+		0089310D1CC77D1C0013E6D8 /* YouDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */; };
 		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -164,7 +176,6 @@
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
 		00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		00F1AF441CACD82600CB9A15 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */; };
-		00F1AF451CACD82600CB9A15 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3B1CACD82600CB9A15 /* ActivityViewController.xib */; };
 		00F1AF461CACD82600CB9A15 /* AddDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */; };
 		00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */; };
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
@@ -214,6 +225,8 @@
 		0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsApplicationsRequest.swift; sourceTree = "<group>"; };
 		004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_Hex_Swift.framework; path = "Pods/../build/Debug-iphoneos/UIColor_Hex_Swift.framework"; sourceTree = "<group>"; };
+		004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
+		004D57601CC61978000F83A8 /* MainTabbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabbarViewController.xib; sourceTree = "<group>"; };
 		004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsGoalPacket.swift; sourceTree = "<group>"; };
 		004ED1E91CB35DDA009D053C /* ActivityPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPacket.swift; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
@@ -221,10 +234,20 @@
 		005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutocompleteField.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/AutocompleteField.framework"; sourceTree = "<group>"; };
 		005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/SDCycleScrollView.framework"; sourceTree = "<group>"; };
 		005AC1E01CC4783000C5DE2C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
+		005B41F91CC639260049007A /* DroneTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTabbar.swift; sourceTree = "<group>"; };
 		0064CA6E1CC089BF005AB9DE /* drone1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone1.jpg; sourceTree = "<group>"; };
 		0064CA701CC089BF005AB9DE /* drone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone3.jpg; sourceTree = "<group>"; };
 		0064CA741CC089F4005AB9DE /* drone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone2.jpg; sourceTree = "<group>"; };
 		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
+		0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
+		0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionViewController.xib; sourceTree = "<group>"; };
+		0065AC111CC8ADF800DC3096 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYKeyboardManager.framework; path = "Pods/../build/Debug-iphoneos/YYKeyboardManager.framework"; sourceTree = "<group>"; };
+		006F942D1CC9B8A60073C150 /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
+		006F942F1CCA0C310073C150 /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
+		008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTabbarItem.swift; sourceTree = "<group>"; };
+		008931081CC779B30013E6D8 /* YouDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouDeviceViewController.swift; sourceTree = "<group>"; };
+		0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouDeviceViewController.xib; sourceTree = "<group>"; };
 		008C5EDA1C8D64F800DCD12D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		008C5EDB1C8D64F800DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
 		008C5EDE1C8D655700DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
@@ -368,7 +391,6 @@
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
 		00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YRSideViewController.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/YRSideViewController.framework"; sourceTree = "<group>"; };
 		00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
-		00F1AF3B1CACD82600CB9A15 /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
 		00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceController.swift; sourceTree = "<group>"; };
 		00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceController.xib; sourceTree = "<group>"; };
 		00F1AF401CACD82600CB9A15 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -394,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */,
+				0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */,
 				004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */,
 				005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */,
 				005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */,
@@ -403,6 +426,7 @@
 				9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */,
 				00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */,
 				9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */,
+				0065AC121CC8ADF800DC3096 /* MapKit.framework in Frameworks */,
 				CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */,
 				0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */,
 				008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */,
@@ -430,6 +454,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		004D575E1CC61952000F83A8 /* MainTabbarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */,
+				004D57601CC61978000F83A8 /* MainTabbarViewController.xib */,
+				005B41F91CC639260049007A /* DroneTabbar.swift */,
+				008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */,
+			);
+			path = MainTabbarViewController;
+			sourceTree = "<group>";
+		};
+		0065AC061CC86A8100DC3096 /* ConnectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */,
+				0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */,
+			);
+			path = ConnectionViewController;
+			sourceTree = "<group>";
+		};
+		008931071CC7799F0013E6D8 /* YouDeviceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				008931081CC779B30013E6D8 /* YouDeviceViewController.swift */,
+				0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */,
+			);
+			path = YouDeviceViewController;
+			sourceTree = "<group>";
+		};
 		009201D91CBE2B5200C51707 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +563,9 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0065AC061CC86A8100DC3096 /* ConnectionViewController */,
+				008931071CC7799F0013E6D8 /* YouDeviceViewController */,
+				004D575E1CC61952000F83A8 /* MainTabbarViewController */,
 				009201D91CBE2B5200C51707 /* HomeViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				00F1AF391CACD82600CB9A15 /* ActivityViewController */,
@@ -1009,6 +1065,7 @@
 		00982CEF1C86A350003DA5E2 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				006F942F1CCA0C310073C150 /* white_background.png */,
 				0064CA761CC08D60005AB9DE /* dronelogo.png */,
 				0064CA741CC089F4005AB9DE /* drone2.jpg */,
 				0064CA6E1CC089BF005AB9DE /* drone1.jpg */,
@@ -1037,7 +1094,7 @@
 			isa = PBXGroup;
 			children = (
 				00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */,
-				00F1AF3B1CACD82600CB9A15 /* ActivityViewController.xib */,
+				006F942D1CC9B8A60073C150 /* ActivityViewController.xib */,
 			);
 			path = ActivityViewController;
 			sourceTree = "<group>";
@@ -1229,6 +1286,11 @@
 					00982A651C868B15003DA5E2 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = WEGPWR9LDA;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					00982A791C868B16003DA5E2 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1290,11 +1352,15 @@
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
 				00982CDF1C868F62003DA5E2 /* SleepViewController.xib in Resources */,
 				00982BFB1C868C8A003DA5E2 /* AddGoalViewController.xib in Resources */,
+				006F94301CCA0C320073C150 /* white_background.png in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
+				0089310D1CC77D1C0013E6D8 /* YouDeviceViewController.xib in Resources */,
+				006F942E1CC9B8A60073C150 /* ActivityViewController.xib in Resources */,
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
-				00F1AF451CACD82600CB9A15 /* ActivityViewController.xib in Resources */,
+				004D57621CC61978000F83A8 /* MainTabbarViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
+				0065AC0A1CC86A9B00DC3096 /* ConnectionViewController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
 				009201DD1CBE2B6600C51707 /* HomeViewController.xib in Resources */,
@@ -1438,16 +1504,19 @@
 				00982BF71C868C8A003DA5E2 /* SelectFileView.swift in Sources */,
 				0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */,
 				00982C541C868C8A003DA5E2 /* SetSystemConfig.swift in Sources */,
+				0089310A1CC779B30013E6D8 /* YouDeviceViewController.swift in Sources */,
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
 				00982C601C868C8A003DA5E2 /* DailyStepsNevoPacket.swift in Sources */,
 				00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */,
 				00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */,
 				00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */,
+				008931011CC7157C0013E6D8 /* DroneTabbarItem.swift in Sources */,
 				00982C5F1C868C8A003DA5E2 /* BatteryLevelNevoPacket.swift in Sources */,
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
 				00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
+				0065AC091CC86A9B00DC3096 /* ConnectionViewController.swift in Sources */,
 				0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */,
 				00F1AF441CACD82600CB9A15 /* ActivityViewController.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
@@ -1459,12 +1528,14 @@
 				00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
+				004D57611CC61978000F83A8 /* MainTabbarViewController.swift in Sources */,
 				00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
 				0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */,
 				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,
 				00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */,
 				008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */,
+				005B41FA1CC639260049007A /* DroneTabbar.swift in Sources */,
 				00982C1B1C868C8A003DA5E2 /* WorldClockController.swift in Sources */,
 				00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,

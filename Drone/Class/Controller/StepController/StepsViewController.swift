@@ -10,6 +10,7 @@ import UIKit
 import CircleProgressView
 import Charts
 import Timepiece
+import UIColor_Hex_Swift
 
 let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
 
@@ -30,7 +31,13 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
+    }
+
     override func viewWillAppear(animated: Bool) {
         barChart!.noDataText = "No History Available."
         barChart!.descriptionText = "";
@@ -39,11 +46,11 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         barChart!.legend.enabled = false;
         barChart!.dragEnabled = true
         let xAxis:ChartXAxis = barChart!.xAxis;
-        xAxis.labelTextColor = UIColor.whiteColor();
-        xAxis.axisLineColor = UIColor.whiteColor();
+        xAxis.labelTextColor = UIColor.grayColor();
+        xAxis.axisLineColor = UIColor.grayColor();
         let yXaxis:ChartYAxis = barChart!.leftAxis;
-        yXaxis.labelTextColor = UIColor.whiteColor();
-        yXaxis.axisLineColor = UIColor.whiteColor();
+        yXaxis.labelTextColor = UIColor.grayColor();
+        yXaxis.axisLineColor = UIColor.grayColor();
         barChart!.rightAxis.enabled = false;
         barChart!.zoom(14, scaleY: 1, xIndex: 0, yValue: 0, axis: .Left);
         // 14 is hard coded, should be 100 / 14 = 7, no mather what 100 is, 7 must come out.
@@ -61,9 +68,9 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         let today:UserSteps = stepsArray[0] as! UserSteps
         let percentage = (Double(today.steps)/Double(goal)) * 100
         circleProgressView.setProgress(Double(today.steps)/Double(goal), animated: true)
-        stepsLabel.text = String(format:"%d steps",today.steps)
-        percentageLabel.text = String(format:"Goal: %.1f%%",percentage)
-        
+        stepsLabel.text = String(format:"%d",today.steps)
+        percentageLabel.text = String(format:"Goal: %d%",goal)
+
         
         barChart.drawBarShadowEnabled = false
         var xVals = [String]();
@@ -81,16 +88,12 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "Steps")
             let dataSet = NSMutableArray()
             dataSet.addObject(barChartSet);
-            barChartSet.colors = [UIColor.whiteColor()]
-            barChartSet.highlightColor = AppTheme.BASE_COLOR_TINT()
-            barChartSet.valueColors = [UIColor.whiteColor()]
+            barChartSet.colors = [UIColor(rgba: "#66CCCC")]
+            barChartSet.highlightColor = UIColor(rgba: "#66CCCC")
+            barChartSet.valueColors = [UIColor.grayColor()]
             let barChartData = BarChartData(xVals: xVals, dataSet: barChartSet)
             self.barChart.data = barChartData;
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+
 }

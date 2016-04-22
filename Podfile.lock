@@ -22,6 +22,7 @@ PODS:
   - UIColor_Hex_Swift (2.1)
   - XCGLogger (3.3)
   - YRSideViewController (1.0.6)
+  - YYKeyboardManager (1.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - UIColor_Hex_Swift (~> 2.1)
   - XCGLogger (~> 3.3)
   - YRSideViewController (~> 1.0)
+  - YYKeyboardManager
 
 EXTERNAL SOURCES:
   CircleProgressView:
@@ -71,5 +73,6 @@ SPEC CHECKSUMS:
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
   XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
   YRSideViewController: 08a659ef4b2c1c32dc31d1d8ee46d6019de1363a
+  YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
 
 COCOAPODS: 0.39.0

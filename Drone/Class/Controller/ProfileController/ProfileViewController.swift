@@ -10,9 +10,9 @@ import UIKit
 import AutocompleteField
 import SMSegmentView
 import UIColor_Hex_Swift
+import YYKeyboardManager
 
-
-class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
+class ProfileViewController: BaseViewController,SMSegmentViewDelegate,UITextFieldDelegate,YYKeyboardObserver {
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!
@@ -22,6 +22,7 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
     @IBOutlet weak var weightTextField: AutocompleteField!
     @IBOutlet weak var stridelengthTextField: AutocompleteField!
     @IBOutlet weak var metricsSegment: UIView!
+    var selectedTextField:UITextField?
 
     var segmentView:SMSegmentView?
 
@@ -36,6 +37,7 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         textfiledBG.layer.borderColor = UIColor(rgba: "#6F7179").CGColor
+        YYKeyboardManager.defaultManager().addObserver(self)
     }
 
     override func viewDidLayoutSubviews() {
@@ -57,16 +59,6 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
         }
     }
 
-    @IBAction func buttonActionManager(sender: AnyObject) {
-        if (backB.isEqual(sender)) {
-            self.navigationController?.popViewControllerAnimated(true)
-        }
-
-        if (nextB.isEqual(sender)) {
-
-        }
-    }
-
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         ageTextField.resignFirstResponder()
         lengthTextField.resignFirstResponder()
@@ -74,6 +66,34 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
         stridelengthTextField.resignFirstResponder()
     }
 
+    @IBAction func buttonActionManager(sender: AnyObject) {
+        if (backB.isEqual(sender)) {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+
+        if (nextB.isEqual(sender)) {
+            let maintabbar:YouDeviceViewController = YouDeviceViewController()
+            self.navigationController?.pushViewController(maintabbar, animated: true)
+        }
+    }
+
+    // MARK: - UITextFieldDelegate
+    func textFieldDidBeginEditing(textField: UITextField) {
+        selectedTextField = textField
+    }
+
+    // MARK: - YYKeyboardObserver
+    func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
+        UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
+            let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
+            //925 409
+            self.view.frame = CGRectMake(0, kbFrame.origin.y - UIScreen.mainScreen().bounds.size.height, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+            }) { (finished) in
+
+        }
+    }
+
+    // MARK: - SMSegmentViewDelegate
     func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
         debugPrint("Select segment at index: \(index)")
     }

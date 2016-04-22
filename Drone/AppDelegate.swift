@@ -124,6 +124,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         
     }
 
+    func rootTabbarController() {
+        let mainTabbar:MainTabbarViewController = MainTabbarViewController()
+        self.window?.rootViewController = mainTabbar
+    }
     // MARK: -AppDelegate SET Function
     func readsystemStatus() {
         sendRequest(GetSystemStatus())
