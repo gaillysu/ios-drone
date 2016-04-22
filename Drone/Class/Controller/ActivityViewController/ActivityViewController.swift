@@ -7,18 +7,21 @@
 //
 
 import Foundation
+import CircleProgressView
 
-class ActivityViewController: UITabBarController, UITabBarControllerDelegate {
+class ActivityViewController: UIViewController {
+
+    init() {
+        super.init(nibName: "ActivityViewController", bundle: NSBundle.mainBundle())
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
-        let stepsController = StepsViewController()
-        let sleepController = SleepViewController()
-        setViewControllers([stepsController, sleepController], animated: true)
-        self.title = "Steps";
+
         
     }
 
-    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        self.title = item.title
-    }
 }

@@ -9,7 +9,13 @@
 import UIKit
 import UIColor_Hex_Swift
 
+protocol SelectedItemDelegate:NSObjectProtocol {
+    func didSelectedTabbarItem(item: Int)
+}
+
 class DroneTabbar: UIView {
+
+    var delegate:SelectedItemDelegate?
 
     init() {
         super.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 49.0))
@@ -28,9 +34,8 @@ class DroneTabbar: UIView {
     func bulidDroneTabbar() {
         for i:Int in 0  ..< 5 {
             let btn:DroneTabbarItem = DroneTabbarItem()
-            btn.adjustsImageWhenHighlighted=false //使触摸模式下按钮也不会变暗
-            btn.adjustsImageWhenDisabled=false //使禁用模式下按钮也不会变暗
-
+            btn.adjustsImageWhenHighlighted=false
+            btn.adjustsImageWhenDisabled=false
             let btnW:CGFloat = self.frame.size.width/5.0;
             let btnX:CGFloat = CGFloat(i) * btnW;
             let btnY:CGFloat = 0;
@@ -83,15 +88,7 @@ class DroneTabbar: UIView {
     }
 
     func btnClick(sender:UIButton) {
-
+        delegate?.didSelectedTabbarItem(sender.tag)
     }
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

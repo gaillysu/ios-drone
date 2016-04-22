@@ -13,9 +13,8 @@ let nDroneTabbarHeight:CGFloat = 49
 let nDroneBtnWidth:CGFloat = nDroneTabbarHeight
 let nDroneBtnHeight:CGFloat = 50
 
-class MainTabbarViewController: UITabBarController {
+class MainTabbarViewController: UITabBarController,SelectedItemDelegate {
 
-    
     init() {
         super.init(nibName: "MainTabbarViewController", bundle: NSBundle.mainBundle())
     }
@@ -30,6 +29,7 @@ class MainTabbarViewController: UITabBarController {
         self.view.backgroundColor = UIColor.whiteColor()
 
         let tabbar:DroneTabbar = DroneTabbar()
+        tabbar.delegate = self
         let frame:CGRect = tabbar.frame;
         tabbar.frame = CGRectMake(0, UIScreen.mainScreen().bounds.size.height-nDroneTabbarHeight, frame.size.width, nDroneTabbarHeight);
         tabbar.backgroundColor = UIColor(patternImage: UIImage(named: "gradually")!)
@@ -53,14 +53,16 @@ class MainTabbarViewController: UITabBarController {
     }
 
     func cameraClick(sender:UIButton) {
-
+        self.selectedIndex = sender.tag
     }
 
     func initViewController() {
         let nav1:UINavigationController = UINavigationController(rootViewController: WorldClockController())
-        let nav2:UINavigationController = UINavigationController(rootViewController: StepsViewController())
-        let nav3:UINavigationController = UINavigationController(rootViewController: SleepViewController())
-        self.setViewControllers([nav1,nav2,nav3], animated: true)
+        let nav2:UINavigationController = UINavigationController(rootViewController: ActivityViewController())
+        let nav3:UINavigationController = UINavigationController(rootViewController: StepsViewController())
+        let nav4:UINavigationController = UINavigationController(rootViewController: SettingsViewController())
+        let nav5:UINavigationController = UINavigationController(rootViewController: ProfileViewController())
+        self.setViewControllers([nav1,nav2,nav3,nav4,nav5], animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,4 +70,8 @@ class MainTabbarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: SelectedItemDelegate
+    func didSelectedTabbarItem(item: Int) {
+        self.selectedIndex = item
+    }
 }
