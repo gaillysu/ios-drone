@@ -5,10 +5,10 @@ PODS:
     - Charts/Core (= 2.2.3)
   - Charts/Core (2.2.3)
   - CircleProgressView (1.0.9)
+  - CVCalendar (1.2.9)
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
-  - GSMessages (1.2.0)
   - NVActivityIndicatorView (2.3)
   - SDCycleScrollView (1.62):
     - SDWebImage (~> 3.7)
@@ -17,11 +17,9 @@ PODS:
   - SDWebImage/Core (3.7.5)
   - SMSegmentView (1.1)
   - SwiftEventBus (1.1.0)
-  - TextFieldEffects (1.1.1)
   - Timepiece (0.4.2)
   - UIColor_Hex_Swift (2.1)
   - XCGLogger (3.3)
-  - YRSideViewController (1.0.6)
   - YYKeyboardManager (1.0.1)
 
 DEPENDENCIES:
@@ -29,17 +27,15 @@ DEPENDENCIES:
   - AutocompleteField (~> 1.1)
   - Charts
   - CircleProgressView (from `https://github.com/CardinalNow/iOS-CircleProgressView.git`)
+  - CVCalendar (~> 1.2.9)
   - FMDB
-  - GSMessages
   - NVActivityIndicatorView
   - SDCycleScrollView (~> 1.3)
   - SMSegmentView (~> 1.1)
   - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
-  - TextFieldEffects
   - Timepiece
   - UIColor_Hex_Swift (~> 2.1)
   - XCGLogger (~> 3.3)
-  - YRSideViewController (~> 1.0)
   - YYKeyboardManager
 
 EXTERNAL SOURCES:
@@ -61,18 +57,16 @@ SPEC CHECKSUMS:
   AutocompleteField: 212b36bef0218f22c05d80035be2d382acd5a4e2
   Charts: f54267bb3f0f0e74520c6f248517cf5074dfd6fc
   CircleProgressView: fb5cd84be2abd908459d8dd087d94c4bdb7e60cf
+  CVCalendar: 0799256e0bc3b43e83b7e86c0729ce9ff0624cb6
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
-  GSMessages: 92a2aadb81bd7505e7375d7f70a58a2f49eb6e25
   NVActivityIndicatorView: c7ef25ef527ab5e51b00322cb1ddd58681bcf2a3
   SDCycleScrollView: ae016cb4cc4036523917f146ede6f7b11d408f6a
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SMSegmentView: a99862f36ea73478558ae665c209cb80c0d4f059
   SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
-  TextFieldEffects: a1a78efeb93b65c611ad287b28a068c9a4a5f5b4
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
   XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
-  YRSideViewController: 08a659ef4b2c1c32dc31d1d8ee46d6019de1363a
   YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
 
 COCOAPODS: 0.39.0
