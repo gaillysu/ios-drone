@@ -20,7 +20,6 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate,UITextFiel
     @IBOutlet weak var ageTextField: AutocompleteField!
     @IBOutlet weak var lengthTextField: AutocompleteField!
     @IBOutlet weak var weightTextField: AutocompleteField!
-    @IBOutlet weak var stridelengthTextField: AutocompleteField!
     @IBOutlet weak var metricsSegment: UIView!
     var selectedTextField:UITextField?
 
@@ -63,7 +62,6 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate,UITextFiel
         ageTextField.resignFirstResponder()
         lengthTextField.resignFirstResponder()
         weightTextField.resignFirstResponder()
-        stridelengthTextField.resignFirstResponder()
     }
 
     @IBAction func buttonActionManager(sender: AnyObject) {
@@ -86,8 +84,8 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate,UITextFiel
     func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
         UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
             let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
-            //925 409
-            self.view.frame = CGRectMake(0, kbFrame.origin.y - UIScreen.mainScreen().bounds.size.height, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+            let kbY:CGFloat = self.view.frame.origin.y < 0 ? 0:kbFrame.origin.y - UIScreen.mainScreen().bounds.size.height
+            self.view.frame = CGRectMake(0, kbY, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
             }) { (finished) in
 
         }
