@@ -184,6 +184,8 @@
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
 		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
+		9E2E95811CCE16BD00B6671A /* WorldClockHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E2E95801CCE16BD00B6671A /* WorldClockHeader.xib */; };
+		9E2E95831CCE16CE00B6671A /* WorldClockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2E95821CCE16CE00B6671A /* WorldClockHeader.swift */; };
 		9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C51C966E300000E024 /* TextFieldEffects.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C71C9678E30000E024 /* SMSegmentView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -401,6 +403,8 @@
 		162629CC61821D5C419DE763 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50E933362E2354AB07386 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9E2E95801CCE16BD00B6671A /* WorldClockHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockHeader.xib; sourceTree = "<group>"; };
+		9E2E95821CCE16CE00B6671A /* WorldClockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockHeader.swift; sourceTree = "<group>"; };
 		9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "Pods/../build/Debug-iphoneos/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
 		9EB474C51C966E300000E024 /* TextFieldEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextFieldEffects.framework; path = "Pods/../build/Debug-iphoneos/TextFieldEffects.framework"; sourceTree = "<group>"; };
 		9EB474C71C9678E30000E024 /* SMSegmentView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SMSegmentView.framework; path = "Pods/../build/Debug-iphoneos/SMSegmentView.framework"; sourceTree = "<group>"; };
@@ -758,6 +762,8 @@
 			children = (
 				00982AE71C868C89003DA5E2 /* WorldClockCell.swift */,
 				00982AE81C868C89003DA5E2 /* WorldClockCell.xib */,
+				9E2E95821CCE16CE00B6671A /* WorldClockHeader.swift */,
+				9E2E95801CCE16BD00B6671A /* WorldClockHeader.xib */,
 			);
 			name = WorldClockView;
 			path = Controller/WorldClockController/View;
@@ -1355,6 +1361,7 @@
 				006F94301CCA0C320073C150 /* white_background.png in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
 				0089310D1CC77D1C0013E6D8 /* YouDeviceViewController.xib in Resources */,
+				9E2E95811CCE16BD00B6671A /* WorldClockHeader.xib in Resources */,
 				006F942E1CC9B8A60073C150 /* ActivityViewController.xib in Resources */,
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
@@ -1526,6 +1533,7 @@
 				00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */,
+				9E2E95831CCE16CE00B6671A /* WorldClockHeader.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
 				004D57611CC61978000F83A8 /* MainTabbarViewController.swift in Sources */,

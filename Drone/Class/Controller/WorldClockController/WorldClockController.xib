@@ -16,12 +16,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wBL-aN-OVb">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
-                </mapView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rFk-jO-xBb">
-                    <rect key="frame" x="0.0" y="220" width="320" height="348"/>
-                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rFk-jO-xBb">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="m3b-CN-0N8"/>
                         <outlet property="delegate" destination="-1" id="nXj-3J-tKk"/>
@@ -31,12 +28,8 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="rFk-jO-xBb" secondAttribute="bottom" id="2o5-jD-3ck"/>
-                <constraint firstAttribute="trailing" secondItem="wBL-aN-OVb" secondAttribute="trailing" id="4tv-Jh-gur"/>
-                <constraint firstItem="wBL-aN-OVb" firstAttribute="height" secondItem="rFk-jO-xBb" secondAttribute="height" constant="-128" id="Drc-Z7-2ob"/>
-                <constraint firstItem="rFk-jO-xBb" firstAttribute="top" secondItem="wBL-aN-OVb" secondAttribute="bottom" id="fTh-fB-LeN"/>
+                <constraint firstItem="rFk-jO-xBb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gMP-Cn-w6m"/>
                 <constraint firstAttribute="trailing" secondItem="rFk-jO-xBb" secondAttribute="trailing" id="grX-46-dEf"/>
-                <constraint firstItem="wBL-aN-OVb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iV8-pW-3ib"/>
-                <constraint firstItem="wBL-aN-OVb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="k9o-a8-goV"/>
                 <constraint firstItem="rFk-jO-xBb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lGW-V1-5a2"/>
             </constraints>
             <point key="canvasLocation" x="561" y="303"/>

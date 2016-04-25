@@ -28,7 +28,7 @@ class WorldClockController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "World Clock"
-
+        // TODO set headerview: WorldClockHeader.swift
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
@@ -52,7 +52,7 @@ class WorldClockController: BaseViewController {
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 55
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
