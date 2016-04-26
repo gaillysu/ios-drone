@@ -12,7 +12,6 @@ import HealthKit
 import Alamofire
 import FMDB
 import SwiftEventBus
-import YRSideViewController
 import XCGLogger
 
 let DRONEDBFILE:String = "droneDBFile";
@@ -32,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     private var disConnectAlert:UIAlertView?
     private let log = XCGLogger.defaultInstance()
-    let sideViewController:YRSideViewController = YRSideViewController()
 
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
@@ -42,20 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
 
-        //sideViewController.rootViewController = UINavigationController(rootViewController: MenuViewController());
-        //sideViewController.leftViewController = ProfileViewController();
-        //sideViewController.rightViewController = UINavigationController(rootViewController: MyDroneController());
-        //sideViewController.leftViewShowWidth = UIScreen.mainScreen().bounds.size.width
-        //sideViewController.rightViewShowWidth = UIScreen.mainScreen().bounds.size.width
-        //sideViewController.showBoundsShadow = false
-        //sideViewController.needSwipeShowMenu = true
-        //sideViewController.rootViewMoveBlock = { (rootView, orginFrame, xoffset) -> Void in
-            //rootView.frame=CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
-        //}
         log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

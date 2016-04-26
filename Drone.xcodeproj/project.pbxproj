@@ -21,6 +21,9 @@
 		0043FBEA1CA1404500638BD1 /* GetContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */; };
 		0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */; };
 		0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */; };
+		004AB1F71CCDBA6900A66CAF /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004AB1F61CCDBA6900A66CAF /* CVCalendar.framework */; };
+		004AB1F91CCDC99F00A66CAF /* StepsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004AB1F81CCDC99F00A66CAF /* StepsTitleView.swift */; };
+		004AB1FB1CCDC9CA00A66CAF /* StepsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004AB1FA1CCDC9CA00A66CAF /* StepsTitleView.xib */; };
 		004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */; };
 		004D57611CC61978000F83A8 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */; };
 		004D57621CC61978000F83A8 /* MainTabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004D57601CC61978000F83A8 /* MainTabbarViewController.xib */; };
@@ -47,7 +50,6 @@
 		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		008C5EE31C8D7A3600DCD12D /* GSMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE11C8D7A3600DCD12D /* GSMessages.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */; };
 		008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */; };
 		009201DC1CBE2B6600C51707 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009201DA1CBE2B6600C51707 /* HomeViewController.swift */; };
@@ -149,15 +151,8 @@
 		00982C5C1C868C8A003DA5E2 /* NevoOTAPacketProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B451C868C89003DA5E2 /* NevoOTAPacketProfile.swift */; };
 		00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B461C868C89003DA5E2 /* NevoOTARequest.swift */; };
 		00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B471C868C89003DA5E2 /* Utility.swift */; };
-		00982C5F1C868C8A003DA5E2 /* BatteryLevelNevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B491C868C89003DA5E2 /* BatteryLevelNevoPacket.swift */; };
-		00982C601C868C8A003DA5E2 /* DailyStepsNevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4A1C868C89003DA5E2 /* DailyStepsNevoPacket.swift */; };
-		00982C611C868C8A003DA5E2 /* DailyTrackerInfoNevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4B1C868C89003DA5E2 /* DailyTrackerInfoNevoPacket.swift */; };
-		00982C621C868C8A003DA5E2 /* DailyTrackerNevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4C1C868C89003DA5E2 /* DailyTrackerNevoPacket.swift */; };
 		00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4D1C868C89003DA5E2 /* NevoPacket.swift */; };
 		00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */; };
-		00982C651C868C8A003DA5E2 /* SetAlarmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B501C868C89003DA5E2 /* SetAlarmRequest.swift */; };
-		00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B511C868C89003DA5E2 /* SetCardioRequest.swift */; };
-		00982C671C868C8A003DA5E2 /* SetProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B521C868C89003DA5E2 /* SetProfileRequest.swift */; };
 		00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B531C868C89003DA5E2 /* SyncQueue.swift */; };
 		00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD11C868C89003DA5E2 /* NevoBT.swift */; };
 		00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD21C868C89003DA5E2 /* NevoBTimpl.swift */; };
@@ -174,7 +169,6 @@
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
-		00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		00F1AF441CACD82600CB9A15 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */; };
 		00F1AF461CACD82600CB9A15 /* AddDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */; };
 		00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */; };
@@ -185,11 +179,9 @@
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
 		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
 		9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C51C966E300000E024 /* TextFieldEffects.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C71C9678E30000E024 /* SMSegmentView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
-		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,6 +216,9 @@
 		0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsApplicationsRequest.swift; sourceTree = "<group>"; };
+		004AB1F61CCDBA6900A66CAF /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/CVCalendar.framework"; sourceTree = "<group>"; };
+		004AB1F81CCDC99F00A66CAF /* StepsTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTitleView.swift; sourceTree = "<group>"; };
+		004AB1FA1CCDC9CA00A66CAF /* StepsTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTitleView.xib; sourceTree = "<group>"; };
 		004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_Hex_Swift.framework; path = "Pods/../build/Debug-iphoneos/UIColor_Hex_Swift.framework"; sourceTree = "<group>"; };
 		004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
 		004D57601CC61978000F83A8 /* MainTabbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabbarViewController.xib; sourceTree = "<group>"; };
@@ -363,15 +358,8 @@
 		00982B451C868C89003DA5E2 /* NevoOTAPacketProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAPacketProfile.swift; sourceTree = "<group>"; };
 		00982B461C868C89003DA5E2 /* NevoOTARequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTARequest.swift; sourceTree = "<group>"; };
 		00982B471C868C89003DA5E2 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		00982B491C868C89003DA5E2 /* BatteryLevelNevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryLevelNevoPacket.swift; sourceTree = "<group>"; };
-		00982B4A1C868C89003DA5E2 /* DailyStepsNevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyStepsNevoPacket.swift; sourceTree = "<group>"; };
-		00982B4B1C868C89003DA5E2 /* DailyTrackerInfoNevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTrackerInfoNevoPacket.swift; sourceTree = "<group>"; };
-		00982B4C1C868C89003DA5E2 /* DailyTrackerNevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTrackerNevoPacket.swift; sourceTree = "<group>"; };
 		00982B4D1C868C89003DA5E2 /* NevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoPacket.swift; sourceTree = "<group>"; };
 		00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemStatusPacket.swift; sourceTree = "<group>"; };
-		00982B501C868C89003DA5E2 /* SetAlarmRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAlarmRequest.swift; sourceTree = "<group>"; };
-		00982B511C868C89003DA5E2 /* SetCardioRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCardioRequest.swift; sourceTree = "<group>"; };
-		00982B521C868C89003DA5E2 /* SetProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetProfileRequest.swift; sourceTree = "<group>"; };
 		00982B531C868C89003DA5E2 /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
 		00982BD11C868C89003DA5E2 /* NevoBT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoBT.swift; sourceTree = "<group>"; };
 		00982BD21C868C89003DA5E2 /* NevoBTimpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoBTimpl.swift; sourceTree = "<group>"; };
@@ -415,22 +403,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */,
+				004AB1F71CCDBA6900A66CAF /* CVCalendar.framework in Frameworks */,
 				0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */,
 				004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */,
 				005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */,
 				005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */,
 				00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */,
-				00F1AEBE1CACC05300CB9A15 /* YRSideViewController.framework in Frameworks */,
 				9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */,
-				9EB474C61C966E300000E024 /* TextFieldEffects.framework in Frameworks */,
 				00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */,
 				9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */,
 				0065AC121CC8ADF800DC3096 /* MapKit.framework in Frameworks */,
 				CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */,
 				0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */,
 				008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */,
-				008C5EE31C8D7A3600DCD12D /* GSMessages.framework in Frameworks */,
 				008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */,
 				008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */,
 				04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */,
@@ -729,6 +714,8 @@
 			children = (
 				00982ADC1C868C89003DA5E2 /* StepsViewController.swift */,
 				00982CD91C868CF5003DA5E2 /* StepsViewController.xib */,
+				004AB1F81CCDC99F00A66CAF /* StepsTitleView.swift */,
+				004AB1FA1CCDC9CA00A66CAF /* StepsTitleView.xib */,
 			);
 			name = StepsViewController;
 			path = StepController;
@@ -936,7 +923,6 @@
 				00982B2C1C868C89003DA5E2 /* DroneRequest */,
 				00982B3F1C868C89003DA5E2 /* OTA */,
 				00982B481C868C89003DA5E2 /* Packet */,
-				00982B4F1C868C89003DA5E2 /* Request */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -999,10 +985,6 @@
 		00982B481C868C89003DA5E2 /* Packet */ = {
 			isa = PBXGroup;
 			children = (
-				00982B491C868C89003DA5E2 /* BatteryLevelNevoPacket.swift */,
-				00982B4A1C868C89003DA5E2 /* DailyStepsNevoPacket.swift */,
-				00982B4B1C868C89003DA5E2 /* DailyTrackerInfoNevoPacket.swift */,
-				00982B4C1C868C89003DA5E2 /* DailyTrackerNevoPacket.swift */,
 				00982B4D1C868C89003DA5E2 /* NevoPacket.swift */,
 				0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */,
 				00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */,
@@ -1010,16 +992,6 @@
 				004ED1E91CB35DDA009D053C /* ActivityPacket.swift */,
 			);
 			path = Packet;
-			sourceTree = "<group>";
-		};
-		00982B4F1C868C89003DA5E2 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				00982B501C868C89003DA5E2 /* SetAlarmRequest.swift */,
-				00982B511C868C89003DA5E2 /* SetCardioRequest.swift */,
-				00982B521C868C89003DA5E2 /* SetProfileRequest.swift */,
-			);
-			path = Request;
 			sourceTree = "<group>";
 		};
 		00982B541C868C89003DA5E2 /* Frameworks */ = {
@@ -1146,6 +1118,7 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				004AB1F61CCDBA6900A66CAF /* CVCalendar.framework */,
 				CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */,
 				004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */,
 				005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */,
@@ -1362,6 +1335,7 @@
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
 				0065AC0A1CC86A9B00DC3096 /* ConnectionViewController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
+				004AB1FB1CCDC9CA00A66CAF /* StepsTitleView.xib in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
 				009201DD1CBE2B6600C51707 /* HomeViewController.xib in Resources */,
 			);
@@ -1445,7 +1419,6 @@
 				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
-				00982C621C868C8A003DA5E2 /* DailyTrackerNevoPacket.swift in Sources */,
 				00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */,
 				00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */,
 				00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */,
@@ -1453,7 +1426,6 @@
 				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
 				00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
-				00982C671C868C8A003DA5E2 /* SetProfileRequest.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
@@ -1488,7 +1460,6 @@
 				004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
-				00982C651C868C8A003DA5E2 /* SetAlarmRequest.swift in Sources */,
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
 				00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */,
 				0043FBE81CA13CED00638BD1 /* SetContactsFilterRequest.swift in Sources */,
@@ -1506,15 +1477,13 @@
 				00982C541C868C8A003DA5E2 /* SetSystemConfig.swift in Sources */,
 				0089310A1CC779B30013E6D8 /* YouDeviceViewController.swift in Sources */,
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
-				00982C601C868C8A003DA5E2 /* DailyStepsNevoPacket.swift in Sources */,
 				00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */,
 				00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */,
 				00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */,
 				008931011CC7157C0013E6D8 /* DroneTabbarItem.swift in Sources */,
-				00982C5F1C868C8A003DA5E2 /* BatteryLevelNevoPacket.swift in Sources */,
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
-				00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */,
+				004AB1F91CCDC99F00A66CAF /* StepsTitleView.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
 				0065AC091CC86A9B00DC3096 /* ConnectionViewController.swift in Sources */,
 				0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */,
@@ -1543,7 +1512,6 @@
 				00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */,
 				00982C0A1C868C8A003DA5E2 /* SleepViewController.swift in Sources */,
 				00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */,
-				00982C611C868C8A003DA5E2 /* DailyTrackerInfoNevoPacket.swift in Sources */,
 				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */,
 				00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */,
