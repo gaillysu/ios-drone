@@ -12,7 +12,7 @@ import SMSegmentView
 import UIColor_Hex_Swift
 import YYKeyboardManager
 
-class ProfileViewController: BaseViewController,SMSegmentViewDelegate,UITextFieldDelegate,YYKeyboardObserver {
+class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITextFieldDelegate,YYKeyboardObserver {
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!

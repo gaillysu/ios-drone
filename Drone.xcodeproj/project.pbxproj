@@ -10,7 +10,6 @@
 		0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA4D1CBC830C00820B1F /* DeviceModel.swift */; };
 		0015CA501CBC835900820B1F /* UserDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA4F1CBC835900820B1F /* UserDevice.swift */; };
 		0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */; };
-		00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00233D4C1CBB43C200824E64 /* XCGLogger.framework */; };
 		0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */; };
 		0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */; };
 		0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028F1401C97C08000C8E742 /* EventBusKeys.swift */; };
@@ -21,40 +20,30 @@
 		0043FBEA1CA1404500638BD1 /* GetContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */; };
 		0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */; };
 		0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */; };
-		004AB1F71CCDBA6900A66CAF /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004AB1F61CCDBA6900A66CAF /* CVCalendar.framework */; };
-		004AB1F91CCDC99F00A66CAF /* StepsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004AB1F81CCDC99F00A66CAF /* StepsTitleView.swift */; };
-		004AB1FB1CCDC9CA00A66CAF /* StepsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004AB1FA1CCDC9CA00A66CAF /* StepsTitleView.xib */; };
-		004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */; };
 		004D57611CC61978000F83A8 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */; };
 		004D57621CC61978000F83A8 /* MainTabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004D57601CC61978000F83A8 /* MainTabbarViewController.xib */; };
 		004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */; };
 		004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E91CB35DDA009D053C /* ActivityPacket.swift */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
-		005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */; };
-		005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */; };
 		005B41FA1CC639260049007A /* DroneTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B41F91CC639260049007A /* DroneTabbar.swift */; };
 		0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA6E1CC089BF005AB9DE /* drone1.jpg */; };
 		0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA701CC089BF005AB9DE /* drone3.jpg */; };
 		0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA741CC089F4005AB9DE /* drone2.jpg */; };
 		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
-		0065AC091CC86A9B00DC3096 /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */; };
-		0065AC0A1CC86A9B00DC3096 /* ConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */; };
+		0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */; };
+		0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */; };
 		0065AC121CC8ADF800DC3096 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC111CC8ADF800DC3096 /* MapKit.framework */; };
 		0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */; };
-		006F942E1CC9B8A60073C150 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F942D1CC9B8A60073C150 /* ActivityViewController.xib */; };
+		006F942E1CC9B8A60073C150 /* AnalysisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F942D1CC9B8A60073C150 /* AnalysisViewController.xib */; };
 		006F94301CCA0C320073C150 /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 006F942F1CCA0C310073C150 /* white_background.png */; };
 		008931011CC7157C0013E6D8 /* DroneTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */; };
-		0089310A1CC779B30013E6D8 /* YouDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931081CC779B30013E6D8 /* YouDeviceViewController.swift */; };
-		0089310D1CC77D1C0013E6D8 /* YouDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */; };
-		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0089310A1CC779B30013E6D8 /* WhichDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */; };
+		0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */; };
 		008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */; };
 		008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */; };
-		009201DC1CBE2B6600C51707 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009201DA1CBE2B6600C51707 /* HomeViewController.swift */; };
-		009201DD1CBE2B6600C51707 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009201DB1CBE2B6600C51707 /* HomeViewController.xib */; };
-		0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		009201DC1CBE2B6600C51707 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009201DA1CBE2B6600C51707 /* WelcomeViewController.swift */; };
+		009201DD1CBE2B6600C51707 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009201DB1CBE2B6600C51707 /* WelcomeViewController.xib */; };
 		00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A691C868B15003DA5E2 /* AppDelegate.swift */; };
 		00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00982A701C868B15003DA5E2 /* Assets.xcassets */; };
 		00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */; };
@@ -62,29 +51,23 @@
 		00982A8A1C868B16003DA5E2 /* DroneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A891C868B16003DA5E2 /* DroneUITests.swift */; };
 		00982BED1C868C8A003DA5E2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AAA1C868C89003DA5E2 /* LoginController.swift */; };
 		00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AAB1C868C89003DA5E2 /* LoginController.xib */; };
-		00982BEF1C868C8A003DA5E2 /* MyDroneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AAD1C868C89003DA5E2 /* MyDroneController.swift */; };
-		00982BF01C868C8A003DA5E2 /* MyDroneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AAE1C868C89003DA5E2 /* MyDroneController.xib */; };
+		00982BEF1C868C8A003DA5E2 /* MyWatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AAD1C868C89003DA5E2 /* MyWatchController.swift */; };
+		00982BF01C868C8A003DA5E2 /* MyWatchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AAE1C868C89003DA5E2 /* MyWatchController.xib */; };
 		00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB01C868C89003DA5E2 /* MyNevoHeaderView.swift */; };
 		00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AB11C868C89003DA5E2 /* MyNevoHeaderView.xib */; };
 		00982BF31C868C8A003DA5E2 /* MyNevoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB21C868C89003DA5E2 /* MyNevoView.swift */; };
 		00982BF51C868C8A003DA5E2 /* DeviceScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB61C868C89003DA5E2 /* DeviceScannerView.swift */; };
 		00982BF71C868C8A003DA5E2 /* SelectFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB81C868C89003DA5E2 /* SelectFileView.swift */; };
-		00982BFA1C868C8A003DA5E2 /* AddGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ABC1C868C89003DA5E2 /* AddGoalViewController.swift */; };
-		00982BFB1C868C8A003DA5E2 /* AddGoalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ABD1C868C89003DA5E2 /* AddGoalViewController.xib */; };
-		00982BFC1C868C8A003DA5E2 /* GoalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ABE1C868C89003DA5E2 /* GoalTableViewController.swift */; };
-		00982BFD1C868C8A003DA5E2 /* GoalTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ABF1C868C89003DA5E2 /* GoalTableViewController.xib */; };
 		00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC11C868C89003DA5E2 /* AddGoalView.swift */; };
 		00982BFF1C868C8A003DA5E2 /* GoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC21C868C89003DA5E2 /* GoalTableViewCell.swift */; };
 		00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */; };
 		00982C011C868C8A003DA5E2 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC41C868C89003DA5E2 /* GoalView.swift */; };
-		00982C021C868C8A003DA5E2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC61C868C89003DA5E2 /* ProfileViewController.swift */; };
-		00982C031C868C8A003DA5E2 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC71C868C89003DA5E2 /* ProfileViewController.xib */; };
+		00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC71C868C89003DA5E2 /* ProfileSetupViewController.xib */; };
 		00982C041C868C8A003DA5E2 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC91C868C89003DA5E2 /* RegisterController.swift */; };
 		00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ACA1C868C89003DA5E2 /* RegisterController.xib */; };
 		00982C071C868C8A003DA5E2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ACE1C868C89003DA5E2 /* SettingsViewController.swift */; };
 		00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AD11C868C89003DA5E2 /* queryTableviewCell.swift */; };
 		00982C091C868C8A003DA5E2 /* queryTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AD21C868C89003DA5E2 /* queryTableviewCell.xib */; };
-		00982C0A1C868C8A003DA5E2 /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AD31C868C89003DA5E2 /* SleepViewController.swift */; };
 		00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ADA1C868C89003DA5E2 /* SleepTrackingView.swift */; };
 		00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ADC1C868C89003DA5E2 /* StepsViewController.swift */; };
 		00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */; };
@@ -151,8 +134,15 @@
 		00982C5C1C868C8A003DA5E2 /* NevoOTAPacketProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B451C868C89003DA5E2 /* NevoOTAPacketProfile.swift */; };
 		00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B461C868C89003DA5E2 /* NevoOTARequest.swift */; };
 		00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B471C868C89003DA5E2 /* Utility.swift */; };
+		00982C5F1C868C8A003DA5E2 /* BatteryLevelNevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B491C868C89003DA5E2 /* BatteryLevelNevoPacket.swift */; };
+		00982C601C868C8A003DA5E2 /* DailyStepsNevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4A1C868C89003DA5E2 /* DailyStepsNevoPacket.swift */; };
+		00982C611C868C8A003DA5E2 /* DailyTrackerInfoNevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4B1C868C89003DA5E2 /* DailyTrackerInfoNevoPacket.swift */; };
+		00982C621C868C8A003DA5E2 /* DailyTrackerNevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4C1C868C89003DA5E2 /* DailyTrackerNevoPacket.swift */; };
 		00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4D1C868C89003DA5E2 /* NevoPacket.swift */; };
 		00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */; };
+		00982C651C868C8A003DA5E2 /* SetAlarmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B501C868C89003DA5E2 /* SetAlarmRequest.swift */; };
+		00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B511C868C89003DA5E2 /* SetCardioRequest.swift */; };
+		00982C671C868C8A003DA5E2 /* SetProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B521C868C89003DA5E2 /* SetProfileRequest.swift */; };
 		00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B531C868C89003DA5E2 /* SyncQueue.swift */; };
 		00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD11C868C89003DA5E2 /* NevoBT.swift */; };
 		00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD21C868C89003DA5E2 /* NevoBTimpl.swift */; };
@@ -162,14 +152,12 @@
 		00982CCC1C868C8A003DA5E2 /* NevoHK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD71C868C8A003DA5E2 /* NevoHK.swift */; };
 		00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD81C868C8A003DA5E2 /* NevoHKImpl.swift */; };
 		00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CD91C868CF5003DA5E2 /* StepsViewController.xib */; };
-		00982CDF1C868F62003DA5E2 /* SleepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CDE1C868F62003DA5E2 /* SleepViewController.xib */; };
 		00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CE01C868FE6003DA5E2 /* SettingsViewController.xib */; };
 		00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982CE51C8695AD003DA5E2 /* SetingView.swift */; };
 		00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFD1C86A350003DA5E2 /* localTimeZone.plist */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
-		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
-		00F1AF441CACD82600CB9A15 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */; };
+		00F1AF441CACD82600CB9A15 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3A1CACD82600CB9A15 /* AnalysisViewController.swift */; };
 		00F1AF461CACD82600CB9A15 /* AddDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */; };
 		00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */; };
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
@@ -178,10 +166,26 @@
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
 		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
-		9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB474C71C9678E30000E024 /* SMSegmentView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46981CCF223500411997 /* Fabric.framework */; };
+		CB0B469B1CCF223500411997 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46991CCF223500411997 /* Crashlytics.framework */; };
+		CB0B46AB1CCF229400411997 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B469C1CCF229400411997 /* Alamofire.framework */; };
+		CB0B46AC1CCF229400411997 /* AutocompleteField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B469D1CCF229400411997 /* AutocompleteField.framework */; };
+		CB0B46AD1CCF229400411997 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B469E1CCF229400411997 /* Charts.framework */; };
+		CB0B46AE1CCF229400411997 /* CircleProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B469F1CCF229400411997 /* CircleProgressView.framework */; };
+		CB0B46AF1CCF229400411997 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A01CCF229400411997 /* FMDB.framework */; };
+		CB0B46B01CCF229400411997 /* GSMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A11CCF229400411997 /* GSMessages.framework */; };
+		CB0B46B11CCF229400411997 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A21CCF229400411997 /* NVActivityIndicatorView.framework */; };
+		CB0B46B21CCF229400411997 /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A31CCF229400411997 /* SDCycleScrollView.framework */; };
+		CB0B46B31CCF229400411997 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A41CCF229400411997 /* SMSegmentView.framework */; };
+		CB0B46B41CCF229400411997 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A51CCF229400411997 /* SwiftEventBus.framework */; };
+		CB0B46B51CCF229400411997 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A61CCF229400411997 /* TextFieldEffects.framework */; };
+		CB0B46B61CCF229400411997 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A71CCF229400411997 /* Timepiece.framework */; };
+		CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */; };
+		CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A91CCF229400411997 /* XCGLogger.framework */; };
+		CB0B46B91CCF229400411997 /* YRSideViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46AA1CCF229400411997 /* YRSideViewController.framework */; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
+		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
+		CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,7 +209,6 @@
 		0015CA4D1CBC830C00820B1F /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		0015CA4F1CBC835900820B1F /* UserDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDevice.swift; sourceTree = "<group>"; };
 		0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemEventPacket.swift; sourceTree = "<group>"; };
-		00233D4C1CBB43C200824E64 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "Pods/../build/Debug-iphoneos/XCGLogger.framework"; sourceTree = "<group>"; };
 		0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfileModel.swift; sourceTree = "<group>"; };
 		0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabaseHelper.swift; sourceTree = "<group>"; };
 		0028F1401C97C08000C8E742 /* EventBusKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusKeys.swift; sourceTree = "<group>"; };
@@ -216,43 +219,30 @@
 		0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsApplicationsRequest.swift; sourceTree = "<group>"; };
-		004AB1F61CCDBA6900A66CAF /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/CVCalendar.framework"; sourceTree = "<group>"; };
-		004AB1F81CCDC99F00A66CAF /* StepsTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTitleView.swift; sourceTree = "<group>"; };
-		004AB1FA1CCDC9CA00A66CAF /* StepsTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTitleView.xib; sourceTree = "<group>"; };
-		004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_Hex_Swift.framework; path = "Pods/../build/Debug-iphoneos/UIColor_Hex_Swift.framework"; sourceTree = "<group>"; };
 		004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
 		004D57601CC61978000F83A8 /* MainTabbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabbarViewController.xib; sourceTree = "<group>"; };
 		004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsGoalPacket.swift; sourceTree = "<group>"; };
 		004ED1E91CB35DDA009D053C /* ActivityPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPacket.swift; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
 		005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
-		005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutocompleteField.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/AutocompleteField.framework"; sourceTree = "<group>"; };
-		005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/SDCycleScrollView.framework"; sourceTree = "<group>"; };
-		005AC1E01CC4783000C5DE2C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
 		005B41F91CC639260049007A /* DroneTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTabbar.swift; sourceTree = "<group>"; };
 		0064CA6E1CC089BF005AB9DE /* drone1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone1.jpg; sourceTree = "<group>"; };
 		0064CA701CC089BF005AB9DE /* drone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone3.jpg; sourceTree = "<group>"; };
 		0064CA741CC089F4005AB9DE /* drone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone2.jpg; sourceTree = "<group>"; };
 		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
-		0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
-		0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionViewController.xib; sourceTree = "<group>"; };
+		0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionSetupViewController.swift; sourceTree = "<group>"; };
+		0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionSetupViewController.xib; sourceTree = "<group>"; };
 		0065AC111CC8ADF800DC3096 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYKeyboardManager.framework; path = "Pods/../build/Debug-iphoneos/YYKeyboardManager.framework"; sourceTree = "<group>"; };
-		006F942D1CC9B8A60073C150 /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
+		006F942D1CC9B8A60073C150 /* AnalysisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalysisViewController.xib; sourceTree = "<group>"; };
 		006F942F1CCA0C310073C150 /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
 		008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTabbarItem.swift; sourceTree = "<group>"; };
-		008931081CC779B30013E6D8 /* YouDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouDeviceViewController.swift; sourceTree = "<group>"; };
-		0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouDeviceViewController.xib; sourceTree = "<group>"; };
-		008C5EDA1C8D64F800DCD12D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
-		008C5EDB1C8D64F800DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
-		008C5EDE1C8D655700DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
-		008C5EE01C8D7A3600DCD12D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
-		008C5EE11C8D7A3600DCD12D /* GSMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GSMessages.framework; path = "Pods/../build/Debug-iphoneos/GSMessages.framework"; sourceTree = "<group>"; };
+		008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichDeviceViewController.swift; sourceTree = "<group>"; };
+		0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhichDeviceViewController.xib; sourceTree = "<group>"; };
 		008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Drone/Class/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewCell.xib; path = Drone/Class/MenuViewCell.xib; sourceTree = SOURCE_ROOT; };
-		009201DA1CBE2B6600C51707 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		009201DB1CBE2B6600C51707 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftEventBus.framework; path = "Pods/../build/Debug-iphoneos/SwiftEventBus.framework"; sourceTree = "<group>"; };
+		009201DA1CBE2B6600C51707 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		009201DB1CBE2B6600C51707 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		00982A661C868B15003DA5E2 /* Drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A691C868B15003DA5E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00982A701C868B15003DA5E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -266,29 +256,23 @@
 		00982A8B1C868B16003DA5E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00982AAA1C868C89003DA5E2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		00982AAB1C868C89003DA5E2 /* LoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
-		00982AAD1C868C89003DA5E2 /* MyDroneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDroneController.swift; sourceTree = "<group>"; };
-		00982AAE1C868C89003DA5E2 /* MyDroneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDroneController.xib; sourceTree = "<group>"; };
+		00982AAD1C868C89003DA5E2 /* MyWatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWatchController.swift; sourceTree = "<group>"; };
+		00982AAE1C868C89003DA5E2 /* MyWatchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWatchController.xib; sourceTree = "<group>"; };
 		00982AB01C868C89003DA5E2 /* MyNevoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNevoHeaderView.swift; sourceTree = "<group>"; };
 		00982AB11C868C89003DA5E2 /* MyNevoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNevoHeaderView.xib; sourceTree = "<group>"; };
 		00982AB21C868C89003DA5E2 /* MyNevoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNevoView.swift; sourceTree = "<group>"; };
 		00982AB61C868C89003DA5E2 /* DeviceScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceScannerView.swift; sourceTree = "<group>"; };
 		00982AB81C868C89003DA5E2 /* SelectFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFileView.swift; sourceTree = "<group>"; };
-		00982ABC1C868C89003DA5E2 /* AddGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalViewController.swift; sourceTree = "<group>"; };
-		00982ABD1C868C89003DA5E2 /* AddGoalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGoalViewController.xib; sourceTree = "<group>"; };
-		00982ABE1C868C89003DA5E2 /* GoalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTableViewController.swift; sourceTree = "<group>"; };
-		00982ABF1C868C89003DA5E2 /* GoalTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalTableViewController.xib; sourceTree = "<group>"; };
 		00982AC11C868C89003DA5E2 /* AddGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalView.swift; sourceTree = "<group>"; };
 		00982AC21C868C89003DA5E2 /* GoalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTableViewCell.swift; sourceTree = "<group>"; };
 		00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalTableViewCell.xib; sourceTree = "<group>"; };
 		00982AC41C868C89003DA5E2 /* GoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
-		00982AC61C868C89003DA5E2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		00982AC71C868C89003DA5E2 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		00982AC71C868C89003DA5E2 /* ProfileSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSetupViewController.xib; sourceTree = "<group>"; };
 		00982AC91C868C89003DA5E2 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		00982ACA1C868C89003DA5E2 /* RegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterController.xib; sourceTree = "<group>"; };
 		00982ACE1C868C89003DA5E2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		00982AD11C868C89003DA5E2 /* queryTableviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = queryTableviewCell.swift; sourceTree = "<group>"; };
 		00982AD21C868C89003DA5E2 /* queryTableviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = queryTableviewCell.xib; sourceTree = "<group>"; };
-		00982AD31C868C89003DA5E2 /* SleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		00982ADA1C868C89003DA5E2 /* SleepTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepTrackingView.swift; sourceTree = "<group>"; };
 		00982ADC1C868C89003DA5E2 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
 		00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepGoalSetingView.swift; sourceTree = "<group>"; };
@@ -358,8 +342,15 @@
 		00982B451C868C89003DA5E2 /* NevoOTAPacketProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAPacketProfile.swift; sourceTree = "<group>"; };
 		00982B461C868C89003DA5E2 /* NevoOTARequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTARequest.swift; sourceTree = "<group>"; };
 		00982B471C868C89003DA5E2 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		00982B491C868C89003DA5E2 /* BatteryLevelNevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryLevelNevoPacket.swift; sourceTree = "<group>"; };
+		00982B4A1C868C89003DA5E2 /* DailyStepsNevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyStepsNevoPacket.swift; sourceTree = "<group>"; };
+		00982B4B1C868C89003DA5E2 /* DailyTrackerInfoNevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTrackerInfoNevoPacket.swift; sourceTree = "<group>"; };
+		00982B4C1C868C89003DA5E2 /* DailyTrackerNevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTrackerNevoPacket.swift; sourceTree = "<group>"; };
 		00982B4D1C868C89003DA5E2 /* NevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoPacket.swift; sourceTree = "<group>"; };
 		00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemStatusPacket.swift; sourceTree = "<group>"; };
+		00982B501C868C89003DA5E2 /* SetAlarmRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAlarmRequest.swift; sourceTree = "<group>"; };
+		00982B511C868C89003DA5E2 /* SetCardioRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCardioRequest.swift; sourceTree = "<group>"; };
+		00982B521C868C89003DA5E2 /* SetProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetProfileRequest.swift; sourceTree = "<group>"; };
 		00982B531C868C89003DA5E2 /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
 		00982BD11C868C89003DA5E2 /* NevoBT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoBT.swift; sourceTree = "<group>"; };
 		00982BD21C868C89003DA5E2 /* NevoBTimpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoBTimpl.swift; sourceTree = "<group>"; };
@@ -370,15 +361,12 @@
 		00982BD81C868C8A003DA5E2 /* NevoHKImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoHKImpl.swift; sourceTree = "<group>"; };
 		00982CD91C868CF5003DA5E2 /* StepsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsViewController.xib; sourceTree = "<group>"; };
 		00982CDB1C868E0B003DA5E2 /* Drone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drone-Bridging-Header.h"; sourceTree = "<group>"; };
-		00982CDE1C868F62003DA5E2 /* SleepViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SleepViewController.xib; sourceTree = "<group>"; };
 		00982CE01C868FE6003DA5E2 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		00982CE51C8695AD003DA5E2 /* SetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetingView.swift; sourceTree = "<group>"; };
 		00982CFD1C86A350003DA5E2 /* localTimeZone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = localTimeZone.plist; sourceTree = "<group>"; };
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		00BC14971C9292DE00E43F44 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Pods/../build/Debug-iphoneos/Timepiece.framework"; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
-		00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YRSideViewController.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphoneos/YRSideViewController.framework"; sourceTree = "<group>"; };
-		00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		00F1AF3A1CACD82600CB9A15 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceController.swift; sourceTree = "<group>"; };
 		00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceController.xib; sourceTree = "<group>"; };
 		00F1AF401CACD82600CB9A15 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -389,13 +377,26 @@
 		162629CC61821D5C419DE763 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50E933362E2354AB07386 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "Pods/../build/Debug-iphoneos/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
-		9EB474C51C966E300000E024 /* TextFieldEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextFieldEffects.framework; path = "Pods/../build/Debug-iphoneos/TextFieldEffects.framework"; sourceTree = "<group>"; };
-		9EB474C71C9678E30000E024 /* SMSegmentView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SMSegmentView.framework; path = "Pods/../build/Debug-iphoneos/SMSegmentView.framework"; sourceTree = "<group>"; };
-		9EDE1DE71C96B07D0050A0C9 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = "Pods/../build/Debug-iphoneos/SlideMenuControllerSwift.framework"; sourceTree = "<group>"; };
-		CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircleProgressView.framework; path = "Pods/../build/Debug-iphoneos/CircleProgressView.framework"; sourceTree = "<group>"; };
+		CB0B46981CCF223500411997 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		CB0B46991CCF223500411997 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		CB0B469C1CCF229400411997 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
+		CB0B469D1CCF229400411997 /* AutocompleteField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutocompleteField.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/AutocompleteField.framework"; sourceTree = "<group>"; };
+		CB0B469E1CCF229400411997 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/Charts.framework"; sourceTree = "<group>"; };
+		CB0B469F1CCF229400411997 /* CircleProgressView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircleProgressView.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/CircleProgressView.framework"; sourceTree = "<group>"; };
+		CB0B46A01CCF229400411997 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/FMDB.framework"; sourceTree = "<group>"; };
+		CB0B46A11CCF229400411997 /* GSMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GSMessages.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/GSMessages.framework"; sourceTree = "<group>"; };
+		CB0B46A21CCF229400411997 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
+		CB0B46A31CCF229400411997 /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/SDCycleScrollView.framework"; sourceTree = "<group>"; };
+		CB0B46A41CCF229400411997 /* SMSegmentView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SMSegmentView.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/SMSegmentView.framework"; sourceTree = "<group>"; };
+		CB0B46A51CCF229400411997 /* SwiftEventBus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftEventBus.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/SwiftEventBus.framework"; sourceTree = "<group>"; };
+		CB0B46A61CCF229400411997 /* TextFieldEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextFieldEffects.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/TextFieldEffects.framework"; sourceTree = "<group>"; };
+		CB0B46A71CCF229400411997 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/Timepiece.framework"; sourceTree = "<group>"; };
+		CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_Hex_Swift.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/UIColor_Hex_Swift.framework"; sourceTree = "<group>"; };
+		CB0B46A91CCF229400411997 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/XCGLogger.framework"; sourceTree = "<group>"; };
+		CB0B46AA1CCF229400411997 /* YRSideViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YRSideViewController.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/YRSideViewController.framework"; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
+		CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,21 +404,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				004AB1F71CCDBA6900A66CAF /* CVCalendar.framework in Frameworks */,
+				CB0B46AB1CCF229400411997 /* Alamofire.framework in Frameworks */,
+				CB0B46AC1CCF229400411997 /* AutocompleteField.framework in Frameworks */,
+				CB0B46AD1CCF229400411997 /* Charts.framework in Frameworks */,
+				CB0B46AE1CCF229400411997 /* CircleProgressView.framework in Frameworks */,
+				CB0B46AF1CCF229400411997 /* FMDB.framework in Frameworks */,
+				CB0B46B01CCF229400411997 /* GSMessages.framework in Frameworks */,
+				CB0B46B11CCF229400411997 /* NVActivityIndicatorView.framework in Frameworks */,
+				CB0B46B21CCF229400411997 /* SDCycleScrollView.framework in Frameworks */,
+				CB0B46B31CCF229400411997 /* SMSegmentView.framework in Frameworks */,
+				CB0B46B41CCF229400411997 /* SwiftEventBus.framework in Frameworks */,
+				CB0B46B51CCF229400411997 /* TextFieldEffects.framework in Frameworks */,
+				CB0B46B61CCF229400411997 /* Timepiece.framework in Frameworks */,
+				CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */,
+				CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */,
+				CB0B46B91CCF229400411997 /* YRSideViewController.framework in Frameworks */,
+				CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */,
 				0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */,
-				004D575D1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework in Frameworks */,
-				005AC1E11CC4783000C5DE2C /* AutocompleteField.framework in Frameworks */,
-				005AC1E21CC4783000C5DE2C /* SDCycleScrollView.framework in Frameworks */,
-				00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */,
-				9EB474C81C9678E30000E024 /* SMSegmentView.framework in Frameworks */,
-				00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */,
-				9E6867C01C915F00004D0158 /* NVActivityIndicatorView.framework in Frameworks */,
+				CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */,
 				0065AC121CC8ADF800DC3096 /* MapKit.framework in Frameworks */,
-				CB290C4D1C900ADD006F4BB1 /* CircleProgressView.framework in Frameworks */,
-				0093ADD71C8EAF39003E14A3 /* SwiftEventBus.framework in Frameworks */,
-				008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */,
-				008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */,
-				008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */,
+				CB0B469B1CCF223500411997 /* Crashlytics.framework in Frameworks */,
 				04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,30 +456,33 @@
 			path = MainTabbarViewController;
 			sourceTree = "<group>";
 		};
-		0065AC061CC86A8100DC3096 /* ConnectionViewController */ = {
+		0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0065AC071CC86A9B00DC3096 /* ConnectionViewController.swift */,
-				0065AC081CC86A9B00DC3096 /* ConnectionViewController.xib */,
+				0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */,
+				0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */,
 			);
+			name = ConnectionSetupViewController;
 			path = ConnectionViewController;
 			sourceTree = "<group>";
 		};
-		008931071CC7799F0013E6D8 /* YouDeviceViewController */ = {
+		008931071CC7799F0013E6D8 /* WhichDeviceViewController */ = {
 			isa = PBXGroup;
 			children = (
-				008931081CC779B30013E6D8 /* YouDeviceViewController.swift */,
-				0089310C1CC77D1C0013E6D8 /* YouDeviceViewController.xib */,
+				008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */,
+				0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */,
 			);
+			name = WhichDeviceViewController;
 			path = YouDeviceViewController;
 			sourceTree = "<group>";
 		};
-		009201D91CBE2B5200C51707 /* HomeViewController */ = {
+		009201D91CBE2B5200C51707 /* WelcomeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				009201DA1CBE2B6600C51707 /* HomeViewController.swift */,
-				009201DB1CBE2B6600C51707 /* HomeViewController.xib */,
+				009201DA1CBE2B6600C51707 /* WelcomeViewController.swift */,
+				009201DB1CBE2B6600C51707 /* WelcomeViewController.xib */,
 			);
+			name = WelcomeViewController;
 			path = HomeViewController;
 			sourceTree = "<group>";
 		};
@@ -548,26 +557,23 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0065AC061CC86A8100DC3096 /* ConnectionViewController */,
-				008931071CC7799F0013E6D8 /* YouDeviceViewController */,
-				004D575E1CC61952000F83A8 /* MainTabbarViewController */,
-				009201D91CBE2B5200C51707 /* HomeViewController */,
-				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
-				00F1AF391CACD82600CB9A15 /* ActivityViewController */,
+				00F1AF391CACD82600CB9A15 /* AnalysisViewController */,
 				00F1AF3C1CACD82600CB9A15 /* AddDeviceController */,
+				CBA06BED1C8EC27E00E3257B /* AddWorldClockController */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
 				00F1AF411CACD82600CB9A15 /* BuddyViewController */,
-				CBA06BED1C8EC27E00E3257B /* AddWorldClockController */,
-				00982ABB1C868C89003DA5E2 /* GoalController */,
+				0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */,
 				00982AA91C868C89003DA5E2 /* LoginController */,
+				004D575E1CC61952000F83A8 /* MainTabbarViewController */,
+				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
+				00982AAC1C868C89003DA5E2 /* MyWatchController */,
+				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
 				00982AC81C868C89003DA5E2 /* RegisterController */,
-				00982AAC1C868C89003DA5E2 /* MyDroneController */,
-				00982AB31C868C89003DA5E2 /* NevoOtaController */,
-				00982AC51C868C89003DA5E2 /* ProfileViewController */,
 				00982ACB1C868C89003DA5E2 /* SettingsViewController */,
-				00982ACF1C868C89003DA5E2 /* SleepViewController */,
 				00982ADB1C868C89003DA5E2 /* StepsViewController */,
+				009201D91CBE2B5200C51707 /* WelcomeViewController */,
 				00982AE21C868C89003DA5E2 /* WorldClockController */,
+				008931071CC7799F0013E6D8 /* WhichDeviceViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -581,12 +587,13 @@
 			path = LoginController;
 			sourceTree = "<group>";
 		};
-		00982AAC1C868C89003DA5E2 /* MyDroneController */ = {
+		00982AAC1C868C89003DA5E2 /* MyWatchController */ = {
 			isa = PBXGroup;
 			children = (
-				00982AAD1C868C89003DA5E2 /* MyDroneController.swift */,
-				00982AAE1C868C89003DA5E2 /* MyDroneController.xib */,
+				00982AAD1C868C89003DA5E2 /* MyWatchController.swift */,
+				00982AAE1C868C89003DA5E2 /* MyWatchController.xib */,
 			);
+			name = MyWatchController;
 			path = MyDroneController;
 			sourceTree = "<group>";
 		};
@@ -601,13 +608,6 @@
 			path = Controller/MyDroneController/MyDroneView;
 			sourceTree = "<group>";
 		};
-		00982AB31C868C89003DA5E2 /* NevoOtaController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NevoOtaController;
-			sourceTree = "<group>";
-		};
 		00982AB51C868C89003DA5E2 /* NevoOtaView */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,18 +616,6 @@
 			);
 			name = NevoOtaView;
 			path = Controller/NevoOtaController/NevoOtaView;
-			sourceTree = "<group>";
-		};
-		00982ABB1C868C89003DA5E2 /* GoalController */ = {
-			isa = PBXGroup;
-			children = (
-				00982ABC1C868C89003DA5E2 /* AddGoalViewController.swift */,
-				00982ABD1C868C89003DA5E2 /* AddGoalViewController.xib */,
-				00982ABE1C868C89003DA5E2 /* GoalTableViewController.swift */,
-				00982ABF1C868C89003DA5E2 /* GoalTableViewController.xib */,
-			);
-			name = GoalController;
-			path = PresetController;
 			sourceTree = "<group>";
 		};
 		00982AC01C868C89003DA5E2 /* PresetView */ = {
@@ -642,13 +630,13 @@
 			path = Controller/PresetController/PresetView;
 			sourceTree = "<group>";
 		};
-		00982AC51C868C89003DA5E2 /* ProfileViewController */ = {
+		00982AC51C868C89003DA5E2 /* ProfileSetupViewController */ = {
 			isa = PBXGroup;
 			children = (
-				00982AC61C868C89003DA5E2 /* ProfileViewController.swift */,
-				00982AC71C868C89003DA5E2 /* ProfileViewController.xib */,
+				CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */,
+				00982AC71C868C89003DA5E2 /* ProfileSetupViewController.xib */,
 			);
-			name = ProfileViewController;
+			name = ProfileSetupViewController;
 			path = ProfileController;
 			sourceTree = "<group>";
 		};
@@ -680,16 +668,6 @@
 			path = Controller/SetingViewController/SetingView;
 			sourceTree = "<group>";
 		};
-		00982ACF1C868C89003DA5E2 /* SleepViewController */ = {
-			isa = PBXGroup;
-			children = (
-				00982AD31C868C89003DA5E2 /* SleepViewController.swift */,
-				00982CDE1C868F62003DA5E2 /* SleepViewController.xib */,
-			);
-			name = SleepViewController;
-			path = SleepController;
-			sourceTree = "<group>";
-		};
 		00982AD01C868C89003DA5E2 /* queryTableviewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -714,8 +692,6 @@
 			children = (
 				00982ADC1C868C89003DA5E2 /* StepsViewController.swift */,
 				00982CD91C868CF5003DA5E2 /* StepsViewController.xib */,
-				004AB1F81CCDC99F00A66CAF /* StepsTitleView.swift */,
-				004AB1FA1CCDC9CA00A66CAF /* StepsTitleView.xib */,
 			);
 			name = StepsViewController;
 			path = StepController;
@@ -923,6 +899,7 @@
 				00982B2C1C868C89003DA5E2 /* DroneRequest */,
 				00982B3F1C868C89003DA5E2 /* OTA */,
 				00982B481C868C89003DA5E2 /* Packet */,
+				00982B4F1C868C89003DA5E2 /* Request */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -985,6 +962,10 @@
 		00982B481C868C89003DA5E2 /* Packet */ = {
 			isa = PBXGroup;
 			children = (
+				00982B491C868C89003DA5E2 /* BatteryLevelNevoPacket.swift */,
+				00982B4A1C868C89003DA5E2 /* DailyStepsNevoPacket.swift */,
+				00982B4B1C868C89003DA5E2 /* DailyTrackerInfoNevoPacket.swift */,
+				00982B4C1C868C89003DA5E2 /* DailyTrackerNevoPacket.swift */,
 				00982B4D1C868C89003DA5E2 /* NevoPacket.swift */,
 				0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */,
 				00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */,
@@ -992,6 +973,16 @@
 				004ED1E91CB35DDA009D053C /* ActivityPacket.swift */,
 			);
 			path = Packet;
+			sourceTree = "<group>";
+		};
+		00982B4F1C868C89003DA5E2 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				00982B501C868C89003DA5E2 /* SetAlarmRequest.swift */,
+				00982B511C868C89003DA5E2 /* SetCardioRequest.swift */,
+				00982B521C868C89003DA5E2 /* SetProfileRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		00982B541C868C89003DA5E2 /* Frameworks */ = {
@@ -1062,12 +1053,13 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
-		00F1AF391CACD82600CB9A15 /* ActivityViewController */ = {
+		00F1AF391CACD82600CB9A15 /* AnalysisViewController */ = {
 			isa = PBXGroup;
 			children = (
-				00F1AF3A1CACD82600CB9A15 /* ActivityViewController.swift */,
-				006F942D1CC9B8A60073C150 /* ActivityViewController.xib */,
+				00F1AF3A1CACD82600CB9A15 /* AnalysisViewController.swift */,
+				006F942D1CC9B8A60073C150 /* AnalysisViewController.xib */,
 			);
+			name = AnalysisViewController;
 			path = ActivityViewController;
 			sourceTree = "<group>";
 		};
@@ -1118,26 +1110,24 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				004AB1F61CCDBA6900A66CAF /* CVCalendar.framework */,
+				CB0B469C1CCF229400411997 /* Alamofire.framework */,
+				CB0B469D1CCF229400411997 /* AutocompleteField.framework */,
+				CB0B469E1CCF229400411997 /* Charts.framework */,
+				CB0B469F1CCF229400411997 /* CircleProgressView.framework */,
+				CB0B46A01CCF229400411997 /* FMDB.framework */,
+				CB0B46A11CCF229400411997 /* GSMessages.framework */,
+				CB0B46A21CCF229400411997 /* NVActivityIndicatorView.framework */,
+				CB0B46A31CCF229400411997 /* SDCycleScrollView.framework */,
+				CB0B46A41CCF229400411997 /* SMSegmentView.framework */,
+				CB0B46A51CCF229400411997 /* SwiftEventBus.framework */,
+				CB0B46A61CCF229400411997 /* TextFieldEffects.framework */,
+				CB0B46A71CCF229400411997 /* Timepiece.framework */,
+				CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */,
+				CB0B46A91CCF229400411997 /* XCGLogger.framework */,
+				CB0B46AA1CCF229400411997 /* YRSideViewController.framework */,
+				CB0B46981CCF223500411997 /* Fabric.framework */,
+				CB0B46991CCF223500411997 /* Crashlytics.framework */,
 				CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */,
-				004D575C1CC5D39F000F83A8 /* UIColor_Hex_Swift.framework */,
-				005AC1DE1CC4783000C5DE2C /* AutocompleteField.framework */,
-				005AC1DF1CC4783000C5DE2C /* SDCycleScrollView.framework */,
-				005AC1E01CC4783000C5DE2C /* SDWebImage.framework */,
-				00233D4C1CBB43C200824E64 /* XCGLogger.framework */,
-				00F1AEBD1CACC05300CB9A15 /* YRSideViewController.framework */,
-				9EDE1DE71C96B07D0050A0C9 /* SlideMenuControllerSwift.framework */,
-				9EB474C71C9678E30000E024 /* SMSegmentView.framework */,
-				9EB474C51C966E300000E024 /* TextFieldEffects.framework */,
-				00BC14971C9292DE00E43F44 /* Timepiece.framework */,
-				9E6867BF1C915F00004D0158 /* NVActivityIndicatorView.framework */,
-				CB290C4C1C900ADD006F4BB1 /* CircleProgressView.framework */,
-				0093ADD61C8EAF39003E14A3 /* SwiftEventBus.framework */,
-				008C5EE01C8D7A3600DCD12D /* Charts.framework */,
-				008C5EE11C8D7A3600DCD12D /* GSMessages.framework */,
-				008C5EDE1C8D655700DCD12D /* FMDB.framework */,
-				008C5EDA1C8D64F800DCD12D /* Alamofire.framework */,
-				008C5EDB1C8D64F800DCD12D /* FMDB.framework */,
 				3551B5D0AAFC39213D5071A3 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -1200,6 +1190,7 @@
 				00982A641C868B15003DA5E2 /* Resources */,
 				E5975E7C8B63B07CE581497F /* Copy Pods Resources */,
 				DB0DC6546D18BCC6D408E5E0 /* Embed Pods Frameworks */,
+				CB0B46921CCF21A700411997 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1311,33 +1302,29 @@
 				00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */,
 				0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */,
 				0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */,
-				00982BFD1C868C8A003DA5E2 /* GoalTableViewController.xib in Resources */,
 				00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */,
 				00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
-				00982BF01C868C8A003DA5E2 /* MyDroneController.xib in Resources */,
+				00982BF01C868C8A003DA5E2 /* MyWatchController.xib in Resources */,
 				00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
 				00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */,
-				00982C031C868C8A003DA5E2 /* ProfileViewController.xib in Resources */,
+				00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */,
 				00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
-				00982CDF1C868F62003DA5E2 /* SleepViewController.xib in Resources */,
-				00982BFB1C868C8A003DA5E2 /* AddGoalViewController.xib in Resources */,
 				006F94301CCA0C320073C150 /* white_background.png in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
-				0089310D1CC77D1C0013E6D8 /* YouDeviceViewController.xib in Resources */,
-				006F942E1CC9B8A60073C150 /* ActivityViewController.xib in Resources */,
+				0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */,
+				006F942E1CC9B8A60073C150 /* AnalysisViewController.xib in Resources */,
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
 				004D57621CC61978000F83A8 /* MainTabbarViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
-				0065AC0A1CC86A9B00DC3096 /* ConnectionViewController.xib in Resources */,
+				0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
-				004AB1FB1CCDC9CA00A66CAF /* StepsTitleView.xib in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
-				009201DD1CBE2B6600C51707 /* HomeViewController.xib in Resources */,
+				009201DD1CBE2B6600C51707 /* WelcomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1372,6 +1359,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		CB0B46921CCF21A700411997 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run bf39954f177ecf7d9d8a5efe2e1d624856f03464 e3f2da77dd42327a3c13b2223e31674c22e5a7c31ee0b6b80da61d310ae0a329";
 		};
 		DB0DC6546D18BCC6D408E5E0 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1410,7 +1410,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00982BFC1C868C8A003DA5E2 /* GoalTableViewController.swift in Sources */,
 				005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */,
 				00982C5B1C868C8A003DA5E2 /* NevoOTAModeProfile.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
@@ -1419,6 +1418,7 @@
 				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
+				00982C621C868C8A003DA5E2 /* DailyTrackerNevoPacket.swift in Sources */,
 				00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */,
 				00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */,
 				00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */,
@@ -1426,6 +1426,7 @@
 				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
 				00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
+				00982C671C868C8A003DA5E2 /* SetProfileRequest.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
@@ -1437,7 +1438,7 @@
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
 				00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
-				00982BEF1C868C8A003DA5E2 /* MyDroneController.swift in Sources */,
+				00982BEF1C868C8A003DA5E2 /* MyWatchController.swift in Sources */,
 				00982C161C868C8A003DA5E2 /* AddWorldClockController.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
 				00F1AF461CACD82600CB9A15 /* AddDeviceController.swift in Sources */,
@@ -1449,7 +1450,7 @@
 				00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */,
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
 				00982C421C868C8A003DA5E2 /* WaveProgressView.m in Sources */,
-				00982C021C868C8A003DA5E2 /* ProfileViewController.swift in Sources */,
+				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
 				00982C1E1C868C8A003DA5E2 /* DaySleep.swift in Sources */,
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
 				00982BED1C868C8A003DA5E2 /* LoginController.swift in Sources */,
@@ -1460,12 +1461,13 @@
 				004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
+				00982C651C868C8A003DA5E2 /* SetAlarmRequest.swift in Sources */,
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
 				00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */,
 				0043FBE81CA13CED00638BD1 /* SetContactsFilterRequest.swift in Sources */,
 				00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */,
 				00982BF51C868C8A003DA5E2 /* DeviceScannerView.swift in Sources */,
-				009201DC1CBE2B6600C51707 /* HomeViewController.swift in Sources */,
+				009201DC1CBE2B6600C51707 /* WelcomeViewController.swift in Sources */,
 				0043FBE61CA131BD00638BD1 /* UpdateNotificationRequest.swift in Sources */,
 				00982CCC1C868C8A003DA5E2 /* NevoHK.swift in Sources */,
 				0015CA501CBC835900820B1F /* UserDevice.swift in Sources */,
@@ -1475,19 +1477,21 @@
 				00982BF71C868C8A003DA5E2 /* SelectFileView.swift in Sources */,
 				0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */,
 				00982C541C868C8A003DA5E2 /* SetSystemConfig.swift in Sources */,
-				0089310A1CC779B30013E6D8 /* YouDeviceViewController.swift in Sources */,
+				0089310A1CC779B30013E6D8 /* WhichDeviceViewController.swift in Sources */,
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
+				00982C601C868C8A003DA5E2 /* DailyStepsNevoPacket.swift in Sources */,
 				00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */,
 				00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */,
 				00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */,
 				008931011CC7157C0013E6D8 /* DroneTabbarItem.swift in Sources */,
+				00982C5F1C868C8A003DA5E2 /* BatteryLevelNevoPacket.swift in Sources */,
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
-				004AB1F91CCDC99F00A66CAF /* StepsTitleView.swift in Sources */,
+				00982C661C868C8A003DA5E2 /* SetCardioRequest.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
-				0065AC091CC86A9B00DC3096 /* ConnectionViewController.swift in Sources */,
+				0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */,
 				0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */,
-				00F1AF441CACD82600CB9A15 /* ActivityViewController.swift in Sources */,
+				00F1AF441CACD82600CB9A15 /* AnalysisViewController.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
 				00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */,
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,
@@ -1510,15 +1514,14 @@
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
 				00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */,
 				00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */,
-				00982C0A1C868C8A003DA5E2 /* SleepViewController.swift in Sources */,
 				00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */,
+				00982C611C868C8A003DA5E2 /* DailyTrackerInfoNevoPacket.swift in Sources */,
 				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */,
 				00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */,
 				0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */,
 				00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */,
 				00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */,
-				00982BFA1C868C8A003DA5E2 /* AddGoalViewController.swift in Sources */,
 				00982C431C868C8A003DA5E2 /* ClockRefreshManager.swift in Sources */,
 				00982C1D1C868C8A003DA5E2 /* DailySteps.swift in Sources */,
 				00982C411C868C8A003DA5E2 /* WaterWaveView.m in Sources */,
@@ -1677,6 +1680,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Drone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
@@ -1696,6 +1700,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Drone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;

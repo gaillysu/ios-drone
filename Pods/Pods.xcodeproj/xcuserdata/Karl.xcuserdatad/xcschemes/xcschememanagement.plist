@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AutocompleteField.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CVCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Charts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,11 +34,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>GSMessages.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,12 +44,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SMSegmentView.xcscheme</key>
+		<key>SDCycleScrollView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SlideMenuControllerSwift.xcscheme</key>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SMSegmentView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -54,12 +64,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TextFieldEffects.xcscheme</key>
+		<key>Timepiece.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Timepiece.xcscheme</key>
+		<key>UIColor_Hex_Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>XCGLogger.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YYKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -67,27 +87,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0DCBE33A35FFC59AEC9B302108305F74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1C62C3C931C2606266E90DF35E845B03</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>23CF27B2BA6AC7125EFFEDA8C5AA819F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3D63057A44F1738A591F2A24CE589251</key>
+		<key>32327232B24753E134F98FCCA5C920AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>490B7B4069AA5AE8B0585567E25FAAE0</key>
+		<key>457DCC45A84FA04963E7E88C8602EF61</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BAFC28705A0A0045C1CF9BCB9662ED8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5CB9857425155EC5A8DE67C18C082F6D</key>
+		<key>60ADE998482FEE67014B7E9F1A5CFD53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +122,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6AAAF367F62F10D68011597AC6A0B113</key>
+		<key>68A1070C9D6A54AB7AC9E2C5D2563E5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6EBB9D8588C3DFC59BF44626A9270C03</key>
+		<key>6AAAF367F62F10D68011597AC6A0B113</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,47 +137,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>718F8703FF00504AA30C7B8B339003D0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>85E3EF05C62D3736A4D6857B9DBD1FF8</key>
+		<key>91D7441060EE9A01454B680C08562653</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9456512CDD4F7A52F1038BBB773A71AF</key>
+		<key>93A58A7954EFBFB5DB4A101E8695784B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5150B4636D0CF8B420196F41A52A837</key>
+		<key>98C1412096EA31321C8C407DA3A490DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA14B622689766F6B8A4F42FD9DE552F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C6828C2508515BC0428D6BDAA1292DC9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D062B1616B47EA4C104EF8501ACBE42F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EF75B60218EE25F24D54830BC46BE274</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FD4DC684656E06CCD91B6311B091616E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

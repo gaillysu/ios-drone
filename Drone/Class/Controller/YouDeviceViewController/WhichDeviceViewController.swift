@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "device_cell_identifier"
 
-class YouDeviceViewController: UIViewController {
+class WhichDeviceViewController: UIViewController {
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!

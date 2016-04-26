@@ -9,8 +9,11 @@
 import Foundation
 import CircleProgressView
 
-class ActivityViewController: UIViewController {
-
+class AnalysisViewController: UIViewController {
+    @IBOutlet var caloriesLabel: UILabel!
+    @IBOutlet var activeTimeLabel: UILabel!
+    @IBOutlet var milesLabel: UILabel!
+    
     init() {
         super.init(nibName: "ActivityViewController", bundle: NSBundle.mainBundle())
     }

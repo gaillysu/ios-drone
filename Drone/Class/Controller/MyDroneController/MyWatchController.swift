@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyDroneController: UITableViewController{
+class MyWatchController: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConnectionViewController: UIViewController {
+class ConnectionSetupViewController: UIViewController {
 
     @IBOutlet weak var nextB: UIButton!
     init() {
