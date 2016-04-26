@@ -8,54 +8,37 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WorldClockHeader" customModule="Drone" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="275"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qq4-0b-xI1">
-                    <rect key="frame" x="13" y="0.0" width="64" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="Lkq-Wg-QvI"/>
-                        <constraint firstAttribute="width" constant="64" id="Y2j-yh-fW0"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                    <state key="normal" title="Edit">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="5kl-Om-SZX">
+                    <rect key="frame" x="8" y="0.0" width="360" height="210"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 12, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="973-CU-x85">
-                    <rect key="frame" x="97" y="248" width="182" height="27"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="27" id="HGY-ef-6nc"/>
-                    </constraints>
+                    <rect key="frame" x="8" y="215" width="360" height="25"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdL-9x-q1p">
-                    <rect key="frame" x="327" y="0.0" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="40" id="jci-qE-gjr"/>
-                        <constraint firstAttribute="height" constant="40" id="pjS-ah-ArH"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="33"/>
-                    <state key="normal" title="+">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.16862745098039217" green="0.52941176470588236" blue="0.63529411764705879" alpha="0.58999999999999997" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="973-CU-x85" secondAttribute="bottom" id="FLf-EJ-b30"/>
-                <constraint firstItem="qq4-0b-xI1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="Jku-zS-5jh"/>
-                <constraint firstItem="973-CU-x85" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QVh-th-E1N"/>
-                <constraint firstAttribute="trailing" secondItem="OdL-9x-q1p" secondAttribute="trailing" constant="8" id="eUM-cP-A3H"/>
-                <constraint firstItem="qq4-0b-xI1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="r0S-Wj-l4h"/>
-                <constraint firstItem="OdL-9x-q1p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zlU-71-QhE"/>
+                <constraint firstItem="5kl-Om-SZX" firstAttribute="height" secondItem="973-CU-x85" secondAttribute="height" constant="185" id="14L-T6-602"/>
+                <constraint firstItem="5kl-Om-SZX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="KAd-Bi-m99"/>
+                <constraint firstItem="973-CU-x85" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="MQC-hJ-LyG"/>
+                <constraint firstItem="973-CU-x85" firstAttribute="top" secondItem="5kl-Om-SZX" secondAttribute="bottom" constant="5" id="NFI-4N-26w"/>
+                <constraint firstAttribute="trailing" secondItem="5kl-Om-SZX" secondAttribute="trailing" constant="7" id="RFm-FN-aSQ"/>
+                <constraint firstItem="5kl-Om-SZX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Zny-11-i1y"/>
+                <constraint firstAttribute="bottom" secondItem="973-CU-x85" secondAttribute="bottom" id="guo-Wk-Wnr"/>
+                <constraint firstAttribute="trailing" secondItem="973-CU-x85" secondAttribute="trailing" constant="7" id="uZ3-Rp-N37"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="264" y="341.5"/>
+            <point key="canvasLocation" x="263.5" y="329"/>
         </view>
     </objects>
+    <resources>
+        <image name="map" width="107" height="69"/>
+    </resources>
 </document>
