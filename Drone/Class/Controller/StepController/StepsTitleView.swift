@@ -10,6 +10,11 @@ import UIKit
 
 class StepsTitleView: UIView {
 
+    @IBOutlet weak var calendarButton: UIButton!
+
+    @IBOutlet weak var nextButton: UIButton!
+    
+    @IBOutlet weak var backButton: UIButton!
 
     var buttonResultHandler:((result:AnyObject?) -> Void)?
 
@@ -22,7 +27,31 @@ class StepsTitleView: UIView {
 
     
     @IBAction func buttonActionManager(sender: AnyObject) {
+        if (sender.isEqual(calendarButton)) {
+            self.selectedFinishTitleView()
+        }
         buttonResultHandler?(result: sender)
+    }
+
+    /**
+     finish selected calendar ,hiden titleView next button and back button
+     */
+    func selectedFinishTitleView() {
+        calendarButton.selected = (calendarButton.selected ? false:true)
+        nextButton.hidden = (nextButton.hidden ? false:true)
+        backButton.hidden = (backButton.hidden ? false:true)
+    }
+
+
+    /**
+     set titleview text
+
+     - parameter title: title text
+     */
+    func setCalendarButtonTitle(title:String) {
+        calendarButton.titleLabel?.font = UIFont.systemFontOfSize(14)
+        calendarButton.setTitle(title, forState: UIControlState.Normal)
+        calendarButton.setTitle(title, forState: UIControlState.Selected)
     }
 
     /*

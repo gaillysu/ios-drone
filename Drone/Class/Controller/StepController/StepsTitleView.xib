@@ -5,13 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StepsTitleView" customModule="Drone" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StepsTitleView" customModule="Drone" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="161" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZM-uU-yBR">
+                <button hidden="YES" opaque="NO" tag="1230" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZM-uU-yBR">
                     <rect key="frame" x="0.0" y="10" width="30" height="30"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="&lt;"/>
@@ -19,19 +19,19 @@
                         <action selector="buttonActionManager:" destination="iN0-l3-epB" eventType="touchUpInside" id="NVX-Gb-1DZ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQA-Kn-8ni">
+                <button opaque="NO" tag="1231" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3z-vm-dTT">
+                    <rect key="frame" x="39" y="10" width="84" height="30"/>
+                    <state key="normal" title="Button" image="calendar"/>
+                    <connections>
+                        <action selector="buttonActionManager:" destination="iN0-l3-epB" eventType="touchUpInside" id="qyl-cP-Mca"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" tag="1232" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQA-Kn-8ni">
                     <rect key="frame" x="131" y="10" width="30" height="30"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="&gt;"/>
                     <connections>
                         <action selector="buttonActionManager:" destination="iN0-l3-epB" eventType="touchUpInside" id="hux-oh-B2r"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3z-vm-dTT">
-                    <rect key="frame" x="39" y="10" width="84" height="30"/>
-                    <state key="normal" title="Button" image="calendar"/>
-                    <connections>
-                        <action selector="buttonActionManager:" destination="iN0-l3-epB" eventType="touchUpInside" id="qyl-cP-Mca"/>
                     </connections>
                 </button>
             </subviews>
@@ -50,6 +50,11 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backButton" destination="3ZM-uU-yBR" id="Bvd-Ng-hy0"/>
+                <outlet property="calendarButton" destination="R3z-vm-dTT" id="XiM-Uk-Izh"/>
+                <outlet property="nextButton" destination="rQA-Kn-8ni" id="fql-Ex-Fkn"/>
+            </connections>
             <point key="canvasLocation" x="316.5" y="-9"/>
         </view>
     </objects>

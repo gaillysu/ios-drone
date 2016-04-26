@@ -15,6 +15,7 @@ import CVCalendar
 
 let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
 
+private let CALENDAR_VIEW_TAG = 1800
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
     @IBOutlet weak var circleProgressView: CircleProgressView!
@@ -29,6 +30,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     var selectedDay:DayView?
     var calendarView:CVCalendarView?
     var menuView:CVCalendarMenuView?
+    var titleView:StepsTitleView?
 
     init() {
         super.init(nibName: "StepsViewController", bundle: NSBundle.mainBundle())
@@ -110,42 +112,87 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 extension StepsViewController {
 
     func initTitleView() {
-        let titleView:StepsTitleView = StepsTitleView.getStepsTitleView(CGRectMake(0,0,161,50))
+        titleView = StepsTitleView.getStepsTitleView(CGRectMake(0,0,190,50))
+        titleView?.setCalendarButtonTitle(CVDate(date: NSDate()).globalDescription)
         self.navigationItem.titleView = titleView
-        titleView.buttonResultHandler = { result -> Void in
+        titleView!.buttonResultHandler = { result -> Void in
             NSLog("selected title button")
+            let clickButton:UIButton = result as! UIButton
+            if (result!.isEqual(self.titleView!.calendarButton) && clickButton.selected) {
+                self.showCalendar()
+            }else if (result!.isEqual(self.titleView!.calendarButton) && !clickButton.selected) {
+                self.dismissCalendar()
+            }else if (result!.isEqual(self.titleView!.nextButton)) {
+                self.calendarView!.loadNextView()
+            }else if (result!.isEqual(self.titleView!.backButton)) {
+                self.calendarView!.loadPreviousView()
+            }
         }
     }
 
-    override func viewDidLayoutSubviews() {
-        self.showCalendar()
+    func showCalendar() {
+        let view = self.view.viewWithTag(CALENDAR_VIEW_TAG)
+        if(view == nil) {
+            let calendarBackGroundView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,self.view.frame.size.height))
+            calendarBackGroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+            calendarBackGroundView.tag = CALENDAR_VIEW_TAG
+            
+            let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StepsViewController.tapAction(_:)))
+            calendarBackGroundView.addGestureRecognizer(tap)
+            self.view.addSubview(calendarBackGroundView)
 
+            let fillView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,275))
+            fillView.backgroundColor = UIColor.init(colorLiteralRed: 36/255.0, green: 135/255.0, blue: 163/255.0, alpha: 1).colorWithAlphaComponent(1)
+            calendarBackGroundView.addSubview(fillView)
+
+            self.menuView = CVCalendarMenuView(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.size.width - 20, 20))
+            self.menuView?.dayOfWeekTextColor = UIColor.whiteColor()
+            self.menuView?.backgroundColor = UIColor.init(colorLiteralRed: 36/255.0, green: 135/255.0, blue: 163/255.0, alpha: 1).colorWithAlphaComponent(1)
+            self.menuView!.menuViewDelegate = self
+            fillView.addSubview(menuView!)
+
+            // CVCalendarView initialization with frame
+            self.calendarView = CVCalendarView(frame: CGRectMake(10, 23, UIScreen.mainScreen().bounds.size.width - 20, 250))
+            self.calendarView?.backgroundColor = UIColor.init(colorLiteralRed: 36/255.0, green: 135/255.0, blue: 163/255.0, alpha: 1).colorWithAlphaComponent(1)
+            calendarView?.hidden = false
+            fillView.addSubview(calendarView!)
+            self.calendarView!.calendarAppearanceDelegate = self
+            self.calendarView!.animatorDelegate = self
+            self.calendarView!.calendarDelegate = self
+            // Commit frames' updates
+            self.calendarView!.commitCalendarViewUpdate()
+            self.menuView!.commitMenuViewUpdate()
+        }else {
+            view?.hidden = false
+            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                view?.alpha = 1
+            }) { (finish) in
+
+            }
+        }
     }
 
-    func showCalendar() {
-        let calendarBackGroundView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,self.view.frame.size.height))
-        calendarBackGroundView.backgroundColor = UIColor.whiteColor()
-        //calendarBackGroundView.alpha = 0.5
-        self.view.addSubview(calendarBackGroundView)
-        // CVCalendarMenuView initialization with frame
-        self.menuView = CVCalendarMenuView(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.size.width - 20, 20))
-        // Menu delegate [Required]
-        self.menuView!.menuViewDelegate = self
-        calendarBackGroundView.addSubview(menuView!)
+    /**
+     Finish the selected calendar call
+     */
+    func dismissCalendar() {
+        let view = self.view.viewWithTag(CALENDAR_VIEW_TAG)
+        if(view != nil) {
+            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                view?.alpha = 0
+            }) { (finish) in
+                view?.hidden = true
+            }
+        }
+    }
 
-        // CVCalendarView initialization with frame
-        self.calendarView = CVCalendarView(frame: CGRectMake(10, 23, UIScreen.mainScreen().bounds.size.width - 20, 350))
-        calendarView?.hidden = false
-        calendarBackGroundView.addSubview(calendarView!)
-        // Appearance delegate [Unnecessary]
-        self.calendarView!.calendarAppearanceDelegate = self
-        // Animator delegate [Unnecessary]
-        self.calendarView!.animatorDelegate = self
-        // Calendar delegate [Required]
-        self.calendarView!.calendarDelegate = self
-        // Commit frames' updates
-        self.calendarView!.commitCalendarViewUpdate()
-        self.menuView!.commitMenuViewUpdate()
+    /**
+     Click on the calendar the blanks
+     - parameter recognizer: <#recognizer description#>
+     */
+    func tapAction(recognizer:UITapGestureRecognizer) {
+        self.dismissCalendar()
+        titleView?.selectedFinishTitleView()
     }
 }
 
@@ -177,7 +224,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     func presentedDateUpdated(date: CVDate) {
-
+        titleView?.setCalendarButtonTitle(date.globalDescription)
     }
 
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
