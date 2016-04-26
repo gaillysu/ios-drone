@@ -65,11 +65,11 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
 
     // MARK: - left or right Action
     func leftAction(item:UIBarButtonItem) {
-        AppDelegate.getAppDelegate().sideViewController.showLeftViewController(true)
+
     }
 
     func rightAction(item:UIBarButtonItem) {
-        AppDelegate.getAppDelegate().sideViewController.showRightViewController(true)
+        
     }
 
     // MARK: - UICollectionViewDataSource

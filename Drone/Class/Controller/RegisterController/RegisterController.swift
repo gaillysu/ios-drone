@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GSMessages
 import AutocompleteField
 
 class RegisterController: BaseViewController {
