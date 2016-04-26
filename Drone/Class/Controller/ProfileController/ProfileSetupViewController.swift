@@ -70,7 +70,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITex
         }
 
         if (nextB.isEqual(sender)) {
-            let maintabbar:YouDeviceViewController = YouDeviceViewController()
+            let maintabbar:WhichDeviceViewController = WhichDeviceViewController()
             self.navigationController?.pushViewController(maintabbar, animated: true)
         }
     }

@@ -20,8 +20,8 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
-        self.menuItems.append(MenuItem(controller: ActivityViewController(), title: "Activity"));
-        self.menuItems.append(MenuItem(controller: BuddyViewController(), title: "Buddy"));
+        self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activity"));
+//        self.menuItems.append(MenuItem(controller: WorldClockViewController(), title: "Buddy"));
         self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings"));
         self.title = "Drone"
     }
@@ -104,6 +104,6 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
     }
     
     func profileAction(){
-        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+        self.navigationController?.pushViewController(ProfileSetupViewController(), animated: true)
     }
 }

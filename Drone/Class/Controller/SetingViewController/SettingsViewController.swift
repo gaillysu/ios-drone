@@ -56,7 +56,7 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
         case 0:
             if(isEqualString("\(sources[indexPath.row])",string2: NSLocalizedString("My Drone", comment: ""))){
                 NSLog("My Drone")
-                let mynevo:MyDroneController = MyDroneController()
+                let mynevo:MyWatchController = MyWatchController()
                 mynevo.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(mynevo, animated: true)
             }
@@ -66,14 +66,7 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
                 NSLog("Find device")
                 findMydevice()
             }
-
-            if(isEqualString("\(titleArray[indexPath.row])",string2: NSLocalizedString("Preset-goals", comment: ""))){
-                NSLog("Preset-goals")
-                let presetView:GoalTableViewController = GoalTableViewController()
-                presetView.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(presetView, animated: true)
-            }
-
+ 
             if(isEqualString("\(titleArray[indexPath.row])",string2: NSLocalizedString("World Clock", comment: ""))){
                 let worldClock:WorldClockController = WorldClockController()
                 worldClock.hidesBottomBarWhenPushed = true

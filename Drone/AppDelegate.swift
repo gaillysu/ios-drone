@@ -64,7 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
-        let nav:UINavigationController = UINavigationController(rootViewController: HomeViewController())
+      
+        let nav:UINavigationController = UINavigationController(rootViewController: WelcomeViewController())
         nav.navigationBarHidden = true
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()

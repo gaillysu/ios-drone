@@ -70,7 +70,7 @@ class WhichDeviceViewController: UIViewController {
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let connection:ConnectionViewController = ConnectionViewController()
+        let connection:ConnectionSetupViewController = ConnectionSetupViewController()
         self.navigationController?.pushViewController(connection, animated: true)
     }
 }

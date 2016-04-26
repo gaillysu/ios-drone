@@ -74,7 +74,7 @@ class RegisterController: BaseViewController {
         }
 
         if nextB.isEqual(sender) {
-            let profile:ProfileViewController = ProfileViewController()
+            let profile:ProfileSetupViewController = ProfileSetupViewController()
             self.navigationController?.pushViewController(profile, animated: true)
         }
 

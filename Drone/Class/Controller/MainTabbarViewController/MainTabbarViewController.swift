@@ -58,10 +58,10 @@ class MainTabbarViewController: UITabBarController,SelectedItemDelegate {
 
     func initViewController() {
         let nav1:UINavigationController = UINavigationController(rootViewController: WorldClockController())
-        let nav2:UINavigationController = UINavigationController(rootViewController: ActivityViewController())
+        let nav2:UINavigationController = UINavigationController(rootViewController: StepsViewController())
         let nav3:UINavigationController = UINavigationController(rootViewController: StepsViewController())
         let nav4:UINavigationController = UINavigationController(rootViewController: SettingsViewController())
-        let nav5:UINavigationController = UINavigationController(rootViewController: ProfileViewController())
+        let nav5:UINavigationController = UINavigationController(rootViewController: ProfileSetupViewController())
         self.setViewControllers([nav1,nav2,nav3,nav4,nav5], animated: true)
     }
 
