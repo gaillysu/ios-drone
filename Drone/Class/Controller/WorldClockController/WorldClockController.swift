@@ -28,18 +28,13 @@ class WorldClockController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "World Clock"
-
+        // TODO set headerview: WorldClockHeader.swift
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 
-        let rightAddButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(WorldClockController.controllManager(_:)))
-        self.navigationItem.rightBarButtonItem = rightAddButton
-
+        worldClockTableview.backgroundColor = UIColor(rgba: "#E4C590")
         worldClockTableview.allowsSelectionDuringEditing = true;
-    }
-
-    func controllManager(sender:UIBarButtonItem) {
-
+        worldClockTableview.tableHeaderView = WorldClockHeader.getWorldClockHeader(CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.width-60))
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +47,7 @@ class WorldClockController: BaseViewController {
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 55
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

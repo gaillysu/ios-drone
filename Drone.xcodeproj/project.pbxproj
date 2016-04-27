@@ -71,8 +71,6 @@
 		00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ADC1C868C89003DA5E2 /* StepsViewController.swift */; };
 		00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */; };
 		00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */; };
-		00982C161C868C8A003DA5E2 /* AddWorldClockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE31C868C89003DA5E2 /* AddWorldClockController.swift */; };
-		00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AE41C868C89003DA5E2 /* AddWorldClockController.xib */; };
 		00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */; };
 		00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE71C868C89003DA5E2 /* WorldClockCell.swift */; };
 		00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AE81C868C89003DA5E2 /* WorldClockCell.xib */; };
@@ -274,8 +272,6 @@
 		00982ADC1C868C89003DA5E2 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
 		00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepGoalSetingView.swift; sourceTree = "<group>"; };
 		00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepHistoricalView.swift; sourceTree = "<group>"; };
-		00982AE31C868C89003DA5E2 /* AddWorldClockController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWorldClockController.swift; sourceTree = "<group>"; };
-		00982AE41C868C89003DA5E2 /* AddWorldClockController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddWorldClockController.xib; sourceTree = "<group>"; };
 		00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockView.swift; path = Controller/WorldClockController/AddWorldClockView.swift; sourceTree = "<group>"; };
 		00982AE71C868C89003DA5E2 /* WorldClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockCell.swift; sourceTree = "<group>"; };
 		00982AE81C868C89003DA5E2 /* WorldClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockCell.xib; sourceTree = "<group>"; };
@@ -717,6 +713,8 @@
 			children = (
 				00982AE71C868C89003DA5E2 /* WorldClockCell.swift */,
 				00982AE81C868C89003DA5E2 /* WorldClockCell.xib */,
+				9E2E95821CCE16CE00B6671A /* WorldClockHeader.swift */,
+				9E2E95801CCE16BD00B6671A /* WorldClockHeader.xib */,
 			);
 			name = WorldClockView;
 			path = Controller/WorldClockController/View;
@@ -1138,16 +1136,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		CBA06BED1C8EC27E00E3257B /* AddWorldClockController */ = {
-			isa = PBXGroup;
-			children = (
-				00982AE31C868C89003DA5E2 /* AddWorldClockController.swift */,
-				00982AE41C868C89003DA5E2 /* AddWorldClockController.xib */,
-			);
-			name = AddWorldClockController;
-			path = WorldClockController;
-			sourceTree = "<group>";
-		};
 		CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1517,6 +1505,7 @@
 				00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */,
+				9E2E95831CCE16CE00B6671A /* WorldClockHeader.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
 				CBD6BD1C1CD052C30009F39A /* SleepViewController.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
