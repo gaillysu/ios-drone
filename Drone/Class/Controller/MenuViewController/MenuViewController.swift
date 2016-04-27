@@ -19,7 +19,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
-        self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activity"));
+        self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activities"));
         self.menuItems.append(MenuItem(controller: AnalysisViewController(), title: "Analysis"));
         let sleepItem = MenuItem(controller: SleepViewController(), title: "Sleep")
         sleepItem.commingSoon = true;
@@ -100,7 +100,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: MenuViewCell = menuTableView.dequeueReusableCellWithIdentifier(identifier) as! MenuViewCell
         let item:MenuItem = self.menuItems[indexPath.row]
-        cell.menuItemLabel.text = item.menuTitle
+        cell.menuItemLabel.text = item.menuTitle.uppercaseString
         cell.menuItemLabel.highlightedTextColor = UIColor.whiteColor()
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.getTintColor()
