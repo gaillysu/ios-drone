@@ -185,6 +185,11 @@
 		CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */; };
 		CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD191CD052BB0009F39A /* SleepViewController.xib */; };
 		CBD6BD1C1CD052C30009F39A /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */; };
+		CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD1D1CD06F890009F39A /* Color.swift */; };
+		CBD6BD211CD096F40009F39A /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD201CD096F40009F39A /* GalleryViewController.swift */; };
+		CBD6BD231CD097080009F39A /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD221CD097080009F39A /* GalleryViewController.xib */; };
+		CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD251CD099880009F39A /* ProfileViewController.xib */; };
+		CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD271CD099900009F39A /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -395,6 +400,11 @@
 		CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashScreenViewController.xib; sourceTree = "<group>"; };
 		CBD6BD191CD052BB0009F39A /* SleepViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SleepViewController.xib; sourceTree = "<group>"; };
 		CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
+		CBD6BD1D1CD06F890009F39A /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		CBD6BD201CD096F40009F39A /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		CBD6BD221CD097080009F39A /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
+		CBD6BD251CD099880009F39A /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		CBD6BD271CD099900009F39A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,11 +571,13 @@
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
 				00F1AF411CACD82600CB9A15 /* BuddyViewController */,
 				0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */,
+				CBD6BD1F1CD096CB0009F39A /* GalleryViewController */,
 				00982AA91C868C89003DA5E2 /* LoginController */,
 				004D575E1CC61952000F83A8 /* MainTabbarViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				00982AAC1C868C89003DA5E2 /* MyWatchController */,
 				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
+				CBD6BD241CD0997E0009F39A /* ProfileViewController */,
 				00982AC81C868C89003DA5E2 /* RegisterController */,
 				00982ACB1C868C89003DA5E2 /* SettingsViewController */,
 				CBD6BD181CD0525D0009F39A /* SleepViewController */,
@@ -857,6 +869,7 @@
 				00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */,
 				00982B1F1C868C89003DA5E2 /* ClockView.swift */,
 				00982B201C868C89003DA5E2 /* WaveProgressView */,
+				CBD6BD1D1CD06F890009F39A /* Color.swift */,
 			);
 			path = publicView;
 			sourceTree = "<group>";
@@ -1191,6 +1204,24 @@
 			name = SleepViewController;
 			sourceTree = "<group>";
 		};
+		CBD6BD1F1CD096CB0009F39A /* GalleryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBD6BD201CD096F40009F39A /* GalleryViewController.swift */,
+				CBD6BD221CD097080009F39A /* GalleryViewController.xib */,
+			);
+			name = GalleryViewController;
+			sourceTree = "<group>";
+		};
+		CBD6BD241CD0997E0009F39A /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBD6BD251CD099880009F39A /* ProfileViewController.xib */,
+				CBD6BD271CD099900009F39A /* ProfileViewController.swift */,
+			);
+			name = ProfileViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1317,6 +1348,7 @@
 				0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */,
 				0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */,
 				00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */,
+				CBD6BD231CD097080009F39A /* GalleryViewController.xib in Resources */,
 				00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				00982BF01C868C8A003DA5E2 /* MyWatchController.xib in Resources */,
@@ -1336,6 +1368,7 @@
 				006F942E1CC9B8A60073C150 /* AnalysisViewController.xib in Resources */,
 				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
+				CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */,
 				004D57621CC61978000F83A8 /* MainTabbarViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
 				0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */,
@@ -1447,7 +1480,9 @@
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
 				00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */,
+				CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */,
 				CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */,
+				CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */,
 				0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */,
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
@@ -1479,6 +1514,7 @@
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
+				CBD6BD211CD096F40009F39A /* GalleryViewController.swift in Sources */,
 				00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */,
 				0043FBE81CA13CED00638BD1 /* SetContactsFilterRequest.swift in Sources */,
 				00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */,

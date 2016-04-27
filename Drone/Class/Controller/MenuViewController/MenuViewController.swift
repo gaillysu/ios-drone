@@ -20,10 +20,14 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
         self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activity"));
-        self.menuItems.append(MenuItem(controller: SleepViewController(), title: "Sleep"));
-        self.menuItems.append(MenuItem(controller: WorldClockController(), title: "WorldClock"));
+        let sleepItem = MenuItem(controller: SleepViewController(), title: "Sleep")
+        sleepItem.commingSoon = true;
+        self.menuItems.append(sleepItem);
+        self.menuItems.append(MenuItem(controller: WorldClockController(), title: "World\nClock"))
+        let galleryItem = MenuItem(controller: GalleryViewController(), title: "Gallery")
+        galleryItem.commingSoon = true
+        self.menuItems.append(galleryItem)
         self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings"));
-        self.title = "Drone"
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -32,6 +36,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
 //        AppDelegate.getAppDelegate().startConnect()
 
@@ -58,24 +63,33 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             }
         }
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(MenuViewController.leftAction(_:)))
+        let profileButton:UIButton = UIButton(type: UIButtonType.Custom)
+        profileButton.setImage(UIImage(named: "icon_profile"), forState: UIControlState.Normal)
+        profileButton.frame = CGRectMake(0, 0, 45, 45);
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
+        
+        let addWatchButton:UIButton = UIButton(type: UIButtonType.Custom)
+        addWatchButton.setImage(UIImage(named: "icon_add_watch"), forState: UIControlState.Normal)
+        addWatchButton.frame = CGRectMake(0, 0, 45, 45)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addWatchButton);
+        
+        var titleView : UIImageView
+        titleView = UIImageView(frame:CGRectMake(0, 0, 50, 70))
+        titleView.contentMode = .ScaleAspectFit
+        titleView.image = UIImage(named: "drone_logo")
+        self.navigationItem.titleView = titleView
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(MenuViewController.rightAction(_:)))
     }
 
     // MARK: - left or right Action
     func leftAction(item:UIBarButtonItem) {
-
+        self.presentViewController(ProfileViewController(), animated: true) {}
     }
 
     func rightAction(item:UIBarButtonItem) {
-        
+        self.navigationController?.pushViewController(AddDeviceViewController(), animated: true);
     }
  
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
@@ -84,21 +98,25 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let cell: MenuViewCell = menuTableView.dequeueReusableCellWithIdentifier(identifier) as! MenuViewCell
         let item:MenuItem = self.menuItems[indexPath.row]
         cell.menuItemLabel.text = item.menuTitle
-        cell.selected = true;
+        cell.menuItemLabel.highlightedTextColor = UIColor.whiteColor()
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.getTintColor()
+        cell.selectedBackgroundView = bgColorView
+        if(item.commingSoon){
+            cell.userInteractionEnabled = false;
+        }
         return cell
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item:MenuItem = self.menuItems[indexPath.row]
         self.navigationController?.pushViewController(item.menuViewControllerItem, animated: true)
         menuTableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-
-    // MARK: - UICollectionViewDelegate
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: (collectionView.frame.height/3) - 21)
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return CGFloat((menuTableView.frame.height/3));
     }
-   
     
     func profileAction(){
         self.navigationController?.pushViewController(ProfileSetupViewController(), animated: true)

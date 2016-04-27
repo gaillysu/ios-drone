@@ -11,9 +11,12 @@ import Foundation
 class MenuItem {
     var menuViewControllerItem: UIViewController
     var menuTitle: String
+    var commingSoon:Bool
     
     init(controller: UIViewController, title: String) {
         self.menuViewControllerItem = controller;
         self.menuTitle = title;
+        self.commingSoon = false;
     }
+
 }

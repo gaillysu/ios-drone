@@ -6,11 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewCell" customModule="Drone" customModuleProvider="target">
-            <connections>
-                <outlet property="menuItemLabel" destination="0vd-55-zwY" id="EFv-hT-1Ip"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="145" id="fdO-cz-3wt" customClass="MenuViewCell" customModule="Drone" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
@@ -19,25 +15,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vd-55-zwY">
-                        <rect key="frame" x="120" y="62" width="81" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WTt-Ci-Bhr">
                         <rect key="frame" x="8" y="8" width="304" height="128"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Item" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vd-55-zwY">
+                        <rect key="frame" x="8" y="8" width="304" height="128"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="0vd-55-zwY" firstAttribute="centerX" secondItem="3RU-cA-Sse" secondAttribute="centerX" id="69g-Ra-9tE"/>
-                    <constraint firstItem="0vd-55-zwY" firstAttribute="centerY" secondItem="3RU-cA-Sse" secondAttribute="centerY" id="MTg-U0-sv7"/>
+                    <constraint firstItem="0vd-55-zwY" firstAttribute="bottom" secondItem="3RU-cA-Sse" secondAttribute="bottomMargin" id="C1H-Bm-woj"/>
+                    <constraint firstItem="0vd-55-zwY" firstAttribute="leading" secondItem="3RU-cA-Sse" secondAttribute="leadingMargin" id="IwL-zv-jxU"/>
+                    <constraint firstItem="0vd-55-zwY" firstAttribute="trailing" secondItem="3RU-cA-Sse" secondAttribute="trailingMargin" id="Nfz-RF-tHI"/>
                     <constraint firstAttribute="bottomMargin" secondItem="WTt-Ci-Bhr" secondAttribute="bottom" id="Qet-vG-Ajd"/>
                     <constraint firstItem="WTt-Ci-Bhr" firstAttribute="leading" secondItem="3RU-cA-Sse" secondAttribute="leadingMargin" id="RVn-5o-yp8"/>
+                    <constraint firstItem="0vd-55-zwY" firstAttribute="top" secondItem="3RU-cA-Sse" secondAttribute="topMargin" id="Taj-jG-yG6"/>
                     <constraint firstItem="WTt-Ci-Bhr" firstAttribute="top" secondItem="3RU-cA-Sse" secondAttribute="topMargin" id="k6C-LO-Ss8"/>
                     <constraint firstAttribute="trailingMargin" secondItem="WTt-Ci-Bhr" secondAttribute="trailing" id="lKf-H3-A6X"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="backgroundItem" destination="WTt-Ci-Bhr" id="ibq-Lo-R2i"/>
+                <outlet property="menuItemLabel" destination="0vd-55-zwY" id="Ekz-k6-Fi1"/>
+            </connections>
             <point key="canvasLocation" x="213" y="183.5"/>
         </tableViewCell>
     </objects>
