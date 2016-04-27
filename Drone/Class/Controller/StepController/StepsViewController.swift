@@ -18,6 +18,7 @@ let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
 private let CALENDAR_VIEW_TAG = 1800
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
+    @IBOutlet var mainview: UIView!
     @IBOutlet weak var circleProgressView: CircleProgressView!
     // TODO eventbus: Steps, small & big sync
     @IBOutlet weak var stepsLabel: UILabel!
@@ -43,9 +44,10 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.initTitleView()
+        self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -80,7 +82,6 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         circleProgressView.setProgress(Double(today.steps)/Double(goal), animated: true)
         stepsLabel.text = String(format:"%d",today.steps)
         percentageLabel.text = String(format:"Goal: %d%",goal)
-
         
         barChart.drawBarShadowEnabled = false
         var xVals = [String]();

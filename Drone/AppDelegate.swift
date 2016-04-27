@@ -12,7 +12,6 @@ import HealthKit
 import Alamofire
 import FMDB
 import SwiftEventBus
-import YRSideViewController
 import XCGLogger
 import Fabric
 import Crashlytics
@@ -35,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     private var disConnectAlert:UIAlertView?
     private let log = XCGLogger.defaultInstance()
-    let sideViewController:YRSideViewController = YRSideViewController()
 
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
