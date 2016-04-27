@@ -20,6 +20,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
         self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activity"));
+        self.menuItems.append(MenuItem(controller: AnalysisViewController(), title: "Analysis"));
         let sleepItem = MenuItem(controller: SleepViewController(), title: "Sleep")
         sleepItem.commingSoon = true;
         self.menuItems.append(sleepItem);
@@ -67,10 +68,12 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         profileButton.setImage(UIImage(named: "icon_profile"), forState: UIControlState.Normal)
         profileButton.frame = CGRectMake(0, 0, 45, 45);
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
+        profileButton.addTarget(self, action: #selector(MenuViewController.leftAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         let addWatchButton:UIButton = UIButton(type: UIButtonType.Custom)
         addWatchButton.setImage(UIImage(named: "icon_add_watch"), forState: UIControlState.Normal)
         addWatchButton.frame = CGRectMake(0, 0, 45, 45)
+        addWatchButton.addTarget(self, action: #selector(MenuViewController.rightAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addWatchButton);
         
         var titleView : UIImageView
