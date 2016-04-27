@@ -22,8 +22,9 @@
 		0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */; };
 		004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */; };
 		004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E91CB35DDA009D053C /* ActivityPacket.swift */; };
-		005699D41CD05AC50097938E /* ChooseCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005699D21CD05AC50097938E /* ChooseCityController.swift */; };
-		005699D51CD05AC50097938E /* ChooseCityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005699D31CD05AC50097938E /* ChooseCityController.xib */; };
+		005699D81CD05F7C0097938E /* ChooseCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005699D61CD05F7C0097938E /* ChooseCityController.swift */; };
+		005699D91CD05F7C0097938E /* ChooseCityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005699D71CD05F7C0097938E /* ChooseCityController.xib */; };
+		005699DB1CD0673D0097938E /* localTimeZone in Resources */ = {isa = PBXBuildFile; fileRef = 005699DA1CD0673D0097938E /* localTimeZone */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
 		0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA6E1CC089BF005AB9DE /* drone1.jpg */; };
@@ -145,7 +146,6 @@
 		00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CD91C868CF5003DA5E2 /* StepsViewController.xib */; };
 		00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CE01C868FE6003DA5E2 /* SettingsViewController.xib */; };
 		00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982CE51C8695AD003DA5E2 /* SetingView.swift */; };
-		00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00982CFD1C86A350003DA5E2 /* localTimeZone.plist */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
 		00F1AF441CACD82600CB9A15 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3A1CACD82600CB9A15 /* AnalysisViewController.swift */; };
@@ -212,8 +212,9 @@
 		0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsApplicationsRequest.swift; sourceTree = "<group>"; };
 		004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsGoalPacket.swift; sourceTree = "<group>"; };
 		004ED1E91CB35DDA009D053C /* ActivityPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPacket.swift; sourceTree = "<group>"; };
-		005699D21CD05AC50097938E /* ChooseCityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCityController.swift; sourceTree = "<group>"; };
-		005699D31CD05AC50097938E /* ChooseCityController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCityController.xib; sourceTree = "<group>"; };
+		005699D61CD05F7C0097938E /* ChooseCityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCityController.swift; sourceTree = "<group>"; };
+		005699D71CD05F7C0097938E /* ChooseCityController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCityController.xib; sourceTree = "<group>"; };
+		005699DA1CD0673D0097938E /* localTimeZone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = localTimeZone; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
 		005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
 		0064CA6E1CC089BF005AB9DE /* drone1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone1.jpg; sourceTree = "<group>"; };
@@ -345,7 +346,6 @@
 		00982CDB1C868E0B003DA5E2 /* Drone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drone-Bridging-Header.h"; sourceTree = "<group>"; };
 		00982CE01C868FE6003DA5E2 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		00982CE51C8695AD003DA5E2 /* SetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetingView.swift; sourceTree = "<group>"; };
-		00982CFD1C86A350003DA5E2 /* localTimeZone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = localTimeZone.plist; sourceTree = "<group>"; };
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
 		00F1AF3A1CACD82600CB9A15 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
@@ -426,8 +426,8 @@
 		005699D11CD05A690097938E /* ChooseCityController */ = {
 			isa = PBXGroup;
 			children = (
-				005699D21CD05AC50097938E /* ChooseCityController.swift */,
-				005699D31CD05AC50097938E /* ChooseCityController.xib */,
+				005699D61CD05F7C0097938E /* ChooseCityController.swift */,
+				005699D71CD05F7C0097938E /* ChooseCityController.xib */,
 			);
 			path = ChooseCityController;
 			sourceTree = "<group>";
@@ -990,8 +990,8 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				005699DA1CD0673D0097938E /* localTimeZone */,
 				00982CEF1C86A350003DA5E2 /* image */,
-				00982CFC1C86A350003DA5E2 /* localTimeZone */,
 				00982CFE1C86A350003DA5E2 /* Strings */,
 			);
 			path = Resources;
@@ -1007,14 +1007,6 @@
 				0064CA701CC089BF005AB9DE /* drone3.jpg */,
 			);
 			path = image;
-			sourceTree = "<group>";
-		};
-		00982CFC1C86A350003DA5E2 /* localTimeZone */ = {
-			isa = PBXGroup;
-			children = (
-				00982CFD1C86A350003DA5E2 /* localTimeZone.plist */,
-			);
-			path = localTimeZone;
 			sourceTree = "<group>";
 		};
 		00982CFE1C86A350003DA5E2 /* Strings */ = {
@@ -1275,11 +1267,11 @@
 				0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */,
 				0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */,
 				00982C091C868C8A003DA5E2 /* queryTableviewCell.xib in Resources */,
+				005699DB1CD0673D0097938E /* localTimeZone in Resources */,
 				00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */,
-				00982D161C86A350003DA5E2 /* localTimeZone.plist in Resources */,
 				0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */,
 				0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */,
-				005699D51CD05AC50097938E /* ChooseCityController.xib in Resources */,
+				005699D91CD05F7C0097938E /* ChooseCityController.xib in Resources */,
 				00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */,
 				00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
@@ -1483,7 +1475,7 @@
 				008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */,
 				00982C1B1C868C8A003DA5E2 /* WorldClockController.swift in Sources */,
 				00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */,
-				005699D41CD05AC50097938E /* ChooseCityController.swift in Sources */,
+				005699D81CD05F7C0097938E /* ChooseCityController.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
 				00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */,
 				00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */,
