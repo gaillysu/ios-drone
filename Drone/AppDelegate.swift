@@ -130,9 +130,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func rootTabbarController() {
-        let mainTabbar:MainTabbarViewController = MainTabbarViewController()
-        self.window?.rootViewController = mainTabbar
+        let nav:UINavigationController = UINavigationController(rootViewController: MenuViewController())
+        self.window?.rootViewController = nav
     }
+    
     // MARK: -AppDelegate SET Function
     func readsystemStatus() {
         sendRequest(GetSystemStatus())
