@@ -8,14 +8,12 @@
 
 import Foundation
 
-class MenuViewCell: UICollectionViewCell {
+class MenuViewCell: UITableViewCell{
     
     @IBOutlet weak var menuItemLabel: UILabel!
-    @IBOutlet weak var menuBackgroundImage: UIImageView!
-
+    @IBOutlet var backgroundItem: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
 }

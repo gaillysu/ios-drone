@@ -7,14 +7,14 @@
 //
 
 import Foundation
+import UIColor_Hex_Swift
 
 class SplashScreenViewController: BaseViewController {
  
     private final let TIMER_DURATION = 1.4;
-    
-    override func viewDidLoad() {
-        let timer = NSTimer.scheduledTimerWithTimeInterval(TIMER_DURATION, target: self, selector: #selector(SplashScreenViewController.nextController), userInfo: nil, repeats: true)
-        timer.fire()
+    var timer:NSTimer?
+    override func viewDidAppear(animated: Bool) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(TIMER_DURATION, target: self, selector: #selector(SplashScreenViewController.nextController), userInfo: nil, repeats: true)
     }
     
     func nextController(){
@@ -22,6 +22,10 @@ class SplashScreenViewController: BaseViewController {
         // RegisterViewController
         // ELSE
         let navigationController = UINavigationController(rootViewController:MenuViewController());
+        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
+        
         self.presentViewController(navigationController, animated: true, completion: nil);
+        timer?.invalidate()
+        timer = nil;
     }
 }

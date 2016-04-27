@@ -10,20 +10,25 @@ import Foundation
 import SwiftEventBus
 import NVActivityIndicatorView
 
-class MenuViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
+class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
+    @IBOutlet var menuTableView: UITableView!
     let identifier = "menu_cell_identifier"
-    
-    @IBOutlet weak var collectionView: UICollectionView!
 
     var menuItems: [MenuItem] = []
     
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
         self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activity"));
-//        self.menuItems.append(MenuItem(controller: WorldClockViewController(), title: "Buddy"));
+        self.menuItems.append(MenuItem(controller: AnalysisViewController(), title: "Analysis"));
+        let sleepItem = MenuItem(controller: SleepViewController(), title: "Sleep")
+        sleepItem.commingSoon = true;
+        self.menuItems.append(sleepItem);
+        self.menuItems.append(MenuItem(controller: WorldClockController(), title: "World\nClock"))
+        let galleryItem = MenuItem(controller: GalleryViewController(), title: "Gallery")
+        galleryItem.commingSoon = true
+        self.menuItems.append(galleryItem)
         self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings"));
-        self.title = "Drone"
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -32,8 +37,9 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: identifier)
-        AppDelegate.getAppDelegate().startConnect()
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
+//        AppDelegate.getAppDelegate().startConnect()
 
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_RAWPACKET_DATA_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
@@ -58,49 +64,61 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
             }
         }
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(MenuViewController.leftAction(_:)))
+        let profileButton:UIButton = UIButton(type: UIButtonType.Custom)
+        profileButton.setImage(UIImage(named: "icon_profile"), forState: UIControlState.Normal)
+        profileButton.frame = CGRectMake(0, 0, 45, 45);
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
+        profileButton.addTarget(self, action: #selector(MenuViewController.leftAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let addWatchButton:UIButton = UIButton(type: UIButtonType.Custom)
+        addWatchButton.setImage(UIImage(named: "icon_add_watch"), forState: UIControlState.Normal)
+        addWatchButton.frame = CGRectMake(0, 0, 45, 45)
+        addWatchButton.addTarget(self, action: #selector(MenuViewController.rightAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addWatchButton);
+        
+        var titleView : UIImageView
+        titleView = UIImageView(frame:CGRectMake(0, 0, 50, 70))
+        titleView.contentMode = .ScaleAspectFit
+        titleView.image = UIImage(named: "drone_logo")
+        self.navigationItem.titleView = titleView
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(MenuViewController.rightAction(_:)))
     }
 
     // MARK: - left or right Action
     func leftAction(item:UIBarButtonItem) {
-
+        self.presentViewController(ProfileViewController(), animated: true) {}
     }
 
     func rightAction(item:UIBarButtonItem) {
-        
+        self.navigationController?.pushViewController(AddDeviceViewController(), animated: true);
     }
-
-    // MARK: - UICollectionViewDataSource
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1;
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menuItems.count;
+ 
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell:MenuViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! MenuViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: MenuViewCell = menuTableView.dequeueReusableCellWithIdentifier(identifier) as! MenuViewCell
         let item:MenuItem = self.menuItems[indexPath.row]
         cell.menuItemLabel.text = item.menuTitle
-        cell.selected = true;
+        cell.menuItemLabel.highlightedTextColor = UIColor.whiteColor()
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.getTintColor()
+        cell.selectedBackgroundView = bgColorView
+        if(item.commingSoon){
+            cell.userInteractionEnabled = false;
+        }
         return cell
     }
-
-    // MARK: - UICollectionViewDelegate
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: (collectionView.frame.height/3) - 21)
-    }
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item:MenuItem = self.menuItems[indexPath.row]
         self.navigationController?.pushViewController(item.menuViewControllerItem, animated: true)
-//        self.presentViewController(UINavigationController(rootViewController: item.menuViewControllerItem), animated: true) { 
-//
-//        }
-        
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        menuTableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return CGFloat((menuTableView.frame.height/3));
     }
     
     func profileAction(){
