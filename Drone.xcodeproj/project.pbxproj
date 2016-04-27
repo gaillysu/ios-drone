@@ -181,6 +181,8 @@
 		CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */; };
 		CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6E01CCF6AEF00B4935E /* StepsTitleView.swift */; };
 		CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */; };
+		CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD141CD04D880009F39A /* SplashScreenViewController.swift */; };
+		CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,6 +389,8 @@
 		CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
 		CBD2F6E01CCF6AEF00B4935E /* StepsTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTitleView.swift; sourceTree = "<group>"; };
 		CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTitleView.xib; sourceTree = "<group>"; };
+		CBD6BD141CD04D880009F39A /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashScreenViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -547,9 +551,9 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				00F1AF391CACD82600CB9A15 /* AnalysisViewController */,
 				00F1AF3C1CACD82600CB9A15 /* AddDeviceController */,
 				CBA06BED1C8EC27E00E3257B /* AddWorldClockController */,
+				00F1AF391CACD82600CB9A15 /* AnalysisViewController */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
 				00F1AF411CACD82600CB9A15 /* BuddyViewController */,
 				0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */,
@@ -560,10 +564,11 @@
 				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
 				00982AC81C868C89003DA5E2 /* RegisterController */,
 				00982ACB1C868C89003DA5E2 /* SettingsViewController */,
+				CBD6BD131CD04D310009F39A /* SplashScreenViewController */,
 				00982ADB1C868C89003DA5E2 /* StepsViewController */,
 				009201D91CBE2B5200C51707 /* WelcomeViewController */,
-				00982AE21C868C89003DA5E2 /* WorldClockController */,
 				008931071CC7799F0013E6D8 /* WhichDeviceViewController */,
+				00982AE21C868C89003DA5E2 /* WorldClockController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1162,6 +1167,15 @@
 			name = AddWorldClockView;
 			sourceTree = "<group>";
 		};
+		CBD6BD131CD04D310009F39A /* SplashScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBD6BD141CD04D880009F39A /* SplashScreenViewController.swift */,
+				CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */,
+			);
+			name = SplashScreenViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1300,6 +1314,7 @@
 				00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
 				006F94301CCA0C320073C150 /* white_background.png in Resources */,
+				CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
 				0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */,
 				006F942E1CC9B8A60073C150 /* AnalysisViewController.xib in Resources */,
@@ -1412,6 +1427,7 @@
 				00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
+				CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
 				00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */,
