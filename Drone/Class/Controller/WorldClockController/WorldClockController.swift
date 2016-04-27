@@ -31,16 +31,10 @@ class WorldClockController: BaseViewController {
         // TODO set headerview: WorldClockHeader.swift
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
-        let rightAddButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(WorldClockController.controllManager(_:)))
-        self.navigationItem.rightBarButtonItem = rightAddButton
+        worldClockTableview.backgroundColor = UIColor(rgba: "#E4C590")
         worldClockTableview.allowsSelectionDuringEditing = true;
         worldClockTableview.tableHeaderView = WorldClockHeader.getWorldClockHeader(CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.width-60))
-    }
-
-    func controllManager(sender:UIBarButtonItem) {
-
     }
 
     override func didReceiveMemoryWarning() {

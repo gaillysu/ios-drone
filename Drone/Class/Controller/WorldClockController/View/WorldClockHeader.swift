@@ -10,6 +10,8 @@ import Foundation
 
 class WorldClockHeader: UIView{
 
+    var actionHandler:((result:AnyObject?) -> Void)?
+
     class func getWorldClockHeader(frame:CGRect)->WorldClockHeader {
         let nibView:NSArray = NSBundle.mainBundle().loadNibNamed("WorldClockHeader", owner: nil, options: nil)
         let view:UIView = nibView.objectAtIndex(0) as! UIView
@@ -17,4 +19,7 @@ class WorldClockHeader: UIView{
         return nibView.objectAtIndex(0) as! WorldClockHeader
     }
 
+    @IBAction func buttonActionManager(sender: AnyObject) {
+        actionHandler?(result: sender)
+    }
 }
