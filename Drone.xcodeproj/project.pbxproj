@@ -20,13 +20,10 @@
 		0043FBEA1CA1404500638BD1 /* GetContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */; };
 		0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */; };
 		0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */; };
-		004D57611CC61978000F83A8 /* MainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */; };
-		004D57621CC61978000F83A8 /* MainTabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004D57601CC61978000F83A8 /* MainTabbarViewController.xib */; };
 		004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */; };
 		004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004ED1E91CB35DDA009D053C /* ActivityPacket.swift */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
-		005B41FA1CC639260049007A /* DroneTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B41F91CC639260049007A /* DroneTabbar.swift */; };
 		0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA6E1CC089BF005AB9DE /* drone1.jpg */; };
 		0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA701CC089BF005AB9DE /* drone3.jpg */; };
 		0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA741CC089F4005AB9DE /* drone2.jpg */; };
@@ -37,7 +34,6 @@
 		0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */; };
 		006F942E1CC9B8A60073C150 /* AnalysisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006F942D1CC9B8A60073C150 /* AnalysisViewController.xib */; };
 		006F94301CCA0C320073C150 /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 006F942F1CCA0C310073C150 /* white_background.png */; };
-		008931011CC7157C0013E6D8 /* DroneTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */; };
 		0089310A1CC779B30013E6D8 /* WhichDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */; };
 		0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */; };
 		008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */; };
@@ -166,16 +162,12 @@
 		CB0B46AD1CCF229400411997 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B469E1CCF229400411997 /* Charts.framework */; };
 		CB0B46AE1CCF229400411997 /* CircleProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B469F1CCF229400411997 /* CircleProgressView.framework */; };
 		CB0B46AF1CCF229400411997 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A01CCF229400411997 /* FMDB.framework */; };
-		CB0B46B01CCF229400411997 /* GSMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A11CCF229400411997 /* GSMessages.framework */; };
-		CB0B46B11CCF229400411997 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A21CCF229400411997 /* NVActivityIndicatorView.framework */; };
 		CB0B46B21CCF229400411997 /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A31CCF229400411997 /* SDCycleScrollView.framework */; };
 		CB0B46B31CCF229400411997 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A41CCF229400411997 /* SMSegmentView.framework */; };
 		CB0B46B41CCF229400411997 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A51CCF229400411997 /* SwiftEventBus.framework */; };
-		CB0B46B51CCF229400411997 /* TextFieldEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A61CCF229400411997 /* TextFieldEffects.framework */; };
 		CB0B46B61CCF229400411997 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A71CCF229400411997 /* Timepiece.framework */; };
 		CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */; };
 		CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A91CCF229400411997 /* XCGLogger.framework */; };
-		CB0B46B91CCF229400411997 /* YRSideViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46AA1CCF229400411997 /* YRSideViewController.framework */; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
 		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
 		CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */; };
@@ -216,13 +208,10 @@
 		0043FBE91CA1404500638BD1 /* GetContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsFilterRequest.swift; sourceTree = "<group>"; };
 		0043FBED1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsApplicationsRequest.swift; sourceTree = "<group>"; };
-		004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabbarViewController.swift; sourceTree = "<group>"; };
-		004D57601CC61978000F83A8 /* MainTabbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabbarViewController.xib; sourceTree = "<group>"; };
 		004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsGoalPacket.swift; sourceTree = "<group>"; };
 		004ED1E91CB35DDA009D053C /* ActivityPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPacket.swift; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
 		005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
-		005B41F91CC639260049007A /* DroneTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTabbar.swift; sourceTree = "<group>"; };
 		0064CA6E1CC089BF005AB9DE /* drone1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone1.jpg; sourceTree = "<group>"; };
 		0064CA701CC089BF005AB9DE /* drone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone3.jpg; sourceTree = "<group>"; };
 		0064CA741CC089F4005AB9DE /* drone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone2.jpg; sourceTree = "<group>"; };
@@ -233,7 +222,6 @@
 		0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYKeyboardManager.framework; path = "Pods/../build/Debug-iphoneos/YYKeyboardManager.framework"; sourceTree = "<group>"; };
 		006F942D1CC9B8A60073C150 /* AnalysisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalysisViewController.xib; sourceTree = "<group>"; };
 		006F942F1CCA0C310073C150 /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
-		008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTabbarItem.swift; sourceTree = "<group>"; };
 		008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichDeviceViewController.swift; sourceTree = "<group>"; };
 		0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhichDeviceViewController.xib; sourceTree = "<group>"; };
 		008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Drone/Class/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -374,16 +362,12 @@
 		CB0B469E1CCF229400411997 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/Charts.framework"; sourceTree = "<group>"; };
 		CB0B469F1CCF229400411997 /* CircleProgressView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CircleProgressView.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/CircleProgressView.framework"; sourceTree = "<group>"; };
 		CB0B46A01CCF229400411997 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/FMDB.framework"; sourceTree = "<group>"; };
-		CB0B46A11CCF229400411997 /* GSMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GSMessages.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/GSMessages.framework"; sourceTree = "<group>"; };
-		CB0B46A21CCF229400411997 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
 		CB0B46A31CCF229400411997 /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/SDCycleScrollView.framework"; sourceTree = "<group>"; };
 		CB0B46A41CCF229400411997 /* SMSegmentView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SMSegmentView.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/SMSegmentView.framework"; sourceTree = "<group>"; };
 		CB0B46A51CCF229400411997 /* SwiftEventBus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftEventBus.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/SwiftEventBus.framework"; sourceTree = "<group>"; };
-		CB0B46A61CCF229400411997 /* TextFieldEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextFieldEffects.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/TextFieldEffects.framework"; sourceTree = "<group>"; };
 		CB0B46A71CCF229400411997 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/Timepiece.framework"; sourceTree = "<group>"; };
 		CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_Hex_Swift.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/UIColor_Hex_Swift.framework"; sourceTree = "<group>"; };
 		CB0B46A91CCF229400411997 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/XCGLogger.framework"; sourceTree = "<group>"; };
-		CB0B46AA1CCF229400411997 /* YRSideViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YRSideViewController.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/YRSideViewController.framework"; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
 		CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
@@ -403,16 +387,12 @@
 				CB0B46AD1CCF229400411997 /* Charts.framework in Frameworks */,
 				CB0B46AE1CCF229400411997 /* CircleProgressView.framework in Frameworks */,
 				CB0B46AF1CCF229400411997 /* FMDB.framework in Frameworks */,
-				CB0B46B01CCF229400411997 /* GSMessages.framework in Frameworks */,
-				CB0B46B11CCF229400411997 /* NVActivityIndicatorView.framework in Frameworks */,
 				CB0B46B21CCF229400411997 /* SDCycleScrollView.framework in Frameworks */,
 				CB0B46B31CCF229400411997 /* SMSegmentView.framework in Frameworks */,
 				CB0B46B41CCF229400411997 /* SwiftEventBus.framework in Frameworks */,
-				CB0B46B51CCF229400411997 /* TextFieldEffects.framework in Frameworks */,
 				CB0B46B61CCF229400411997 /* Timepiece.framework in Frameworks */,
 				CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */,
 				CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */,
-				CB0B46B91CCF229400411997 /* YRSideViewController.framework in Frameworks */,
 				CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */,
 				0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */,
 				CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */,
@@ -439,17 +419,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		004D575E1CC61952000F83A8 /* MainTabbarViewController */ = {
-			isa = PBXGroup;
-			children = (
-				004D575F1CC61978000F83A8 /* MainTabbarViewController.swift */,
-				004D57601CC61978000F83A8 /* MainTabbarViewController.xib */,
-				005B41F91CC639260049007A /* DroneTabbar.swift */,
-				008931001CC7157C0013E6D8 /* DroneTabbarItem.swift */,
-			);
-			path = MainTabbarViewController;
-			sourceTree = "<group>";
-		};
 		0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,7 +527,6 @@
 				00F1AF411CACD82600CB9A15 /* BuddyViewController */,
 				0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */,
 				00982AA91C868C89003DA5E2 /* LoginController */,
-				004D575E1CC61952000F83A8 /* MainTabbarViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				00982AAC1C868C89003DA5E2 /* MyWatchController */,
 				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
@@ -1105,16 +1073,12 @@
 				CB0B469E1CCF229400411997 /* Charts.framework */,
 				CB0B469F1CCF229400411997 /* CircleProgressView.framework */,
 				CB0B46A01CCF229400411997 /* FMDB.framework */,
-				CB0B46A11CCF229400411997 /* GSMessages.framework */,
-				CB0B46A21CCF229400411997 /* NVActivityIndicatorView.framework */,
 				CB0B46A31CCF229400411997 /* SDCycleScrollView.framework */,
 				CB0B46A41CCF229400411997 /* SMSegmentView.framework */,
 				CB0B46A51CCF229400411997 /* SwiftEventBus.framework */,
-				CB0B46A61CCF229400411997 /* TextFieldEffects.framework */,
 				CB0B46A71CCF229400411997 /* Timepiece.framework */,
 				CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */,
 				CB0B46A91CCF229400411997 /* XCGLogger.framework */,
-				CB0B46AA1CCF229400411997 /* YRSideViewController.framework */,
 				CB0B46981CCF223500411997 /* Fabric.framework */,
 				CB0B46991CCF223500411997 /* Crashlytics.framework */,
 				CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */,
@@ -1481,7 +1445,6 @@
 				00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */,
 				00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */,
 				00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */,
-				008931011CC7157C0013E6D8 /* DroneTabbarItem.swift in Sources */,
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
