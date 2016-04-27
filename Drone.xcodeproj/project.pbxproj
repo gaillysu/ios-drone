@@ -151,8 +151,8 @@
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
 		00F1AF441CACD82600CB9A15 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3A1CACD82600CB9A15 /* AnalysisViewController.swift */; };
-		00F1AF461CACD82600CB9A15 /* AddDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */; };
-		00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */; };
+		00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */; };
+		00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */; };
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
 		00F1AF491CACD82600CB9A15 /* BuddyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF421CACD82600CB9A15 /* BuddyViewController.swift */; };
 		00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF431CACD82600CB9A15 /* BuddyViewController.xib */; };
@@ -183,6 +183,8 @@
 		CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */; };
 		CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD141CD04D880009F39A /* SplashScreenViewController.swift */; };
 		CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */; };
+		CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD191CD052BB0009F39A /* SleepViewController.xib */; };
+		CBD6BD1C1CD052C30009F39A /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,8 +359,8 @@
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
 		00F1AF3A1CACD82600CB9A15 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
-		00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceController.swift; sourceTree = "<group>"; };
-		00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceController.xib; sourceTree = "<group>"; };
+		00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
+		00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
 		00F1AF401CACD82600CB9A15 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		00F1AF421CACD82600CB9A15 /* BuddyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyViewController.swift; sourceTree = "<group>"; };
 		00F1AF431CACD82600CB9A15 /* BuddyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuddyViewController.xib; sourceTree = "<group>"; };
@@ -391,6 +393,8 @@
 		CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTitleView.xib; sourceTree = "<group>"; };
 		CBD6BD141CD04D880009F39A /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashScreenViewController.xib; sourceTree = "<group>"; };
+		CBD6BD191CD052BB0009F39A /* SleepViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SleepViewController.xib; sourceTree = "<group>"; };
+		CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -551,7 +555,7 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				00F1AF3C1CACD82600CB9A15 /* AddDeviceController */,
+				00F1AF3C1CACD82600CB9A15 /* AddDeviceViewController */,
 				CBA06BED1C8EC27E00E3257B /* AddWorldClockController */,
 				00F1AF391CACD82600CB9A15 /* AnalysisViewController */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
@@ -564,6 +568,7 @@
 				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
 				00982AC81C868C89003DA5E2 /* RegisterController */,
 				00982ACB1C868C89003DA5E2 /* SettingsViewController */,
+				CBD6BD181CD0525D0009F39A /* SleepViewController */,
 				CBD6BD131CD04D310009F39A /* SplashScreenViewController */,
 				00982ADB1C868C89003DA5E2 /* StepsViewController */,
 				009201D91CBE2B5200C51707 /* WelcomeViewController */,
@@ -1053,12 +1058,13 @@
 			path = ActivityViewController;
 			sourceTree = "<group>";
 		};
-		00F1AF3C1CACD82600CB9A15 /* AddDeviceController */ = {
+		00F1AF3C1CACD82600CB9A15 /* AddDeviceViewController */ = {
 			isa = PBXGroup;
 			children = (
-				00F1AF3D1CACD82600CB9A15 /* AddDeviceController.swift */,
-				00F1AF3E1CACD82600CB9A15 /* AddDeviceController.xib */,
+				00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */,
+				00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */,
 			);
+			name = AddDeviceViewController;
 			path = AddDeviceController;
 			sourceTree = "<group>";
 		};
@@ -1174,6 +1180,15 @@
 				CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */,
 			);
 			name = SplashScreenViewController;
+			sourceTree = "<group>";
+		};
+		CBD6BD181CD0525D0009F39A /* SleepViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBD6BD191CD052BB0009F39A /* SleepViewController.xib */,
+				CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */,
+			);
+			name = SleepViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1311,8 +1326,9 @@
 				00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */,
 				CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */,
-				00F1AF471CACD82600CB9A15 /* AddDeviceController.xib in Resources */,
+				00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
+				CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */,
 				006F94301CCA0C320073C150 /* white_background.png in Resources */,
 				CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
@@ -1442,7 +1458,7 @@
 				00982BEF1C868C8A003DA5E2 /* MyWatchController.swift in Sources */,
 				00982C161C868C8A003DA5E2 /* AddWorldClockController.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
-				00F1AF461CACD82600CB9A15 /* AddDeviceController.swift in Sources */,
+				00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */,
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */,
 				00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */,
@@ -1497,6 +1513,7 @@
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
+				CBD6BD1C1CD052C30009F39A /* SleepViewController.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
 				004D57611CC61978000F83A8 /* MainTabbarViewController.swift in Sources */,
 				00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */,

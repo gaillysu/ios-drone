@@ -10,18 +10,18 @@ import Foundation
 import SwiftEventBus
 import NVActivityIndicatorView
 
-class MenuViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
+class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
+    @IBOutlet var menuTableView: UITableView!
     let identifier = "menu_cell_identifier"
-    
-    @IBOutlet weak var collectionView: UICollectionView!
 
     var menuItems: [MenuItem] = []
     
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
         self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activity"));
-//        self.menuItems.append(MenuItem(controller: WorldClockViewController(), title: "Buddy"));
+        self.menuItems.append(MenuItem(controller: SleepViewController(), title: "Sleep"));
+        self.menuItems.append(MenuItem(controller: WorldClockController(), title: "WorldClock"));
         self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings"));
         self.title = "Drone"
     }
@@ -32,8 +32,8 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: identifier)
-        AppDelegate.getAppDelegate().startConnect()
+        menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
+//        AppDelegate.getAppDelegate().startConnect()
 
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_RAWPACKET_DATA_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
@@ -71,37 +71,34 @@ class MenuViewController: BaseViewController, UICollectionViewDataSource, UIColl
     func rightAction(item:UIBarButtonItem) {
         
     }
-
-    // MARK: - UICollectionViewDataSource
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+ 
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1;
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menuItems.count;
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell:MenuViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! MenuViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: MenuViewCell = menuTableView.dequeueReusableCellWithIdentifier(identifier) as! MenuViewCell
         let item:MenuItem = self.menuItems[indexPath.row]
         cell.menuItemLabel.text = item.menuTitle
         cell.selected = true;
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let item:MenuItem = self.menuItems[indexPath.row]
+        self.navigationController?.pushViewController(item.menuViewControllerItem, animated: true)
+        menuTableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     // MARK: - UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width, height: (collectionView.frame.height/3) - 21)
     }
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let item:MenuItem = self.menuItems[indexPath.row]
-        self.navigationController?.pushViewController(item.menuViewControllerItem, animated: true)
-//        self.presentViewController(UINavigationController(rootViewController: item.menuViewControllerItem), animated: true) { 
-//
-//        }
-        
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
-    }
+   
     
     func profileAction(){
         self.navigationController?.pushViewController(ProfileSetupViewController(), animated: true)
