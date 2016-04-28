@@ -19,16 +19,16 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
-        self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activities"));
-        self.menuItems.append(MenuItem(controller: AnalysisViewController(), title: "Analysis"));
-        let sleepItem = MenuItem(controller: SleepViewController(), title: "Sleep")
+        self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activities", image: UIImage(named: "icon_activities")!));
+        self.menuItems.append(MenuItem(controller: AnalysisViewController(), title: "Analysis",image: UIImage(named: "icon_activities")!));
+        let sleepItem = MenuItem(controller: SleepViewController(), title: "Sleep",image: UIImage(named: "icon_sleep")!)
         sleepItem.commingSoon = true;
         self.menuItems.append(sleepItem);
-        self.menuItems.append(MenuItem(controller: WorldClockController(), title: "World\nClock"))
-        let galleryItem = MenuItem(controller: GalleryViewController(), title: "Gallery")
+        self.menuItems.append(MenuItem(controller: WorldClockController(), title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
+        let galleryItem = MenuItem(controller: GalleryViewController(), title: "Gallery",image: UIImage(named: "icon_gallery")!)
         galleryItem.commingSoon = true
         self.menuItems.append(galleryItem)
-        self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings"));
+        self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings",image: UIImage(named: "icon_settings")!));
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -102,6 +102,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let item:MenuItem = self.menuItems[indexPath.row]
         cell.menuItemLabel.text = item.menuTitle.uppercaseString
         cell.menuItemLabel.highlightedTextColor = UIColor.whiteColor()
+        cell.imageView?.image = item.image;
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.getTintColor()
         cell.selectedBackgroundView = bgColorView
