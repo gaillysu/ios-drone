@@ -113,7 +113,10 @@ extension StepsViewController {
 
     func initTitleView() {
         titleView = StepsTitleView.getStepsTitleView(CGRectMake(0,0,190,50))
-        titleView?.setCalendarButtonTitle(CVDate(date: NSDate()).globalDescription)
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMMM"
+        let dateString = "\(formatter.stringFromDate(NSDate())), \(NSDate().day)"
+        titleView?.setCalendarButtonTitle(dateString)
         self.navigationItem.titleView = titleView
         titleView!.buttonResultHandler = { result -> Void in
             NSLog("selected title button")
@@ -134,6 +137,7 @@ extension StepsViewController {
         let view = self.view.viewWithTag(CALENDAR_VIEW_TAG)
         if(view == nil) {
             let calendarBackGroundView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,self.view.frame.size.height))
+            calendarBackGroundView.alpha = 0
             calendarBackGroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
             calendarBackGroundView.tag = CALENDAR_VIEW_TAG
             
@@ -162,9 +166,14 @@ extension StepsViewController {
             // Commit frames' updates
             self.calendarView!.commitCalendarViewUpdate()
             self.menuView!.commitMenuViewUpdate()
+            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                calendarBackGroundView.alpha = 1
+            }) { (finish) in
+
+            }
         }else {
             view?.hidden = false
-            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 view?.alpha = 1
             }) { (finish) in
 
@@ -178,7 +187,7 @@ extension StepsViewController {
     func dismissCalendar() {
         let view = self.view.viewWithTag(CALENDAR_VIEW_TAG)
         if(view != nil) {
-            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 view?.alpha = 0
             }) { (finish) in
                 view?.hidden = true
@@ -224,81 +233,18 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     func presentedDateUpdated(date: CVDate) {
-        titleView?.setCalendarButtonTitle(date.globalDescription)
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMMM"
+        let dateString = "\(formatter.stringFromDate(date.convertedDate()!)), \(date.day)"
+        titleView?.setCalendarButtonTitle(dateString)
     }
 
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
         return true
     }
 
-    func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
-        let day = dayView.date.day
-        let randomDay = Int(arc4random_uniform(31))
-        if day == randomDay {
-            return true
-        }
-
-        return false
-    }
-
-    func dotMarker(colorOnDayView dayView: CVCalendarDayView) -> [UIColor] {
-
-        let red = CGFloat(arc4random_uniform(600) / 255)
-        let green = CGFloat(arc4random_uniform(600) / 255)
-        let blue = CGFloat(arc4random_uniform(600) / 255)
-
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
-
-        let numberOfDots = Int(arc4random_uniform(3) + 1)
-        switch(numberOfDots) {
-        case 2:
-            return [color, color]
-        case 3:
-            return [color, color, color]
-        default:
-            return [color] // return 1 dot
-        }
-    }
-
-    func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
-        return true
-    }
-
-    func dotMarker(sizeOnDayView dayView: DayView) -> CGFloat {
-        return 13
-    }
-
     func weekdaySymbolType() -> WeekdaySymbolType {
-        return .Short
-    }
-
-    func selectionViewPath() -> ((CGRect) -> (UIBezierPath)) {
-        return { UIBezierPath(rect: CGRectMake(0, 0, $0.width, $0.height)) }
-    }
-
-    func shouldShowCustomSingleSelection() -> Bool {
-        return false
-    }
-
-    func preliminaryView(viewOnDayView dayView: DayView) -> UIView {
-        let circleView = CVAuxiliaryView(dayView: dayView, rect: dayView.bounds, shape: CVShape.Circle)
-        circleView.fillColor = .colorFromCode(0xCCCCCC)
-        return circleView
-    }
-
-    func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
-        if (dayView.isCurrentDay) {
-            return true
-        }
-        return false
-    }
-
-    func supplementaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
-        if (Int(arc4random_uniform(3)) == 1) {
-            return true
-        }
-
-        return false
+        return .VeryShort
     }
 }
 
