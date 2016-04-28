@@ -222,10 +222,13 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         return .Sunday
     }
 
+    func dayOfWeekTextUppercase() -> Bool {
+        return false
+    }
     // MARK: Optional methods
 
     func shouldShowWeekdaysOut() -> Bool {
-        return true
+        return false
     }
 
     func shouldAnimateResizing() -> Bool {
@@ -245,11 +248,15 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
-        return true
+        return false
     }
 
     func weekdaySymbolType() -> WeekdaySymbolType {
         return .VeryShort
+    }
+
+    func shouldShowCustomSingleSelection() -> Bool {
+        return false
     }
 }
 
@@ -264,11 +271,7 @@ extension StepsViewController: CVCalendarViewAppearanceDelegate {
     }
 
     func dayLabelWeekdayInTextColor() -> UIColor {
-        return UIColor.grayColor()
-    }
-
-    func dayLabelWeekdayOutTextColor() -> UIColor {
-        return UIColor.whiteColor()
+        return UIColor(rgba: "#676767")
     }
 
     func dayLabelWeekdaySelectedBackgroundColor() -> UIColor {
