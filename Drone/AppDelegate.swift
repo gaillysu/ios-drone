@@ -115,8 +115,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func rootTabbarController() {
-        let nav:UINavigationController = UINavigationController(rootViewController: MenuViewController())
-        self.window?.rootViewController = nav
+        let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
+        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
+        self.window?.rootViewController = navigationController
     }
     
     // MARK: -AppDelegate SET Function

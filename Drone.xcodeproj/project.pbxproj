@@ -62,8 +62,8 @@
 		00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */; };
 		00982C011C868C8A003DA5E2 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC41C868C89003DA5E2 /* GoalView.swift */; };
 		00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC71C868C89003DA5E2 /* ProfileSetupViewController.xib */; };
-		00982C041C868C8A003DA5E2 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC91C868C89003DA5E2 /* RegisterController.swift */; };
-		00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ACA1C868C89003DA5E2 /* RegisterController.xib */; };
+		00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC91C868C89003DA5E2 /* RegisterViewController.swift */; };
+		00982C051C868C8A003DA5E2 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ACA1C868C89003DA5E2 /* RegisterViewController.xib */; };
 		00982C071C868C8A003DA5E2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ACE1C868C89003DA5E2 /* SettingsViewController.swift */; };
 		00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AD11C868C89003DA5E2 /* queryTableviewCell.swift */; };
 		00982C091C868C8A003DA5E2 /* queryTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AD21C868C89003DA5E2 /* queryTableviewCell.xib */; };
@@ -265,8 +265,8 @@
 		00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalTableViewCell.xib; sourceTree = "<group>"; };
 		00982AC41C868C89003DA5E2 /* GoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		00982AC71C868C89003DA5E2 /* ProfileSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSetupViewController.xib; sourceTree = "<group>"; };
-		00982AC91C868C89003DA5E2 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
-		00982ACA1C868C89003DA5E2 /* RegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterController.xib; sourceTree = "<group>"; };
+		00982AC91C868C89003DA5E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		00982ACA1C868C89003DA5E2 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		00982ACE1C868C89003DA5E2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		00982AD11C868C89003DA5E2 /* queryTableviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = queryTableviewCell.swift; sourceTree = "<group>"; };
 		00982AD21C868C89003DA5E2 /* queryTableviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = queryTableviewCell.xib; sourceTree = "<group>"; };
@@ -559,7 +559,7 @@
 				00982AAC1C868C89003DA5E2 /* MyWatchController */,
 				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
 				CBD6BD241CD0997E0009F39A /* ProfileViewController */,
-				00982AC81C868C89003DA5E2 /* RegisterController */,
+				00982AC81C868C89003DA5E2 /* RegisterViewController */,
 				00982ACB1C868C89003DA5E2 /* SettingsViewController */,
 				CBD6BD181CD0525D0009F39A /* SleepViewController */,
 				CBD6BD131CD04D310009F39A /* SplashScreenViewController */,
@@ -634,12 +634,13 @@
 			path = ProfileController;
 			sourceTree = "<group>";
 		};
-		00982AC81C868C89003DA5E2 /* RegisterController */ = {
+		00982AC81C868C89003DA5E2 /* RegisterViewController */ = {
 			isa = PBXGroup;
 			children = (
-				00982AC91C868C89003DA5E2 /* RegisterController.swift */,
-				00982ACA1C868C89003DA5E2 /* RegisterController.xib */,
+				00982AC91C868C89003DA5E2 /* RegisterViewController.swift */,
+				00982ACA1C868C89003DA5E2 /* RegisterViewController.xib */,
 			);
+			name = RegisterViewController;
 			path = RegisterController;
 			sourceTree = "<group>";
 		};
@@ -1330,7 +1331,7 @@
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
 				0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */,
 				006F942E1CC9B8A60073C150 /* AnalysisViewController.xib in Resources */,
-				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
+				00982C051C868C8A003DA5E2 /* RegisterViewController.xib in Resources */,
 				CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
 				0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */,
@@ -1535,7 +1536,7 @@
 				00982C1D1C868C8A003DA5E2 /* DailySteps.swift in Sources */,
 				00982C411C868C8A003DA5E2 /* WaterWaveView.m in Sources */,
 				00982BFF1C868C8A003DA5E2 /* GoalTableViewCell.swift in Sources */,
-				00982C041C868C8A003DA5E2 /* RegisterController.swift in Sources */,
+				00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */,
 				00F1AF491CACD82600CB9A15 /* BuddyViewController.swift in Sources */,
 				0043FBE41CA12A6D00638BD1 /* GetNotificationRequest.swift in Sources */,
 				00982C551C868C8A003DA5E2 /* SetWorldClockRequest.swift in Sources */,

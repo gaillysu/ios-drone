@@ -44,12 +44,12 @@ class WelcomeViewController: UIViewController {
 
     @IBAction func buttonActionManager(sender: AnyObject) {
         if loginB.isEqual(sender) {
-            let logoin:LoginController = LoginController()
+            let logoin:LoginViewController = LoginViewController()
             self.navigationController?.pushViewController(logoin, animated: true)
         }
 
         if registB.isEqual(sender) {
-            let register:RegisterController = RegisterController()
+            let register:RegisterViewController = RegisterViewController()
             self.navigationController?.pushViewController(register, animated: true)
         }
     }

@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     var passwordT: AutocompleteField?
 
     init() {
-        super.init(nibName: "LoginController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "LoginViewController", bundle: NSBundle.mainBundle())
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -37,13 +37,6 @@ class LoginViewController: UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
-        let button = UIButton(type: UIButtonType.RoundedRect)
-        button.frame = CGRectMake(20, 50, 100, 30)
-        button.setTitle("Crash", forState: UIControlState.Normal)
-        button.addTarget(self, action: "crashButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
-        view.addSubview(button)
-
-
         if (usernameT == nil) {
             usernameT = AutocompleteField(frame: CGRectMake(0, 0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
             usernameT!.padding = 15.0
@@ -87,9 +80,5 @@ class LoginViewController: UIViewController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         usernameT?.resignFirstResponder()
         passwordT?.resignFirstResponder()
-    }
-    
-    @IBAction func crashButtonTapped(sender: AnyObject) {
-        Crashlytics.sharedInstance().crash()
     }
 }

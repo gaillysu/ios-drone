@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterController" customModule="Drone" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="Drone" customModuleProvider="target">
             <connections>
                 <outlet property="backB" destination="m1G-bw-OwK" id="g76-XF-j1c"/>
                 <outlet property="facebookB" destination="jDp-yz-ebe" id="Rzm-7f-brA"/>

@@ -9,7 +9,7 @@
 import UIKit
 import AutocompleteField
 
-class RegisterController: BaseViewController {
+class RegisterViewController: BaseViewController {
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!
     @IBOutlet weak var textfiledBG: UIView!
@@ -22,7 +22,7 @@ class RegisterController: BaseViewController {
     var passwordT: AutocompleteField!
 
     init() {
-        super.init(nibName: "RegisterController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "RegisterViewController", bundle: NSBundle.mainBundle())
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -52,7 +52,7 @@ class RegisterController: BaseViewController {
             let displaypassword:UIButton = UIButton(type: UIButtonType.Custom)
             displaypassword.frame = CGRectMake(0, 0, 30, 30)
             displaypassword.setImage(UIImage(named: "check"), forState: UIControlState.Normal)
-            displaypassword.addTarget(self, action: #selector(RegisterController.displayPasswordAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            displaypassword.addTarget(self, action: #selector(RegisterViewController.displayPasswordAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             passwordT.rightViewMode = UITextFieldViewMode.Always
             passwordT.rightView = displaypassword
         }
