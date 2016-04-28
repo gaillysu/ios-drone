@@ -8,6 +8,7 @@
 
 import Foundation
 import AudioToolbox
+import RegexKitLite
 
 /**
 This class holds all app-wide constants.
@@ -504,5 +505,17 @@ class AppTheme {
             debugPrint("error in opening directory path: \(firmwaresDirectoryPath)");
             return NSArray()
         }
+    }
+
+    class func isEmail(email:String)->Bool{
+        return email.isMatchedByRegex("w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*")
+    }
+
+    class func isPassword(password:String)->Bool{
+        return password.isMatchedByRegex("^[a-zA-Z]w{5,17}$")
+    }
+
+    class func isNull(object:String)->Bool{
+        return object.isEmpty
     }
 }

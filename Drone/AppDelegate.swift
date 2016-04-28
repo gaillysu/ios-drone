@@ -54,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         
         self.window?.rootViewController = SplashScreenViewController()
         self.window?.makeKeyAndVisible()
-
         return true
 
     }

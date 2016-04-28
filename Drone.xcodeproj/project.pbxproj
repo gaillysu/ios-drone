@@ -11,6 +11,8 @@
 		0015CA501CBC835900820B1F /* UserDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA4F1CBC835900820B1F /* UserDevice.swift */; };
 		0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */; };
 		0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */; };
+		00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00233D4C1CBB43C200824E64 /* XCGLogger.framework */; };
+		0024C0FB1CB73A7C00E0A23D /* UserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FA1CB73A7C00E0A23D /* UserProfileModel.swift */; };
 		0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */; };
 		0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028F1401C97C08000C8E742 /* EventBusKeys.swift */; };
 		0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043FBE11CA11C9800638BD1 /* SetNotificationRequest.swift */; };
@@ -89,7 +91,6 @@
 		00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B031C868C89003DA5E2 /* StepsModel.swift */; };
 		00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B041C868C89003DA5E2 /* UserProfile.swift */; };
 		00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B051C868C89003DA5E2 /* UserAlarm.swift */; };
-		00982C301C868C8A003DA5E2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B061C868C89003DA5E2 /* UserModel.swift */; };
 		00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B081C868C89003DA5E2 /* UserSleep.swift */; };
 		00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B091C868C89003DA5E2 /* UserSteps.swift */; };
 		00982C341C868C8A003DA5E2 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B0B1C868C89003DA5E2 /* Goal.swift */; };
@@ -146,6 +147,10 @@
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		009D89D11CD0C457004E914A /* WorldClockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D89CF1CD0C457004E914A /* WorldClockHeader.swift */; };
 		009D89D21CD0C457004E914A /* WorldClockHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009D89D01CD0C457004E914A /* WorldClockHeader.xib */; };
+		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		00CE42601CD1F9D3002D1321 /* BRYXBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE425E1CD1F9D3002D1321 /* BRYXBanner.framework */; };
+		00CE42611CD1F9D3002D1321 /* RegexKitLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */; };
+		00CE42631CD20839002D1321 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE42621CD20839002D1321 /* SwiftyJSON.framework */; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
 		00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */; };
 		00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */; };
@@ -206,6 +211,8 @@
 		0015CA4F1CBC835900820B1F /* UserDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDevice.swift; sourceTree = "<group>"; };
 		0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemEventPacket.swift; sourceTree = "<group>"; };
 		0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfileModel.swift; sourceTree = "<group>"; };
+		00233D4C1CBB43C200824E64 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "Pods/../build/Debug-iphoneos/XCGLogger.framework"; sourceTree = "<group>"; };
+		0024C0FA1CB73A7C00E0A23D /* UserProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
 		0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabaseHelper.swift; sourceTree = "<group>"; };
 		0028F1401C97C08000C8E742 /* EventBusKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusKeys.swift; sourceTree = "<group>"; };
 		0043FBE11CA11C9800638BD1 /* SetNotificationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNotificationRequest.swift; sourceTree = "<group>"; };
@@ -290,7 +297,6 @@
 		00982B031C868C89003DA5E2 /* StepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
 		00982B041C868C89003DA5E2 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		00982B051C868C89003DA5E2 /* UserAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAlarm.swift; sourceTree = "<group>"; };
-		00982B061C868C89003DA5E2 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		00982B081C868C89003DA5E2 /* UserSleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSleep.swift; sourceTree = "<group>"; };
 		00982B091C868C89003DA5E2 /* UserSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSteps.swift; sourceTree = "<group>"; };
 		00982B0B1C868C89003DA5E2 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
@@ -351,6 +357,10 @@
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		009D89CF1CD0C457004E914A /* WorldClockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockHeader.swift; sourceTree = "<group>"; };
 		009D89D01CD0C457004E914A /* WorldClockHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockHeader.xib; sourceTree = "<group>"; };
+		00BC14971C9292DE00E43F44 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Pods/../build/Debug-iphoneos/Timepiece.framework"; sourceTree = "<group>"; };
+		00CE425E1CD1F9D3002D1321 /* BRYXBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BRYXBanner.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/BRYXBanner.framework"; sourceTree = "<group>"; };
+		00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RegexKitLite.framework; path = "Pods/../build/Debug-iphoneos/RegexKitLite.framework"; sourceTree = "<group>"; };
+		00CE42621CD20839002D1321 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
 		00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
 		00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
@@ -407,6 +417,9 @@
 				CB0B46B61CCF229400411997 /* Timepiece.framework in Frameworks */,
 				CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */,
 				CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */,
+				00CE42631CD20839002D1321 /* SwiftyJSON.framework in Frameworks */,
+				00CE42601CD1F9D3002D1321 /* BRYXBanner.framework in Frameworks */,
+				00CE42611CD1F9D3002D1321 /* RegexKitLite.framework in Frameworks */,
 				CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */,
 				0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */,
 				CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */,
@@ -780,12 +793,11 @@
 				00982B011C868C89003DA5E2 /* GoalModel.swift */,
 				00982B021C868C89003DA5E2 /* SleepModel.swift */,
 				00982B031C868C89003DA5E2 /* StepsModel.swift */,
-				0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */,
+				0024C0FA1CB73A7C00E0A23D /* UserProfileModel.swift */,
 				0015CA4D1CBC830C00820B1F /* DeviceModel.swift */,
 				00982B041C868C89003DA5E2 /* UserProfile.swift */,
 				00982B001C868C89003DA5E2 /* UserGoal.swift */,
 				00982B051C868C89003DA5E2 /* UserAlarm.swift */,
-				00982B061C868C89003DA5E2 /* UserModel.swift */,
 				00982B081C868C89003DA5E2 /* UserSleep.swift */,
 				00982B091C868C89003DA5E2 /* UserSteps.swift */,
 				0015CA4F1CBC835900820B1F /* UserDevice.swift */,
@@ -1094,6 +1106,9 @@
 				CB0B46A91CCF229400411997 /* XCGLogger.framework */,
 				CB0B46981CCF223500411997 /* Fabric.framework */,
 				CB0B46991CCF223500411997 /* Crashlytics.framework */,
+				00CE42621CD20839002D1321 /* SwiftyJSON.framework */,
+				00CE425E1CD1F9D3002D1321 /* BRYXBanner.framework */,
+				00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */,
 				CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */,
 				3551B5D0AAFC39213D5071A3 /* Pods.framework */,
 			);
@@ -1512,7 +1527,7 @@
 				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */,
 				00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */,
-				0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */,
+				0024C0FB1CB73A7C00E0A23D /* UserProfileModel.swift in Sources */,
 				00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */,
 				00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */,
 				00982C431C868C8A003DA5E2 /* ClockRefreshManager.swift in Sources */,
@@ -1524,7 +1539,6 @@
 				0043FBE41CA12A6D00638BD1 /* GetNotificationRequest.swift in Sources */,
 				00982C551C868C8A003DA5E2 /* SetWorldClockRequest.swift in Sources */,
 				005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */,
-				00982C301C868C8A003DA5E2 /* UserModel.swift in Sources */,
 				00982C371C868C8A003DA5E2 /* TestMode.swift in Sources */,
 				00982C011C868C8A003DA5E2 /* GoalView.swift in Sources */,
 				00982C491C868C8A003DA5E2 /* GetActivityRequest.swift in Sources */,

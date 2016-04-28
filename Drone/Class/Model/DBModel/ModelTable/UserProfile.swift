@@ -20,12 +20,9 @@ class UserProfile: NSObject {
     var stride_length:Int = 0
     var metricORimperial:Bool = false
     var created:NSTimeInterval = NSDate().timeIntervalSince1970
+    var email:String = ""
 
-    override init() {
-
-    }
-
-    private var profileModel:DroneProfileModel = DroneProfileModel()
+    private var profileModel:UserProfileModel = UserProfileModel()
 
     init(keyDict:NSDictionary) {
         super.init()
@@ -45,6 +42,7 @@ class UserProfile: NSObject {
         profileModel.stride_length = stride_length
         profileModel.metricORimperial = metricORimperial
         profileModel.created = created
+        profileModel.email = email
         profileModel.add { (id, completion) -> Void in
             result(id: id, completion: completion)
         }
@@ -62,6 +60,7 @@ class UserProfile: NSObject {
         profileModel.stride_length = stride_length
         profileModel.metricORimperial = metricORimperial
         profileModel.created = created
+        profileModel.email = email
         return profileModel.update()
     }
 
@@ -71,38 +70,38 @@ class UserProfile: NSObject {
     }
 
     class func removeAll()->Bool{
-        return DroneProfileModel.removeAll()
+        return UserProfileModel.removeAll()
     }
 
     class func getCriteria(criteria:String)->NSArray{
-        let modelArray:NSArray = DroneProfileModel.getCriteria(criteria)
+        let modelArray:NSArray = UserProfileModel.getCriteria(criteria)
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
-            let userProfileModel:DroneProfileModel = model as! DroneProfileModel
+            let userProfileModel:UserProfileModel = model as! UserProfileModel
 
-            let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"age":userProfileModel.age,"weight":userProfileModel.weight,"lenght":userProfileModel.lenght,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created])
+            let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"age":userProfileModel.age,"weight":userProfileModel.weight,"lenght":userProfileModel.lenght,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
             allArray.addObject(profile)
         }
         return allArray
     }
 
     class func getAll()->NSArray{
-        let modelArray:NSArray = DroneProfileModel.getAll()
+        let modelArray:NSArray = UserProfileModel.getAll()
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
-            let userProfileModel:DroneProfileModel = model as! DroneProfileModel
-            let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"age":userProfileModel.age,"weight":userProfileModel.weight,"lenght":userProfileModel.lenght,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created])
+            let userProfileModel:UserProfileModel = model as! UserProfileModel
+            let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"age":userProfileModel.age,"weight":userProfileModel.weight,"lenght":userProfileModel.lenght,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
             allArray.addObject(profile)
         }
         return allArray
     }
 
     class func isExistInTable()->Bool {
-        return DroneProfileModel.isExistInTable()
+        return UserProfileModel.isExistInTable()
     }
 
     class func updateTable()->Bool {
-        return DroneProfileModel.updateTable()
+        return UserProfileModel.updateTable()
     }
 
     /**

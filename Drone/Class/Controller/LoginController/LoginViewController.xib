@@ -7,14 +7,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
-                <outlet property="backB" destination="iCl-aF-ggh" id="qdU-D6-8vU"/>
-                <outlet property="facebookB" destination="l0I-3f-jKR" id="4Cb-Xt-K3j"/>
-                <outlet property="googleB" destination="Kap-Hl-5xE" id="WyH-DB-PXp"/>
-                <outlet property="loginL" destination="AKx-OS-oVj" id="yar-WC-HS6"/>
+                <outlet property="backButton" destination="iCl-aF-ggh" id="43M-tI-1Iw"/>
+                <outlet property="facebookButton" destination="l0I-3f-jKR" id="R8f-lN-gb0"/>
+                <outlet property="googleButton" destination="Kap-Hl-5xE" id="gzZ-6k-f0e"/>
+                <outlet property="loginLabel" destination="AKx-OS-oVj" id="0Vm-CU-MJ5"/>
                 <outlet property="logoImage" destination="2xJ-V4-kxN" id="feT-Tl-gfM"/>
-                <outlet property="nextB" destination="xCo-fV-REr" id="Dg2-Uz-FrM"/>
+                <outlet property="nextButton" destination="xCo-fV-REr" id="Mcy-ge-jLA"/>
                 <outlet property="textfiledBG" destination="Lmc-MZ-qDA" id="ty4-WC-qe2"/>
-                <outlet property="twitterB" destination="jTO-bi-GJE" id="lbV-h7-4dY"/>
+                <outlet property="twitterButton" destination="jTO-bi-GJE" id="HwK-N2-Drn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
