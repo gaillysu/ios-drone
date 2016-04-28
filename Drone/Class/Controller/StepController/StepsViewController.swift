@@ -138,7 +138,7 @@ extension StepsViewController {
         if(view == nil) {
             let calendarBackGroundView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,self.view.frame.size.height))
             calendarBackGroundView.alpha = 0
-            calendarBackGroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+            calendarBackGroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
             calendarBackGroundView.tag = CALENDAR_VIEW_TAG
             
             let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StepsViewController.tapAction(_:)))
@@ -146,31 +146,36 @@ extension StepsViewController {
             self.view.addSubview(calendarBackGroundView)
 
             let fillView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,275))
-            fillView.backgroundColor = UIColor.init(colorLiteralRed: 36/255.0, green: 135/255.0, blue: 163/255.0, alpha: 1).colorWithAlphaComponent(1)
+            fillView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             calendarBackGroundView.addSubview(fillView)
 
             self.menuView = CVCalendarMenuView(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.size.width - 20, 20))
-            self.menuView?.dayOfWeekTextColor = UIColor.whiteColor()
-            self.menuView?.backgroundColor = UIColor.init(colorLiteralRed: 36/255.0, green: 135/255.0, blue: 163/255.0, alpha: 1).colorWithAlphaComponent(1)
+            self.menuView?.dayOfWeekTextColor = UIColor.grayColor()
+            self.menuView?.dayOfWeekFont = UIFont.systemFontOfSize(15)
+            //dayOfWeekFont
+            self.menuView?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             self.menuView!.menuViewDelegate = self
             fillView.addSubview(menuView!)
 
             // CVCalendarView initialization with frame
             self.calendarView = CVCalendarView(frame: CGRectMake(10, 23, UIScreen.mainScreen().bounds.size.width - 20, 250))
-            self.calendarView?.backgroundColor = UIColor.init(colorLiteralRed: 36/255.0, green: 135/255.0, blue: 163/255.0, alpha: 1).colorWithAlphaComponent(1)
+            self.calendarView?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             calendarView?.hidden = false
             fillView.addSubview(calendarView!)
             self.calendarView!.calendarAppearanceDelegate = self
             self.calendarView!.animatorDelegate = self
             self.calendarView!.calendarDelegate = self
+
             // Commit frames' updates
             self.calendarView!.commitCalendarViewUpdate()
             self.menuView!.commitMenuViewUpdate()
+
             UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 calendarBackGroundView.alpha = 1
             }) { (finish) in
 
             }
+
         }else {
             view?.hidden = false
             UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
@@ -220,7 +225,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     // MARK: Optional methods
 
     func shouldShowWeekdaysOut() -> Bool {
-        return shouldShowDaysOut
+        return true
     }
 
     func shouldAnimateResizing() -> Bool {
@@ -256,5 +261,17 @@ extension StepsViewController: CVCalendarViewAppearanceDelegate {
 
     func spaceBetweenDayViews() -> CGFloat {
         return 2
+    }
+
+    func dayLabelWeekdayInTextColor() -> UIColor {
+        return UIColor.grayColor()
+    }
+
+    func dayLabelWeekdayOutTextColor() -> UIColor {
+        return UIColor.whiteColor()
+    }
+
+    func dayLabelWeekdaySelectedBackgroundColor() -> UIColor {
+        return UIColor(rgba: "#55028C")
     }
 }
