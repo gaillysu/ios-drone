@@ -45,13 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
+
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
+
         log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
-        
         self.window?.rootViewController = SplashScreenViewController()
         self.window?.makeKeyAndVisible()
 
