@@ -64,7 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         nav.navigationBarHidden = true
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
-
         return true
 
     }
@@ -108,20 +107,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         }
         let dbpath:String = docsdir.stringByAppendingString(DRONEDBNAME)
         return dbpath;
-    }
-
-    func getRequestNetwork(requestURL:String,parameters:AnyObject,resultHandler:((result:AnyObject?,error:NSError?) -> Void)){
-        Alamofire.request(Method.POST, requestURL, parameters: parameters as? [String : AnyObject]).responseJSON { (response) -> Void in
-            if response.result.isSuccess {
-                NSLog("getJSON: \(response.result.value)")
-                resultHandler(result: response.result.value, error: nil)
-            }else if (response.result.isFailure){
-                resultHandler(result: response.result.value, error: nil)
-            }else{
-                resultHandler(result: nil, error: nil)
-            }
-        }
-        
     }
 
     // MARK: -AppDelegate SET Function

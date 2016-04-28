@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (3.2.1)
   - AutocompleteField (1.1)
+  - BRYXBanner (0.5.2):
+    - BRYXBanner/Core (= 0.5.2)
+  - BRYXBanner/Core (0.5.2)
   - Charts (2.2.3):
     - Charts/Core (= 2.2.3)
   - Charts/Core (2.2.3)
@@ -10,6 +13,7 @@ PODS:
   - FMDB/standard (2.6)
   - GSMessages (1.2.0)
   - NVActivityIndicatorView (2.3)
+  - RegexKitLite (4.0)
   - SDCycleScrollView (1.62):
     - SDWebImage (~> 3.7)
   - SDWebImage (3.7.5):
@@ -17,6 +21,7 @@ PODS:
   - SDWebImage/Core (3.7.5)
   - SMSegmentView (1.1)
   - SwiftEventBus (1.1.0)
+  - SwiftyJSON (2.3.2)
   - TextFieldEffects (1.1.1)
   - Timepiece (0.4.2)
   - UIColor_Hex_Swift (2.1)
@@ -26,14 +31,17 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - AutocompleteField (~> 1.1)
+  - BRYXBanner
   - Charts
   - CircleProgressView (from `https://github.com/CardinalNow/iOS-CircleProgressView.git`)
   - FMDB
   - GSMessages
   - NVActivityIndicatorView
+  - RegexKitLite
   - SDCycleScrollView (~> 1.3)
   - SMSegmentView (~> 1.1)
   - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - TextFieldEffects
   - Timepiece
   - UIColor_Hex_Swift (~> 2.1)
@@ -45,6 +53,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/CardinalNow/iOS-CircleProgressView.git
   SwiftEventBus:
     :git: https://github.com/cesarferreira/SwiftEventBus.git
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
   CircleProgressView:
@@ -53,19 +63,25 @@ CHECKOUT OPTIONS:
   SwiftEventBus:
     :commit: 4b8cbb5a8227b3c29af75e0416689d26178733d8
     :git: https://github.com/cesarferreira/SwiftEventBus.git
+  SwiftyJSON:
+    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
   AutocompleteField: 212b36bef0218f22c05d80035be2d382acd5a4e2
+  BRYXBanner: 5f0911d52e0a77e088f7ea7ddcdebd02afb7828a
   Charts: f54267bb3f0f0e74520c6f248517cf5074dfd6fc
   CircleProgressView: fb5cd84be2abd908459d8dd087d94c4bdb7e60cf
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   GSMessages: 92a2aadb81bd7505e7375d7f70a58a2f49eb6e25
   NVActivityIndicatorView: c7ef25ef527ab5e51b00322cb1ddd58681bcf2a3
+  RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SDCycleScrollView: ae016cb4cc4036523917f146ede6f7b11d408f6a
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SMSegmentView: a99862f36ea73478558ae665c209cb80c0d4f059
   SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TextFieldEffects: a1a78efeb93b65c611ad287b28a068c9a4a5f5b4
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c

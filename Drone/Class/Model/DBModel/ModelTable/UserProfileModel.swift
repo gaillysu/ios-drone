@@ -9,7 +9,7 @@
 import UIKit
 import FMDB
 
-class DroneProfileModel: UserDatabaseHelper {
+class UserProfileModel: UserDatabaseHelper {
     
     var first_name:String = ""
     var last_name:String = ""
@@ -21,6 +21,7 @@ class DroneProfileModel: UserDatabaseHelper {
     var stride_length:Int = 0
     var metricORimperial:Bool = false
     var created:NSTimeInterval = NSDate().timeIntervalSince1970
+    var email:String = ""
 
     override init() {
         super.init()
@@ -42,7 +43,7 @@ class DroneProfileModel: UserDatabaseHelper {
             let sql:String = "SELECT * FROM \(tableName) \(criteria)"
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
-                let model:DroneProfileModel = DroneProfileModel()
+                let model:UserProfileModel = UserProfileModel()
 
                 for i:Int in 0 ..< model.columeNames.count {
                     let columeName:NSString = (model.columeNames.objectAtIndex(i) as! NSString)
@@ -73,7 +74,7 @@ class DroneProfileModel: UserDatabaseHelper {
             let sql:String = "SELECT * FROM \(tableName)"
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
-                let model:DroneProfileModel = DroneProfileModel()
+                let model:UserProfileModel = UserProfileModel()
 
                 for i:Int in 0 ..< model.columeNames.count {
                     let columeName:NSString = model.columeNames.objectAtIndex(i) as! NSString

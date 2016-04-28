@@ -195,7 +195,7 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         let keyString:NSMutableString = NSMutableString()
         let valueString:NSMutableString = NSMutableString()
         let insertValues:NSMutableArray = NSMutableArray()
-        for (var i:Int = 0; i < self.columeNames.count; i++) {
+        for i:Int in 0 ..< self.columeNames.count {
             let proname:NSString = self.columeNames.objectAtIndex(i) as! NSString
             if (proname.isEqualToString(primaryId)) {
                 continue;
