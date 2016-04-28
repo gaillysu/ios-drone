@@ -26,6 +26,21 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     @IBOutlet weak var barChart: BarChartView!
     @IBOutlet weak var percentageLabel: UILabel!
 
+    @IBOutlet weak var thisWeekMiles: UILabel!
+    @IBOutlet weak var thisWeekCalories: UILabel!
+    @IBOutlet weak var thisWeekActiveTime: UILabel!
+    @IBOutlet weak var thisWeekChart: LineChartView!
+    
+    @IBOutlet weak var lastWeekCalories: UILabel!
+    @IBOutlet weak var lastWeekMiles: UILabel!
+    @IBOutlet weak var lastWeekActiveTime: UILabel!
+    @IBOutlet weak var lastWeekChart: LineChartView!
+    
+    @IBOutlet weak var lastMonthChart: LineChartView!
+    @IBOutlet weak var lastMonthActiveTime: UILabel!
+    @IBOutlet weak var lastMonthMiles: UILabel!
+    @IBOutlet weak var lastMonthCalories: UILabel!
+    
     var shouldShowDaysOut = true
     var animationFinished = true
     var selectedDay:DayView?

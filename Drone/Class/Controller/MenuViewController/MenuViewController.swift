@@ -20,7 +20,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
         self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activities", image: UIImage(named: "icon_activities")!));
-        self.menuItems.append(MenuItem(controller: AnalysisViewController(), title: "Analysis",image: UIImage(named: "icon_activities")!));
         let sleepItem = MenuItem(controller: SleepViewController(), title: "Sleep",image: UIImage(named: "icon_sleep")!)
         sleepItem.commingSoon = true;
         self.menuItems.append(sleepItem);
