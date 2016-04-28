@@ -52,9 +52,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STEPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jxa-Yw-Rux">
-                                                    <rect key="frame" x="0.0" y="71" width="256" height="29"/>
+                                                    <rect key="frame" x="51" y="71" width="155" height="29"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="256" id="q6s-ws-3Bk"/>
+                                                        <constraint firstAttribute="width" constant="155" id="q6s-ws-3Bk"/>
                                                         <constraint firstAttribute="height" constant="29" id="wcf-4b-Dw2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
@@ -62,9 +62,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2j-Z4-I7O">
-                                                    <rect key="frame" x="0.0" y="102" width="256" height="52"/>
+                                                    <rect key="frame" x="53" y="102" width="150" height="52"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="256" id="cao-0F-znv"/>
+                                                        <constraint firstAttribute="width" constant="150" id="cao-0F-znv"/>
                                                         <constraint firstAttribute="height" constant="52" id="tpx-gs-wd1"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="45"/>
@@ -72,9 +72,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hx-LZ-YH3">
-                                                    <rect key="frame" x="0.0" y="159" width="256" height="23"/>
+                                                    <rect key="frame" x="63" y="159" width="130" height="23"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="256" id="j3a-HJ-Cvu"/>
+                                                        <constraint firstAttribute="width" constant="130" id="j3a-HJ-Cvu"/>
                                                         <constraint firstAttribute="height" constant="23" id="wSq-PL-wUN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
@@ -86,11 +86,17 @@
                                             <constraints>
                                                 <constraint firstItem="Jxa-Yw-Rux" firstAttribute="centerX" secondItem="KXb-V1-vWc" secondAttribute="centerX" id="8Ab-CE-yzb"/>
                                                 <constraint firstItem="6hx-LZ-YH3" firstAttribute="centerX" secondItem="KXb-V1-vWc" secondAttribute="centerX" id="Blj-gL-8g3"/>
-                                                <constraint firstItem="j2j-Z4-I7O" firstAttribute="centerX" secondItem="KXb-V1-vWc" secondAttribute="centerX" id="NYc-rT-Izs"/>
+                                                <constraint firstItem="j2j-Z4-I7O" firstAttribute="centerX" secondItem="KXb-V1-vWc" secondAttribute="centerX" id="Kmj-m8-OXs"/>
+                                                <constraint firstItem="j2j-Z4-I7O" firstAttribute="centerX" secondItem="KXb-V1-vWc" secondAttribute="centerX" constant="-53" id="NYc-rT-Izs"/>
                                                 <constraint firstItem="6hx-LZ-YH3" firstAttribute="top" secondItem="j2j-Z4-I7O" secondAttribute="bottom" constant="5" id="Ttk-al-2Yf"/>
                                                 <constraint firstItem="j2j-Z4-I7O" firstAttribute="top" secondItem="Jxa-Yw-Rux" secondAttribute="bottom" constant="2" id="Xh7-Oe-oQF"/>
                                                 <constraint firstItem="j2j-Z4-I7O" firstAttribute="centerY" secondItem="KXb-V1-vWc" secondAttribute="centerY" id="bKB-eE-Glf"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="NYc-rT-Izs"/>
+                                                </mask>
+                                            </variation>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
