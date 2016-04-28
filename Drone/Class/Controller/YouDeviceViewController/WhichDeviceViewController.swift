@@ -16,7 +16,7 @@ class WhichDeviceViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     init() {
-        super.init(nibName: "YouDeviceViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "WhichDeviceViewController", bundle: NSBundle.mainBundle())
     }
 
     required init(coder aDecoder: NSCoder) {

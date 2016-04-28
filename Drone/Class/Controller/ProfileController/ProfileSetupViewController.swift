@@ -26,7 +26,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITex
     var segmentView:SMSegmentView?
 
     init() {
-        super.init(nibName: "ProfileViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "ProfileSetupViewController", bundle: NSBundle.mainBundle())
     }
 
     required init(coder aDecoder: NSCoder) {

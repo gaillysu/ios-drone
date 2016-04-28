@@ -145,6 +145,8 @@
 		00982CE11C868FE6003DA5E2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CE01C868FE6003DA5E2 /* SettingsViewController.xib */; };
 		00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982CE51C8695AD003DA5E2 /* SetingView.swift */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
+		009D89D11CD0C457004E914A /* WorldClockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D89CF1CD0C457004E914A /* WorldClockHeader.swift */; };
+		009D89D21CD0C457004E914A /* WorldClockHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009D89D01CD0C457004E914A /* WorldClockHeader.xib */; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
 		00F1AF441CACD82600CB9A15 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3A1CACD82600CB9A15 /* AnalysisViewController.swift */; };
 		00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */; };
@@ -350,6 +352,8 @@
 		00982CE01C868FE6003DA5E2 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		00982CE51C8695AD003DA5E2 /* SetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetingView.swift; sourceTree = "<group>"; };
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		009D89CF1CD0C457004E914A /* WorldClockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockHeader.swift; sourceTree = "<group>"; };
+		009D89D01CD0C457004E914A /* WorldClockHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockHeader.xib; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
 		00F1AF3A1CACD82600CB9A15 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
@@ -545,7 +549,6 @@
 			children = (
 				00F1AF3C1CACD82600CB9A15 /* AddDeviceViewController */,
 				005699D11CD05A690097938E /* ChooseCityController */,
-				CBA06BED1C8EC27E00E3257B /* AddWorldClockController */,
 				00F1AF391CACD82600CB9A15 /* AnalysisViewController */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
 				00F1AF411CACD82600CB9A15 /* BuddyViewController */,
@@ -711,10 +714,10 @@
 		00982AE61C868C89003DA5E2 /* WorldClockView */ = {
 			isa = PBXGroup;
 			children = (
+				009D89CF1CD0C457004E914A /* WorldClockHeader.swift */,
+				009D89D01CD0C457004E914A /* WorldClockHeader.xib */,
 				00982AE71C868C89003DA5E2 /* WorldClockCell.swift */,
 				00982AE81C868C89003DA5E2 /* WorldClockCell.xib */,
-				9E2E95821CCE16CE00B6671A /* WorldClockHeader.swift */,
-				9E2E95801CCE16BD00B6671A /* WorldClockHeader.xib */,
 			);
 			name = WorldClockView;
 			path = Controller/WorldClockController/View;
@@ -1310,6 +1313,7 @@
 				CBD6BD231CD097080009F39A /* GalleryViewController.xib in Resources */,
 				00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
+				009D89D21CD0C457004E914A /* WorldClockHeader.xib in Resources */,
 				00982BF01C868C8A003DA5E2 /* MyWatchController.xib in Resources */,
 				00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
@@ -1325,7 +1329,6 @@
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
 				0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */,
 				006F942E1CC9B8A60073C150 /* AnalysisViewController.xib in Resources */,
-				00982C171C868C8A003DA5E2 /* AddWorldClockController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterController.xib in Resources */,
 				CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
@@ -1449,7 +1452,6 @@
 				00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
 				00982BEF1C868C8A003DA5E2 /* MyWatchController.swift in Sources */,
-				00982C161C868C8A003DA5E2 /* AddWorldClockController.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
 				00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */,
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
@@ -1467,6 +1469,7 @@
 				00982C5C1C868C8A003DA5E2 /* NevoOTAPacketProfile.swift in Sources */,
 				00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */,
 				00982C4C1C868C8A003DA5E2 /* GetBatteryRequest.swift in Sources */,
+				009D89D11CD0C457004E914A /* WorldClockHeader.swift in Sources */,
 				00982C2B1C868C8A003DA5E2 /* GoalModel.swift in Sources */,
 				004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
@@ -1505,7 +1508,6 @@
 				00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */,
-				9E2E95831CCE16CE00B6671A /* WorldClockHeader.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
 				CBD6BD1C1CD052C30009F39A /* SleepViewController.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,

@@ -18,7 +18,7 @@ class WelcomeViewController: UIViewController {
 
 
     init() {
-        super.init(nibName: "HomeViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "WelcomeViewController", bundle: NSBundle.mainBundle())
     }
 
     required init(coder aDecoder: NSCoder) {

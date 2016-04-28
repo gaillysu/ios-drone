@@ -12,7 +12,7 @@ class ConnectionSetupViewController: UIViewController {
 
     @IBOutlet weak var nextB: UIButton!
     init() {
-        super.init(nibName: "ConnectionViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "ConnectionSetupViewController", bundle: NSBundle.mainBundle())
     }
 
     required init(coder aDecoder: NSCoder) {
