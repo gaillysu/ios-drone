@@ -18,6 +18,7 @@ let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
 private let CALENDAR_VIEW_TAG = 1800
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
+    @IBOutlet var mainview: UIView!
     @IBOutlet weak var circleProgressView: CircleProgressView!
     // TODO eventbus: Steps, small & big sync
     @IBOutlet weak var stepsLabel: UILabel!
@@ -43,12 +44,14 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.initTitleView()
+        self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
     }
 
     override func viewWillAppear(animated: Bool) {
+        
         barChart!.noDataText = "No History Available."
         barChart!.descriptionText = "";
         barChart!.pinchZoomEnabled = false
@@ -58,29 +61,55 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         let xAxis:ChartXAxis = barChart!.xAxis;
         xAxis.labelTextColor = UIColor.grayColor();
         xAxis.axisLineColor = UIColor.grayColor();
-        let yXaxis:ChartYAxis = barChart!.leftAxis;
-        yXaxis.labelTextColor = UIColor.grayColor();
-        yXaxis.axisLineColor = UIColor.grayColor();
-        barChart!.rightAxis.enabled = false;
-        barChart!.zoom(14, scaleY: 1, xIndex: 0, yValue: 0, axis: .Left);
-        // 14 is hard coded, should be 100 / 14 = 7, no mather what 100 is, 7 must come out.
+        xAxis.drawAxisLineEnabled = false;
+        xAxis.drawGridLinesEnabled = false;
         xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
+        
+        
+        let yAxis:ChartYAxis = barChart!.leftAxis;
+        yAxis.labelTextColor = UIColor.grayColor();
+        yAxis.axisLineColor = UIColor.clearColor();
+        yAxis.customAxisMin = 0;
+        yAxis.drawZeroLineEnabled = false;
+      
+        barChart!.rightAxis.enabled = false;
         let stepsArray: NSMutableArray = NSMutableArray();
         let now = NSDate();
-
-        for j in 0 ..< 100 {
-            let steps = Int(arc4random_uniform(6000) + 1000)
+        var mostSteps = 0;
+        for j in 0 ..< 25 {
+            let steps = Int(arc4random_uniform(4000))
+            if(mostSteps < steps){
+                mostSteps = steps
+            }
             let date:NSDate = now - j.day;
             stepsArray.addObject(UserSteps(keyDict:["id":j,"steps":steps,"distance":0,"date":(date.timeIntervalSince1970)]));
         }
-        // Need to get some Goal somewhere arround, for now Goal is 10000
+        if(mostSteps > 1000){
+            let remainingTillThousand = abs(1000 - (mostSteps % 1000));
+            let max = Double(mostSteps) + Double(remainingTillThousand)
+            yAxis.customAxisMax = max
+            if(max % 1000 == 0){
+                yAxis.setLabelCount((Int(max)/1000) + 1, force: true);
+            }else{
+                yAxis.setLabelCount((Int(max)/1000), force: true);
+            }
+        }else{
+            let remainingTillThousand = abs(100 - (mostSteps % 100));
+            let max = Double(mostSteps) + Double(remainingTillThousand)
+            yAxis.customAxisMax = max
+            if(max % 100 == 0){
+                yAxis.setLabelCount((Int(max)/100) + 1, force: true);
+            }else{
+                yAxis.setLabelCount((Int(max)/100), force: true);
+            }
+        }
+        
         let goal = 10000;
         let today:UserSteps = stepsArray[0] as! UserSteps
-        let percentage = (Double(today.steps)/Double(goal)) * 100
         circleProgressView.setProgress(Double(today.steps)/Double(goal), animated: true)
+        
         stepsLabel.text = String(format:"%d",today.steps)
         percentageLabel.text = String(format:"Goal: %d%",goal)
-
         
         barChart.drawBarShadowEnabled = false
         var xVals = [String]();
@@ -89,22 +118,25 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         for i in 0 ..< stepsArray.count {
             let steps:UserSteps = stepsArray[i] as! UserSteps
             yVals.append(BarChartDataEntry(value: Double(steps.steps), xIndex:i));
-            let dateOfSteps:NSDate = NSDate(timeIntervalSinceReferenceDate: steps.date)
-            let calendar = NSCalendar.currentCalendar()
-            let components = calendar.components([.Day, .Month], fromDate: dateOfSteps)
-            let day =  components.day
-            let month = components.month
-            xVals.append(String(format: "%d/%d", arguments: [day,month]));
+            if(i == 0 || i == 6 || i == 12 || i == 18 || i == 24){
+                xVals.append("\(i):00");
+            }else{
+                xVals.append("");
+            }
             let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "Steps")
             let dataSet = NSMutableArray()
             dataSet.addObject(barChartSet);
-            barChartSet.colors = [UIColor(rgba: "#66CCCC")]
-            barChartSet.highlightColor = UIColor(rgba: "#66CCCC")
+            barChartSet.colors = [UIColor(rgba: "#D19D42")]
+            barChartSet.highlightColor = UIColor(rgba: "#D19D42")
             barChartSet.valueColors = [UIColor.grayColor()]
             let barChartData = BarChartData(xVals: xVals, dataSet: barChartSet)
+            barChartData.setDrawValues(false);
             self.barChart.data = barChartData;
         }
+        barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
     }
+    
+
 
 }
 
@@ -137,23 +169,24 @@ extension StepsViewController {
             calendarBackGroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
             calendarBackGroundView.tag = CALENDAR_VIEW_TAG
             
+            
             let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StepsViewController.tapAction(_:)))
             calendarBackGroundView.addGestureRecognizer(tap)
             self.view.addSubview(calendarBackGroundView)
 
             let fillView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,275))
-            fillView.backgroundColor = UIColor.init(colorLiteralRed: 36/255.0, green: 135/255.0, blue: 163/255.0, alpha: 1).colorWithAlphaComponent(1)
+            fillView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             calendarBackGroundView.addSubview(fillView)
 
             self.menuView = CVCalendarMenuView(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.size.width - 20, 20))
             self.menuView?.dayOfWeekTextColor = UIColor.whiteColor()
-            self.menuView?.backgroundColor = UIColor.init(colorLiteralRed: 36/255.0, green: 135/255.0, blue: 163/255.0, alpha: 1).colorWithAlphaComponent(1)
+            self.menuView?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             self.menuView!.menuViewDelegate = self
             fillView.addSubview(menuView!)
 
             // CVCalendarView initialization with frame
             self.calendarView = CVCalendarView(frame: CGRectMake(10, 23, UIScreen.mainScreen().bounds.size.width - 20, 250))
-            self.calendarView?.backgroundColor = UIColor.init(colorLiteralRed: 36/255.0, green: 135/255.0, blue: 163/255.0, alpha: 1).colorWithAlphaComponent(1)
+            self.calendarView?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             calendarView?.hidden = false
             fillView.addSubview(calendarView!)
             self.calendarView!.calendarAppearanceDelegate = self
@@ -209,7 +242,6 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     // MARK: Optional methods
-
     func shouldShowWeekdaysOut() -> Bool {
         return shouldShowDaysOut
     }
@@ -221,6 +253,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedDay = dayView
+        
     }
 
     func presentedDateUpdated(date: CVDate) {
@@ -232,32 +265,8 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
-        let day = dayView.date.day
-        let randomDay = Int(arc4random_uniform(31))
-        if day == randomDay {
-            return true
-        }
 
         return false
-    }
-
-    func dotMarker(colorOnDayView dayView: CVCalendarDayView) -> [UIColor] {
-
-        let red = CGFloat(arc4random_uniform(600) / 255)
-        let green = CGFloat(arc4random_uniform(600) / 255)
-        let blue = CGFloat(arc4random_uniform(600) / 255)
-
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
-
-        let numberOfDots = Int(arc4random_uniform(3) + 1)
-        switch(numberOfDots) {
-        case 2:
-            return [color, color]
-        case 3:
-            return [color, color, color]
-        default:
-            return [color] // return 1 dot
-        }
     }
 
     func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
@@ -281,8 +290,8 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     func preliminaryView(viewOnDayView dayView: DayView) -> UIView {
-        let circleView = CVAuxiliaryView(dayView: dayView, rect: dayView.bounds, shape: CVShape.Circle)
-        circleView.fillColor = .colorFromCode(0xCCCCCC)
+        let circleView = CVAuxiliaryView(dayView: dayView, rect: dayView.bounds, shape: CVShape.Rect)
+        circleView.fillColor = .colorFromCode(0x552582)
         return circleView
     }
 
