@@ -50,8 +50,9 @@ class RegisterViewController: BaseViewController {
             textfiledBG.addSubview(passwordT!)
 
             let displaypassword:UIButton = UIButton(type: UIButtonType.Custom)
-            displaypassword.frame = CGRectMake(0, 0, 30, 30)
+            displaypassword.frame = CGRectMake(0, 0, 40, 30)
             displaypassword.setImage(UIImage(named: "check"), forState: UIControlState.Normal)
+            displaypassword.imageEdgeInsets.right = 10
             displaypassword.addTarget(self, action: #selector(RegisterViewController.displayPasswordAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             passwordT.rightViewMode = UITextFieldViewMode.Always
             passwordT.rightView = displaypassword
