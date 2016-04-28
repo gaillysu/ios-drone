@@ -10,7 +10,7 @@ import UIKit
 import AutocompleteField
 import Crashlytics
 
-class LoginController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!

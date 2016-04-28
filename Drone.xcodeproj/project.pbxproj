@@ -48,8 +48,8 @@
 		00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */; };
 		00982A7F1C868B16003DA5E2 /* DroneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A7E1C868B16003DA5E2 /* DroneTests.swift */; };
 		00982A8A1C868B16003DA5E2 /* DroneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A891C868B16003DA5E2 /* DroneUITests.swift */; };
-		00982BED1C868C8A003DA5E2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AAA1C868C89003DA5E2 /* LoginController.swift */; };
-		00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AAB1C868C89003DA5E2 /* LoginController.xib */; };
+		00982BED1C868C8A003DA5E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AAA1C868C89003DA5E2 /* LoginViewController.swift */; };
+		00982BEE1C868C8A003DA5E2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AAB1C868C89003DA5E2 /* LoginViewController.xib */; };
 		00982BEF1C868C8A003DA5E2 /* MyWatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AAD1C868C89003DA5E2 /* MyWatchController.swift */; };
 		00982BF01C868C8A003DA5E2 /* MyWatchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AAE1C868C89003DA5E2 /* MyWatchController.xib */; };
 		00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB01C868C89003DA5E2 /* MyNevoHeaderView.swift */; };
@@ -251,8 +251,8 @@
 		00982A851C868B16003DA5E2 /* DroneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DroneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A891C868B16003DA5E2 /* DroneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneUITests.swift; sourceTree = "<group>"; };
 		00982A8B1C868B16003DA5E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00982AAA1C868C89003DA5E2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		00982AAB1C868C89003DA5E2 /* LoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
+		00982AAA1C868C89003DA5E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		00982AAB1C868C89003DA5E2 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		00982AAD1C868C89003DA5E2 /* MyWatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWatchController.swift; sourceTree = "<group>"; };
 		00982AAE1C868C89003DA5E2 /* MyWatchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWatchController.xib; sourceTree = "<group>"; };
 		00982AB01C868C89003DA5E2 /* MyNevoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNevoHeaderView.swift; sourceTree = "<group>"; };
@@ -554,7 +554,7 @@
 				00F1AF411CACD82600CB9A15 /* BuddyViewController */,
 				0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */,
 				CBD6BD1F1CD096CB0009F39A /* GalleryViewController */,
-				00982AA91C868C89003DA5E2 /* LoginController */,
+				00982AA91C868C89003DA5E2 /* LoginViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				00982AAC1C868C89003DA5E2 /* MyWatchController */,
 				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
@@ -571,12 +571,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		00982AA91C868C89003DA5E2 /* LoginController */ = {
+		00982AA91C868C89003DA5E2 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
-				00982AAA1C868C89003DA5E2 /* LoginController.swift */,
-				00982AAB1C868C89003DA5E2 /* LoginController.xib */,
+				00982AAA1C868C89003DA5E2 /* LoginViewController.swift */,
+				00982AAB1C868C89003DA5E2 /* LoginViewController.xib */,
 			);
+			name = LoginViewController;
 			path = LoginController;
 			sourceTree = "<group>";
 		};
@@ -1320,7 +1321,7 @@
 				00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */,
 				00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */,
 				CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */,
-				00982BEE1C868C8A003DA5E2 /* LoginController.xib in Resources */,
+				00982BEE1C868C8A003DA5E2 /* LoginViewController.xib in Resources */,
 				00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
 				CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */,
@@ -1465,7 +1466,7 @@
 				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
 				00982C1E1C868C8A003DA5E2 /* DaySleep.swift in Sources */,
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
-				00982BED1C868C8A003DA5E2 /* LoginController.swift in Sources */,
+				00982BED1C868C8A003DA5E2 /* LoginViewController.swift in Sources */,
 				00982C5C1C868C8A003DA5E2 /* NevoOTAPacketProfile.swift in Sources */,
 				00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */,
 				00982C4C1C868C8A003DA5E2 /* GetBatteryRequest.swift in Sources */,
