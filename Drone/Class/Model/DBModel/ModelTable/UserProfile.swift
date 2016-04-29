@@ -117,4 +117,7 @@ class UserProfile: NSObject {
             })
         }
     }
+
+    // Prevent the object properties and KVC dict key don't crash
+    override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
 }

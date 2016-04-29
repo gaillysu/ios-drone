@@ -9,6 +9,7 @@
 import UIKit
 import GSMessages
 import AutocompleteField
+import BRYXBanner
 
 class RegisterController: BaseViewController {
     @IBOutlet weak var backB: UIButton!
@@ -59,7 +60,14 @@ class RegisterController: BaseViewController {
         }
 
         if nextB.isEqual(sender) {
+            if(AppTheme.isNull(passwordT.text!) || AppTheme.isNull(emailT.text!)) {
+                let banner = Banner(title: NSLocalizedString("email or password is null", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+                banner.dismissesOnTap = true
+                banner.show(duration: 0.7)
+                return
+            }
             let profile:ProfileViewController = ProfileViewController()
+            profile.account = ["email":emailT.text!,"password":passwordT.text!]
             self.navigationController?.pushViewController(profile, animated: true)
         }
 
