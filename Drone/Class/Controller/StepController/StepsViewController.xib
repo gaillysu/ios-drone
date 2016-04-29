@@ -12,18 +12,18 @@
                 <outlet property="circleProgressView" destination="iNF-Nb-2J4" id="fRy-Ct-Vsi"/>
                 <outlet property="lastMonthActiveTime" destination="EDe-TP-GGZ" id="z2c-Gd-Ndd"/>
                 <outlet property="lastMonthCalories" destination="LuF-jw-VUP" id="dZh-lW-jY8"/>
-                <outlet property="lastMonthChart" destination="ovc-63-hDh" id="GJ4-6r-Qs9"/>
+                <outlet property="lastMonthChart" destination="ovc-63-hDh" id="iv8-tZ-i01"/>
                 <outlet property="lastMonthMiles" destination="e8O-mp-16V" id="orm-o3-Yls"/>
                 <outlet property="lastWeekActiveTime" destination="Jbl-Hf-D8h" id="4Ae-XA-OHm"/>
                 <outlet property="lastWeekCalories" destination="s9j-O2-a1S" id="u3b-eq-gx0"/>
-                <outlet property="lastWeekChart" destination="pRo-qY-h60" id="wy0-IG-5fv"/>
+                <outlet property="lastWeekChart" destination="pRo-qY-h60" id="JVg-0T-E7r"/>
                 <outlet property="lastWeekMiles" destination="MeM-WW-CgM" id="JnH-P4-BVV"/>
                 <outlet property="mainview" destination="iN0-l3-epB" id="iRS-2L-xRB"/>
                 <outlet property="percentageLabel" destination="6hx-LZ-YH3" id="U0V-P4-MfG"/>
                 <outlet property="stepsLabel" destination="j2j-Z4-I7O" id="Kgs-fF-D5z"/>
                 <outlet property="thisWeekActiveTime" destination="zvc-gt-urW" id="GvR-wD-S75"/>
                 <outlet property="thisWeekCalories" destination="UIj-nn-3qR" id="lKb-cq-zfY"/>
-                <outlet property="thisWeekChart" destination="J77-5P-Cc6" id="M1Y-cO-Xe5"/>
+                <outlet property="thisWeekChart" destination="J77-5P-Cc6" id="LOv-p3-8VZ"/>
                 <outlet property="thisWeekMiles" destination="5K8-1d-T3Y" id="dMN-Yg-tfz"/>
                 <outlet property="view" destination="iN0-l3-epB" id="odA-JS-coj"/>
             </connections>
@@ -264,7 +264,7 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J77-5P-Cc6" customClass="LineChartView" customModule="Charts">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J77-5P-Cc6" customClass="AnalysisStepsChartView" customModule="Drone">
                                     <rect key="frame" x="8" y="87" width="329" height="267"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
@@ -375,7 +375,7 @@
                                     <color key="textColor" red="0.16862745100000001" green="0.52941176469999995" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRo-qY-h60" customClass="LineChartView" customModule="Charts">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRo-qY-h60" customClass="AnalysisStepsChartView" customModule="Drone">
                                     <rect key="frame" x="8" y="87" width="329" height="267"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
@@ -513,7 +513,7 @@
                                     <color key="textColor" red="0.16862745100000001" green="0.52941176469999995" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ovc-63-hDh" customClass="LineChartView" customModule="Charts">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ovc-63-hDh" customClass="AnalysisStepsChartView" customModule="Drone">
                                     <rect key="frame" x="8" y="87" width="329" height="267"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>

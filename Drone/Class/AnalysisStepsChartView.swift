@@ -14,7 +14,7 @@ class AnalysisStepsChartView: LineChartView {
     private var xVals:[String] = [];
     private var yVals:[ChartDataEntry] = [];
     
-    func drawSettings(rightAxis:ChartYAxis, yAxis:ChartYAxis, xAxis:ChartXAxis){
+    func drawSettings(xAxis:ChartXAxis, yAxis:ChartYAxis, rightAxis:ChartYAxis){
         descriptionText = ""
         dragEnabled = false
         setScaleEnabled(false)
@@ -47,10 +47,9 @@ class AnalysisStepsChartView: LineChartView {
         xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 9)!
     }
     
-    func addDataPoint(name:String, entry:ChartDataEntry, index:Int){
+    func addDataPoint(name:String, entry:ChartDataEntry){
         xVals.append(name);
-        let steps = Int(arc4random_uniform(4000))
-        yVals.append(ChartDataEntry(value: Double(steps), xIndex: index))
+        yVals.append(entry)
     }
     
     func invalidateChart() {

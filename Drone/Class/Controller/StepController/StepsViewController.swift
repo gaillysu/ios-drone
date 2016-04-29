@@ -29,14 +29,15 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     @IBOutlet weak var thisWeekMiles: UILabel!
     @IBOutlet weak var thisWeekCalories: UILabel!
     @IBOutlet weak var thisWeekActiveTime: UILabel!
-    @IBOutlet weak var thisWeekChart: LineChartView!
+    @IBOutlet weak var thisWeekChart: AnalysisStepsChartView!
+    
     
     @IBOutlet weak var lastWeekCalories: UILabel!
     @IBOutlet weak var lastWeekMiles: UILabel!
     @IBOutlet weak var lastWeekActiveTime: UILabel!
-    @IBOutlet weak var lastWeekChart: LineChartView!
+    @IBOutlet weak var lastWeekChart: AnalysisStepsChartView!
     
-    @IBOutlet weak var lastMonthChart: LineChartView!
+    @IBOutlet weak var lastMonthChart: AnalysisStepsChartView!
     @IBOutlet weak var lastMonthActiveTime: UILabel!
     @IBOutlet weak var lastMonthMiles: UILabel!
     @IBOutlet weak var lastMonthCalories: UILabel!
@@ -145,76 +146,24 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             self.barChart.data = barChartData;
         }
         barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
-        configureChart(lastWeekChart);
-        configureChart(lastMonthChart);
-        configureChart(thisWeekChart);
-    }
-    
-    private func configureChart(chart:LineChartView){
-        chart.descriptionText = ""
-        chart.dragEnabled = false
-        chart.setScaleEnabled(false)
-        chart.pinchZoomEnabled = false
-        chart.legend.enabled = false
-        chart.rightAxis.enabled = true
+        lastWeekChart.drawSettings(lastWeekChart.xAxis, yAxis: lastWeekChart.leftAxis, rightAxis: lastWeekChart.rightAxis)
+        thisWeekChart.drawSettings(thisWeekChart.xAxis, yAxis: thisWeekChart.leftAxis, rightAxis: thisWeekChart.rightAxis)
+        lastMonthChart.drawSettings(lastMonthChart.xAxis, yAxis: lastMonthChart.leftAxis, rightAxis: lastMonthChart.rightAxis)
         
-        let limitLine = ChartLimitLine(limit: 1500,label: "Goal");
-        limitLine.lineWidth = 1.5
-        limitLine.labelPosition = ChartLimitLine.ChartLimitLabelPosition.LeftTop
-        limitLine.valueFont = UIFont(name: "Helvetica-Light", size: 9)!
-        limitLine.lineColor = UIColor.getGreyColor()
-        
-        let rightAxis:ChartYAxis = chart.rightAxis;
-        rightAxis.axisLineColor = UIColor.getGreyColor()
-        rightAxis.drawGridLinesEnabled = false;
-        rightAxis.drawLimitLinesBehindDataEnabled = false
-        rightAxis.drawLabelsEnabled = false;
-        rightAxis.drawZeroLineEnabled = false
-        
-        let yAxis:ChartYAxis = chart.leftAxis
-        yAxis.axisLineColor = UIColor.getGreyColor()
-        yAxis.drawGridLinesEnabled = false
-        yAxis.drawLabelsEnabled = false
-        yAxis.drawZeroLineEnabled = false
-        yAxis.addLimitLine(limitLine)
-        
-        let xAxis:ChartXAxis = chart.xAxis;
-        xAxis.labelTextColor = UIColor.getGreyColor();
-        xAxis.axisLineColor = UIColor.getGreyColor()
-        xAxis.drawLimitLinesBehindDataEnabled = false;
-        xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
-        xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 9)!
-        
-        var xVals:[String] = [];
-        for i in 0 ..< 31 {
-            xVals.append("Apr \(i)")
+        for i in 0 ..< 8 {
+            var steps = Int(arc4random_uniform(4000))
+            lastWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
+            steps = Int(arc4random_uniform(4000))
+            thisWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
         }
         
-        var yVals: [ChartDataEntry] = []
-        
-        for i in 0 ..< 31 {
+        for i in 1 ..< 31{
             let steps = Int(arc4random_uniform(4000))
-            yVals.append(ChartDataEntry(value: Double(steps), xIndex: i))
+            lastMonthChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
         }
-        let lineChartDataSet = LineChartDataSet(yVals: yVals, label: "");
-        lineChartDataSet.setColor(UIColor.getGreyColor())
-        lineChartDataSet.setCircleColor(UIColor.getGreyColor())
-        lineChartDataSet.lineWidth = 1.5
-        lineChartDataSet.setColor(UIColor.getGreyColor())
-        lineChartDataSet.circleRadius = 5.0
-        lineChartDataSet.drawCircleHoleEnabled = false
-        lineChartDataSet.valueFont = UIFont.systemFontOfSize(9.0)
-        
-        let colorLocations:[CGFloat] = [0.0, 1.0]
-        let gradientColors = NSArray(array: [ChartColorTemplates .colorFromString("#D19D42").CGColor,ChartColorTemplates .colorFromString("#552582").CGColor]);
-        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), gradientColors, colorLocations);
-        lineChartDataSet.fillAlpha = 0.5;
-        lineChartDataSet.fill = ChartFill.fillWithLinearGradient(gradient!, angle: CGFloat(90.0))
-        lineChartDataSet.drawFilledEnabled = true
-        let lineChartData = LineChartData(xVals: xVals, dataSet: lineChartDataSet)
-        lineChartData.setDrawValues(false)
-        chart.data = lineChartData
-        chart.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
+        lastWeekChart.invalidateChart()
+        thisWeekChart.invalidateChart()
+        lastMonthChart.invalidateChart()
     }
 }
 
