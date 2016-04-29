@@ -225,14 +225,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
                 log.debug("SystemStatus :\(systemStatus)")
                 if(systemStatus == SystemStatus.SystemReset.rawValue) {
+
+                    let myQueue:dispatch_queue_t = dispatch_queue_create("Config_Drone", DISPATCH_QUEUE_SERIAL);
+
                     //step1 : Set systemconfig
-                    self.setSystemConfig()
+                    dispatch_async(myQueue, {
+                        NSThread.sleepForTimeInterval(0.2)
+                        self.setSystemConfig()
+                        NSLog("NSThread.sleepForTimeInterval(0.2)");
+                    })
+
                     //step2: Set RTC
-                    self.setRTC()
+                    dispatch_async(myQueue, {
+                        NSThread.sleepForTimeInterval(0.4)
+                        self.setRTC()
+                        NSLog(" NSThread.sleepForTimeInterval(0.4)");
+                    })
+
                     //step3: Set appconfig
-                    self.setAppConfig()
+                    dispatch_async(myQueue, {
+                        NSThread.sleepForTimeInterval(0.6)
+                        self.setAppConfig()
+                        NSLog("NSThread.sleepForTimeInterval(0.6)");
+                    })
+
                     //step4: Set user profile
-                    self.setUserProfile()
+                    dispatch_async(myQueue, {
+                        NSThread.sleepForTimeInterval(0.8)
+                        self.setUserProfile()
+                        NSLog("NSThread.sleepForTimeInterval(0.8)");
+                    })
                 }
 
                 if(systemStatus == SystemStatus.InvalidTime.rawValue) {
