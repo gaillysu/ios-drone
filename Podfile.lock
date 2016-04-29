@@ -21,6 +21,7 @@ PODS:
   - SDWebImage/Core (3.7.5)
   - SMSegmentView (1.1)
   - SwiftEventBus (1.1.0)
+  - SwiftyJSON (2.3.2)
   - Timepiece (0.4.2)
   - UIColor_Hex_Swift (2.1)
   - XCGLogger (3.3)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - SDCycleScrollView (~> 1.3)
   - SMSegmentView (~> 1.1)
   - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - Timepiece
   - UIColor_Hex_Swift (~> 2.1)
   - XCGLogger (~> 3.3)
@@ -77,6 +79,7 @@ SPEC CHECKSUMS:
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SMSegmentView: a99862f36ea73478558ae665c209cb80c0d4f059
   SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
   XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
