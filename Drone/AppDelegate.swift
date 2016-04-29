@@ -45,13 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
+
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
+
         log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
-        
         self.window?.rootViewController = SplashScreenViewController()
         self.window?.makeKeyAndVisible()
         return true
@@ -224,14 +225,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
                 log.debug("SystemStatus :\(systemStatus)")
                 if(systemStatus == SystemStatus.SystemReset.rawValue) {
+
+                    let myQueue:dispatch_queue_t = dispatch_queue_create("Config_Drone", DISPATCH_QUEUE_SERIAL);
+
                     //step1 : Set systemconfig
-                    self.setSystemConfig()
+                    dispatch_async(myQueue, {
+                        NSThread.sleepForTimeInterval(0.2)
+                        self.setSystemConfig()
+                        NSLog("NSThread.sleepForTimeInterval(0.2)");
+                    })
+
                     //step2: Set RTC
-                    self.setRTC()
+                    dispatch_async(myQueue, {
+                        NSThread.sleepForTimeInterval(0.4)
+                        self.setRTC()
+                        NSLog(" NSThread.sleepForTimeInterval(0.4)");
+                    })
+
                     //step3: Set appconfig
-                    self.setAppConfig()
+                    dispatch_async(myQueue, {
+                        NSThread.sleepForTimeInterval(0.6)
+                        self.setAppConfig()
+                        NSLog("NSThread.sleepForTimeInterval(0.6)");
+                    })
+
                     //step4: Set user profile
-                    self.setUserProfile()
+                    dispatch_async(myQueue, {
+                        NSThread.sleepForTimeInterval(0.8)
+                        self.setUserProfile()
+                        NSLog("NSThread.sleepForTimeInterval(0.8)");
+                    })
                 }
 
                 if(systemStatus == SystemStatus.InvalidTime.rawValue) {

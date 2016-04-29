@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class ConnectionSetupViewController: UIViewController {
 
+
+    @IBOutlet weak var connectedView: UIView!
+    @IBOutlet weak var connectionFailView: UIView!
+    @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var nextB: UIButton!
     init() {
         super.init(nibName: "ConnectionSetupViewController", bundle: NSBundle.mainBundle())
@@ -21,8 +26,19 @@ class ConnectionSetupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        AppDelegate.getAppDelegate().startConnect()
 
-        // Do any additional setup after loading the view.
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
+            let connectionState:Bool = notification.object as! Bool
+            if(connectionState){
+                self.connectedView.hidden = false
+                self.connectionView.hidden = true
+            }else{
+                self.connectionFailView.hidden = false
+                self.connectionView.hidden = true
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
