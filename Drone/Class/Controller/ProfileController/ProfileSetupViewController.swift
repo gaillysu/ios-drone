@@ -11,6 +11,8 @@ import AutocompleteField
 import SMSegmentView
 import UIColor_Hex_Swift
 import YYKeyboardManager
+import BRYXBanner
+import SwiftyJSON
 
 class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITextFieldDelegate,YYKeyboardObserver {
 
@@ -24,6 +26,8 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITex
     var selectedTextField:UITextField?
 
     var segmentView:SMSegmentView?
+    private var nameDictionary:Dictionary<String,AnyObject> = ["first_name":"DroneUser","last_name":"User"]
+    var account:Dictionary<String,AnyObject> = ["email":"","password":""]
 
     init() {
         super.init(nibName: "ProfileSetupViewController", bundle: NSBundle.mainBundle())
@@ -70,8 +74,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITex
         }
 
         if (nextB.isEqual(sender)) {
-            let maintabbar:WhichDeviceViewController = WhichDeviceViewController()
-            self.navigationController?.pushViewController(maintabbar, animated: true)
+            registerRequest()
         }
     }
 
@@ -94,5 +97,41 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITex
     // MARK: - SMSegmentViewDelegate
     func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
         debugPrint("Select segment at index: \(index)")
+    }
+
+    func registerRequest() {
+        if(AppTheme.isNull(ageTextField!.text!) || AppTheme.isEmail(lengthTextField!.text!) || AppTheme.isEmail(weightTextField!.text!)) {
+            let banner = Banner(title: NSLocalizedString("age or length weight is null", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+            banner.dismissesOnTap = true
+            banner.show(duration: 0.6)
+            return
+        }
+
+        let first_name:String = nameDictionary["first_name"] as! String
+        let last_name:String = nameDictionary["last_name"] as! String
+        let email:String = account["email"] as! String
+        let password:String = account["password"] as! String
+        HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":first_name,"last_name":last_name,"email":email,"password":password,"age":ageTextField!.text!,"length":lengthTextField!.text!]]) { (result) in
+            let json = JSON(result)
+            let message = json["message"].stringValue
+            let status = json["status"].intValue
+            let user:[String : JSON] = json["user"].dictionaryValue
+
+            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+            banner.dismissesOnTap = true
+            banner.show(duration: 1.2)
+
+            //status > 0 register success or register fail
+            if(status > 0 && UserProfile.getAll().count == 0) {
+                //save database
+                let userprofile:UserProfile = UserProfile(keyDict: ["first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"age":user["age"]!.intValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue])
+                userprofile.add({ (id, completion) in
+
+                })
+                //TODO:register success push controll
+                let maintabbar:WhichDeviceViewController = WhichDeviceViewController()
+                self.navigationController?.pushViewController(maintabbar, animated: true)
+            }
+        }
     }
 }
