@@ -10,8 +10,6 @@
 		0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA4D1CBC830C00820B1F /* DeviceModel.swift */; };
 		0015CA501CBC835900820B1F /* UserDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA4F1CBC835900820B1F /* UserDevice.swift */; };
 		0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */; };
-		0024C0FB1CB73A7C00E0A23D /* DroneProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */; };
-		00233D4D1CBB43C200824E64 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00233D4C1CBB43C200824E64 /* XCGLogger.framework */; };
 		0024C0FB1CB73A7C00E0A23D /* UserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FA1CB73A7C00E0A23D /* UserProfileModel.swift */; };
 		0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */; };
 		0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028F1401C97C08000C8E742 /* EventBusKeys.swift */; };
@@ -147,7 +145,6 @@
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		009D89D11CD0C457004E914A /* WorldClockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D89CF1CD0C457004E914A /* WorldClockHeader.swift */; };
 		009D89D21CD0C457004E914A /* WorldClockHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009D89D01CD0C457004E914A /* WorldClockHeader.xib */; };
-		00BC14981C9292DE00E43F44 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00BC14971C9292DE00E43F44 /* Timepiece.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		00CE42601CD1F9D3002D1321 /* BRYXBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE425E1CD1F9D3002D1321 /* BRYXBanner.framework */; };
 		00CE42611CD1F9D3002D1321 /* RegexKitLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */; };
 		00CE42631CD20839002D1321 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE42621CD20839002D1321 /* SwiftyJSON.framework */; };
@@ -160,6 +157,7 @@
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
 		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
+		9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */; };
 		CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46981CCF223500411997 /* Fabric.framework */; };
 		CB0B469B1CCF223500411997 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46991CCF223500411997 /* Crashlytics.framework */; };
 		CB0B46AB1CCF229400411997 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B469C1CCF229400411997 /* Alamofire.framework */; };
@@ -210,8 +208,6 @@
 		0015CA4D1CBC830C00820B1F /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		0015CA4F1CBC835900820B1F /* UserDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDevice.swift; sourceTree = "<group>"; };
 		0015CA511CBCD4B200820B1F /* SystemEventPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemEventPacket.swift; sourceTree = "<group>"; };
-		0024C0FA1CB73A7C00E0A23D /* DroneProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfileModel.swift; sourceTree = "<group>"; };
-		00233D4C1CBB43C200824E64 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "Pods/../build/Debug-iphoneos/XCGLogger.framework"; sourceTree = "<group>"; };
 		0024C0FA1CB73A7C00E0A23D /* UserProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
 		0024C0FC1CB73C1700E0A23D /* UserDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabaseHelper.swift; sourceTree = "<group>"; };
 		0028F1401C97C08000C8E742 /* EventBusKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusKeys.swift; sourceTree = "<group>"; };
@@ -357,7 +353,6 @@
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		009D89CF1CD0C457004E914A /* WorldClockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockHeader.swift; sourceTree = "<group>"; };
 		009D89D01CD0C457004E914A /* WorldClockHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockHeader.xib; sourceTree = "<group>"; };
-		00BC14971C9292DE00E43F44 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Pods/../build/Debug-iphoneos/Timepiece.framework"; sourceTree = "<group>"; };
 		00CE425E1CD1F9D3002D1321 /* BRYXBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BRYXBanner.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/BRYXBanner.framework"; sourceTree = "<group>"; };
 		00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RegexKitLite.framework; path = "Pods/../build/Debug-iphoneos/RegexKitLite.framework"; sourceTree = "<group>"; };
 		00CE42621CD20839002D1321 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -372,6 +367,7 @@
 		162629CC61821D5C419DE763 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50E933362E2354AB07386 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisStepsChartView.swift; sourceTree = "<group>"; };
 		CB0B46981CCF223500411997 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CB0B46991CCF223500411997 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CB0B469C1CCF229400411997 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
@@ -1115,6 +1111,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */ = {
+			isa = PBXGroup;
+			children = (
+				9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */,
+			);
+			name = AnalysisStepsChartView;
+			sourceTree = "<group>";
+		};
 		CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1127,6 +1131,7 @@
 		CBA06BEB1C8EB2C800E3257B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */,
 				00982AAF1C868C89003DA5E2 /* MyDroneView */,
@@ -1523,6 +1528,7 @@
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
 				00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */,
 				00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */,
+				9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */,
 				00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */,
 				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */,

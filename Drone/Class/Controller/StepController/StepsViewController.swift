@@ -29,14 +29,15 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     @IBOutlet weak var thisWeekMiles: UILabel!
     @IBOutlet weak var thisWeekCalories: UILabel!
     @IBOutlet weak var thisWeekActiveTime: UILabel!
-    @IBOutlet weak var thisWeekChart: LineChartView!
+    @IBOutlet weak var thisWeekChart: AnalysisStepsChartView!
+    
     
     @IBOutlet weak var lastWeekCalories: UILabel!
     @IBOutlet weak var lastWeekMiles: UILabel!
     @IBOutlet weak var lastWeekActiveTime: UILabel!
-    @IBOutlet weak var lastWeekChart: LineChartView!
+    @IBOutlet weak var lastWeekChart: AnalysisStepsChartView!
     
-    @IBOutlet weak var lastMonthChart: LineChartView!
+    @IBOutlet weak var lastMonthChart: AnalysisStepsChartView!
     @IBOutlet weak var lastMonthActiveTime: UILabel!
     @IBOutlet weak var lastMonthMiles: UILabel!
     @IBOutlet weak var lastMonthCalories: UILabel!
@@ -59,14 +60,12 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.initTitleView()
         self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
     }
 
     override func viewWillAppear(animated: Bool) {
-        
         barChart!.noDataText = "No History Available."
         barChart!.descriptionText = "";
         barChart!.pinchZoomEnabled = false
@@ -80,12 +79,10 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         xAxis.drawGridLinesEnabled = false;
         xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
         
-        
         let yAxis:ChartYAxis = barChart!.leftAxis;
         yAxis.labelTextColor = UIColor.grayColor();
         yAxis.axisLineColor = UIColor.clearColor();
         yAxis.customAxisMin = 0;
-        yAxis.drawZeroLineEnabled = false;
       
         barChart!.rightAxis.enabled = false;
         let stepsArray: NSMutableArray = NSMutableArray();
@@ -141,19 +138,35 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "Steps")
             let dataSet = NSMutableArray()
             dataSet.addObject(barChartSet);
-            barChartSet.colors = [UIColor(rgba: "#D19D42")]
-            barChartSet.highlightColor = UIColor(rgba: "#D19D42")
-            barChartSet.valueColors = [UIColor.grayColor()]
+            barChartSet.colors = [UIColor.getBaseColor()]
+            barChartSet.highlightColor = UIColor.getBaseColor()
+            barChartSet.valueColors = [UIColor.getGreyColor()]
             let barChartData = BarChartData(xVals: xVals, dataSet: barChartSet)
             barChartData.setDrawValues(false);
             self.barChart.data = barChartData;
         }
         barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
+        lastWeekChart.drawSettings(lastWeekChart.xAxis, yAxis: lastWeekChart.leftAxis, rightAxis: lastWeekChart.rightAxis)
+        thisWeekChart.drawSettings(thisWeekChart.xAxis, yAxis: thisWeekChart.leftAxis, rightAxis: thisWeekChart.rightAxis)
+        lastMonthChart.drawSettings(lastMonthChart.xAxis, yAxis: lastMonthChart.leftAxis, rightAxis: lastMonthChart.rightAxis)
+        
+        for i in 0 ..< 8 {
+            var steps = Int(arc4random_uniform(4000))
+            lastWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
+            steps = Int(arc4random_uniform(4000))
+            thisWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
+        }
+        
+        for i in 1 ..< 31{
+            let steps = Int(arc4random_uniform(4000))
+            lastMonthChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
+        }
+        lastWeekChart.invalidateChart()
+        thisWeekChart.invalidateChart()
+        lastMonthChart.invalidateChart()
     }
-    
-
-
 }
+
 
 // MARK: - Title View
 extension StepsViewController {
@@ -163,7 +176,6 @@ extension StepsViewController {
         titleView?.setCalendarButtonTitle(CVDate(date: NSDate()).globalDescription)
         self.navigationItem.titleView = titleView
         titleView!.buttonResultHandler = { result -> Void in
-            NSLog("selected title button")
             let clickButton:UIButton = result as! UIButton
             if (result!.isEqual(self.titleView!.calendarButton) && clickButton.selected) {
                 self.showCalendar()
@@ -183,8 +195,6 @@ extension StepsViewController {
             let calendarBackGroundView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,self.view.frame.size.height))
             calendarBackGroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
             calendarBackGroundView.tag = CALENDAR_VIEW_TAG
-            
-            
             let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StepsViewController.tapAction(_:)))
             calendarBackGroundView.addGestureRecognizer(tap)
             self.view.addSubview(calendarBackGroundView)
@@ -215,7 +225,6 @@ extension StepsViewController {
             UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 view?.alpha = 1
             }) { (finish) in
-
             }
         }
     }
@@ -236,7 +245,7 @@ extension StepsViewController {
 
     /**
      Click on the calendar the blanks
-     - parameter recognizer: <#recognizer description#>
+     - parameter recognizer: recognizer description
      */
     func tapAction(recognizer:UITapGestureRecognizer) {
         self.dismissCalendar()

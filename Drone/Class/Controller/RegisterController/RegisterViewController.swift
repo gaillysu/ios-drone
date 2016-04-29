@@ -83,7 +83,6 @@ class RegisterViewController: BaseViewController {
                 banner.show(duration: 0.7)
                 return
             }
-            let profile:ProfileViewController = ProfileViewController()
             profile.account = ["email":emailT.text!,"password":passwordT.text!]
             self.navigationController?.pushViewController(profile, animated: true)
         }
