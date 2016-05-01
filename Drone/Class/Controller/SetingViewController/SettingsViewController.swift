@@ -72,7 +72,6 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
                 worldClock.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(worldClock, animated: true)
             }
-            //WorldClockController
             break
         default: break
         }

@@ -333,6 +333,11 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
 
         return false
     }
+    override func viewDidDisappear(animated: Bool) {
+        lastWeekChart.reset()
+        lastMonthChart.reset()
+        thisWeekChart.reset()
+    }
 }
 
 // MARK: - CVCalendarViewAppearanceDelegate
@@ -344,4 +349,5 @@ extension StepsViewController: CVCalendarViewAppearanceDelegate {
     func spaceBetweenDayViews() -> CGFloat {
         return 2
     }
+    
 }

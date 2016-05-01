@@ -1,0 +1,49 @@
+//
+//  DeviceViewController.swift
+//  Drone
+//
+//  Created by Karl-John on 1/5/2016.
+//  Copyright © 2016 Cloud. All rights reserved.
+//
+
+import Foundation
+
+class DeviceViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var deviceTableView: UITableView!
+    
+    private final let identifier = "device_table_view_cell"
+    private final let identifier_header = "device_table_view_cell_header"
+    
+    init() {
+        super.init(nibName: "DeviceViewController", bundle: NSBundle.mainBundle())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
+        deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCellHeader", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: identifier_header)
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3;
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: DeviceTableViewCell  = deviceTableView.dequeueReusableCellWithIdentifier(identifier)as! DeviceTableViewCell
+        cell.titleLabel.text = "Test"
+        return cell
+    }
+}

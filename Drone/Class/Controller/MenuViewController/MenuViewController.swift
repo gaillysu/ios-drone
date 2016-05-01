@@ -89,7 +89,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
 
     func rightAction(item:UIBarButtonItem) {
-        self.navigationController?.pushViewController(AddDeviceViewController(), animated: true);
+        self.navigationController?.pushViewController(MyDeviceViewController(), animated: true);
     }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
