@@ -12,13 +12,13 @@ protocol didSelectedDelegate:NSObjectProtocol {
     func didSelectedLocalTimeZone(ietm:NSDictionary)
 }
 
-class WorldClockController: BaseViewController {
+class WorldClockViewController: BaseViewController {
 
     @IBOutlet weak var worldClockTableview: UITableView!
     var wordclockArray:[NSDictionary] = []
 
     init() {
-        super.init(nibName: "WorldClockController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "WorldClockViewController", bundle: NSBundle.mainBundle())
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -29,7 +29,6 @@ class WorldClockController: BaseViewController {
         super.viewDidLoad()
         self.navigationItem.title = "World Clock"
         // TODO set headerview: WorldClockHeader.swift
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 
         worldClockTableview.backgroundColor = UIColor(rgba: "#E4C590")

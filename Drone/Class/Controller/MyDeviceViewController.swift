@@ -10,7 +10,6 @@ import Foundation
 import PagingMenuController
 
 class MyDeviceViewController: BaseViewController {
-    
     @IBOutlet weak var devicesView: UIView!
     @IBOutlet weak var noDeviceView: UIView!
     @IBOutlet weak var buyButton: UIButton!
@@ -25,23 +24,29 @@ class MyDeviceViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
+        self.navigationItem.title = "Watch Settings"
+        
         buyButton.titleLabel?.textAlignment = NSTextAlignment.Center
         let viewController = DeviceViewController()
-        viewController.title = "My Device"
-        let viewControllers = [viewController]
+        let viewController2 = DeviceViewController()
+        let viewController3 = DeviceViewController()
+        let viewControllers = [viewController,viewController2,viewController3]
+        if(viewControllers.count == 1){
+            viewControllers[0].leftRightButtonsNeeded = false;
+        }
         
         let options = PagingMenuOptions()
-        options.menuItemMargin = 5
-        options.menuDisplayMode = .SegmentedControl
+        options.menuHeight = 0;
+        options.menuDisplayMode = .Infinite(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
         let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
-        
         self.addChildViewController(pagingMenuController)
         self.devicesView.addSubview(pagingMenuController.view)
         pagingMenuController.didMoveToParentViewController(self)
-        
+        self.noDeviceView.hidden = true
     }
     
     @IBAction func addDeviceAction(sender: AnyObject) {
+        
     }
     
     @IBAction func buyButtonAction(sender: AnyObject) {

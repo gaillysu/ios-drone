@@ -73,8 +73,8 @@
 		00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */; };
 		00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE71C868C89003DA5E2 /* WorldClockCell.swift */; };
 		00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AE81C868C89003DA5E2 /* WorldClockCell.xib */; };
-		00982C1B1C868C8A003DA5E2 /* WorldClockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE91C868C89003DA5E2 /* WorldClockController.swift */; };
-		00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AEA1C868C89003DA5E2 /* WorldClockController.xib */; };
+		00982C1B1C868C8A003DA5E2 /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE91C868C89003DA5E2 /* WorldClockViewController.swift */; };
+		00982C1C1C868C8A003DA5E2 /* WorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AEA1C868C89003DA5E2 /* WorldClockViewController.xib */; };
 		00982C1D1C868C8A003DA5E2 /* DailySteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AED1C868C89003DA5E2 /* DailySteps.swift */; };
 		00982C1E1C868C8A003DA5E2 /* DaySleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AEE1C868C89003DA5E2 /* DaySleep.swift */; };
 		00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AEF1C868C89003DA5E2 /* HourlySteps.swift */; };
@@ -286,8 +286,8 @@
 		00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockView.swift; path = Controller/WorldClockController/AddWorldClockView.swift; sourceTree = "<group>"; };
 		00982AE71C868C89003DA5E2 /* WorldClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockCell.swift; sourceTree = "<group>"; };
 		00982AE81C868C89003DA5E2 /* WorldClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockCell.xib; sourceTree = "<group>"; };
-		00982AE91C868C89003DA5E2 /* WorldClockController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockController.swift; sourceTree = "<group>"; };
-		00982AEA1C868C89003DA5E2 /* WorldClockController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockController.xib; sourceTree = "<group>"; };
+		00982AE91C868C89003DA5E2 /* WorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
+		00982AEA1C868C89003DA5E2 /* WorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockViewController.xib; sourceTree = "<group>"; };
 		00982AED1C868C89003DA5E2 /* DailySteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailySteps.swift; sourceTree = "<group>"; };
 		00982AEE1C868C89003DA5E2 /* DaySleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySleep.swift; sourceTree = "<group>"; };
 		00982AEF1C868C89003DA5E2 /* HourlySteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlySteps.swift; sourceTree = "<group>"; };
@@ -591,7 +591,7 @@
 				00982ADB1C868C89003DA5E2 /* StepsViewController */,
 				009201D91CBE2B5200C51707 /* WelcomeViewController */,
 				008931071CC7799F0013E6D8 /* WhichDeviceViewController */,
-				00982AE21C868C89003DA5E2 /* WorldClockController */,
+				00982AE21C868C89003DA5E2 /* WorldClockViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -729,12 +729,13 @@
 			path = Controller/StepController/StepView;
 			sourceTree = "<group>";
 		};
-		00982AE21C868C89003DA5E2 /* WorldClockController */ = {
+		00982AE21C868C89003DA5E2 /* WorldClockViewController */ = {
 			isa = PBXGroup;
 			children = (
-				00982AE91C868C89003DA5E2 /* WorldClockController.swift */,
-				00982AEA1C868C89003DA5E2 /* WorldClockController.xib */,
+				00982AE91C868C89003DA5E2 /* WorldClockViewController.swift */,
+				00982AEA1C868C89003DA5E2 /* WorldClockViewController.xib */,
 			);
+			name = WorldClockViewController;
 			path = WorldClockController;
 			sourceTree = "<group>";
 		};
@@ -1393,7 +1394,7 @@
 				0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */,
 				00982C051C868C8A003DA5E2 /* RegisterViewController.xib in Resources */,
 				CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */,
-				00982C1C1C868C8A003DA5E2 /* WorldClockController.xib in Resources */,
+				00982C1C1C868C8A003DA5E2 /* WorldClockViewController.xib in Resources */,
 				0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
@@ -1580,7 +1581,7 @@
 				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,
 				00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */,
 				008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */,
-				00982C1B1C868C8A003DA5E2 /* WorldClockController.swift in Sources */,
+				00982C1B1C868C8A003DA5E2 /* WorldClockViewController.swift in Sources */,
 				00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */,
 				005699D81CD05F7C0097938E /* ChooseCityController.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
@@ -1749,7 +1750,7 @@
 			baseConfigurationReference = 162629CC61821D5C419DE763 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Karl Chow (9Q5XG5393T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -1769,7 +1770,7 @@
 			baseConfigurationReference = 8BB50E933362E2354AB07386 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Karl Chow (9Q5XG5393T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Karl Chow (9Q5XG5393T)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
