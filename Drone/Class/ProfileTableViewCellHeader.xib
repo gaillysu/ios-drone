@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfileTableViewCellHeader" customModule="Drone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15i-bd-8yb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+                    <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XlH-oa-6Gf">
+                    <rect key="frame" x="30" y="27" width="287" height="42"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="36"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-vE-iAh">
+                    <rect key="frame" x="317" y="23" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="rsM-Of-Rty"/>
+                    </constraints>
+                    <state key="normal" image="icon_pencil"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="ePP-vE-iAh" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="0eM-2z-MqW"/>
+                <constraint firstItem="15i-bd-8yb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6uu-yU-OQH"/>
+                <constraint firstItem="15i-bd-8yb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="91R-qd-BKx"/>
+                <constraint firstAttribute="bottom" secondItem="15i-bd-8yb" secondAttribute="bottom" id="K8o-PW-vWc"/>
+                <constraint firstItem="ePP-vE-iAh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="23" id="Sqg-U1-Kqv"/>
+                <constraint firstItem="XlH-oa-6Gf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="WAU-a9-Ejk"/>
+                <constraint firstItem="XlH-oa-6Gf" firstAttribute="centerY" secondItem="ePP-vE-iAh" secondAttribute="centerY" id="Z6D-Py-QH0"/>
+                <constraint firstAttribute="trailing" secondItem="15i-bd-8yb" secondAttribute="trailing" id="eX8-Ud-cu0"/>
+                <constraint firstItem="XlH-oa-6Gf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="vOf-6N-go1"/>
+                <constraint firstItem="ePP-vE-iAh" firstAttribute="leading" secondItem="XlH-oa-6Gf" secondAttribute="trailing" id="wcs-1v-LuP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="editButton" destination="ePP-vE-iAh" id="e68-Xe-bvh"/>
+                <outlet property="nameTextField" destination="XlH-oa-6Gf" id="qIP-tt-a9i"/>
+            </connections>
+            <point key="canvasLocation" x="32.5" y="335"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_pencil" width="22" height="22"/>
+    </resources>
+</document>
