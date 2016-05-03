@@ -60,7 +60,6 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.initTitleView()
         self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
     }
@@ -333,6 +332,11 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
 
         return false
     }
+    override func viewDidDisappear(animated: Bool) {
+        lastWeekChart.reset()
+        lastMonthChart.reset()
+        thisWeekChart.reset()
+    }
 }
 
 // MARK: - CVCalendarViewAppearanceDelegate
@@ -344,4 +348,5 @@ extension StepsViewController: CVCalendarViewAppearanceDelegate {
     func spaceBetweenDayViews() -> CGFloat {
         return 2
     }
+    
 }

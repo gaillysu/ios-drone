@@ -23,7 +23,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let sleepItem = MenuItem(controller: SleepViewController(), title: "Sleep",image: UIImage(named: "icon_sleep")!)
         sleepItem.commingSoon = true;
         self.menuItems.append(sleepItem);
-        self.menuItems.append(MenuItem(controller: WorldClockController(), title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
+        self.menuItems.append(MenuItem(controller: WorldClockViewController(), title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
         let galleryItem = MenuItem(controller: GalleryViewController(), title: "Gallery",image: UIImage(named: "icon_gallery")!)
         galleryItem.commingSoon = true
         self.menuItems.append(galleryItem)
@@ -37,6 +37,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
 //        AppDelegate.getAppDelegate().startConnect()
 
@@ -89,7 +92,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
 
     func rightAction(item:UIBarButtonItem) {
-        self.navigationController?.pushViewController(AddDeviceViewController(), animated: true);
+        self.navigationController?.title = "WATCH SETTINGS"
+        self.navigationController?.pushViewController(MyDeviceViewController(), animated: true);
     }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

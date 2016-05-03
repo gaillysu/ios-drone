@@ -72,6 +72,10 @@ class AnalysisStepsChartView: LineChartView {
         lineChartData.setDrawValues(false)
         data = lineChartData
         animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
-
+    }
+    
+    func reset(){
+        xVals.removeAll();
+        yVals.removeAll();
     }
 }

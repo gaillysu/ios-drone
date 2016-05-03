@@ -68,11 +68,10 @@ class SettingsViewController: BaseViewController,UIAlertViewDelegate {
             }
  
             if(isEqualString("\(titleArray[indexPath.row])",string2: NSLocalizedString("World Clock", comment: ""))){
-                let worldClock:WorldClockController = WorldClockController()
+                let worldClock:WorldClockViewController = WorldClockViewController()
                 worldClock.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(worldClock, animated: true)
             }
-            //WorldClockController
             break
         default: break
         }

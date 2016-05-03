@@ -13,6 +13,7 @@ PODS:
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
   - NVActivityIndicatorView (2.3)
+  - PagingMenuController (0.9.1)
   - RegexKitLite (4.0)
   - SDCycleScrollView (1.62):
     - SDWebImage (~> 3.7)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - CVCalendar (~> 1.2.9)
   - FMDB
   - NVActivityIndicatorView
+  - PagingMenuController
   - RegexKitLite
   - SDCycleScrollView (~> 1.3)
   - SMSegmentView (~> 1.1)
@@ -74,6 +76,7 @@ SPEC CHECKSUMS:
   CVCalendar: 0799256e0bc3b43e83b7e86c0729ce9ff0624cb6
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
   NVActivityIndicatorView: c7ef25ef527ab5e51b00322cb1ddd58681bcf2a3
+  PagingMenuController: 95bab00761e1ba4f4f9fa6bf22ac71b065a675aa
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SDCycleScrollView: ae016cb4cc4036523917f146ede6f7b11d408f6a
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461

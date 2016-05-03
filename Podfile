@@ -6,6 +6,7 @@ use_frameworks!
 pod 'Alamofire', '~> 3.0'
 pod 'Charts'
 pod 'NVActivityIndicatorView'
+pod 'PagingMenuController'
 pod 'SwiftEventBus', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
 pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
 pod 'Timepiece'
