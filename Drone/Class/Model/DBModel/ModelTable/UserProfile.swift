@@ -22,7 +22,7 @@ class UserProfile: NSObject {
     var created:NSTimeInterval = NSDate().timeIntervalSince1970
     var email:String = ""
 
-    private var profileModel:UserProfileModel = UserProfileModel()
+    private var profileModel:ProfileModel = ProfileModel()
 
     init(keyDict:NSDictionary) {
         super.init()
@@ -70,14 +70,14 @@ class UserProfile: NSObject {
     }
 
     class func removeAll()->Bool{
-        return UserProfileModel.removeAll()
+        return ProfileModel.removeAll()
     }
 
     class func getCriteria(criteria:String)->NSArray{
-        let modelArray:NSArray = UserProfileModel.getCriteria(criteria)
+        let modelArray:NSArray = ProfileModel.getCriteria(criteria)
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
-            let userProfileModel:UserProfileModel = model as! UserProfileModel
+            let userProfileModel:ProfileModel = model as! ProfileModel
 
             let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"age":userProfileModel.age,"weight":userProfileModel.weight,"lenght":userProfileModel.lenght,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
             allArray.addObject(profile)
@@ -86,10 +86,10 @@ class UserProfile: NSObject {
     }
 
     class func getAll()->NSArray{
-        let modelArray:NSArray = UserProfileModel.getAll()
+        let modelArray:NSArray = ProfileModel.getAll()
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
-            let userProfileModel:UserProfileModel = model as! UserProfileModel
+            let userProfileModel:ProfileModel = model as! ProfileModel
             let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"age":userProfileModel.age,"weight":userProfileModel.weight,"lenght":userProfileModel.lenght,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
             allArray.addObject(profile)
         }
@@ -97,11 +97,11 @@ class UserProfile: NSObject {
     }
 
     class func isExistInTable()->Bool {
-        return UserProfileModel.isExistInTable()
+        return ProfileModel.isExistInTable()
     }
 
     class func updateTable()->Bool {
-        return UserProfileModel.updateTable()
+        return ProfileModel.updateTable()
     }
 
     /**

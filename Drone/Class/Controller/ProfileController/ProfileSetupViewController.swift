@@ -15,8 +15,9 @@ import BRYXBanner
 import SwiftyJSON
 import MRProgress
 
-class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITextFieldDelegate,YYKeyboardObserver {
 private let  DATEPICKER_TAG:Int = 1280
+
+class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKeyboardObserver {
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!
@@ -80,11 +81,6 @@ private let  DATEPICKER_TAG:Int = 1280
         }
     }
 
-    // MARK: - UITextFieldDelegate
-    func textFieldDidBeginEditing(textField: UITextField) {
-        selectedTextField = textField
-    }
-
     // MARK: - YYKeyboardObserver
     func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
         UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
@@ -142,8 +138,9 @@ private let  DATEPICKER_TAG:Int = 1280
     }
 }
 
-extension ProfileViewController: UITextFieldDelegate {
+extension ProfileSetupViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
+        selectedTextField = textField
         if(textField.isEqual(ageTextField)) {
             
         }
@@ -161,7 +158,6 @@ extension ProfileViewController: UITextFieldDelegate {
             ageTextField.resignFirstResponder()
             lengthTextField.resignFirstResponder()
             weightTextField.resignFirstResponder()
-            stridelengthTextField.resignFirstResponder()
             self.selectedBirthday()
             return false
         }else{
@@ -179,7 +175,7 @@ extension ProfileViewController: UITextFieldDelegate {
             datePicker?.backgroundColor = UIColor.whiteColor()
             datePicker?.tag = DATEPICKER_TAG
             self.view.addSubview(datePicker!)
-            datePicker?.addTarget(self, action: #selector(ProfileViewController.selectedDateAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+            datePicker?.addTarget(self, action: #selector(ProfileSetupViewController.selectedDateAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
         }else{
             datePicker = picker as? UIDatePicker
         }

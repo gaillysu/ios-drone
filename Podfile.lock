@@ -12,6 +12,34 @@ PODS:
   - FMDB (2.6):
     - FMDB/standard (= 2.6)
   - FMDB/standard (2.6)
+  - MRProgress (0.8.3):
+    - MRProgress/ActivityIndicator (= 0.8.3)
+    - MRProgress/Blur (= 0.8.3)
+    - MRProgress/Circular (= 0.8.3)
+    - MRProgress/Icons (= 0.8.3)
+    - MRProgress/NavigationBarProgress (= 0.8.3)
+    - MRProgress/Overlay (= 0.8.3)
+  - MRProgress/ActivityIndicator (0.8.3):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.8.3):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.8.3):
+    - MRProgress/Helper
+    - MRProgress/ProgressBaseClass
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.8.3)
+  - MRProgress/Icons (0.8.3)
+  - MRProgress/NavigationBarProgress (0.8.3):
+    - MRProgress/ProgressBaseClass
+  - MRProgress/Overlay (0.8.3):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/ProgressBaseClass (0.8.3)
+  - MRProgress/Stopable (0.8.3):
+    - MRProgress/Helper
   - NVActivityIndicatorView (2.3)
   - PagingMenuController (0.9.1)
   - RegexKitLite (4.0)
@@ -36,6 +64,7 @@ DEPENDENCIES:
   - CircleProgressView (from `https://github.com/CardinalNow/iOS-CircleProgressView.git`)
   - CVCalendar (~> 1.2.9)
   - FMDB
+  - MRProgress
   - NVActivityIndicatorView
   - PagingMenuController
   - RegexKitLite
@@ -75,6 +104,7 @@ SPEC CHECKSUMS:
   CircleProgressView: fb5cd84be2abd908459d8dd087d94c4bdb7e60cf
   CVCalendar: 0799256e0bc3b43e83b7e86c0729ce9ff0624cb6
   FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
+  MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   NVActivityIndicatorView: c7ef25ef527ab5e51b00322cb1ddd58681bcf2a3
   PagingMenuController: 95bab00761e1ba4f4f9fa6bf22ac71b065a675aa
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661

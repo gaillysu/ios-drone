@@ -9,7 +9,7 @@
 import UIKit
 import FMDB
 
-class UserProfileModel: UserDatabaseHelper {
+class ProfileModel: UserDatabaseHelper {
     
     var first_name:String = ""
     var last_name:String = ""
@@ -36,14 +36,14 @@ class UserProfileModel: UserDatabaseHelper {
      */
     override class func getCriteria(criteria:String)->NSArray {
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
-        let users:NSMutableArray = NSMutableArray()
+        let profile:NSMutableArray = NSMutableArray()
         dbQueue.inDatabase { (db) -> Void in
             var tableName:String =  NSStringFromClass(self.classForCoder())
             tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
             let sql:String = "SELECT * FROM \(tableName) \(criteria)"
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
-                let model:UserProfileModel = UserProfileModel()
+                let model:ProfileModel = ProfileModel()
 
                 for i:Int in 0 ..< model.columeNames.count {
                     let columeName:NSString = (model.columeNames.objectAtIndex(i) as! NSString)
@@ -54,10 +54,10 @@ class UserProfileModel: UserDatabaseHelper {
                         model.setValue(NSNumber(longLong: resultSet.longLongIntForColumn("\(columeName)")), forKey: "\(columeName)")
                     }
                 }
-                users.addObject(model)
+                profile.addObject(model)
             }
         }
-        return users;
+        return profile;
     }
 
     /**
@@ -67,14 +67,14 @@ class UserProfileModel: UserDatabaseHelper {
      */
     override class func getAll()->NSArray{
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
-        let users:NSMutableArray = NSMutableArray()
+        let profile:NSMutableArray = NSMutableArray()
         dbQueue.inDatabase { (db) -> Void in
             var tableName:NSString = NSStringFromClass(self.classForCoder())
             tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
             let sql:String = "SELECT * FROM \(tableName)"
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
-                let model:UserProfileModel = UserProfileModel()
+                let model:ProfileModel = ProfileModel()
 
                 for i:Int in 0 ..< model.columeNames.count {
                     let columeName:NSString = model.columeNames.objectAtIndex(i) as! NSString
@@ -85,10 +85,10 @@ class UserProfileModel: UserDatabaseHelper {
                         model.setValue(NSNumber(longLong: resultSet.longLongIntForColumn("\(columeName)")), forKey: "\(columeName)")
                     }
                 }
-                users.addObject(model)
+                profile.addObject(model)
             }
         }
-        return users;
+        return profile;
     }
 
     override class func isExistInTable()->Bool {
