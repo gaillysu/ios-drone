@@ -27,7 +27,6 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
     var shouldShowDaysOut = true
     var animationFinished = true
-    var selectedDay:DayView?
     var calendarView:CVCalendarView?
     var menuView:CVCalendarMenuView?
     var titleView:StepsTitleView?
@@ -237,7 +236,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
 
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
-        selectedDay = dayView
+        dayView.selectionView?.shape = CVShape.Rect
     }
 
     func presentedDateUpdated(date: CVDate) {
