@@ -32,6 +32,7 @@
 		0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA701CC089BF005AB9DE /* drone3.jpg */; };
 		0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA741CC089F4005AB9DE /* drone2.jpg */; };
 		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
+		007139661CD9E50600787CA2 /* MRProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007139651CD9E50600787CA2 /* MRProgress.framework */; };
 		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -227,6 +228,7 @@
 		0064CA701CC089BF005AB9DE /* drone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone3.jpg; sourceTree = "<group>"; };
 		0064CA741CC089F4005AB9DE /* drone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone2.jpg; sourceTree = "<group>"; };
 		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
+		007139651CD9E50600787CA2 /* MRProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MRProgress.framework; path = "Pods/../build/Debug-iphoneos/MRProgress.framework"; sourceTree = "<group>"; };
 		008C5EDA1C8D64F800DCD12D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		008C5EDB1C8D64F800DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
 		008C5EDE1C8D655700DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007139661CD9E50600787CA2 /* MRProgress.framework in Frameworks */,
 				00CE42631CD20839002D1321 /* SwiftyJSON.framework in Frameworks */,
 				00CE42601CD1F9D3002D1321 /* BRYXBanner.framework in Frameworks */,
 				00CE42611CD1F9D3002D1321 /* RegexKitLite.framework in Frameworks */,
@@ -1095,6 +1098,7 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				007139651CD9E50600787CA2 /* MRProgress.framework */,
 				00CE42621CD20839002D1321 /* SwiftyJSON.framework */,
 				00CE425E1CD1F9D3002D1321 /* BRYXBanner.framework */,
 				00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */,
