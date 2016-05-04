@@ -38,6 +38,10 @@
 		006F94301CCA0C320073C150 /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 006F942F1CCA0C310073C150 /* white_background.png */; };
 		0089310A1CC779B30013E6D8 /* WhichDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */; };
 		0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */; };
+		007139661CD9E50600787CA2 /* MRProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007139651CD9E50600787CA2 /* MRProgress.framework */; };
+		008C5EDC1C8D64F800DCD12D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDA1C8D64F800DCD12D /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		008C5EDF1C8D655700DCD12D /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EDE1C8D655700DCD12D /* FMDB.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		008C5EE21C8D7A3600DCD12D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C5EE01C8D7A3600DCD12D /* Charts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */; };
 		008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */; };
 		009201DC1CBE2B6600C51707 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009201DA1CBE2B6600C51707 /* WelcomeViewController.swift */; };
@@ -245,6 +249,10 @@
 		006F942F1CCA0C310073C150 /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
 		008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichDeviceViewController.swift; sourceTree = "<group>"; };
 		0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhichDeviceViewController.xib; sourceTree = "<group>"; };
+		007139651CD9E50600787CA2 /* MRProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MRProgress.framework; path = "Pods/../build/Debug-iphoneos/MRProgress.framework"; sourceTree = "<group>"; };
+		008C5EDA1C8D64F800DCD12D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		008C5EDB1C8D64F800DCD12D /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "Pods/../build/Debug-iphoneos/FMDB.framework"; sourceTree = "<group>"; };
+		008C5EE01C8D7A3600DCD12D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
 		008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Drone/Class/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewCell.xib; path = Drone/Class/MenuViewCell.xib; sourceTree = SOURCE_ROOT; };
 		009201DA1CBE2B6600C51707 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -432,6 +440,7 @@
 				CB0B46B61CCF229400411997 /* Timepiece.framework in Frameworks */,
 				CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */,
 				CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */,
+				007139661CD9E50600787CA2 /* MRProgress.framework in Frameworks */,
 				00CE42631CD20839002D1321 /* SwiftyJSON.framework in Frameworks */,
 				00CE42601CD1F9D3002D1321 /* BRYXBanner.framework in Frameworks */,
 				00CE42611CD1F9D3002D1321 /* RegexKitLite.framework in Frameworks */,
@@ -1125,6 +1134,7 @@
 				CB0B46A91CCF229400411997 /* XCGLogger.framework */,
 				CB0B46981CCF223500411997 /* Fabric.framework */,
 				CB0B46991CCF223500411997 /* Crashlytics.framework */,
+				007139651CD9E50600787CA2 /* MRProgress.framework */,
 				00CE42621CD20839002D1321 /* SwiftyJSON.framework */,
 				00CE425E1CD1F9D3002D1321 /* BRYXBanner.framework */,
 				00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */,

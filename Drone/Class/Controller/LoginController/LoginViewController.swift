@@ -12,6 +12,7 @@ import Crashlytics
 import BRYXBanner
 import UIColor_Hex_Swift
 import SwiftyJSON
+import MRProgress
 
 class LoginViewController: UIViewController {
 
@@ -101,12 +102,16 @@ class LoginViewController: UIViewController {
             return
         }
 
+        MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+
         HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/login", data: ["user":["email":usernameT!.text!,"password":passwordT!.text!]]) { (result) in
+            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+
             let json = JSON(result)
             let message = json["message"].stringValue
             let status = json["status"].intValue
 
-            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor: status > 0 ? UIColor.greenColor():UIColor.redColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
 

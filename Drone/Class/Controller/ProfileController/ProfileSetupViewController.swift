@@ -13,8 +13,10 @@ import UIColor_Hex_Swift
 import YYKeyboardManager
 import BRYXBanner
 import SwiftyJSON
+import MRProgress
 
 class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITextFieldDelegate,YYKeyboardObserver {
+private let  DATEPICKER_TAG:Int = 1280
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!
@@ -111,7 +113,11 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITex
         let last_name:String = nameDictionary["last_name"] as! String
         let email:String = account["email"] as! String
         let password:String = account["password"] as! String
+
+        MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
         HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":first_name,"last_name":last_name,"email":email,"password":password,"age":ageTextField!.text!,"length":lengthTextField!.text!]]) { (result) in
+            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+
             let json = JSON(result)
             let message = json["message"].stringValue
             let status = json["status"].intValue
@@ -133,5 +139,78 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,UITex
                 self.navigationController?.pushViewController(maintabbar, animated: true)
             }
         }
+    }
+}
+
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if(textField.isEqual(ageTextField)) {
+            
+        }
+    }
+
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        if(textField.isEqual(ageTextField)) {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if(textField.isEqual(ageTextField)) {
+            ageTextField.resignFirstResponder()
+            lengthTextField.resignFirstResponder()
+            weightTextField.resignFirstResponder()
+            stridelengthTextField.resignFirstResponder()
+            self.selectedBirthday()
+            return false
+        }else{
+            self.hidenPickerView()
+        }
+        return true
+    }
+
+    func selectedBirthday() {
+        var datePicker:UIDatePicker?
+        let picker = self.view.viewWithTag(DATEPICKER_TAG)
+        if(picker == nil) {
+            datePicker = UIDatePicker(frame: CGRectMake(0,UIScreen.mainScreen().bounds.size.height,UIScreen.mainScreen().bounds.size.width,200))
+            datePicker?.datePickerMode = UIDatePickerMode.Date
+            datePicker?.backgroundColor = UIColor.whiteColor()
+            datePicker?.tag = DATEPICKER_TAG
+            self.view.addSubview(datePicker!)
+            datePicker?.addTarget(self, action: #selector(ProfileViewController.selectedDateAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        }else{
+            datePicker = picker as? UIDatePicker
+        }
+
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
+            datePicker?.frame = CGRectMake(0,datePicker?.frame.origin.y>=UIScreen.mainScreen().bounds.size.height ? (UIScreen.mainScreen().bounds.size.height-200):(UIScreen.mainScreen().bounds.size.height),UIScreen.mainScreen().bounds.size.width,200)
+            }) { (finish) in
+                if(datePicker?.frame.origin.y>UIScreen.mainScreen().bounds.size.height) {
+                    datePicker?.removeFromSuperview()
+                }
+        }
+    }
+
+    func hidenPickerView() {
+        var datePicker:UIDatePicker?
+        let picker = self.view.viewWithTag(DATEPICKER_TAG)
+        if(picker != nil) {
+            datePicker = picker as? UIDatePicker
+            datePicker?.removeFromSuperview()
+        }
+    }
+
+    func selectedDateAction(date:UIDatePicker) {
+        //ageTextField
+        NSLog("date:\(date.date)")
+        ageTextField.text = self.dateFormattedStringWithFormat("yyyy-MM-dd", fromDate: date.date)
+    }
+
+    func dateFormattedStringWithFormat(format: String, fromDate date: NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = format
+        return formatter.stringFromDate(date)
     }
 }
