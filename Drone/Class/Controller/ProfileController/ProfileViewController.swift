@@ -12,6 +12,7 @@ import SMSegmentView
 import UIColor_Hex_Swift
 import BRYXBanner
 import SwiftyJSON
+import MRProgress
 
 
 class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
@@ -94,7 +95,11 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
         let last_name:String = nameDictionary["last_name"] as! String
         let email:String = account["email"] as! String
         let password:String = account["password"] as! String
+
+        MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
         HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":first_name,"last_name":last_name,"email":email,"password":password,"age":ageTextField!.text!,"length":lengthTextField!.text!]]) { (result) in
+            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+
             let json = JSON(result)
             let message = json["message"].stringValue
             let status = json["status"].intValue
