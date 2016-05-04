@@ -126,14 +126,27 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
 extension ProfileViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
         if(textField.isEqual(ageTextField)) {
-
+            
         }
+    }
+
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        if(textField.isEqual(ageTextField)) {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if(textField.isEqual(ageTextField)) {
+            ageTextField.resignFirstResponder()
+            lengthTextField.resignFirstResponder()
+            weightTextField.resignFirstResponder()
+            stridelengthTextField.resignFirstResponder()
             self.selectedBirthday()
             return false
+        }else{
+            self.hidenPickerView()
         }
         return true
     }
@@ -158,6 +171,15 @@ extension ProfileViewController: UITextFieldDelegate {
                 if(datePicker?.frame.origin.y>UIScreen.mainScreen().bounds.size.height) {
                     datePicker?.removeFromSuperview()
                 }
+        }
+    }
+
+    func hidenPickerView() {
+        var datePicker:UIDatePicker?
+        let picker = self.view.viewWithTag(DATEPICKER_TAG)
+        if(picker != nil) {
+            datePicker = picker as? UIDatePicker
+            datePicker?.removeFromSuperview()
         }
     }
 
