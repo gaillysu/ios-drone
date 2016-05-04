@@ -75,6 +75,9 @@
                                     <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="tWE-bD-TvG"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Length" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Goa-Bq-FHb" customClass="AutocompleteField" customModule="AutocompleteField">
                             <rect key="frame" x="0.0" y="51" width="550" height="50"/>
@@ -86,6 +89,9 @@
                                     <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="IGo-HH-8su"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Weight" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6l-WV-9Jl" customClass="AutocompleteField" customModule="AutocompleteField">
                             <rect key="frame" x="0.0" y="102" width="550" height="50"/>
@@ -97,6 +103,9 @@
                                     <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="K9g-LS-p5L"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Stride length" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zQm-cs-kpa" customClass="AutocompleteField" customModule="AutocompleteField">
                             <rect key="frame" x="0.0" y="153" width="550" height="50"/>

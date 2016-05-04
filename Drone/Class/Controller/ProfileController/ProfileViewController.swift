@@ -14,6 +14,7 @@ import BRYXBanner
 import SwiftyJSON
 import MRProgress
 
+private let  DATEPICKER_TAG:Int = 1280
 
 class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
 
@@ -119,5 +120,56 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
                 //TODO:register success push controll
             }
         }
+    }
+}
+
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if(textField.isEqual(ageTextField)) {
+
+        }
+    }
+
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if(textField.isEqual(ageTextField)) {
+            self.selectedBirthday()
+            return false
+        }
+        return true
+    }
+
+    func selectedBirthday() {
+        var datePicker:UIDatePicker?
+        let picker = self.view.viewWithTag(DATEPICKER_TAG)
+        if(picker == nil) {
+            datePicker = UIDatePicker(frame: CGRectMake(0,UIScreen.mainScreen().bounds.size.height,UIScreen.mainScreen().bounds.size.width,200))
+            datePicker?.datePickerMode = UIDatePickerMode.Date
+            datePicker?.backgroundColor = UIColor.whiteColor()
+            datePicker?.tag = DATEPICKER_TAG
+            self.view.addSubview(datePicker!)
+            datePicker?.addTarget(self, action: #selector(ProfileViewController.selectedDateAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        }else{
+            datePicker = picker as? UIDatePicker
+        }
+
+        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
+            datePicker?.frame = CGRectMake(0,datePicker?.frame.origin.y>=UIScreen.mainScreen().bounds.size.height ? (UIScreen.mainScreen().bounds.size.height-200):(UIScreen.mainScreen().bounds.size.height),UIScreen.mainScreen().bounds.size.width,200)
+            }) { (finish) in
+                if(datePicker?.frame.origin.y>UIScreen.mainScreen().bounds.size.height) {
+                    datePicker?.removeFromSuperview()
+                }
+        }
+    }
+
+    func selectedDateAction(date:UIDatePicker) {
+        //ageTextField
+        NSLog("date:\(date.date)")
+        ageTextField.text = self.dateFormattedStringWithFormat("yyyy-MM-dd", fromDate: date.date)
+    }
+
+    func dateFormattedStringWithFormat(format: String, fromDate date: NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = format
+        return formatter.stringFromDate(date)
     }
 }
