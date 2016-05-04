@@ -22,7 +22,11 @@ class HttpPostRequest: NSObject {
                 XCGLogger.defaultInstance().debug("getJSON: \(response.result.value)")
                 completion(result: response.result.value as! NSDictionary)
             }else if (response.result.isFailure){
-                completion(result: response.result.value as! NSDictionary)
+                if (response.result.value == nil) {
+                    completion(result: NSDictionary(dictionary: ["error" : "request error"]))
+                }else{
+                    completion(result: response.result.value as! NSDictionary)
+                }
             }
         }
     }

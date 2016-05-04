@@ -105,7 +105,7 @@ class LoginController: UIViewController {
             let message = json["message"].stringValue
             let status = json["status"].intValue
 
-            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor: status > 0 ? UIColor.greenColor():UIColor.redColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
 
