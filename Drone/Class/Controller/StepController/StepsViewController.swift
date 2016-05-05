@@ -44,7 +44,6 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
     var shouldShowDaysOut = true
     var animationFinished = true
-    var selectedDay:DayView?
     var calendarView:CVCalendarView?
     var menuView:CVCalendarMenuView?
     var titleView:StepsTitleView?
@@ -164,6 +163,12 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         thisWeekChart.invalidateChart()
         lastMonthChart.invalidateChart()
     }
+
+    override func viewDidDisappear(animated: Bool) {
+        lastWeekChart.reset()
+        lastMonthChart.reset()
+        thisWeekChart.reset()
+    }
 }
 
 
@@ -172,7 +177,10 @@ extension StepsViewController {
 
     func initTitleView() {
         titleView = StepsTitleView.getStepsTitleView(CGRectMake(0,0,190,50))
-        titleView?.setCalendarButtonTitle(CVDate(date: NSDate()).globalDescription)
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMMM"
+        let dateString = "\(formatter.stringFromDate(NSDate())), \(NSDate().day)"
+        titleView?.setCalendarButtonTitle(dateString)
         self.navigationItem.titleView = titleView
         titleView!.buttonResultHandler = { result -> Void in
             let clickButton:UIButton = result as! UIButton
@@ -192,7 +200,8 @@ extension StepsViewController {
         let view = self.view.viewWithTag(CALENDAR_VIEW_TAG)
         if(view == nil) {
             let calendarBackGroundView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,self.view.frame.size.height))
-            calendarBackGroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+            calendarBackGroundView.alpha = 0
+            calendarBackGroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
             calendarBackGroundView.tag = CALENDAR_VIEW_TAG
             let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StepsViewController.tapAction(_:)))
             calendarBackGroundView.addGestureRecognizer(tap)
@@ -204,6 +213,8 @@ extension StepsViewController {
 
             self.menuView = CVCalendarMenuView(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.size.width - 20, 20))
             self.menuView?.dayOfWeekTextColor = UIColor.whiteColor()
+            self.menuView?.dayOfWeekTextColor = UIColor.grayColor()
+            self.menuView?.dayOfWeekFont = UIFont.systemFontOfSize(15)
             self.menuView?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             self.menuView!.menuViewDelegate = self
             fillView.addSubview(menuView!)
@@ -216,12 +227,22 @@ extension StepsViewController {
             self.calendarView!.calendarAppearanceDelegate = self
             self.calendarView!.animatorDelegate = self
             self.calendarView!.calendarDelegate = self
+
             // Commit frames' updates
             self.calendarView!.commitCalendarViewUpdate()
             self.menuView!.commitMenuViewUpdate()
+
+            calendarView?.coordinator.selectedDayView?.selectionView?.shape = CVShape.Rect
+
+            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                calendarBackGroundView.alpha = 1
+            }) { (finish) in
+
+            }
+
         }else {
             view?.hidden = false
-            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 view?.alpha = 1
             }) { (finish) in
             }
@@ -234,7 +255,7 @@ extension StepsViewController {
     func dismissCalendar() {
         let view = self.view.viewWithTag(CALENDAR_VIEW_TAG)
         if(view != nil) {
-            UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 view?.alpha = 0
             }) { (finish) in
                 view?.hidden = true
@@ -264,9 +285,12 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         return .Sunday
     }
 
+    func dayOfWeekTextUppercase() -> Bool {
+        return false
+    }
     // MARK: Optional methods
     func shouldShowWeekdaysOut() -> Bool {
-        return shouldShowDaysOut
+        return false
     }
 
     func shouldAnimateResizing() -> Bool {
@@ -294,18 +318,27 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
 
     func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
         return true
+        dayView.selectionView?.shape = CVShape.Rect
     }
 
-    func dotMarker(sizeOnDayView dayView: DayView) -> CGFloat {
-        return 13
+    func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
+        dayView.selectionView?.shape = CVShape.Rect
+        return false
+    }
+
+    func presentedDateUpdated(date: CVDate) {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMMM"
+        let dateString = "\(formatter.stringFromDate(date.convertedDate()!)), \(date.day)"
+        titleView?.setCalendarButtonTitle(dateString)
+    }
+
+    func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
+        return false
     }
 
     func weekdaySymbolType() -> WeekdaySymbolType {
-        return .Short
-    }
-
-    func selectionViewPath() -> ((CGRect) -> (UIBezierPath)) {
-        return { UIBezierPath(rect: CGRectMake(0, 0, $0.width, $0.height)) }
+        return .VeryShort
     }
 
     func shouldShowCustomSingleSelection() -> Bool {
@@ -332,11 +365,6 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
 
         return false
     }
-    override func viewDidDisappear(animated: Bool) {
-        lastWeekChart.reset()
-        lastMonthChart.reset()
-        thisWeekChart.reset()
-    }
 }
 
 // MARK: - CVCalendarViewAppearanceDelegate
@@ -349,4 +377,12 @@ extension StepsViewController: CVCalendarViewAppearanceDelegate {
         return 2
     }
     
+
+    func dayLabelWeekdayInTextColor() -> UIColor {
+        return UIColor(rgba: "#676767")
+    }
+
+    func dayLabelWeekdaySelectedBackgroundColor() -> UIColor {
+        return UIColor(rgba: "#55028C")
+    }
 }
