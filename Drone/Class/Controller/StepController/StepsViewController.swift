@@ -299,16 +299,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
 
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
-        selectedDay = dayView
-        
-    }
-
-    func presentedDateUpdated(date: CVDate) {
-        titleView?.setCalendarButtonTitle(date.globalDescription)
-    }
-
-    func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
-        return true
+        dayView.selectionView?.shape = CVShape.Rect
     }
 
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
@@ -317,8 +308,8 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
-        return true
         dayView.selectionView?.shape = CVShape.Rect
+        return true
     }
 
     func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
@@ -342,27 +333,6 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     func shouldShowCustomSingleSelection() -> Bool {
-        return false
-    }
-
-    func preliminaryView(viewOnDayView dayView: DayView) -> UIView {
-        let circleView = CVAuxiliaryView(dayView: dayView, rect: dayView.bounds, shape: CVShape.Rect)
-        circleView.fillColor = .colorFromCode(0x552582)
-        return circleView
-    }
-
-    func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
-        if (dayView.isCurrentDay) {
-            return true
-        }
-        return false
-    }
-
-    func supplementaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
-        if (Int(arc4random_uniform(3)) == 1) {
-            return true
-        }
-
         return false
     }
 }
