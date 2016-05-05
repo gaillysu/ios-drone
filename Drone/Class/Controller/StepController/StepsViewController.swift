@@ -169,6 +169,8 @@ extension StepsViewController {
             self.calendarView!.commitCalendarViewUpdate()
             self.menuView!.commitMenuViewUpdate()
 
+            calendarView?.coordinator.selectedDayView?.selectionView?.shape = CVShape.Rect
+
             UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 calendarBackGroundView.alpha = 1
             }) { (finish) in
@@ -237,6 +239,11 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         dayView.selectionView?.shape = CVShape.Rect
+    }
+
+    func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
+        dayView.selectionView?.shape = CVShape.Rect
+        return false
     }
 
     func presentedDateUpdated(date: CVDate) {
