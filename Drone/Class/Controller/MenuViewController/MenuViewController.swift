@@ -28,6 +28,11 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         galleryItem.commingSoon = true
         self.menuItems.append(galleryItem)
         self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings",image: UIImage(named: "icon_settings")!));
+        if(GoalModel.getAll().count == 0){
+            let goalModel:GoalModel = GoalModel()
+            goalModel.goalSteps = 10000
+            goalModel.add({ (id, completion) in})
+        }
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -42,7 +47,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
 //        AppDelegate.getAppDelegate().startConnect()
-
+        
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_RAWPACKET_DATA_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
             NSLog("SWIFTEVENT_BUS_RAWPACKET_DATA_KEY  :\(data)")
@@ -88,7 +93,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     // MARK: - left or right Action
     func leftAction(item:UIBarButtonItem) {
-        self.presentViewController(ProfileViewController(), animated: true) {}
+        let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
+        profileNavigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
+        self.presentViewController(profileNavigationController, animated: true) {}
     }
 
     func rightAction(item:UIBarButtonItem) {

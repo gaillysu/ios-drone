@@ -149,7 +149,6 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
                 //save database
                 let userprofile:UserProfile = UserProfile(keyDict: ["first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"age":user["age"]!.intValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue])
                 userprofile.add({ (id, completion) in
-
                 })
                 //TODO:register success push controll
                 let maintabbar:WhichDeviceViewController = WhichDeviceViewController()

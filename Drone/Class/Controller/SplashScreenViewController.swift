@@ -24,8 +24,8 @@ class SplashScreenViewController: BaseViewController {
         let navigationController = UINavigationController(rootViewController:MenuViewController());
         navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
         navigationController.navigationBar.hidden = false
-        
         self.presentViewController(navigationController, animated: true, completion: nil);
+        
 //        let user:NSArray = UserProfile.getAll()
 //        if(user.count>0) {
 //            let navigationController = UINavigationController(rootViewController:MenuViewController());

@@ -58,7 +58,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: DeviceTableViewCell = deviceTableView.dequeueReusableCellWithIdentifier(identifier) as! DeviceTableViewCell
+        let cell: DeviceTableViewCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! DeviceTableViewCell
         if indexPath.row == 0 {
             cell.titleLabel.text = "Contacts Notifications"
         }else if indexPath.row == 1{
