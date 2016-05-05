@@ -27,7 +27,6 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
     @IBOutlet weak var lengthTextField: AutocompleteField!
     @IBOutlet weak var weightTextField: AutocompleteField!
     @IBOutlet weak var metricsSegment: UIView!
-    var selectedTextField:UITextField?
 
     var segmentView:SMSegmentView?
     private var nameDictionary:Dictionary<String,AnyObject> = ["first_name":"DroneUser","last_name":"User"]
@@ -83,12 +82,6 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
             
             metricsSegment.addSubview(segmentView!)
         }
-    }
-
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        ageTextField.resignFirstResponder()
-        lengthTextField.resignFirstResponder()
-        weightTextField.resignFirstResponder()
     }
 
     @IBAction func buttonActionManager(sender: AnyObject) {
@@ -168,10 +161,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
 
 extension ProfileSetupViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
-        selectedTextField = textField
-        if(textField.isEqual(ageTextField)) {
-            
-        }
+
     }
 
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
@@ -259,6 +249,7 @@ extension ProfileSetupViewController: UITextFieldDelegate {
         formatter.dateFormat = format
         return formatter.stringFromDate(date)
     }
+}
 
 // MARK: - UIPickerView
 extension ProfileSetupViewController:UIPickerViewDelegate,UIPickerViewDataSource {
