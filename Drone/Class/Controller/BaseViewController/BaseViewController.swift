@@ -8,6 +8,17 @@
 
 import Foundation
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
         if((UIDevice.currentDevice().systemVersion as NSString).floatValue>7.0){

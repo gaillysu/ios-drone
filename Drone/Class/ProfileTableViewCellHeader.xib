@@ -16,11 +16,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
                     <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XlH-oa-6Gf">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="John" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XlH-oa-6Gf" customClass="AutocompleteField">
                     <rect key="frame" x="30" y="27" width="287" height="42"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="36"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="editButtonAction:" destination="iN0-l3-epB" eventType="editingDidEnd" id="D9Q-Rd-BVl"/>
+                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-vE-iAh">
                     <rect key="frame" x="317" y="23" width="50" height="50"/>

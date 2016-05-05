@@ -12,4 +12,8 @@ class ProfileTableViewCellHeader: UIView {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
+ 
+    @IBAction func editButtonAction(sender: AnyObject) {
+        nameTextField.becomeFirstResponder()
+    }
 }

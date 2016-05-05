@@ -113,9 +113,12 @@ class LoginViewController: UIViewController {
             //status > 0 login success or login fail
             if(status > 0 && UserProfile.getAll().count == 0) {
                 let userprofile:UserProfile = UserProfile(keyDict: ["id":json["id"].intValue,"first_name":json["first_name"].stringValue,"last_name":json["last_name"].stringValue,"age":json["age"].intValue,"length":json["length"].intValue,"email":json["email"].stringValue])
-                userprofile.add({ (id, completion) in
-
-                })
+                userprofile.add({ (id, completion) in })
+                if(GoalModel.getAll().count == 0){
+                    let goalModel:GoalModel = GoalModel()
+                    goalModel.goalSteps = 10000
+                    goalModel.add({ (id, completion) in})
+                }
             }
         }
     }
