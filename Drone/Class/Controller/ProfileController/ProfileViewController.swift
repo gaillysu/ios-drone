@@ -14,7 +14,8 @@ import BRYXBanner
 import SwiftyJSON
 import MRProgress
 
-private let  DATEPICKER_TAG:Int = 1280
+private let DATEPICKER_TAG:Int = 1280
+private let PICKERVIEW_TAG:Int = 1380
 
 class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
 
@@ -31,6 +32,13 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
     private var nameDictionary:Dictionary<String,AnyObject> = ["first_name":"DroneUser","last_name":"User"]
     var account:Dictionary<String,AnyObject> = ["email":"","password":""]
 
+    private var selectedTextField: AutocompleteField?
+    private var lengthArray:[Int] = []
+    private var weightArray:[Int] = []
+    private var weightFloatArray:[Int] = []
+    private var selectedRow:Int = 0
+    private var selectedRow2:Int = 0
+
     init() {
         super.init(nibName: "ProfileViewController", bundle: NSBundle.mainBundle())
     }
@@ -42,6 +50,19 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         textfiledBG.layer.borderColor = UIColor(rgba: "#6F7179").CGColor
+
+        //Init pickerView the data
+        for index:Int in 150...250 {
+            lengthArray.append(index)
+        }
+
+        for index:Int in 35...150 {
+            weightArray.append(index)
+        }
+
+        for index:Int in 1...9 {
+            weightFloatArray.append(index)
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -78,6 +99,8 @@ class ProfileViewController: BaseViewController,SMSegmentViewDelegate {
         lengthTextField.resignFirstResponder()
         weightTextField.resignFirstResponder()
         stridelengthTextField.resignFirstResponder()
+        self.removeDatePickerView()
+        self.removePickerView()
     }
 
     func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
@@ -138,15 +161,37 @@ extension ProfileViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        selectedTextField = textField as! AutocompleteField
+
         if(textField.isEqual(ageTextField)) {
-            ageTextField.resignFirstResponder()
             lengthTextField.resignFirstResponder()
             weightTextField.resignFirstResponder()
-            stridelengthTextField.resignFirstResponder()
             self.selectedBirthday()
             return false
+        }else if (textField.isEqual(lengthTextField) || textField.isEqual(weightTextField)) {
+            weightTextField.resignFirstResponder()
+
+            /**
+             *  remove date pickerview
+             */
+            self.removeDatePickerView()
+
+            /**
+             *  create selected pickerview
+             */
+            self.selectedLength()
+
+            /**
+             *  if not null reloadAll pickerview
+             */
+            self.getPickerView()?.reloadAllComponents()
+            return false
         }else{
-            self.hidenPickerView()
+            /**
+             Need to pop-up keyboard to delete all the picker control
+             */
+            self.removeDatePickerView()
+            self.removePickerView()
         }
         return true
     }
@@ -165,7 +210,7 @@ extension ProfileViewController: UITextFieldDelegate {
             datePicker = picker as? UIDatePicker
         }
 
-        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
+        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
             datePicker?.frame = CGRectMake(0,datePicker?.frame.origin.y>=UIScreen.mainScreen().bounds.size.height ? (UIScreen.mainScreen().bounds.size.height-200):(UIScreen.mainScreen().bounds.size.height),UIScreen.mainScreen().bounds.size.width,200)
             }) { (finish) in
                 if(datePicker?.frame.origin.y>UIScreen.mainScreen().bounds.size.height) {
@@ -174,7 +219,7 @@ extension ProfileViewController: UITextFieldDelegate {
         }
     }
 
-    func hidenPickerView() {
+    func removeDatePickerView() {
         var datePicker:UIDatePicker?
         let picker = self.view.viewWithTag(DATEPICKER_TAG)
         if(picker != nil) {
@@ -184,7 +229,6 @@ extension ProfileViewController: UITextFieldDelegate {
     }
 
     func selectedDateAction(date:UIDatePicker) {
-        //ageTextField
         NSLog("date:\(date.date)")
         ageTextField.text = self.dateFormattedStringWithFormat("yyyy-MM-dd", fromDate: date.date)
     }
@@ -193,5 +237,122 @@ extension ProfileViewController: UITextFieldDelegate {
         let formatter = NSDateFormatter()
         formatter.dateFormat = format
         return formatter.stringFromDate(date)
+    }
+}
+
+// MARK: - UIPickerView
+extension ProfileViewController:UIPickerViewDelegate,UIPickerViewDataSource {
+
+    func selectedLength() {
+        var picker:UIPickerView?
+        let pickerView = self.view.viewWithTag(PICKERVIEW_TAG)
+        if (pickerView == nil) {
+            picker = UIPickerView(frame: CGRectMake(0,UIScreen.mainScreen().bounds.size.height,UIScreen.mainScreen().bounds.size.width,200))
+            picker?.backgroundColor = UIColor.whiteColor()
+            picker?.tag = PICKERVIEW_TAG
+            picker?.delegate = self
+            self.view.addSubview(picker!)
+        }else{
+            picker = pickerView as? UIPickerView
+        }
+
+        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
+            picker?.frame = CGRectMake(0,UIScreen.mainScreen().bounds.size.height-200,UIScreen.mainScreen().bounds.size.width,200)
+        }) { (finish) in
+            if(picker?.frame.origin.y>UIScreen.mainScreen().bounds.size.height) {
+                picker?.removeFromSuperview()
+            }
+        }
+    }
+
+    func removePickerView() {
+        var picker:UIPickerView?
+        let pickerView = self.view.viewWithTag(PICKERVIEW_TAG)
+        if(pickerView != nil) {
+            picker = pickerView as? UIPickerView
+            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
+                picker?.frame = CGRectMake(0,UIScreen.mainScreen().bounds.size.height,UIScreen.mainScreen().bounds.size.width,200)
+            }) { (finish) in
+                picker?.removeFromSuperview()
+            }
+        }
+    }
+
+    func getPickerView() -> UIPickerView? {
+        var picker:UIPickerView?
+        let pickerView = self.view.viewWithTag(PICKERVIEW_TAG)
+        if(pickerView != nil) {
+            picker = pickerView as? UIPickerView
+            return picker
+        }
+        return picker
+    }
+
+    // MARK: - UIPickerViewDataSource
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        if selectedTextField!.isEqual(lengthTextField) {
+            return 2
+        }else if selectedTextField!.isEqual(weightTextField) {
+            return 3
+        }
+        return 2
+    }
+
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if selectedTextField!.isEqual(lengthTextField) {
+            if(component == 0) {
+                return lengthArray.count
+            }else{
+                return 1
+            }
+        }else if selectedTextField!.isEqual(weightTextField) {
+            if(component == 0) {
+                return weightArray.count
+            }else if(component == 1) {
+                return weightFloatArray.count
+            }else {
+                return 1
+            }
+        }
+        return 0
+    }
+
+    // MARK: - UIPickerViewDelegate
+    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 35
+    }
+
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if selectedTextField!.isEqual(lengthTextField) {
+            if (component == 0) {
+                return "\(lengthArray[row])"
+            }else{
+                return "CM"
+            }
+        }else if selectedTextField!.isEqual(weightTextField) {
+            if(component == 0) {
+                return "\(weightArray[row])"
+            }else if(component == 1) {
+                return ".\(weightFloatArray[row])"
+            }else {
+                return "KG"
+            }
+        }
+        return ""
+    }
+
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if selectedTextField!.isEqual(lengthTextField) {
+            if component == 0 {
+                lengthTextField.text = "\(lengthArray[row])"
+            }
+        }else if selectedTextField!.isEqual(weightTextField) {
+            if component == 0 {
+                selectedRow = row
+            }else if component == 1 {
+                selectedRow2 = row
+            }
+            weightTextField.text = "\(weightArray[selectedRow])"+".\(weightFloatArray[selectedRow2])"
+        }
     }
 }
