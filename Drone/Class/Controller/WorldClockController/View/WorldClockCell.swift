@@ -23,8 +23,8 @@ class WorldClockCell: UITableViewCell {
             let nibs:NSArray = NSBundle.mainBundle().loadNibNamed("WorldClockCell", owner: self, options: nil)
             cell = nibs.objectAtIndex(0) as? UITableViewCell
         }
-        let cellDict:NSDictionary = clock
-        cellDict.enumerateKeysAndObjectsUsingBlock({ (key, obj, stop) -> Void in
+            let cellDict:NSDictionary = clock
+            cellDict.enumerateKeysAndObjectsUsingBlock({ (key, obj, stop) -> Void in
             cell?.textLabel?.text = key as? String
             cell?.detailTextLabel?.text = obj as? String
         })

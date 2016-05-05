@@ -34,11 +34,25 @@ class WorldClockViewController: BaseViewController {
         worldClockTableview.backgroundColor = UIColor(rgba: "#E4C590")
         worldClockTableview.allowsSelectionDuringEditing = true;
         worldClockTableview.tableHeaderView = WorldClockHeader.getWorldClockHeader(CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.width-60))
+        
+        let button: UIButton = UIButton(type: UIButtonType.Custom)
+        button.setImage(UIImage(named: "addbutton"), forState: UIControlState.Normal)
+        button.addTarget(self, action: #selector(add), forControlEvents: UIControlEvents.TouchUpInside)
+        button.frame = CGRectMake(0, 0, 30, 30)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
+        let dict:NSMutableDictionary = NSMutableDictionary();
+        dict["textLabel"] = "Yo";
+        dict["detailTextLabel"] = "Yo";
     }
+    
+    func add(){
+        self.navigationController?.pushViewController(AddWorldClockViewController(), animated: true)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -54,15 +68,12 @@ class WorldClockViewController: BaseViewController {
     }
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
 

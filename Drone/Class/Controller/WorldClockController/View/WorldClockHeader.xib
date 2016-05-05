@@ -22,16 +22,6 @@
                         <action selector="buttonActionManager:" destination="iN0-l3-epB" eventType="touchUpInside" id="Vox-lK-fpO"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAT-Ob-HTL">
-                    <rect key="frame" x="332" y="8" width="35" height="35"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="JAT-Ob-HTL" secondAttribute="height" multiplier="1:1" id="mCv-wg-WDI"/>
-                    </constraints>
-                    <state key="normal" image="addbutton"/>
-                    <connections>
-                        <action selector="buttonActionManager:" destination="iN0-l3-epB" eventType="touchUpInside" id="QPI-4D-kLX"/>
-                    </connections>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="5kl-Om-SZX">
                     <rect key="frame" x="8" y="80" width="360" height="210"/>
                 </imageView>
@@ -45,18 +35,15 @@
             <color key="backgroundColor" red="0.89411764705882346" green="0.77254901960784317" blue="0.56470588235294117" alpha="0.58999999999999997" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="5kl-Om-SZX" firstAttribute="height" secondItem="973-CU-x85" secondAttribute="height" constant="185" id="14L-T6-602"/>
-                <constraint firstItem="JAT-Ob-HTL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:8" constant="-5" id="GES-Oe-pvH"/>
                 <constraint firstItem="5kl-Om-SZX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="KAd-Bi-m99"/>
                 <constraint firstItem="973-CU-x85" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="MQC-hJ-LyG"/>
                 <constraint firstItem="973-CU-x85" firstAttribute="top" secondItem="5kl-Om-SZX" secondAttribute="bottom" constant="5" id="NFI-4N-26w"/>
-                <constraint firstItem="JAT-Ob-HTL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="R3o-0h-RC0"/>
                 <constraint firstAttribute="trailing" secondItem="5kl-Om-SZX" secondAttribute="trailing" constant="7" id="RFm-FN-aSQ"/>
                 <constraint firstItem="5kl-Om-SZX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="Zny-11-i1y"/>
                 <constraint firstItem="fvn-3B-fvm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="dvG-Ny-1pJ"/>
                 <constraint firstItem="fvn-3B-fvm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="g7k-ke-JJL"/>
                 <constraint firstAttribute="bottom" secondItem="973-CU-x85" secondAttribute="bottom" id="guo-Wk-Wnr"/>
                 <constraint firstItem="fvn-3B-fvm" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:8" constant="-5" id="sfC-EK-Ryc"/>
-                <constraint firstAttribute="trailing" secondItem="JAT-Ob-HTL" secondAttribute="trailing" constant="8" id="uDW-m1-9PB"/>
                 <constraint firstAttribute="trailing" secondItem="973-CU-x85" secondAttribute="trailing" constant="7" id="uZ3-Rp-N37"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -66,7 +53,6 @@
         </view>
     </objects>
     <resources>
-        <image name="addbutton" width="50" height="50"/>
         <image name="editor" width="50" height="50"/>
         <image name="map" width="300" height="187"/>
     </resources>

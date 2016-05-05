@@ -42,6 +42,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
@@ -88,6 +89,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         titleView.contentMode = .ScaleAspectFit
         titleView.image = UIImage(named: "drone_logo")
         self.navigationItem.titleView = titleView
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
     }
 

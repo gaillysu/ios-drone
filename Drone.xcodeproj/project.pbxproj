@@ -71,7 +71,7 @@
 		00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ADC1C868C89003DA5E2 /* StepsViewController.swift */; };
 		00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */; };
 		00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */; };
-		00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */; };
+		00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE51C868C89003DA5E2 /* AddWorldClockViewController.swift */; };
 		00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE71C868C89003DA5E2 /* WorldClockCell.swift */; };
 		00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AE81C868C89003DA5E2 /* WorldClockCell.xib */; };
 		00982C1B1C868C8A003DA5E2 /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE91C868C89003DA5E2 /* WorldClockViewController.swift */; };
@@ -168,6 +168,7 @@
 		9E455E1B1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E455E1A1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift */; };
 		9E455E1D1CD5BBEB00F79356 /* DeviceTableViewCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E455E1C1CD5BBEB00F79356 /* DeviceTableViewCellHeader.xib */; };
 		9E455E211CD5C98200F79356 /* PagingMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E455E201CD5C98200F79356 /* PagingMenuController.framework */; };
+		9E62A1A91CDB1E150098C39B /* AddWorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E62A1A81CDB1E150098C39B /* AddWorldClockViewController.xib */; };
 		9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF7EEA41CD89DA7009B0928 /* ProfileTableViewCell.swift */; };
 		9EF7EEA71CD89DB4009B0928 /* ProfileTableViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF7EEA61CD89DB4009B0928 /* ProfileTableViewCellHeader.swift */; };
 		9EF7EEA91CD89DD5009B0928 /* ProfileTableViewCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF7EEA81CD89DD5009B0928 /* ProfileTableViewCellHeader.xib */; };
@@ -290,7 +291,7 @@
 		00982ADC1C868C89003DA5E2 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
 		00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepGoalSetingView.swift; sourceTree = "<group>"; };
 		00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepHistoricalView.swift; sourceTree = "<group>"; };
-		00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockView.swift; path = Controller/WorldClockController/AddWorldClockView.swift; sourceTree = "<group>"; };
+		00982AE51C868C89003DA5E2 /* AddWorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockViewController.swift; path = Controller/WorldClockController/AddWorldClockViewController.swift; sourceTree = "<group>"; };
 		00982AE71C868C89003DA5E2 /* WorldClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockCell.swift; sourceTree = "<group>"; };
 		00982AE81C868C89003DA5E2 /* WorldClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockCell.xib; sourceTree = "<group>"; };
 		00982AE91C868C89003DA5E2 /* WorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +394,7 @@
 		9E455E1A1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCellHeader.swift; sourceTree = "<group>"; };
 		9E455E1C1CD5BBEB00F79356 /* DeviceTableViewCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceTableViewCellHeader.xib; sourceTree = "<group>"; };
 		9E455E201CD5C98200F79356 /* PagingMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PagingMenuController.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-dexrbxtshdsjmvbquhcxrfpwxdeo/Build/Products/Debug-iphonesimulator/PagingMenuController.framework"; sourceTree = "<group>"; };
+		9E62A1A81CDB1E150098C39B /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddWorldClockViewController.xib; sourceTree = "<group>"; };
 		9EF7EEA41CD89DA7009B0928 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		9EF7EEA61CD89DB4009B0928 /* ProfileTableViewCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellHeader.swift; sourceTree = "<group>"; };
 		9EF7EEA81CD89DD5009B0928 /* ProfileTableViewCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCellHeader.xib; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3C1CACD82600CB9A15 /* AddDeviceViewController */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
 				00F1AF411CACD82600CB9A15 /* BuddyViewController */,
@@ -1216,7 +1219,6 @@
 		CBA06BEB1C8EB2C800E3257B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */,
 				9E455E151CD5B94100F79356 /* DeviceTableView */,
 				CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */,
@@ -1237,9 +1239,11 @@
 		CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */ = {
 			isa = PBXGroup;
 			children = (
-				00982AE51C868C89003DA5E2 /* AddWorldClockView.swift */,
+				00982AE51C868C89003DA5E2 /* AddWorldClockViewController.swift */,
+				9E62A1A81CDB1E150098C39B /* AddWorldClockViewController.xib */,
 			);
 			name = AddWorldClockView;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		CBD6BD131CD04D310009F39A /* SplashScreenViewController */ = {
@@ -1420,6 +1424,7 @@
 				00982BEE1C868C8A003DA5E2 /* LoginViewController.xib in Resources */,
 				00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
+				9E62A1A91CDB1E150098C39B /* AddWorldClockViewController.xib in Resources */,
 				CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */,
 				9E455E111CD5B90300F79356 /* DeviceViewController.xib in Resources */,
 				006F94301CCA0C320073C150 /* white_background.png in Resources */,
@@ -1630,7 +1635,7 @@
 				9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */,
 				00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */,
 				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
-				00982C181C868C8A003DA5E2 /* AddWorldClockView.swift in Sources */,
+				00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */,
 				00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */,
 				0024C0FB1CB73A7C00E0A23D /* ProfileModel.swift in Sources */,
 				00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */,
