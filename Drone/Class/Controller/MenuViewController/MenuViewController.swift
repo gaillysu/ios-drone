@@ -94,6 +94,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         titleView.contentMode = .ScaleAspectFit
         titleView.image = UIImage(named: "drone_logo")
         self.navigationItem.titleView = titleView
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
     }
 
