@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>A</key>
+	<dict>
+		<key>Abu Dhabi</key>
+		<string>+4</string>
+		<key>Adelaide</key>
+		<string>+9.5</string>
+		<key>Aden</key>
+		<string>+3</string>
+		<key>Alaska</key>
+		<string>-9</string>
+		<key>Alberta</key>
+		<string>-7</string>
+		<key>Almaty</key>
+		<string>+6</string>
+		<key>Afghanistan</key>
+		<string>+4.5</string>
+		<key>Amman</key>
+		<string>+3</string>
+		<key>Amsterdam</key>
+		<string>+1</string>
+		<key>Anchorage</key>
+		<string>-8</string>
+		<key>Ankara</key>
+		<string>+3</string>
+		<key>Athens</key>
+		<string>+2</string>
+		<key>Auckland</key>
+		<string>+12</string>
+		<key>Australia (Central)</key>
+		<string>+9.5</string>
+		<key>Azores</key>
+		<string>-1</string>
+	</dict>
+	<key>B</key>
+	<dict>
+		<key>Baghdad</key>
+		<string>+3</string>
+		<key>Bahrain</key>
+		<string>+3</string>
+		<key>Baku</key>
+		<string>+4</string>
+		<key>Bangkok</key>
+		<string>+7</string>
+		<key>Beijing</key>
+		<string>+8</string>
+		<key>Belfast</key>
+		<string>+0</string>
+		<key>Berlin</key>
+		<string>+1</string>
+		<key>Bern</key>
+		<string>+1</string>
+		<key>Beruit</key>
+		<string>+3</string>
+		<key>Bogota</key>
+		<string>-5</string>
+		<key>Boston</key>
+		<string>-5</string>
+		<key>Bratislava</key>
+		<string>+1</string>
+		<key>Brazilia</key>
+		<string>-3</string>
+		<key>Brisbane</key>
+		<string>+10</string>
+		<key>British Columbia Cent</key>
+		<string>-8</string>
+		<key>British Columbia N.E</key>
+		<string>-7</string>
+		<key>Brussells</key>
+		<string>+1</string>
+		<key>Bucharest</key>
+		<string>+2</string>
+		<key>Budapest</key>
+		<string>+1</string>
+		<key>Buenos Aires</key>
+		<string>-3</string>
+		<key>Burma</key>
+		<string>+6.5</string>
+	</dict>
+	<key>C</key>
+	<dict>
+		<key>Calcutta</key>
+		<string>+5</string>
+		<key>Canberra</key>
+		<string>+10</string>
+		<key>Cairo</key>
+		<string>+2</string>
+		<key>Cardiff</key>
+		<string>+0</string>
+		<key>Cape Town</key>
+		<string>+2</string>
+		<key>Cape Verde Is</key>
+		<string>-1</string>
+		<key>Caracas</key>
+		<string>-4</string>
+		<key>Central Australia</key>
+		<string>+9.5</string>
+		<key>Chicago</key>
+		<string>-6</string>
+		<key>Christchurch NZ</key>
+		<string>+12</string>
+		<key>Chongqing</key>
+		<string>+8</string>
+		<key>Colombo</key>
+		<string>+6</string>
+		<key>Cyprus</key>
+		<string>+2</string>
+	</dict>
+	<key>D</key>
+	<dict>
+		<key>Dallas</key>
+		<string>-6</string>
+		<key>Dammam</key>
+		<string>+3</string>
+		<key>Darwin</key>
+		<string>+9.5</string>
+		<key>Denver</key>
+		<string>-7</string>
+		<key>Dhakar</key>
+		<string>+6</string>
+		<key>Dublin</key>
+		<string>+0</string>
+	</dict>
+	<key>E</key>
+	<dict>
+		<key>Edinburgh</key>
+		<string>+0</string>
+		<key>Edmonton</key>
+		<string>-7</string>
+		<key>El Paso</key>
+		<string>-7</string>
+		<key>Estonia</key>
+		<string>+2</string>
+		<key>Eniwetok</key>
+		<string>-12</string>
+	</dict>
+
+	<key>F</key>
+	<dict>
+		<key>Fiji</key>
+		<string>+12</string>
+		<key>Finland</key>
+		<string>+2</string>
+		<key>Fort Worth</key>
+		<string>-6</string>
+		<key>French Polynesia</key>
+		<string>-9.5</string>
+	</dict>
+	<key>G</key>
+	<dict>
+		<key>Georgetown</key>
+		<string>-3</string>
+		<key>Great Britain</key>
+		<string>+0</string>
+		<key>Greece</key>
+		<string>+2</string>
+		<key>Guam</key>
+		<string>+10</string>
+		<key>Guatamala</key>
+		<string>-6</string>
+	</dict>
+	<key>H</key>
+	<dict>
+		<key>Hanoi</key>
+		<string>+7</string>
+		<key>Harare</key>
+		<string>+2</string>
+		<key>Hawaii</key>
+		<string>-10</string>
+		<key>Helsinki</key>
+		<string>+2</string>
+		<key>Hobart</key>
+		<string>+10</string>
+		<key>Hong Kong</key>
+		<string>+8</string>
+		<key>Honolulu</key>
+		<string>+0</string>
+		<key>Houston</key>
+		<string>-6</string>
+	</dict>
+	<key>I</key>
+	<dict>
+		<key>Iceland</key>
+		<string>+0</string>
+		<key>India</key>
+		<string>+5.5</string>
+		<key>Indiana [east]</key>
+		<string>-5</string>
+		<key>Indiana [west]</key>
+		<string>-6</string>
+		<key>Iran</key>
+		<string>+4.5</string>
+		<key>Iraq</key>
+		<string>+3.5</string>
+		<key>Ireland</key>
+		<string>+0</string>
+		<key>Islamabad</key>
+		<string>+5</string>
+		<key>Israel</key>
+		<string>+2</string>
+		<key>Istanbul</key>
+		<string>+2</string>
+	</dict>
+	<key>J</key>
+	<dict>
+		<key>Jakarta</key>
+		<string>+7</string>
+		<key>Japan</key>
+		<string>+9</string>
+	</dict>
+	<key>K</key>
+	<dict>
+		<key>Kabul</key>
+		<string>+4</string>
+		<key>Kamchatka</key>
+		<string>+12</string>
+		<key>Kathmandu</key>
+		<string>+6</string>
+		<key>Kazan</key>
+		<string>+4</string>
+		<key>Kingston</key>
+		<string>-5</string>
+		<key>Kuala Lumpar</key>
+		<string>+8</string>
+		<key>Kuwait</key>
+		<string>+3</string>
+		<key>Kwaialein</key>
+		<string>-12</string>
+	</dict>
+	<key>L</key>
+	<dict>
+		<key>Labrador</key>
+		<string>-4</string>
+		<key>Lagos</key>
+		<string>+1</string>
+		<key>La Paz</key>
+		<string>-4</string>
+		<key>Latvia</key>
+		<string>+2</string>
+		<key>Lima</key>
+		<string>-5</string>
+		<key>Lisbon</key>
+		<string>+0</string>
+		<key>Lithuania</key>
+		<string>+2</string>
+		<key>London</key>
+		<string>+0</string>
+		<key>Los Angeles</key>
+		<string>-8</string>
+	</dict>
+
+	<key>M</key>
+	<dict>
+		<key>Madras</key>
+		<string>+5</string>
+		<key>Madrid</key>
+		<string>+1</string>
+		<key>Magadan</key>
+		<string>+11</string>
+		<key>Malta</key>
+		<string>+1</string>
+		<key>Manila</key>
+		<string>+8</string>
+		<key>Manitoba</key>
+		<string>-6</string>
+		<key>Marshall Is</key>
+		<string>+12</string>
+		<key>Melbourne</key>
+		<string>+10</string>
+		<key>Memphis</key>
+		<string>-6</string>
+		<key>Mexico City</key>
+		<string>-6</string>
+		<key>Miami</key>
+		<string>-5)</string>
+		<key>Mid-Atlantic</key>
+		<string>-2</string>
+		<key>Midway Island</key>
+		<string>-11</string>
+		<key>Monrovia</key>
+		<string>+0</string>
+		<key>Montevideo</key>
+		<string>-3</string>
+		<key>Montreal</key>
+		<string>-5</string>
+		<key>Morocco</key>
+		<string>+1</string>
+		<key>Moscow</key>
+		<string>+3</string>
+		<key>Muscat</key>
+		<string>+4</string>
+		<key>Myanmar (Burma)</key>
+		<string>+6.5</string>
+	</dict>
+	<key>N</key>
+	<dict>
+		<key>Nairobi</key>
+		<string>+3</string>
+		<key>Nepal</key>
+		<string>+5.75</string>
+		<key>New Caledonia</key>
+		<string>+11</string>
+		<key>New Dehli</key>
+		<string>+5</string>
+		<key>Newfoundland</key>
+		<string>-3.5</string>
+		<key>New Orleans</key>
+		<string>-6</string>
+		<key>New York</key>
+		<string>-5</string>
+	</dict>
+	<key>O</key>
+	<dict>
+		<key>Ontario</key>
+		<string>-5</string>
+		<key>Ontario N.W</key>
+		<string>-6</string>
+		<key>Osaka</key>
+		<string>+9</string>
+	</dict>
+	<key>P</key>
+	<dict>
+		<key>Paris</key>
+		<string>+1</string>
+		<key>Perth</key>
+		<string>+8</string>
+		<key>Phnom Penh</key>
+		<string>+7</string>
+		<key>Phoenix</key>
+		<string>-7</string>
+		<key>Pitcairn Islands</key>
+		<string>-8.5</string>
+		<key>Polynesia (French)</key>
+		<string>-9.5</string>
+		<key>Port Moresby</key>
+		<string>+10</string>
+		<key>Portugal</key>
+		<string>+0</string>
+		<key>Prague</key>
+		<string>+1</string>
+		<key>Pretoria</key>
+		<string>+2</string>
+	</dict>
+	<key>Q</key>
+	<dict>
+		<key>Quebec</key>
+		<string>-5</string>
+	</dict>
+	<key>R</key>
+	<dict>
+		<key>Rangoon</key>
+		<string>+ 6.5</string>
+		<key>Riga</key>
+		<string>+ 1</string>
+		<key>Rio de Janero</key>
+		<string>-3</string>
+		<key>Riyadh</key>
+		<string>+3</string>
+		<key>Rome</key>
+		<string>+1</string>
+	</dict>
+	<key>S</key>
+	<dict>
+		<key>Salt Lake City</key>
+		<string>-7</string>
+		<key>Samoa</key>
+		<string>+12 </string>
+		<key>San Antonia - Texas</key>
+		<string>-6</string>
+		<key>San Diego</key>
+		<string>-8</string>
+		<key>San Francisco</key>
+		<string>-8</string>
+		<key>Santa Fe</key>
+		<string>-7</string>
+		<key>Santiago</key>
+		<string>-4</string>
+		<key>Sapporo</key>
+		<string>+9</string>
+		<key>Sarajevo</key>
+		<string>+1</string>
+		<key>Saskatchewan East</key>
+		<string>-6</string>
+		<key>Saskatchewan West</key>
+		<string>-7</string>
+		<key>Seattle</key>
+		<string>-8</string>
+		<key>Seoul</key>
+		<string>+9</string>
+		<key>Singapore</key>
+		<string>+8</string>
+		<key>Solomon Is</key>
+		<string>+11</string>
+		<key>Sri Lanka</key>
+		<string>+6</string>
+		<key>St. Louis</key>
+		<string>-6</string>
+		<key>St. Petersburg</key>
+		<string>+3</string>
+		<key>Suva</key>
+		<string>+12</string>
+		<key>Sydney</key>
+		<string>+10</string>
+	</dict>
+	<key>T</key>
+	<dict>
+		<key>Taipei</key>
+		<string>+8</string>
+		<key>Tbilisi</key>
+		<string>+4</string>
+		<key>Tehran</key>
+		<string>+3</string>
+		<key>Tokyo</key>
+		<string>+9</string>
+		<key>Tijuana</key>
+		<string>-8</string>
+	</dict>
+	<key>U</key>
+	<dict>
+
+		<key>United Kingdom</key>
+		<string>+0</string>
+		<key>Urumqi</key>
+		<string>+8</string>
+	</dict>
+	<key>V</key>
+	<dict>
+		<key>Valletta</key>
+		<string>+1</string>
+		<key>Vancouver</key>
+		<string>-8</string>
+		<key>Vienna</key>
+		<string>+1</string>
+		<key>Vladivostok</key>
+		<string>+10</string>
+		<key>Volgograd</key>
+		<string>+4</string>
+	</dict>
+	<key>W</key>
+	<dict>
+
+		<key>Warsaw</key>
+		<string>+1</string>
+		<key>Washington</key>
+		<string>-5</string>
+		<key>Wellington</key>
+		<string>+12</string>
+		<key>Winnipeg</key>
+		<string>-6</string>
+
+	</dict>
+	<key>Y</key>
+	<dict>
+		<key>Yakutsk</key>
+		<string>+9</string>
+		<key>Yukon</key>
+		<string>-8</string>
+	</dict>
+	<key>Z</key>
+	<dict>
+		<key>Zagreb</key>
+		<string>+1</string>
+	</dict>
+</dict>
+</plist>

@@ -9,26 +9,21 @@
 import UIKit
 
 class WorldClockCell: UITableViewCell {
+ 
+    @IBOutlet weak var time: UILabel!
 
-    @IBOutlet weak var regionName: UILabel!
-
-    @IBOutlet weak var timeZone: UILabel!
-
-    @IBOutlet weak var timerSwicth: UISwitch!
-
-    class func getWorldClockCell(tableView:UITableView,indexPath:NSIndexPath,clock:NSDictionary)->UITableViewCell {
+    @IBOutlet weak var cityLabel: UILabel!
+    
+    @IBOutlet weak var timeDescription: UILabel!
+    
+    class func getWorldClockCell(tableView:UITableView,indexPath:NSIndexPath,clock:WorldClockModel)->UITableViewCell {
         let identifier:String = "WorldClockCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
-        if(cell == nil){
-            let nibs:NSArray = NSBundle.mainBundle().loadNibNamed("WorldClockCell", owner: self, options: nil)
-            cell = nibs.objectAtIndex(0) as? UITableViewCell
-        }
-        let cellDict:NSDictionary = clock
-        cellDict.enumerateKeysAndObjectsUsingBlock({ (key, obj, stop) -> Void in
-            cell?.textLabel?.text = key as? String
-            cell?.detailTextLabel?.text = obj as? String
-        })
-        return cell!
+        var cell:WorldClockCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! WorldClockCell
+        let nibs:NSArray = NSBundle.mainBundle().loadNibNamed("WorldClockCell", owner: self, options: nil)
+        cell = (nibs.objectAtIndex(0) as? WorldClockCell)!
+        cell.cityLabel.text = clock.city_name
+        cell.timeDescription.text = clock.gmt_offset
+        return cell
     }
 
     override func awakeFromNib() {

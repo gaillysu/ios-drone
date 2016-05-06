@@ -23,4 +23,13 @@ extension UIColor{
     public class func getGreyColor() -> UIColor {
         return UIColor(rgba: "#666666");
     }
+    
+    public class func getLightBaseColor() -> UIColor {
+        return UIColor(red: 209/255.0 , green: 157/255.0, blue: 66/255.0, alpha: 0.6)
+    }
+
+    public class func transparent() -> UIColor {
+        return UIColor(red: 0/255.0 , green: 0/255.0, blue: 0/255.0, alpha: 0.0)
+    }
+
 }

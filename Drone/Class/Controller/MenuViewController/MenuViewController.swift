@@ -19,20 +19,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
-        self.menuItems.append(MenuItem(controllerName: "StepsViewController", title: "Activities", image: UIImage(named: "icon_activities")!));
+        self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activities", image: UIImage(named: "icon_activities")!));
+        self.menuItems.append(MenuItem(controller: WorldClockViewController(), title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
         
-        let sleepItem = MenuItem(controllerName: "SleepViewController", title: "Sleep",image: UIImage(named: "icon_sleep")!)
-        sleepItem.commingSoon = true;
-        self.menuItems.append(sleepItem);
-
-        self.menuItems.append(MenuItem(controllerName: "WorldClockViewController", title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
-
-        let galleryItem = MenuItem(controllerName: "GalleryViewController", title: "Gallery",image: UIImage(named: "icon_gallery")!)
-        galleryItem.commingSoon = true
-        self.menuItems.append(galleryItem)
-
-        self.menuItems.append(MenuItem(controllerName: "SettingsViewController", title: "Settings",image: UIImage(named: "icon_settings")!));
-
         if(GoalModel.getAll().count == 0){
             let goalModel:GoalModel = GoalModel()
             goalModel.goalSteps = 10000
@@ -46,8 +35,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppDelegate.getAppDelegate().startConnect()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
@@ -94,6 +83,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         titleView.contentMode = .ScaleAspectFit
         titleView.image = UIImage(named: "drone_logo")
         self.navigationItem.titleView = titleView
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
     }
 
@@ -130,17 +120,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item:MenuItem = self.menuItems[indexPath.row]
-
-        let infoDictionary:[String : AnyObject] = NSBundle.mainBundle().infoDictionary!
-        let appName:String = infoDictionary["CFBundleName"] as! String
-
-        //Use the init of class name
-        let classType: AnyObject.Type = NSClassFromString("\(appName)."+item.menuViewControllerItem)!
-        let controllerType : UIViewController.Type = classType as! UIViewController.Type
-        let viewController: UIViewController = controllerType.init()
-
+        self.navigationController?.pushViewController(item.menuViewControllerItem, animated: true)
         menuTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
