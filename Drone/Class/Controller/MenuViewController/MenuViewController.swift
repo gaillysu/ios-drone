@@ -19,15 +19,15 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
-        self.menuItems.append(MenuItem(controller: StepsViewController(), title: "Activities", image: UIImage(named: "icon_activities")!));
-        let sleepItem = MenuItem(controller: SleepViewController(), title: "Sleep",image: UIImage(named: "icon_sleep")!)
+        self.menuItems.append(MenuItem(controllerName: "StepsViewController", title: "Activities", image: UIImage(named: "icon_activities")!));
+        let sleepItem = MenuItem(controllerName: "SleepViewController", title: "Sleep",image: UIImage(named: "icon_sleep")!)
         sleepItem.commingSoon = true;
         self.menuItems.append(sleepItem);
-        self.menuItems.append(MenuItem(controller: WorldClockController(), title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
-        let galleryItem = MenuItem(controller: GalleryViewController(), title: "Gallery",image: UIImage(named: "icon_gallery")!)
+        self.menuItems.append(MenuItem(controllerName: "WorldClockController", title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
+        let galleryItem = MenuItem(controllerName: "GalleryViewController", title: "Gallery",image: UIImage(named: "icon_gallery")!)
         galleryItem.commingSoon = true
         self.menuItems.append(galleryItem)
-        self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings",image: UIImage(named: "icon_settings")!));
+        self.menuItems.append(MenuItem(controllerName: "SettingsViewController", title: "Settings",image: UIImage(named: "icon_settings")!));
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -38,7 +38,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
-//        AppDelegate.getAppDelegate().startConnect()
 
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_RAWPACKET_DATA_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
@@ -113,8 +112,17 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item:MenuItem = self.menuItems[indexPath.row]
-        self.navigationController?.pushViewController(item.menuViewControllerItem, animated: true)
+
+        let infoDictionary:[String : AnyObject] = NSBundle.mainBundle().infoDictionary!
+        let appName:String = infoDictionary["CFBundleName"] as! String
+
+        //Use the init of class name
+        let classType: AnyObject.Type = NSClassFromString("\(appName)."+item.menuViewControllerItem)!
+        let controllerType : UIViewController.Type = classType as! UIViewController.Type
+        let viewController: UIViewController = controllerType.init()
+
         menuTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

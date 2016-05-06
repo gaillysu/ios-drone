@@ -9,13 +9,13 @@
 import Foundation
 
 class MenuItem {
-    var menuViewControllerItem: UIViewController
+    var menuViewControllerItem: String
     var menuTitle: String
     var image:UIImage
     var commingSoon:Bool
     
-    init(controller: UIViewController, title: String, image: UIImage) {
-        self.menuViewControllerItem = controller
+    init(controllerName: String, title: String, image: UIImage) {
+        self.menuViewControllerItem = controllerName
         self.menuTitle = title
         self.commingSoon = false
         self.image = image
