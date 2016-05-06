@@ -3,35 +3,63 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="5YS-MI-cfj" detailTextLabel="Dg2-fw-ASX" rowHeight="50" style="IBUITableViewCellStyleSubtitle" id="KGk-i7-Jjw" customClass="WorldClockCell" customModule="Drone" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="WorldClockCell" customModule="Drone" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5YS-MI-cfj">
-                        <rect key="frame" x="15" y="7" width="38" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-bX-sdO">
+                        <rect key="frame" x="16" y="8" width="200" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="Xm6-af-0y4"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dg2-fw-ASX">
-                        <rect key="frame" x="15" y="30" width="39" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldg-Gx-XdL">
+                        <rect key="frame" x="16" y="31" width="200" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="gJD-s7-Vxh"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnB-yU-yi2">
+                        <rect key="frame" x="225" y="16" width="79" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="79" id="vcw-1n-mgl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
-                <color key="backgroundColor" red="0.16862745098039217" green="0.52941176470588236" blue="0.63529411764705879" alpha="0.58999999999999997" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="cnB-yU-yi2" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-8" id="EGC-Qv-9lp"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="cnB-yU-yi2" secondAttribute="bottom" constant="9" id="IdQ-Aw-Czt"/>
+                    <constraint firstItem="ldg-Gx-XdL" firstAttribute="top" secondItem="Zle-bX-sdO" secondAttribute="bottom" id="O7f-YC-bDf"/>
+                    <constraint firstItem="Zle-bX-sdO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="P3h-2f-ZW2"/>
+                    <constraint firstItem="cnB-yU-yi2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="TDr-Oy-jdO"/>
+                    <constraint firstItem="ldg-Gx-XdL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="a4N-Pn-bxR"/>
+                    <constraint firstItem="Zle-bX-sdO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="l82-MM-mLb"/>
+                </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="561" y="306"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="cityLabel" destination="Zle-bX-sdO" id="AB8-3H-lks"/>
+                <outlet property="time" destination="cnB-yU-yi2" id="MUn-UY-1Hz"/>
+                <outlet property="timeDescription" destination="ldg-Gx-XdL" id="EFR-EU-Qc4"/>
+            </connections>
+            <point key="canvasLocation" x="306" y="269.5"/>
         </tableViewCell>
     </objects>
 </document>

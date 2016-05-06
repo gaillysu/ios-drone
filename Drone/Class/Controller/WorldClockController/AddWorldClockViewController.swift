@@ -12,9 +12,8 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
 
     private var index:[String]!
     private var cities = [String]()
-    private var citiesDict:NSDictionary!
-    private var filteredCities = [String]()
-    private let searchController = UISearchController(searchResultsController: nil)
+    private var citiesGmtDict:NSMutableDictionary! = NSMutableDictionary()
+    private var citiesDict:NSMutableDictionary! = NSMutableDictionary()
     @IBOutlet weak var cityTableView: UITableView!
     
     init() {
@@ -26,73 +25,76 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     override func viewDidLoad() {
+        self.navigationItem.title = "Choose a city"
         var timezone:NSDictionary = NSDictionary()
         if let path = NSBundle.mainBundle().pathForResource("localTimeZone/timezone", ofType: "plist") {
             timezone = NSDictionary(contentsOfFile: path)!
             index = timezone.allKeys as! [String]
         }
         for key in index {
-            var countriesForLetter = timezone.objectForKey(key) as! [String:String]
-            for country in countriesForLetter.keys {
-                cities.append(country)
+            let countriesForLetter = timezone.objectForKey(key) as! [String:String]
+            var countryPerLetter = [String]()
+            for city in countriesForLetter.keys {
+                countryPerLetter.append(city)
+                cities.append(city)
+                citiesDict[key] = countryPerLetter
+                citiesGmtDict[city]  = countriesForLetter[city]
             }
-            
-        }
-        
-        if let dict = citiesDict {
-            cities = dict.allKeys as! [String]
         }
         cities = cities.sort { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
         index = index.sort{ $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
         definesPresentationContext = true
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = true
-        searchController.searchBar.barTintColor = UIColor.getBaseColor()
-        searchController.searchBar.tintColor = UIColor.whiteColor()
-        searchController.searchBar.layer.borderWidth = 0.0
-        definesPresentationContext = true
-        cityTableView.tableHeaderView = searchController.searchBar
         cityTableView.separatorColor = UIColor.whiteColor()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        cityTableView.sectionIndexColor = UIColor.whiteColor()
+        
+        let button: UIButton = UIButton(type: UIButtonType.Custom)
+        button.setImage(UIImage(named: "closebutton"), forState: UIControlState.Normal)
+        button.addTarget(self, action: #selector(close), forControlEvents: UIControlEvents.TouchUpInside)
+        button.frame = CGRectMake(0, 0, 30, 30)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
-        filteredCities = cities.filter { city in
-            return city.lowercaseString.containsString(searchText.lowercaseString)
-        }
-        
-        cityTableView.reloadData()
+    func close(){
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.index.count;
     }
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.index[section]
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active && searchController.searchBar.text != "" {
-            return filteredCities.count
-        }
-        return cities.count
+        let sectionName:String = self.index[section]
+        let citiesArrayForSection:[String] = self.citiesDict.objectForKey(sectionName) as! [String]
+        return citiesArrayForSection.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true);
+        let sectionName: String = self.index[indexPath.section]
+        let citiesArrayForSection:[String] = self.citiesDict.objectForKey(sectionName) as! [String]
+        let cityName:String = citiesArrayForSection[indexPath.row]
+        let gmtOffset = citiesGmtDict[cityName]
+        let worldClock:WorldClock = WorldClock(keyDict: ["gmt_offset":gmtOffset!,"city_name":cityName])
+        worldClock.add { (id, completion) in
+            print("Added to db!")
+        }
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        if searchController.active && searchController.searchBar.text != "" {
-            cell.textLabel?.text = filteredCities[indexPath.row]
-        } else {
-            cell.textLabel?.text = cities[indexPath.row]
-        }
+        let sectionName: String = self.index[indexPath.section]
+        let citiesArrayForSection:[String] = self.citiesDict.objectForKey(sectionName) as! [String]
+        cell.textLabel?.text = citiesArrayForSection[indexPath.row]
         cell.textLabel?.font = UIFont(name: "Helvetica-Light", size: 15.0)
         cell.textLabel?.textColor = UIColor.whiteColor()
         cell.backgroundColor = UIColor.getLightBaseColor()
         return cell;
     }
-    
-    
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return index
@@ -101,10 +103,8 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         return self.index.indexOf(title)!
     }
-}
-
-extension AddWorldClockViewController: UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.0;
     }
 }

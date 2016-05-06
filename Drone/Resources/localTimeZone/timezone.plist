@@ -28,8 +28,6 @@
 		<string>+3</string>
 		<key>Athens</key>
 		<string>+2</string>
-		<key>Atlantic Time</key>
-		<string>-4</string>
 		<key>Auckland</key>
 		<string>+12</string>
 		<key>Australia (Central)</key>
@@ -100,8 +98,6 @@
 		<string>-4</string>
 		<key>Central Australia</key>
 		<string>+9.5</string>
-		<key>Central Time</key>
-		<string>-6</string>
 		<key>Chicago</key>
 		<string>-6</string>
 		<key>Christchurch NZ</key>
@@ -157,7 +153,7 @@
 	<dict>
 		<key>Georgetown</key>
 		<string>-3</string>
-		<key>Great Britain (UK)</key>
+		<key>Great Britain</key>
 		<string>+0</string>
 		<key>Greece</key>
 		<string>+2</string>
@@ -270,8 +266,6 @@
 		<string>+8</string>
 		<key>Manitoba</key>
 		<string>-6</string>
-		<key>Maritimes</key>
-		<string>4</string>
 		<key>Marshall Is</key>
 		<string>+12</string>
 		<key>Melbourne</key>
@@ -296,8 +290,6 @@
 		<string>+1</string>
 		<key>Moscow</key>
 		<string>+3</string>
-		<key>Mountain Time</key>
-		<string>-7</string>
 		<key>Muscat</key>
 		<string>+4</string>
 		<key>Myanmar (Burma)</key>

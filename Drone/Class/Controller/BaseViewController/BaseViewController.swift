@@ -32,4 +32,14 @@ class BaseViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    func makeStandardUINavigationController(rootViewController:UIViewController) -> UINavigationController{
+        let navigationController:UINavigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
+        navigationController.navigationBar.hidden = false
+        return navigationController
+    }
 }

@@ -21,10 +21,7 @@ class SplashScreenViewController: BaseViewController {
         // IF !Logged in ->
         // RegisterViewController
         // ELSE
-        let navigationController = UINavigationController(rootViewController:MenuViewController());
-        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
-        navigationController.navigationBar.hidden = false
-        self.presentViewController(navigationController, animated: true, completion: nil);
+        self.presentViewController(self.makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil);
         
 //        let user:NSArray = UserProfile.getAll()
 //        if(user.count>0) {
