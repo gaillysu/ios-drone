@@ -10,14 +10,14 @@ import UIKit
 
 class SetWorldClockRequest: NevoRequest {
     private var mWorldTimerCount:Int?
-    private var mTimerZone:Int?
+    private var mTimeZone:Int?
     private var mTimerName:String?
 
-    init(count:Int,timerZone:NSTimeZone,name:String) {
+    init(count:Int,timeZone:NSTimeZone,name:String) {
         super.init()
         mWorldTimerCount = count
-        let timerzone:Int = timerZone.secondsFromGMT
-        mTimerZone = timerZone.secondsFromGMT/3600*15
+        let timezone:Int = timeZone.secondsFromGMT
+        mTimeZone = timeZone.secondsFromGMT/3600*15
         mTimerName = name
     }
 
@@ -29,9 +29,9 @@ class SetWorldClockRequest: NevoRequest {
         let hexArray:[UInt8] = NSData2Bytes(mTimerName!.dataUsingEncoding(NSUTF8StringEncoding)!)
 
         var values1 :[UInt8] = [0x80,SetWorldClockRequest.HEADER(),
-            UInt8(mWorldTimerCount!&0xFF),UInt8(mTimerZone!&0xFF),UInt8(hexArray.count&0xFF)]
+            UInt8(mWorldTimerCount!&0xFF),UInt8(mTimeZone!&0xFF),UInt8(hexArray.count&0xFF)]
         values1 = values1+hexArray
-        for(var index:Int = values1.count;index<20;index++){
+        for index:Int in values1.count ..< 20 {
             values1.append(0x00)
         }
 

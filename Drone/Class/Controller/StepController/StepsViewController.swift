@@ -83,6 +83,10 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     }
 
     override func viewDidDisappear(animated: Bool) {
+        lastWeekChart.reset()
+        lastMonthChart.reset()
+        thisWeekChart.reset()
+
         if queryTimer!.valid {
             queryTimer?.invalidate()
             queryTimer = nil
@@ -178,12 +182,6 @@ extension StepsViewController {
         lastWeekChart.invalidateChart()
         thisWeekChart.invalidateChart()
         lastMonthChart.invalidateChart()
-    }
-
-    override func viewDidDisappear(animated: Bool) {
-        lastWeekChart.reset()
-        lastMonthChart.reset()
-        thisWeekChart.reset()
     }
 }
 

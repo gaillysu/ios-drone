@@ -10,13 +10,13 @@ import UIKit
 
 class WorldClock: NSObject {
     private var worldTimer:NSTimeInterval?
-    private var timerZone:NSTimeZone?
+    private var timeZone:NSTimeZone?
     private var worldName:String?
 
-    init(worldtimer: NSTimeInterval,timerzone:NSTimeZone,name:String) {
+    init(worldtimer: NSTimeInterval,timezone:NSTimeZone,name:String) {
         super.init()
         worldTimer = worldtimer
-        timerZone = timerzone
+        timeZone = timezone
         worldName = name
     }
 
@@ -24,8 +24,8 @@ class WorldClock: NSObject {
         return worldTimer!
     }
 
-    func getTimerZone() ->NSTimeZone {
-        return timerZone!
+    func getTimeZone() ->NSTimeZone {
+        return timeZone!
     }
 
     func getWorldName() ->String {

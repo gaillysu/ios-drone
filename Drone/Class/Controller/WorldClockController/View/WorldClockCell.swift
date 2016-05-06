@@ -12,7 +12,7 @@ class WorldClockCell: UITableViewCell {
 
     @IBOutlet weak var regionName: UILabel!
 
-    @IBOutlet weak var timerZone: UILabel!
+    @IBOutlet weak var timeZone: UILabel!
 
     @IBOutlet weak var timerSwicth: UISwitch!
 

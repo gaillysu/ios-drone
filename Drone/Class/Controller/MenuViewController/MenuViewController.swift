@@ -20,24 +20,24 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     init() {
         super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
         self.menuItems.append(MenuItem(controllerName: "StepsViewController", title: "Activities", image: UIImage(named: "icon_activities")!));
+        
         let sleepItem = MenuItem(controllerName: "SleepViewController", title: "Sleep",image: UIImage(named: "icon_sleep")!)
         sleepItem.commingSoon = true;
         self.menuItems.append(sleepItem);
-        self.menuItems.append(MenuItem(controller: WorldClockViewController(), title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
-        let galleryItem = MenuItem(controller: GalleryViewController(), title: "Gallery",image: UIImage(named: "icon_gallery")!)
+
+        self.menuItems.append(MenuItem(controllerName: "WorldClockViewController", title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
+
+        let galleryItem = MenuItem(controllerName: "GalleryViewController", title: "Gallery",image: UIImage(named: "icon_gallery")!)
         galleryItem.commingSoon = true
         self.menuItems.append(galleryItem)
-        self.menuItems.append(MenuItem(controller: SettingsViewController(), title: "Settings",image: UIImage(named: "icon_settings")!));
+
+        self.menuItems.append(MenuItem(controllerName: "SettingsViewController", title: "Settings",image: UIImage(named: "icon_settings")!));
+
         if(GoalModel.getAll().count == 0){
             let goalModel:GoalModel = GoalModel()
             goalModel.goalSteps = 10000
             goalModel.add({ (id, completion) in})
         }
-        self.menuItems.append(MenuItem(controllerName: "WorldClockController", title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
-        let galleryItem = MenuItem(controllerName: "GalleryViewController", title: "Gallery",image: UIImage(named: "icon_gallery")!)
-        galleryItem.commingSoon = true
-        self.menuItems.append(galleryItem)
-        self.menuItems.append(MenuItem(controllerName: "SettingsViewController", title: "Settings",image: UIImage(named: "icon_settings")!));
     }
 
     required init(coder aDecoder: NSCoder) {
