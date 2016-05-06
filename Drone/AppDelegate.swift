@@ -221,7 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             SwiftEventBus.post(SWIFTEVENT_BUS_RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
 
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
-                setGoal(NumberOfStepsGoal(steps: 100))
+                setGoal(NumberOfStepsGoal(steps: 7000))
                 let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
                 log.debug("SystemStatus :\(systemStatus)")
                 if(systemStatus == SystemStatus.SystemReset.rawValue) {
