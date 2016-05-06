@@ -16,6 +16,8 @@ class ConnectionSetupViewController: UIViewController {
     @IBOutlet weak var connectionFailView: UIView!
     @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var nextB: UIButton!
+    @IBOutlet weak var retryButton: UIButton!
+
     init() {
         super.init(nibName: "ConnectionSetupViewController", bundle: NSBundle.mainBundle())
     }
@@ -50,6 +52,8 @@ class ConnectionSetupViewController: UIViewController {
         if AppDelegate.getAppDelegate().isConnected() {
             timer.invalidate()
         }else{
+            self.connectionFailView.hidden = false
+            self.connectionView.hidden = true
             AppDelegate.getAppDelegate().startConnect()
         }
     }
@@ -61,7 +65,14 @@ class ConnectionSetupViewController: UIViewController {
     
 
     @IBAction func buttonActionManager(sender: AnyObject) {
-        AppDelegate.getAppDelegate().rootTabbarController()
+        if sender.isEqual(nextB) {
+             AppDelegate.getAppDelegate().rootTabbarController()
+        }
+
+        if sender.isEqual(retryButton) {
+            self.connectionFailView.hidden = true
+            self.connectionView.hidden = false
+        }
     }
     /*
     // MARK: - Navigation
