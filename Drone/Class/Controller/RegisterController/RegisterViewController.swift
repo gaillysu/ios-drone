@@ -9,6 +9,8 @@
 import UIKit
 import AutocompleteField
 import BRYXBanner
+import YYKeyboardManager
+
 
 class RegisterViewController: BaseViewController {
     @IBOutlet weak var backB: UIButton!
@@ -32,7 +34,7 @@ class RegisterViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        YYKeyboardManager.defaultManager().addObserver(self)
     }
 
     override func viewDidLayoutSubviews() {
@@ -105,4 +107,18 @@ class RegisterViewController: BaseViewController {
         passwordT.resignFirstResponder()
     }
     
+}
+
+// MARK: - YYKeyboardObserver
+extension RegisterViewController:YYKeyboardObserver {
+    func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
+        UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
+            let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
+            let kbY:CGFloat = self.view.frame.origin.y < 0 ? 0:kbFrame.origin.y - UIScreen.mainScreen().bounds.size.height
+            self.view.frame = CGRectMake(0, kbY, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+        }) { (finished) in
+
+        }
+    }
+
 }

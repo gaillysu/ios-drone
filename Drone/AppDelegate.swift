@@ -53,7 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
-        self.window?.rootViewController = SplashScreenViewController()
+        let nav:UINavigationController = UINavigationController(rootViewController: WelcomeViewController())
+        nav.navigationBarHidden = true
+        self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
         return true
 

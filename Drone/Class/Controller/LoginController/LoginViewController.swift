@@ -124,6 +124,9 @@ class LoginViewController: UIViewController {
                     goalModel.goalSteps = 10000
                     goalModel.add({ (id, completion) in})
                 }
+                //TODO:login success push controll
+                let device:WhichDeviceViewController = WhichDeviceViewController()
+                self.navigationController?.pushViewController(device, animated: true)
             }
         }
     }

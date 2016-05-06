@@ -151,8 +151,8 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
                 userprofile.add({ (id, completion) in
                 })
                 //TODO:register success push controll
-                let maintabbar:WhichDeviceViewController = WhichDeviceViewController()
-                self.navigationController?.pushViewController(maintabbar, animated: true)
+                let device:WhichDeviceViewController = WhichDeviceViewController()
+                self.navigationController?.pushViewController(device, animated: true)
             }
         }
     }
@@ -171,7 +171,7 @@ extension ProfileSetupViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        selectedTextField = textField as! AutocompleteField
+        selectedTextField = textField as? AutocompleteField
 
         if(textField.isEqual(ageTextField)) {
             lengthTextField.resignFirstResponder()
