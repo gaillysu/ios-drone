@@ -39,6 +39,18 @@ class ConnectionSetupViewController: UIViewController {
                 self.connectionView.hidden = true
             }
         }
+
+        //Search device cycle timer ,13s again
+        NSTimer.scheduledTimerWithTimeInterval(13, target: self, selector: #selector(reSearchTimerAction(_:)), userInfo: nil, repeats: true)
+    }
+
+    //Search device until find
+    func reSearchTimerAction(timer:NSTimer) {
+        if AppDelegate.getAppDelegate().isConnected() {
+            timer.invalidate()
+        }else{
+            AppDelegate.getAppDelegate().startConnect()
+        }
     }
 
     override func didReceiveMemoryWarning() {
