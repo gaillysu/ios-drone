@@ -36,6 +36,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppDelegate.getAppDelegate().startConnect()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
 

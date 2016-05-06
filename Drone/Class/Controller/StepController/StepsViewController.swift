@@ -12,6 +12,9 @@ import Charts
 import Timepiece
 import UIColor_Hex_Swift
 import CVCalendar
+import Timepiece
+import SwiftEventBus
+
 
 let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
 
@@ -48,6 +51,8 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     var calendarView:CVCalendarView?
     var menuView:CVCalendarMenuView?
     var titleView:StepsTitleView?
+    private var stepsArray:NSArray?
+    private var queryTimer:NSTimer?
 
     init() {
         super.init(nibName: "StepsViewController", bundle: NSBundle.mainBundle())
@@ -63,9 +68,44 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.initTitleView()
         self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
+
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
+            let stepsDict:[String:Int] = notification.object as! [String:Int]
+            self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+        }
+
+        let timerInter:NSTimeInterval = NSDate.today().timeIntervalSince1970
+        stepsArray = UserSteps.getCriteria("WHERE date >= \(timerInter)")
+
+        queryTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(StepsViewController.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
     }
 
     override func viewWillAppear(animated: Bool) {
+        self.bulidChart()
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        if queryTimer!.valid {
+            queryTimer?.invalidate()
+            queryTimer = nil
+        }
+    }
+
+    func queryStepsGoalAction(timer:NSTimer) {
+        AppDelegate.getAppDelegate().getGoal()
+    }
+}
+
+extension StepsViewController {
+
+    func setCircleProgress(stepsValue:Int,goalValue:Int) {
+        circleProgressView.setProgress(Double(stepsValue)/Double(goalValue), animated: true)
+        stepsLabel.text = String(format:"%d",stepsValue)
+        percentageLabel.text = String(format:"Goal: %d%",goalValue)
+    }
+
+    func bulidChart() {
+
         barChart!.noDataText = "No History Available."
         barChart!.descriptionText = "";
         barChart!.pinchZoomEnabled = false
@@ -78,63 +118,25 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         xAxis.drawAxisLineEnabled = false;
         xAxis.drawGridLinesEnabled = false;
         xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
-        
+
         let yAxis:ChartYAxis = barChart!.leftAxis;
         yAxis.labelTextColor = UIColor.grayColor();
         yAxis.axisLineColor = UIColor.clearColor();
         yAxis.customAxisMin = 0;
-      
+
         barChart!.rightAxis.enabled = false;
-        let stepsArray: NSMutableArray = NSMutableArray();
-        let now = NSDate();
-        var mostSteps = 0;
-        for j in 0 ..< 25 {
-            let steps = Int(arc4random_uniform(4000))
-            if(mostSteps < steps){
-                mostSteps = steps
-            }
-            let date:NSDate = now - j.day;
-            stepsArray.addObject(UserSteps(keyDict:["id":j,"steps":steps,"distance":0,"date":(date.timeIntervalSince1970)]));
-        }
-        if(mostSteps > 1000){
-            let remainingTillThousand = abs(1000 - (mostSteps % 1000));
-            let max = Double(mostSteps) + Double(remainingTillThousand)
-            yAxis.customAxisMax = max
-            if(max % 1000 == 0){
-                yAxis.setLabelCount((Int(max)/1000) + 1, force: true);
-            }else{
-                yAxis.setLabelCount((Int(max)/1000), force: true);
-            }
-        }else{
-            let remainingTillThousand = abs(100 - (mostSteps % 100));
-            let max = Double(mostSteps) + Double(remainingTillThousand)
-            yAxis.customAxisMax = max
-            if(max % 100 == 0){
-                yAxis.setLabelCount((Int(max)/100) + 1, force: true);
-            }else{
-                yAxis.setLabelCount((Int(max)/100), force: true);
-            }
-        }
-        
-        let goal = 10000;
-        let today:UserSteps = stepsArray[0] as! UserSteps
-        circleProgressView.setProgress(Double(today.steps)/Double(goal), animated: true)
-        
-        stepsLabel.text = String(format:"%d",today.steps)
-        percentageLabel.text = String(format:"Goal: %d%",goal)
-        
+
         barChart.drawBarShadowEnabled = false
         var xVals = [String]();
         var yVals = [ChartDataEntry]();
-        
-        for i in 0 ..< stepsArray.count {
-            let steps:UserSteps = stepsArray[i] as! UserSteps
+
+        for i in 0 ..< stepsArray!.count {
+            let steps:UserSteps = stepsArray![i] as! UserSteps
             yVals.append(BarChartDataEntry(value: Double(steps.steps), xIndex:i));
-            if(i == 0 || i == 6 || i == 12 || i == 18 || i == 24){
-                xVals.append("\(i):00");
-            }else{
-                xVals.append("");
-            }
+
+            let todayDate:NSDate = NSDate().dateByAddingTimeInterval(steps.date)
+            xVals.append("\(todayDate.hour):\(todayDate.minute)");
+
             let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "Steps")
             let dataSet = NSMutableArray()
             dataSet.addObject(barChartSet);
@@ -145,19 +147,33 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             barChartData.setDrawValues(false);
             self.barChart.data = barChartData;
         }
+        
         barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
         lastWeekChart.drawSettings(lastWeekChart.xAxis, yAxis: lastWeekChart.leftAxis, rightAxis: lastWeekChart.rightAxis)
         thisWeekChart.drawSettings(thisWeekChart.xAxis, yAxis: thisWeekChart.leftAxis, rightAxis: thisWeekChart.rightAxis)
         lastMonthChart.drawSettings(lastMonthChart.xAxis, yAxis: lastMonthChart.leftAxis, rightAxis: lastMonthChart.rightAxis)
-        
-        for i in 0 ..< 8 {
-            var steps = Int(arc4random_uniform(4000))
-            lastWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
-            steps = Int(arc4random_uniform(4000))
-            thisWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
+
+        let oneWeekSeconds:Double = 604800
+        let lastWeekArray:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(NSDate().beginningOfWeek.timeIntervalSince1970-oneWeekSeconds) AND \(NSDate().endOfWeek.timeIntervalSince1970-oneWeekSeconds)")
+
+        for i in 0 ..< lastWeekArray.count {
+            let step:UserSteps = lastWeekArray[i] as! UserSteps
+            lastWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(step.steps), xIndex: i))
         }
-        
-        for i in 1 ..< 31{
+
+        let thisWeekArray:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(NSDate().beginningOfWeek.timeIntervalSince1970) AND \(NSDate().endOfWeek.timeIntervalSince1970)")
+
+        for i in 0 ..< thisWeekArray.count {
+            let step:UserSteps = thisWeekArray[i] as! UserSteps
+            thisWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(step.steps), xIndex: i))
+        }
+
+        let oneDaySeconds:Double = 86400
+        let lastEndOfMonth:NSTimeInterval = NSDate.date(year: NSDate().year, month: NSDate().month, day: 1).timeIntervalSince1970-oneDaySeconds
+        let lastBeginningOfMonth:NSTimeInterval = NSDate.date(year: NSDate().year, month: NSDate(timeIntervalSince1970: lastEndOfMonth).month, day: 1).timeIntervalSince1970
+
+        let lastMonthArray:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(lastBeginningOfMonth) AND \(lastEndOfMonth)")
+        for i in 0 ..< lastMonthArray.count{
             let steps = Int(arc4random_uniform(4000))
             lastMonthChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
         }
@@ -166,7 +182,6 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         lastMonthChart.invalidateChart()
     }
 }
-
 
 // MARK: - Title View
 extension StepsViewController {
