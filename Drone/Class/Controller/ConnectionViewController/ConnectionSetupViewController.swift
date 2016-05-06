@@ -26,12 +26,13 @@ class ConnectionSetupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.nextB.hidden = true
         AppDelegate.getAppDelegate().startConnect()
 
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
             if(connectionState){
+                self.nextB.hidden = false
                 self.connectedView.hidden = false
                 self.connectionView.hidden = true
             }else{
