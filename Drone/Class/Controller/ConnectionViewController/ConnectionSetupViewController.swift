@@ -16,6 +16,8 @@ class ConnectionSetupViewController: UIViewController {
     @IBOutlet weak var connectionFailView: UIView!
     @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var nextB: UIButton!
+    @IBOutlet weak var retryButton: UIButton!
+
     init() {
         super.init(nibName: "ConnectionSetupViewController", bundle: NSBundle.mainBundle())
     }
@@ -26,18 +28,33 @@ class ConnectionSetupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.nextB.hidden = true
         AppDelegate.getAppDelegate().startConnect()
 
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
             if(connectionState){
+                self.nextB.hidden = false
                 self.connectedView.hidden = false
                 self.connectionView.hidden = true
             }else{
                 self.connectionFailView.hidden = false
                 self.connectionView.hidden = true
             }
+        }
+
+        //Search device cycle timer ,13s again
+        NSTimer.scheduledTimerWithTimeInterval(13, target: self, selector: #selector(reSearchTimerAction(_:)), userInfo: nil, repeats: true)
+    }
+
+    //Search device until find
+    func reSearchTimerAction(timer:NSTimer) {
+        if AppDelegate.getAppDelegate().isConnected() {
+            timer.invalidate()
+        }else{
+            self.connectionFailView.hidden = false
+            self.connectionView.hidden = true
+            AppDelegate.getAppDelegate().startConnect()
         }
     }
 
@@ -48,7 +65,14 @@ class ConnectionSetupViewController: UIViewController {
     
 
     @IBAction func buttonActionManager(sender: AnyObject) {
-        AppDelegate.getAppDelegate().rootTabbarController()
+        if sender.isEqual(nextB) {
+             AppDelegate.getAppDelegate().rootTabbarController()
+        }
+
+        if sender.isEqual(retryButton) {
+            self.connectionFailView.hidden = true
+            self.connectionView.hidden = false
+        }
     }
     /*
     // MARK: - Navigation
