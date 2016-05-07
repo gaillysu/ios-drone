@@ -37,8 +37,9 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
             for city in countriesForLetter.keys {
                 countryPerLetter.append(city)
                 cities.append(city)
-                citiesDict[key] = countryPerLetter
+                citiesDict[key] = countryPerLetter.sort { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
                 citiesGmtDict[city]  = countriesForLetter[city]
+                
             }
         }
         cities = cities.sort { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }

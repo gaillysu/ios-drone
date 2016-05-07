@@ -18,8 +18,4 @@ class WorldClockHeader: UIView{
         view.frame = frame
         return nibView.objectAtIndex(0) as! WorldClockHeader
     }
-
-    @IBAction func buttonActionManager(sender: AnyObject) {
-        actionHandler?(result: sender)
-    }
 }

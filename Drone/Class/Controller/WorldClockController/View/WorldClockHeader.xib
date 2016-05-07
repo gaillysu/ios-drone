@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,16 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvn-3B-fvm">
-                    <rect key="frame" x="10" y="8" width="28" height="28"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="fvn-3B-fvm" secondAttribute="height" multiplier="1:1" id="sMA-dB-JLt"/>
-                    </constraints>
-                    <state key="normal" image="editor"/>
-                    <connections>
-                        <action selector="buttonActionManager:" destination="iN0-l3-epB" eventType="touchUpInside" id="Vox-lK-fpO"/>
-                    </connections>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="5kl-Om-SZX">
                     <rect key="frame" x="8" y="20" width="360" height="210"/>
                 </imageView>
@@ -40,10 +29,7 @@
                 <constraint firstItem="973-CU-x85" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="MQC-hJ-LyG"/>
                 <constraint firstAttribute="trailing" secondItem="5kl-Om-SZX" secondAttribute="trailing" constant="7" id="RFm-FN-aSQ"/>
                 <constraint firstItem="5kl-Om-SZX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Zny-11-i1y"/>
-                <constraint firstItem="fvn-3B-fvm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="dvG-Ny-1pJ"/>
-                <constraint firstItem="fvn-3B-fvm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="g7k-ke-JJL"/>
                 <constraint firstAttribute="bottom" secondItem="973-CU-x85" secondAttribute="bottom" id="guo-Wk-Wnr"/>
-                <constraint firstItem="fvn-3B-fvm" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:8" constant="-5" id="sfC-EK-Ryc"/>
                 <constraint firstAttribute="trailing" secondItem="973-CU-x85" secondAttribute="trailing" constant="7" id="uZ3-Rp-N37"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -53,7 +39,6 @@
         </view>
     </objects>
     <resources>
-        <image name="editor" width="50" height="50"/>
         <image name="map" width="300" height="187"/>
     </resources>
 </document>

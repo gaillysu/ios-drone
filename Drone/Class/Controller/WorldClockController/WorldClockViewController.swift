@@ -17,7 +17,7 @@ class WorldClockViewController: BaseViewController {
     private var time:(hour:Int,minute:Int)
     private let identifier:String = "WorldClockCell"
     private var worldClockArray:NSArray!
-    private var timeZoneOffSet: (hours:Int, minutes:Int)
+    private var localTimeOffsetToGmt: Float
     
     @IBOutlet weak var worldClockTableview: UITableView!
     
@@ -31,17 +31,21 @@ class WorldClockViewController: BaseViewController {
             timeZoneString = String(timeZoneString.characters.dropFirst())
             let hours:String = timeZoneString[0...1]
             let minutes:String = timeZoneString[2...3]
-            let offsetHours = Int(hours)
+            let offsetHours = Float(hours)
             let offsetMinutes = Int(minutes)
-            timeZoneOffSet.hours = offsetHours!
-            timeZoneOffSet.minutes = offsetMinutes!
+            localTimeOffsetToGmt = offsetHours!
+            if offsetMinutes > 0 {
+                    localTimeOffsetToGmt += 0.5
+            }
         }else{
             let hours = timeZoneString[0...2]
             let minutes = timeZoneString[3...4]
-            let offsetHours = Int(hours)
+            let offsetHours = Float(hours)
             let offsetMinutes = Int(minutes)
-            timeZoneOffSet.hours = offsetHours!
-            timeZoneOffSet.minutes = offsetMinutes!
+            localTimeOffsetToGmt = offsetHours!
+            if offsetMinutes > 0 {
+                localTimeOffsetToGmt += 0.5
+            }
         }
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([ .Hour, .Minute, .Second], fromDate: date)
@@ -104,80 +108,80 @@ class WorldClockViewController: BaseViewController {
     }
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.row == 0 {
+            return false
+        }
         return true
     }
+    
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-        } else if editingStyle == .Insert {
+            let model:WorldClockModel = self.worldClockArray[indexPath.row-1] as! WorldClockModel
+            model.remove()
+            self.worldClockArray = WorldClockModel.getAll();
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:WorldClockCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! WorldClockCell
+        cell.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, cell.frame.height)
         if(indexPath.row == 0){
             let timeZone: String = NSTimeZone.localTimeZone().name
             let timeZoneArray:[String] = timeZone.characters.split{$0 == "/"}.map(String.init)
             cell.cityLabel.text = timeZoneArray[1].stringByReplacingOccurrencesOfString("_", withString: " ")
             cell.timeDescription.text = "Today"
-            cell.time.text = "\(time.hour):\(time.minute)"
+            cell.time.text = "\(time.hour):\(time.minute < 10 ? "0":"")\(time.minute)"
             return cell;
         }
-        let clock:WorldClockModel = worldClockArray[(indexPath.row - 1)] as! WorldClockModel
-        cell.cityLabel.text = clock.city_name
+        let worldClockCity:WorldClockModel = worldClockArray[(indexPath.row - 1)] as! WorldClockModel
+        cell.cityLabel.text = worldClockCity.city_name
         
-        let gmtClock = clock.gmt_offset[1...clock.gmt_offset.characters.count-1]
-        let clockOffset = Int(gmtClock)
-        
+    
+        let foreignTimeOffsetToGmt = Float(worldClockCity.gmt_offset[0...worldClockCity.gmt_offset.characters.count-1])!
         var text:String = ""
         
-        let difference = timeZoneOffSet.hours - clockOffset!
-        if difference > 0  {
-            let hour = difference-clockOffset!;
-            if hour <= 0{
-                text+="Yesterday, "
-            }else{
-                text+="Today, "
+        if foreignTimeOffsetToGmt == localTimeOffsetToGmt  {
+            text+="Today"
+            cell.time.text = "\(time.hour):\(time.minute < 10 ? "0":"")\(time.minute)"
+        }else if foreignTimeOffsetToGmt > localTimeOffsetToGmt{
+            let timeAhead = foreignTimeOffsetToGmt - localTimeOffsetToGmt
+            let halfAheadHour = timeAhead % 1.0
+            
+            var foreignTime:(hour:Int,minute:Int) = (hour:self.time.hour+Int(timeAhead), minute: (halfAheadHour == 0.5 ? self.time.minute + 30 :self.time.minute))
+            if foreignTime.minute > 59 {
+                foreignTime.minute-=59
+                foreignTime.hour+=1
             }
-            if difference == 1{
-                if timeZoneOffSet.minutes > 0 {
-                    text+="1 hour and 30 minutes behind"
-                }else{
-                    text+="1 hour behind"
-                }
+            let hour:String = Int(timeAhead) == 1 ? "hour" : "hours"
+            let halfHour :String = timeAhead % 1.0 > 0.0 ? " and 30 minutes " : " "
+            if foreignTime.hour > 23 {
+                foreignTime.hour-=23
+                    text+="Tomorrow, \(Int(timeAhead)) \(hour)\(halfHour)ahead"
             }else{
-                if timeZoneOffSet.minutes > 0 {
-                    text+="\(difference) hours and 30 minutes behind"
-                }else{
-                    text+="\(difference) hours behind"
-                }
+                    text+="Today, \(Int(timeAhead)) \(hour)\(halfHour)ahead"
             }
-            time.hour-difference
-        }else if difference < 0{
-            let hour = difference+clockOffset!
-            if hour >= 24 {
-                text+="Tomorrow, "
+            cell.time.text = "\(foreignTime.hour):\(foreignTime.minute < 10 ? "0":"")\(foreignTime.minute)"
+        }else if foreignTimeOffsetToGmt < localTimeOffsetToGmt{
+            let timeBehind = foreignTimeOffsetToGmt - localTimeOffsetToGmt
+            let halfHourBehind = timeBehind % 1.0
+            var foreignTime:(hour:Int,minute:Int) = (hour:self.time.hour+Int(timeBehind), minute: (halfHourBehind == 0.5 ? self.time.minute - 30 :self.time.minute))
+            if foreignTime.minute < 0 {
+                foreignTime.minute+=59
+                foreignTime.hour-=1
+            }
+            let hour:String = Int(timeBehind) == 1 ? "hour" : "hours"
+            let halfHour :String = timeBehind % 1.0 > 0.0 ? " and 30 minutes " : " "
+            if foreignTime.hour < 0 {
+                foreignTime.hour+=23
+                text+="Yesterday, \(Int(timeBehind)) \(hour)\(halfHour)behind"
             }else{
-                text+="Today, "
+                text+="Today, \(Int(timeBehind)) \(hour)\(halfHour)behind"
             }
-            if difference == -1{
-                if timeZoneOffSet.minutes > 0 {
-                    text+="1 hour and 30 minutes ahead"
-                }else{
-                    text+="1 hour ahead"
-                }
-            }else{
-                if timeZoneOffSet.minutes > 0 {
-                    text+="\(difference) hours and 30 minutes ahead"
-                }else{
-                    text+="\(difference) hours ahead"
-                }
-            }
-        } else if timeZoneOffSet.minutes > 0{
-            text+=" 30 minutes ahead"
-        }else {
-            text+=" Today"
+            
+            cell.time.text = "\(foreignTime.hour):\(foreignTime.minute < 10 ? "0":"")\(foreignTime.minute)"
         }
         cell.timeDescription.text = text
         return cell;
