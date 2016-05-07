@@ -32,6 +32,7 @@ class WorldClock: NSObject {
     }
     
     func update()->Bool{
+        worldClockModel.id = id
         worldClockModel.city_name = city_name
         worldClockModel.gmt_offset = gmt_offset
         return worldClockModel.update()
