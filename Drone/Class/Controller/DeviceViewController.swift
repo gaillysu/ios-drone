@@ -18,7 +18,6 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     
     init() {
         super.init(nibName: "DeviceViewController", bundle: NSBundle.mainBundle())
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,12 +52,14 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
         return 254;
     }
     
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return ((tableView.frame.height - 388)/3);
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: DeviceTableViewCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! DeviceTableViewCell
+        cell.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, cell.frame.height)
         if indexPath.row == 0 {
             cell.titleLabel.text = "Contacts Notifications"
         }else if indexPath.row == 1{

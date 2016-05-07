@@ -90,15 +90,12 @@ class RegisterViewController: BaseViewController {
         }
 
         if googleB.isEqual(sender) {
-
         }
 
         if facebookB.isEqual(sender) {
-
         }
 
         if twitterB.isEqual(sender) {
-
         }
     }
 

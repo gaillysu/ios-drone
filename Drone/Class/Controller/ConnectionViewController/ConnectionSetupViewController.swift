@@ -17,8 +17,9 @@ class ConnectionSetupViewController: UIViewController {
     @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var nextB: UIButton!
     @IBOutlet weak var retryButton: UIButton!
-
-    init() {
+    private var toMenu:Bool = true;
+    init(toMenu:Bool) {
+        self.toMenu = toMenu
         super.init(nibName: "ConnectionSetupViewController", bundle: NSBundle.mainBundle())
     }
 
@@ -54,7 +55,11 @@ class ConnectionSetupViewController: UIViewController {
         }else{
             self.connectionFailView.hidden = false
             self.connectionView.hidden = true
+            if(self.toMenu){
             AppDelegate.getAppDelegate().startConnect()
+        }else{
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
     }
 
@@ -74,14 +79,4 @@ class ConnectionSetupViewController: UIViewController {
             self.connectionView.hidden = false
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

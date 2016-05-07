@@ -17,7 +17,7 @@ import MRProgress
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var textfiledBG: UIView!
@@ -65,8 +65,8 @@ class LoginViewController: UIViewController {
             self.navigationController?.popViewControllerAnimated(true)
         }
 
-        if nextButton.isEqual(sender) {
-            self.logoinRequest()
+        if loginButton.isEqual(sender) {
+            loginRequest()
         }
 
         if googleButton.isEqual(sender) {
@@ -87,7 +87,7 @@ class LoginViewController: UIViewController {
         passwordT?.resignFirstResponder()
     }
 
-    func logoinRequest() {
+    func loginRequest() {
         if(AppTheme.isNull(usernameT!.text!) || AppTheme.isEmail(usernameT!.text!)) {
             let banner = Banner(title: NSLocalizedString("your username is null or username not is email", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
             banner.dismissesOnTap = true
@@ -118,14 +118,19 @@ class LoginViewController: UIViewController {
             //status > 0 login success or login fail
             if(status > 0 && UserProfile.getAll().count == 0) {
                 let userprofile:UserProfile = UserProfile(keyDict: ["id":json["id"].intValue,"first_name":json["first_name"].stringValue,"last_name":json["last_name"].stringValue,"age":json["age"].intValue,"length":json["length"].intValue,"email":json["email"].stringValue])
-                userprofile.add({ (id, completion) in })
+                userprofile.add({ (id, completion) in
+                    print("Added?")
+                })
                 if(GoalModel.getAll().count == 0){
                     let goalModel:GoalModel = GoalModel()
                     goalModel.goalSteps = 10000
                     goalModel.add({ (id, completion) in})
                 }
                 //TODO:login success push controll
-                let device:WhichDeviceViewController = WhichDeviceViewController()
+                
+            }
+            if(status == 1){
+                let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: true)
                 self.navigationController?.pushViewController(device, animated: true)
             }
         }

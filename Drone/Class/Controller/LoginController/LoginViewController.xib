@@ -10,9 +10,9 @@
                 <outlet property="backButton" destination="iCl-aF-ggh" id="43M-tI-1Iw"/>
                 <outlet property="facebookButton" destination="l0I-3f-jKR" id="R8f-lN-gb0"/>
                 <outlet property="googleButton" destination="Kap-Hl-5xE" id="gzZ-6k-f0e"/>
+                <outlet property="loginButton" destination="fkV-cH-J6J" id="VTf-nZ-uDR"/>
                 <outlet property="loginLabel" destination="AKx-OS-oVj" id="0Vm-CU-MJ5"/>
                 <outlet property="logoImage" destination="2xJ-V4-kxN" id="feT-Tl-gfM"/>
-                <outlet property="nextButton" destination="xCo-fV-REr" id="Mcy-ge-jLA"/>
                 <outlet property="textfiledBG" destination="Lmc-MZ-qDA" id="ty4-WC-qe2"/>
                 <outlet property="twitterButton" destination="jTO-bi-GJE" id="HwK-N2-Drn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -34,17 +34,6 @@
                         <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="zsO-iM-oER"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCo-fV-REr">
-                    <rect key="frame" x="332" y="29" width="28" height="28"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="28" id="7yG-8B-sTx"/>
-                        <constraint firstAttribute="height" constant="28" id="Dm4-4J-hdi"/>
-                    </constraints>
-                    <state key="normal" image="right_back_BT"/>
-                    <connections>
-                        <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="lIK-cX-jsm"/>
-                    </connections>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drone_logo_black" translatesAutoresizingMaskIntoConstraints="NO" id="2xJ-V4-kxN">
                     <rect key="frame" x="56" y="155" width="263" height="45"/>
                 </imageView>
@@ -58,7 +47,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or login with your social media" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKx-OS-oVj">
-                    <rect key="frame" x="30" y="425" width="315" height="22"/>
+                    <rect key="frame" x="30" y="455" width="315" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="vLf-kb-w0X"/>
                     </constraints>
@@ -67,7 +56,7 @@
                     <color key="highlightedColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0I-3f-jKR">
-                    <rect key="frame" x="164" y="467" width="48" height="48"/>
+                    <rect key="frame" x="164" y="497" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="B74-wS-Tab"/>
                         <constraint firstAttribute="width" constant="48" id="dHf-QQ-9Li"/>
@@ -78,7 +67,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTO-bi-GJE">
-                    <rect key="frame" x="236" y="467" width="48" height="48"/>
+                    <rect key="frame" x="236" y="497" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="48" id="hCF-un-t4T"/>
                         <constraint firstAttribute="height" constant="48" id="knT-3m-xde"/>
@@ -89,7 +78,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-Hl-5xE">
-                    <rect key="frame" x="92" y="467" width="48" height="48"/>
+                    <rect key="frame" x="92" y="497" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="48" id="9xY-dv-SoJ"/>
                         <constraint firstAttribute="height" constant="48" id="df0-Jz-A23"/>
@@ -99,16 +88,30 @@
                         <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="a7j-65-FOK"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkV-cH-J6J">
+                    <rect key="frame" x="165" y="411" width="46" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="bUn-hx-Gmk"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                    <state key="normal" title="Login">
+                        <color key="titleColor" red="0.81960784310000001" green="0.61568627450000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="5KB-zE-J7P"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="2xJ-V4-kxN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7OL-pa-lAg"/>
                 <constraint firstItem="2xJ-V4-kxN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-156" id="B9b-ai-inH"/>
+                <constraint firstItem="AKx-OS-oVj" firstAttribute="top" secondItem="fkV-cH-J6J" secondAttribute="bottom" constant="15" id="CKk-qm-m9R"/>
                 <constraint firstItem="iCl-aF-ggh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="DKV-l7-Id0"/>
-                <constraint firstItem="AKx-OS-oVj" firstAttribute="top" secondItem="Lmc-MZ-qDA" secondAttribute="bottom" constant="29" id="FUC-ba-JjQ"/>
-                <constraint firstItem="xCo-fV-REr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="29" id="HDw-BG-ali"/>
+                <constraint firstItem="AKx-OS-oVj" firstAttribute="top" secondItem="Lmc-MZ-qDA" secondAttribute="bottom" constant="59" id="FUC-ba-JjQ"/>
                 <constraint firstItem="2xJ-V4-kxN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="56" id="JSc-ei-Tti"/>
                 <constraint firstItem="2xJ-V4-kxN" firstAttribute="height" secondItem="Lmc-MZ-qDA" secondAttribute="height" constant="-50" id="LfS-TX-uV4"/>
+                <constraint firstItem="fkV-cH-J6J" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Mnp-05-CRd"/>
                 <constraint firstItem="l0I-3f-jKR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="S96-o3-Jkt"/>
                 <constraint firstItem="l0I-3f-jKR" firstAttribute="leading" secondItem="Kap-Hl-5xE" secondAttribute="trailing" constant="24" id="V5C-5W-zhu"/>
                 <constraint firstAttribute="trailing" secondItem="Lmc-MZ-qDA" secondAttribute="trailing" constant="37" id="VQH-Zp-mOk"/>
@@ -121,9 +124,9 @@
                 <constraint firstItem="l0I-3f-jKR" firstAttribute="top" secondItem="AKx-OS-oVj" secondAttribute="bottom" constant="20" id="lZU-Ed-LmB"/>
                 <constraint firstAttribute="trailing" secondItem="2xJ-V4-kxN" secondAttribute="trailing" constant="56" id="rAk-e9-gy6"/>
                 <constraint firstItem="jTO-bi-GJE" firstAttribute="centerY" secondItem="l0I-3f-jKR" secondAttribute="centerY" id="vpd-NY-WjW"/>
-                <constraint firstAttribute="trailing" secondItem="xCo-fV-REr" secondAttribute="trailing" constant="15" id="waz-t6-XuK"/>
                 <constraint firstItem="Lmc-MZ-qDA" firstAttribute="top" secondItem="2xJ-V4-kxN" secondAttribute="bottom" constant="101" id="wcU-C5-YVX"/>
                 <constraint firstItem="jTO-bi-GJE" firstAttribute="leading" secondItem="l0I-3f-jKR" secondAttribute="trailing" constant="24" id="x98-mg-XnG"/>
+                <constraint firstItem="fkV-cH-J6J" firstAttribute="top" secondItem="Lmc-MZ-qDA" secondAttribute="bottom" constant="15" id="xpm-vO-dmj"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="445.5" y="198.5"/>
@@ -134,7 +137,6 @@
         <image name="facebook" width="50" height="50"/>
         <image name="google+" width="50" height="50"/>
         <image name="left_back_BT" width="35" height="35"/>
-        <image name="right_back_BT" width="35" height="35"/>
         <image name="twitter" width="50" height="50"/>
     </resources>
 </document>

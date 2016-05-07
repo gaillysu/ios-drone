@@ -63,6 +63,7 @@ class WorldClockViewController: BaseViewController {
         worldClockTableview.allowsSelectionDuringEditing = true;
         worldClockTableview.separatorColor = UIColor.clearColor()
         let header:WorldClockHeader = UIView.loadFromNibNamed("WorldClockHeader") as! WorldClockHeader;
+        header.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height)
         let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height))
         headerView.addSubview(header)
         worldClockTableview.tableHeaderView = headerView

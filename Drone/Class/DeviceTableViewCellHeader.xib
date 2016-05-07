@@ -141,7 +141,7 @@
                 <outlet property="connectionStateLabel" destination="PYV-3j-3Mb" id="C9X-u3-zCO"/>
                 <outlet property="versionLabel" destination="Zly-wD-IYh" id="k35-17-PZZ"/>
             </connections>
-            <point key="canvasLocation" x="-50.5" y="-171"/>
+            <point key="canvasLocation" x="-39.5" y="-154"/>
         </view>
     </objects>
     <resources>

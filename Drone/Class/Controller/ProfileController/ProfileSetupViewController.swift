@@ -151,7 +151,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
                 userprofile.add({ (id, completion) in
                 })
                 //TODO:register success push controll
-                let device:WhichDeviceViewController = WhichDeviceViewController()
+                let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: true)
                 self.navigationController?.pushViewController(device, animated: true)
             }
         }

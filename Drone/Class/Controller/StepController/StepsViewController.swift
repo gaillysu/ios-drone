@@ -65,8 +65,11 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initTitleView()
+        let goal:GoalModel = GoalModel.getAll()[0] as! GoalModel
+        percentageLabel.text = String(format:"Goal: %d",goal.goalSteps)
         self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
-
+        stepsLabel.text = "0"
+        
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             let stepsDict:[String:Int] = notification.object as! [String:Int]
             self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
@@ -103,7 +106,7 @@ extension StepsViewController {
     func setCircleProgress(stepsValue:Int,goalValue:Int) {
         circleProgressView.setProgress(Double(stepsValue)/Double(goalValue), animated: true)
         stepsLabel.text = String(format:"%d",stepsValue)
-        percentageLabel.text = String(format:"Goal: %d%",goalValue)
+        
     }
 
     func bulidChart() {
@@ -313,10 +316,10 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         dayView.selectionView?.shape = CVShape.Rect
+        self.dismissCalendar()
     }
 
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
-
         return false
     }
 

@@ -40,7 +40,7 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
             return false
         }
         let newLength = currentCharacterCount + string.characters.count - range.length
-        return newLength <= 15
+        return newLength <= 25
     }
     
     func setInputVariables(vars:NSMutableArray){

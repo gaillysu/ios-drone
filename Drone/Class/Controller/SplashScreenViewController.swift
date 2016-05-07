@@ -21,19 +21,15 @@ class SplashScreenViewController: BaseViewController {
         // IF !Logged in ->
         // RegisterViewController
         // ELSE
-        self.presentViewController(self.makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil);
         
-//        let user:NSArray = UserProfile.getAll()
-//        if(user.count>0) {
-//            let navigationController = UINavigationController(rootViewController:MenuViewController());
-//            navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
-//
-//            self.presentViewController(navigationController, animated: true, completion: nil);
-//        }else{
-//            let navigationController = UINavigationController(rootViewController:WelcomeViewController());
-//            navigationController.navigationBarHidden = true
-//            self.presentViewController(navigationController, animated: true, completion: nil);
-//        }
+        let user:NSArray = UserProfile.getAll()
+        if(user.count>0) {
+            self.presentViewController(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+        }else{
+            let navigationController = UINavigationController(rootViewController:WelcomeViewController());
+            navigationController.navigationBarHidden = true
+            self.presentViewController(navigationController, animated: true, completion: nil);
+        }
 
         timer?.invalidate()
         timer = nil;

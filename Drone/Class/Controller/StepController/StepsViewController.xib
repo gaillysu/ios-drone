@@ -125,14 +125,14 @@
                                             <color key="value" red="0.81960784310000001" green="0.61568627450000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                            <real key="value" value="0.69999999999999996"/>
+                                            <real key="value" value="0.0"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="centerFillColor">
                                             <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5u-dD-e2R">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5u-dD-e2R">
                                     <rect key="frame" x="279" y="37" width="85" height="23"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="85" id="4Dr-xC-oa1"/>
@@ -142,7 +142,7 @@
                                     <color key="textColor" red="0.81960784313725488" green="0.61568627450980395" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 h 05m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qE-aw-oOg">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qE-aw-oOg">
                                     <rect key="frame" x="145" y="37" width="85" height="23"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="23" id="8c2-sM-M7f"/>
@@ -152,7 +152,7 @@
                                     <color key="textColor" red="0.81960784313725488" green="0.61568627450980395" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="307" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-Pb-Ejf">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-Pb-Ejf">
                                     <rect key="frame" x="26" y="37" width="85" height="23"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="23" id="09L-m9-6uF"/>

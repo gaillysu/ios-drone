@@ -22,6 +22,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         self.hideKeyboardWhenTappedAround()
         profileTableView.registerNib(UINib(nibName: "ProfileTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
         let header:ProfileTableViewCellHeader = UIView.loadFromNibNamed("ProfileTableViewCellHeader") as! ProfileTableViewCellHeader;
+        header.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height)
         firstNameTextField = header.nameTextField
         let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height))
         headerView.addSubview(header)
@@ -68,6 +69,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             }
         }
         profile.update()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func close(){

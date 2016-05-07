@@ -10,12 +10,13 @@ import UIKit
 
 private let reuseIdentifier = "device_cell_identifier"
 
-class WhichDeviceViewController: UIViewController {
+class WhichDeviceViewController: BaseViewController {
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    init() {
+    private var toMenu:Bool = true;
+    init(toMenu:Bool) {
+        self.toMenu = toMenu
         super.init(nibName: "WhichDeviceViewController", bundle: NSBundle.mainBundle())
     }
 
@@ -31,6 +32,14 @@ class WhichDeviceViewController: UIViewController {
     }
 
 
+    @IBAction func pairLaterAction(sender: AnyObject) {
+        if(self.toMenu){
+        self.presentViewController(self.makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil);
+        }else{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         let flowLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout();
         flowLayout.scrollDirection = UICollectionViewScrollDirection.Vertical
@@ -38,19 +47,22 @@ class WhichDeviceViewController: UIViewController {
         flowLayout.minimumLineSpacing = 1
         flowLayout.minimumInteritemSpacing = 1
         self.collectionView.collectionViewLayout = flowLayout
-
     }
 
 
     @IBAction func buttonActionManager(sender: AnyObject) {
         if (sender.isEqual(backB)) {
-            self.navigationController?.popViewControllerAnimated(true)
+            if self.toMenu {
+                    self.navigationController?.popViewControllerAnimated(true)
+            }else{
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: UICollectionViewDataSource
@@ -70,7 +82,7 @@ class WhichDeviceViewController: UIViewController {
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let connection:ConnectionSetupViewController = ConnectionSetupViewController()
+        let connection:ConnectionSetupViewController = ConnectionSetupViewController(toMenu: false)
         self.navigationController?.pushViewController(connection, animated: true)
     }
 }

@@ -29,16 +29,16 @@ class MyDeviceViewController: BaseViewController {
         buyButton.titleLabel?.textAlignment = NSTextAlignment.Center
         let viewController = DeviceViewController()
         let viewController2 = DeviceViewController()
-        let viewController3 = DeviceViewController()
-        let viewControllers = [viewController,viewController2,viewController3]
+        let viewControllers = [viewController,viewController2]
         if(viewControllers.count == 1){
             viewControllers[0].leftRightButtonsNeeded = false;
         }
         
         let options = PagingMenuOptions()
         options.menuHeight = 0;
-        options.menuDisplayMode = .Infinite(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
+        options.menuDisplayMode = .Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Fixed(width: UIScreen.mainScreen().bounds.width), centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.ScrollEnabled)
         let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
+        pagingMenuController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
         self.addChildViewController(pagingMenuController)
         self.devicesView.addSubview(pagingMenuController.view)
         pagingMenuController.didMoveToParentViewController(self)
@@ -46,7 +46,9 @@ class MyDeviceViewController: BaseViewController {
     }
     
     @IBAction func addDeviceAction(sender: AnyObject) {
-        
+        let navigationController:UINavigationController = UINavigationController(rootViewController: WhichDeviceViewController(toMenu: false))
+        navigationController.navigationBar.hidden = true
+        self.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func buyButtonAction(sender: AnyObject) {
