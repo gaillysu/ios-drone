@@ -80,8 +80,24 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         let gmtOffset = citiesGmtDict[cityName]
         let worldClock:WorldClock = WorldClock(keyDict: ["gmt_offset":gmtOffset!,"city_name":cityName])
         worldClock.add { (id, completion) in
-            print("Added to db!")
+            if(Bool(completion!)) {
+                print("word clock added to db!")
+            }else{
+                print("word clock add db fail!")
+            }
         }
+
+        let gmt:Int = (gmtOffset as! NSString).integerValue
+        let zone:NSTimeZone = NSTimeZone(forSecondsFromGMT: gmt)
+        let array:NSArray = WorldClock.getAll()
+        var clockArray:[SetWorldClockRequest] = []
+        for (index,value) in array.enumerate() {
+            let wordclock:WorldClock = value as! WorldClock
+            let beforeGmt:Int = (wordclock.gmt_offset as NSString).integerValue
+            let beforeTimeZone:NSTimeZone = NSTimeZone(forSecondsFromGMT: beforeGmt)
+            clockArray.append(SetWorldClockRequest(count: index, timerZone: beforeTimeZone, name: wordclock.city_name))
+        }
+        AppDelegate.getAppDelegate().setWorldClock(clockArray+[SetWorldClockRequest(count: clockArray.count, timerZone: zone, name: cityName)])
         dismissViewControllerAnimated(true, completion: nil)
     }
     

@@ -31,7 +31,7 @@ class SetWorldClockRequest: NevoRequest {
         var values1 :[UInt8] = [0x80,SetWorldClockRequest.HEADER(),
             UInt8(mWorldTimerCount!&0xFF),UInt8(mTimerZone!&0xFF),UInt8(hexArray.count&0xFF)]
         values1 = values1+hexArray
-        for(var index:Int = values1.count;index<20;index++){
+        for index:Int in values1.count ..< 20 {
             values1.append(0x00)
         }
 
