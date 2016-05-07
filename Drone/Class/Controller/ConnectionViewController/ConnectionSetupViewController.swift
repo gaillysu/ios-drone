@@ -56,8 +56,8 @@ class ConnectionSetupViewController: UIViewController {
             self.connectionFailView.hidden = false
             self.connectionView.hidden = true
             if(self.toMenu){
-            AppDelegate.getAppDelegate().startConnect()
-        }else{
+                AppDelegate.getAppDelegate().startConnect()
+            }else{
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
@@ -71,6 +71,7 @@ class ConnectionSetupViewController: UIViewController {
 
     @IBAction func buttonActionManager(sender: AnyObject) {
         if sender.isEqual(nextB) {
+            AppDelegate.getAppDelegate().setUserProfile()
              AppDelegate.getAppDelegate().rootTabbarController()
         }
 

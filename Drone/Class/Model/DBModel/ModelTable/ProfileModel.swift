@@ -15,7 +15,6 @@ class ProfileModel: UserDatabaseHelper {
     var last_name:String = ""
     var birthday:NSTimeInterval = NSDate().timeIntervalSince1970
     var gender:Bool = false
-    var age:Int = 0
     var weight:Int = 0
     var lenght:Int = 0
     var stride_length:Int = 0
