@@ -17,10 +17,9 @@ class UserGoal: NSObject,BaseEntryDatabaseHelper {
 
     init(keyDict:NSDictionary) {
         super.init()
-        self.setValue(keyDict.objectForKey("id"), forKey: "id")
-        self.setValue(keyDict.objectForKey("steps"), forKey: "steps")
-        self.setValue(keyDict.objectForKey("label"), forKey: "label")
-        self.setValue(keyDict.objectForKey("status"), forKey: "status")
+        keyDict.enumerateKeysAndObjectsUsingBlock { (key, value, stop) in
+            self.setValue(value, forKey: key as! String)
+        }
     }
 
     func add(result:((id:Int?,completion:Bool?) -> Void)){
@@ -54,7 +53,7 @@ class UserGoal: NSObject,BaseEntryDatabaseHelper {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let goalModel:GoalModel = model as! GoalModel
-            let goal:UserGoal = UserGoal(keyDict: ["steps":"\(goalModel.goalSteps)","label":"\(goalModel.label)","status":"\(goalModel.status)"])
+            let goal:UserGoal = UserGoal(keyDict: ["goalSteps":"\(goalModel.goalSteps)","label":"\(goalModel.label)","status":"\(goalModel.status)"])
             allArray.addObject(goal)
         }
         return allArray
@@ -65,7 +64,7 @@ class UserGoal: NSObject,BaseEntryDatabaseHelper {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let goalModel:GoalModel = model as! GoalModel
-            let goal:UserGoal = UserGoal(keyDict: ["id":"\(goalModel.id)","steps":"\(goalModel.goalSteps)","label":"\(goalModel.label)","status":"\(goalModel.status)"])
+            let goal:UserGoal = UserGoal(keyDict: ["id":"\(goalModel.id)","goalSteps":"\(goalModel.goalSteps)","label":"\(goalModel.label)","status":"\(goalModel.status)"])
             allArray.addObject(goal)
         }
         return allArray
