@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     private var disConnectAlert:UIAlertView?
     private let log = XCGLogger.defaultInstance()
     private var responseTimer:NSTimer?
+    private var noResponseIndex:Int = 0
 
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
@@ -242,7 +243,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                         NSLog("NSThread.sleepForTimeInterval(0.2)");
 
                     })
-                    self.responseTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(AppDelegate.noResponseAction(_:)), userInfo: nil, repeats: true)
+                    self.responseTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(AppDelegate.noResponseAction(_:)), userInfo: nil, repeats: true)
                 }
 
                 if(systemStatus == SystemStatus.InvalidTime.rawValue) {
@@ -284,8 +285,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
             if(packet.getHeader() == SetSystemConfig.HEADER()) {
                 //setp2:start set RTC
-                self.responseTimer?.invalidate()
-                self.responseTimer = nil
                 self.setRTC()
             }
 
@@ -362,13 +361,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         }
     }
 
-    // MARK: - noResponseAction
-    func noResponseAction(timer:NSTimer) {
-        timer.invalidate()
-        self.responseTimer = nil
-        self.setRTC()
-    }
-
     func connectionStateChanged(isConnected : Bool) {
         SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:isConnected)
 
@@ -396,6 +388,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         SwiftEventBus.post(SWIFTEVENT_BUS_RECEIVED_RSSI_VALUE_KEY, sender:number)
     }
 
+    // MARK: - noResponseAction
+    func noResponseAction(timer:NSTimer) {
+
+        switch noResponseIndex {
+        case 0:
+            self.setRTC()
+        case 1:
+            self.setAppConfig()
+        case 2:
+            self.setUserProfile()
+        default:
+            self.responseTimer?.invalidate()
+            self.responseTimer = nil
+            break
+        }
+        noResponseIndex += 1
+    }
 }
 
 protocol SyncControllerDelegate:NSObjectProtocol {
