@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     private var disConnectAlert:UIAlertView?
     private let log = XCGLogger.defaultInstance()
+    private var responseTimer:NSTimer?
 
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
@@ -230,40 +231,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             SwiftEventBus.post(SWIFTEVENT_BUS_RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
 
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
-                setGoal(NumberOfStepsGoal(steps: 7000))
                 let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
                 log.debug("SystemStatus :\(systemStatus)")
                 if(systemStatus == SystemStatus.SystemReset.rawValue) {
-
                     let myQueue:dispatch_queue_t = dispatch_queue_create("Config_Drone", DISPATCH_QUEUE_SERIAL);
-
                     //step1 : Set systemconfig
                     dispatch_async(myQueue, {
                         NSThread.sleepForTimeInterval(0.2)
                         self.setSystemConfig()
                         NSLog("NSThread.sleepForTimeInterval(0.2)");
-                    })
 
-                    //step2: Set RTC
-                    dispatch_async(myQueue, {
-                        NSThread.sleepForTimeInterval(0.4)
-                        self.setRTC()
-                        NSLog(" NSThread.sleepForTimeInterval(0.4)");
                     })
-
-                    //step3: Set appconfig
-                    dispatch_async(myQueue, {
-                        NSThread.sleepForTimeInterval(0.6)
-                        self.setAppConfig()
-                        NSLog("NSThread.sleepForTimeInterval(0.6)");
-                    })
-
-                    //step4: Set user profile
-                    dispatch_async(myQueue, {
-                        NSThread.sleepForTimeInterval(0.8)
-                        self.setUserProfile()
-                        NSLog("NSThread.sleepForTimeInterval(0.8)");
-                    })
+                    self.responseTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(AppDelegate.noResponseAction(_:)), userInfo: nil, repeats: true)
                 }
 
                 if(systemStatus == SystemStatus.InvalidTime.rawValue) {
@@ -305,17 +284,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
             if(packet.getHeader() == SetSystemConfig.HEADER()) {
                 //setp2:start set RTC
-                setRTC()
+                self.responseTimer?.invalidate()
+                self.responseTimer = nil
+                self.setRTC()
             }
 
             if(packet.getHeader() == SetRTCRequest.HEADER()) {
                 //setp3:start set AppConfig
-                setAppConfig()
+                self.setAppConfig()
             }
 
             if(packet.getHeader() == SetAppConfigRequest.HEADER()) {
                 //step3: start set user default goal
-                setGoal(NumberOfStepsGoal(steps: 1000))
+                self.setUserProfile()
             }
 
             if(packet.getHeader() == SetGoalRequest.HEADER()) {
@@ -379,6 +360,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
 
         }
+    }
+
+    // MARK: - noResponseAction
+    func noResponseAction(timer:NSTimer) {
+        timer.invalidate()
+        self.responseTimer = nil
+        self.setRTC()
     }
 
     func connectionStateChanged(isConnected : Bool) {
