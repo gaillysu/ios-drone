@@ -60,7 +60,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
             weightArray.append(index)
         }
 
-        for index:Int in 1...9 {
+        for index:Int in 0...9 {
             weightFloatArray.append(index)
         }
     }
