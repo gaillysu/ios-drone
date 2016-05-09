@@ -144,7 +144,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     }
 
     func setUserProfile() {
-        sendRequest(SetUserProfileRequest(weight: 6000, height: 165, gender: 1, stridelength: 65))
+        let profileArray:NSArray = UserProfile.getAll()
+        if profileArray.count>0 {
+            //height (CM) X 0.415 ＝ stride length
+            let profile:UserProfile = profileArray.objectAtIndex(0) as! UserProfile
+            sendRequest(SetUserProfileRequest(weight: profile.weight*100, height: profile.lenght, gender: 1, stridelength: Int(Double(profile.lenght)*0.415)))
+        }else{
+            sendRequest(SetUserProfileRequest(weight: 6000, height: 175, gender: 1, stridelength: 65))
+        }
     }
 
     func setWorldClock(clock:[SetWorldClockRequest]) {
