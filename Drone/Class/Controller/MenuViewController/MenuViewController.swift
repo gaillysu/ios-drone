@@ -91,6 +91,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     // MARK: - left or right Action
     func leftAction(item:UIBarButtonItem) {
+        print("Test test!")
         let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
         profileNavigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.presentViewController(profileNavigationController, animated: true) {}
