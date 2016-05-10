@@ -11,14 +11,16 @@ import UIKit
 class SetSystemConfig: NevoRequest {
     private var mAutoStart:NSTimeInterval = 0
     private var mAutoEnd:NSTimeInterval = 0
+    private var mIndex:Int = 0
     class func HEADER() -> UInt8 {
         return 0x0F
     }
 
-    init(autoStart:NSTimeInterval,autoEnd:NSTimeInterval) {
+    init(autoStart:NSTimeInterval,autoEnd:NSTimeInterval,index:Int) {
         super.init()
         mAutoStart = autoStart
         mAutoEnd = autoEnd
+        mIndex = index
     }
 
     override func getRawDataEx() -> NSArray {
@@ -28,13 +30,13 @@ class SetSystemConfig: NevoRequest {
         let values2 :[UInt8] = [0x80,SetSystemConfig.HEADER(),
             0x04,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         let values3 :[UInt8] = [0x80,SetSystemConfig.HEADER(),
-                                0x09,
-                                0x05,
+                                0x09,0x05,
                                 UInt8(Int(mAutoStart)&0xFF),
                                 UInt8((Int(mAutoStart)>>8)&0xFF),
                                 UInt8(Int(mAutoEnd)&0xFF),
                                 UInt8((Int(mAutoEnd)>>8)&0xFF),0,0,0,0,0,0,0,0,0,0,0,0]
+        let requestArray:[[UInt8]] = [values1,values2,values3]
 
-        return NSArray(array: [NSData(bytes: values1, length: values1.count),NSData(bytes: values2, length: values2.count),NSData(bytes: values3, length: values2.count)])
+        return NSArray(array: [NSData(bytes: requestArray[mIndex], length: requestArray[mIndex].count)])
     }
 }

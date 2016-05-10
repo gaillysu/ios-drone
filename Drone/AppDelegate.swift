@@ -129,8 +129,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         sendRequest(GetSystemStatus())
     }
 
-    func setSystemConfig() {
-        sendRequest(SetSystemConfig(autoStart: NSDate().timeIntervalSince1970, autoEnd: NSDate.tomorrow().timeIntervalSince1970))
+    func setSystemConfig(index:Int) {
+        sendRequest(SetSystemConfig(autoStart: NSDate().timeIntervalSince1970, autoEnd: NSDate.tomorrow().timeIntervalSince1970, index: index))
     }
 
     func setRTC() {
@@ -235,15 +235,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
                 log.debug("SystemStatus :\(systemStatus)")
                 if(systemStatus == SystemStatus.SystemReset.rawValue) {
-                    let myQueue:dispatch_queue_t = dispatch_queue_create("Config_Drone", DISPATCH_QUEUE_SERIAL);
-                    //step1 : Set systemconfig
-                    dispatch_async(myQueue, {
-                        NSThread.sleepForTimeInterval(0.2)
-                        self.setSystemConfig()
-                        NSLog("NSThread.sleepForTimeInterval(0.2)");
-
-                    })
-                    self.responseTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(AppDelegate.noResponseAction(_:)), userInfo: nil, repeats: true)
+                    //step1 : Set systemconfig next 1
+                    self.setSystemConfig(0)
+                    setupResponseTimer()
                 }
 
                 if(systemStatus == SystemStatus.InvalidTime.rawValue) {
@@ -284,17 +278,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
 
             if(packet.getHeader() == SetSystemConfig.HEADER()) {
-                //setp2:start set RTC
-                self.setRTC()
+                releaseResponseTimer()
+                switch noResponseIndex {
+                case 0:
+                    log.debug("set system config 1")
+                    self.setSystemConfig(1)
+                    setupResponseTimer()
+                case 1:
+                    log.debug("set system config 2")
+                    self.setSystemConfig(2)
+                    setupResponseTimer()
+                case 2:
+                    log.debug("set RTC")
+                    //setp2:start set RTC
+                    self.setRTC()
+                    setupResponseTimer()
+                default:
+                    break
+                }
+                noResponseIndex += 1
             }
 
             if(packet.getHeader() == SetRTCRequest.HEADER()) {
                 //setp3:start set AppConfig
+                releaseResponseTimer()
                 self.setAppConfig()
+                setupResponseTimer()
             }
 
             if(packet.getHeader() == SetAppConfigRequest.HEADER()) {
                 //step3: start set user default goal
+                releaseResponseTimer()
                 self.setUserProfile()
             }
 
@@ -390,20 +404,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     // MARK: - noResponseAction
     func noResponseAction(timer:NSTimer) {
-
+        releaseResponseTimer()
         switch noResponseIndex {
         case 0:
-            self.setRTC()
+            log.debug("set system config 1")
+            self.setSystemConfig(1)
+            setupResponseTimer()
         case 1:
-            self.setAppConfig()
+            log.debug("set system config 2")
+            self.setSystemConfig(2)
+            setupResponseTimer()
         case 2:
+            log.debug("set RTC")
+            self.setRTC()
+            setupResponseTimer()
+        case 3:
+            log.debug("set app config")
+            self.setAppConfig()
+            setupResponseTimer()
+        case 4:
+            log.debug("set user profile")
             self.setUserProfile()
+        case 5:
+            releaseResponseTimer()
         default:
-            self.responseTimer?.invalidate()
-            self.responseTimer = nil
             break
         }
         noResponseIndex += 1
+    }
+    
+    /**
+     setup response timer
+     */
+    func setupResponseTimer() {
+        self.responseTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(AppDelegate.noResponseAction(_:)), userInfo: nil, repeats: false)
+    }
+    
+    /**
+     release response Timer
+     */
+    func releaseResponseTimer() {
+        self.responseTimer?.invalidate()
+        self.responseTimer = nil
     }
 }
 
