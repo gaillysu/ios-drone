@@ -42,4 +42,9 @@ class BaseViewController: UIViewController {
         navigationController.navigationBar.hidden = false
         return navigationController
     }
+    
+    
+    func getAppDelegate() -> AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
 }

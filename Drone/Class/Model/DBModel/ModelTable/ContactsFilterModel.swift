@@ -13,9 +13,6 @@ import FMDB
 class ContactsFilterModel: UserDatabaseHelper {
     
     var name:String = ""
-    var phone:Bool = true
-    var sms:Bool = true
-    var mail:Bool = true
     
     override init() {
         super.init()

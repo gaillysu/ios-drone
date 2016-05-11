@@ -120,7 +120,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
 
     func registerRequest() {
         if(AppTheme.isNull(ageTextField!.text!) || AppTheme.isEmail(lengthTextField!.text!) || AppTheme.isEmail(weightTextField!.text!)) {
-            let banner = Banner(title: NSLocalizedString("age or length weight is null", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+            let banner = Banner(title: NSLocalizedString("age or height weight is null", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
             banner.dismissesOnTap = true
             banner.show(duration: 0.6)
             return

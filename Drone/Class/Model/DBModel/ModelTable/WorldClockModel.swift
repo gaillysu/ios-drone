@@ -51,7 +51,6 @@ class WorldClockModel: UserDatabaseHelper {
     
     /**
      Lookup table all field data
-     
      :returns: Returns the query to the data
      */
     override class func getAll()->NSArray{

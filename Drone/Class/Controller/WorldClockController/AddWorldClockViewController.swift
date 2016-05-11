@@ -110,6 +110,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         cell.textLabel?.font = UIFont(name: "Helvetica-Light", size: 15.0)
         cell.textLabel?.textColor = UIColor.whiteColor()
         cell.backgroundColor = UIColor.getLightBaseColor()
+        
         return cell;
     }
     

@@ -12,9 +12,6 @@ class ContactsFilter: NSObject {
     
     var id:Int = 0
     var name:String = ""
-    var phone:Bool = true
-    var sms:Bool = true
-    var mail:Bool = true
     
     private var contactsFilterModel:ContactsFilterModel = ContactsFilterModel()
     
@@ -26,7 +23,6 @@ class ContactsFilter: NSObject {
     }
     
     func add(result:((id:Int?,completion:Bool?) -> Void)){
-        
         contactsFilterModel.add { (id, completion) -> Void in
             result(id: id, completion: completion)
         }
@@ -50,7 +46,7 @@ class ContactsFilter: NSObject {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let contactsFilterModel:ContactsFilterModel = model as! ContactsFilterModel
-            let contactsFilter:ContactsFilter = ContactsFilter(keyDict: ["id":contactsFilterModel.id,"name":contactsFilterModel.name,"phone":contactsFilterModel.phone,"sms":contactsFilterModel.sms,"mail":contactsFilterModel.mail])
+            let contactsFilter:ContactsFilter = ContactsFilter(keyDict: ["id":contactsFilterModel.id,"name":contactsFilterModel.name])
             allArray.addObject(contactsFilter)
         }
         return allArray
@@ -61,7 +57,7 @@ class ContactsFilter: NSObject {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let contactsFilterModel:ContactsFilterModel = model as! ContactsFilterModel
-            let contactsFilter:ContactsFilter = ContactsFilter(keyDict: ["id":contactsFilterModel.id,"name":contactsFilterModel.name,"phone":contactsFilterModel.phone,"sms":contactsFilterModel.sms,"mail":contactsFilterModel.mail])
+            let contactsFilter:ContactsFilter = ContactsFilter(keyDict: ["id":contactsFilterModel.id,"name":contactsFilterModel.name])
             allArray.addObject(contactsFilter)
         }
         return allArray

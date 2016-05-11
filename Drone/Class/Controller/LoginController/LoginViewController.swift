@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
             usernameT = AutocompleteField(frame: CGRectMake(0, 0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
             usernameT!.padding = 15.0
             usernameT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
-            usernameT!.placeholder = "Username"
+            usernameT!.placeholder = "E-mail"
             usernameT?.backgroundColor = UIColor.whiteColor()
             textfiledBG.addSubview(usernameT!)
 
