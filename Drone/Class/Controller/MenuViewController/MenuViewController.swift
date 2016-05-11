@@ -98,8 +98,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
 
     func rightAction(item:UIBarButtonItem) {
-        self.navigationController?.title = "WATCH SETTINGS"
-        self.navigationController?.pushViewController(MyDeviceViewController(), animated: true);
+        let device:MyDeviceViewController = MyDeviceViewController()
+        device.navigationItem.title = "Watch Settings"
+        self.navigationController?.pushViewController(device, animated: true);
     }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

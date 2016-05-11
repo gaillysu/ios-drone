@@ -25,6 +25,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
         deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCellHeader", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: identifier_header)
         deviceTableView.scrollEnabled = false

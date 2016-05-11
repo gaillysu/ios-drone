@@ -24,8 +24,8 @@ class MyDeviceViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
-        self.navigationItem.title = "Watch Settings"
-        
+        super.viewDidLoad()
+        //self.navigationItem.title = "Watch Settings"
         buyButton.titleLabel?.textAlignment = NSTextAlignment.Center
         let viewController = DeviceViewController()
         let viewController2 = DeviceViewController()
