@@ -403,5 +403,4 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         db.close();
         return true
     }
-
 }

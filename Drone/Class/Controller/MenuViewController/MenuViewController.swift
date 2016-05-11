@@ -133,7 +133,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let viewController: UIViewController = controllerType.init()
 
         menuTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DeviceViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,8 +16,10 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var deviceTableView: UITableView!
     private final let identifier = "device_table_view_cell"
     private final let identifier_header = "device_table_view_cell_header"
+    private let devicesViewController: MyDeviceViewController;
     
-    init() {
+    init(controller devicesViewController: MyDeviceViewController) {
+        self.devicesViewController = devicesViewController
         super.init(nibName: "DeviceViewController", bundle: NSBundle.mainBundle())
     }
     
@@ -31,11 +34,16 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3;
+        return 2;
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if indexPath.row == 0 {
+            self.devicesViewController.pushContactsFilterViewController()
+        }else if indexPath.row == 1 {
+            // forget watch
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -54,7 +62,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return ((tableView.frame.height - 388)/3);
+        return ((tableView.frame.height - 388)/2);
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -63,8 +71,6 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
         if indexPath.row == 0 {
             cell.titleLabel.text = "Contacts Notifications"
         }else if indexPath.row == 1{
-            cell.titleLabel.text = "My Notifications"
-        }else if indexPath.row == 2{
             cell.titleLabel.text = "Forget this watch"
         }
         cell.separatorInset = UIEdgeInsetsZero

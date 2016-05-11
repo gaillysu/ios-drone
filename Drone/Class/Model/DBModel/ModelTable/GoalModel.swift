@@ -15,7 +15,6 @@ class GoalModel: UserDatabaseHelper {
     var status:Bool = false
 
     override init() {
-
     }
 
     /**

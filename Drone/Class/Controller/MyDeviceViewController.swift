@@ -25,15 +25,14 @@ class MyDeviceViewController: BaseViewController {
     
     override func viewDidLoad() {
         self.navigationItem.title = "Watch Settings"
-        
         buyButton.titleLabel?.textAlignment = NSTextAlignment.Center
-        let viewController = DeviceViewController()
-        let viewController2 = DeviceViewController()
+        let viewController = DeviceViewController(controller: self)
+        let viewController2 = DeviceViewController(controller: self)
         let viewControllers = [viewController,viewController2]
         if(viewControllers.count == 1){
             viewControllers[0].leftRightButtonsNeeded = false;
         }
-        
+
         let options = PagingMenuOptions()
         options.menuHeight = 0;
         options.menuDisplayMode = .Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Fixed(width: UIScreen.mainScreen().bounds.width), centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.ScrollEnabled)
@@ -53,5 +52,9 @@ class MyDeviceViewController: BaseViewController {
     
     @IBAction func buyButtonAction(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(NSURL(string: "http://www.hsn.com/shop/drone-presented-by-shaquille-oneal/13040")!)
+    }
+    
+    func pushContactsFilterViewController(){
+        self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
     }
 }
