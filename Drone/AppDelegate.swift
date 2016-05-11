@@ -156,10 +156,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         }
     }
 
-    func setWorldClock(clock:[SetWorldClockRequest]) {
-        for worldclock in clock{
-            sendRequest(worldclock)
-        }
+    func setWorldClock(clock:SetWorldClockRequest) {
+        sendRequest(clock)
     }
 
     /**

@@ -79,6 +79,22 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         let citiesArrayForSection:[String] = self.citiesDict.objectForKey(sectionName) as! [String]
         let cityName:String = citiesArrayForSection[indexPath.row]
         let gmtOffset = citiesGmtDict[cityName]
+
+        let gmt:Int = (gmtOffset as! NSString).integerValue
+        let array:NSArray = WorldClock.getAll()
+        var clockNameArray:[String] = []
+        var zoneArray:[Int] = []
+        for (index,value) in array.enumerate() {
+            let wordclock:WorldClock = value as! WorldClock
+            let beforeGmt:Int = (wordclock.gmt_offset as NSString).integerValue
+            clockNameArray.append(wordclock.city_name)
+            zoneArray.append(beforeGmt)
+        }
+        clockNameArray.append(cityName)
+        zoneArray.append(gmt)
+        
+        AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
+        
         let worldClock:WorldClock = WorldClock(keyDict: ["gmt_offset":gmtOffset!,"city_name":cityName])
         worldClock.add { (id, completion) in
             if(Bool(completion!)) {
@@ -87,18 +103,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
                 print("word clock add db fail!")
             }
         }
-
-        let gmt:Int = (gmtOffset as! NSString).integerValue
-        let zone:NSTimeZone = NSTimeZone(forSecondsFromGMT: gmt)
-        let array:NSArray = WorldClock.getAll()
-        var clockArray:[SetWorldClockRequest] = []
-        for (index,value) in array.enumerate() {
-            let wordclock:WorldClock = value as! WorldClock
-            let beforeGmt:Int = (wordclock.gmt_offset as NSString).integerValue
-            let beforeTimeZone:NSTimeZone = NSTimeZone(forSecondsFromGMT: beforeGmt)
-            clockArray.append(SetWorldClockRequest(count: index, timeZone: beforeTimeZone, name: wordclock.city_name))
-        }
-        AppDelegate.getAppDelegate().setWorldClock(clockArray+[SetWorldClockRequest(count: clockArray.count, timeZone: zone, name: cityName)])
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     

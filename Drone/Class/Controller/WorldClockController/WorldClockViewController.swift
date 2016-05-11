@@ -122,14 +122,16 @@ class WorldClockViewController: BaseViewController {
             self.worldClockArray = WorldClock.getAll();
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 
-            var clockArray:[SetWorldClockRequest] = []
+            var clockNameArray:[String] = []
+            var zoneArray:[Int] = []
             for (index,value) in worldClockArray.enumerate() {
                 let wordclock:WorldClock = value as! WorldClock
                 let beforeGmt:Int = (wordclock.gmt_offset as NSString).integerValue
-                let beforeTimeZone:NSTimeZone = NSTimeZone(forSecondsFromGMT: beforeGmt)
-                clockArray.append(SetWorldClockRequest(count: index, timeZone: beforeTimeZone, name: wordclock.city_name))
+                clockNameArray.append(wordclock.city_name)
+                zoneArray.append(beforeGmt)
             }
-            AppDelegate.getAppDelegate().setWorldClock(clockArray)
+            
+            AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
 
         } else if editingStyle == .Insert {
 
