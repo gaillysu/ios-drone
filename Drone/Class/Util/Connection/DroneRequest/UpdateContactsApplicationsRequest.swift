@@ -31,7 +31,7 @@ class UpdateContactsApplicationsRequest: NevoRequest {
      b7: <SET> - “Begins with” match;
      <RESET> - “any” match
      */
-    private var mSearchFields:Int = 0
+    private var mSearchFields:UInt8 = 0xB0
 
     class func HEADER() -> UInt8 {
         return 0x1B
@@ -46,10 +46,42 @@ class UpdateContactsApplicationsRequest: NevoRequest {
 
     override func getRawDataEx() -> NSArray {
         let hexArray:[UInt8] = NSData2Bytes(mAppPackage.dataUsingEncoding(NSUTF8StringEncoding)!)
-        var values1 :[UInt8] = [0x80,UpdateContactsFilterRequest.HEADER(),UInt8(mAppPackageLength&0xFF)]
-        values1 = values1+hexArray
-        values1 = values1+[UInt8(mOperationMode&0xFF),UInt8(mSearchFields&0xFF)]
+        var values1 :[UInt8] = [0x80,UpdateContactsApplicationsRequest.HEADER(),UInt8(mAppPackageLength&0xFF)]+hexArray+[UInt8(mOperationMode&0xFF),UInt8(mSearchFields&0xFF)]
 
-        return NSArray(array: [NSData(bytes: values1, length: values1.count)])
+        var valueArray:[UInt8] = []
+        var dataArray:[NSData] = []
+        if values1.count>20 {
+            for (index,value) in values1.enumerate() {
+                if index % 20 == 0 && index != 0 {
+                    dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                    valueArray.removeAll()
+                }else{
+                    if(valueArray.count == 0 && dataArray.count != 0) {
+                        valueArray.append(0x81)
+                        valueArray.append(values1[index-1])
+                    }
+                    valueArray.append(value)
+                    
+                    if(index == values1.count-1) {
+                        if(valueArray.count != 20) {
+                            for _:Int in valueArray.count..<20 {
+                                valueArray.append(0x00)
+                            }
+                        }
+                        dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                        valueArray.removeAll()
+                    }
+                }
+            }
+        }else{
+            if(values1.count != 20) {
+                for _:Int in values1.count..<20 {
+                    values1.append(0x00)
+                }
+            }
+            dataArray.append(NSData(bytes: values1, length: values1.count));
+        }
+
+        return NSArray(array: dataArray)
     }
 }

@@ -33,9 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     private var mAlertUpdateFW = false
 
     private var disConnectAlert:UIAlertView?
-    private let log = XCGLogger.defaultInstance()
+    let log = XCGLogger.defaultInstance()
     private var responseTimer:NSTimer?
     private var noResponseIndex:Int = 0
+    private var sendContactsIndex:Int = 0
+    var sendIndex:((index:Int) -> Void)?
 
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
@@ -213,6 +215,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     }
 
+    func sendContactsRequest(r:Request,index:Int) {
+        if(isConnected()) {
+            sendContactsIndex = index
+            self.mConnectionController?.sendRequest(r)
+        }
+    }
+    
     func sendRequest(r:Request) {
         if(isConnected()){
             self.mConnectionController?.sendRequest(r)
@@ -329,6 +338,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 let stepsDict:[String:Int] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal()]
 
                 SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
+            }
+            
+            if (packet.getHeader() == SetNotificationRequest.HEADER()) {
+                log.debug("Set Notification response")
+                sendIndex?(index: sendContactsIndex+1)
+            }
+            
+            if (packet.getHeader() == UpdateNotificationRequest.HEADER()) {
+                log.debug("Update notification response")
+                sendIndex?(index: sendContactsIndex+1)
+            }
+            
+            if(packet.getHeader() == UpdateContactsFilterRequest.HEADER()) {
+                log.debug("Update contacts filter response")
+                sendIndex?(index: sendContactsIndex+1)
+            }
+            
+            if(packet.getHeader() == UpdateContactsApplicationsRequest.HEADER()) {
+                log.debug("Update contacts applications response")
+                sendIndex?(index: sendContactsIndex+1)
+            }
+            
+            if(packet.getHeader() == SetContactsFilterRequest.HEADER()) {
+                log.debug("Set contacts filter response")
+                sendIndex?(index: sendContactsIndex+1)
             }
 
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
