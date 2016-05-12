@@ -1,8 +1,8 @@
 //
-//  WorldClockModel.swift
+//  ContactsFilterModel.swift
 //  Drone
 //
-//  Created by Karl-John on 6/5/2016.
+//  Created by Karl Chow on 5/11/16.
 //  Copyright © 2016 Cloud. All rights reserved.
 //
 
@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import FMDB
 
-class WorldClockModel: UserDatabaseHelper {
-
-    var gmt_offset:String = ""
-    var city_name:String = ""
+class ContactsFilterModel: UserDatabaseHelper {
+    
+    var name:String = ""
+    
     override init() {
         super.init()
     }
@@ -26,14 +26,14 @@ class WorldClockModel: UserDatabaseHelper {
      */
     override class func getCriteria(criteria:String)->NSArray {
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
-        let worldClockArray:NSMutableArray = NSMutableArray()
+        let contactsFilterArray:NSMutableArray = NSMutableArray()
         dbQueue.inDatabase { (db) -> Void in
             var tableName:String =  NSStringFromClass(self.classForCoder())
             tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
             let sql:String = "SELECT * FROM \(tableName) \(criteria)"
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
-                let model:WorldClockModel = WorldClockModel()
+                let model:ContactsFilterModel = ContactsFilterModel()
                 for i:Int in 0 ..< model.columeNames.count {
                     let columeName:NSString = (model.columeNames.objectAtIndex(i) as! NSString)
                     let columeType:NSString = (model.columeTypes.objectAtIndex(i) as! NSString)
@@ -43,26 +43,27 @@ class WorldClockModel: UserDatabaseHelper {
                         model.setValue(NSNumber(longLong: resultSet.longLongIntForColumn("\(columeName)")), forKey: "\(columeName)")
                     }
                 }
-                worldClockArray.addObject(model)
+                contactsFilterArray.addObject(model)
             }
         }
-        return worldClockArray;
+        return contactsFilterArray;
     }
     
     /**
      Lookup table all field data
+     
      :returns: Returns the query to the data
      */
     override class func getAll()->NSArray{
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
-        let worldClockArray:NSMutableArray = NSMutableArray()
+        let contactsFilterArray:NSMutableArray = NSMutableArray()
         dbQueue.inDatabase { (db) -> Void in
             var tableName:NSString = NSStringFromClass(self.classForCoder())
             tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
             let sql:String = "SELECT * FROM \(tableName)"
             let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
             while (resultSet.next()) {
-                let model:WorldClockModel = WorldClockModel()
+                let model:ContactsFilterModel = ContactsFilterModel()
                 for i:Int in 0 ..< model.columeNames.count {
                     let columeName:NSString = model.columeNames.objectAtIndex(i) as! NSString
                     let columeType:NSString = model.columeTypes.objectAtIndex(i) as! NSString
@@ -72,10 +73,10 @@ class WorldClockModel: UserDatabaseHelper {
                         model.setValue(NSNumber(longLong: resultSet.longLongIntForColumn("\(columeName)")), forKey: "\(columeName)")
                     }
                 }
-                worldClockArray.addObject(model)
+                contactsFilterArray.addObject(model)
             }
         }
-        return worldClockArray;
+        return contactsFilterArray;
     }
     
     override class func isExistInTable()->Bool {

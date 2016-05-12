@@ -12,7 +12,7 @@ protocol didSelectedDelegate:NSObjectProtocol {
     func didSelectedLocalTimeZone(ietm:NSDictionary)
 }
 
-class WorldClockViewController: BaseViewController {
+class WorldClockViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     private var time:(hour:Int,minute:Int)
     private let identifier:String = "WorldClockCell"
@@ -94,6 +94,14 @@ class WorldClockViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
+        let button1 = UITableViewRowAction(style: .Default, title: "Delete", handler: { (action, indexPath) in
+            self.tableView(tableView, commitEditingStyle: .Delete, forRowAtIndexPath: indexPath)
+        })
+        button1.backgroundColor = UIColor.getTintColor()
+        return [button1]
+    }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -115,6 +123,7 @@ class WorldClockViewController: BaseViewController {
     }
     
 
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let clock:WorldClock = worldClockArray.objectAtIndex(indexPath.row-1) as! WorldClock
@@ -154,10 +163,6 @@ class WorldClockViewController: BaseViewController {
         let worldClockCity:WorldClock = worldClockArray[(indexPath.row - 1)] as! WorldClock
         cell.cityLabel.text = worldClockCity.city_name
         
-        let gmtClock = worldClockCity.gmt_offset[1...worldClockCity.gmt_offset.characters.count-1]
-        let clockOffset = Int(gmtClock)
-        
-    
         let foreignTimeOffsetToGmt = Float(worldClockCity.gmt_offset[0...worldClockCity.gmt_offset.characters.count-1])!
         var text:String = ""
         

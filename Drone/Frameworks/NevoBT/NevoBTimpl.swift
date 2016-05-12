@@ -311,7 +311,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
 
         } else {
             //Maybe the Manager is not ready yet, let's try again after a delay
-            log.debug("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
+//            log.debug("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
 
             let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(RETRY_DURATION * Double(NSEC_PER_SEC)))
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
@@ -351,7 +351,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
 
         } else {
             //Maybe the Manager is not ready yet, let's try again after a delay
-            log.debug("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
+//            log.debug("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
 
             let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(RETRY_DURATION * Double(NSEC_PER_SEC)))
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
@@ -544,19 +544,19 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             return true
 
         case CBCentralManagerState.Unsupported:
-            log.debug("The platform/hardware doesn't support Bluetooth Low Energy.")
+//            log.debug("The platform/hardware doesn't support Bluetooth Low Energy.")
             break
 
         case CBCentralManagerState.Unauthorized:
-            log.debug("The app is not authorized to use Bluetooth Low Energy.")
+//            log.debug("The app is not authorized to use Bluetooth Low Energy.")
             break
 
         case CBCentralManagerState.PoweredOff:
-            log.debug("Bluetooth is currently powered off.")
+//            log.debug("Bluetooth is currently powered off.")
             break
 
         default:
-            log.debug("Unknown device state")
+//            log.debug("Unknown device state")
             break
 
         }

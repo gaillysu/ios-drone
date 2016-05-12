@@ -37,7 +37,7 @@ class WelcomeViewController: UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
-        let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, scrollView.bounds.size.width, scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [AppTheme.GET_RESOURCES_IMAGE("drone1"),AppTheme.GET_RESOURCES_IMAGE("drone2"),AppTheme.GET_RESOURCES_IMAGE("drone3")])
+        let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, scrollView.bounds.size.width, scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [UIImage(named:"welcome_1")!,UIImage(named:"welcome_2")!,UIImage(named:"welcome_3")!,UIImage(named:"welcome_4")!,UIImage(named:"welcome_5")!])
         scrollView.addSubview(sdView)
     }
 

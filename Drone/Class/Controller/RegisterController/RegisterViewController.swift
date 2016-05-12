@@ -41,7 +41,7 @@ class RegisterViewController: BaseViewController {
         if (emailT == nil) {
             emailT = AutocompleteField(frame: CGRectMake(0, 0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
             emailT!.padding = 5.0
-            emailT!.placeholder = "Email"
+            emailT!.placeholder = "E-mail"
             emailT?.backgroundColor = UIColor.whiteColor()
             textfiledBG.addSubview(emailT!)
 
