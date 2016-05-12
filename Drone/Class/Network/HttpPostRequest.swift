@@ -11,12 +11,12 @@ import Alamofire
 import XCGLogger
 
 class HttpPostRequest: NSObject {
-
+    
     class  func postRequest(url: String, data:Dictionary<String,AnyObject>, completion:(result:NSDictionary) -> Void){
         var finalData: Dictionary<String,AnyObject> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei"]
         finalData["params"] = data;
         XCGLogger.defaultInstance().debug("\(finalData)")
-
+        
         Alamofire.request(Method.POST, url, parameters: finalData, encoding:ParameterEncoding.JSON, headers: ["Authorization": "Basic YXBwczptZWRfYXBwX2RldmVsb3BtZW50","Content-Type":"application/json"]).responseJSON { (response) -> Void in
             if response.result.isSuccess {
                 XCGLogger.defaultInstance().debug("getJSON: \(response.result.value)")
@@ -31,6 +31,27 @@ class HttpPostRequest: NSObject {
         }
     }
 
+    
+    class  func putRequest(url: String, data:Dictionary<String,AnyObject>, completion:(result:NSDictionary) -> Void){
+        var finalData: Dictionary<String,AnyObject> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei"]
+        finalData["params"] = data;
+        XCGLogger.defaultInstance().debug("\(finalData)")
+        Alamofire.request(Method.PUT, url, parameters: finalData, encoding:ParameterEncoding.JSON, headers: ["Authorization": "Basic YXBwczptZWRfYXBwX2RldmVsb3BtZW50","Content-Type":"application/json"]).responseJSON { (response) -> Void in
+            if response.result.isSuccess {
+                XCGLogger.defaultInstance().debug("getJSON: \(response.result.value)")
+                completion(result: response.result.value as! NSDictionary)
+            }else if (response.result.isFailure){
+                print(response.result.description)
+                print(response.result.debugDescription)
+                if (response.result.value == nil) {
+                    completion(result: NSDictionary(dictionary: ["error" : "request error"]))
+                }else{
+                    completion(result: response.result.value as! NSDictionary)
+                }
+            }
+        }
+    }
+    
     static func getCommonParams() -> (md5: String,time: Int){
         let time = Int(NSDate().timeIntervalSince1970);
         

@@ -108,6 +108,13 @@
                         <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="DFC-dZ-Mqe"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drone_logo_black" translatesAutoresizingMaskIntoConstraints="NO" id="eZu-bU-F8m">
+                    <rect key="frame" x="56" y="123" width="263" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="AA3-NI-aTy"/>
+                        <constraint firstAttribute="width" constant="263" id="LKQ-cS-hhe"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -117,6 +124,7 @@
                 <constraint firstItem="yEX-7b-lNR" firstAttribute="width" secondItem="hLA-KM-6CR" secondAttribute="width" id="2eR-UT-yI9"/>
                 <constraint firstItem="IaA-Pa-aZT" firstAttribute="top" secondItem="WRm-gp-DQM" secondAttribute="bottom" constant="39" id="370-Ef-dDz"/>
                 <constraint firstItem="m1G-bw-OwK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="13" id="3WS-i8-CfG"/>
+                <constraint firstItem="eZu-bU-F8m" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4XO-Ho-k1X"/>
                 <constraint firstAttribute="trailing" secondItem="IaA-Pa-aZT" secondAttribute="trailing" constant="37" id="56G-O1-Eio"/>
                 <constraint firstItem="jDp-yz-ebe" firstAttribute="top" secondItem="xBe-de-6hS" secondAttribute="bottom" constant="20" id="7Ko-GQ-wtx"/>
                 <constraint firstItem="m1G-bw-OwK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="BaE-57-Xkd"/>
@@ -130,6 +138,7 @@
                 <constraint firstItem="WRm-gp-DQM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="m75-Fx-TRp"/>
                 <constraint firstAttribute="trailing" secondItem="xBe-de-6hS" secondAttribute="trailing" constant="55" id="n7K-CU-ZfF"/>
                 <constraint firstItem="WRm-gp-DQM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="201" id="s6Z-tL-onH"/>
+                <constraint firstItem="WRm-gp-DQM" firstAttribute="top" secondItem="eZu-bU-F8m" secondAttribute="bottom" constant="33" id="xgV-x8-qTA"/>
                 <constraint firstItem="jDp-yz-ebe" firstAttribute="leading" secondItem="hLA-KM-6CR" secondAttribute="trailing" constant="25" id="yfG-SW-4H0"/>
                 <constraint firstItem="yEX-7b-lNR" firstAttribute="height" secondItem="hLA-KM-6CR" secondAttribute="height" id="z6W-pE-QM0"/>
                 <constraint firstAttribute="trailing" secondItem="rSD-t7-6t9" secondAttribute="trailing" constant="13" id="zDA-Sf-spe"/>
@@ -139,6 +148,7 @@
         </view>
     </objects>
     <resources>
+        <image name="drone_logo_black" width="284" height="45"/>
         <image name="facebook" width="50" height="50"/>
         <image name="google+" width="50" height="50"/>
         <image name="left_back_BT" width="35" height="35"/>

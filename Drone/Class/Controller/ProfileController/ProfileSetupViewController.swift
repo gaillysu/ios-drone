@@ -28,6 +28,9 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
     @IBOutlet weak var weightTextField: AutocompleteField!
     @IBOutlet weak var metricsSegment: UIView!
 
+    @IBOutlet weak var lastNameTextField: AutocompleteField!
+    @IBOutlet weak var firstNameTextField: AutocompleteField!
+
     var segmentView:SMSegmentView?
     private var nameDictionary:Dictionary<String,AnyObject> = ["first_name":"DroneUser","last_name":"User"]
     var account:Dictionary<String,AnyObject> = ["email":"","password":""]
@@ -126,13 +129,12 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
             return
         }
 
-        let first_name:String = nameDictionary["first_name"] as! String
-        let last_name:String = nameDictionary["last_name"] as! String
         let email:String = account["email"] as! String
         let password:String = account["password"] as! String
 
         MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-        HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":first_name,"last_name":last_name,"email":email,"password":password,"age":ageTextField!.text!,"length":lengthTextField!.text!]]) { (result) in
+        
+        HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":self.firstNameTextField.text!,"last_name":self.lastNameTextField.text!,"email":email,"password":password,"birthday":ageTextField!.text!,"length":lengthTextField!.text!, "weight":self.weightTextField.text!]]) { (result) in
             MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
 
             let json = JSON(result)

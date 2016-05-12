@@ -190,15 +190,15 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         }else if foreignTimeOffsetToGmt < localTimeOffsetToGmt{
             let timeBehind = foreignTimeOffsetToGmt - localTimeOffsetToGmt
             let halfHourBehind = timeBehind % 1.0
-            var foreignTime:(hour:Int,minute:Int) = (hour:self.time.hour+Int(timeBehind), minute: (halfHourBehind == 0.5 ? self.time.minute - 30 :self.time.minute))
+            var foreignTime:(hour:Int,minute:Int) = (hour:self.time.hour+Int(timeBehind), minute: (abs(halfHourBehind) == 0.5 ? self.time.minute - 30 :self.time.minute))
             if foreignTime.minute < 0 {
                 foreignTime.minute+=59
                 foreignTime.hour-=1
             }
             let hour:String = Int(timeBehind) == 1 ? "hour" : "hours"
-            let halfHour :String = timeBehind % 1.0 > 0.0 ? " and 30 minutes " : " "
+            let halfHour :String = abs(timeBehind) % 1.0 > 0.0 ? " and 30 minutes " : " "
             if foreignTime.hour < 0 {
-                foreignTime.hour+=23
+                foreignTime.hour+=24
                 text+="Yesterday, \(Int(timeBehind)) \(hour)\(halfHour)behind"
             }else{
                 text+="Today, \(Int(timeBehind)) \(hour)\(halfHour)behind"
