@@ -29,14 +29,11 @@ class SetWorldClockRequest: NevoRequest {
 
     override func getRawDataEx() -> NSArray {
         var nameDataArray:[[UInt8]] = []
+        nameDataArray.reserveCapacity(16)
         var zoneArray:[Int] = []
         for name in mTimerName {
            let namedata:[UInt8] = NSData2Bytes(name.dataUsingEncoding(NSUTF8StringEncoding)!)
-            if namedata.count<=16 {
-              nameDataArray.append(namedata)
-            }else{
-                nameDataArray.append(namedata)
-            }
+            nameDataArray.append(namedata)
         }
         
         for timezone in mTimeZone {
@@ -55,6 +52,31 @@ class SetWorldClockRequest: NevoRequest {
             }
         }
         
-        return NSArray(array: [NSData(bytes: values1, length: values1.count)])
+        var valueArray:[UInt8] = []
+        var dataArray:[NSData] = []
+        if values1.count>20 {
+            for (index,value) in values1.enumerate() {
+                if index % 20 == 0 && index != 0 {
+                    dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                    valueArray.removeAll()
+                }else{
+                    if(valueArray.count == 0 && dataArray.count != 0) {
+                        valueArray.append(0x81)
+                        valueArray.append(values1[index-1])
+                    }
+                    valueArray.append(value)
+                    
+                    if(index == values1.count-1) {
+                        dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                        valueArray.removeAll()
+                    }
+                }
+                
+            }
+        }else{
+            dataArray.append(NSData(bytes: values1, length: values1.count));
+        }
+        
+        return NSArray(array: dataArray)
     }
 }
