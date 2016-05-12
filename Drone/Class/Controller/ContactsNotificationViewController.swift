@@ -141,18 +141,22 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     
     func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
         let name = ABRecordCopyCompositeName(person).takeRetainedValue()
-        //UpdateContactsApplicationsRequest
-        //Messages - com.apple.MobileSMS
-        //Phone - com.apple.mobilephone
-        //Mail - com.apple.mobilemail
-        
+    
         let contact:ContactsFilter = ContactsFilter(keyDict: ["name":name])
         contact.add { (id, completion) in
             if(completion!) {
                 let request:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.MobileSMS", operationMode: 1)
                 let request1:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilephone", operationMode: 1)
                 let request2:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilemail", operationMode: 1)
-                AppDelegate.getAppDelegate().sendRequest(request)
+                let requestArray:[Request] = [request,request1,request2]
+                AppDelegate.getAppDelegate().sendContactsRequest(request,index: 0)
+                AppDelegate.getAppDelegate().sendIndex = {
+                    (index) -> Void in
+                    if(index != requestArray.count ) {
+                        AppDelegate.getAppDelegate().log.debug("send Contacts\(index)")
+                        AppDelegate.getAppDelegate().sendContactsRequest(requestArray[index],index: index)
+                    }
+                }
             }
         }
         self.contactsFilterArray = ContactsFilter.getAll()
