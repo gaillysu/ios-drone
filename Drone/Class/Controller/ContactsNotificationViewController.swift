@@ -145,12 +145,15 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         let contact:ContactsFilter = ContactsFilter(keyDict: ["name":name])
         contact.add { (id, completion) in
             if(completion!) {
-                let request:SetNotificationRequest = SetNotificationRequest(mode: 1, force: 0)
-                let request1:UpdateContactsFilterRequest = UpdateContactsFilterRequest(contact: contact.name, operation: 1, contactID: 3)
-                let request2:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.MobileSMS", operationMode: 1)
-                let request3:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilephone", operationMode: 1)
-                let request4:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilemail", operationMode: 1)
-                let requestArray:[Request] = [request,request1,request2,request3,request4]
+                let request:SetNotificationRequest = SetNotificationRequest(mode: 1, force: 1)
+                let request1:UpdateNotificationRequest = UpdateNotificationRequest(operation: 1, package: "com.apple.MobileSMS")
+                let request2:UpdateNotificationRequest = UpdateNotificationRequest(operation: 1, package: "com.apple.mobilephone")
+                let request3:UpdateNotificationRequest = UpdateNotificationRequest(operation: 1, package: "com.apple.mobilemail")
+                let request4:UpdateContactsFilterRequest = UpdateContactsFilterRequest(contact: contact.name, operation: 1, contactID: 3)
+                let request5:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.MobileSMS", operationMode: 1)
+                let request6:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilephone", operationMode: 1)
+                let request7:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilemail", operationMode: 1)
+                let requestArray:[Request] = [request,request1,request2,request3,request4,request5,request6,request7]
                 AppDelegate.getAppDelegate().sendContactsRequest(request,index: 0)
                 AppDelegate.getAppDelegate().sendIndex = {
                     (index) -> Void in

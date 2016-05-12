@@ -347,6 +347,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 sendIndex?(index: sendContactsIndex+1)
             }
             
+            if (packet.getHeader() == UpdateNotificationRequest.HEADER()) {
+                log.debug("Update notification response")
+                sendIndex?(index: sendContactsIndex+1)
+            }
+            
             if(packet.getHeader() == UpdateContactsFilterRequest.HEADER()) {
                 log.debug("Update contacts filter response")
                 sendIndex?(index: sendContactsIndex+1)
