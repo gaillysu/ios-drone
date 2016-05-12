@@ -42,6 +42,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        
         menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
 //        AppDelegate.getAppDelegate().startConnect()
         
@@ -86,12 +87,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         titleView.image = UIImage(named: "drone_logo")
         self.navigationItem.titleView = titleView
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-
     }
 
-    // MARK: - left or right Action
     func leftAction(item:UIBarButtonItem) {
-        print("Test test!")
         let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
         profileNavigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         self.presentViewController(profileNavigationController, animated: true) {}
@@ -133,7 +131,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let viewController: UIViewController = controllerType.init()
 
         menuTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

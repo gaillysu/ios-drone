@@ -23,21 +23,24 @@ class ContactsFilter: NSObject {
     }
     
     func add(result:((id:Int?,completion:Bool?) -> Void)){
+        contactsFilterModel.name = name
         contactsFilterModel.add { (id, completion) -> Void in
             result(id: id, completion: completion)
         }
     }
     
     func update()->Bool{
-        
+        contactsFilterModel.name = name
         return contactsFilterModel.update()
     }
     
     func remove()->Bool{
+        contactsFilterModel.id = id
         return contactsFilterModel.remove()
     }
     
     class func removeAll()->Bool{
+        
         return ContactsFilterModel.removeAll()
     }
     

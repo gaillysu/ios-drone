@@ -23,12 +23,14 @@ class MyDeviceViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationItem.title = "Watches"
+    }
+    
     override func viewDidLoad() {
-        self.navigationItem.title = "Watch Settings"
         buyButton.titleLabel?.textAlignment = NSTextAlignment.Center
         let viewController = DeviceViewController(controller: self)
-        let viewController2 = DeviceViewController(controller: self)
-        let viewControllers = [viewController,viewController2]
+        let viewControllers = [viewController]
         if(viewControllers.count == 1){
             viewControllers[0].leftRightButtonsNeeded = false;
         }
