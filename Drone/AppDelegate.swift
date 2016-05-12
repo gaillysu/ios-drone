@@ -361,6 +361,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 log.debug("Update contacts applications response")
                 sendIndex?(index: sendContactsIndex+1)
             }
+            
+            if(packet.getHeader() == SetContactsFilterRequest.HEADER()) {
+                log.debug("Set contacts filter response")
+            }
 
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
                 let syncStatus:[UInt8] = NSData2Bytes(packet.getRawData())

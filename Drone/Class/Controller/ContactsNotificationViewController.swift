@@ -78,8 +78,24 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
             contactsFilter.remove()
 
             self.contactsFilterArray = ContactsFilter.getAll();
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             // Delete worldclock at watch
+            if self.contactsFilterArray.count == 0 {
+                let request:SetContactsFilterRequest = SetContactsFilterRequest(contactsMode: 1, appNameMode: 1)
+                AppDelegate.getAppDelegate().sendContactsRequest(request,index: 0)
+            }else{
+                let request:UpdateContactsFilterRequest = UpdateContactsFilterRequest(contact: contactsFilter.name, operation: 2, contactID: 0)
+                let requestArray:[Request] = [request]
+                AppDelegate.getAppDelegate().sendContactsRequest(request,index: 0)
+                AppDelegate.getAppDelegate().sendIndex = {
+                    (index) -> Void in
+                    if(index != requestArray.count ) {
+                        AppDelegate.getAppDelegate().log.debug("send Contacts\(index)")
+                        AppDelegate.getAppDelegate().sendContactsRequest(requestArray[index],index: index)
+                    }
+                }
+            }
         }
     }
     
@@ -145,7 +161,7 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         let contact:ContactsFilter = ContactsFilter(keyDict: ["name":name])
         contact.add { (id, completion) in
             if(completion!) {
-                let request:SetNotificationRequest = SetNotificationRequest(mode: 1, force: 1)
+                let request:SetNotificationRequest = SetNotificationRequest(mode: 1, force: 0)
                 let request1:UpdateNotificationRequest = UpdateNotificationRequest(operation: 1, package: "com.apple.MobileSMS")
                 let request2:UpdateNotificationRequest = UpdateNotificationRequest(operation: 1, package: "com.apple.mobilephone")
                 let request3:UpdateNotificationRequest = UpdateNotificationRequest(operation: 1, package: "com.apple.mobilemail")
