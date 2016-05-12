@@ -364,6 +364,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             
             if(packet.getHeader() == SetContactsFilterRequest.HEADER()) {
                 log.debug("Set contacts filter response")
+                sendIndex?(index: sendContactsIndex+1)
             }
 
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
