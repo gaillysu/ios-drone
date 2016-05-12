@@ -17,23 +17,42 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="RJX-K9-nY3">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="PZe-1b-giE"/>
                         <outlet property="delegate" destination="-1" id="c7e-Dl-j8U"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xW-hy-hIF">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <color key="backgroundColor" red="0.79607843137254897" green="0.60392156862745094" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="1mw-BC-U1n"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
+                    <state key="normal" title="LOG OUT">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="logoutAction:" destination="-1" eventType="touchUpInside" id="3Gl-v7-agq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="RJX-K9-nY3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7tQ-zj-gHq"/>
-                <constraint firstAttribute="trailing" secondItem="RJX-K9-nY3" secondAttribute="trailing" id="HLz-va-sNx"/>
-                <constraint firstItem="RJX-K9-nY3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ToG-Wd-znj"/>
-                <constraint firstAttribute="bottom" secondItem="RJX-K9-nY3" secondAttribute="bottom" id="rph-uQ-jz2"/>
+                <constraint firstAttribute="trailing" secondItem="6xW-hy-hIF" secondAttribute="trailing" id="1qm-dg-g8S"/>
+                <constraint firstItem="6xW-hy-hIF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8Ud-rs-SAH"/>
+                <constraint firstItem="RJX-K9-nY3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DN0-49-qma"/>
+                <constraint firstItem="RJX-K9-nY3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JQ6-Iz-ZdM"/>
+                <constraint firstAttribute="trailing" secondItem="6xW-hy-hIF" secondAttribute="trailing" id="WDM-sD-Gfu"/>
+                <constraint firstItem="6xW-hy-hIF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aeU-1O-xB8"/>
+                <constraint firstAttribute="trailing" secondItem="RJX-K9-nY3" secondAttribute="trailing" id="p12-CG-tsK"/>
+                <constraint firstAttribute="bottom" secondItem="6xW-hy-hIF" secondAttribute="bottom" id="wTt-iJ-Hez"/>
+                <constraint firstItem="6xW-hy-hIF" firstAttribute="top" secondItem="RJX-K9-nY3" secondAttribute="bottom" id="xhD-ja-l1I"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="-126.5" y="257.5"/>
+            <point key="canvasLocation" x="-254.5" y="154.5"/>
         </view>
     </objects>
 </document>

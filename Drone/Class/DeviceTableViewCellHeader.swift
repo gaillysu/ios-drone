@@ -14,7 +14,7 @@ class DeviceTableViewCellHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var connectionStateLabel: UILabel!
     @IBOutlet weak var batteryLabel: UILabel!
     @IBOutlet weak var arrowRight: UIButton!
-
+    @IBOutlet weak var watchImage: UIImageView!
     @IBOutlet weak var arrowLeft: UIButton!
     override func awakeFromNib() {
         

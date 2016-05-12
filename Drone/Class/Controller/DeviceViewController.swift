@@ -61,7 +61,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return ((tableView.frame.height - 388)/2);
+        return ((tableView.frame.height - 318)/2);
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

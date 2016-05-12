@@ -8,6 +8,9 @@
 
 import Foundation
 import AutocompleteField
+import MRProgress
+import SwiftyJSON
+import BRYXBanner
 
 class ProfileViewController:BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -16,7 +19,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     private var steps:UserGoal!
     @IBOutlet weak var profileTableView: UITableView!
     private var firstNameTextField: UITextField!
-    
+     var loadingIndicator: MRProgressOverlayView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -39,29 +42,39 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         self.profileTableView.tableFooterView = UIView()
         profile = UserProfile.getAll()[0] as! UserProfile;
         steps = UserGoal.getAll()[0] as! UserGoal
-
     }
     
+    
+    func someSelector() {
+        
+    }
+
+    
     func save(){
+        
+        loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+        loadingIndicator.setTintColor(UIColor.getBaseColor())
+        
         dismissKeyboard()
         guard let firstName = firstNameTextField.text where !firstName.isEmpty else {
             return;
         }
+        profile.first_name = firstNameTextField.text!
         for i in 0...4 {
             let cell: ProfileTableViewCell = profileTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! ProfileTableViewCell
             guard var text = cell.itemTextField.text where !text.isEmpty else {
                 return;
             }
             if i == 0{
-             profile.last_name = text
+                profile.last_name = text
             } else if i == 1 {
-             profile.email = text
+                profile.email = text
             } else if i == 2 {
-            text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
-             profile.lenght = Int(text)!
+                text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
+                profile.lenght = Int(text)!
             } else if i == 3 {
-            text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
-             profile.weight = Int(text)!
+                text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
+                profile.weight = Int(text)!
             } else if i == 4 {
                 text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
                 steps = UserGoal.getAll()[0] as! UserGoal
@@ -70,7 +83,21 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             }
         }
         profile.update()
-        self.dismissViewControllerAnimated(true, completion: nil)
+
+//        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"birthday":"2000-01-01","length":profile.lenght,"weight":profile.weight,"sex":profile.gender ? 1 : 0,"id":4]]) { (result) in
+//            
+//            let json = JSON(result)
+//            let message = json["message"].stringValue
+//            let status = json["status"].intValue
+//            let user:[String : JSON] = json["user"].dictionaryValue
+//            if(status > 0 && UserProfile.getAll().count == 0) {
+//                self.loadingIndicator.mode = MRProgressOverlayViewMode.Checkmark
+//                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+//            }else{
+//                print("Request error");
+//            }
+//        }
+
     }
     
     func close(){
@@ -79,14 +106,18 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2;
+        return 1;
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 5;
-        }else{
-            return 1;
+        return 5;
+    }
+    
+    @IBAction func logoutAction(sender: AnyObject) {
+        if(profile.remove()){
+            
         }
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -98,7 +129,6 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
             let cell: ProfileTableViewCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! ProfileTableViewCell
             if(indexPath.row == 0){
                 cell.itemTextField!.text = profile.last_name
@@ -123,25 +153,6 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                 cell.textPreFix = "Goal: "
             }
             return cell;
-        }else{
-            var cell = tableView.dequeueReusableCellWithIdentifier("Logout_Identifier")
-            if(cell == nil){
-                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Logout_Identifier")
-                let label:UILabel = UILabel(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,60))
-                label.tag = 1920
-                label.textColor = UIColor.whiteColor()
-                label.font = UIFont.systemFontOfSize(19)
-                label.textAlignment = NSTextAlignment.Center
-                cell?.contentView.addSubview(label)
-            }
-            cell?.contentView.backgroundColor = UIColor(patternImage: UIImage(named: "gradually")!)
-            let view = cell?.contentView.viewWithTag(1920)
-            if(view != nil) {
-                let label:UILabel = view as! UILabel
-                label.text = "LOG OUT"
-            }
-            return cell!;
-        }
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

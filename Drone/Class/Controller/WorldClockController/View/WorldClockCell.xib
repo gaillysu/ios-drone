@@ -25,9 +25,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldg-Gx-XdL">
-                        <rect key="frame" x="16" y="31" width="257" height="18"/>
+                        <rect key="frame" x="16" y="31" width="288" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="257" id="gJD-s7-Vxh"/>
+                            <constraint firstAttribute="width" constant="288" id="gJD-s7-Vxh"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
