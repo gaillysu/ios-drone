@@ -342,7 +342,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
             }
             
+            if (packet.getHeader() == SetNotificationRequest.HEADER()) {
+                log.debug("Set Notification response")
+                sendIndex?(index: sendContactsIndex+1)
+            }
+            
+            if(packet.getHeader() == UpdateContactsFilterRequest.HEADER()) {
+                log.debug("Update contacts filter response")
+                sendIndex?(index: sendContactsIndex+1)
+            }
+            
             if(packet.getHeader() == UpdateContactsApplicationsRequest.HEADER()) {
+                log.debug("Update contacts applications response")
                 sendIndex?(index: sendContactsIndex+1)
             }
 

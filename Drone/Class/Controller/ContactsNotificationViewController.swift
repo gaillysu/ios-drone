@@ -145,10 +145,12 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         let contact:ContactsFilter = ContactsFilter(keyDict: ["name":name])
         contact.add { (id, completion) in
             if(completion!) {
-                let request:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.MobileSMS", operationMode: 1)
-                let request1:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilephone", operationMode: 1)
-                let request2:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilemail", operationMode: 1)
-                let requestArray:[Request] = [request,request1,request2]
+                let request:SetNotificationRequest = SetNotificationRequest(mode: 1, force: 0)
+                let request1:UpdateContactsFilterRequest = UpdateContactsFilterRequest(contact: contact.name, operation: 1, contactID: 3)
+                let request2:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.MobileSMS", operationMode: 1)
+                let request3:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilephone", operationMode: 1)
+                let request4:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilemail", operationMode: 1)
+                let requestArray:[Request] = [request,request1,request2,request3,request4]
                 AppDelegate.getAppDelegate().sendContactsRequest(request,index: 0)
                 AppDelegate.getAppDelegate().sendIndex = {
                     (index) -> Void in
