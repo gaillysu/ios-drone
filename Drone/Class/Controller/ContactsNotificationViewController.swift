@@ -23,7 +23,6 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         super.viewDidLoad()
         self.navigationItem.title = "Notifications"
         self.navigationController!.navigationBar.topItem!.title = "";
-        
         let button: UIButton = UIButton(type: UIButtonType.Custom)
         button.setImage(UIImage(named: "addbutton"), forState: UIControlState.Normal)
         button.addTarget(self, action: #selector(add), forControlEvents: UIControlEvents.TouchUpInside)
@@ -31,6 +30,13 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = barButton
         self.tableView.separatorColor = UIColor.whiteColor()
+        
+        let header:UIView = UIView.loadFromNibNamed("ContactsNotificationHeader")!
+        header.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height)
+        let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height))
+        headerView.addSubview(header)
+        self.tableView.tableHeaderView = headerView
+
         peoplePicker.peoplePickerDelegate = self;
     }
     

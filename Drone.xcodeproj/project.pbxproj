@@ -153,6 +153,7 @@
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
 		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
+		9E1999541CE4328800C1D967 /* ContactsNotificationHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1999531CE4328800C1D967 /* ContactsNotificationHeader.xib */; };
 		9E2978711CDC3D5D00821704 /* WorldClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2978701CDC3D5D00821704 /* WorldClock.swift */; };
 		9E2978731CDC40D000821704 /* WorldClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2978721CDC40D000821704 /* WorldClockModel.swift */; };
 		9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */; };
@@ -381,6 +382,7 @@
 		162629CC61821D5C419DE763 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50E933362E2354AB07386 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9E1999531CE4328800C1D967 /* ContactsNotificationHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsNotificationHeader.xib; sourceTree = "<group>"; };
 		9E2978701CDC3D5D00821704 /* WorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClock.swift; sourceTree = "<group>"; };
 		9E2978721CDC40D000821704 /* WorldClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockModel.swift; sourceTree = "<group>"; };
 		9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisStepsChartView.swift; sourceTree = "<group>"; };
@@ -1130,6 +1132,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9E1999521CE4327400C1D967 /* ContactsNotificationHeader */ = {
+			isa = PBXGroup;
+			children = (
+				9E1999531CE4328800C1D967 /* ContactsNotificationHeader.xib */,
+			);
+			name = ContactsNotificationHeader;
+			sourceTree = "<group>";
+		};
 		9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1207,6 +1217,7 @@
 		CBA06BEB1C8EB2C800E3257B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9E1999521CE4327400C1D967 /* ContactsNotificationHeader */,
 				9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */,
 				9E455E151CD5B94100F79356 /* DeviceTableView */,
 				CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */,
@@ -1405,6 +1416,7 @@
 				00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
 				00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */,
+				9E1999541CE4328800C1D967 /* ContactsNotificationHeader.xib in Resources */,
 				00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */,
 				CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginViewController.xib in Resources */,
