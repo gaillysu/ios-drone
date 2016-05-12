@@ -90,9 +90,16 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
 
     func leftAction(item:UIBarButtonItem) {
-        let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
-        profileNavigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
-        self.presentViewController(profileNavigationController, animated: true) {}
+        if (UserProfile.getAll().count == 0){
+            let navigationController = UINavigationController(rootViewController:WelcomeViewController());
+            navigationController.navigationBarHidden = true
+            self.presentViewController(navigationController, animated: true, completion: nil);
+            
+        }else{
+            let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
+            profileNavigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
+            self.presentViewController(profileNavigationController, animated: true) {}
+        }
     }
 
     func rightAction(item:UIBarButtonItem) {

@@ -27,9 +27,6 @@
 		005699DB1CD0673D0097938E /* localTimeZone in Resources */ = {isa = PBXBuildFile; fileRef = 005699DA1CD0673D0097938E /* localTimeZone */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
-		0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA6E1CC089BF005AB9DE /* drone1.jpg */; };
-		0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA701CC089BF005AB9DE /* drone3.jpg */; };
-		0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA741CC089F4005AB9DE /* drone2.jpg */; };
 		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
 		0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */; };
 		0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */; };
@@ -1399,13 +1396,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0064CA711CC089BF005AB9DE /* drone1.jpg in Resources */,
 				0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */,
 				00982C091C868C8A003DA5E2 /* queryTableviewCell.xib in Resources */,
 				005699DB1CD0673D0097938E /* localTimeZone in Resources */,
 				00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */,
-				0064CA731CC089BF005AB9DE /* drone3.jpg in Resources */,
-				0064CA751CC089F4005AB9DE /* drone2.jpg in Resources */,
 				9E455E0F1CD5A16C00F79356 /* MyDeviceViewController.xib in Resources */,
 				005699D91CD05F7C0097938E /* ChooseCityController.xib in Resources */,
 				CBD6BD231CD097080009F39A /* GalleryViewController.xib in Resources */,

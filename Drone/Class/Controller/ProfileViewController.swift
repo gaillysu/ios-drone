@@ -42,6 +42,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         self.profileTableView.tableFooterView = UIView()
         profile = UserProfile.getAll()[0] as! UserProfile;
         steps = UserGoal.getAll()[0] as! UserGoal
+        firstNameTextField.text = profile.first_name
     }
     
     
@@ -52,9 +53,9 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     
     func save(){
         
-        loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-        loadingIndicator.setTintColor(UIColor.getBaseColor())
-        
+//        loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+//        loadingIndicator.setTintColor(UIColor.getBaseColor())
+//        
         dismissKeyboard()
         guard let firstName = firstNameTextField.text where !firstName.isEmpty else {
             return;
@@ -71,7 +72,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                 profile.email = text
             } else if i == 2 {
                 text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
-                profile.lenght = Int(text)!
+                profile.length = Int(text)!
             } else if i == 3 {
                 text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
                 profile.weight = Int(text)!
@@ -83,6 +84,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             }
         }
         profile.update()
+        dismissViewControllerAnimated(true, completion: nil)
 
 //        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"birthday":"2000-01-01","length":profile.lenght,"weight":profile.weight,"sex":profile.gender ? 1 : 0,"id":4]]) { (result) in
 //            
@@ -137,7 +139,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                 cell.itemTextField!.text = profile.email
                 cell.setType(.Email)
             }else  if(indexPath.row == 2){
-                cell.itemTextField!.text = "\(String(profile.lenght)) CM"
+                cell.itemTextField!.text = "\(String(profile.length)) CM"
                 cell.setInputVariables(self.generatePickerData(100, rangeEnd: 220, interval: 0))
                 cell.setType(.Numeric)
                 cell.textPostFix = " CM"

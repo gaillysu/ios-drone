@@ -20,11 +20,13 @@ class RegisterViewController: BaseViewController {
     @IBOutlet weak var googleB: UIButton!
     @IBOutlet weak var facebookB: UIButton!
     @IBOutlet weak var twitterB: UIButton!
-
+    
+    var fromMenu: Bool = false;
     var emailT: AutocompleteField!
     var passwordT: AutocompleteField!
 
-    init() {
+    init(fromMenu: Bool = false) {
+        self.fromMenu = fromMenu
         super.init(nibName: "RegisterViewController", bundle: NSBundle.mainBundle())
     }
 
@@ -103,7 +105,6 @@ class RegisterViewController: BaseViewController {
         emailT.resignFirstResponder()
         passwordT.resignFirstResponder()
     }
-    
 }
 
 // MARK: - YYKeyboardObserver

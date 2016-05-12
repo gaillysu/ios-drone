@@ -30,7 +30,6 @@ class SplashScreenViewController: BaseViewController {
             navigationController.navigationBarHidden = true
             self.presentViewController(navigationController, animated: true, completion: nil);
         }
-
         timer?.invalidate()
         timer = nil;
     }

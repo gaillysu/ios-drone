@@ -13,10 +13,10 @@ class ProfileModel: UserDatabaseHelper {
     
     var first_name:String = ""
     var last_name:String = ""
-    var birthday:NSTimeInterval = NSDate().timeIntervalSince1970
+    var birthday:String = ""
     var gender:Bool = false
     var weight:Int = 0
-    var lenght:Int = 0
+    var length:Int = 0
     var stride_length:Int = 0
     var metricORimperial:Bool = false
     var created:NSTimeInterval = NSDate().timeIntervalSince1970

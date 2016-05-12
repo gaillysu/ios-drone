@@ -12,10 +12,10 @@ class UserProfile: NSObject {
     var id:Int = 0
     var first_name:String = ""
     var last_name:String = ""
-    var birthday:NSTimeInterval = NSDate().timeIntervalSince1970
-    var gender:Bool = false
+    var birthday:String = ""
+    var gender:Bool = false // true = male || false = female
     var weight:Int = 0
-    var lenght:Int = 0
+    var length:Int = 0
     var stride_length:Int = 0
     var metricORimperial:Bool = false
     var created:NSTimeInterval = NSDate().timeIntervalSince1970
@@ -36,7 +36,7 @@ class UserProfile: NSObject {
         profileModel.birthday = birthday
         profileModel.gender = gender
         profileModel.weight = weight
-        profileModel.lenght = lenght
+        profileModel.length = length
         profileModel.stride_length = stride_length
         profileModel.metricORimperial = metricORimperial
         profileModel.created = created
@@ -53,7 +53,7 @@ class UserProfile: NSObject {
         profileModel.birthday = birthday
         profileModel.gender = gender
         profileModel.weight = weight
-        profileModel.lenght = lenght
+        profileModel.length = length
         profileModel.stride_length = stride_length
         profileModel.metricORimperial = metricORimperial
         profileModel.created = created
@@ -76,7 +76,7 @@ class UserProfile: NSObject {
         for model in modelArray {
             let userProfileModel:ProfileModel = model as! ProfileModel
 
-            let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"weight":userProfileModel.weight,"lenght":userProfileModel.lenght,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
+            let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"weight":userProfileModel.weight,"length":userProfileModel.length,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
             allArray.addObject(profile)
         }
         return allArray
@@ -87,7 +87,7 @@ class UserProfile: NSObject {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let userProfileModel:ProfileModel = model as! ProfileModel
-            let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"weight":userProfileModel.weight,"lenght":userProfileModel.lenght,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
+            let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"weight":userProfileModel.weight,"length":userProfileModel.length,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
             allArray.addObject(profile)
         }
         return allArray

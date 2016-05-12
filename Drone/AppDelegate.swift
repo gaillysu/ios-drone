@@ -152,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         if profileArray.count>0 {
             //height (CM) X 0.415 ＝ stride length
             let profile:UserProfile = profileArray.objectAtIndex(0) as! UserProfile
-            sendRequest(SetUserProfileRequest(weight: profile.weight*100, height: profile.lenght, gender: 1, stridelength: Int(Double(profile.lenght)*0.415)))
+            sendRequest(SetUserProfileRequest(weight: profile.weight*100, height: profile.length, gender: 1, stridelength: Int(Double(profile.length)*0.415)))
         }else{
             sendRequest(SetUserProfileRequest(weight: 6000, height: 175, gender: 1, stridelength: 65))
         }

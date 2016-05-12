@@ -26,8 +26,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var twitterButton: UIButton!
     var usernameT: AutocompleteField?
     var passwordT: AutocompleteField?
-
-    init() {
+    var fromMenu:Bool = false;
+    init(fromMenu: Bool = false) {
+        self.fromMenu = fromMenu
         super.init(nibName: "LoginViewController", bundle: NSBundle.mainBundle())
     }
 
@@ -117,7 +118,15 @@ class LoginViewController: UIViewController {
 
             //status > 0 login success or login fail
             if(status > 0 && UserProfile.getAll().count == 0) {
-                let userprofile:UserProfile = UserProfile(keyDict: ["id":json["id"].intValue,"first_name":json["first_name"].stringValue,"last_name":json["last_name"].stringValue,"age":json["age"].intValue,"length":json["length"].intValue,"email":json["email"].stringValue])
+                let jsonBirthday = json["birthday"];
+                let dateString: String = jsonBirthday["date"].stringValue
+                
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "y-M-d h:m:s.000000"
+                let date = dateFormatter.dateFromString(dateString)
+                dateFormatter.dateFormat = "y-M-d"
+                let newDate = dateFormatter.stringFromDate(date!)
+                let userprofile:UserProfile = UserProfile(keyDict: ["id":json["id"].intValue,"first_name":json["first_name"].stringValue,"last_name":json["last_name"].stringValue,"age":json["age"].intValue,"length":json["length"].intValue,"email":json["email"].stringValue, "birthday":newDate])
                 userprofile.add({ (id, completion) in
                     print("Added?")
                 })
@@ -130,8 +139,12 @@ class LoginViewController: UIViewController {
                 
             }
             if(status == 1){
-                let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: true)
-                self.navigationController?.pushViewController(device, animated: true)
+                if self.fromMenu{
+                    self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                }else{
+                    let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: true)
+                    self.navigationController?.pushViewController(device, animated: true)
+                }
             }
         }
     }

@@ -17,7 +17,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var registB: UIButton!
 
 
-    init() {
+    init(fromMenu: Bool = false) {
         super.init(nibName: "WelcomeViewController", bundle: NSBundle.mainBundle())
     }
 

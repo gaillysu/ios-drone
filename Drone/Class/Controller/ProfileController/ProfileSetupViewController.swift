@@ -122,8 +122,8 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
     }
 
     func registerRequest() {
-        if(AppTheme.isNull(ageTextField!.text!) || AppTheme.isEmail(lengthTextField!.text!) || AppTheme.isEmail(weightTextField!.text!)) {
-            let banner = Banner(title: NSLocalizedString("age or height weight is null", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+        if(AppTheme.isNull(ageTextField!.text!) || AppTheme.isEmail(lengthTextField!.text!) || AppTheme.isEmail(weightTextField!.text!) || AppTheme.isNull(firstNameTextField.text!) || AppTheme.isNull(lastNameTextField.text!)) {
+            let banner = Banner(title: NSLocalizedString("One of the fields are empty.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
             banner.dismissesOnTap = true
             banner.show(duration: 0.6)
             return
@@ -132,11 +132,12 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
         let email:String = account["email"] as! String
         let password:String = account["password"] as! String
 
-        MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-        
-        HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":self.firstNameTextField.text!,"last_name":self.lastNameTextField.text!,"email":email,"password":password,"birthday":ageTextField!.text!,"length":lengthTextField!.text!, "weight":self.weightTextField.text!]]) { (result) in
+        let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+        view.setTintColor(UIColor.getBaseColor())
+        let sex:Int = self.segmentView?.indexOfSelectedSegment == 0 ? 1 : 0
+        HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":self.firstNameTextField.text!,"last_name":self.lastNameTextField.text!,"email":email,"password":password,"birthday":ageTextField!.text!,"length":lengthTextField!.text!, "weight":self.weightTextField.text!, "sex":sex]]) { (result) in
             MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-
+            
             let json = JSON(result)
             let message = json["message"].stringValue
             let status = json["status"].intValue
@@ -145,15 +146,21 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
             let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "y-M-d h:m:s.000000"
+            let birthdayJSON = user["birthday"]
+            let birthdayBeforeParsed = birthdayJSON!["date"].stringValue
 
-            //status > 0 register success or register fail
+            let birthdayDate = dateFormatter.dateFromString(birthdayBeforeParsed)
+            dateFormatter.dateFormat = "y-M-d"
+            let birthday = dateFormatter.stringFromDate(birthdayDate!)
+            let sex = user["sex"]!.intValue == 1 ? true : false;
             if(status > 0 && UserProfile.getAll().count == 0) {
-                //save database
-                let userprofile:UserProfile = UserProfile(keyDict: ["first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue])
+                let userprofile:UserProfile = UserProfile(keyDict: ["first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue,"sex": sex, "weight":(user["weight"]?.floatValue)!, "birthday":birthday])
                 userprofile.add({ (id, completion) in
                 })
-                //TODO:register success push controll
-                let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: true)
+                let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: false)
                 self.navigationController?.pushViewController(device, animated: true)
             }
         }

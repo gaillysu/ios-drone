@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drone2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="owU-NB-0hd">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_1" translatesAutoresizingMaskIntoConstraints="NO" id="owU-NB-0hd">
                     <rect key="frame" x="71" y="154" width="233" height="233"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="233" id="mRg-3f-nha"/>
@@ -165,7 +165,7 @@
         </view>
     </objects>
     <resources>
-        <image name="drone2.jpg" width="800" height="800"/>
         <image name="right_back_BT" width="35" height="35"/>
+        <image name="welcome_1" width="750" height="750"/>
     </resources>
 </document>

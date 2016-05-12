@@ -53,7 +53,7 @@ class WhichDeviceViewController: BaseViewController {
     @IBAction func buttonActionManager(sender: AnyObject) {
         if (sender.isEqual(backB)) {
             if self.toMenu {
-                    self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewControllerAnimated(true)
             }else{
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
