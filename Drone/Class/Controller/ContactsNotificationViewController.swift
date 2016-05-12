@@ -141,8 +141,20 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     
     func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
         let name = ABRecordCopyCompositeName(person).takeRetainedValue()
+        //UpdateContactsApplicationsRequest
+        //Messages - com.apple.MobileSMS
+        //Phone - com.apple.mobilephone
+        //Mail - com.apple.mobilemail
+        
         let contact:ContactsFilter = ContactsFilter(keyDict: ["name":name])
-        contact.add { (id, completion) in}
+        contact.add { (id, completion) in
+            if(completion!) {
+                let request:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.MobileSMS", operationMode: 1)
+                let request1:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilephone", operationMode: 1)
+                let request2:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilemail", operationMode: 1)
+                AppDelegate.getAppDelegate().sendRequest(request)
+            }
+        }
         self.contactsFilterArray = ContactsFilter.getAll()
         self.tableView.reloadData()
     }
