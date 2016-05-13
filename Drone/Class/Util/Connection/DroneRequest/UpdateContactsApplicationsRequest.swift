@@ -31,7 +31,7 @@ class UpdateContactsApplicationsRequest: NevoRequest {
      b7: <SET> - “Begins with” match;
      <RESET> - “any” match
      */
-    private var mSearchFields:UInt8 = 0x00
+    private var mSearchFields:UInt8 = 0x01
 
     class func HEADER() -> UInt8 {
         return 0x1B
