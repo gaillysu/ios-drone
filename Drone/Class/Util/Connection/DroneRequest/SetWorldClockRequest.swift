@@ -37,7 +37,7 @@ class SetWorldClockRequest: NevoRequest {
         }
         
         for timezone in mTimeZone {
-            zoneArray.append(timezone)
+            zoneArray.append(timezone * 4)
         }
         
         var values1 :[UInt8] = [SetWorldClockRequest.HEADER(),
