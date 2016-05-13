@@ -40,11 +40,9 @@ class SetWorldClockRequest: NevoRequest {
             zoneArray.append(timezone)
         }
         
-        var values1 :[UInt8] = [0x80,SetWorldClockRequest.HEADER(),
+        var values1 :[UInt8] = [SetWorldClockRequest.HEADER(),
             UInt8(mWorldTimerCount!&0xFF)]
         for (index,value) in zoneArray.enumerate() {
-            //let timeZone:Int = NSTimeZone.localTimeZone().secondsFromGMT/3600*15
-            //let timer:Int = Int(NSDate().timeIntervalSince1970+(3600*2))
             values1.append(UInt8(value&0xFF))
             values1.append(UInt8(nameDataArray[index].count&0xFF))
             for data in nameDataArray[index] {
@@ -54,26 +52,42 @@ class SetWorldClockRequest: NevoRequest {
         
         var valueArray:[UInt8] = []
         var dataArray:[NSData] = []
-        if values1.count>20 {
+        if values1.count>=20 {
             for (index,value) in values1.enumerate() {
-                if index % 20 == 0 && index != 0 {
-                    dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
-                    valueArray.removeAll()
-                }else{
-                    if(valueArray.count == 0 && dataArray.count != 0) {
-                        valueArray.append(0x81)
-                        valueArray.append(values1[index-1])
-                    }
-                    valueArray.append(value)
-                    
-                    if(index == values1.count-1) {
-                        dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
-                        valueArray.removeAll()
+                let header:UInt8 = 0x00
+                let header1:UInt8 = 0x80
+                
+                if(valueArray.count == 0) {
+                    if values1.count-index < 20 {
+                        valueArray.append(header1+UInt8(dataArray.count&0xFF))
+                    }else{
+                        valueArray.append(header+UInt8(dataArray.count&0xFF))
                     }
                 }
+                valueArray.append(value)
                 
+                if valueArray.count == 20 {
+                    dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                    valueArray.removeAll()
+                }
+                
+                if(index == values1.count-1) {
+                    if(valueArray.count < 20) {
+                        for _:Int in valueArray.count..<20 {
+                            valueArray.append(0x00)
+                        }
+                    }
+                    dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                    valueArray.removeAll()
+                }
             }
         }else{
+            values1.insert(0x80, atIndex: 0)
+            if(values1.count < 20) {
+                for _:Int in values1.count..<20 {
+                    values1.append(0x00)
+                }
+            }
             dataArray.append(NSData(bytes: values1, length: values1.count));
         }
         
