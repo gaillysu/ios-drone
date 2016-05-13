@@ -118,15 +118,19 @@ class LoginViewController: UIViewController {
 
             //status > 0 login success or login fail
             if(status > 0 && UserProfile.getAll().count == 0) {
-                let jsonBirthday = json["birthday"];
+                let user = json["user"]
+                let jsonBirthday = user["birthday"];
                 let dateString: String = jsonBirthday["date"].stringValue
                 
-//                let dateFormatter = NSDateFormatter()
-//                dateFormatter.dateFormat = "y-M-d h:m:s.000000"
-//                let date = dateFormatter.dateFromString(dateString)
-//                dateFormatter.dateFormat = "y-M-d"
-//                let newDate = dateFormatter.stringFromDate(date!)
-                let userprofile:UserProfile = UserProfile(keyDict: ["id":json["id"].intValue,"first_name":json["first_name"].stringValue,"last_name":json["last_name"].stringValue,"age":json["age"].intValue,"length":json["length"].intValue,"email":json["email"].stringValue])
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "y-M-d h:m:s.000000"
+                
+                let birthdayDate = dateFormatter.dateFromString(dateString)
+                dateFormatter.dateFormat = "y-M-d"
+                let birthday = dateFormatter.stringFromDate(birthdayDate!)
+                
+                
+                let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"].intValue,"first_name":user["first_name"].stringValue,"last_name":user["last_name"].stringValue,"birthday":birthday,"length":user["length"].intValue,"email":user["email"].stringValue, "weight":user["weight"].floatValue])
                 userprofile.add({ (id, completion) in
                     print("Added?")
                 })

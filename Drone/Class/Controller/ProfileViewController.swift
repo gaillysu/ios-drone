@@ -86,20 +86,19 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         profile.update()
         dismissViewControllerAnimated(true, completion: nil)
 
-//        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"birthday":"2000-01-01","length":profile.lenght,"weight":profile.weight,"sex":profile.gender ? 1 : 0,"id":4]]) { (result) in
-//            
-//            let json = JSON(result)
-//            let message = json["message"].stringValue
-//            let status = json["status"].intValue
-//            let user:[String : JSON] = json["user"].dictionaryValue
-//            if(status > 0 && UserProfile.getAll().count == 0) {
-//                self.loadingIndicator.mode = MRProgressOverlayViewMode.Checkmark
-//                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-//            }else{
-//                print("Request error");
-//            }
-//        }
-
+        
+        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"birthday":profile.birthday,"weight":profile.weight,"length":profile.length]]) { (result) in
+            let json = JSON(result)
+            let message = json["message"].stringValue
+            let status = json["status"].intValue
+            let user:[String : JSON] = json["user"].dictionaryValue
+            if(status > 0 && UserProfile.getAll().count == 0) {
+                self.loadingIndicator.mode = MRProgressOverlayViewMode.Checkmark
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            }else{
+                print("Request error");
+            }
+        }
     }
     
     func close(){
