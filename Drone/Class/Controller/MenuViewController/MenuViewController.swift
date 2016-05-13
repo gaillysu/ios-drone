@@ -44,7 +44,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         
         menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
-//        AppDelegate.getAppDelegate().startConnect()
+        AppDelegate.getAppDelegate().startConnect()
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_RAWPACKET_DATA_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())

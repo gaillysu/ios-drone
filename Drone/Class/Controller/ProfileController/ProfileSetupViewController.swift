@@ -112,6 +112,8 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
         ageTextField.resignFirstResponder()
         lengthTextField.resignFirstResponder()
         weightTextField.resignFirstResponder()
+        lastNameTextField.resignFirstResponder()
+        firstNameTextField.resignFirstResponder()
         self.removeDatePickerView()
         self.removePickerView()
     }
@@ -185,11 +187,14 @@ extension ProfileSetupViewController: UITextFieldDelegate {
         if(textField.isEqual(ageTextField)) {
             lengthTextField.resignFirstResponder()
             weightTextField.resignFirstResponder()
+            lastNameTextField.resignFirstResponder()
+            firstNameTextField.resignFirstResponder()
             self.selectedBirthday()
             return false
         }else if (textField.isEqual(lengthTextField) || textField.isEqual(weightTextField)) {
             weightTextField.resignFirstResponder()
-
+            lastNameTextField.resignFirstResponder()
+            firstNameTextField.resignFirstResponder()
             /**
              *  remove date pickerview
              */
@@ -205,7 +210,11 @@ extension ProfileSetupViewController: UITextFieldDelegate {
              */
             self.getPickerView()?.reloadAllComponents()
             return false
-        }else{
+        }else if(textField.isEqual(firstNameTextField) || textField.isEqual(lastNameTextField)){
+            self.removeDatePickerView()
+            self.removePickerView()
+            
+        } else {
             /**
              Need to pop-up keyboard to delete all the picker control
              */
