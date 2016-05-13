@@ -121,12 +121,12 @@ class LoginViewController: UIViewController {
                 let jsonBirthday = json["birthday"];
                 let dateString: String = jsonBirthday["date"].stringValue
                 
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "y-M-d h:m:s.000000"
-                let date = dateFormatter.dateFromString(dateString)
-                dateFormatter.dateFormat = "y-M-d"
-                let newDate = dateFormatter.stringFromDate(date!)
-                let userprofile:UserProfile = UserProfile(keyDict: ["id":json["id"].intValue,"first_name":json["first_name"].stringValue,"last_name":json["last_name"].stringValue,"age":json["age"].intValue,"length":json["length"].intValue,"email":json["email"].stringValue, "birthday":newDate])
+//                let dateFormatter = NSDateFormatter()
+//                dateFormatter.dateFormat = "y-M-d h:m:s.000000"
+//                let date = dateFormatter.dateFromString(dateString)
+//                dateFormatter.dateFormat = "y-M-d"
+//                let newDate = dateFormatter.stringFromDate(date!)
+                let userprofile:UserProfile = UserProfile(keyDict: ["id":json["id"].intValue,"first_name":json["first_name"].stringValue,"last_name":json["last_name"].stringValue,"age":json["age"].intValue,"length":json["length"].intValue,"email":json["email"].stringValue])
                 userprofile.add({ (id, completion) in
                     print("Added?")
                 })
