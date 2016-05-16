@@ -88,6 +88,14 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.titleView = titleView
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        if (UserProfile.getAll().count == 0){
+            let navigationController = UINavigationController(rootViewController:WelcomeViewController());
+            navigationController.navigationBarHidden = true
+            self.presentViewController(navigationController, animated: true, completion: nil);
+        }
+    }
 
     func leftAction(item:UIBarButtonItem) {
         if (UserProfile.getAll().count == 0){
