@@ -82,29 +82,36 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
 
         let gmt:Int = (gmtOffset as! NSString).integerValue
         let array:NSArray = WorldClock.getAll()
-        var clockNameArray:[String] = []
-        var zoneArray:[Int] = []
-        for (index,value) in array.enumerate() {
-            let wordclock:WorldClock = value as! WorldClock
-            let beforeGmt:Int = (wordclock.gmt_offset as NSString).integerValue
-            clockNameArray.append(wordclock.city_name)
-            zoneArray.append(beforeGmt)
-        }
-        clockNameArray.append(cityName)
-        zoneArray.append(gmt)
-        
-        AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
-        
-        let worldClock:WorldClock = WorldClock(keyDict: ["gmt_offset":gmtOffset!,"city_name":cityName])
-        worldClock.add { (id, completion) in
-            if(Bool(completion!)) {
-                print("word clock added to db!")
-            }else{
-                print("word clock add db fail!")
+        if array.count < 5 {
+            var clockNameArray:[String] = []
+            var zoneArray:[Int] = []
+            for (index,value) in array.enumerate() {
+                let wordclock:WorldClock = value as! WorldClock
+                let beforeGmt:Int = (wordclock.gmt_offset as NSString).integerValue
+                clockNameArray.append(wordclock.city_name)
+                zoneArray.append(beforeGmt)
             }
+            clockNameArray.append(cityName)
+            zoneArray.append(gmt)
+            
+            AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
+            
+            let worldClock:WorldClock = WorldClock(keyDict: ["gmt_offset":gmtOffset!,"city_name":cityName])
+            worldClock.add { (id, completion) in
+                if(Bool(completion!)) {
+                    print("word clock added to db!")
+                }else{
+                    print("word clock add db fail!")
+                }
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }else{
+            let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action) in
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
-        
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
