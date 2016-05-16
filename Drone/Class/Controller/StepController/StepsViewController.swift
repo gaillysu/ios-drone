@@ -317,6 +317,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         print("\(dayView.date.commonDescription) is selected!")
         dayView.selectionView?.shape = CVShape.Rect
         self.dismissCalendar()
+        titleView?.selectedFinishTitleView()
     }
 
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
