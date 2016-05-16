@@ -118,6 +118,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         let logout:UIAlertController = UIAlertController(title: NSLocalizedString("logout_title", comment: "") , message: NSLocalizedString("logout_message", comment: "") , preferredStyle: UIAlertControllerStyle.Alert)
         logout.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) in
             if(self.profile.remove()){
+                AppDelegate.getAppDelegate().disconnect()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }))

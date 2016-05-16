@@ -210,6 +210,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         return isConnected() ? self.mConnectionController!.getSoftwareVersion() : NSString()
     }
 
+    func disconnect() {
+        mConnectionController!.disconnect()
+    }
+    
     func isConnected() -> Bool{
         return mConnectionController!.isConnected()
 
