@@ -31,6 +31,7 @@ class UserProfile: NSObject {
     }
 
     func add(result:((id:Int?,completion:Bool?) -> Void)){
+        profileModel.id = id
         profileModel.first_name = first_name
         profileModel.last_name = last_name
         profileModel.birthday = birthday

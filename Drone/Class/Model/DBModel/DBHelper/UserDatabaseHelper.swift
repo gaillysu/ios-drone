@@ -197,7 +197,7 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         let insertValues:NSMutableArray = NSMutableArray()
         for i:Int in 0 ..< self.columeNames.count {
             let proname:NSString = self.columeNames.objectAtIndex(i) as! NSString
-            if (proname.isEqualToString(primaryId)) {
+            if (proname.isEqualToString(primaryId) && self.id == 0) {
                 continue;
             }
             keyString.appendFormat("%@,", proname)

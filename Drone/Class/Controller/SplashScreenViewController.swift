@@ -18,10 +18,6 @@ class SplashScreenViewController: BaseViewController {
     }
     
     func nextController(){
-        // IF !Logged in ->
-        // RegisterViewController
-        // ELSE
-        
         let user:NSArray = UserProfile.getAll()
         if(user.count>0) {
             self.presentViewController(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
