@@ -115,10 +115,18 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func logoutAction(sender: AnyObject) {
-        if(profile.remove()){
+        let logout:UIAlertController = UIAlertController(title: NSLocalizedString("logout_title", comment: "") , message: NSLocalizedString("logout_message", comment: "") , preferredStyle: UIAlertControllerStyle.Alert)
+        logout.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) in
+            if(self.profile.remove()){
+                AppDelegate.getAppDelegate().disconnect()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }))
+        
+        logout.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.Cancel, handler: { (action) in
             
-        }
-        dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(logout, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
