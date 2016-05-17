@@ -28,18 +28,24 @@ class MyDeviceViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         buyButton.titleLabel?.textAlignment = NSTextAlignment.Center
-        let viewController = DeviceViewController(controller: self)
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let viewController = DeviceViewController()
+        viewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
         let viewControllers = [viewController]
         if(viewControllers.count == 1){
             viewControllers[0].leftRightButtonsNeeded = false;
         }
-
+        
         let options = PagingMenuOptions()
         options.menuHeight = 0;
-        options.menuDisplayMode = .Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Fixed(width: UIScreen.mainScreen().bounds.width), centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.ScrollEnabled)
+        options.menuDisplayMode = .Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.ScrollEnabled)
         let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
-        pagingMenuController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+        pagingMenuController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
         self.addChildViewController(pagingMenuController)
         self.devicesView.addSubview(pagingMenuController.view)
         pagingMenuController.didMoveToParentViewController(self)

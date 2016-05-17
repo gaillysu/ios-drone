@@ -16,10 +16,8 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var deviceTableView: UITableView!
     private final let identifier = "device_table_view_cell"
     private final let identifier_header = "device_table_view_cell_header"
-    private let devicesViewController: MyDeviceViewController;
     
-    init(controller devicesViewController: MyDeviceViewController) {
-        self.devicesViewController = devicesViewController
+    init() {
         super.init(nibName: "DeviceViewController", bundle: NSBundle.mainBundle())
     }
     
@@ -28,9 +26,17 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
         deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCellHeader", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: identifier_header)
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        deviceTableView.sectionHeaderHeight = 254
         deviceTableView.scrollEnabled = false
+        deviceTableView.rowHeight = (deviceTableView.frame.height - 254)/2
+        deviceTableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +46,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.row == 0 {
-            self.devicesViewController.pushContactsFilterViewController()
+            self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
         }else if indexPath.row == 1 {
             // forget watch
         }
@@ -56,17 +62,8 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
         return headerCell;
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 254;
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return ((tableView.frame.height - 318)/2);
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: DeviceTableViewCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! DeviceTableViewCell
-        cell.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, cell.frame.height)
         if indexPath.row == 0 {
             cell.titleLabel.text = "Contacts Notifications"
         }else if indexPath.row == 1{
