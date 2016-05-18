@@ -3,3 +3,6 @@
 "logout_title"="Log out";
 "Yes"="Yes";
 "No"="No";
+"world_clock_message"="Your watch is not connected. Connect your watch to add a world clock";
+"contact_message"="Your watch is not connected. Connect your watch to add a contact";
+"Ok"="Ok";

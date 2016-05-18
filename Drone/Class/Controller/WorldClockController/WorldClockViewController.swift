@@ -82,8 +82,18 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
      }
     
     func add(){
-        self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
+        if AppDelegate.getAppDelegate().isConnected() {
+            self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
+        }else{
+            let alert:UIAlertController = UIAlertController(title: NSLocalizedString("Add World clock", comment: ""), message: NSLocalizedString("world_clock_message", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.Cancel, handler: { (action) in
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
+    
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
