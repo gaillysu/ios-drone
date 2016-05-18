@@ -104,9 +104,20 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         } else {
             //Let's save this address
             let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.UUIDString)","connectionTimer":NSDate().timeIntervalSince1970])
-            userDevice.add({ (id, completion) in
-
-            })
+            
+            if UserDevice.isExistInTable() {
+                let device:NSArray = UserDevice.getCriteria("WHERE identifiers LIKE '%\(fromAddress.UUIDString)'")
+                if device.count == 0 {
+                    userDevice.add({ (id, completion) in
+                        
+                    })
+                }
+            }else{
+                userDevice.add({ (id, completion) in
+                    
+                })
+            }
+            
         }
         
     }
