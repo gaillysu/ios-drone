@@ -142,6 +142,7 @@
 		00CE42611CD1F9D3002D1321 /* RegexKitLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */; };
 		00CE42631CD20839002D1321 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE42621CD20839002D1321 /* SwiftyJSON.framework */; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
+		00F132B71CEBFC4000CF8F6B /* ClearConnectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F132B61CEBFC4000CF8F6B /* ClearConnectionRequest.swift */; };
 		00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */; };
 		00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */; };
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
@@ -369,6 +370,7 @@
 		00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RegexKitLite.framework; path = "Pods/../build/Debug-iphoneos/RegexKitLite.framework"; sourceTree = "<group>"; };
 		00CE42621CD20839002D1321 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
+		00F132B61CEBFC4000CF8F6B /* ClearConnectionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearConnectionRequest.swift; sourceTree = "<group>"; };
 		00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
 		00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
 		00F1AF401CACD82600CB9A15 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -952,6 +954,7 @@
 				0043FBEB1CA1424600638BD1 /* UpdateContactsFilterRequest.swift */,
 				0043FBE51CA131BD00638BD1 /* UpdateNotificationRequest.swift */,
 				00982B3D1C868C89003DA5E2 /* WriteSettingRequest.swift */,
+				00F132B61CEBFC4000CF8F6B /* ClearConnectionRequest.swift */,
 			);
 			path = DroneRequest;
 			sourceTree = "<group>";
@@ -1583,6 +1586,7 @@
 				0043FBE61CA131BD00638BD1 /* UpdateNotificationRequest.swift in Sources */,
 				00982CCC1C868C8A003DA5E2 /* NevoHK.swift in Sources */,
 				0015CA501CBC835900820B1F /* UserDevice.swift in Sources */,
+				00F132B71CEBFC4000CF8F6B /* ClearConnectionRequest.swift in Sources */,
 				9E455E191CD5BB2600F79356 /* DeviceTableViewCell.swift in Sources */,
 				00982C261C868C8A003DA5E2 /* AlarmModel.swift in Sources */,
 				00982C461C868C8A003DA5E2 /* ConnectionManager.swift in Sources */,

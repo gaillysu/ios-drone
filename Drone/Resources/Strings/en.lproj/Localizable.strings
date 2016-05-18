@@ -3,3 +3,5 @@
 "logout_title"="Log out";
 "Yes"="Yes";
 "No"="No";
+"forget_watch"="Forget watch";
+"forget_watch_message"="Are you sure you want to forget your watch? Don't forget to unpair your watch in the bluetooth settings.";

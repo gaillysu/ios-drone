@@ -49,6 +49,23 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
         }else if indexPath.row == 1 {
             // forget watch
+            let alertView:UIAlertController = UIAlertController(title: NSLocalizedString("forget_watch", comment: ""), message: NSLocalizedString("forget_watch_message", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) in
+                AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
+                
+                if self.navigationController == nil {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }else{
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
+            }))
+            
+            alertView.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.Cancel, handler: { (action) in
+                
+            }))
+            
+            self.presentViewController(alertView, animated: true, completion: nil)
         }
     }
     
