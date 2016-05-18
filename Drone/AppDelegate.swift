@@ -333,7 +333,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
                 let data:[UInt8] = NSData2Bytes(packet.getRawData())
-                let batteryStatus:Int = Int(data[1])
+                let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
                 SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:batteryStatus)
             }
 

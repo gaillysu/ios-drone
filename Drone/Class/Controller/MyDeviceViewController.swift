@@ -33,23 +33,32 @@ class MyDeviceViewController: BaseViewController {
         
     }
     
-    override func viewDidLayoutSubviews() {
-        let viewController = DeviceViewController()
-        viewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
-        let viewControllers = [viewController]
-        if(viewControllers.count == 1){
-            viewControllers[0].leftRightButtonsNeeded = false;
+    override func viewDidAppear(animated: Bool) {
+        var viewControllers:[DeviceViewController] = []
+        let deviceArray:NSArray = UserDevice.getAll()
+        for device in deviceArray {
+            let viewController = DeviceViewController()
+            viewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
+            viewControllers.append(viewController)
+            
         }
         
-        let options = PagingMenuOptions()
-        options.menuHeight = 0;
-        options.menuDisplayMode = .Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.ScrollEnabled)
-        let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
-        pagingMenuController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
-        self.addChildViewController(pagingMenuController)
-        self.devicesView.addSubview(pagingMenuController.view)
-        pagingMenuController.didMoveToParentViewController(self)
-        self.noDeviceView.hidden = true
+        if(viewControllers.count == 1){
+            viewControllers[0].leftRightButtonsNeeded = false;
+        }else if(viewControllers.count == 0) {
+            self.noDeviceView.hidden = false
+        }else{
+            let options = PagingMenuOptions()
+            options.menuHeight = 0;
+            options.menuDisplayMode = .Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.ScrollEnabled)
+            let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
+            pagingMenuController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
+            self.addChildViewController(pagingMenuController)
+            self.devicesView.addSubview(pagingMenuController.view)
+            pagingMenuController.didMoveToParentViewController(self)
+            self.noDeviceView.hidden = true
+            
+        }
     }
     
     @IBAction func addDeviceAction(sender: AnyObject) {
