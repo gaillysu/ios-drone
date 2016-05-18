@@ -103,8 +103,8 @@ class LoginViewController: UIViewController {
             return
         }
 
-        MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-
+        let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+        view.setTintColor(UIColor.getBaseColor())
         HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/login", data: ["user":["email":usernameT!.text!,"password":passwordT!.text!]]) { (result) in
             MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
 
