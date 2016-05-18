@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BRYXBanner
+import MRProgress
 
 protocol didSelectedDelegate:NSObjectProtocol {
     func didSelectedLocalTimeZone(ietm:NSDictionary)
@@ -86,9 +86,11 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         if AppDelegate.getAppDelegate().isConnected() {
             self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
         }else{
-            let banner = Banner(title: NSLocalizedString("Add World clock", comment: ""), subtitle: NSLocalizedString("world_clock_message", comment: ""), image: nil, backgroundColor: UIColor.redColor())
-            banner.dismissesOnTap = true
-            banner.show(duration: 1.2)
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            NSTimer.after(0.6.second) {
+                view.dismiss(true)
+            }
         }
     }
     

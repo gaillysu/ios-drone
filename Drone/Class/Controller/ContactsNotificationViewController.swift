@@ -10,7 +10,8 @@ import UIKit
 import Contacts
 import AddressBook
 import AddressBookUI
-import BRYXBanner
+import MRProgress
+import SwiftyTimer
 
 
 class ContactsNotificationViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ABPeoplePickerNavigationControllerDelegate {
@@ -62,9 +63,12 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
                 self.askForAddressBookAccess();
             }
         }else{
-            let banner = Banner(title: NSLocalizedString("Add contact", comment: ""), subtitle: NSLocalizedString("contact_message", comment: ""), image: nil, backgroundColor: UIColor.redColor())
-            banner.dismissesOnTap = true
-            banner.show(duration: 1.2)
+            
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            NSTimer.after(0.6.second) {
+                view.dismiss(true)
+            }
         }
     }
     

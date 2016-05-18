@@ -143,6 +143,8 @@
 		00CE42631CD20839002D1321 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE42621CD20839002D1321 /* SwiftyJSON.framework */; };
 		00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */; };
 		00F132B71CEBFC4000CF8F6B /* ClearConnectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F132B61CEBFC4000CF8F6B /* ClearConnectionRequest.swift */; };
+		00F132BA1CEC3EAB00CF8F6B /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F132B81CEC3EAB00CF8F6B /* CVCalendar.framework */; };
+		00F132BB1CEC3EAB00CF8F6B /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F132B91CEC3EAB00CF8F6B /* SwiftyTimer.framework */; };
 		00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */; };
 		00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */; };
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
@@ -371,6 +373,8 @@
 		00CE42621CD20839002D1321 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		00D66E171CA22B8C0049E399 /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
 		00F132B61CEBFC4000CF8F6B /* ClearConnectionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearConnectionRequest.swift; sourceTree = "<group>"; };
+		00F132B81CEC3EAB00CF8F6B /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/CVCalendar.framework"; sourceTree = "<group>"; };
+		00F132B91CEC3EAB00CF8F6B /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/SwiftyTimer.framework"; sourceTree = "<group>"; };
 		00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
 		00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
 		00F1AF401CACD82600CB9A15 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -439,6 +443,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00F132BA1CEC3EAB00CF8F6B /* CVCalendar.framework in Frameworks */,
+				00F132BB1CEC3EAB00CF8F6B /* SwiftyTimer.framework in Frameworks */,
 				9E455E211CD5C98200F79356 /* PagingMenuController.framework in Frameworks */,
 				CB0B46AB1CCF229400411997 /* Alamofire.framework in Frameworks */,
 				CB0B46AC1CCF229400411997 /* AutocompleteField.framework in Frameworks */,
@@ -1108,6 +1114,8 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00F132B81CEC3EAB00CF8F6B /* CVCalendar.framework */,
+				00F132B91CEC3EAB00CF8F6B /* SwiftyTimer.framework */,
 				9E455E201CD5C98200F79356 /* PagingMenuController.framework */,
 				CB0B469C1CCF229400411997 /* Alamofire.framework */,
 				CB0B469D1CCF229400411997 /* AutocompleteField.framework */,

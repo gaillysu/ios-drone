@@ -7,4 +7,5 @@
 "forget_watch_message"="Are you sure you want to forget your watch? Don't forget to unpair your watch in the bluetooth settings.";
 "world_clock_message"="Your watch is not connected. Connect your watch to add a world clock";
 "contact_message"="Your watch is not connected. Connect your watch to add a contact";
+"no_watch_connected"="No watch connected";
 "Ok"="Ok";
