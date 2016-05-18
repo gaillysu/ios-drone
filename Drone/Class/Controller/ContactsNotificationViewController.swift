@@ -49,15 +49,25 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     }
     
     func add(){
-        let authorizationStatus = ABAddressBookGetAuthorizationStatus()
-        switch authorizationStatus {
-        case .Denied, .Restricted:
-            self.displayCantAddContactAlert()
-        case .Authorized:
-            UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-            self.presentViewController(peoplePicker, animated: true, completion: nil)
-        case .NotDetermined:
-            self.askForAddressBookAccess();
+        if AppDelegate.getAppDelegate().isConnected() {
+            let authorizationStatus = ABAddressBookGetAuthorizationStatus()
+            switch authorizationStatus {
+            case .Denied, .Restricted:
+                self.displayCantAddContactAlert()
+            case .Authorized:
+                UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+                self.presentViewController(peoplePicker, animated: true, completion: nil)
+            case .NotDetermined:
+                self.askForAddressBookAccess();
+            }
+        }else{
+        
+            let alert:UIAlertController = UIAlertController(title: NSLocalizedString("Add contact", comment: ""), message: NSLocalizedString("contact_message", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.Cancel, handler: { (action) in
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
