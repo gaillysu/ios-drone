@@ -10,6 +10,7 @@ import UIKit
 import Contacts
 import AddressBook
 import AddressBookUI
+import BRYXBanner
 
 
 class ContactsNotificationViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ABPeoplePickerNavigationControllerDelegate {
@@ -61,13 +62,9 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
                 self.askForAddressBookAccess();
             }
         }else{
-        
-            let alert:UIAlertController = UIAlertController(title: NSLocalizedString("Add contact", comment: ""), message: NSLocalizedString("contact_message", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.Cancel, handler: { (action) in
-                
-            }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let banner = Banner(title: NSLocalizedString("Add contact", comment: ""), subtitle: NSLocalizedString("contact_message", comment: ""), image: nil, backgroundColor: UIColor.redColor())
+            banner.dismissesOnTap = true
+            banner.show(duration: 1.2)
         }
     }
     

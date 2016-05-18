@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BRYXBanner
 
 protocol didSelectedDelegate:NSObjectProtocol {
     func didSelectedLocalTimeZone(ietm:NSDictionary)
@@ -85,12 +86,9 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         if AppDelegate.getAppDelegate().isConnected() {
             self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
         }else{
-            let alert:UIAlertController = UIAlertController(title: NSLocalizedString("Add World clock", comment: ""), message: NSLocalizedString("world_clock_message", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.Cancel, handler: { (action) in
-                
-            }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let banner = Banner(title: NSLocalizedString("Add World clock", comment: ""), subtitle: NSLocalizedString("world_clock_message", comment: ""), image: nil, backgroundColor: UIColor.redColor())
+            banner.dismissesOnTap = true
+            banner.show(duration: 1.2)
         }
     }
     
