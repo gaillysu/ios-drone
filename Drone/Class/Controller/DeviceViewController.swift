@@ -53,6 +53,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             
             alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) in
                 AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
+                UserDevice.removeAll()
                 
                 if self.navigationController == nil {
                     self.dismissViewControllerAnimated(true, completion: nil)
