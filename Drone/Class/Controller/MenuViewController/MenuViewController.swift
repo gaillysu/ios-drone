@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftEventBus
-import NVActivityIndicatorView
 
 class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     

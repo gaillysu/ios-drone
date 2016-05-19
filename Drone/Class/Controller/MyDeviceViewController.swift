@@ -14,6 +14,7 @@ class MyDeviceViewController: BaseViewController {
     @IBOutlet weak var noDeviceView: UIView!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var myDevicePagesView: UIView!
+    var viewControllers:[DeviceViewController] = []
     
     init() {
         super.init(nibName: "MyDeviceViewController", bundle: NSBundle.mainBundle())
@@ -34,20 +35,20 @@ class MyDeviceViewController: BaseViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        var viewControllers:[DeviceViewController] = []
+        for cont in viewControllers {
+            cont.removeFromParentViewController()
+        }
+        viewControllers.removeAll()
+        
         let deviceArray:NSArray = UserDevice.getAll()
         for device in deviceArray {
             let viewController = DeviceViewController()
             viewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
             viewControllers.append(viewController)
-            
         }
         
-        if(viewControllers.count == 1){
+        if(viewControllers.count > 0){
             viewControllers[0].leftRightButtonsNeeded = false;
-        }else if(viewControllers.count == 0) {
-            self.noDeviceView.hidden = false
-        }else{
             let options = PagingMenuOptions()
             options.menuHeight = 0;
             options.menuDisplayMode = .Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.ScrollEnabled)
@@ -57,9 +58,11 @@ class MyDeviceViewController: BaseViewController {
             self.devicesView.addSubview(pagingMenuController.view)
             pagingMenuController.didMoveToParentViewController(self)
             self.noDeviceView.hidden = true
-            
+        }else{
+            self.noDeviceView.hidden = false
         }
     }
+    
     
     @IBAction func addDeviceAction(sender: AnyObject) {
         let navigationController:UINavigationController = UINavigationController(rootViewController: WhichDeviceViewController(toMenu: false))
