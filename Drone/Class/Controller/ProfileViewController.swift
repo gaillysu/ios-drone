@@ -52,14 +52,21 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
 
     
     func save(){
+        if AppDelegate.getAppDelegate().isConnected() {
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            NSTimer.after(0.6.second) {
+                view.dismiss(true)
+            }
+            return
+        }
         
-//        loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-//        loadingIndicator.setTintColor(UIColor.getBaseColor())
-//        
         dismissKeyboard()
+        
         guard let firstName = firstNameTextField.text where !firstName.isEmpty else {
             return;
         }
+        
         profile.first_name = firstNameTextField.text!
         for i in 0...4 {
             let cell: ProfileTableViewCell = profileTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! ProfileTableViewCell
@@ -81,24 +88,30 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                 steps = UserGoal.getAll()[0] as! UserGoal
                 steps.goalSteps = Int(text)!
                 steps.update()
+                AppDelegate.getAppDelegate().setGoal(NumberOfStepsGoal(steps: steps.goalSteps))
             }
         }
         profile.update()
-        dismissViewControllerAnimated(true, completion: nil)
-
         
-        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"birthday":profile.birthday,"weight":profile.weight,"length":profile.length]]) { (result) in
+        loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+        loadingIndicator.setTintColor(UIColor.getBaseColor())
+        
+        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length]]) { (result) in
             let json = JSON(result)
             let message = json["message"].stringValue
             let status = json["status"].intValue
             let user:[String : JSON] = json["user"].dictionaryValue
-            if(status > 0 && UserProfile.getAll().count == 0) {
+            if(status > 0) {
                 self.loadingIndicator.mode = MRProgressOverlayViewMode.Checkmark
                 MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }else{
                 print("Request error");
+                let banner:Banner = Banner(title: "Update request error", subtitle: "", image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+                banner.show()
             }
         }
+        
     }
     
     func close(){
