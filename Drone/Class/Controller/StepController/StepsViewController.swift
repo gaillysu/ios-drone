@@ -127,20 +127,41 @@ extension StepsViewController {
         let yAxis:ChartYAxis = barChart!.leftAxis;
         yAxis.labelTextColor = UIColor.grayColor();
         yAxis.axisLineColor = UIColor.clearColor();
-        yAxis.customAxisMin = 0;
+        let goal:GoalModel = GoalModel.getAll()[0] as! GoalModel
+        let max = goal.goalSteps/5
+        yAxis.customAxisMax = Double(max)
+        yAxis.customAxisMin = 0
+        if(max % 500 == 0){
+            yAxis.setLabelCount((Int(max)/500)+1, force: true);
+        }else{
+            yAxis.setLabelCount((Int(max)/500), force: true);
+        }
 
-        barChart!.rightAxis.enabled = false;
-
+        barChart!.rightAxis.enabled = false
         barChart.drawBarShadowEnabled = false
         var xVals = [String]();
         var yVals = [ChartDataEntry]();
 
-        for i in 0 ..< stepsArray!.count {
-            let steps:UserSteps = stepsArray![i] as! UserSteps
-            yVals.append(BarChartDataEntry(value: Double(steps.steps), xIndex:i));
-
-            let todayDate:NSDate = NSDate().dateByAddingTimeInterval(steps.date)
-            xVals.append("\(todayDate.hour):\(todayDate.minute)");
+        for i in 0 ..< 24 {
+            let dayDate:NSDate = NSDate()
+            
+            let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
+            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
+            
+            var hourData:Double = 0
+            for userSteps in hours {
+                let hSteps:UserSteps = userSteps as! UserSteps
+                hourData += Double(hSteps.steps)
+            }
+            yVals.append(BarChartDataEntry(value: hourData, xIndex:i));
+            
+            if(i%6 == 0){
+                xVals.append("\(i):00");
+            }else if(i == 23) {
+                xVals.append("\(i+1):00");
+            }else{
+                xVals.append("");
+            }
 
             let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "Steps")
             let dataSet = NSMutableArray()
