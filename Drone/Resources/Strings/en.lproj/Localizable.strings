@@ -9,3 +9,4 @@
 "contact_message"="Your watch is not connected. Connect your watch to add a contact";
 "no_watch_connected"="No watch connected";
 "Ok"="Ok";
+"no_data_selected_date"="No data for the selected date available.";

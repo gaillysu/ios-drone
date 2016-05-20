@@ -127,20 +127,41 @@ extension StepsViewController {
         let yAxis:ChartYAxis = barChart!.leftAxis;
         yAxis.labelTextColor = UIColor.grayColor();
         yAxis.axisLineColor = UIColor.clearColor();
-        yAxis.customAxisMin = 0;
+        let goal:GoalModel = GoalModel.getAll()[0] as! GoalModel
+        let max = goal.goalSteps/5
+        yAxis.customAxisMax = Double(max)
+        yAxis.customAxisMin = 0
+        if(max % 500 == 0){
+            yAxis.setLabelCount((Int(max)/500)+1, force: true);
+        }else{
+            yAxis.setLabelCount((Int(max)/500), force: true);
+        }
 
-        barChart!.rightAxis.enabled = false;
-
+        barChart!.rightAxis.enabled = false
         barChart.drawBarShadowEnabled = false
         var xVals = [String]();
         var yVals = [ChartDataEntry]();
 
-        for i in 0 ..< stepsArray!.count {
-            let steps:UserSteps = stepsArray![i] as! UserSteps
-            yVals.append(BarChartDataEntry(value: Double(steps.steps), xIndex:i));
-
-            let todayDate:NSDate = NSDate().dateByAddingTimeInterval(steps.date)
-            xVals.append("\(todayDate.hour):\(todayDate.minute)");
+        for i in 0 ..< 24 {
+            let dayDate:NSDate = NSDate()
+            
+            let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
+            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
+            
+            var hourData:Double = 0
+            for userSteps in hours {
+                let hSteps:UserSteps = userSteps as! UserSteps
+                hourData += Double(hSteps.steps)
+            }
+            yVals.append(BarChartDataEntry(value: hourData, xIndex:i));
+            
+            if(i%6 == 0){
+                xVals.append("\(i):00");
+            }else if(i == 23) {
+                xVals.append("\(i+1):00");
+            }else{
+                xVals.append("");
+            }
 
             let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "Steps")
             let dataSet = NSMutableArray()
@@ -159,29 +180,61 @@ extension StepsViewController {
         lastMonthChart.drawSettings(lastMonthChart.xAxis, yAxis: lastMonthChart.leftAxis, rightAxis: lastMonthChart.rightAxis)
 
         let oneWeekSeconds:Double = 604800
-        let lastWeekArray:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(NSDate().beginningOfWeek.timeIntervalSince1970-oneWeekSeconds) AND \(NSDate().endOfWeek.timeIntervalSince1970-oneWeekSeconds)")
-
-        for i in 0 ..< lastWeekArray.count {
-            let step:UserSteps = lastWeekArray[i] as! UserSteps
-            lastWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(step.steps), xIndex: i))
-        }
-
-        let thisWeekArray:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(NSDate().beginningOfWeek.timeIntervalSince1970) AND \(NSDate().endOfWeek.timeIntervalSince1970)")
-
-        for i in 0 ..< thisWeekArray.count {
-            let step:UserSteps = thisWeekArray[i] as! UserSteps
-            thisWeekChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(step.steps), xIndex: i))
-        }
-
         let oneDaySeconds:Double = 86400
+        for i in 0 ..< 7 {
+            let dayTimeInterval:NSTimeInterval = NSDate().beginningOfWeek.timeIntervalSince1970+(oneDaySeconds*Double(i))
+            let dayDate:NSDate = NSDate(timeIntervalSince1970: dayTimeInterval)
+            let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+oneDaySeconds-1)")
+            var hourData:Double = 0
+            for userSteps in hours {
+                let hSteps:UserSteps = userSteps as! UserSteps
+                hourData += Double(hSteps.steps)
+            }
+            
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "MMMM"
+            let dateString = "\(formatter.stringFromDate(dayDate)), \(dayDate.day)"
+            thisWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
+        }
+
+        for i in 0 ..< 7 {
+            let dayTimeInterval:NSTimeInterval = NSDate().beginningOfWeek.timeIntervalSince1970+(oneDaySeconds*Double(i))-oneWeekSeconds
+            let dayDate:NSDate = NSDate(timeIntervalSince1970: dayTimeInterval)
+            let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+oneDaySeconds-1)")
+            var hourData:Double = 0
+            for userSteps in hours {
+                let hSteps:UserSteps = userSteps as! UserSteps
+                hourData += Double(hSteps.steps)
+            }
+            
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "MMMM"
+            let dateString = "\(formatter.stringFromDate(dayDate)), \(dayDate.day)"
+            
+            lastWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
+        }
+        
         let lastEndOfMonth:NSTimeInterval = NSDate.date(year: NSDate().year, month: NSDate().month, day: 1).timeIntervalSince1970-oneDaySeconds
         let lastBeginningOfMonth:NSTimeInterval = NSDate.date(year: NSDate().year, month: NSDate(timeIntervalSince1970: lastEndOfMonth).month, day: 1).timeIntervalSince1970
-
-        let lastMonthArray:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(lastBeginningOfMonth) AND \(lastEndOfMonth)")
-        for i in 0 ..< lastMonthArray.count{
-            let steps = Int(arc4random_uniform(4000))
-            lastMonthChart.addDataPoint("Apr \(i)", entry: ChartDataEntry(value: Double(steps), xIndex: i))
+        
+        for i in 0 ..< 30 {
+            let monthTimeInterval:NSTimeInterval = lastBeginningOfMonth+oneDaySeconds*Double(i)
+            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(monthTimeInterval) AND \(monthTimeInterval+oneDaySeconds-1)")
+            var hourData:Double = 0
+            for userSteps in hours {
+                let hSteps:UserSteps = userSteps as! UserSteps
+                hourData += Double(hSteps.steps)
+            }
+            
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "MMMM"
+            let dateString = "\(formatter.stringFromDate(NSDate(timeIntervalSince1970: monthTimeInterval))), \(NSDate(timeIntervalSince1970: monthTimeInterval).day)"
+            
+            lastMonthChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
+        
         lastWeekChart.invalidateChart()
         thisWeekChart.invalidateChart()
         lastMonthChart.invalidateChart()
@@ -317,6 +370,55 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         print("\(dayView.date.commonDescription) is selected!")
         dayView.selectionView?.shape = CVShape.Rect
         self.dismissCalendar()
+        titleView?.selectedFinishTitleView()
+        
+        /// No data for the selected date available.
+        let dayDate:NSDate = dayView.date!.convertedDate()!
+        let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+        let dayHours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+86400-1)")
+        if dayHours.count == 0 {
+            barChart!.noDataText = NSLocalizedString("no_data_selected_date", comment: "")
+            self.barChart.data = nil
+            barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
+            return
+        }
+        
+        //There are data
+        var xVals = [String]();
+        var yVals = [ChartDataEntry]();
+        for i in 0 ..< 24 {
+            let dayDate:NSDate = dayView.date!.convertedDate()!
+            let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
+            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
+            
+            var hourData:Double = 0
+            for userSteps in hours {
+                let hSteps:UserSteps = userSteps as! UserSteps
+                hourData += Double(hSteps.steps)
+            }
+            yVals.append(BarChartDataEntry(value: hourData, xIndex:i));
+            
+            if(i%6 == 0){
+                xVals.append("\(i):00");
+            }else if(i == 23) {
+                xVals.append("\(i+1):00");
+            }else{
+                xVals.append("");
+            }
+            
+            let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "Steps")
+            let dataSet = NSMutableArray()
+            dataSet.addObject(barChartSet);
+            barChartSet.colors = [UIColor.getBaseColor()]
+            barChartSet.highlightColor = UIColor.getBaseColor()
+            barChartSet.valueColors = [UIColor.getGreyColor()]
+            let barChartData = BarChartData(xVals: xVals, dataSet: barChartSet)
+            barChartData.setDrawValues(false);
+            self.barChart.data = barChartData;
+        }
+        
+        barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
+        
     }
 
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
