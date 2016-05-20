@@ -9,10 +9,15 @@
 import Foundation
 import SwiftEventBus
 import NVActivityIndicatorView
+import XCGLogger
+import MRProgress
+import SwiftyJSON
+import SwiftyTimer
 
 class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
     @IBOutlet var menuTableView: UITableView!
+    private var progress:MRProgressOverlayView?
     let identifier = "menu_cell_identifier"
 
     var menuItems: [MenuItem] = []
@@ -45,11 +50,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
         AppDelegate.getAppDelegate().startConnect()
-        
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_RAWPACKET_DATA_KEY) { (notification) -> Void in
-            let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
-            NSLog("SWIFTEVENT_BUS_RAWPACKET_DATA_KEY  :\(data)")
-        }
 
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
@@ -68,6 +68,74 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 })
             }
         }
+        
+        
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
+            self.progress = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+            NSTimer.after(120.seconds, {
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            })
+        }
+        
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
+            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+        }
+        
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
+            let userProfle:NSArray = UserProfile.getAll()
+            let profile:UserProfile = userProfle.objectAtIndex(0) as! UserProfile
+            
+            let data:[String:Int] = notification.object as! [String:Int]
+            let steps:Int = data["dailySteps"]!
+            let timerInterval:Int = data["timerInterval"]!
+            if (steps != 0) {
+                let stepsArray = UserSteps.getCriteria("WHERE date = \(timerInterval)")
+                if(stepsArray.count>0) {
+                    let step:UserSteps = stepsArray[0] as! UserSteps
+                    NSLog("Data that has been saved····")
+                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(steps)", "distance": "\(0)","date":timerInterval])
+                    stepsModel.update()
+                    
+                    //update steps network global queue
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                        HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/update", data: ["steps": ["id": "\(stepsModel.id)","uid": "\(profile.id)","steps": "\(data["dailySteps"]!)","date": "\(data["timerInterval"]!)"]], completion: { (result) in
+                            
+                            let json = JSON(result)
+                            let message = json["message"].stringValue
+                            let status = json["status"].intValue
+                            if status == 1{
+                                XCGLogger.defaultInstance().debug("\(message), cloud update succeed")
+                            }else{
+                                XCGLogger.defaultInstance().debug("\(message), cloud update error")
+                            }
+                        })
+                    })
+                    
+                }else {
+                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(steps)",  "distance": "\(0)", "date":timerInterval])
+                    stepsModel.add({ (id, completion) -> Void in
+                        
+                    })
+                    
+                    //create steps network global queue
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                        HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(data["dailySteps"]!)","date": "\(data["timerInterval"]!)"]], completion: { (result) in
+                            let json = JSON(result)
+                            let message = json["message"].stringValue
+                            let status = json["status"].intValue
+                            if status == 1{
+                                XCGLogger.defaultInstance().debug(message+"cloud create succeed")
+                            }else{
+                                XCGLogger.defaultInstance().debug(message+"cloud create error")
+                            }
+                        })
+                    })
+                    
+                }
+            }
+
+        }
+        
 
         let profileButton:UIButton = UIButton(type: UIButtonType.Custom)
         profileButton.setImage(UIImage(named: "icon_profile"), forState: UIControlState.Normal)

@@ -108,20 +108,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         return dbpath;
     }
 
-    func getRequestNetwork(requestURL:String,parameters:AnyObject,resultHandler:((result:AnyObject?,error:NSError?) -> Void)){
-        Alamofire.request(Method.POST, requestURL, parameters: parameters as? [String : AnyObject]).responseJSON { (response) -> Void in
-            if response.result.isSuccess {
-                NSLog("getJSON: \(response.result.value)")
-                resultHandler(result: response.result.value, error: nil)
-            }else if (response.result.isFailure){
-                resultHandler(result: response.result.value, error: nil)
-            }else{
-                resultHandler(result: nil, error: nil)
-            }
-        }
-        
-    }
-
     func rootTabbarController() {
         let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
         navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
@@ -380,25 +366,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 stepCount =  stepCount + Int(syncStatus[7])<<8
 
                 let status:Int = Int(syncStatus[8])
-
                 //let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
 
                 NSLog("dailySteps:\(stepCount),dailyStepsDate:\(timerInterval),status:\(status)")
-
-                if (stepCount != 0) {
-                    let stepsArray = UserSteps.getCriteria("WHERE date = \(timerInterval)")
-                    if(stepsArray.count>0) {
-                        let step:UserSteps = stepsArray[0] as! UserSteps
-                        NSLog("Data that has been saved····")
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(stepCount)", "distance": "\(0)","date":timerInterval])
-                        stepsModel.update()
-                    }else {
-                        let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(stepCount)",  "distance": "\(0)", "date":timerInterval])
-                        stepsModel.add({ (id, completion) -> Void in
-
-                        })
-                    }
-                }
                 let bigData:[String:Int] = ["timerInterval":timerInterval,"dailySteps":stepCount]
                 SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:bigData)
 
