@@ -104,8 +104,13 @@ class LoginViewController: UIViewController {
         }
 
         MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+        //timeout
+        let timeout:NSTimer = NSTimer.after(90.seconds, {
+            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+        })
 
         HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/login", data: ["user":["email":usernameT!.text!,"password":passwordT!.text!]]) { (result) in
+            timeout.invalidate()
             MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
 
             let json = JSON(result)
