@@ -52,7 +52,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
 
     
     func save(){
-        if AppDelegate.getAppDelegate().isConnected() {
+        if !AppDelegate.getAppDelegate().isConnected() {
             let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
             view.setTintColor(UIColor.getBaseColor())
             NSTimer.after(0.6.second) {
@@ -107,6 +107,8 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                 self.dismissViewControllerAnimated(true, completion: nil)
             }else{
                 print("Request error");
+                self.loadingIndicator.mode = MRProgressOverlayViewMode.Checkmark
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
                 let banner:Banner = Banner(title: "Update request error", subtitle: "", image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
                 banner.show()
             }
