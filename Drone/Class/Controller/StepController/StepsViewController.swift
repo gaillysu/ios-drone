@@ -372,9 +372,20 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         self.dismissCalendar()
         titleView?.selectedFinishTitleView()
         
+        /// No data for the selected date available.
+        let dayDate:NSDate = dayView.date!.convertedDate()!
+        let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+        let dayHours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+86400-1)")
+        if dayHours.count == 0 {
+            barChart!.noDataText = NSLocalizedString("no_data_selected_date", comment: "")
+            self.barChart.data = nil
+            barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
+            return
+        }
+        
+        //There are data
         var xVals = [String]();
         var yVals = [ChartDataEntry]();
-        
         for i in 0 ..< 24 {
             let dayDate:NSDate = dayView.date!.convertedDate()!
             let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
