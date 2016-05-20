@@ -136,8 +136,18 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
 
         let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
         view.setTintColor(UIColor.getBaseColor())
+        
+        //timeout
+        let timeout:NSTimer = NSTimer.after(90.seconds, {
+            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+        })
+        
+        
         let sex:Int = self.segmentView?.indexOfSelectedSegment == 0 ? 1 : 0
         HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":self.firstNameTextField.text!,"last_name":self.lastNameTextField.text!,"email":email,"password":password,"birthday":ageTextField!.text!,"length":lengthTextField!.text!, "weight":self.weightTextField.text!, "sex":sex]]) { (result) in
+            
+            timeout.invalidate()
+            
             MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
             
             let json = JSON(result)
