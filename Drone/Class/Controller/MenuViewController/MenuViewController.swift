@@ -71,6 +71,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
             self.progress = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+            self.progress!.setTintColor(UIColor.getBaseColor())
             NSTimer.after(120.seconds, {
                 MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
             })
