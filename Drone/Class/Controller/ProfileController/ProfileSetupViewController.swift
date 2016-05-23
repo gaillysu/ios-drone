@@ -74,7 +74,6 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
 
             let segmentFrame = CGRect(x: 0, y: 0, width: metricsSegment.frame.size.width, height: metricsSegment.frame.size.height)
             segmentView = SMSegmentView(frame: segmentFrame, separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 1.0, segmentProperties: segmentProperties)
-
             segmentView!.delegate = self
             segmentView!.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).CGColor
             segmentView!.layer.borderWidth = 1.0
@@ -82,7 +81,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
             // Add segments
             segmentView!.addSegmentWithTitle("Male", onSelectionImage: nil, offSelectionImage: nil)
             segmentView!.addSegmentWithTitle("Female", onSelectionImage: nil, offSelectionImage: nil)
-            
+            segmentView?.selectSegmentAtIndex(0)
             metricsSegment.addSubview(segmentView!)
         }
     }
@@ -101,8 +100,15 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
     func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
         UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
             let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
-            let kbY:CGFloat = self.view.frame.origin.y < 0 ? 0:kbFrame.origin.y - UIScreen.mainScreen().bounds.size.height
-            self.view.frame = CGRectMake(0, kbY, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+            let textFrame:CGRect = self.selectedTextField!.frame
+            let bgview:CGRect = self.textfiledBG.frame
+            if((bgview.origin.y+textFrame.origin.y+textFrame.size.height)>kbFrame.origin.y) {
+                self.view.frame = CGRectMake(0, -((bgview.origin.y+textFrame.origin.y+textFrame.size.height)-kbFrame.origin.y), UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+                
+            }else{
+                self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+            }
+            
             }) { (finished) in
 
         }
