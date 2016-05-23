@@ -93,7 +93,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
             }
             clockNameArray.append(cityName)
             zoneArray.append(gmt)
-            
+            // LEFT HERE
             AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
             
 //            let worldClock2:WorldClock = WorldClock(keyDict: ["city_name":cityName,"system_name":worldClockModel.system_name, "display_name": worldClockModel.display_name]);
