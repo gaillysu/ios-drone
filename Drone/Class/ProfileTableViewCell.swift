@@ -13,6 +13,8 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
     private var inputVariables: NSMutableArray = NSMutableArray()
     var textPreFix = "";
     var textPostFix = "";
+    var cellIndex:Int = 0
+    var editCellTextField:((index:Int, text:String) -> Void)?
     
     enum Type{
         case Numeric
@@ -34,15 +36,6 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
         itemTextField.becomeFirstResponder()
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let currentCharacterCount = textField.text?.characters.count ?? 0
-        if (range.length + range.location > currentCharacterCount){
-            return false
-        }
-        let newLength = currentCharacterCount + string.characters.count - range.length
-        return newLength <= 25
-    }
-    
     func setInputVariables(vars:NSMutableArray){
         self.inputVariables = vars
     }
@@ -60,16 +53,33 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
         }
     }
     
+    // MARK: - UITextFieldDelegate
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let currentCharacterCount = textField.text?.characters.count ?? 0
+        if (range.length + range.location > currentCharacterCount){
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        return newLength <= 25
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+    
+        editCellTextField?(index: cellIndex,text: textField.text!)
+    }
+    
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         return true;
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
+    }
+    
+    // MARK: - UIPickerViewDataSource
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -80,7 +90,9 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
         return "\(inputVariables[row])"+"\(textPostFix)"
     }
     
+    // MARK: - UIPickerViewDelegate
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         itemTextField.text = "\(textPreFix)"+"\(inputVariables[row])"+"\(textPostFix)"
+        editCellTextField?(index: cellIndex,text: "\(inputVariables[row])")
     }
 }
