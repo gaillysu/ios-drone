@@ -56,7 +56,16 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         
         dismissKeyboard()
         
+        /**
+         *  change profile to database
+         *
+         */
         profile.update()
+        /**
+         *  change profile to database sync profile with watch
+         *
+         */
+        AppDelegate.getAppDelegate().setUserProfile()
         
         loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
         loadingIndicator.setTintColor(UIColor.getBaseColor())
