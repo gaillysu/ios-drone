@@ -11,6 +11,7 @@ import AutocompleteField
 import MRProgress
 import SwiftyJSON
 import BRYXBanner
+import XCGLogger
 
 class ProfileViewController:BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -18,18 +19,12 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     private var profile:UserProfile!
     private var steps:UserGoal!
     @IBOutlet weak var profileTableView: UITableView!
-    private var firstNameTextField: UITextField!
-     var loadingIndicator: MRProgressOverlayView!
+    var loadingIndicator: MRProgressOverlayView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         profileTableView.registerNib(UINib(nibName: "ProfileTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
-        let header:ProfileTableViewCellHeader = UIView.loadFromNibNamed("ProfileTableViewCellHeader") as! ProfileTableViewCellHeader;
-        header.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height)
-        firstNameTextField = header.nameTextField
-        let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height))
-        headerView.addSubview(header)
-        self.profileTableView.tableHeaderView = headerView;
         self.navigationItem.title="Profile"
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
@@ -39,10 +34,8 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         self.navigationItem.leftBarButtonItem = closeButton
         self.navigationItem.rightBarButtonItem = saveButton
         self.profileTableView.allowsSelection  = false;
-        self.profileTableView.tableFooterView = UIView()
         profile = UserProfile.getAll()[0] as! UserProfile;
         steps = UserGoal.getAll()[0] as! UserGoal
-        firstNameTextField.text = profile.first_name
     }
     
     
@@ -63,40 +56,12 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         
         dismissKeyboard()
         
-        guard let firstName = firstNameTextField.text where !firstName.isEmpty else {
-            return;
-        }
-        
-        profile.first_name = firstNameTextField.text!
-        for i in 0...4 {
-            let cell: ProfileTableViewCell = profileTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! ProfileTableViewCell
-            guard var text = cell.itemTextField.text where !text.isEmpty else {
-                return;
-            }
-            if i == 0{
-                profile.last_name = text
-            } else if i == 1 {
-                profile.email = text
-            } else if i == 2 {
-                text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
-                profile.length = Int(text)!
-            } else if i == 3 {
-                text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
-                profile.weight = Int(text)!
-            } else if i == 4 {
-                text = text.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
-                steps = UserGoal.getAll()[0] as! UserGoal
-                steps.goalSteps = Int(text)!
-                steps.update()
-                AppDelegate.getAppDelegate().setGoal(NumberOfStepsGoal(steps: steps.goalSteps))
-            }
-        }
         profile.update()
         
         loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
         loadingIndicator.setTintColor(UIColor.getBaseColor())
         
-        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length]]) { (result) in
+        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length,"birthday":profile.birthday]]) { (result) in
             let json = JSON(result)
             let message = json["message"].stringValue
             let status = json["status"].intValue
@@ -121,14 +86,6 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5;
-    }
-    
     @IBAction func logoutAction(sender: AnyObject) {
         let logout:UIAlertController = UIAlertController(title: NSLocalizedString("logout_title", comment: "") , message: NSLocalizedString("logout_message", comment: "") , preferredStyle: UIAlertControllerStyle.Alert)
         logout.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) in
@@ -144,6 +101,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         self.presentViewController(logout, animated: true, completion: nil)
     }
     
+    // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 {
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -152,35 +110,97 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell: ProfileTableViewCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! ProfileTableViewCell
-            if(indexPath.row == 0){
-                cell.itemTextField!.text = profile.last_name
-                cell.setType(.Text)
-            }else if(indexPath.row == 1){
-                cell.itemTextField!.text = profile.email
-                cell.setType(.Email)
-            }else  if(indexPath.row == 2){
-                cell.itemTextField!.text = "\(String(profile.length)) CM"
-                cell.setInputVariables(self.generatePickerData(100, rangeEnd: 220, interval: 0))
-                cell.setType(.Numeric)
-                cell.textPostFix = " CM"
-            }else  if(indexPath.row == 3){
-                cell.itemTextField!.text = "\(String(profile.weight)) KG"
-                cell.setInputVariables(self.generatePickerData(10, rangeEnd: 200, interval: 0))
-                cell.setType(.Numeric)
-                cell.textPostFix = " KG"
-            }else  if(indexPath.row == 4){
-                cell.itemTextField!.text = "Goal: \(String(steps.goalSteps))"
-                cell.setInputVariables(self.generatePickerData(1000, rangeEnd: 20000, interval: 1000))
-                cell.setType(.Numeric)
-                cell.textPreFix = "Goal: "
-            }
-            return cell;
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            let header:ProfileTableViewCellHeader = UIView.loadFromNibNamed("ProfileTableViewCellHeader") as! ProfileTableViewCellHeader;
+            return header.frame.height
+        }else{
+            let profileCell:ProfileTableViewCell = UIView.loadFromNibNamed("ProfileTableViewCell") as! ProfileTableViewCell
+            return profileCell.frame.height
+        }
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+    // MARK: - UITableViewDataSource
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: ProfileTableViewCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! ProfileTableViewCell
+        
+        if(indexPath.row == 0){
+            cell.backgroundColor = UIColor(rgba: "#DCDCDC")
+            cell.itemTextField.placeholder = "First Name"
+            cell.itemTextField!.text = profile.first_name
+            cell.setType(.Text)
+        }else if(indexPath.row == 1){
+            cell.itemTextField.placeholder = "Last Name"
+            cell.itemTextField!.text = profile.last_name
+            cell.setType(.Text)
+        }else if(indexPath.row == 2){
+            cell.itemTextField.placeholder = "Email"
+            cell.itemTextField!.text = profile.email
+            cell.setType(.Email)
+        }else  if(indexPath.row == 3){
+            cell.itemTextField.placeholder = "Length"
+            cell.itemTextField!.text = "\(String(profile.length)) CM"
+            cell.setInputVariables(self.generatePickerData(100, rangeEnd: 220, interval: 0))
+            cell.setType(.Numeric)
+            cell.textPostFix = " CM"
+        }else  if(indexPath.row == 4){
+            cell.itemTextField.placeholder = "Weight"
+            cell.itemTextField!.text = "\(String(profile.weight)) KG"
+            cell.setInputVariables(self.generatePickerData(10, rangeEnd: 200, interval: 0))
+            cell.setType(.Numeric)
+            cell.textPostFix = " KG"
+        }else  if(indexPath.row == 5){
+            cell.itemTextField.placeholder = "Goal: "
+            cell.itemTextField!.text = "Goal: \(String(steps.goalSteps))"
+            cell.setInputVariables(self.generatePickerData(1000, rangeEnd: 20000, interval: 1000))
+            cell.setType(.Numeric)
+            cell.textPreFix = "Goal: "
+        }else if(indexPath.row == 6) {
+            cell.itemTextField.placeholder = "Birthday: "
+            cell.itemTextField!.text = "Birthday: \(String(profile.birthday))"
+            cell.setType(.Date)
+            cell.textPreFix = "Birthday: "
+        }
+        
+        cell.cellIndex = indexPath.row
+        cell.editCellTextField = {
+            (index,text) -> Void in
+            XCGLogger.defaultInstance().debug("Profile TextField\(index)")
+            switch index {
+            case 0:
+                self.profile.first_name = text
+            case 1:
+                self.profile.last_name = text
+            case 2:
+                self.profile.email = text
+            case 3:
+                if Int(text) != nil {
+                    self.profile.length = Int(text)!
+                }
+            case 4:
+                if Int(text) != nil {
+                    self.profile.weight = Int(text)!
+                }
+            case 5:
+                if Int(text) != nil {
+                    self.steps.goalSteps = Int(text)!
+                }
+            case 6:
+                self.profile.birthday = text
+            default:
+                break
+            }
+        }
+        
+        return cell;
     }
     
     private func generatePickerData(rangeBegin: Int,rangeEnd: Int, interval: Int)->NSMutableArray{
