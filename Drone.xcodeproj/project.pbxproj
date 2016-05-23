@@ -156,6 +156,7 @@
 		9E1999541CE4328800C1D967 /* ContactsNotificationHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1999531CE4328800C1D967 /* ContactsNotificationHeader.xib */; };
 		9E2978711CDC3D5D00821704 /* WorldClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2978701CDC3D5D00821704 /* WorldClock.swift */; };
 		9E2978731CDC40D000821704 /* WorldClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2978721CDC40D000821704 /* WorldClockModel.swift */; };
+		9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */; };
 		9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */; };
 		9E455E0D1CD5A16000F79356 /* MyDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E455E0C1CD5A16000F79356 /* MyDeviceViewController.swift */; };
 		9E455E0F1CD5A16C00F79356 /* MyDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E455E0E1CD5A16C00F79356 /* MyDeviceViewController.xib */; };
@@ -261,7 +262,7 @@
 		009201DA1CBE2B6600C51707 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		009201DB1CBE2B6600C51707 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		00982A661C868B15003DA5E2 /* Drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drone.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		00982A691C868B15003DA5E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		00982A691C868B15003DA5E2 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00982A701C868B15003DA5E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00982A731C868B15003DA5E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00982A751C868B15003DA5E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -388,6 +389,7 @@
 		9E1999531CE4328800C1D967 /* ContactsNotificationHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsNotificationHeader.xib; sourceTree = "<group>"; };
 		9E2978701CDC3D5D00821704 /* WorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClock.swift; sourceTree = "<group>"; };
 		9E2978721CDC40D000821704 /* WorldClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockModel.swift; sourceTree = "<group>"; };
+		9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
 		9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisStepsChartView.swift; sourceTree = "<group>"; };
 		9E455E0C1CD5A16000F79356 /* MyDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDeviceViewController.swift; sourceTree = "<group>"; };
 		9E455E0E1CD5A16C00F79356 /* MyDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDeviceViewController.xib; sourceTree = "<group>"; };
@@ -904,6 +906,7 @@
 				00982B531C868C89003DA5E2 /* SyncQueue.swift */,
 				0028F1401C97C08000C8E742 /* EventBusKeys.swift */,
 				9E526F3E1CDC891D0060F63F /* StringExtension.swift */,
+				9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1606,6 +1609,7 @@
 				00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */,
 				00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */,
 				00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */,
+				9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */,
 				CB28AFDF1CE2E59B00639538 /* ContactsNotificationViewController.swift in Sources */,
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,

@@ -86,9 +86,9 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
             var clockNameArray:[String] = []
             var zoneArray:[Int] = []
             for (index,value) in array.enumerate() {
-                let wordclock:WorldClock = value as! WorldClock
-                let beforeGmt:Int = (wordclock.gmt_offset as NSString).integerValue
-                clockNameArray.append(wordclock.city_name)
+                let worldclock:WorldClock = value as! WorldClock
+                let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))!
+                clockNameArray.append(worldclock.city_name)
                 zoneArray.append(beforeGmt)
             }
             clockNameArray.append(cityName)
@@ -96,6 +96,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
             
             AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
             
+//            let worldClock2:WorldClock = WorldClock(keyDict: ["city_name":cityName,"system_name":worldClockModel.system_name, "display_name": worldClockModel.display_name]);
             let worldClock:WorldClock = WorldClock(keyDict: ["gmt_offset":gmtOffset!,"city_name":cityName])
             worldClock.add { (id, completion) in
                 if(Bool(completion!)) {

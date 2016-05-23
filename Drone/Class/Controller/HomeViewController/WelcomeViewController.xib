@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -60,36 +60,21 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Non-g5-1bJ" secondAttribute="trailing" id="2W2-U6-oCl"/>
-                <constraint firstItem="8z3-QM-qWQ" firstAttribute="height" secondItem="Fxx-u5-HNV" secondAttribute="height" id="2eK-ka-34h"/>
-                <constraint firstItem="zck-yo-tYr" firstAttribute="height" secondItem="Non-g5-1bJ" secondAttribute="height" id="BfZ-Td-iVu"/>
                 <constraint firstItem="Non-g5-1bJ" firstAttribute="top" secondItem="zck-yo-tYr" secondAttribute="bottom" constant="8" id="CXa-HT-E5O"/>
                 <constraint firstAttribute="trailing" secondItem="8z3-QM-qWQ" secondAttribute="trailing" constant="75" id="EFa-hc-6QB"/>
-                <constraint firstItem="Non-g5-1bJ" firstAttribute="height" secondItem="8z3-QM-qWQ" secondAttribute="height" constant="310" id="Gp8-Gs-7DX"/>
                 <constraint firstAttribute="trailing" secondItem="Fxx-u5-HNV" secondAttribute="trailing" constant="75" id="Kj2-OR-WhD"/>
                 <constraint firstItem="8z3-QM-qWQ" firstAttribute="top" secondItem="Non-g5-1bJ" secondAttribute="bottom" constant="8" id="NzQ-CL-4iz"/>
                 <constraint firstAttribute="trailing" secondItem="Non-g5-1bJ" secondAttribute="trailing" id="PCk-n6-Fs9"/>
                 <constraint firstItem="Fxx-u5-HNV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="75" id="T5c-h2-Q3F"/>
                 <constraint firstItem="Non-g5-1bJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tl1-n7-fuM"/>
                 <constraint firstItem="Fxx-u5-HNV" firstAttribute="top" secondItem="8z3-QM-qWQ" secondAttribute="bottom" constant="5" id="Ypg-ul-pnk"/>
-                <constraint firstItem="Non-g5-1bJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aIK-mq-4wE"/>
                 <constraint firstItem="zck-yo-tYr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="aS2-gQ-fLQ"/>
                 <constraint firstAttribute="bottom" secondItem="Fxx-u5-HNV" secondAttribute="bottom" constant="52" id="c4E-xO-sqC"/>
-                <constraint firstItem="zck-yo-tYr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="42" id="evZ-zA-aea"/>
                 <constraint firstItem="Fxx-u5-HNV" firstAttribute="height" secondItem="8z3-QM-qWQ" secondAttribute="height" id="gQg-db-cwL"/>
                 <constraint firstItem="8z3-QM-qWQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="75" id="q69-eB-g8f"/>
                 <constraint firstItem="zck-yo-tYr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rN2-V1-UqW"/>
-                <constraint firstItem="zck-yo-tYr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rVh-Qi-SwE"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="BfZ-Td-iVu"/>
-                    <exclude reference="evZ-zA-aea"/>
-                    <exclude reference="rVh-Qi-SwE"/>
-                    <exclude reference="Gp8-Gs-7DX"/>
-                    <exclude reference="2eK-ka-34h"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="393.5" y="-27.5"/>
         </view>
     </objects>

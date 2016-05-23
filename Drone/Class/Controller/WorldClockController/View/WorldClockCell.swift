@@ -22,19 +22,17 @@ class WorldClockCell: UITableViewCell {
         let nibs:NSArray = NSBundle.mainBundle().loadNibNamed("WorldClockCell", owner: self, options: nil)
         cell = (nibs.objectAtIndex(0) as? WorldClockCell)!
         cell.cityLabel.text = clock.city_name
-        cell.timeDescription.text = clock.gmt_offset
+        let systemName:String? = clock.system_name;
+        cell.timeDescription.text = TimeUtil.getGmtOffSetForCity(systemName)
         return cell
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

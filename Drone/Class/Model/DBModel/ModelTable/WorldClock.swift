@@ -11,8 +11,9 @@ import UIKit
 
 class WorldClock: NSObject {
     var id:Int = 0
-    var gmt_offset:String = ""
+    var system_name:String = ""
     var city_name:String = ""
+    var display_name:String = ""
     
     private var worldClockModel:WorldClockModel = WorldClockModel()
     
@@ -25,7 +26,8 @@ class WorldClock: NSObject {
     
     func add(result:((id:Int?,completion:Bool?) -> Void)){
         worldClockModel.city_name = city_name
-        worldClockModel.gmt_offset = gmt_offset
+        worldClockModel.system_name = system_name
+        worldClockModel.display_name = display_name
         worldClockModel.add { (id, completion) -> Void in
             result(id: id, completion: completion)
         }
@@ -34,7 +36,8 @@ class WorldClock: NSObject {
     func update()->Bool{
         worldClockModel.id = id
         worldClockModel.city_name = city_name
-        worldClockModel.gmt_offset = gmt_offset
+        worldClockModel.system_name = system_name
+        worldClockModel.display_name = display_name
         return worldClockModel.update()
     }
     
@@ -52,7 +55,7 @@ class WorldClock: NSObject {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let worldClockModel:WorldClockModel = model as! WorldClockModel
-            let worldClock:WorldClock = WorldClock(keyDict: ["id":worldClockModel.id,"city_name":worldClockModel.city_name,"gmt_offset":worldClockModel.gmt_offset])
+            let worldClock:WorldClock = WorldClock(keyDict: ["id":worldClockModel.id,"city_name":worldClockModel.city_name,"system_name":worldClockModel.system_name, "display_name": worldClockModel.display_name])
             allArray.addObject(worldClock)
         }
         return allArray
@@ -63,7 +66,7 @@ class WorldClock: NSObject {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let worldClockModel:WorldClockModel = model as! WorldClockModel
-            let worldClock:WorldClock = WorldClock(keyDict: ["id":worldClockModel.id,"city_name":worldClockModel.city_name,"gmt_offset":worldClockModel.gmt_offset])
+            let worldClock:WorldClock = WorldClock(keyDict: ["id":worldClockModel.id,"city_name":worldClockModel.city_name,"system_name":worldClockModel.system_name, "display_name": worldClockModel.display_name])
             allArray.addObject(worldClock)
         }
         return allArray
