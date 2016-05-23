@@ -24,6 +24,7 @@ class RegisterViewController: BaseViewController {
     var fromMenu: Bool = false;
     var emailT: AutocompleteField!
     var passwordT: AutocompleteField!
+    private var selectedTextField:AutocompleteField?
 
     init(fromMenu: Bool = false) {
         self.fromMenu = fromMenu
@@ -45,6 +46,7 @@ class RegisterViewController: BaseViewController {
             emailT!.padding = 5.0
             emailT!.placeholder = "E-mail"
             emailT?.backgroundColor = UIColor.whiteColor()
+            emailT.delegate = self
             textfiledBG.addSubview(emailT!)
 
             passwordT = AutocompleteField(frame: CGRectMake(0, textfiledBG.frame.size.height/2.0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
@@ -52,6 +54,7 @@ class RegisterViewController: BaseViewController {
             passwordT!.secureTextEntry = true
             passwordT!.placeholder = "Password"
             passwordT?.backgroundColor = UIColor.whiteColor()
+            passwordT.delegate = self
             textfiledBG.addSubview(passwordT!)
 
             let displaypassword:UIButton = UIButton(type: UIButtonType.Custom)
@@ -108,12 +111,23 @@ class RegisterViewController: BaseViewController {
 }
 
 // MARK: - YYKeyboardObserver
-extension RegisterViewController:YYKeyboardObserver {
+extension RegisterViewController:YYKeyboardObserver,UITextFieldDelegate {
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        selectedTextField = textField as? AutocompleteField
+        return true
+    }
+    
     func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
         UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
             let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
-            let kbY:CGFloat = self.view.frame.origin.y < 0 ? 0:kbFrame.origin.y - UIScreen.mainScreen().bounds.size.height
-            self.view.frame = CGRectMake(0, kbY, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+            let textFrame:CGRect = self.selectedTextField!.frame
+            let bgview:CGRect = self.textfiledBG.frame
+            if((bgview.origin.y+textFrame.origin.y+textFrame.size.height)>kbFrame.origin.y) {
+                self.view.frame = CGRectMake(0, -((bgview.origin.y+textFrame.origin.y+textFrame.size.height)-kbFrame.origin.y), UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+                
+            }else{
+                self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+            }
         }) { (finished) in
 
         }
