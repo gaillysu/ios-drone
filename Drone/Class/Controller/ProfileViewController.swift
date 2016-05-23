@@ -61,7 +61,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
         loadingIndicator.setTintColor(UIColor.getBaseColor())
         
-        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length]]) { (result) in
+        HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length,"birthday":profile.birthday]]) { (result) in
             let json = JSON(result)
             let message = json["message"].stringValue
             let status = json["status"].intValue
@@ -126,7 +126,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6;
+        return 7;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -163,6 +163,11 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             cell.setInputVariables(self.generatePickerData(1000, rangeEnd: 20000, interval: 1000))
             cell.setType(.Numeric)
             cell.textPreFix = "Goal: "
+        }else if(indexPath.row == 6) {
+            cell.itemTextField.placeholder = "Birthday: "
+            cell.itemTextField!.text = "Birthday: \(String(profile.birthday))"
+            cell.setType(.Date)
+            cell.textPreFix = "Birthday: "
         }
         
         cell.cellIndex = indexPath.row
@@ -188,6 +193,8 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                 if Int(text) != nil {
                     self.steps.goalSteps = Int(text)!
                 }
+            case 6:
+                self.profile.birthday = text
             default:
                 break
             }

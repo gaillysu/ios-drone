@@ -11,6 +11,7 @@ import Foundation
 class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
    
     private var inputVariables: NSMutableArray = NSMutableArray()
+    private var keyBoardType:Type?
     var textPreFix = "";
     var textPostFix = "";
     var cellIndex:Int = 0
@@ -20,6 +21,7 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
         case Numeric
         case Text
         case Email
+        case Date
     }
     
     @IBOutlet weak var itemTextField: UITextField!
@@ -41,6 +43,7 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
     }
     
     func setType(type:Type){
+        keyBoardType = type
         if type == Type.Email {
             itemTextField.keyboardType = UIKeyboardType.EmailAddress
         }else if type == Type.Numeric {
@@ -48,6 +51,11 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
             picker.delegate = self;
             picker.dataSource = self;
             itemTextField.inputView = picker;
+        }else if type == Type.Date {
+            let datePicker:UIDatePicker = UIDatePicker()
+            datePicker.datePickerMode = UIDatePickerMode.Date
+            itemTextField.inputView = datePicker
+            datePicker.addTarget(self, action: #selector(selectedDateAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
         }else{
             itemTextField.keyboardType = UIKeyboardType.Default
         }
@@ -64,8 +72,12 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-    
-        editCellTextField?(index: cellIndex,text: textField.text!)
+        if keyBoardType == Type.Date {
+            editCellTextField?(index: cellIndex,text: textField.text!.componentsSeparatedByString(" ")[1])
+        }else{
+            editCellTextField?(index: cellIndex,text: textField.text!)
+        }
+        
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -94,5 +106,17 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         itemTextField.text = "\(textPreFix)"+"\(inputVariables[row])"+"\(textPostFix)"
         editCellTextField?(index: cellIndex,text: "\(inputVariables[row])")
+    }
+    
+    func selectedDateAction(date:UIDatePicker) {
+        NSLog("date:\(date.date)")
+        itemTextField.text = "\(textPreFix)"+self.dateFormattedStringWithFormat("yyyy-MM-dd", fromDate: date.date)
+        editCellTextField?(index: cellIndex,text: self.dateFormattedStringWithFormat("yyyy-MM-dd", fromDate: date.date))
+    }
+    
+    func dateFormattedStringWithFormat(format: String, fromDate date: NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = format
+        return formatter.stringFromDate(date)
     }
 }
