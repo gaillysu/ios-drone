@@ -212,7 +212,6 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             }else{
                 text+="Today, \(Int(timeBehind)) \(hour)\(halfHour)behind"
             }
-            
             cell.time.text = "\(foreignTime.hour):\(foreignTime.minute < 10 ? "0":"")\(foreignTime.minute)"
         }
         cell.timeDescription.text = text

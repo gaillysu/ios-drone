@@ -23,6 +23,5 @@ class TimeUtil: NSObject {
             return gmtOffSet
         }
         return "0"
-        
     }
 }
