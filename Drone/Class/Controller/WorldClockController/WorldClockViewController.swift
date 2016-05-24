@@ -83,15 +83,15 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
      }
     
     func add(){
-        if AppDelegate.getAppDelegate().isConnected() {
+//        if AppDelegate.getAppDelegate().isConnected() {
             self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
-        }else{
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
-            view.setTintColor(UIColor.getBaseColor())
-            NSTimer.after(0.6.second) {
-                view.dismiss(true)
-            }
-        }
+//        }else{
+//            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
+//            view.setTintColor(UIColor.getBaseColor())
+//            NSTimer.after(0.6.second) {
+//                view.dismiss(true)
+//            }
+//        }
     }
     
 
@@ -144,14 +144,12 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             var clockNameArray:[String] = []
             var zoneArray:[Int] = []
             for (index,value) in worldClockArray.enumerate() {
-                let wordclock:WorldClock = value as! WorldClock
-                let beforeGmt:Int = (wordclock.gmt_offset as NSString).integerValue
-                clockNameArray.append(wordclock.city_name)
+                let worldclock:WorldClock = value as! WorldClock
+                let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))!
+                clockNameArray.append(worldclock.city_name)
                 zoneArray.append(beforeGmt)
             }
-            
             AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
-
         } else if editingStyle == .Insert {
 
         }
@@ -173,9 +171,8 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         let worldClockCity:WorldClock = worldClockArray[(indexPath.row - 1)] as! WorldClock
         cell.cityLabel.text = worldClockCity.city_name
         
-        let foreignTimeOffsetToGmt = Float(worldClockCity.gmt_offset[0...worldClockCity.gmt_offset.characters.count-1])!
+        let foreignTimeOffsetToGmt = Float(TimeUtil.getGmtOffSetForCity(worldClockCity.system_name))!
         var text:String = ""
-        
         if foreignTimeOffsetToGmt == localTimeOffsetToGmt  {
             text+="Today"
             cell.time.text = "\(time.hour):\(time.minute < 10 ? "0":"")\(time.minute)"
@@ -213,7 +210,6 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             }else{
                 text+="Today, \(Int(timeBehind)) \(hour)\(halfHour)behind"
             }
-            
             cell.time.text = "\(foreignTime.hour):\(foreignTime.minute < 10 ? "0":"")\(foreignTime.minute)"
         }
         cell.timeDescription.text = text

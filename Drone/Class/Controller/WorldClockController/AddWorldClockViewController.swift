@@ -38,7 +38,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
                 countryPerLetter.append(city)
                 cities.append(city)
                 citiesDict[key] = countryPerLetter.sort { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
-                citiesGmtDict[city]  = countriesForLetter[city]
+                citiesGmtDict[city] = countriesForLetter[city]
                 
             }
         }
@@ -77,26 +77,29 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         tableView.deselectRowAtIndexPath(indexPath, animated: true);
         let sectionName: String = self.index[indexPath.section]
         let citiesArrayForSection:[String] = self.citiesDict.objectForKey(sectionName) as! [String]
-        let cityName:String = citiesArrayForSection[indexPath.row]
-        let gmtOffset = citiesGmtDict[cityName]
-
-        let gmt:Int = (gmtOffset as! NSString).integerValue
+        let displayName:String = citiesArrayForSection[indexPath.row]
         let array:NSArray = WorldClock.getAll()
         if array.count < 5 {
             var clockNameArray:[String] = []
             var zoneArray:[Int] = []
             for (index,value) in array.enumerate() {
-                let wordclock:WorldClock = value as! WorldClock
-                let beforeGmt:Int = (wordclock.gmt_offset as NSString).integerValue
-                clockNameArray.append(wordclock.city_name)
+                let worldclock:WorldClock = value as! WorldClock
+                let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))!
+                clockNameArray.append(worldclock.city_name)
                 zoneArray.append(beforeGmt)
             }
-            clockNameArray.append(cityName)
-            zoneArray.append(gmt)
-            
+            clockNameArray.append(displayName)
             AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
             
-            let worldClock:WorldClock = WorldClock(keyDict: ["gmt_offset":gmtOffset!,"city_name":cityName])
+            var cityName = displayName
+        
+            
+            let range: Range<String.Index> = cityName.rangeOfString(",")!
+            var index: Int = cityName.startIndex.distanceTo(range.startIndex)
+            index = index - 1
+            let newRange = cityName.endIndex.advancedBy((index * -1))..<cityName.endIndex
+            cityName.removeRange(newRange)
+            let worldClock:WorldClock = WorldClock(keyDict: ["city_name":cityName,"system_name":citiesGmtDict[displayName]!, "display_name": displayName]);
             worldClock.add { (id, completion) in
                 if(Bool(completion!)) {
                     print("word clock added to db!")

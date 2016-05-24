@@ -11,9 +11,11 @@ import UIKit
 import FMDB
 
 class WorldClockModel: UserDatabaseHelper {
-
-    var gmt_offset:String = ""
+    
+    var system_name:String = ""
     var city_name:String = ""
+    var display_name:String = ""
+    
     override init() {
         super.init()
     }
