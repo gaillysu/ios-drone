@@ -52,7 +52,7 @@ class MyDeviceViewController: BaseViewController {
             let options = PagingMenuOptions()
             options.menuHeight = 0;
             options.menuDisplayMode = .Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.ScrollEnabled)
-            let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
+            let pagingMenuController = PagingMenuController(menuControllerTypes: viewControllers, options: options)
             pagingMenuController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
             self.addChildViewController(pagingMenuController)
             self.devicesView.addSubview(pagingMenuController.view)

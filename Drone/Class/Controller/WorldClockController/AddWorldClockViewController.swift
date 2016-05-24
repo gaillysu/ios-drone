@@ -79,21 +79,27 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         let citiesArrayForSection:[String] = self.citiesDict.objectForKey(sectionName) as! [String]
         let displayName:String = citiesArrayForSection[indexPath.row]
         let array:NSArray = WorldClock.getAll()
+        
         if array.count < 5 {
             var clockNameArray:[String] = []
             var zoneArray:[Int] = []
+            
             for (index,value) in array.enumerate() {
                 let worldclock:WorldClock = value as! WorldClock
-                let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))!
+                let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))
                 clockNameArray.append(worldclock.city_name)
                 zoneArray.append(beforeGmt)
             }
             clockNameArray.append(displayName)
+            
+            let system_name:String = (citiesGmtDict[displayName] as? String)!
+            let beforeGmt:Int = TimeUtil.getGmtOffSetForCity(system_name)
+            zoneArray.append(beforeGmt)
+            
             AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
             
             var cityName = displayName
         
-            
             let range: Range<String.Index> = cityName.rangeOfString(",")!
             var index: Int = cityName.startIndex.distanceTo(range.startIndex)
             index = index - 1

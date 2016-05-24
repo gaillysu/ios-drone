@@ -13,6 +13,7 @@ import BRYXBanner
 import UIColor_Hex_Swift
 import SwiftyJSON
 import MRProgress
+import XCGLogger
 
 class LoginViewController: UIViewController {
 
@@ -138,7 +139,7 @@ class LoginViewController: UIViewController {
                 
                 let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"].intValue,"first_name":user["first_name"].stringValue,"last_name":user["last_name"].stringValue,"birthday":birthday,"length":user["length"].intValue,"email":user["email"].stringValue, "weight":user["weight"].floatValue])
                 userprofile.add({ (id, completion) in
-                    print("Added? id = \(id)")
+                    XCGLogger.defaultInstance().debug("Added? id = \(id)")
                 })
                 if(GoalModel.getAll().count == 0){
                     let goalModel:GoalModel = GoalModel()

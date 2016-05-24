@@ -1,17 +1,17 @@
 PODS:
-  - Alamofire (3.2.1)
+  - Alamofire (3.4.0)
   - AutocompleteField (1.1)
   - BRYXBanner (0.5.2):
     - BRYXBanner/Core (= 0.5.2)
   - BRYXBanner/Core (0.5.2)
-  - Charts (2.2.3):
-    - Charts/Core (= 2.2.3)
-  - Charts/Core (2.2.3)
-  - CircleProgressView (1.0.9)
+  - Charts (2.2.4):
+    - Charts/Core (= 2.2.4)
+  - Charts/Core (2.2.4)
+  - CircleProgressView (1.0.10)
   - CVCalendar (1.2.9)
-  - FMDB (2.6):
-    - FMDB/standard (= 2.6)
-  - FMDB/standard (2.6)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -40,13 +40,13 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
-  - PagingMenuController (0.9.1)
+  - PagingMenuController (0.10.1)
   - RegexKitLite (4.0)
-  - SDCycleScrollView (1.62):
+  - SDCycleScrollView (1.64):
     - SDWebImage (~> 3.7)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
   - SMSegmentView (1.1)
   - SwiftEventBus (1.1.0)
   - SwiftyJSON (2.3.2)
@@ -87,7 +87,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CircleProgressView:
-    :commit: 45bb66966d8d34b9808fd4ad645a5b8c8f00f02f
+    :commit: cb2f3707ff3c401184d218f6e335a537d0ba2f13
     :git: https://github.com/CardinalNow/iOS-CircleProgressView.git
   SwiftEventBus:
     :commit: 4b8cbb5a8227b3c29af75e0416689d26178733d8
@@ -97,18 +97,18 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   AutocompleteField: 212b36bef0218f22c05d80035be2d382acd5a4e2
   BRYXBanner: 5f0911d52e0a77e088f7ea7ddcdebd02afb7828a
-  Charts: f54267bb3f0f0e74520c6f248517cf5074dfd6fc
-  CircleProgressView: fb5cd84be2abd908459d8dd087d94c4bdb7e60cf
+  Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
+  CircleProgressView: 5116fc2d3be792d755e6979d7f7309648de79d11
   CVCalendar: 0799256e0bc3b43e83b7e86c0729ce9ff0624cb6
-  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
-  PagingMenuController: 95bab00761e1ba4f4f9fa6bf22ac71b065a675aa
+  PagingMenuController: 839065014839c033343ea640cba01c0e5b3c0476
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
-  SDCycleScrollView: ae016cb4cc4036523917f146ede6f7b11d408f6a
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SDCycleScrollView: 806fedb9342ab03b58b84442f985517b42c7cbb7
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SMSegmentView: a99862f36ea73478558ae665c209cb80c0d4f059
   SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a

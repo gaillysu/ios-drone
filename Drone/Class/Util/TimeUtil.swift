@@ -9,19 +9,19 @@
 import Foundation
 
 class TimeUtil: NSObject {
-    public static func getGmtOffSetForCity(city:String?) -> String{
+    class func getGmtOffSetForCity(city:String) -> Int{
         let now = NSDate()
-        if(!(city?.isEmpty)!){
-        let cst = NSTimeZone(name: city!)!
-        let dateInCST = now.beginningOfDay.change(timeZone: cst)
-        let timezone = dateInCST.timeZone
-        var secondsFromGMT = timezone.secondsFromGMT
+        if(!city.isEmpty){
+            let cst = NSTimeZone(name: city)!
+            let dateInCST = now.beginningOfDay.change(timeZone: cst)
+            let timezone = dateInCST.timeZone
+            var secondsFromGMT = timezone.secondsFromGMT
         if timezone.daylightSavingTime && !cst.isDaylightSavingTimeForDate(now) {
             secondsFromGMT -= Int(timezone.daylightSavingTimeOffset)
         }
-        let gmtOffSet:String = String(Float(secondsFromGMT)/(3600.0))
+            let gmtOffSet:Int = Int(Float(secondsFromGMT)/(3600.0));
             return gmtOffSet
         }
-        return "0"
+        return 0
     }
 }

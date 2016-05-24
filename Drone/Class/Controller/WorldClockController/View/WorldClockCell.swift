@@ -23,7 +23,7 @@ class WorldClockCell: UITableViewCell {
         cell = (nibs.objectAtIndex(0) as? WorldClockCell)!
         cell.cityLabel.text = clock.city_name
         let systemName:String? = clock.system_name;
-        cell.timeDescription.text = TimeUtil.getGmtOffSetForCity(systemName)
+        cell.timeDescription.text = "\(TimeUtil.getGmtOffSetForCity(systemName!))"
         return cell
     }
 

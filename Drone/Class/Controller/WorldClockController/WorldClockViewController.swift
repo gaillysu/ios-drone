@@ -145,7 +145,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             var zoneArray:[Int] = []
             for (index,value) in worldClockArray.enumerate() {
                 let worldclock:WorldClock = value as! WorldClock
-                let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))!
+                let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))
                 clockNameArray.append(worldclock.city_name)
                 zoneArray.append(beforeGmt)
             }
@@ -171,7 +171,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         let worldClockCity:WorldClock = worldClockArray[(indexPath.row - 1)] as! WorldClock
         cell.cityLabel.text = worldClockCity.city_name
         
-        let foreignTimeOffsetToGmt = Float(TimeUtil.getGmtOffSetForCity(worldClockCity.system_name))!
+        let foreignTimeOffsetToGmt = Float(TimeUtil.getGmtOffSetForCity(worldClockCity.system_name))
         var text:String = ""
         if foreignTimeOffsetToGmt == localTimeOffsetToGmt  {
             text+="Today"
