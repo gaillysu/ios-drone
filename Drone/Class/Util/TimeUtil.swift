@@ -19,7 +19,7 @@ class TimeUtil: NSObject {
         if timezone.daylightSavingTime && !cst.isDaylightSavingTimeForDate(now) {
             secondsFromGMT -= Int(timezone.daylightSavingTimeOffset)
         }
-        let gmtOffSet:String = String(secondsFromGMT/3600)
+        let gmtOffSet:String = String(Float(secondsFromGMT)/(3600.0))
             return gmtOffSet
         }
         return "0"

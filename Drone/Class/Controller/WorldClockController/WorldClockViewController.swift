@@ -149,9 +149,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
                 clockNameArray.append(worldclock.city_name)
                 zoneArray.append(beforeGmt)
             }
-            
             AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
-
         } else if editingStyle == .Insert {
 
         }
