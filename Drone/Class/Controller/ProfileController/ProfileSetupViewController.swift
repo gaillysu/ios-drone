@@ -157,30 +157,35 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
             MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
             
             let json = JSON(result)
-            let message = json["message"].stringValue
+            var message = json["message"].stringValue
             let status = json["status"].intValue
             let user:[String : JSON] = json["user"].dictionaryValue
-
+            
+            if(user.count>0) {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "y-M-d h:m:s.000000"
+                let birthdayJSON = user["birthday"]
+                let birthdayBeforeParsed = birthdayJSON!["date"].stringValue
+                
+                let birthdayDate = dateFormatter.dateFromString(birthdayBeforeParsed)
+                dateFormatter.dateFormat = "y-M-d"
+                let birthday = dateFormatter.stringFromDate(birthdayDate!)
+                let sex = user["sex"]!.intValue == 1 ? true : false;
+                if(status > 0 && UserProfile.getAll().count == 0) {
+                    let userprofile:UserProfile = UserProfile(keyDict: ["first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue,"sex": sex, "weight":(user["weight"]?.floatValue)!, "birthday":birthday])
+                    userprofile.add({ (id, completion) in
+                    })
+                    let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: false)
+                    self.navigationController?.pushViewController(device, animated: true)
+                }
+            
+            }else{
+                message = NSLocalizedString("no_network", comment: "")
+            }
+            
             let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
-            
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "y-M-d h:m:s.000000"
-            let birthdayJSON = user["birthday"]
-            let birthdayBeforeParsed = birthdayJSON!["date"].stringValue
-
-            let birthdayDate = dateFormatter.dateFromString(birthdayBeforeParsed)
-            dateFormatter.dateFormat = "y-M-d"
-            let birthday = dateFormatter.stringFromDate(birthdayDate!)
-            let sex = user["sex"]!.intValue == 1 ? true : false;
-            if(status > 0 && UserProfile.getAll().count == 0) {
-                let userprofile:UserProfile = UserProfile(keyDict: ["first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue,"sex": sex, "weight":(user["weight"]?.floatValue)!, "birthday":birthday])
-                userprofile.add({ (id, completion) in
-                })
-                let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: false)
-                self.navigationController?.pushViewController(device, animated: true)
-            }
         }
     }
 }
