@@ -148,8 +148,6 @@
 		00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */; };
 		00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */; };
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
-		00F1AF491CACD82600CB9A15 /* BuddyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF421CACD82600CB9A15 /* BuddyViewController.swift */; };
-		00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF431CACD82600CB9A15 /* BuddyViewController.xib */; };
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
 		04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3551B5D0AAFC39213D5071A3 /* Pods.framework */; };
@@ -201,8 +199,6 @@
 		CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD191CD052BB0009F39A /* SleepViewController.xib */; };
 		CBD6BD1C1CD052C30009F39A /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */; };
 		CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD1D1CD06F890009F39A /* Color.swift */; };
-		CBD6BD211CD096F40009F39A /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD201CD096F40009F39A /* GalleryViewController.swift */; };
-		CBD6BD231CD097080009F39A /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD221CD097080009F39A /* GalleryViewController.xib */; };
 		CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD251CD099880009F39A /* ProfileViewController.xib */; };
 		CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD271CD099900009F39A /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -245,9 +241,6 @@
 		005699DA1CD0673D0097938E /* localTimeZone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = localTimeZone; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
 		005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
-		0064CA6E1CC089BF005AB9DE /* drone1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone1.jpg; sourceTree = "<group>"; };
-		0064CA701CC089BF005AB9DE /* drone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone3.jpg; sourceTree = "<group>"; };
-		0064CA741CC089F4005AB9DE /* drone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drone2.jpg; sourceTree = "<group>"; };
 		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
 		0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionSetupViewController.swift; sourceTree = "<group>"; };
 		0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionSetupViewController.xib; sourceTree = "<group>"; };
@@ -379,8 +372,6 @@
 		00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
 		00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
 		00F1AF401CACD82600CB9A15 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		00F1AF421CACD82600CB9A15 /* BuddyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyViewController.swift; sourceTree = "<group>"; };
-		00F1AF431CACD82600CB9A15 /* BuddyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuddyViewController.xib; sourceTree = "<group>"; };
 		00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		162629CC61821D5C419DE763 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -434,8 +425,6 @@
 		CBD6BD191CD052BB0009F39A /* SleepViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SleepViewController.xib; sourceTree = "<group>"; };
 		CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		CBD6BD1D1CD06F890009F39A /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		CBD6BD201CD096F40009F39A /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
-		CBD6BD221CD097080009F39A /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
 		CBD6BD251CD099880009F39A /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		CBD6BD271CD099900009F39A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -602,12 +591,10 @@
 				00F1AF3C1CACD82600CB9A15 /* AddDeviceViewController */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
-				00F1AF411CACD82600CB9A15 /* BuddyViewController */,
 				005699D11CD05A690097938E /* ChooseCityController */,
 				0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */,
 				CB28AFD31CE2C0EB00639538 /* ContactsNotificationViewController */,
 				9E455E121CD5B90600F79356 /* DeviceViewController */,
-				CBD6BD1F1CD096CB0009F39A /* GalleryViewController */,
 				00982AA91C868C89003DA5E2 /* LoginViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				9E455E0B1CD5A15500F79356 /* MyDeviceViewController */,
@@ -1054,9 +1041,6 @@
 			children = (
 				006F942F1CCA0C310073C150 /* white_background.png */,
 				0064CA761CC08D60005AB9DE /* dronelogo.png */,
-				0064CA741CC089F4005AB9DE /* drone2.jpg */,
-				0064CA6E1CC089BF005AB9DE /* drone1.jpg */,
-				0064CA701CC089BF005AB9DE /* drone3.jpg */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -1085,15 +1069,6 @@
 				00F1AF401CACD82600CB9A15 /* BaseViewController.swift */,
 			);
 			path = BaseViewController;
-			sourceTree = "<group>";
-		};
-		00F1AF411CACD82600CB9A15 /* BuddyViewController */ = {
-			isa = PBXGroup;
-			children = (
-				00F1AF421CACD82600CB9A15 /* BuddyViewController.swift */,
-				00F1AF431CACD82600CB9A15 /* BuddyViewController.xib */,
-			);
-			path = BuddyViewController;
 			sourceTree = "<group>";
 		};
 		00F1AF4B1CACD9A100CB9A15 /* MenuViewController */ = {
@@ -1274,15 +1249,6 @@
 			name = SleepViewController;
 			sourceTree = "<group>";
 		};
-		CBD6BD1F1CD096CB0009F39A /* GalleryViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CBD6BD201CD096F40009F39A /* GalleryViewController.swift */,
-				CBD6BD221CD097080009F39A /* GalleryViewController.xib */,
-			);
-			name = GalleryViewController;
-			sourceTree = "<group>";
-		};
 		CBD6BD241CD0997E0009F39A /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1416,8 +1382,6 @@
 				00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */,
 				9E455E0F1CD5A16C00F79356 /* MyDeviceViewController.xib in Resources */,
 				005699D91CD05F7C0097938E /* ChooseCityController.xib in Resources */,
-				CBD6BD231CD097080009F39A /* GalleryViewController.xib in Resources */,
-				00F1AF4A1CACD82600CB9A15 /* BuddyViewController.xib in Resources */,
 				9E455E1D1CD5BBEB00F79356 /* DeviceTableViewCellHeader.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				009D89D21CD0C457004E914A /* WorldClockHeader.xib in Resources */,
@@ -1588,7 +1552,6 @@
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
 				9E2978731CDC40D000821704 /* WorldClockModel.swift in Sources */,
-				CBD6BD211CD096F40009F39A /* GalleryViewController.swift in Sources */,
 				00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */,
 				0043FBE81CA13CED00638BD1 /* SetContactsFilterRequest.swift in Sources */,
 				00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */,
@@ -1655,7 +1618,6 @@
 				9E455E1B1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift in Sources */,
 				00982BFF1C868C8A003DA5E2 /* GoalTableViewCell.swift in Sources */,
 				00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */,
-				00F1AF491CACD82600CB9A15 /* BuddyViewController.swift in Sources */,
 				9E526F3F1CDC891D0060F63F /* StringExtension.swift in Sources */,
 				9E2978711CDC3D5D00821704 /* WorldClock.swift in Sources */,
 				0043FBE41CA12A6D00638BD1 /* GetNotificationRequest.swift in Sources */,
@@ -1809,6 +1771,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
