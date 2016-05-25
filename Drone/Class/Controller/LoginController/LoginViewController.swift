@@ -115,10 +115,10 @@ class LoginViewController: UIViewController {
             MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
 
             let json = JSON(result)
-            let message = json["message"].stringValue
+            let message = json["message"].stringValue.isEmpty ? NSLocalizedString("no_network", comment: ""):json["message"].stringValue
             let status = json["status"].intValue
 
-            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor: status > 0 ? UIColor.greenColor():UIColor.redColor())
+            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor: status > 0 ? UIColor.getBaseColor():UIColor.redColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
 
