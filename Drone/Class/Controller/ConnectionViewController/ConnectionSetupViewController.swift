@@ -71,8 +71,9 @@ class ConnectionSetupViewController: UIViewController {
 
     @IBAction func buttonActionManager(sender: AnyObject) {
         if sender.isEqual(nextB) {
-            AppDelegate.getAppDelegate().setUserProfile()
-             AppDelegate.getAppDelegate().rootTabbarController()
+            self.dismissViewControllerAnimated(true, completion: { 
+                AppDelegate.getAppDelegate().setUserProfile()
+            })
         }
 
         if sender.isEqual(retryButton) {

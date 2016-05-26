@@ -104,12 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         let dbpath:String = docsdir.stringByAppendingString(DRONEDBNAME)
         return dbpath;
     }
-
-    func rootTabbarController() {
-        let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
-        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
-        self.window?.rootViewController = navigationController
-    }
     
     // MARK: -AppDelegate SET Function
     func readsystemStatus() {
