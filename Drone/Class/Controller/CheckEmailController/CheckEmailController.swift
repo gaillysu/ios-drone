@@ -60,11 +60,14 @@ class CheckEmailController: UIViewController {
         if AppTheme.isEmail(email) {
             let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
             view.setTintColor(UIColor.getBaseColor())
-            NSTimer.after(90.seconds, {
+            let timeout:NSTimer = NSTimer.after(90.seconds, {
                 MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
             })
             
             HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/request_password_token", data: ["user":["email":email]]) { (result) in
+                
+                timeout.invalidate()
+                
                 let jason = JSON(result)
                 let user:[String:JSON] = jason["user"].dictionaryValue
                 var message:String = jason["message"].stringValue

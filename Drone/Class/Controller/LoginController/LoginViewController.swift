@@ -90,7 +90,7 @@ class LoginViewController: UIViewController {
     }
 
     func loginRequest() {
-        if(AppTheme.isNull(usernameT!.text!) || AppTheme.isEmail(usernameT!.text!)) {
+        if(AppTheme.isNull(usernameT!.text!) || !AppTheme.isEmail(usernameT!.text!)) {
             let banner = Banner(title: NSLocalizedString("your username is null or username not is email", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
