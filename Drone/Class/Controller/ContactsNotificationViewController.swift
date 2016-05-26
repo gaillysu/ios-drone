@@ -12,6 +12,7 @@ import AddressBook
 import AddressBookUI
 import MRProgress
 import SwiftyTimer
+import BRYXBanner
 
 
 class ContactsNotificationViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ABPeoplePickerNavigationControllerDelegate {
@@ -51,6 +52,12 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     
     func add(){
         if AppDelegate.getAppDelegate().isConnected() {
+            if contactsFilterArray.count<15 {
+                let banner = Banner(title: NSLocalizedString("A maximum of 15 contacts can be added.", comment: ""), subtitle: nil, image: nil, backgroundColor: UIColor.getBaseColor())
+                banner.dismissesOnTap = true
+                banner.show(duration: 1.2)
+                return
+            }
             let authorizationStatus = ABAddressBookGetAuthorizationStatus()
             switch authorizationStatus {
             case .Denied, .Restricted:
