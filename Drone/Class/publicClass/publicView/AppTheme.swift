@@ -508,7 +508,7 @@ class AppTheme {
     }
 
     class func isEmail(email:String)->Bool{
-        return email.isMatchedByRegex("w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*")
+        return email.isMatchedByRegex("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")
     }
 
     class func isPassword(password:String)->Bool{

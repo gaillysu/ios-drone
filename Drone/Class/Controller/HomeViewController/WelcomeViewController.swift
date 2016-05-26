@@ -15,7 +15,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var loginB: UIButton!
     @IBOutlet weak var registB: UIButton!
-
+    @IBOutlet weak var forgetButton: UIButton!
 
     init(fromMenu: Bool = false) {
         super.init(nibName: "WelcomeViewController", bundle: NSBundle.mainBundle())
@@ -51,6 +51,12 @@ class WelcomeViewController: UIViewController {
         if registB.isEqual(sender) {
             let register:RegisterViewController = RegisterViewController()
             self.navigationController?.pushViewController(register, animated: true)
+        }
+        
+        if forgetButton.isEqual(sender) {
+            let checkEmail:UINavigationController = UINavigationController(rootViewController: CheckEmailController())
+            checkEmail.navigationBarHidden = true
+            self.presentViewController(checkEmail, animated: true, completion: nil)
         }
     }
     override func didReceiveMemoryWarning() {

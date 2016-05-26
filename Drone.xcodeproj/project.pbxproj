@@ -34,6 +34,10 @@
 		0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */; };
 		006F94301CCA0C320073C150 /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 006F942F1CCA0C310073C150 /* white_background.png */; };
 		007139661CD9E50600787CA2 /* MRProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007139651CD9E50600787CA2 /* MRProgress.framework */; };
+		008845E51CF69F67006EA77F /* ForgetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008845E31CF69F67006EA77F /* ForgetPasswordController.swift */; };
+		008845E61CF69F67006EA77F /* ForgetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008845E41CF69F67006EA77F /* ForgetPasswordController.xib */; };
+		008845EA1CF6A4D5006EA77F /* CheckEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008845E81CF6A4D5006EA77F /* CheckEmailController.swift */; };
+		008845EB1CF6A4D5006EA77F /* CheckEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008845E91CF6A4D5006EA77F /* CheckEmailController.xib */; };
 		0089310A1CC779B30013E6D8 /* WhichDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */; };
 		0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */; };
 		008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */; };
@@ -248,6 +252,10 @@
 		0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYKeyboardManager.framework; path = "Pods/../build/Debug-iphoneos/YYKeyboardManager.framework"; sourceTree = "<group>"; };
 		006F942F1CCA0C310073C150 /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
 		007139651CD9E50600787CA2 /* MRProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MRProgress.framework; path = "Pods/../build/Debug-iphoneos/MRProgress.framework"; sourceTree = "<group>"; };
+		008845E31CF69F67006EA77F /* ForgetPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordController.swift; sourceTree = "<group>"; };
+		008845E41CF69F67006EA77F /* ForgetPasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordController.xib; sourceTree = "<group>"; };
+		008845E81CF6A4D5006EA77F /* CheckEmailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckEmailController.swift; sourceTree = "<group>"; };
+		008845E91CF6A4D5006EA77F /* CheckEmailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckEmailController.xib; sourceTree = "<group>"; };
 		008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichDeviceViewController.swift; sourceTree = "<group>"; };
 		0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhichDeviceViewController.xib; sourceTree = "<group>"; };
 		008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Drone/Class/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -497,6 +505,24 @@
 			path = ConnectionViewController;
 			sourceTree = "<group>";
 		};
+		008845E21CF69F2F006EA77F /* ForgetPasswordController */ = {
+			isa = PBXGroup;
+			children = (
+				008845E31CF69F67006EA77F /* ForgetPasswordController.swift */,
+				008845E41CF69F67006EA77F /* ForgetPasswordController.xib */,
+			);
+			path = ForgetPasswordController;
+			sourceTree = "<group>";
+		};
+		008845E71CF6A48C006EA77F /* CheckEmailController */ = {
+			isa = PBXGroup;
+			children = (
+				008845E81CF6A4D5006EA77F /* CheckEmailController.swift */,
+				008845E91CF6A4D5006EA77F /* CheckEmailController.xib */,
+			);
+			path = CheckEmailController;
+			sourceTree = "<group>";
+		};
 		008931071CC7799F0013E6D8 /* WhichDeviceViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +614,8 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				008845E71CF6A48C006EA77F /* CheckEmailController */,
+				008845E21CF69F2F006EA77F /* ForgetPasswordController */,
 				00F1AF3C1CACD82600CB9A15 /* AddDeviceViewController */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
@@ -1399,7 +1427,9 @@
 				CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */,
 				9E455E111CD5B90300F79356 /* DeviceViewController.xib in Resources */,
 				006F94301CCA0C320073C150 /* white_background.png in Resources */,
+				008845EB1CF6A4D5006EA77F /* CheckEmailController.xib in Resources */,
 				9E455E171CD5B95900F79356 /* DeviceTableViewCell.xib in Resources */,
+				008845E61CF69F67006EA77F /* ForgetPasswordController.xib in Resources */,
 				CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */,
 				9EF7EEAB1CD89DDC009B0928 /* ProfileTableViewCell.xib in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
@@ -1503,6 +1533,7 @@
 				00982C481C868C8A003DA5E2 /* SetAppConfigRequest.swift in Sources */,
 				9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */,
 				00982BF31C868C8A003DA5E2 /* MyNevoView.swift in Sources */,
+				008845E51CF69F67006EA77F /* ForgetPasswordController.swift in Sources */,
 				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
@@ -1593,6 +1624,7 @@
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
 				00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
+				008845EA1CF6A4D5006EA77F /* CheckEmailController.swift in Sources */,
 				0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */,
 				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,
 				00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */,
