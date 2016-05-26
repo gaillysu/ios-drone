@@ -89,6 +89,11 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             let steps:Int = data["dailySteps"]!
             let timerInterval:Int = data["timerInterval"]!
             if (steps != 0) {
+                let date:NSDate = NSDate(timeIntervalSince1970: Double(timerInterval))
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                let dateString = "\(formatter.stringFromDate(date))"
+                
                 let stepsArray = UserSteps.getCriteria("WHERE date = \(timerInterval)")
                 if(stepsArray.count>0) {
                     let step:UserSteps = stepsArray[0] as! UserSteps
@@ -98,7 +103,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     
                     //update steps network global queue
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                        HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/update", data: ["steps": ["id": "\(stepsModel.id)","uid": "\(profile.id)","steps": "\(data["dailySteps"]!)","date": "\(data["timerInterval"]!)"]], completion: { (result) in
+                        
+                        HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/update", data: ["steps": ["id": "\(stepsModel.id)","uid": "\(profile.id)","steps": "\(data["dailySteps"]!)","date": dateString]], completion: { (result) in
                             
                             let json = JSON(result)
                             let message = json["message"].stringValue
@@ -119,7 +125,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     
                     //create steps network global queue
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                        HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(data["dailySteps"]!)","date": "\(data["timerInterval"]!)"]], completion: { (result) in
+                        HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(data["dailySteps"]!)","date": dateString]], completion: { (result) in
                             let json = JSON(result)
                             let message = json["message"].stringValue
                             let status = json["status"].intValue
