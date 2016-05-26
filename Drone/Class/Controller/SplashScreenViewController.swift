@@ -13,6 +13,14 @@ class SplashScreenViewController: BaseViewController {
  
     private final let TIMER_DURATION = 1.4;
     var timer:NSTimer?
+    init() {
+        super.init(nibName: "SplashScreenViewController", bundle: NSBundle.mainBundle())
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidAppear(animated: Bool) {
         timer = NSTimer.scheduledTimerWithTimeInterval(TIMER_DURATION, target: self, selector: #selector(SplashScreenViewController.nextController), userInfo: nil, repeats: true)
     }

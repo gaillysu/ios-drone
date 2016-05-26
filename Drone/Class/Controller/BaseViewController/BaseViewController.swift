@@ -21,6 +21,7 @@ extension UIViewController {
 
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
         if((UIDevice.currentDevice().systemVersion as NSString).floatValue>7.0){
             self.edgesForExtendedLayout = UIRectEdge.None;
             self.extendedLayoutIncludesOpaqueBars = false;
