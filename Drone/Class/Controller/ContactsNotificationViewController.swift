@@ -21,7 +21,6 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     var contactsFilterArray:NSArray = ContactsFilter.getAll()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.navigationItem.title = "Notifications"
         self.navigationController!.navigationBar.topItem!.title = "";

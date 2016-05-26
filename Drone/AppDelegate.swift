@@ -54,25 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         mConnectionController?.setDelegate(self)
 
         log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
-        
-        print(NSTimeZone.knownTimeZoneNames())
-        let now = NSDate()
-        let cst = NSTimeZone(name: "America/New_York")!
-        let dateInCST = now.beginningOfDay.change(timeZone: cst)
-        let timezone = dateInCST.timeZone
-        let t = timezone.daylightSavingTime
-        let tt = timezone.secondsFromGMT
-        let ttt = timezone.daylightSavingTimeOffset
-        
-        
-        let cst2 = NSTimeZone(name: "Europe/Athens")!
-        let dateInCST2 = now.beginningOfDay.change(timeZone: cst2)
-        let timezone2 = dateInCST2.timeZone
-        let t2 = timezone2.daylightSavingTime
-        let tt2 = timezone2.secondsFromGMT
-        let ttt2 = timezone2.daylightSavingTimeOffset
-        
-        
+      
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
         let nav:UINavigationController = UINavigationController(rootViewController: SplashScreenViewController())
@@ -121,12 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         }
         let dbpath:String = docsdir.stringByAppendingString(DRONEDBNAME)
         return dbpath;
-    }
-
-    func rootTabbarController() {
-        let navigationController:UINavigationController = UINavigationController(rootViewController: MenuViewController())
-        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
-        self.window?.rootViewController = navigationController
     }
     
     // MARK: -AppDelegate SET Function
