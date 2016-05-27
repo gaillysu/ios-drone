@@ -174,13 +174,13 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         }else  if(indexPath.row == 3){
             cell.itemTextField.placeholder = "Length"
             cell.itemTextField!.text = "\(String(profile.length)) CM"
-            cell.setInputVariables(self.generatePickerData(100, rangeEnd: 220, interval: 0))
+            cell.setInputVariables(self.generatePickerData(100, rangeEnd: 250, interval: 0))
             cell.setType(.Numeric)
             cell.textPostFix = " CM"
         }else  if(indexPath.row == 4){
             cell.itemTextField.placeholder = "Weight"
             cell.itemTextField!.text = "\(String(profile.weight)) KG"
-            cell.setInputVariables(self.generatePickerData(10, rangeEnd: 200, interval: 0))
+            cell.setInputVariables(self.generatePickerData(35, rangeEnd: 150, interval: 0))
             cell.setType(.Numeric)
             cell.textPostFix = " KG"
         }else  if(indexPath.row == 5){

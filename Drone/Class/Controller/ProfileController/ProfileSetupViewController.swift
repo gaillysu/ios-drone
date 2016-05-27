@@ -55,7 +55,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
         textfiledBG.layer.borderColor = UIColor(rgba: "#6F7179").CGColor
         YYKeyboardManager.defaultManager().addObserver(self)
         //Init pickerView the data
-        for index:Int in 150...250 {
+        for index:Int in 100...250 {
             lengthArray.append(index)
         }
 
