@@ -276,11 +276,11 @@ extension StepsViewController {
             calendarBackGroundView.addGestureRecognizer(tap)
             self.view.addSubview(calendarBackGroundView)
 
-            let fillView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,275))
+            let fillView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,280))
             fillView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             calendarBackGroundView.addSubview(fillView)
 
-            self.menuView = CVCalendarMenuView(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.size.width - 20, 20))
+            self.menuView = CVCalendarMenuView(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.size.width - 20, 50))
             self.menuView?.dayOfWeekTextColor = UIColor.whiteColor()
             self.menuView?.dayOfWeekTextColor = UIColor.grayColor()
             self.menuView?.dayOfWeekFont = UIFont.systemFontOfSize(15)
@@ -289,7 +289,7 @@ extension StepsViewController {
             fillView.addSubview(menuView!)
 
             // CVCalendarView initialization with frame
-            self.calendarView = CVCalendarView(frame: CGRectMake(10, 23, UIScreen.mainScreen().bounds.size.width - 20, 250))
+            self.calendarView = CVCalendarView(frame: CGRectMake(10, 50, UIScreen.mainScreen().bounds.size.width - 20, 230))
             self.calendarView?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(1)
             calendarView?.hidden = false
             fillView.addSubview(calendarView!)

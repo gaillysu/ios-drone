@@ -15,6 +15,7 @@ class AnalysisStepsChartView: LineChartView {
     private var yVals:[ChartDataEntry] = [];
     
     func drawSettings(xAxis:ChartXAxis, yAxis:ChartYAxis, rightAxis:ChartYAxis){
+        noDataText = "No History Available."
         descriptionText = ""
         dragEnabled = false
         setScaleEnabled(false)
