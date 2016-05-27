@@ -172,7 +172,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
                 let birthday = dateFormatter.stringFromDate(birthdayDate!)
                 let sex = user["sex"]!.intValue == 1 ? true : false;
                 if(status > 0 && UserProfile.getAll().count == 0) {
-                    let userprofile:UserProfile = UserProfile(keyDict: ["first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue,"sex": sex, "weight":(user["weight"]?.floatValue)!, "birthday":birthday])
+                    let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"]!.intValue,"first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue,"sex": sex, "weight":(user["weight"]?.floatValue)!, "birthday":birthday])
                     userprofile.add({ (id, completion) in
                     })
                     let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: false)

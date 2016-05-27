@@ -37,13 +37,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         profile = UserProfile.getAll()[0] as! UserProfile;
         steps = UserGoal.getAll()[0] as! UserGoal
     }
-    
-    
-    func someSelector() {
-        
-    }
 
-    
     func save(){
         if !AppDelegate.getAppDelegate().isConnected() {
             let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
@@ -57,15 +51,37 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         dismissKeyboard()
         
         /**
+         *  update goal
+         *
+         */
+        steps.update()
+        
+        /**
          *  change profile to database
          *
          */
         profile.update()
-        /**
-         *  change profile to database sync profile with watch
-         *
-         */
-        AppDelegate.getAppDelegate().setUserProfile()
+        
+        AppDelegate.getAppDelegate().setGoal(NumberOfStepsGoal(steps: steps.goalSteps))
+        let timerout:NSTimer = NSTimer.after(5.seconds) {
+            /**
+             *  change profile to database sync profile with watch
+             *
+             */
+            AppDelegate.getAppDelegate().setUserProfile()
+        }
+        
+        AppDelegate.getAppDelegate().sendIndex = {
+            (index) -> Void in
+            timerout.invalidate()
+            AppDelegate.getAppDelegate().log.debug("send set goal")
+            /**
+             *  change profile to database sync profile with watch
+             *
+             */
+            AppDelegate.getAppDelegate().setUserProfile()
+        }
+        
         
         loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
         loadingIndicator.setTintColor(UIColor.getBaseColor())
@@ -84,7 +100,8 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                 self.loadingIndicator.mode = MRProgressOverlayViewMode.Checkmark
                 MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
                 let banner:Banner = Banner(title: "Update request error", subtitle: "", image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
-                banner.show()
+                banner.dismissesOnTap = true
+                banner.show(duration: 3)
             }
         }
         

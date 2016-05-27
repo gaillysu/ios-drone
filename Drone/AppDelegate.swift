@@ -306,6 +306,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 //step4: get big syncactivity Activity data
                 SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
                 self.getActivity()
+               sendIndex?(index: 0)
             }
 
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {

@@ -65,7 +65,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initTitleView()
-        let goal:GoalModel = GoalModel.getAll()[0] as! GoalModel
+        let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
         percentageLabel.text = String(format:"Goal: %d",goal.goalSteps)
         self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
         stepsLabel.text = "0"
