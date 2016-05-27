@@ -83,15 +83,17 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
      }
     
     func add(){
-        if AppDelegate.getAppDelegate().isConnected() {
-            self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
-        }else{
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
-            view.setTintColor(UIColor.getBaseColor())
-            NSTimer.after(0.6.second) {
-                view.dismiss(true)
-            }
-        }
+        //self.presentViewController(self.makeStandardUINavigationController(ChooseCityController()), animated: true, completion: nil)
+        self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
+//        if AppDelegate.getAppDelegate().isConnected() {
+//            self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
+//        }else{
+//            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
+//            view.setTintColor(UIColor.getBaseColor())
+//            NSTimer.after(0.6.second) {
+//                view.dismiss(true)
+//            }
+//        }
     }
     
 
