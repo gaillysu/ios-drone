@@ -10,4 +10,6 @@
 "no_watch_connected"="No watch connected";
 "Ok"="Ok";
 "no_data_selected_date"="No data for the selected date available.";
-"no_network"="A problem has occured with the network. Try again later.";
+"no_network"="Could not register, try again later.";
+"not_update"=" Could not update, try again later.";
+"not_login"="Could not login, try again later.";
