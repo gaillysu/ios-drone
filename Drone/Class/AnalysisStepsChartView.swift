@@ -21,7 +21,7 @@ class AnalysisStepsChartView: LineChartView {
         pinchZoomEnabled = false
         legend.enabled = false
         rightAxis.enabled = true
-        
+
         let limitLine = ChartLimitLine(limit: 1500,label: "Goal");
         limitLine.lineWidth = 1.5
         limitLine.labelPosition = ChartLimitLine.ChartLimitLabelPosition.LeftTop

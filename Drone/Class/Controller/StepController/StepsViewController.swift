@@ -112,25 +112,40 @@ extension StepsViewController {
     func bulidChart() {
 
         barChart!.noDataText = "No History Available."
-        barChart!.descriptionText = "";
+        barChart!.descriptionText = ""
         barChart!.pinchZoomEnabled = false
-        barChart!.doubleTapToZoomEnabled = false;
-        barChart!.legend.enabled = false;
+        barChart!.doubleTapToZoomEnabled = false
+        barChart!.legend.enabled = false
         barChart!.dragEnabled = true
-        let xAxis:ChartXAxis = barChart!.xAxis;
-        xAxis.labelTextColor = UIColor.grayColor();
-        xAxis.axisLineColor = UIColor.grayColor();
-        xAxis.drawAxisLineEnabled = false;
-        xAxis.drawGridLinesEnabled = false;
+        barChart!.rightAxis.enabled = true
+        
+        let xAxis:ChartXAxis = barChart!.xAxis
+        xAxis.labelTextColor = UIColor.grayColor()
+        xAxis.axisLineColor = UIColor.grayColor()
+        xAxis.drawAxisLineEnabled = true
+        xAxis.drawGridLinesEnabled = true
         xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
 
-        let yAxis:ChartYAxis = barChart!.leftAxis;
-        yAxis.labelTextColor = UIColor.grayColor();
-        yAxis.axisLineColor = UIColor.clearColor();
+        let yAxis:ChartYAxis = barChart!.leftAxis
+        yAxis.labelTextColor = UIColor.grayColor()
+        yAxis.axisLineColor = UIColor.grayColor()
+        yAxis.drawAxisLineEnabled  = true
+        yAxis.drawGridLinesEnabled  = true
+        yAxis.drawLimitLinesBehindDataEnabled = true
+        
+        let rightAxis:ChartYAxis = barChart!.rightAxis
+        rightAxis.labelTextColor = UIColor.clearColor()
+        rightAxis.axisLineColor = UIColor.grayColor()
+        rightAxis.drawAxisLineEnabled  = true
+        rightAxis.drawGridLinesEnabled  = true
+        rightAxis.drawLimitLinesBehindDataEnabled = true
+        rightAxis.drawZeroLineEnabled = true
+        
         let goal:GoalModel = GoalModel.getAll()[0] as! GoalModel
         let max = goal.goalSteps/5
-        yAxis.customAxisMax = Double(max)
-        yAxis.customAxisMin = 0
+
+        yAxis.axisMaxValue = Double(max)
+        yAxis.axisMinValue = 0
         if(max % 500 == 0){
             yAxis.setLabelCount((Int(max)/500)+1, force: true);
         }else{
@@ -156,11 +171,11 @@ extension StepsViewController {
             yVals.append(BarChartDataEntry(value: hourData, xIndex:i));
             
             if(i%6 == 0){
-                xVals.append("\(i):00");
+                xVals.append("\(i):00")
             }else if(i == 23) {
-                xVals.append("\(i+1):00");
+                xVals.append("\(i+1):00")
             }else{
-                xVals.append("");
+                xVals.append("")
             }
 
             let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "Steps")
@@ -170,8 +185,8 @@ extension StepsViewController {
             barChartSet.highlightColor = UIColor.getBaseColor()
             barChartSet.valueColors = [UIColor.getGreyColor()]
             let barChartData = BarChartData(xVals: xVals, dataSet: barChartSet)
-            barChartData.setDrawValues(false);
-            self.barChart.data = barChartData;
+            barChartData.setDrawValues(false)
+            self.barChart.data = barChartData
         }
         
         barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
@@ -227,14 +242,12 @@ extension StepsViewController {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
             }
-            
             let formatter = NSDateFormatter()
             formatter.dateFormat = "MMMM"
             let dateString = "\(formatter.stringFromDate(NSDate(timeIntervalSince1970: monthTimeInterval))), \(NSDate(timeIntervalSince1970: monthTimeInterval).day)"
             
             lastMonthChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
-        
         lastWeekChart.invalidateChart()
         thisWeekChart.invalidateChart()
         lastMonthChart.invalidateChart()
