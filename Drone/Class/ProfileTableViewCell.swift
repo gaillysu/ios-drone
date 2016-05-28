@@ -11,7 +11,14 @@ import Foundation
 class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
    
     private var inputVariables: NSMutableArray = NSMutableArray()
-    private var keyBoardType:Type?
+    private var keyBoardType:Type?{
+        didSet {
+            if keyBoardType == Type.Email {
+                itemTextField.enabled = false
+            }
+        }
+    }
+    
     var textPreFix = "";
     var textPostFix = "";
     var cellIndex:Int = 0
@@ -35,7 +42,11 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
     }
     
     @IBAction func editButtonAction(sender: AnyObject) {
-        itemTextField.becomeFirstResponder()
+        if itemTextField.isFirstResponder() {
+            itemTextField.resignFirstResponder()
+        }else{
+            itemTextField.becomeFirstResponder()
+        }
     }
     
     func setInputVariables(vars:NSMutableArray){
