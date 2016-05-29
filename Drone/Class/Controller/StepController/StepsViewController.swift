@@ -367,6 +367,10 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         return true // Default value is true
     }
 
+    func shouldAutoSelectDayOnMonthChange() -> Bool {
+        return false
+    }
+    
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         dayView.selectionView?.shape = CVShape.Rect
@@ -423,6 +427,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
+        dayView.selectionView?.shape = CVShape.Rect
         return false
     }
 
@@ -444,6 +449,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
 
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
+        dayView.selectionView?.shape = CVShape.Rect
         return false
     }
 
