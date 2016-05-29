@@ -123,6 +123,7 @@ extension StepsViewController {
         xAxis.drawAxisLineEnabled = false;
         xAxis.drawGridLinesEnabled = false;
         xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
+        xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 7)!
 
         let yAxis:ChartYAxis = barChart!.leftAxis;
         yAxis.labelTextColor = UIColor.grayColor();
