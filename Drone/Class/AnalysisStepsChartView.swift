@@ -15,6 +15,7 @@ class AnalysisStepsChartView: LineChartView {
     private var yVals:[ChartDataEntry] = [];
     
     func drawSettings(xAxis:ChartXAxis, yAxis:ChartYAxis, rightAxis:ChartYAxis){
+        noDataText = "No History Available."
         descriptionText = ""
         dragEnabled = false
         setScaleEnabled(false)
@@ -25,7 +26,7 @@ class AnalysisStepsChartView: LineChartView {
         let limitLine = ChartLimitLine(limit: 1500,label: "Goal");
         limitLine.lineWidth = 1.5
         limitLine.labelPosition = ChartLimitLine.ChartLimitLabelPosition.LeftTop
-        limitLine.valueFont = UIFont(name: "Helvetica-Light", size: 9)!
+        limitLine.valueFont = UIFont(name: "Helvetica-Light", size: 6)!
         limitLine.lineColor = UIColor.getGreyColor()
         
         rightAxis.axisLineColor = UIColor.getGreyColor()
@@ -44,7 +45,7 @@ class AnalysisStepsChartView: LineChartView {
         xAxis.axisLineColor = UIColor.getGreyColor()
         xAxis.drawLimitLinesBehindDataEnabled = false;
         xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
-        xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 9)!
+        xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 6)!
     }
     
     func addDataPoint(name:String, entry:ChartDataEntry){
