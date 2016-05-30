@@ -9,8 +9,8 @@
 import UIKit
 import MRProgress
 
-protocol didSelectedDelegate:NSObjectProtocol {
-    func didSelectedLocalTimeZone(ietm:NSDictionary)
+protocol DidSelectedDelegate:NSObjectProtocol {
+    func didSelectedLocalTimeZone(ietmKey:String)
 }
 
 class WorldClockViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
