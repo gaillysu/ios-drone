@@ -24,6 +24,9 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     @IBOutlet var mainview: UIView!
     @IBOutlet weak var circleProgressView: CircleProgressView!
     // TODO eventbus: Steps, small & big sync
+    @IBOutlet weak var lastMiles: UILabel!
+    @IBOutlet weak var lastCalories: UILabel!
+    @IBOutlet weak var lastActiveTime: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
     
     @IBOutlet weak var barChart: BarChartView!
@@ -158,6 +161,12 @@ extension StepsViewController {
         var xVals = [String]();
         var yVals = [ChartDataEntry]();
 
+        let profile:NSArray = UserProfile.getAll()
+        let userProfile:UserProfile = profile.objectAtIndex(0) as! UserProfile
+        let strideLength:Double = Double(userProfile.length)*0.415/100
+        
+        var lastSteps:Int = 0
+        var lastTimeframe:Int = 0
         for i in 0 ..< 24 {
             let dayDate:NSDate = NSDate()
             
@@ -168,7 +177,11 @@ extension StepsViewController {
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
+                if hSteps.steps>0 {
+                    lastTimeframe += 5
+                }
             }
+            lastSteps += Int(hourData)
             yVals.append(BarChartDataEntry(value: hourData, xIndex:i));
             
             if(i%6 == 0){
@@ -190,6 +203,14 @@ extension StepsViewController {
             self.barChart.data = barChartData
         }
         
+        if lastSteps>0 {
+            lastMiles.text = String(format: "%.2f",strideLength*Double(lastSteps)/1000)
+            let calories:Double = (Double(userProfile.weight)*1.2565)*1.6*(strideLength*Double(lastSteps)/1000)
+            lastCalories.text = String(format: "%.2f",calories)
+            lastActiveTime.text = "\(lastTimeframe)m"
+        }
+        
+        
         barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
         lastWeekChart.drawSettings(lastWeekChart.xAxis, yAxis: lastWeekChart.leftAxis, rightAxis: lastWeekChart.rightAxis)
         thisWeekChart.drawSettings(thisWeekChart.xAxis, yAxis: thisWeekChart.leftAxis, rightAxis: thisWeekChart.rightAxis)
@@ -197,6 +218,9 @@ extension StepsViewController {
 
         let oneWeekSeconds:Double = 604800
         let oneDaySeconds:Double = 86400
+        
+        var thisWeekSteps:Int = 0
+        var thisWeekTime:Int = 0
         for i in 0 ..< 7 {
             let dayTimeInterval:NSTimeInterval = NSDate().beginningOfWeek.timeIntervalSince1970+(oneDaySeconds*Double(i))
             let dayDate:NSDate = NSDate(timeIntervalSince1970: dayTimeInterval)
@@ -206,12 +230,25 @@ extension StepsViewController {
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
+                thisWeekSteps+=Int(hourData)
+                if hourData>0 {
+                    thisWeekTime+=5
+                }
             }
             
             let formatter = NSDateFormatter()
             formatter.dateFormat = "M/dd"
             let dateString = "\(formatter.stringFromDate(dayDate))"
             thisWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
+        }
+        
+        if thisWeekSteps>0 {
+            
+            thisWeekMiles.text = String(format: "%.2f",strideLength*Double(thisWeekSteps)/1000)
+            
+            let calories:Double = (Double(userProfile.weight)*1.2565)*1.6*(strideLength*Double(thisWeekSteps)/1000)
+            thisWeekCalories.text = String(format: "%.2f",calories)
+            thisWeekActiveTime.text = "\(thisWeekTime)m"
         }
 
         for i in 0 ..< 7 {
