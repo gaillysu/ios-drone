@@ -231,7 +231,7 @@ extension StepsViewController {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
                 thisWeekSteps+=Int(hourData)
-                if hourData>0 {
+                if hSteps.steps>0 {
                     thisWeekTime+=5
                 }
             }
@@ -243,14 +243,14 @@ extension StepsViewController {
         }
         
         if thisWeekSteps>0 {
-            
             thisWeekMiles.text = String(format: "%.2f",strideLength*Double(thisWeekSteps)/1000)
-            
             let calories:Double = (Double(userProfile.weight)*1.2565)*1.6*(strideLength*Double(thisWeekSteps)/1000)
             thisWeekCalories.text = String(format: "%.2f",calories)
             thisWeekActiveTime.text = "\(thisWeekTime)m"
         }
 
+        var lastWeekSteps:Int = 0
+        var lastWeekTime:Int = 0
         for i in 0 ..< 7 {
             let dayTimeInterval:NSTimeInterval = NSDate().beginningOfWeek.timeIntervalSince1970+(oneDaySeconds*Double(i))-oneWeekSeconds
             let dayDate:NSDate = NSDate(timeIntervalSince1970: dayTimeInterval)
@@ -260,6 +260,11 @@ extension StepsViewController {
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
+                lastWeekSteps+=Int(hourData)
+                if hSteps.steps>0 {
+                    lastWeekTime+=5
+                }
+                
             }
             
             let formatter = NSDateFormatter()
@@ -269,9 +274,17 @@ extension StepsViewController {
             lastWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
         
+        if lastWeekSteps>0 {
+            lastWeekMiles.text = String(format: "%.2f",strideLength*Double(lastWeekSteps)/1000)
+            let calories:Double = (Double(userProfile.weight)*1.2565)*1.6*(strideLength*Double(lastWeekSteps)/1000)
+            lastWeekCalories.text = String(format: "%.2f",calories)
+            lastWeekActiveTime.text = "\(lastWeekTime)m"
+        }
 
         let lastBeginningOfMonth:NSTimeInterval = NSDate().beginningOfDay.timeIntervalSince1970
         
+        var lastMonthSteps:Int = 0
+        var lastMonthTime:Int = 0
         for i in 0 ..< 30 {
             let monthTimeInterval:NSTimeInterval = lastBeginningOfMonth-oneDaySeconds*Double(i)
             let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(monthTimeInterval) AND \(monthTimeInterval+oneDaySeconds-1)")
@@ -279,6 +292,10 @@ extension StepsViewController {
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
+                lastMonthSteps+=Int(hourData)
+                if hSteps.steps>0 {
+                    lastMonthTime+=5
+                }
             }
             let formatter = NSDateFormatter()
             formatter.dateFormat = "M/dd"
@@ -286,6 +303,14 @@ extension StepsViewController {
             
             lastMonthChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
+        
+        if lastMonthSteps>0 {
+            lastMonthMiles.text = String(format: "%.2f",strideLength*Double(lastMonthSteps)/1000)
+            let calories:Double = (Double(userProfile.weight)*1.2565)*1.6*(strideLength*Double(lastMonthSteps)/1000)
+            lastMonthCalories.text = String(format: "%.2f",calories)
+            lastMonthActiveTime.text = "\(lastMonthTime)m"
+        }
+        
         lastWeekChart.invalidateChart()
         thisWeekChart.invalidateChart()
         lastMonthChart.invalidateChart()
