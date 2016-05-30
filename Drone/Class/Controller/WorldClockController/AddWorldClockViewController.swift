@@ -177,14 +177,12 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
             
             AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
             
-            var cityName = displayName
+            var cityName = displayName.componentsSeparatedByString(",")
+            if cityName.count == 0 {
+                cityName = [displayName]
+            }
             
-            let range: Range<String.Index> = cityName.rangeOfString(",")!
-            var index: Int = cityName.startIndex.distanceTo(range.startIndex)
-            index = index - 1
-            let newRange = cityName.endIndex.advancedBy((index * -1))..<cityName.endIndex
-            cityName.removeRange(newRange)
-            let worldClock:WorldClock = WorldClock(keyDict: ["city_name":cityName,"system_name":citiesGmtDict[displayName]!, "display_name": displayName]);
+            let worldClock:WorldClock = WorldClock(keyDict: ["city_name":cityName[0],"system_name":citiesGmtDict[displayName]!, "display_name": displayName]);
             worldClock.add { (id, completion) in
                 if(Bool(completion!)) {
                     print("word clock added to db!")
