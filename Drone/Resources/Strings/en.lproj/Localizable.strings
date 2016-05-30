@@ -13,3 +13,4 @@
 "no_network"="Could not register, try again later.";
 "not_update"=" Could not update, try again later.";
 "not_login"="Could not login, try again later.";
+"add_city"="City has already been added.";
