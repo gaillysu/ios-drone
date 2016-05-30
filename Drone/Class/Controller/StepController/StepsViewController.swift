@@ -86,9 +86,6 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     }
 
     override func viewDidDisappear(animated: Bool) {
-        lastWeekChart.reset()
-        lastMonthChart.reset()
-        thisWeekChart.reset()
 
         if queryTimer!.valid {
             queryTimer?.invalidate()
@@ -110,7 +107,10 @@ extension StepsViewController {
     }
 
     func bulidChart() {
-
+        lastWeekChart.reset()
+        lastMonthChart.reset()
+        thisWeekChart.reset()
+        
         barChart!.noDataText = "No History Available."
         barChart!.descriptionText = ""
         barChart!.pinchZoomEnabled = false
