@@ -161,6 +161,25 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         titleView.image = UIImage(named: "drone_logo")
         self.navigationItem.titleView = titleView
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
+        //add test steps data function
+        /**
+         for index:Int in 0..<30 {
+         let date:NSDate = NSDate()
+         let timerInterval:Int = Int(date.beginningOfMonth.timeIntervalSince1970)
+         let daySeconds:Int = 86400
+         for timerIndex:Int in 8..<21 {
+         let randomSteps:Int = Int(arc4random()%500)
+         let randomHour:Int = Int(arc4random()%10)*5
+         let currentDate:Int = timerInterval + (index*daySeconds) + (timerIndex*3600) + (randomHour*60)
+         let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(randomSteps)",  "distance": "\(0)", "date":NSTimeInterval(currentDate)])
+         stepsModel.add({ (id, completion) -> Void in
+         XCGLogger.defaultInstance().debug("stepsModel.add completion:\(Bool(completion!))")
+         })
+         }
+         
+         }
+         */
     }
     
     override func viewWillAppear(animated: Bool) {

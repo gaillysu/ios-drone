@@ -209,8 +209,8 @@ extension StepsViewController {
             }
             
             let formatter = NSDateFormatter()
-            formatter.dateFormat = "MMMM"
-            let dateString = "\(formatter.stringFromDate(dayDate)), \(dayDate.day)"
+            formatter.dateFormat = "M/dd"
+            let dateString = "\(formatter.stringFromDate(dayDate))"
             thisWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
 
@@ -226,17 +226,17 @@ extension StepsViewController {
             }
             
             let formatter = NSDateFormatter()
-            formatter.dateFormat = "MMMM"
-            let dateString = "\(formatter.stringFromDate(dayDate)), \(dayDate.day)"
+            formatter.dateFormat = "M/dd"
+            let dateString = "\(formatter.stringFromDate(dayDate))"
             
             lastWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
         
-        let lastEndOfMonth:NSTimeInterval = NSDate.date(year: NSDate().year, month: NSDate().month, day: 1).timeIntervalSince1970-oneDaySeconds
-        let lastBeginningOfMonth:NSTimeInterval = NSDate.date(year: NSDate().year, month: NSDate(timeIntervalSince1970: lastEndOfMonth).month, day: 1).timeIntervalSince1970
+
+        let lastBeginningOfMonth:NSTimeInterval = NSDate().beginningOfDay.timeIntervalSince1970
         
         for i in 0 ..< 30 {
-            let monthTimeInterval:NSTimeInterval = lastBeginningOfMonth+oneDaySeconds*Double(i)
+            let monthTimeInterval:NSTimeInterval = lastBeginningOfMonth-oneDaySeconds*Double(i)
             let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(monthTimeInterval) AND \(monthTimeInterval+oneDaySeconds-1)")
             var hourData:Double = 0
             for userSteps in hours {
@@ -244,8 +244,8 @@ extension StepsViewController {
                 hourData += Double(hSteps.steps)
             }
             let formatter = NSDateFormatter()
-            formatter.dateFormat = "MMMM"
-            let dateString = "\(formatter.stringFromDate(NSDate(timeIntervalSince1970: monthTimeInterval))), \(NSDate(timeIntervalSince1970: monthTimeInterval).day)"
+            formatter.dateFormat = "M/dd"
+            let dateString = "\(formatter.stringFromDate(NSDate(timeIntervalSince1970: monthTimeInterval)))"
             
             lastMonthChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
@@ -261,7 +261,7 @@ extension StepsViewController {
     func initTitleView() {
         titleView = StepsTitleView.getStepsTitleView(CGRectMake(0,0,190,50))
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MMMM"
+        formatter.dateFormat = "MMM"
         let dateString = "\(formatter.stringFromDate(NSDate())), \(NSDate().day)"
         titleView?.setCalendarButtonTitle(dateString)
         self.navigationItem.titleView = titleView
@@ -456,7 +456,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
 
     func presentedDateUpdated(date: CVDate) {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MMMM"
+        formatter.dateFormat = "MMM"
         let dateString = "\(formatter.stringFromDate(date.convertedDate()!)), \(date.day)"
         titleView?.setCalendarButtonTitle(dateString)
     }

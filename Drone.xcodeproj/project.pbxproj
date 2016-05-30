@@ -149,8 +149,6 @@
 		00F132B71CEBFC4000CF8F6B /* ClearConnectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F132B61CEBFC4000CF8F6B /* ClearConnectionRequest.swift */; };
 		00F132BA1CEC3EAB00CF8F6B /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F132B81CEC3EAB00CF8F6B /* CVCalendar.framework */; };
 		00F132BB1CEC3EAB00CF8F6B /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F132B91CEC3EAB00CF8F6B /* SwiftyTimer.framework */; };
-		00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */; };
-		00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */; };
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
@@ -377,8 +375,6 @@
 		00F132B61CEBFC4000CF8F6B /* ClearConnectionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearConnectionRequest.swift; sourceTree = "<group>"; };
 		00F132B81CEC3EAB00CF8F6B /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/CVCalendar.framework"; sourceTree = "<group>"; };
 		00F132B91CEC3EAB00CF8F6B /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/SwiftyTimer.framework"; sourceTree = "<group>"; };
-		00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
-		00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
 		00F1AF401CACD82600CB9A15 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
@@ -617,7 +613,6 @@
 			children = (
 				008845E71CF6A48C006EA77F /* CheckEmailController */,
 				008845E21CF69F2F006EA77F /* ForgetPasswordController */,
-				00F1AF3C1CACD82600CB9A15 /* AddDeviceViewController */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
 				005699D11CD05A690097938E /* SearchCityController */,
@@ -1082,16 +1077,6 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
-		00F1AF3C1CACD82600CB9A15 /* AddDeviceViewController */ = {
-			isa = PBXGroup;
-			children = (
-				00F1AF3D1CACD82600CB9A15 /* AddDeviceViewController.swift */,
-				00F1AF3E1CACD82600CB9A15 /* AddDeviceViewController.xib */,
-			);
-			name = AddDeviceViewController;
-			path = AddDeviceController;
-			sourceTree = "<group>";
-		};
 		00F1AF3F1CACD82600CB9A15 /* BaseViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1422,7 +1407,6 @@
 				CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginViewController.xib in Resources */,
 				CB28AFE01CE2E59B00639538 /* ContactsNotificationViewController.xib in Resources */,
-				00F1AF471CACD82600CB9A15 /* AddDeviceViewController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
 				9E62A1A91CDB1E150098C39B /* AddWorldClockViewController.xib in Resources */,
 				CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */,
@@ -1560,7 +1544,6 @@
 				00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
-				00F1AF461CACD82600CB9A15 /* AddDeviceViewController.swift in Sources */,
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */,
 				00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */,
