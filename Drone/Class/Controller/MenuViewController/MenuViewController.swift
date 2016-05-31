@@ -164,21 +164,21 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         //add test steps data function
         /**
-         for index:Int in 0..<30 {
-         let date:NSDate = NSDate()
-         let timerInterval:Int = Int(date.beginningOfMonth.timeIntervalSince1970)
-         let daySeconds:Int = 86400
-         for timerIndex:Int in 8..<21 {
-         let randomSteps:Int = Int(arc4random()%500)
-         let randomHour:Int = Int(arc4random()%10)*5
-         let currentDate:Int = timerInterval + (index*daySeconds) + (timerIndex*3600) + (randomHour*60)
-         let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(randomSteps)",  "distance": "\(0)", "date":NSTimeInterval(currentDate)])
-         stepsModel.add({ (id, completion) -> Void in
-         XCGLogger.defaultInstance().debug("stepsModel.add completion:\(Bool(completion!))")
-         })
-         }
-         
-         }
+        for index:Int in 0..<31 {
+            let date:NSDate = NSDate()
+            let timerInterval:Int = Int(date.beginningOfMonth.timeIntervalSince1970)
+            let daySeconds:Int = 86400
+            for timerIndex:Int in 8..<21 {
+                let randomSteps:Int = Int(arc4random()%500)
+                let randomHour:Int = Int(arc4random()%10)*5
+                let currentDate:Int = timerInterval + (index*daySeconds) + (timerIndex*3600) + (randomHour*60)
+                let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(randomSteps)",  "distance": "\(0)", "date":NSTimeInterval(currentDate)])
+                stepsModel.add({ (id, completion) -> Void in
+                    XCGLogger.defaultInstance().debug("stepsModel.add completion:\(Bool(completion!))")
+                })
+            }
+            
+        }
          */
     }
     
