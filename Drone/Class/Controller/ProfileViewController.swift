@@ -92,13 +92,12 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             let status = json["status"].intValue
             let user:[String : JSON] = json["user"].dictionaryValue
             if(status > 0 && user.count > 0) {
-                self.loadingIndicator.mode = MRProgressOverlayViewMode.Checkmark
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.loadingIndicator.dismiss(true, completion: {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
             }else{
                 print("Request error");
-                self.loadingIndicator.mode = MRProgressOverlayViewMode.Checkmark
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+                self.loadingIndicator.dismiss(true)
                 let banner:Banner = Banner(title: NSLocalizedString("not_update", comment: ""), subtitle: "", image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
                 banner.dismissesOnTap = true
                 banner.show(duration: 3)

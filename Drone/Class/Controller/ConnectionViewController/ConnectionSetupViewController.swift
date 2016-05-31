@@ -17,6 +17,9 @@ class ConnectionSetupViewController: UIViewController {
     @IBOutlet weak var connectionView: UIView!
     @IBOutlet weak var nextB: UIButton!
     @IBOutlet weak var retryButton: UIButton!
+    @IBOutlet weak var watchImage: UIImageView!
+    
+    var watchName:String = ""
     private var toMenu:Bool = true;
     init(toMenu:Bool) {
         self.toMenu = toMenu
@@ -48,6 +51,10 @@ class ConnectionSetupViewController: UIViewController {
         NSTimer.scheduledTimerWithTimeInterval(13, target: self, selector: #selector(reSearchTimerAction(_:)), userInfo: nil, repeats: true)
     }
 
+    override func viewDidLayoutSubviews() {
+        watchImage.image = UIImage(named: watchName)
+    }
+    
     //Search device until find
     func reSearchTimerAction(timer:NSTimer) {
         if AppDelegate.getAppDelegate().isConnected() {

@@ -43,7 +43,7 @@ class WhichDeviceViewController: BaseViewController {
     override func viewDidLayoutSubviews() {
         let flowLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout();
         flowLayout.scrollDirection = UICollectionViewScrollDirection.Vertical
-        flowLayout.itemSize = CGSizeMake(self.collectionView.frame.size.width/2.0-0.5, self.collectionView.frame.size.width/2.0+20)
+        flowLayout.itemSize = CGSizeMake(self.collectionView.frame.size.width/2.0-0.5, self.collectionView.frame.size.width/2.0)
         flowLayout.minimumLineSpacing = 1
         flowLayout.minimumInteritemSpacing = 1
         self.collectionView.collectionViewLayout = flowLayout
@@ -78,11 +78,21 @@ class WhichDeviceViewController: BaseViewController {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
         cell.backgroundColor = UIColor.grayColor()
+        let view = cell.contentView.viewWithTag(1700)
+        if view == nil {
+            let watchView:UIImageView = UIImageView(frame: CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height))
+            watchView.tag = 1700
+            watchView.image = UIImage(named: String(format: "welcome_%d",indexPath.row+1))
+            cell.contentView.addSubview(watchView)
+        }else{
+            (view as! UIImageView).image = UIImage(named: String(format: "welcome_%d",indexPath.row+1))
+        }
         return cell
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let connection:ConnectionSetupViewController = ConnectionSetupViewController(toMenu: false)
+        connection.watchName = String(format: "welcome_%d",indexPath.row+1)
         self.navigationController?.pushViewController(connection, animated: true)
     }
 }
