@@ -24,6 +24,9 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     @IBOutlet var mainview: UIView!
     @IBOutlet weak var circleProgressView: CircleProgressView!
     // TODO eventbus: Steps, small & big sync
+    @IBOutlet weak var lastMiles: UILabel!
+    @IBOutlet weak var lastCalories: UILabel!
+    @IBOutlet weak var lastActiveTime: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
     
     @IBOutlet weak var barChart: BarChartView!
@@ -157,7 +160,9 @@ extension StepsViewController {
         barChart.drawBarShadowEnabled = false
         var xVals = [String]();
         var yVals = [ChartDataEntry]();
-
+        
+        var lastSteps:Int = 0
+        var lastTimeframe:Int = 0
         for i in 0 ..< 24 {
             let dayDate:NSDate = NSDate()
             
@@ -168,7 +173,11 @@ extension StepsViewController {
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
+                if hSteps.steps>0 {
+                    lastTimeframe += 5
+                }
             }
+            lastSteps += Int(hourData)
             yVals.append(BarChartDataEntry(value: hourData, xIndex:i));
             
             if(i%6 == 0){
@@ -190,6 +199,21 @@ extension StepsViewController {
             self.barChart.data = barChartData
         }
         
+        if lastSteps>0 {
+            calculationData(lastSteps, completionData: { (miles, calories) in
+                self.lastMiles.text = miles
+                self.lastCalories.text = calories
+                let timer:String = String(format: "%.2f",Double(lastTimeframe)/60)
+                let timerArray = timer.componentsSeparatedByString(".")
+                if Int(timerArray[0])>0 {
+                    self.lastActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
+                }else{
+                    self.lastActiveTime.text = "\(timerArray[1])m"
+                }
+            })
+        }
+        
+        
         barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
         lastWeekChart.drawSettings(lastWeekChart.xAxis, yAxis: lastWeekChart.leftAxis, rightAxis: lastWeekChart.rightAxis)
         thisWeekChart.drawSettings(thisWeekChart.xAxis, yAxis: thisWeekChart.leftAxis, rightAxis: thisWeekChart.rightAxis)
@@ -197,6 +221,9 @@ extension StepsViewController {
 
         let oneWeekSeconds:Double = 604800
         let oneDaySeconds:Double = 86400
+        
+        var thisWeekSteps:Int = 0
+        var thisWeekTime:Int = 0
         for i in 0 ..< 7 {
             let dayTimeInterval:NSTimeInterval = NSDate().beginningOfWeek.timeIntervalSince1970+(oneDaySeconds*Double(i))
             let dayDate:NSDate = NSDate(timeIntervalSince1970: dayTimeInterval)
@@ -206,6 +233,10 @@ extension StepsViewController {
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
+                thisWeekSteps+=Int(hourData)
+                if hSteps.steps>0 {
+                    thisWeekTime+=5
+                }
             }
             
             let formatter = NSDateFormatter()
@@ -213,7 +244,23 @@ extension StepsViewController {
             let dateString = "\(formatter.stringFromDate(dayDate))"
             thisWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
+        
+        if thisWeekSteps>0 {
+            calculationData(thisWeekSteps, completionData: { (miles, calories) in
+                self.thisWeekMiles.text = miles
+                self.thisWeekCalories.text = calories
+                let timer:String = String(format: "%.2f",Double(thisWeekTime)/60)
+                let timerArray = timer.componentsSeparatedByString(".")
+                if Int(timerArray[0])>0 {
+                    self.thisWeekActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
+                }else{
+                    self.thisWeekActiveTime.text = "\(timerArray[1])m"
+                }
+            })
+        }
 
+        var lastWeekSteps:Int = 0
+        var lastWeekTime:Int = 0
         for i in 0 ..< 7 {
             let dayTimeInterval:NSTimeInterval = NSDate().beginningOfWeek.timeIntervalSince1970+(oneDaySeconds*Double(i))-oneWeekSeconds
             let dayDate:NSDate = NSDate(timeIntervalSince1970: dayTimeInterval)
@@ -223,6 +270,11 @@ extension StepsViewController {
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
+                lastWeekSteps+=Int(hourData)
+                if hSteps.steps>0 {
+                    lastWeekTime+=5
+                }
+                
             }
             
             let formatter = NSDateFormatter()
@@ -232,9 +284,24 @@ extension StepsViewController {
             lastWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
         
+        if lastWeekSteps>0 {
+            calculationData(lastWeekSteps, completionData: { (miles, calories) in
+                self.lastWeekMiles.text = miles
+                self.lastWeekCalories.text = calories
+                let timer:String = String(format: "%.2f",Double(lastWeekTime)/60)
+                let timerArray = timer.componentsSeparatedByString(".")
+                if Int(timerArray[0])>0 {
+                    self.lastWeekActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
+                }else{
+                    self.lastWeekActiveTime.text = "\(timerArray[1])m"
+                }
+            })
+        }
 
         let lastBeginningOfMonth:NSTimeInterval = NSDate().beginningOfDay.timeIntervalSince1970
         
+        var lastMonthSteps:Int = 0
+        var lastMonthTime:Int = 0
         for i in 0 ..< 30 {
             let monthTimeInterval:NSTimeInterval = lastBeginningOfMonth-oneDaySeconds*Double(i)
             let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(monthTimeInterval) AND \(monthTimeInterval+oneDaySeconds-1)")
@@ -242,6 +309,10 @@ extension StepsViewController {
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
+                lastMonthSteps+=Int(hourData)
+                if hSteps.steps>0 {
+                    lastMonthTime+=5
+                }
             }
             let formatter = NSDateFormatter()
             formatter.dateFormat = "M/dd"
@@ -249,9 +320,38 @@ extension StepsViewController {
             
             lastMonthChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
+        
+        if lastMonthSteps>0 {
+            calculationData(lastMonthSteps, completionData: { (miles, calories) in
+                self.lastMonthMiles.text = miles
+                self.lastMonthCalories.text = calories
+                let timer:String = String(format: "%.2f",Double(lastMonthTime)/60)
+                let timerArray = timer.componentsSeparatedByString(".")
+                if Int(timerArray[0])>0 {
+                    self.lastMonthActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
+                }else{
+                    self.lastMonthActiveTime.text = "\(timerArray[1])m"
+                }
+            })
+            
+        }
+        
         lastWeekChart.invalidateChart()
         thisWeekChart.invalidateChart()
         lastMonthChart.invalidateChart()
+    }
+}
+
+// MARK: - Data calculation
+extension StepsViewController {
+
+    func calculationData(steps:Int,completionData:((miles:String,calories:String) -> Void)) {
+        let profile:NSArray = UserProfile.getAll()
+        let userProfile:UserProfile = profile.objectAtIndex(0) as! UserProfile
+        let strideLength:Double = Double(userProfile.length)*0.415/100
+        let miles:Double = strideLength*Double(steps)/1000
+        let calories:Double = (Double(userProfile.weight)*1.2565)*1.6*miles
+        completionData(miles: String(format: "%.2f",miles), calories: String(format: "%.2f",calories))
     }
 }
 
@@ -404,6 +504,10 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         //There are data
         var xVals = [String]();
         var yVals = [ChartDataEntry]();
+        
+        var lastSteps:Int = 0
+        var lastTimeframe:Int = 0
+        
         for i in 0 ..< 24 {
             let dayDate:NSDate = dayView.date!.convertedDate()!
             let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
@@ -413,7 +517,11 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
+                if hSteps.steps>0 {
+                    lastTimeframe += 5
+                }
             }
+            lastSteps += Int(hourData)
             yVals.append(BarChartDataEntry(value: hourData, xIndex:i));
             
             if(i%6 == 0){
@@ -433,6 +541,21 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
             let barChartData = BarChartData(xVals: xVals, dataSet: barChartSet)
             barChartData.setDrawValues(false);
             self.barChart.data = barChartData;
+        }
+        
+        if lastSteps>0 {
+            calculationData(lastSteps, completionData: { (miles, calories) in
+                self.lastMiles.text = miles
+                self.lastCalories.text = calories
+                let timer:String = String(format: "%.2f",Double(lastTimeframe)/60)
+                let timerArray = timer.componentsSeparatedByString(".")
+                if Int(timerArray[0])>0 {
+                    self.lastActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
+                }else{
+                    self.lastActiveTime.text = "\(timerArray[1])m"
+                }
+                
+            })
         }
         
         barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
