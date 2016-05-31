@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -12,14 +12,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kAf-R6-dhk" id="d2q-eA-5ZM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5s-Ih-uYr">
-                        <rect key="frame" x="335" y="25" width="21" height="21"/>
+                        <rect key="frame" x="322" y="15.5" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="21" id="9hY-eS-XCP"/>
-                            <constraint firstAttribute="height" constant="21" id="nsK-im-Ngb"/>
+                            <constraint firstAttribute="width" constant="40" id="9hY-eS-XCP"/>
+                            <constraint firstAttribute="height" constant="40" id="nsK-im-Ngb"/>
                         </constraints>
                         <state key="normal" image="icon_pencil"/>
                         <connections>
@@ -27,7 +27,7 @@
                         </connections>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wjY-ps-MfF" customClass="AutocompleteField">
-                        <rect key="frame" x="28" y="22" width="271" height="28"/>
+                        <rect key="frame" x="28" y="22" width="258" height="28"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="24"/>
                         <textInputTraits key="textInputTraits"/>
@@ -35,7 +35,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="wjY-ps-MfF" firstAttribute="leading" secondItem="d2q-eA-5ZM" secondAttribute="leadingMargin" constant="20" id="3gh-LU-iwz"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="B5s-Ih-uYr" secondAttribute="trailing" constant="11" id="GBC-2h-gDf"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="B5s-Ih-uYr" secondAttribute="trailing" constant="5" id="GBC-2h-gDf"/>
                     <constraint firstItem="B5s-Ih-uYr" firstAttribute="centerY" secondItem="d2q-eA-5ZM" secondAttribute="centerY" id="Kct-yv-xjh"/>
                     <constraint firstItem="wjY-ps-MfF" firstAttribute="centerY" secondItem="d2q-eA-5ZM" secondAttribute="centerY" id="YcE-Hx-tX1"/>
                     <constraint firstItem="B5s-Ih-uYr" firstAttribute="leading" secondItem="wjY-ps-MfF" secondAttribute="trailing" constant="36" id="yVa-Me-2Sv"/>
