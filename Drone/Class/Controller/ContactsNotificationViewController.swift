@@ -52,7 +52,7 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     
     func add(){
         if AppDelegate.getAppDelegate().isConnected() {
-            if contactsFilterArray.count<15 {
+            if contactsFilterArray.count == 15 {
                 let banner = Banner(title: NSLocalizedString("A maximum of 15 contacts can be added.", comment: ""), subtitle: nil, image: nil, backgroundColor: UIColor.getBaseColor())
                 banner.dismissesOnTap = true
                 banner.show(duration: 1.2)

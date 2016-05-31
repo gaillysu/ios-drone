@@ -80,7 +80,16 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
         let timerInter:NSTimeInterval = NSDate.today().timeIntervalSince1970
         stepsArray = UserSteps.getCriteria("WHERE date >= \(timerInter)")
+        
+        var hourData:Double = 0
+        for steps in stepsArray! {
+            let userSteps:UserSteps = steps as! UserSteps
+            hourData += Double(userSteps.steps)
+        }
+        
+        self.setCircleProgress(Int(hourData) , goalValue: goal.goalSteps)
 
+        
         queryTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(StepsViewController.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
     }
 
