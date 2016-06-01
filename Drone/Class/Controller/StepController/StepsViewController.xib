@@ -268,7 +268,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J77-5P-Cc6" customClass="AnalysisStepsChartView" customModule="Drone">
-                                    <rect key="frame" x="8" y="87" width="329" height="267"/>
+                                    <rect key="frame" x="0.0" y="87" width="345" height="267"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="1320" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIj-nn-3qR">
@@ -314,13 +314,13 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="J77-5P-Cc6" firstAttribute="leading" secondItem="3ZP-YW-WQz" secondAttribute="leading" constant="8" id="42Y-IZ-rzE"/>
+                                <constraint firstItem="J77-5P-Cc6" firstAttribute="leading" secondItem="3ZP-YW-WQz" secondAttribute="leading" id="42Y-IZ-rzE"/>
                                 <constraint firstAttribute="bottom" secondItem="J77-5P-Cc6" secondAttribute="bottom" constant="8" id="9tk-K5-Ci1"/>
                                 <constraint firstAttribute="trailing" secondItem="UIj-nn-3qR" secondAttribute="trailing" constant="6" id="C8y-pV-2U0"/>
                                 <constraint firstItem="5K8-1d-T3Y" firstAttribute="leading" secondItem="3ZP-YW-WQz" secondAttribute="leading" constant="18" id="Ecb-Iv-K9d"/>
                                 <constraint firstItem="74I-gl-bNK" firstAttribute="centerX" secondItem="3ZP-YW-WQz" secondAttribute="centerX" id="F1h-Qr-qbL"/>
                                 <constraint firstItem="zvc-gt-urW" firstAttribute="centerX" secondItem="3ZP-YW-WQz" secondAttribute="centerX" id="HKi-VJ-PMP"/>
-                                <constraint firstAttribute="trailing" secondItem="J77-5P-Cc6" secondAttribute="trailing" constant="8" id="I9M-M6-0e8"/>
+                                <constraint firstAttribute="trailing" secondItem="J77-5P-Cc6" secondAttribute="trailing" id="I9M-M6-0e8"/>
                                 <constraint firstItem="74I-gl-bNK" firstAttribute="top" secondItem="3ZP-YW-WQz" secondAttribute="top" constant="8" id="QKj-tp-Vgc"/>
                                 <constraint firstItem="J77-5P-Cc6" firstAttribute="top" secondItem="5K8-1d-T3Y" secondAttribute="bottom" constant="8" id="TRS-j4-VdK"/>
                                 <constraint firstItem="zvc-gt-urW" firstAttribute="top" secondItem="5K8-1d-T3Y" secondAttribute="top" id="UNR-lm-g2P"/>
@@ -379,7 +379,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRo-qY-h60" customClass="AnalysisStepsChartView" customModule="Drone">
-                                    <rect key="frame" x="8" y="87" width="329" height="267"/>
+                                    <rect key="frame" x="0.0" y="87" width="345" height="267"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="1410" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbl-Hf-D8h">
@@ -424,12 +424,12 @@
                                 <constraint firstItem="fsc-ja-sML" firstAttribute="leading" secondItem="zh4-ko-8Ey" secondAttribute="leading" constant="25" id="Fde-XX-AeH"/>
                                 <constraint firstItem="Jbl-Hf-D8h" firstAttribute="top" secondItem="sTp-Ed-h3v" secondAttribute="bottom" id="KBF-ag-xD3"/>
                                 <constraint firstItem="Jbl-Hf-D8h" firstAttribute="centerX" secondItem="zh4-ko-8Ey" secondAttribute="centerX" id="NoZ-XD-Dwg"/>
-                                <constraint firstItem="pRo-qY-h60" firstAttribute="leading" secondItem="zh4-ko-8Ey" secondAttribute="leading" constant="8" id="RPZ-UV-6Vc"/>
+                                <constraint firstItem="pRo-qY-h60" firstAttribute="leading" secondItem="zh4-ko-8Ey" secondAttribute="leading" id="RPZ-UV-6Vc"/>
                                 <constraint firstItem="Jbl-Hf-D8h" firstAttribute="top" secondItem="s9j-O2-a1S" secondAttribute="top" id="She-RM-fFA"/>
                                 <constraint firstItem="sTp-Ed-h3v" firstAttribute="top" secondItem="fsc-ja-sML" secondAttribute="top" id="W5P-vh-SUj"/>
                                 <constraint firstItem="hiY-KT-bXY" firstAttribute="centerX" secondItem="zh4-ko-8Ey" secondAttribute="centerX" id="WJb-fz-DVd"/>
                                 <constraint firstAttribute="trailing" secondItem="aYK-mh-LrT" secondAttribute="trailing" constant="25" id="XSh-9v-6Ar"/>
-                                <constraint firstAttribute="trailing" secondItem="pRo-qY-h60" secondAttribute="trailing" constant="8" id="bOo-pH-YwN"/>
+                                <constraint firstAttribute="trailing" secondItem="pRo-qY-h60" secondAttribute="trailing" id="bOo-pH-YwN"/>
                                 <constraint firstItem="sTp-Ed-h3v" firstAttribute="top" secondItem="hiY-KT-bXY" secondAttribute="bottom" constant="8" id="h9e-0l-mlw"/>
                                 <constraint firstItem="sTp-Ed-h3v" firstAttribute="centerX" secondItem="zh4-ko-8Ey" secondAttribute="centerX" id="iCU-06-jdd"/>
                                 <constraint firstItem="aYK-mh-LrT" firstAttribute="top" secondItem="fsc-ja-sML" secondAttribute="top" id="m6J-e0-hCS"/>
@@ -507,7 +507,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ovc-63-hDh" customClass="AnalysisStepsChartView" customModule="Drone">
-                                    <rect key="frame" x="8" y="87" width="329" height="267"/>
+                                    <rect key="frame" x="0.0" y="87" width="345" height="267"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACTIVE TIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcR-tq-b4B">
@@ -535,10 +535,10 @@
                                 <constraint firstItem="EDe-TP-GGZ" firstAttribute="top" secondItem="gcR-tq-b4B" secondAttribute="bottom" id="LZa-lX-pDm"/>
                                 <constraint firstItem="aBT-nD-Qm9" firstAttribute="centerX" secondItem="U9c-Px-mlm" secondAttribute="centerX" id="RTM-Kg-yE6"/>
                                 <constraint firstItem="gcR-tq-b4B" firstAttribute="centerX" secondItem="U9c-Px-mlm" secondAttribute="centerX" constant="2" id="Uop-0R-fme"/>
-                                <constraint firstItem="ovc-63-hDh" firstAttribute="leading" secondItem="U9c-Px-mlm" secondAttribute="leading" constant="8" id="ZyT-01-J6H"/>
+                                <constraint firstItem="ovc-63-hDh" firstAttribute="leading" secondItem="U9c-Px-mlm" secondAttribute="leading" id="ZyT-01-J6H"/>
                                 <constraint firstItem="Snd-ue-RfJ" firstAttribute="top" secondItem="Ny9-Ia-Bgh" secondAttribute="top" id="aWA-Wu-PZw"/>
                                 <constraint firstAttribute="trailing" secondItem="e8O-mp-16V" secondAttribute="trailing" constant="5" id="jFp-qg-hbE"/>
-                                <constraint firstAttribute="trailing" secondItem="ovc-63-hDh" secondAttribute="trailing" constant="8" id="jIH-qD-laA"/>
+                                <constraint firstAttribute="trailing" secondItem="ovc-63-hDh" secondAttribute="trailing" id="jIH-qD-laA"/>
                                 <constraint firstItem="EDe-TP-GGZ" firstAttribute="top" secondItem="LuF-jw-VUP" secondAttribute="top" id="o5f-cb-Otl"/>
                                 <constraint firstItem="Snd-ue-RfJ" firstAttribute="top" secondItem="Ny9-Ia-Bgh" secondAttribute="top" id="pbO-J9-ECX"/>
                                 <constraint firstItem="gcR-tq-b4B" firstAttribute="top" secondItem="Ny9-Ia-Bgh" secondAttribute="top" id="sST-qa-vAp"/>

@@ -23,7 +23,8 @@ class AnalysisStepsChartView: LineChartView {
         legend.enabled = false
         rightAxis.enabled = true
 
-        let limitLine = ChartLimitLine(limit: 1500,label: "Goal");
+        let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
+        let limitLine = ChartLimitLine(limit: Double(goal.goalSteps),label: "Goal");
         limitLine.lineWidth = 1.5
         limitLine.labelPosition = ChartLimitLine.ChartLimitLabelPosition.LeftTop
         limitLine.valueFont = UIFont(name: "Helvetica-Light", size: 7)!
@@ -35,17 +36,23 @@ class AnalysisStepsChartView: LineChartView {
         rightAxis.drawLabelsEnabled = false;
         rightAxis.drawZeroLineEnabled = false
         
+        yAxis.axisMaxValue = Double(goal.goalSteps)+700
+        yAxis.axisMinValue = 0
         yAxis.axisLineColor = UIColor.getGreyColor()
         yAxis.drawGridLinesEnabled = false
-        yAxis.drawLabelsEnabled = false
-        yAxis.drawZeroLineEnabled = false
-        yAxis.addLimitLine(limitLine)
         
+        yAxis.drawLabelsEnabled = false
+        yAxis.drawZeroLineEnabled = true
+        yAxis.addLimitLine(limitLine)
         xAxis.labelTextColor = UIColor.getGreyColor();
         xAxis.axisLineColor = UIColor.getGreyColor()
         xAxis.drawLimitLinesBehindDataEnabled = false;
         xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
         xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 7)!
+        
+        let marker:BalloonMarker = BalloonMarker(color: UIColor.getBaseColor(), font: UIFont(name: "Helvetica-Light", size: 11)!, insets: UIEdgeInsetsMake(8.0, 8.0, 15.0, 8.0))
+        marker.minimumSize = CGSizeMake(60, 25);
+        self.marker = marker;
     }
     
     func addDataPoint(name:String, entry:ChartDataEntry){
