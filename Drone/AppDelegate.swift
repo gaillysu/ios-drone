@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     private var noResponseIndex:Int = 0
     private var sendContactsIndex:Int = 0
     var sendIndex:((index:Int) -> Void)?
+    let network = NetworkReachabilityManager(host: "drone.karljohnchow.com")
 
 
     let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
@@ -54,6 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         mConnectionController?.setDelegate(self)
 
         log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
+      
+      network?.listener = { status in
+         self.log.debug("Network Status Changed: \(status)")
+      }
+      network?.startListening()
       
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()

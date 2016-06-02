@@ -90,72 +90,83 @@ class LoginViewController: UIViewController {
     }
 
     func loginRequest() {
-        if(AppTheme.isNull(usernameT!.text!) || !AppTheme.isEmail(usernameT!.text!)) {
-            let banner = Banner(title: NSLocalizedString("Email is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
-            banner.dismissesOnTap = true
-            banner.show(duration: 1.2)
-            return
-        }
-
-        if AppTheme.isNull(passwordT!.text!) || AppTheme.isPassword(passwordT!.text!) {
-            let banner = Banner(title: NSLocalizedString("Password is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
-            banner.dismissesOnTap = true
-            banner.show(duration: 1.2)
-            return
-        }
-
-        let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-        view.setTintColor(UIColor.getBaseColor())
-        let timeout:NSTimer = NSTimer.after(90.seconds, {
-            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-        })
-
-        HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/login", data: ["user":["email":usernameT!.text!,"password":passwordT!.text!]]) { (result) in
-            timeout.invalidate()
-            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-
-            let json = JSON(result)
-            let message = json["message"].stringValue.isEmpty ? NSLocalizedString("not_login", comment: ""):json["message"].stringValue
-            let status = json["status"].intValue
-
-            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor: status > 0 ? UIColor.getBaseColor():UIColor.getBaseColor())
-            banner.dismissesOnTap = true
-            banner.show(duration: 1.2)
-
-            //status > 0 login success or login fail
-            if(status > 0 && UserProfile.getAll().count == 0) {
-                let user = json["user"]
-                let jsonBirthday = user["birthday"];
-                let dateString: String = jsonBirthday["date"].stringValue
-                var birthday:String = ""
-                if !jsonBirthday.isEmpty || !dateString.isEmpty {
-                    let dateFormatter = NSDateFormatter()
-                    dateFormatter.dateFormat = "y-M-d h:m:s.000000"
+        if AppDelegate.getAppDelegate().network!.isReachable {
+            XCGLogger.defaultInstance().debug("有网络")
+            if(AppTheme.isNull(usernameT!.text!) || !AppTheme.isEmail(usernameT!.text!)) {
+                let banner = Banner(title: NSLocalizedString("Email is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                banner.dismissesOnTap = true
+                banner.show(duration: 1.2)
+                return
+            }
+            
+            if AppTheme.isNull(passwordT!.text!) || AppTheme.isPassword(passwordT!.text!) {
+                let banner = Banner(title: NSLocalizedString("Password is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                banner.dismissesOnTap = true
+                banner.show(duration: 1.2)
+                return
+            }
+            
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            let timeout:NSTimer = NSTimer.after(90.seconds, {
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            })
+            
+            HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/login", data: ["user":["email":usernameT!.text!,"password":passwordT!.text!]]) { (result) in
+                timeout.invalidate()
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+                
+                let json = JSON(result)
+                let message = json["message"].stringValue.isEmpty ? NSLocalizedString("not_login", comment: ""):json["message"].stringValue
+                let status = json["status"].intValue
+                
+                let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor: status > 0 ? UIColor.getBaseColor():UIColor.getBaseColor())
+                banner.dismissesOnTap = true
+                banner.show(duration: 1.2)
+                
+                //status > 0 login success or login fail
+                if(status > 0 && UserProfile.getAll().count == 0) {
+                    let user = json["user"]
+                    let jsonBirthday = user["birthday"];
+                    let dateString: String = jsonBirthday["date"].stringValue
+                    var birthday:String = ""
+                    if !jsonBirthday.isEmpty || !dateString.isEmpty {
+                        let dateFormatter = NSDateFormatter()
+                        dateFormatter.dateFormat = "y-M-d h:m:s.000000"
+                        
+                        let birthdayDate = dateFormatter.dateFromString(dateString)
+                        dateFormatter.dateFormat = "y-M-d"
+                        birthday = dateFormatter.stringFromDate(birthdayDate!)
+                    }
                     
-                    let birthdayDate = dateFormatter.dateFromString(dateString)
-                    dateFormatter.dateFormat = "y-M-d"
-                    birthday = dateFormatter.stringFromDate(birthdayDate!)
+                    let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"].intValue,"first_name":user["first_name"].stringValue,"last_name":user["last_name"].stringValue,"birthday":birthday,"length":user["length"].intValue,"email":user["email"].stringValue, "weight":user["weight"].floatValue])
+                    userprofile.add({ (id, completion) in
+                        XCGLogger.defaultInstance().debug("Added? id = \(id)")
+                    })
+                    if(GoalModel.getAll().count == 0){
+                        let goalModel:GoalModel = GoalModel()
+                        goalModel.goalSteps = 10000
+                        goalModel.add({ (id, completion) in})
+                    }
+                    
                 }
-                
-                let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"].intValue,"first_name":user["first_name"].stringValue,"last_name":user["last_name"].stringValue,"birthday":birthday,"length":user["length"].intValue,"email":user["email"].stringValue, "weight":user["weight"].floatValue])
-                userprofile.add({ (id, completion) in
-                    XCGLogger.defaultInstance().debug("Added? id = \(id)")
-                })
-                if(GoalModel.getAll().count == 0){
-                    let goalModel:GoalModel = GoalModel()
-                    goalModel.goalSteps = 10000
-                    goalModel.add({ (id, completion) in})
-                }
-                
-            }
-            if(status == 1){
-                if self.fromMenu{
-                    self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-                }else{
-                    let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: true)
-                    self.navigationController?.pushViewController(device, animated: true)
+                if(status == 1){
+                    if self.fromMenu{
+                        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                    }else{
+                        let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: true)
+                        self.navigationController?.pushViewController(device, animated: true)
+                    }
                 }
             }
+        }else{
+            XCGLogger.defaultInstance().debug("没有网络")
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.Cross, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            let timeout:NSTimer = NSTimer.after(0.6.seconds, {
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            })
         }
+        
     }
 }

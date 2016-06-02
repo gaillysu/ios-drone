@@ -14,6 +14,7 @@ import YYKeyboardManager
 import BRYXBanner
 import SwiftyJSON
 import MRProgress
+import XCGLogger
 
 private let DATEPICKER_TAG:Int = 1280
 private let PICKERVIEW_TAG:Int = 1380
@@ -130,62 +131,71 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
     }
 
     func registerRequest() {
-        if(AppTheme.isNull(ageTextField!.text!) || AppTheme.isEmail(lengthTextField!.text!) || AppTheme.isEmail(weightTextField!.text!) || AppTheme.isNull(firstNameTextField.text!) || AppTheme.isNull(lastNameTextField.text!)) {
-            let banner = Banner(title: NSLocalizedString("One of the fields are empty.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
-            banner.dismissesOnTap = true
-            banner.show(duration: 0.6)
-            return
-        }
-
-        let email:String = account["email"] as! String
-        let password:String = account["password"] as! String
-
-        let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-        view.setTintColor(UIColor.getBaseColor())
-        
-        //timeout
-        let timeout:NSTimer = NSTimer.after(90.seconds, {
-            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-        })
-        
-        
-        let sex:Int = self.segmentView?.indexOfSelectedSegment == 0 ? 1 : 0
-        HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":self.firstNameTextField.text!,"last_name":self.lastNameTextField.text!,"email":email,"password":password,"birthday":ageTextField!.text!,"length":lengthTextField!.text!, "weight":self.weightTextField.text!, "sex":sex]]) { (result) in
-            
-            timeout.invalidate()
-            
-            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-            
-            let json = JSON(result)
-            var message = json["message"].stringValue
-            let status = json["status"].intValue
-            let user:[String : JSON] = json["user"].dictionaryValue
-            
-            if(user.count>0) {
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "y-M-d h:m:s.000000"
-                let birthdayJSON = user["birthday"]
-                let birthdayBeforeParsed = birthdayJSON!["date"].stringValue
-                
-                let birthdayDate = dateFormatter.dateFromString(birthdayBeforeParsed)
-                dateFormatter.dateFormat = "y-M-d"
-                let birthday = dateFormatter.stringFromDate(birthdayDate!)
-                let sex = user["sex"]!.intValue == 1 ? true : false;
-                if(status > 0 && UserProfile.getAll().count == 0) {
-                    let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"]!.intValue,"first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue,"sex": sex, "weight":(user["weight"]?.floatValue)!, "birthday":birthday])
-                    userprofile.add({ (id, completion) in
-                    })
-                    let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: false)
-                    self.navigationController?.pushViewController(device, animated: true)
-                }
-            
-            }else{
-                message = NSLocalizedString("no_network", comment: "")
+        if AppDelegate.getAppDelegate().network!.isReachable {
+            if(AppTheme.isNull(ageTextField!.text!) || AppTheme.isEmail(lengthTextField!.text!) || AppTheme.isEmail(weightTextField!.text!) || AppTheme.isNull(firstNameTextField.text!) || AppTheme.isNull(lastNameTextField.text!)) {
+                let banner = Banner(title: NSLocalizedString("One of the fields are empty.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                banner.dismissesOnTap = true
+                banner.show(duration: 0.6)
+                return
             }
             
-            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
-            banner.dismissesOnTap = true
-            banner.show(duration: 1.2)
+            let email:String = account["email"] as! String
+            let password:String = account["password"] as! String
+            
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            
+            //timeout
+            let timeout:NSTimer = NSTimer.after(90.seconds, {
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            })
+            
+            
+            let sex:Int = self.segmentView?.indexOfSelectedSegment == 0 ? 1 : 0
+            HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/create", data: ["user":["first_name":self.firstNameTextField.text!,"last_name":self.lastNameTextField.text!,"email":email,"password":password,"birthday":ageTextField!.text!,"length":lengthTextField!.text!, "weight":self.weightTextField.text!, "sex":sex]]) { (result) in
+                
+                timeout.invalidate()
+                
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+                
+                let json = JSON(result)
+                var message = json["message"].stringValue
+                let status = json["status"].intValue
+                let user:[String : JSON] = json["user"].dictionaryValue
+                
+                if(user.count>0) {
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "y-M-d h:m:s.000000"
+                    let birthdayJSON = user["birthday"]
+                    let birthdayBeforeParsed = birthdayJSON!["date"].stringValue
+                    
+                    let birthdayDate = dateFormatter.dateFromString(birthdayBeforeParsed)
+                    dateFormatter.dateFormat = "y-M-d"
+                    let birthday = dateFormatter.stringFromDate(birthdayDate!)
+                    let sex = user["sex"]!.intValue == 1 ? true : false;
+                    if(status > 0 && UserProfile.getAll().count == 0) {
+                        let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"]!.intValue,"first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue,"sex": sex, "weight":(user["weight"]?.floatValue)!, "birthday":birthday])
+                        userprofile.add({ (id, completion) in
+                        })
+                        let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: false)
+                        self.navigationController?.pushViewController(device, animated: true)
+                    }
+                    
+                }else{
+                    message = NSLocalizedString("no_network", comment: "")
+                }
+                
+                let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                banner.dismissesOnTap = true
+                banner.show(duration: 1.2)
+            }
+        }else{
+            XCGLogger.defaultInstance().debug("注册的时候没有网络")
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.Cross, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            let timeout:NSTimer = NSTimer.after(0.6.seconds, {
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            })
         }
     }
 }
