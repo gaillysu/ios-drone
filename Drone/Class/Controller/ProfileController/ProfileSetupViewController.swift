@@ -131,7 +131,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
 
     func registerRequest() {
         if(AppTheme.isNull(ageTextField!.text!) || AppTheme.isEmail(lengthTextField!.text!) || AppTheme.isEmail(weightTextField!.text!) || AppTheme.isNull(firstNameTextField.text!) || AppTheme.isNull(lastNameTextField.text!)) {
-            let banner = Banner(title: NSLocalizedString("One of the fields are empty.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+            let banner = Banner(title: NSLocalizedString("One of the fields are empty.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
             banner.dismissesOnTap = true
             banner.show(duration: 0.6)
             return
@@ -183,7 +183,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
                 message = NSLocalizedString("no_network", comment: "")
             }
             
-            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
         }

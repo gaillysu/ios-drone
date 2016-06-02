@@ -91,14 +91,14 @@ class LoginViewController: UIViewController {
 
     func loginRequest() {
         if(AppTheme.isNull(usernameT!.text!) || !AppTheme.isEmail(usernameT!.text!)) {
-            let banner = Banner(title: NSLocalizedString("your username is null or username not is email", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+            let banner = Banner(title: NSLocalizedString("Email is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
             return
         }
 
         if AppTheme.isNull(passwordT!.text!) || AppTheme.isPassword(passwordT!.text!) {
-            let banner = Banner(title: NSLocalizedString("Your password is null, Your password must be at least six figures and cannot be all Numbers", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+            let banner = Banner(title: NSLocalizedString("Password is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
             return
@@ -118,7 +118,7 @@ class LoginViewController: UIViewController {
             let message = json["message"].stringValue.isEmpty ? NSLocalizedString("not_login", comment: ""):json["message"].stringValue
             let status = json["status"].intValue
 
-            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor: status > 0 ? UIColor.getBaseColor():UIColor.redColor())
+            let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor: status > 0 ? UIColor.getBaseColor():UIColor.getBaseColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
 

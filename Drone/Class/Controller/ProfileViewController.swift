@@ -98,7 +98,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             }else{
                 print("Request error");
                 self.loadingIndicator.dismiss(true)
-                let banner:Banner = Banner(title: NSLocalizedString("not_update", comment: ""), subtitle: "", image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+                let banner:Banner = Banner(title: NSLocalizedString("not_update", comment: ""), subtitle: "", image: nil, backgroundColor: UIColor.getBaseColor(), didTapBlock: nil)
                 banner.dismissesOnTap = true
                 banner.show(duration: 3)
             }

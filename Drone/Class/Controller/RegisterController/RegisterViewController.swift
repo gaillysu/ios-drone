@@ -85,7 +85,7 @@ class RegisterViewController: BaseViewController {
         if nextB.isEqual(sender) {
             let profile:ProfileSetupViewController = ProfileSetupViewController()
             if(AppTheme.isNull(passwordT.text!) || AppTheme.isNull(emailT.text!)) {
-                let banner = Banner(title: NSLocalizedString("email or password is null", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+                let banner = Banner(title: NSLocalizedString("email or password is null", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true
                 banner.show(duration: 0.7)
                 return

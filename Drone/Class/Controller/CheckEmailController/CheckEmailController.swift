@@ -84,13 +84,13 @@ class CheckEmailController: UIViewController {
                     if message.isEmpty {
                         message =  NSLocalizedString("no_network", comment: "")
                     }
-                    let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+                    let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                     banner.dismissesOnTap = true
                     banner.show(duration: 1.2)
                 }
             }
         }else{
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Your email address error", mode: MRProgressOverlayViewMode.Cross, animated: true)
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Incorrect Email address.", mode: MRProgressOverlayViewMode.Cross, animated: true)
             view.setTintColor(UIColor.getBaseColor())
             NSTimer.after(1.seconds, {
                 MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)

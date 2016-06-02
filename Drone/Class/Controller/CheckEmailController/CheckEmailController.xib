@@ -53,7 +53,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b74-hw-hLf">
                     <rect key="frame" x="44" y="365" width="301" height="29"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
-                    <state key="normal" title="Forgot password?">
+                    <state key="normal" title="Change Password">
                         <color key="titleColor" red="0.81960784310000001" green="0.61568627450000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>

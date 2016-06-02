@@ -62,7 +62,7 @@ class ForgetPasswordController: UIViewController {
     func ChangePassword() {
         if newTextField2.text != nil && newTextField.text != nil{
             if newTextField.text != newTextField2.text {
-                let banner = Banner(title: NSLocalizedString("Enter the new password twice inconsistent!", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+                let banner = Banner(title: NSLocalizedString("Passwords don't match with each other.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true
                 banner.show(duration: 1.2)
                 return
@@ -89,7 +89,7 @@ class ForgetPasswordController: UIViewController {
                     if message.isEmpty {
                         message =  NSLocalizedString("no_network", comment: "")
                     }
-                    let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.redColor())
+                    let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                     banner.dismissesOnTap = true
                     banner.show(duration: 1.2)
                 }
@@ -123,7 +123,6 @@ extension ForgetPasswordController:YYKeyboardObserver,UITextFieldDelegate {
                 self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
             }
         }) { (finished) in
-            
         }
     }
 
