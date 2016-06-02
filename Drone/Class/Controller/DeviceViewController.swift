@@ -93,12 +93,17 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell: DeviceTableViewCellHeader = deviceTableView.dequeueReusableHeaderFooterViewWithIdentifier(identifier_header) as! DeviceTableViewCellHeader
-        headerCell.versionLabel.text = "\(AppDelegate.getAppDelegate().getFirmwareVersion())"
+        
+        if "\(AppDelegate.getAppDelegate().getFirmwareVersion())".isEmpty {
+            headerCell.versionLabel.text = "Not Connected"
+        }else{
+            headerCell.versionLabel.text = "\(AppDelegate.getAppDelegate().getFirmwareVersion())"
+        }
         
         if AppDelegate.getAppDelegate().isConnected() {
             headerCell.connectionStateLabel.text = "Connected"
         }else{
-            headerCell.connectionStateLabel.text = "Disconnected"
+            headerCell.connectionStateLabel.text = "Not Connected"
         }
         if batteryStatus.count>0 {
             switch batteryStatus[0] {
