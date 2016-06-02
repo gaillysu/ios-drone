@@ -68,7 +68,10 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         searchController?.searchBar.tintColor = UIColor.whiteColor()
         searchController?.searchBar.barTintColor = UIColor(patternImage: UIImage(named: "gradually")!)
         searchController?.hidesNavigationBarDuringPresentation = false;
-        cityTableView.tableHeaderView = searchController?.searchBar
+        let searchView:UIView = UIView(frame: CGRectMake(0,0,UIScreen.mainScreen().bounds.size.width,searchController!.searchBar.frame.size.height))
+        searchView.backgroundColor = UIColor(patternImage: UIImage(named: "gradually")!)
+        searchView.addSubview(searchController!.searchBar)
+        cityTableView.tableHeaderView = searchView
     }
     
     func close(){
@@ -97,7 +100,10 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     
     func didDismissSearchController(searchController: UISearchController) {
         NSLog("didDismissSearchController")
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if searchController.active {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
     }
     
     func presentSearchController(searchController: UISearchController) {
@@ -165,10 +171,21 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
 
             for (index,value) in array.enumerate() {
                 let worldclock:WorldClock = value as! WorldClock
-                let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))
-                clockNameArray.append(worldclock.city_name)
-                zoneArray.append(beforeGmt)
+                if displayName == worldclock.display_name {
+                    let alert:UIAlertController = UIAlertController(title: "Add City", message: NSLocalizedString("add_city", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action) in
+                        
+                    }))
+                    self.searchController?.active = false
+                    self.presentViewController(alert, animated: true, completion:nil)
+                    return
+                }else{
+                    let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))
+                    clockNameArray.append(worldclock.city_name)
+                    zoneArray.append(beforeGmt)
+                }
             }
+            
             clockNameArray.append(displayName)
             
             let system_name:String = (citiesGmtDict[displayName] as? String)!
@@ -241,7 +258,15 @@ extension AddWorldClockViewController:DidSelectedDelegate {
 
     func didSelectedLocalTimeZone(ietmKey:String) {
         let displayName:String = ietmKey
-        let array:NSArray = WorldClock.getAll()
+        var array:NSMutableArray = NSMutableArray() {
+            didSet {
+                let timeZone: String = NSTimeZone.localTimeZone().name
+                let timeZoneArray:[String] = timeZone.characters.split{$0 == "/"}.map(String.init)
+                let wordClock:WorldClock = WorldClock(keyDict: ["system_name":timeZone,"city_name":timeZoneArray[1],"display_name":"\(timeZoneArray[1]), \(timeZoneArray[0])"])
+                array.insertObject(wordClock, atIndex: 0)
+            }
+        }
+        array = NSMutableArray(array: WorldClock.getAll())
         
         if array.count < 5 {
             var clockNameArray:[String] = []

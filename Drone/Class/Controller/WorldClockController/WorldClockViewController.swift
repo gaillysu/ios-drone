@@ -17,7 +17,14 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
 
     private var time:(hour:Int,minute:Int)
     private let identifier:String = "WorldClockCell"
-    private var worldClockArray:NSArray = NSArray()
+    private var worldClockArray:NSMutableArray = NSMutableArray() {
+        didSet{
+            let timeZone: String = NSTimeZone.localTimeZone().name
+            let timeZoneArray:[String] = timeZone.characters.split{$0 == "/"}.map(String.init)
+            let wordClock:WorldClock = WorldClock(keyDict: ["system_name":timeZone,"city_name":timeZoneArray[1],"display_name":timeZone])
+            worldClockArray.insertObject(wordClock, atIndex: 0)
+        }
+    }
     private var localTimeOffsetToGmt: Float
     //private var timeZoneOffSet: (hours:Int, minutes:Int)
     
@@ -71,6 +78,12 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         worldClockTableview.separatorColor = UIColor.clearColor()
         let header:WorldClockHeader = UIView.loadFromNibNamed("WorldClockHeader") as! WorldClockHeader;
         header.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height)
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMM dd,yyyy"
+        let dateString = "\(formatter.stringFromDate(date))"
+        header.dateLabel.text = dateString
+        
         let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height))
         headerView.addSubview(header)
         worldClockTableview.tableHeaderView = headerView
@@ -83,23 +96,22 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
      }
     
     func add(){
-        //self.presentViewController(self.makeStandardUINavigationController(ChooseCityController()), animated: true, completion: nil)
-        self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
-//        if AppDelegate.getAppDelegate().isConnected() {
-//            self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
-//        }else{
-//            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
-//            view.setTintColor(UIColor.getBaseColor())
-//            NSTimer.after(0.6.second) {
-//                view.dismiss(true)
-//            }
-//        }
+        //self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
+        if AppDelegate.getAppDelegate().isConnected() {
+            self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
+        }else{
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            NSTimer.after(0.6.second) {
+                view.dismiss(true)
+            }
+        }
     }
     
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.worldClockArray = WorldClock.getAll();
+        self.worldClockArray = NSMutableArray(array: WorldClock.getAll())
         self.worldClockTableview.reloadData()
     }
 
@@ -124,7 +136,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (worldClockArray.count + 1)
+        return worldClockArray.count
     }
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -134,13 +146,11 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         return true
     }
     
-
-    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let clock:WorldClock = worldClockArray.objectAtIndex(indexPath.row-1) as! WorldClock
+            let clock:WorldClock = worldClockArray.objectAtIndex(indexPath.row) as! WorldClock
             clock.remove()
-            self.worldClockArray = WorldClock.getAll();
+            self.worldClockArray = NSMutableArray(array: WorldClock.getAll());
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 
             var clockNameArray:[String] = []
@@ -161,16 +171,8 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         
         let cell:WorldClockCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! WorldClockCell
         cell.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, cell.frame.height)
-        if(indexPath.row == 0){
-            let timeZone: String = NSTimeZone.localTimeZone().name
-            let timeZoneArray:[String] = timeZone.characters.split{$0 == "/"}.map(String.init)
-            cell.cityLabel.text = timeZoneArray[1].stringByReplacingOccurrencesOfString("_", withString: " ")
-            cell.timeDescription.text = "Today"
-            cell.time.text = "\(time.hour):\(time.minute < 10 ? "0":"")\(time.minute)"
-            return cell;
-        }
 
-        let worldClockCity:WorldClock = worldClockArray[(indexPath.row - 1)] as! WorldClock
+        let worldClockCity:WorldClock = worldClockArray[indexPath.row] as! WorldClock
         cell.cityLabel.text = worldClockCity.city_name
         
         let foreignTimeOffsetToGmt = Float(TimeUtil.getGmtOffSetForCity(worldClockCity.system_name))

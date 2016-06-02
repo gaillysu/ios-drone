@@ -45,7 +45,6 @@ class SearchCityController: UITableViewController {
         }
         let sectionName: String = self.searchGmtDict.allKeys[indexPath.row] as! String
         mDelegate?.didSelectedLocalTimeZone(sectionName)
-        //self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK: - Table view data source

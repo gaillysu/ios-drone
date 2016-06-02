@@ -12,6 +12,7 @@ class WorldClockHeader: UIView{
 
     var actionHandler:((result:AnyObject?) -> Void)?
 
+    @IBOutlet weak var dateLabel: UILabel!
     class func getWorldClockHeader(frame:CGRect)->WorldClockHeader {
         let nibView:NSArray = NSBundle.mainBundle().loadNibNamed("WorldClockHeader", owner: nil, options: nil)
         let view:UIView = nibView.objectAtIndex(0) as! UIView
