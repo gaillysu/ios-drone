@@ -16,7 +16,6 @@ import SwiftyTimer
 class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
     @IBOutlet var menuTableView: UITableView!
-    private var progress:MRProgressOverlayView?
     let identifier = "menu_cell_identifier"
 
     var menuItems: [MenuItem] = []
@@ -70,71 +69,52 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
-            self.progress = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-            self.progress!.setTintColor(UIColor.getBaseColor())
-            NSTimer.after(120.seconds, {
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-            })
+//            let progress = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+//            progress.setTintColor(UIColor.getBaseColor())
+//            NSTimer.after(120.seconds, {
+//                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+//            })
         }
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
             MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            let stepsArray:NSArray = UserSteps.getCriteria(String(format: "WHERE syncnext = %@",false))
+            var dayDateArray:[NSDate] = []
+            for steps in stepsArray{
+                let userSteps:UserSteps = steps as! UserSteps
+                let date:NSDate = NSDate(timeIntervalSince1970: userSteps.date).beginningOfDay
+                var addKey:Bool = true
+                for queryDate:NSDate in dayDateArray{
+                    if queryDate.isEqualToDate(date) {
+                        addKey = false
+                        break
+                    }
+                }
+                
+                if addKey {
+                    dayDateArray.append(date)
+                }
+            }
+            
+            self.syncServiceDayData(dayDateArray)
         }
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
-            let userProfle:NSArray = UserProfile.getAll()
-            let profile:UserProfile = userProfle.objectAtIndex(0) as! UserProfile
-            
             let data:[String:Int] = notification.object as! [String:Int]
             let steps:Int = data["dailySteps"]!
             let timerInterval:Int = data["timerInterval"]!
             if (steps != 0) {
-                let date:NSDate = NSDate(timeIntervalSince1970: Double(timerInterval))
-                let formatter = NSDateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
-                let dateString = "\(formatter.stringFromDate(date))"
-                
                 let stepsArray = UserSteps.getCriteria("WHERE date = \(timerInterval)")
                 if(stepsArray.count>0) {
                     let step:UserSteps = stepsArray[0] as! UserSteps
                     NSLog("Data that has been saved····")
-                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(steps)", "distance": "\(0)","date":timerInterval])
+                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(steps)", "distance": "\(0)","date":timerInterval,"sync_next":false])
                     stepsModel.update()
                     
-                    //update steps network global queue
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                        
-                        HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/update", data: ["steps": ["id": "\(stepsModel.id)","uid": "\(profile.id)","steps": "\(data["dailySteps"]!)","date": dateString]], completion: { (result) in
-                            
-                            let json = JSON(result)
-                            let message = json["message"].stringValue
-                            let status = json["status"].intValue
-                            if status == 1{
-                                XCGLogger.defaultInstance().debug("\(message), cloud update succeed")
-                            }else{
-                                XCGLogger.defaultInstance().debug("\(message), cloud update error")
-                            }
-                        })
-                    })
-                    
                 }else {
-                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(steps)",  "distance": "\(0)", "date":timerInterval])
+                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(steps)",  "distance": "\(0)", "date":timerInterval,"sync_next":false])
                     stepsModel.add({ (id, completion) -> Void in
                         
-                    })
-                    
-                    //create steps network global queue
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                        HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(data["dailySteps"]!)","date": dateString]], completion: { (result) in
-                            let json = JSON(result)
-                            let message = json["message"].stringValue
-                            let status = json["status"].intValue
-                            if status == 1{
-                                XCGLogger.defaultInstance().debug(message+"cloud create succeed")
-                            }else{
-                                XCGLogger.defaultInstance().debug(message+"cloud create error")
-                            }
-                        })
                     })
                     
                 }
@@ -172,14 +152,14 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 let randomSteps:Int = Int(arc4random()%500)
                 let randomHour:Int = Int(arc4random()%10)*5
                 let currentDate:Int = timerInterval + (index*daySeconds) + (timerIndex*3600) + (randomHour*60)
-                let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(randomSteps)",  "distance": "\(0)", "date":NSTimeInterval(currentDate)])
+                let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(randomSteps)",  "distance": "\(0)", "date":NSTimeInterval(currentDate),"syncnext":false])
                 stepsModel.add({ (id, completion) -> Void in
                     XCGLogger.defaultInstance().debug("stepsModel.add completion:\(Bool(completion!))")
                 })
             }
             
-        }
-         */
+        }*/
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -206,6 +186,67 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     func rightAction(item:UIBarButtonItem) {
         self.navigationController?.title = "WATCH SETTINGS"
         self.navigationController?.pushViewController(MyDeviceViewController(), animated: true);
+    }
+    
+    func syncServiceDayData(dayDateArray:[NSDate]) {
+        let userProfle:NSArray = UserProfile.getAll()
+        let profile:UserProfile = userProfle.objectAtIndex(0) as! UserProfile
+        
+        var dayData:[[String:String]] = []
+        for day:NSDate in dayDateArray {
+            var yVals:[Double] = []
+            let dayDate:NSDate = day
+            for hour:Int in 0 ..< 24 {
+                let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: hour, minute: 0, second: 0).timeIntervalSince1970
+                let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
+                
+                var hourData:Double = 0
+                for userSteps in hours {
+                    let hSteps:UserSteps = userSteps as! UserSteps
+                    let dak:NSDate = NSDate(timeIntervalSince1970: hSteps.date)
+                    if hour == dak.hour {
+                        hourData += Double(hSteps.steps)
+                    }
+                    hSteps.syncnext = true
+                    hSteps.update()
+                }
+                yVals.append(hourData);
+            }
+            
+            let dailySteps = AppTheme.toJSONString(yVals)
+            let date:NSDate = dayDate
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let dateString = "\(formatter.stringFromDate(date))"
+            let keyValue:[String:String] = [dateString:"\(dailySteps)"]
+            dayData.append(keyValue)
+        }
+        
+        
+        //create steps network global queue
+        let queue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+
+        dispatch_async(queue, {() -> Void in
+            dispatch_apply(dayData.count, queue, {(index) -> Void in
+                let data:[String:String] = dayData[index] as [String:String]
+                HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(data.values)","date": "\(data.keys)"]], completion: { (result) in
+                    let json = JSON(result)
+                    let message = json["message"].stringValue
+                    let status = json["status"].intValue
+                    
+                    if status == 1{
+                        let date = json["steps"].dictionaryValue["date"]?.dictionaryValue["date"]?.stringValue
+                        XCGLogger.defaultInstance().debug(date!+message+"cloud create succeed")
+                    }else{
+                        XCGLogger.defaultInstance().debug("\(data.keys)"+message+"cloud create error")
+                    }
+                })
+            })
+            
+            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                XCGLogger.defaultInstance().debug("create steps completed")
+            })
+        })
     }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -13,6 +13,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
     var steps:Int = 0
     var distance:Int = 0
     var date:NSTimeInterval = 0
+    var syncnext:Bool = false
 
     private var stepsModel:StepsModel = StepsModel()
     
@@ -27,6 +28,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
         stepsModel.steps = steps
         stepsModel.distance = "\(distance)"
         stepsModel.date = date
+        stepsModel.syncnext = syncnext
 
         stepsModel.add { (id, completion) -> Void in
             result(id: id, completion: completion)
@@ -38,6 +40,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
         stepsModel.steps = steps
         stepsModel.distance = "\(distance)"
         stepsModel.date = date
+        stepsModel.syncnext = syncnext
         return stepsModel.update()
     }
 
@@ -55,7 +58,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let stepsModel:StepsModel = model as! StepsModel
-            let presets:UserSteps = UserSteps(keyDict: ["id":stepsModel.id, "steps":stepsModel.steps, "distance":stepsModel.distance, "date":stepsModel.date])
+            let presets:UserSteps = UserSteps(keyDict: ["id":stepsModel.id, "steps":stepsModel.steps, "distance":stepsModel.distance, "date":stepsModel.date, "syncnext":stepsModel.syncnext])
             allArray.addObject(presets)
         }
         return allArray
@@ -66,7 +69,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let stepsModel:StepsModel = model as! StepsModel
-            let presets:UserSteps = UserSteps(keyDict: ["id":stepsModel.id, "steps":stepsModel.steps,  "distance":stepsModel.distance, "date":stepsModel.date])
+            let presets:UserSteps = UserSteps(keyDict: ["id":stepsModel.id, "steps":stepsModel.steps, "distance":stepsModel.distance, "date":stepsModel.date, "syncnext":stepsModel.syncnext])
             allArray.addObject(presets)
         }
         return allArray

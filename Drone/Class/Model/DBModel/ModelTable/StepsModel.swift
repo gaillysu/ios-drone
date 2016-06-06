@@ -14,6 +14,7 @@ class StepsModel: UserDatabaseHelper {
     var steps:Int = 0
     var distance:String = ""
     var date:NSTimeInterval = 0
+    var syncnext:Bool = false
 
     override init() {
 
