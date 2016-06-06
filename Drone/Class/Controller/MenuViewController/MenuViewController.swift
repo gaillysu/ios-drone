@@ -96,7 +96,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 }
             }
             
-            self.syncServiceDayData(dayDateArray)
+            if AppDelegate.getAppDelegate().network!.isReachable {
+                self.syncServiceDayData(dayDateArray)
+            }
         }
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
