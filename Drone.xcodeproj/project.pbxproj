@@ -27,6 +27,7 @@
 		005699DB1CD0673D0097938E /* localTimeZone in Resources */ = {isa = PBXBuildFile; fileRef = 005699DA1CD0673D0097938E /* localTimeZone */; };
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
+		0064B2FB1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0064B2FA1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift */; };
 		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
 		0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */; };
 		0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */; };
@@ -243,6 +244,7 @@
 		005699DA1CD0673D0097938E /* localTimeZone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = localTimeZone; sourceTree = "<group>"; };
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
 		005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
+		0064B2FA1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetStepsToWatchReuqest.swift; sourceTree = "<group>"; };
 		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
 		0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionSetupViewController.swift; sourceTree = "<group>"; };
 		0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionSetupViewController.xib; sourceTree = "<group>"; };
@@ -975,6 +977,7 @@
 				0043FBE51CA131BD00638BD1 /* UpdateNotificationRequest.swift */,
 				00982B3D1C868C89003DA5E2 /* WriteSettingRequest.swift */,
 				00F132B61CEBFC4000CF8F6B /* ClearConnectionRequest.swift */,
+				0064B2FA1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift */,
 			);
 			path = DroneRequest;
 			sourceTree = "<group>";
@@ -1521,6 +1524,7 @@
 				008845E51CF69F67006EA77F /* ForgetPasswordController.swift in Sources */,
 				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
+				0064B2FB1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift in Sources */,
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
 				00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */,
 				00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */,

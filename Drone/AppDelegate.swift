@@ -146,6 +146,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     func setWorldClock(clock:SetWorldClockRequest) {
         sendRequest(clock)
     }
+   
+    func isSaveWorldClock() {
+       let array:NSArray = WorldClock.getAll()
+       if array.count > 0 {
+          var clockNameArray:[String] = []
+          var zoneArray:[Int] = []
+          for (index,value) in array.enumerate() {
+             let worldclock:WorldClock = value as! WorldClock
+             let beforeGmt:Int = TimeUtil.getGmtOffSetForCity(worldclock.system_name)
+             clockNameArray.append(worldclock.city_name)
+             zoneArray.append(beforeGmt)
+          }
+          setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
+      }
+   }
 
     /**
      Connect BLE Device
@@ -165,6 +180,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         }
     }
 
+    func setStepsToWatch() {
+      let dayDate:NSDate = NSDate()
+      let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+      let dayStepsArray:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+86400)") //one hour = 3600s
+      var daySteps:Int = 0
+      for steps in dayStepsArray {
+         let userSteps:UserSteps = steps as! UserSteps
+         daySteps = daySteps+userSteps.steps
+      }
+      
+      if daySteps>0 {
+         sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+         setupResponseTimer(["index":NSNumber(int: 7)])
+      }
+    }
+   
     // MARK: -AppDelegate GET Function
 
     func getMconnectionController()->ConnectionControllerImpl{
@@ -233,7 +264,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 if(systemStatus == SystemStatus.SystemReset.rawValue) {
                     //step1 : Set systemconfig next 1
                     self.setSystemConfig(0)
-                    setupResponseTimer()
+                    setupResponseTimer(["index":NSNumber(int: 1)])
                 }
 
                 if(systemStatus == SystemStatus.InvalidTime.rawValue) {
@@ -279,16 +310,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 case 0:
                     log.debug("set system config 1")
                     self.setSystemConfig(1)
-                    setupResponseTimer()
+                    setupResponseTimer(["index":NSNumber(int: 1)])
                 case 1:
                     log.debug("set system config 2")
                     self.setSystemConfig(2)
-                    setupResponseTimer()
+                    setupResponseTimer(["index":NSNumber(int: 2)])
                 case 2:
                     log.debug("set RTC")
                     //setp2:start set RTC
                     self.setRTC()
-                    setupResponseTimer()
+                    setupResponseTimer(["index":NSNumber(int: 3)])
                 default:
                     break
                 }
@@ -299,20 +330,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 //setp3:start set AppConfig
                 releaseResponseTimer()
                 self.setAppConfig()
-                setupResponseTimer()
+                setupResponseTimer(["index":NSNumber(int: 4)])
             }
 
             if(packet.getHeader() == SetAppConfigRequest.HEADER()) {
-                //step3: start set user default goal
+                //step4: start set user profile
                 releaseResponseTimer()
                 self.setUserProfile()
+                setupResponseTimer(["index":NSNumber(int: 5)])
             }
-
+         
+            if(packet.getHeader() == SetUserProfileRequest.HEADER()) {
+               //step5: start set user default goal
+               releaseResponseTimer()
+               self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+               setupResponseTimer(["index":NSNumber(int: 6)])
+            }
+         
             if(packet.getHeader() == SetGoalRequest.HEADER()) {
-                //step4: get big syncactivity Activity data
-                SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
-                self.getActivity()
-               sendIndex?(index: 0)
+                sendIndex?(index: 0)
+                //step6: start set user steps
+                releaseResponseTimer()
+                self.setStepsToWatch()
+            }
+         
+            if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
+               releaseResponseTimer()
+               self.isSaveWorldClock()
             }
 
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
@@ -410,28 +454,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
     // MARK: - noResponseAction
     func noResponseAction(timer:NSTimer) {
-        releaseResponseTimer()
-        switch noResponseIndex {
+      let info = timer.userInfo
+      let index:Int = (info!["index"] as! NSNumber).integerValue
+      releaseResponseTimer()
+        switch index {
         case 0:
-            log.debug("set system config 1")
+            log.debug("set system config 1,noResponseIndex:\(noResponseIndex)")
             self.setSystemConfig(1)
-            setupResponseTimer()
+            setupResponseTimer(["index":NSNumber(int: 1)])
         case 1:
-            log.debug("set system config 2")
+            log.debug("set system config 2,noResponseIndex:\(noResponseIndex)")
             self.setSystemConfig(2)
-            setupResponseTimer()
+            setupResponseTimer(["index":NSNumber(int: 2)])
         case 2:
-            log.debug("set RTC")
+            log.debug("set RTC,noResponseIndex:\(noResponseIndex)")
             self.setRTC()
-            setupResponseTimer()
+            setupResponseTimer(["index":NSNumber(int: 3)])
         case 3:
-            log.debug("set app config")
+            log.debug("set app config,noResponseIndex:\(noResponseIndex)")
             self.setAppConfig()
-            setupResponseTimer()
+            setupResponseTimer(["index":NSNumber(int: 4)])
         case 4:
-            log.debug("set user profile")
+            log.debug("set user profile,noResponseIndex:\(noResponseIndex)")
             self.setUserProfile()
+            setupResponseTimer(["index":NSNumber(int: 5)])
         case 5:
+            log.debug("set user goal,noResponseIndex:\(noResponseIndex)")
+            self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+            setupResponseTimer(["index":NSNumber(int: 6)])
+        case 6:
+            log.debug("set user steps watch")
+            self.setStepsToWatch()
+            setupResponseTimer(["index":NSNumber(int: 7)])
+        case 7:
+            log.debug("set user world clock")
+            self.isSaveWorldClock()
+        case 8:
             releaseResponseTimer()
         default:
             break
@@ -442,8 +500,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     /**
      setup response timer
      */
-    func setupResponseTimer() {
-        self.responseTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(AppDelegate.noResponseAction(_:)), userInfo: nil, repeats: false)
+   func setupResponseTimer(userInfo:AnyObject) {
+        self.responseTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(noResponseAction(_:)), userInfo: userInfo, repeats: false)
     }
     
     /**
