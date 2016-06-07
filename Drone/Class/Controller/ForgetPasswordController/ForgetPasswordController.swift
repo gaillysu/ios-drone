@@ -114,14 +114,17 @@ extension ForgetPasswordController:YYKeyboardObserver,UITextFieldDelegate {
     func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
         UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
             let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
-            let textFrame:CGRect = self.selectedTextField!.frame
-            let bgview:CGRect = self.textBgView.frame
-            if((bgview.origin.y+textFrame.origin.y+textFrame.size.height)>kbFrame.origin.y) {
-                self.view.frame = CGRectMake(0, -((bgview.origin.y+textFrame.origin.y+textFrame.size.height)-kbFrame.origin.y), UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-                
-            }else{
-                self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+            if self.selectedTextField != nil {
+                let textFrame:CGRect = self.selectedTextField!.frame
+                let bgview:CGRect = self.textBgView.frame
+                if((bgview.origin.y+textFrame.origin.y+textFrame.size.height)>kbFrame.origin.y) {
+                    self.view.frame = CGRectMake(0, -((bgview.origin.y+textFrame.origin.y+textFrame.size.height)-kbFrame.origin.y), UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+                    
+                }else{
+                    self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+                }
             }
+            
         }) { (finished) in
         }
     }

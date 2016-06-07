@@ -139,17 +139,6 @@ extension StepsViewController {
         rightAxis.drawGridLinesEnabled  = true
         rightAxis.drawLimitLinesBehindDataEnabled = true
         rightAxis.drawZeroLineEnabled = true
-        
-        let goal:GoalModel = GoalModel.getAll()[0] as! GoalModel
-        let max = goal.goalSteps/5
-
-        yAxis.axisMaxValue = Double(max)
-        yAxis.axisMinValue = 0
-        if(max % 500 == 0){
-            yAxis.setLabelCount((Int(max)/500)+1, force: true);
-        }else{
-            yAxis.setLabelCount((Int(max)/500), force: true);
-        }
 
         barChart!.rightAxis.enabled = false
         barChart.drawBarShadowEnabled = false
@@ -158,6 +147,7 @@ extension StepsViewController {
         
         var lastSteps:Int = 0
         var lastTimeframe:Int = 0
+        var max:Int = 0
         for i in 0 ..< 24 {
             let dayDate:NSDate = todayDate
             
@@ -170,11 +160,14 @@ extension StepsViewController {
                 hourData += Double(hSteps.steps)
                 if hSteps.steps>0 {
                     lastTimeframe += 5
+                    if hSteps.steps>max {
+                        max = hSteps.steps
+                    }
                 }
             }
+            
             lastSteps += Int(hourData)
             yVals.append(BarChartDataEntry(value: hourData, xIndex:i));
-            
             if(i%6 == 0){
                 xVals.append("\(i):00")
             }else if(i == 23) {
@@ -193,7 +186,21 @@ extension StepsViewController {
             barChartData.setDrawValues(false)
             self.barChart.data = barChartData
         }
+        
+        yAxis.axisMinValue = 0
+        yAxis.setLabelCount(5, force: true);
+        if(max % 500 == 0){
+            yAxis.axisMaxValue = Double((Int(max)/500)*500)
+        }else{
+            if Double(max)/500.0<0 {
+                yAxis.axisMaxValue = 500
+            }else{
+                yAxis.axisMaxValue = Double(Int(String(format: "%.0f", Double(max)/500.0))!*500)
+            }
+        }
+        
         //display selected today steps data
+        let goal:GoalModel = GoalModel.getAll()[0] as! GoalModel
         self.setCircleProgress(Int(lastSteps) , goalValue: goal.goalSteps)
         
         if lastSteps>0 {
