@@ -197,7 +197,7 @@ extension StepsViewController {
         self.setCircleProgress(Int(lastSteps) , goalValue: goal.goalSteps)
         
         if lastSteps>0 {
-            calculationData(lastSteps, completionData: { (miles, calories) in
+            calculationData(lastTimeframe,steps: lastSteps, completionData: { (miles, calories) in
                 self.lastMiles.text = miles
                 self.lastCalories.text = calories
                 let timer:String = String(format: "%.2f",Double(lastTimeframe)/60)
@@ -242,7 +242,7 @@ extension StepsViewController {
         }
         
         if thisWeekSteps>0 {
-            calculationData(thisWeekSteps, completionData: { (miles, calories) in
+            calculationData(thisWeekTime,steps: thisWeekSteps, completionData: { (miles, calories) in
                 self.thisWeekMiles.text = miles
                 self.thisWeekCalories.text = calories
                 let timer:String = String(format: "%.2f",Double(thisWeekTime)/60)
@@ -280,7 +280,7 @@ extension StepsViewController {
         }
         
         if lastWeekSteps>0 {
-            calculationData(lastWeekSteps, completionData: { (miles, calories) in
+            calculationData(lastWeekTime,steps: lastWeekSteps, completionData: { (miles, calories) in
                 self.lastWeekMiles.text = miles
                 self.lastWeekCalories.text = calories
                 let timer:String = String(format: "%.2f",Double(lastWeekTime)/60)
@@ -317,7 +317,7 @@ extension StepsViewController {
         }
         
         if lastMonthSteps>0 {
-            calculationData(lastMonthSteps, completionData: { (miles, calories) in
+            calculationData(lastMonthTime,steps: lastMonthSteps, completionData: { (miles, calories) in
                 self.lastMonthMiles.text = miles
                 self.lastMonthCalories.text = calories
                 let timer:String = String(format: "%.2f",Double(lastMonthTime)/60)
@@ -340,12 +340,13 @@ extension StepsViewController {
 // MARK: - Data calculation
 extension StepsViewController {
 
-    func calculationData(steps:Int,completionData:((miles:String,calories:String) -> Void)) {
+    func calculationData(activeTimer:Int,steps:Int,completionData:((miles:String,calories:String) -> Void)) {
         let profile:NSArray = UserProfile.getAll()
         let userProfile:UserProfile = profile.objectAtIndex(0) as! UserProfile
         let strideLength:Double = Double(userProfile.length)*0.415/100
         let miles:Double = strideLength*Double(steps)/1000
-        let calories:Double = (Double(userProfile.weight)*1.2565)*1.6*miles
+        //Formula's = (2.0 X persons KG X 3.5)/200 = calories per minute
+        let calories:Double = (2.0*Double(userProfile.weight)*3.5)/200*Double(activeTimer)
         completionData(miles: String(format: "%.2f",miles), calories: String(format: "%.2f",calories))
     }
 }

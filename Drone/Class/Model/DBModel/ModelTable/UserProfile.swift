@@ -12,11 +12,11 @@ class UserProfile: NSObject {
     var id:Int = 0
     var first_name:String = ""
     var last_name:String = ""
-    var birthday:String = ""
+    var birthday:String = "" //2016-06-07
     var gender:Bool = false // true = male || false = female
-    var weight:Int = 0
-    var length:Int = 0
-    var stride_length:Int = 0
+    var weight:Int = 0 //KG
+    var length:Int = 0 //CM
+    var stride_length:Int = 0 //CM
     var metricORimperial:Bool = false
     var created:NSTimeInterval = NSDate().timeIntervalSince1970
     var email:String = ""
