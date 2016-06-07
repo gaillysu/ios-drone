@@ -99,6 +99,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             if AppDelegate.getAppDelegate().network!.isReachable {
                 self.syncServiceDayData(dayDateArray)
             }
+
         }
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
@@ -190,28 +191,45 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.pushViewController(MyDeviceViewController(), animated: true);
     }
     
+    
+    //Will be no sync of data sync to the server
     func syncServiceDayData(dayDateArray:[NSDate]) {
         let userProfle:NSArray = UserProfile.getAll()
         let profile:UserProfile = userProfle.objectAtIndex(0) as! UserProfile
         
-        var dayData:[[String:String]] = []
+        var dayData:[String:String] = [:]
+        var dayTime:[Double] = []
         for day:NSDate in dayDateArray {
-            var yVals:[Double] = []
+            var yVals:[[Double]] = []
+            var activeTime:Double = 0
             let dayDate:NSDate = day
             for hour:Int in 0 ..< 24 {
                 let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: hour, minute: 0, second: 0).timeIntervalSince1970
                 let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
                 
-                var hourData:Double = 0
+                var hourData:[Double] = [0,0,0,0,0,0,0,0,0,0,0,0]
+                var timer:Double = 0
                 for userSteps in hours {
                     let hSteps:UserSteps = userSteps as! UserSteps
-                    let dak:NSDate = NSDate(timeIntervalSince1970: hSteps.date)
-                    if hour == dak.hour {
-                        hourData += Double(hSteps.steps)
+                    let minutesDate:NSDate = NSDate(timeIntervalSince1970: hSteps.date)
+                    var k:Int = Int(minutesDate.minute/5)
+                    if minutesDate.minute == 0 {
+                        k = 0
+                    }else{
+                        minutesDate.minute%5 == 0 ? (k = Int(minutesDate.minute/5)-1):(k = Int(Double(13)/Double(5)))
                     }
-                    hSteps.syncnext = true
-                    hSteps.update()
+                    
+                    if hour == minutesDate.hour {
+                        hourData[k] = Double(hSteps.steps)
+                    }
+                    
+                    if hSteps.steps>0 {
+                        timer+=5
+                    }
+                    //hSteps.syncnext = true
+                    //hSteps.update()
                 }
+                activeTime = activeTime+timer
                 yVals.append(hourData);
             }
             
@@ -220,18 +238,16 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             let formatter = NSDateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
             let dateString = "\(formatter.stringFromDate(date))"
-            let keyValue:[String:String] = [dateString:"\(dailySteps)"]
-            dayData.append(keyValue)
+            dayData[dateString] = "\(dailySteps)"
+            dayTime.append(activeTime)
         }
-        
         
         //create steps network global queue
         let queue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-
-        dispatch_async(queue, {() -> Void in
-            dispatch_apply(dayData.count, queue, {(index) -> Void in
-                let data:[String:String] = dayData[index] as [String:String]
-                HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(data.values)","date": "\(data.keys)"]], completion: { (result) in
+        let group = dispatch_group_create()
+        for (keys,value) in dayData {
+            dispatch_group_async(group, queue, {
+                HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(value)","date": "\(keys)","active_time":0]], completion: { (result) in
                     let json = JSON(result)
                     let message = json["message"].stringValue
                     let status = json["status"].intValue
@@ -240,15 +256,16 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                         let date = json["steps"].dictionaryValue["date"]?.dictionaryValue["date"]?.stringValue
                         XCGLogger.defaultInstance().debug(date!+message+"cloud create succeed")
                     }else{
-                        XCGLogger.defaultInstance().debug("\(data.keys)"+message+"cloud create error")
+                        XCGLogger.defaultInstance().debug("\(keys)"+message+"cloud create error")
                     }
                 })
             })
-            
-            dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                XCGLogger.defaultInstance().debug("create steps completed")
-            })
+        }
+    
+        dispatch_group_notify(group, queue, {
+            XCGLogger.defaultInstance().debug("create steps completed")
         })
+    
     }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
