@@ -40,6 +40,7 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
+  - MSCellAccessory (1.1.2)
   - PagingMenuController (0.10.1)
   - RegexKitLite (4.0)
   - SDCycleScrollView (1.64):
@@ -65,6 +66,7 @@ DEPENDENCIES:
   - CVCalendar (~> 1.2.9)
   - FMDB
   - MRProgress
+  - MSCellAccessory
   - PagingMenuController
   - RegexKitLite
   - SDCycleScrollView (~> 1.3)
@@ -105,6 +107,7 @@ SPEC CHECKSUMS:
   CVCalendar: 0799256e0bc3b43e83b7e86c0729ce9ff0624cb6
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
+  MSCellAccessory: 8265f3cd2386c1f372da00232472605ab11426e4
   PagingMenuController: 839065014839c033343ea640cba01c0e5b3c0476
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SDCycleScrollView: 806fedb9342ab03b58b84442f985517b42c7cbb7

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SwiftEventBus
+import MSCellAccessory
 
 class DeviceViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -127,6 +128,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: DeviceTableViewCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! DeviceTableViewCell
+        cell.accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
         if indexPath.row == 0 {
             cell.titleLabel.text = "Contacts Notifications"
         }else if indexPath.row == 1{

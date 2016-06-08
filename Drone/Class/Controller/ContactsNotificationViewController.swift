@@ -13,25 +13,29 @@ import AddressBookUI
 import MRProgress
 import SwiftyTimer
 import BRYXBanner
+import MSCellAccessory
 
 
 class ContactsNotificationViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ABPeoplePickerNavigationControllerDelegate {
     @IBOutlet var tableView: UITableView!
     let peoplePicker:ABPeoplePickerNavigationController = ABPeoplePickerNavigationController()
     let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
-    var contactsFilterArray:NSArray = ContactsFilter.getAll()
+    var contactsFilterArray:NSArray = ["Go to your notifications!","Go to your blocked callers!"]
+        //ContactsFilter.getAll()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Notifications"
         self.navigationController!.navigationBar.topItem!.title = "";
-        let button: UIButton = UIButton(type: UIButtonType.Custom)
-        button.setImage(UIImage(named: "addbutton"), forState: UIControlState.Normal)
-        button.addTarget(self, action: #selector(add), forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame = CGRectMake(0, 0, 30, 30)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
-        self.tableView.separatorColor = UIColor.whiteColor()
+//        let button: UIButton = UIButton(type: UIButtonType.Custom)
+//        button.setImage(UIImage(named: "addbutton"), forState: UIControlState.Normal)
+//        button.addTarget(self, action: #selector(add), forControlEvents: UIControlEvents.TouchUpInside)
+//        button.frame = CGRectMake(0, 0, 30, 30)
+//        let barButton = UIBarButtonItem(customView: button)
+//        self.navigationItem.rightBarButtonItem = barButton
+        
+        self.tableView.separatorColor = UIColor.clearColor()
+        self.tableView.rowHeight = 60.0
         
         let header:UIView = UIView.loadFromNibNamed("ContactsNotificationHeader")!
         header.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height)
@@ -83,7 +87,7 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+        return false
     }
     
     
@@ -131,16 +135,31 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: "identifier")
+            cell?.accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
         }
-        let contact = contactsFilterArray[indexPath.row] as! ContactsFilter
+        let contact = contactsFilterArray[indexPath.row] as! String
         cell?.backgroundColor = UIColor.transparent()
         cell?.textLabel?.textColor = UIColor.whiteColor()
-        cell?.textLabel?.text = contact.name
+        cell?.textLabel?.font = UIFont.systemFontOfSize(20)
+        cell?.textLabel?.text = contact
+        cell?.separatorInset = UIEdgeInsetsZero
+        cell?.preservesSuperviewLayoutMargins = false
+        cell?.layoutMargins = UIEdgeInsetsZero
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true);
+        var url:NSURL?
+        if indexPath.row == 0 {
+            url = NSURL(string:"prefs:root=NOTIFICATIONS_ID")
+        }else {
+            url = NSURL(string:"prefs:root=Phone&path=Blocked")
+        }
+        
+        if UIApplication.sharedApplication().canOpenURL(url!) {
+            UIApplication.sharedApplication().openURL(url!)
+        }
     }
     
     func showMessage(message: String) {

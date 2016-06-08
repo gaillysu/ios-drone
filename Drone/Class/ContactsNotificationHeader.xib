@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -12,25 +12,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsX-BN-Li6">
-                    <rect key="frame" x="27" y="48" width="300" height="65"/>
+                    <rect key="frame" x="7" y="48" width="340" height="65"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="65" id="8MN-e2-sth"/>
                     </constraints>
-                    <string key="text">Don't want to be notified by everyone on your watch? Just add the contacts you want to get notified by by pressing on the plus button!</string>
+                    <string key="text">Drone is following the Apple Notification Center, whenever a notification comes in into your notification center, Drone will mirror this. You can modify this by clicking the following items.</string>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting annoyed by an added contact? Just swipe to the right to delete him or her!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2d-J4-k7J">
-                    <rect key="frame" x="27" y="121" width="300" height="28"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you know you could also block callers? These won't show on your watch either!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2d-J4-k7J">
+                    <rect key="frame" x="7" y="121" width="340" height="28"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Idea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnk-7e-QA3">
-                    <rect key="frame" x="134" y="15" width="87" height="25"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnk-7e-QA3">
+                    <rect key="frame" x="102" y="15" width="150" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="87" id="UiT-Ok-RiF"/>
+                        <constraint firstAttribute="width" constant="150" id="UiT-Ok-RiF"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="21"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,14 +39,14 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="m2d-J4-k7J" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="27" id="9id-5p-CiI"/>
+                <constraint firstItem="m2d-J4-k7J" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="7" id="9id-5p-CiI"/>
                 <constraint firstItem="m2d-J4-k7J" firstAttribute="top" secondItem="hsX-BN-Li6" secondAttribute="bottom" constant="8" id="CMh-S8-vRr"/>
-                <constraint firstAttribute="trailing" secondItem="m2d-J4-k7J" secondAttribute="trailing" constant="27" id="D1A-qE-LiH"/>
-                <constraint firstAttribute="trailing" secondItem="hsX-BN-Li6" secondAttribute="trailing" constant="27" id="EAa-Fx-Xzs"/>
+                <constraint firstAttribute="trailing" secondItem="m2d-J4-k7J" secondAttribute="trailing" constant="7" id="D1A-qE-LiH"/>
+                <constraint firstAttribute="trailing" secondItem="hsX-BN-Li6" secondAttribute="trailing" constant="7" id="EAa-Fx-Xzs"/>
                 <constraint firstItem="hsX-BN-Li6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NLX-q5-nGp"/>
                 <constraint firstItem="m2d-J4-k7J" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UpR-SN-ThM"/>
                 <constraint firstItem="hsX-BN-Li6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eTY-E1-4bU"/>
-                <constraint firstItem="hsX-BN-Li6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="27" id="jbf-yf-wZO"/>
+                <constraint firstItem="hsX-BN-Li6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="7" id="jbf-yf-wZO"/>
                 <constraint firstItem="hsX-BN-Li6" firstAttribute="top" secondItem="bnk-7e-QA3" secondAttribute="bottom" constant="8" id="k8Y-rB-miQ"/>
                 <constraint firstItem="bnk-7e-QA3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xam-Kb-UQQ"/>
             </constraints>

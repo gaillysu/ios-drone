@@ -144,6 +144,7 @@
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
 		009D89D11CD0C457004E914A /* WorldClockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D89CF1CD0C457004E914A /* WorldClockHeader.swift */; };
 		009D89D21CD0C457004E914A /* WorldClockHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009D89D01CD0C457004E914A /* WorldClockHeader.xib */; };
+		00C085361D07B2F2004E58E8 /* MSCellAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C085351D07B2F2004E58E8 /* MSCellAccessory.framework */; };
 		00CE42601CD1F9D3002D1321 /* BRYXBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE425E1CD1F9D3002D1321 /* BRYXBanner.framework */; };
 		00CE42611CD1F9D3002D1321 /* RegexKitLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */; };
 		00CE42631CD20839002D1321 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CE42621CD20839002D1321 /* SwiftyJSON.framework */; };
@@ -372,6 +373,7 @@
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		009D89CF1CD0C457004E914A /* WorldClockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockHeader.swift; sourceTree = "<group>"; };
 		009D89D01CD0C457004E914A /* WorldClockHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockHeader.xib; sourceTree = "<group>"; };
+		00C085351D07B2F2004E58E8 /* MSCellAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MSCellAccessory.framework; path = "Pods/../build/Debug-iphoneos/MSCellAccessory.framework"; sourceTree = "<group>"; };
 		00CE425E1CD1F9D3002D1321 /* BRYXBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BRYXBanner.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/BRYXBanner.framework"; sourceTree = "<group>"; };
 		00CE425F1CD1F9D3002D1321 /* RegexKitLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RegexKitLite.framework; path = "Pods/../build/Debug-iphoneos/RegexKitLite.framework"; sourceTree = "<group>"; };
 		00CE42621CD20839002D1321 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C085361D07B2F2004E58E8 /* MSCellAccessory.framework in Frameworks */,
 				00F132BA1CEC3EAB00CF8F6B /* CVCalendar.framework in Frameworks */,
 				00F132BB1CEC3EAB00CF8F6B /* SwiftyTimer.framework in Frameworks */,
 				9E455E211CD5C98200F79356 /* PagingMenuController.framework in Frameworks */,
@@ -1112,6 +1115,7 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00C085351D07B2F2004E58E8 /* MSCellAccessory.framework */,
 				00F132B81CEC3EAB00CF8F6B /* CVCalendar.framework */,
 				00F132B91CEC3EAB00CF8F6B /* SwiftyTimer.framework */,
 				9E455E201CD5C98200F79356 /* PagingMenuController.framework */,
