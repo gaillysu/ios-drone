@@ -10,6 +10,7 @@ import UIKit
 
 class UserSteps: NSObject,BaseEntryDatabaseHelper {
     var id:Int = 0
+    var cid:Int = 0
     var steps:Int = 0
     var distance:Int = 0
     var date:NSTimeInterval = 0

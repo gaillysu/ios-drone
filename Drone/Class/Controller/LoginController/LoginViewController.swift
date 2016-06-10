@@ -151,6 +151,8 @@ class LoginViewController: UIViewController {
                     
                 }
                 if(status == 1){
+                    let startDate = NSDate(timeIntervalSince1970: NSDate().timeIntervalSince1970-(86400*30))
+                    stepsDownload.getServiceSteps(startDate)
                     if self.fromMenu{
                         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
                     }else{
@@ -160,6 +162,7 @@ class LoginViewController: UIViewController {
                 }
             }
         }else{
+            
             XCGLogger.defaultInstance().debug("没有网络")
             let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.Cross, animated: true)
             view.setTintColor(UIColor.getBaseColor())

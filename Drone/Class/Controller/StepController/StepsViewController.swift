@@ -109,7 +109,7 @@ extension StepsViewController {
         lastMonthChart.reset()
         thisWeekChart.reset()
         
-        barChart!.noDataText = "No History Available."
+        barChart!.noDataText = NSLocalizedString("no_data_selected_date", comment: "")
         barChart!.descriptionText = ""
         barChart!.pinchZoomEnabled = false
         barChart!.doubleTapToZoomEnabled = false
@@ -184,19 +184,20 @@ extension StepsViewController {
             barChartSet.valueColors = [UIColor.getGreyColor()]
             let barChartData = BarChartData(xVals: xVals, dataSet: barChartSet)
             barChartData.setDrawValues(false)
-            self.barChart.data = barChartData
+            if lastSteps>0 {
+                self.barChart.data = barChartData
+            }else{
+                self.barChart.data = nil
+            }
         }
         
         yAxis.axisMinValue = 0
         yAxis.setLabelCount(5, force: true);
-        if(max % 500 == 0){
-            yAxis.axisMaxValue = Double((Int(max)/500)*500)
+        
+        if(max > 500){
+            yAxis.axisMaxValue = Double(Int(String(format: "%.0f", Double(max)/500.0))!*500)
         }else{
-            if Double(max)/500.0<0 {
-                yAxis.axisMaxValue = 500
-            }else{
-                yAxis.axisMaxValue = Double(Int(String(format: "%.0f", Double(max)/500.0))!*500)
-            }
+            yAxis.axisMaxValue = 500
         }
         
         //display selected today steps data

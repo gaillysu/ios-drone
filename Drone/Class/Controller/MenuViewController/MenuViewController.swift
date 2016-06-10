@@ -111,11 +111,11 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 if(stepsArray.count>0) {
                     let step:UserSteps = stepsArray[0] as! UserSteps
                     NSLog("Data that has been saved····")
-                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(steps)", "distance": "\(0)","date":timerInterval,"sync_next":false])
+                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(steps)", "distance": "\(0)","date":timerInterval,"syncnext":false])
                     stepsModel.update()
                     
                 }else {
-                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(steps)",  "distance": "\(0)", "date":timerInterval,"sync_next":false])
+                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(steps)",  "distance": "\(0)", "date":timerInterval,"syncnext":false])
                     stepsModel.add({ (id, completion) -> Void in
                         
                     })
@@ -226,8 +226,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     if hSteps.steps>0 {
                         timer+=5
                     }
-                    //hSteps.syncnext = true
-                    //hSteps.update()
+                    hSteps.syncnext = true
+                    hSteps.update()
                 }
                 activeTime = activeTime+timer
                 yVals.append(hourData);
