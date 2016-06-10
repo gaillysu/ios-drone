@@ -92,6 +92,13 @@ class DownloadStepsRequest: NSObject {
                             steps.add({ (id, completion) in
                                
                             })
+                        }else{
+                            for (index,value) in queryArray.enumerate() {
+                                let steps:UserSteps = value as! UserSteps
+                                steps.steps = Int(value2 as! NSNumber)
+                                steps.cid = cid
+                                steps.update()
+                            }
                         }
                         
                     }

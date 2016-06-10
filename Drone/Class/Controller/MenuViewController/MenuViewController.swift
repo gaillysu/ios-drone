@@ -194,19 +194,18 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     //Will be no sync of data sync to the server
     func syncServiceDayData(dayDateArray:[NSDate]) {
-        let userProfle:NSArray = UserProfile.getAll()
-        let profile:UserProfile = userProfle.objectAtIndex(0) as! UserProfile
         
         var dayData:[String:String] = [:]
         var dayTime:[Double] = []
+        var cidArray:[Int] = []
         for day:NSDate in dayDateArray {
             var yVals:[[Double]] = []
             var activeTime:Double = 0
             let dayDate:NSDate = day
+            var cid:Int = 0
             for hour:Int in 0 ..< 24 {
                 let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: hour, minute: 0, second: 0).timeIntervalSince1970
                 let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
-                
                 var hourData:[Double] = [0,0,0,0,0,0,0,0,0,0,0,0]
                 var timer:Double = 0
                 for userSteps in hours {
@@ -226,6 +225,10 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     if hSteps.steps>0 {
                         timer+=5
                     }
+                    
+                    if cid != hSteps.cid {
+                        cid = hSteps.cid
+                    }
                     hSteps.syncnext = true
                     hSteps.update()
                 }
@@ -240,34 +243,80 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             let dateString = "\(formatter.stringFromDate(date))"
             dayData[dateString] = "\(dailySteps)"
             dayTime.append(activeTime)
+            cidArray.append(cid)
         }
+        
+        var cidIndex:Int = 0
+        for (keys,value) in dayData {
+            let cid:Int = cidArray[cidIndex]
+            if cid>0 {
+                self.updateToServerData(cid, key: keys, value: value)
+            }else{
+                self.createToServerData(keys, value: value)
+            }
+            cidIndex += 1
+        }
+    
+    }
+ 
+    func updateToServerData(cid:Int,key:String,value:String) {
+        let userProfle:NSArray = UserProfile.getAll()
+        let profile:UserProfile = userProfle.objectAtIndex(0) as! UserProfile
         
         //create steps network global queue
         let queue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         let group = dispatch_group_create()
-        for (keys,value) in dayData {
-            dispatch_group_async(group, queue, {
-                HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(value)","date": "\(keys)","active_time":0]], completion: { (result) in
-                    let json = JSON(result)
-                    let message = json["message"].stringValue
-                    let status = json["status"].intValue
-                    
-                    if status == 1{
-                        let date = json["steps"].dictionaryValue["date"]?.dictionaryValue["date"]?.stringValue
-                        XCGLogger.defaultInstance().debug(date!+message+"cloud create succeed")
-                    }else{
-                        XCGLogger.defaultInstance().debug("\(keys)"+message+"cloud create error")
-                    }
-                })
+        
+        dispatch_group_async(group, queue, {
+            HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/update", data: ["steps": ["id":"\(cid)","uid": "\(profile.id)","steps": "\(value)","date": "\(key)","active_time":0]], completion: { (result) in
+                let json = JSON(result)
+                let message = json["message"].stringValue
+                let status = json["status"].intValue
+                
+                if status == 1{
+                    let date = json["steps"].dictionaryValue["date"]?.dictionaryValue["date"]?.stringValue
+                    XCGLogger.defaultInstance().debug(date!+message+"cloud update succeed")
+                }else{
+                    XCGLogger.defaultInstance().debug("\(key)"+message+"cloud update error")
+                }
             })
-        }
-    
+        })
+        
+        
         dispatch_group_notify(group, queue, {
             XCGLogger.defaultInstance().debug("create steps completed")
         })
-    
     }
- 
+    
+    func createToServerData(key:String,value:String) {
+        let userProfle:NSArray = UserProfile.getAll()
+        let profile:UserProfile = userProfle.objectAtIndex(0) as! UserProfile
+        
+        //create steps network global queue
+        let queue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let group = dispatch_group_create()
+        
+        dispatch_group_async(group, queue, {
+            HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(value)","date": "\(key)","active_time":0]], completion: { (result) in
+                let json = JSON(result)
+                let message = json["message"].stringValue
+                let status = json["status"].intValue
+                
+                if status == 1{
+                    let date = json["steps"].dictionaryValue["date"]?.dictionaryValue["date"]?.stringValue
+                    XCGLogger.defaultInstance().debug(date!+message+"cloud create succeed")
+                }else{
+                    XCGLogger.defaultInstance().debug("\(key)"+message+"cloud create error")
+                }
+            })
+        })
+        
+        
+        dispatch_group_notify(group, queue, {
+            XCGLogger.defaultInstance().debug("create steps completed")
+        })
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
