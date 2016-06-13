@@ -50,9 +50,9 @@ class AnalysisStepsChartView: LineChartView {
         xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
         xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 7)!
         
-//        let marker:BalloonMarker = BalloonMarker(color: UIColor.getBaseColor(), font: UIFont(name: "Helvetica-Light", size: 11)!, insets: UIEdgeInsetsMake(8.0, 8.0, 15.0, 8.0))
-//        marker.minimumSize = CGSizeMake(60, 25);
-//        self.marker = marker;
+        let marker:BalloonMarker = BalloonMarker(color: UIColor.getBaseColor(), font: UIFont(name: "Helvetica-Light", size: 11)!, insets: UIEdgeInsetsMake(8.0, 8.0, 15.0, 8.0))
+        marker.minimumSize = CGSizeMake(60, 25);
+        self.marker = marker;
     }
     
     func addDataPoint(name:String, entry:ChartDataEntry){

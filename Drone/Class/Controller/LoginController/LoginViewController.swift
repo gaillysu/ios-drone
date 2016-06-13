@@ -143,10 +143,9 @@ class LoginViewController: UIViewController {
                     userprofile.add({ (id, completion) in
                         XCGLogger.defaultInstance().debug("Added? id = \(id)")
                     })
-                    if(GoalModel.getAll().count == 0){
-                        let goalModel:GoalModel = GoalModel()
-                        goalModel.goalSteps = 10000
-                        goalModel.add({ (id, completion) in})
+                    if(UserGoal.getAll().count == 0){
+                        let goal:UserGoal = UserGoal(keyDict: ["goalSteps":10000,"label":" ","status":false])
+                        goal.add({ (id, completion) in})
                     }
                     
                 }

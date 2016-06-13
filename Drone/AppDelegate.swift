@@ -343,7 +343,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             if(packet.getHeader() == SetUserProfileRequest.HEADER()) {
                //step5: start set user default goal
                releaseResponseTimer()
-               self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+               let goalArray:NSArray = UserGoal.getAll()
+               if goalArray.count>0 {
+                  let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
+                  self.setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
+               }else{
+                  self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+               }
                setupResponseTimer(["index":NSNumber(int: 6)])
             }
          
@@ -480,7 +486,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             setupResponseTimer(["index":NSNumber(int: 5)])
         case 5:
             log.debug("set user goal,noResponseIndex:\(noResponseIndex)")
-            self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+            let goalArray:NSArray = UserGoal.getAll()
+            if goalArray.count>0 {
+               let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
+               self.setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
+            }else{
+               self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+            }
             setupResponseTimer(["index":NSNumber(int: 6)])
         case 6:
             log.debug("set user steps watch")
