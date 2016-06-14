@@ -52,6 +52,8 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     var calendarView:CVCalendarView?
     var menuView:CVCalendarMenuView?
     var titleView:StepsTitleView?
+    
+    private var didSelectedDate:NSDate = NSDate().beginningOfDay
     private var queryTimer:NSTimer?
 
     init() {
@@ -72,8 +74,13 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         stepsLabel.text = "0"
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
-            let stepsDict:[String:Int] = notification.object as! [String:Int]
-            self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+            if self.didSelectedDate.isEqualToDate(NSDate().beginningOfDay) {
+                //AppDelegate.getAppDelegate().getActivity()
+                self.bulidChart(NSDate().beginningOfDay)
+                let stepsDict:[String:Int] = notification.object as! [String:Int]
+                self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                
+            }
         }
         
         queryTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(StepsViewController.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
@@ -498,6 +505,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         let dayDate:NSDate = dayView.date!.convertedDate()!
         let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
         self.bulidChart(NSDate(timeIntervalSince1970: dayTime))
+        didSelectedDate = NSDate(timeIntervalSince1970: dayTime)
         
     }
 
