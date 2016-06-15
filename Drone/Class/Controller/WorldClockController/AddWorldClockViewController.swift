@@ -185,8 +185,13 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
                     zoneArray.append(beforeGmt)
                 }
             }
+            let nameArray = displayName.componentsSeparatedByString(",")
+            if nameArray.count>1 {
+                clockNameArray.append(nameArray[0])
+            }else{
+                clockNameArray.append(displayName)
+            }
             
-            clockNameArray.append(displayName)
             
             let system_name:String = (citiesGmtDict[displayName] as? String)!
             let beforeGmt:Int = TimeUtil.getGmtOffSetForCity(system_name)
@@ -284,8 +289,14 @@ extension AddWorldClockViewController:DidSelectedDelegate {
                     return
                 }else{
                     let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))
-                    clockNameArray.append(worldclock.city_name)
-                    zoneArray.append(beforeGmt)
+                    
+                    let timeZone: String = NSTimeZone.localTimeZone().name
+                    let timeZoneArray:[String] = timeZone.characters.split{$0 == "/"}.map(String.init)
+                    
+                    if timeZoneArray[1] !=  worldclock.city_name{
+                        clockNameArray.append(worldclock.city_name)
+                        zoneArray.append(beforeGmt)
+                    }
                 }
             }
             clockNameArray.append(displayName)

@@ -156,10 +156,17 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             var clockNameArray:[String] = []
             var zoneArray:[Int] = []
             for (index,value) in worldClockArray.enumerate() {
+                let timeZone: String = NSTimeZone.localTimeZone().name
+                let timeZoneArray:[String] = timeZone.characters.split{$0 == "/"}.map(String.init)
+                
                 let worldclock:WorldClock = value as! WorldClock
                 let beforeGmt:Int = Int(TimeUtil.getGmtOffSetForCity(worldclock.system_name))
-                clockNameArray.append(worldclock.city_name)
-                zoneArray.append(beforeGmt)
+                
+                if timeZoneArray[1] !=  worldclock.city_name{
+                    clockNameArray.append(worldclock.city_name)
+                    zoneArray.append(beforeGmt)
+                }
+                
             }
             AppDelegate.getAppDelegate().setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
         } else if editingStyle == .Insert {
@@ -173,7 +180,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         cell.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, cell.frame.height)
 
         let worldClockCity:WorldClock = worldClockArray[indexPath.row] as! WorldClock
-        cell.cityLabel.text = worldClockCity.city_name
+        cell.cityLabel.text = worldClockCity.display_name
         
         let foreignTimeOffsetToGmt = Float(TimeUtil.getGmtOffSetForCity(worldClockCity.system_name))
         var text:String = ""
