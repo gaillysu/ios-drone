@@ -76,14 +76,18 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate.isEqualToDate(NSDate().beginningOfDay) {
                 //AppDelegate.getAppDelegate().getActivity()
-                self.bulidChart(NSDate().beginningOfDay)
-                let stepsDict:[String:Int] = notification.object as! [String:Int]
-                self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                //self.bulidChart(NSDate().beginningOfDay)
+                //let stepsDict:[String:Int] = notification.object as! [String:Int]
+                //self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
                 
             }
         }
         
-        queryTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(StepsViewController.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
+            self.bulidChart(NSDate().beginningOfDay)
+        }
+        
+        queryTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(StepsViewController.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -99,7 +103,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     }
 
     func queryStepsGoalAction(timer:NSTimer) {
-        AppDelegate.getAppDelegate().getGoal()
+        AppDelegate.getAppDelegate().getActivity()
     }
 }
 
@@ -123,6 +127,7 @@ extension StepsViewController {
         barChart!.legend.enabled = false
         barChart!.dragEnabled = true
         barChart!.rightAxis.enabled = true
+        barChart!.setScaleEnabled(false)
         
         let xAxis:ChartXAxis = barChart!.xAxis
         xAxis.labelTextColor = UIColor.grayColor()
@@ -138,6 +143,8 @@ extension StepsViewController {
         yAxis.drawAxisLineEnabled  = true
         yAxis.drawGridLinesEnabled  = true
         yAxis.drawLimitLinesBehindDataEnabled = true
+        yAxis.axisMinValue = 0
+        yAxis.setLabelCount(5, force: true)
         
         let rightAxis:ChartYAxis = barChart!.rightAxis
         rightAxis.labelTextColor = UIColor.clearColor()
@@ -154,7 +161,7 @@ extension StepsViewController {
         
         var lastSteps:Int = 0
         var lastTimeframe:Int = 0
-        var max:Int = 0
+        var max:Double = 0
         for i in 0 ..< 24 {
             let dayDate:NSDate = todayDate
             
@@ -162,15 +169,26 @@ extension StepsViewController {
             let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
             
             var hourData:Double = 0
-            for userSteps in hours {
+            for (index,userSteps) in hours.enumerate() {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
                 if hSteps.steps>0 {
                     lastTimeframe += 5
-                    if hSteps.steps>max {
-                        max = hSteps.steps
+                }
+                if index == hours.count-1 {
+                    if hourData > max {
+                        max = hourData
                     }
                 }
+            }
+            
+            if(max > 500){
+                while max%100 != 0 {
+                    max += 1
+                }
+                yAxis.axisMaxValue = max
+            }else{
+                yAxis.axisMaxValue = 500
             }
             
             lastSteps += Int(hourData)
@@ -183,7 +201,7 @@ extension StepsViewController {
                 xVals.append("")
             }
 
-            let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "Steps")
+            let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "")
             let dataSet = NSMutableArray()
             dataSet.addObject(barChartSet);
             barChartSet.colors = [UIColor.getBaseColor()]
@@ -196,15 +214,6 @@ extension StepsViewController {
             }else{
                 self.barChart.data = nil
             }
-        }
-        
-        yAxis.axisMinValue = 0
-        yAxis.setLabelCount(5, force: true);
-        
-        if(max > 500){
-            yAxis.axisMaxValue = Double(Int(String(format: "%.0f", Double(max)/500.0))!*500)
-        }else{
-            yAxis.axisMaxValue = 500
         }
         
         //display selected today steps data

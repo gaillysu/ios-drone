@@ -128,8 +128,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         sendRequest(SetAppConfigRequest())
     }
 
-    func setGoal(goal:Goal) {
-        sendRequest(SetGoalRequest(goal: goal))
+    func setGoal(goal:Goal?) {
+      if goal == nil {
+         let goalArray:NSArray = UserGoal.getAll()
+         if goalArray.count>0 {
+            let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
+            self.setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
+         }else{
+            self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+         }
+      }else{
+         sendRequest(SetGoalRequest(goal: goal!))
+      }
     }
 
     func setUserProfile() {
@@ -272,7 +282,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 }
 
                 if(systemStatus == SystemStatus.GoalCompleted.rawValue) {
-                    setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+                    setGoal(nil)
                 }
 
                 if(systemStatus == SystemStatus.ActivityDataAvailable.rawValue) {
@@ -287,7 +297,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 log.debug("eventCommandStatus :\(eventCommandStatus)")
                 if(eventCommandStatus == SystemEventStatus.GoalCompleted.rawValue) {
                     SwiftEventBus.post(SWIFTEVENT_BUS_GOAL_COMPLETED, sender:nil)
-
                 }
 
                 if(eventCommandStatus == SystemEventStatus.LowMemory.rawValue) {
@@ -343,13 +352,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             if(packet.getHeader() == SetUserProfileRequest.HEADER()) {
                //step5: start set user default goal
                releaseResponseTimer()
-               let goalArray:NSArray = UserGoal.getAll()
-               if goalArray.count>0 {
-                  let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
-                  self.setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
-               }else{
-                  self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
-               }
+               self.setGoal(nil)
                setupResponseTimer(["index":NSNumber(int: 6)])
             }
          
@@ -486,13 +489,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             setupResponseTimer(["index":NSNumber(int: 5)])
         case 5:
             log.debug("set user goal,noResponseIndex:\(noResponseIndex)")
-            let goalArray:NSArray = UserGoal.getAll()
-            if goalArray.count>0 {
-               let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
-               self.setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
-            }else{
-               self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
-            }
+            self.setGoal(nil)
             setupResponseTimer(["index":NSNumber(int: 6)])
         case 6:
             log.debug("set user steps watch")
