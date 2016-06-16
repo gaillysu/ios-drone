@@ -106,32 +106,35 @@ class DownloadStepsRequest: NSObject {
             formatter.dateFormat = "yyyy-MM-dd"
             let date = formatter.dateFromString(dateArray![0])
             let dateTimerInterval  = date?.beginningOfDay.timeIntervalSince1970
-            let stepsArray:NSArray = AppTheme.jsonToArray(stepsString!)
-            
-            for (index,value) in stepsArray.enumerate() {
-                var seconds:Int = index*60*60
-                for (index2,value2) in (value as! NSArray).enumerate() {
-                    if Int(value2 as! NSNumber)>0 {
-                        seconds += (index2*5)*60
-                        let queryArray:NSArray = UserSteps.getCriteria("WHERE date = \(Double(dateTimerInterval!+Double(seconds)))")
-                        if queryArray.count == 0 {
-                            let steps:UserSteps = UserSteps(keyDict: ["id":0, "cid":cid, "steps":Int(value2 as! NSNumber), "distance": "\(0)","date":Double(dateTimerInterval!+Double(seconds)),"syncnext":true])
-                            steps.add({ (id, completion) in
-                               
-                            })
-                        }else{
-                            for (index,value) in queryArray.enumerate() {
-                                let steps:UserSteps = value as! UserSteps
-                                steps.steps = Int(value2 as! NSNumber)
-                                steps.cid = cid
-                                steps.update()
-                            }
-                        }
-                        
-                    }
-                }
+            if stepsString != nil {
+                let stepsArray:NSArray = AppTheme.jsonToArray(stepsString!)
                 
+                for (index,value) in stepsArray.enumerate() {
+                    var seconds:Int = index*60*60
+                    for (index2,value2) in (value as! NSArray).enumerate() {
+                        if Int(value2 as! NSNumber)>0 {
+                            seconds += (index2*5)*60
+                            let queryArray:NSArray = UserSteps.getCriteria("WHERE date = \(Double(dateTimerInterval!+Double(seconds)))")
+                            if queryArray.count == 0 {
+                                let steps:UserSteps = UserSteps(keyDict: ["id":0, "cid":cid, "steps":Int(value2 as! NSNumber), "distance": "\(0)","date":Double(dateTimerInterval!+Double(seconds)),"syncnext":true])
+                                steps.add({ (id, completion) in
+                                    
+                                })
+                            }else{
+                                for (index,value) in queryArray.enumerate() {
+                                    let steps:UserSteps = value as! UserSteps
+                                    steps.steps = Int(value2 as! NSNumber)
+                                    steps.cid = cid
+                                    steps.update()
+                                }
+                            }
+                            
+                        }
+                    }
+                    
+                }
             }
+            
         }
     }
 }
