@@ -24,7 +24,7 @@ class DownloadStepsRequest: NSObject {
                 completion(result: response.result.value as! NSDictionary)
             }else if (response.result.isFailure){
                 if (response.result.value == nil) {
-                    completion(result: NSDictionary(dictionary: ["error" : "request error"]))
+                    completion(result: NSDictionary(dictionary: ["error" : "request error","status":-1]))
                 }else{
                     completion(result: response.result.value as! NSDictionary)
                 }
@@ -32,6 +32,33 @@ class DownloadStepsRequest: NSObject {
         }
     }
     
+    func getClickTodayServiceSteps(startDate:NSDate,completion:(result:Bool) -> Void) {
+        let start:NSDate = startDate.beginningOfDay
+        let end:NSDate = startDate.endOfDay
+        
+        let profileArray:NSArray = UserProfile.getAll()
+        let profile:UserProfile = profileArray.objectAtIndex(0) as! UserProfile
+        
+        //Download data selected days recently
+        DownloadStepsRequest.getRequest("http://drone.karljohnchow.com/steps/user", uid: "\(profile.id)", start_date: "\(Int(start.timeIntervalSince1970))", end_date: "\(Int(end.timeIntervalSince1970))", completion: { (result) in
+            XCGLogger.defaultInstance().debug("getJSON: \(result)")
+            let json = JSON(result)
+            let status:Int = json["status"].intValue
+            if status>0 {
+                let stepsArray = json["steps"].arrayValue
+                self.savedServiceDataToLocalDatabase(stepsArray)
+                completion(result: true)
+            }else{
+                completion(result: false)
+            }
+        })
+    }
+    
+    /**
+     Download data 30 days recently
+     
+     - parameter startDateWeek: start date
+     */
     func getServiceSteps(startDateWeek:NSDate) {
         let startDate:NSDate = startDateWeek.beginningOfDay
         //Download data 30 days recently

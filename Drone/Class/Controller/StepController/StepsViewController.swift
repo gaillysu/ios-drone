@@ -15,6 +15,7 @@ import CVCalendar
 import Timepiece
 import SwiftEventBus
 import XCGLogger
+import MRProgress
 
 
 let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
@@ -478,6 +479,16 @@ extension StepsViewController {
 
 // MARK: - CVCalendarViewDelegate, CVCalendarMenuViewDelegate
 extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
         return .MonthView
@@ -515,6 +526,23 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
         self.bulidChart(NSDate(timeIntervalSince1970: dayTime))
         didSelectedDate = NSDate(timeIntervalSince1970: dayTime)
+        
+        let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayDate.beginningOfDay.timeIntervalSince1970) AND \(dayDate.endOfDay.timeIntervalSince1970)")
+        if hours.count == 0 {
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            
+            let startDate = didSelectedDate
+            stepsDownload.getClickTodayServiceSteps(startDate, completion: { (result) in
+                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+                
+                if result {
+                    self.delay(0.3, closure: {
+                       self.bulidChart(NSDate(timeIntervalSince1970: dayTime))
+                    })
+                }
+            })
+        }
         
     }
 
