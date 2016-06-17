@@ -92,7 +92,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     }
 
     override func viewWillAppear(animated: Bool) {
-        self.bulidChart(NSDate())
+        self.bulidChart(didSelectedDate)
     }
 
     override func viewDidDisappear(animated: Bool) {
@@ -167,7 +167,7 @@ extension StepsViewController {
             let dayDate:NSDate = todayDate
             
             let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
-            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
+            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600-1)") //one hour = 3600s
             
             var hourData:Double = 0
             for (index,userSteps) in hours.enumerate() {
