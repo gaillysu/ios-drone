@@ -21,7 +21,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         didSet{
             let timeZone: String = NSTimeZone.localTimeZone().name
             let timeZoneArray:[String] = timeZone.characters.split{$0 == "/"}.map(String.init)
-            let wordClock:WorldClock = WorldClock(keyDict: ["system_name":timeZone,"city_name":timeZoneArray[1],"display_name":timeZone])
+            let wordClock:WorldClock = WorldClock(keyDict: ["system_name":timeZone,"city_name":timeZoneArray[1],"display_name":"\(timeZoneArray[1]),\(timeZoneArray[0])"])
             worldClockArray.insertObject(wordClock, atIndex: 0)
         }
     }
@@ -180,7 +180,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         cell.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, cell.frame.height)
 
         let worldClockCity:WorldClock = worldClockArray[indexPath.row] as! WorldClock
-        cell.cityLabel.text = worldClockCity.display_name
+        cell.cityLabel.text = worldClockCity.display_name.stringByReplacingOccurrencesOfString("_", withString: " ")
         
         let foreignTimeOffsetToGmt = Float(TimeUtil.getGmtOffSetForCity(worldClockCity.system_name))
         var text:String = ""
