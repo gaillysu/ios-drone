@@ -121,8 +121,8 @@ class DownloadStepsRequest: NSObject {
                                     
                                 })
                             }else{
-                                for (index,value) in queryArray.enumerate() {
-                                    let steps:UserSteps = value as! UserSteps
+                                for (index3,value3) in queryArray.enumerate() {
+                                    let steps:UserSteps = value3 as! UserSteps
                                     steps.steps = Int(value2 as! NSNumber)
                                     steps.cid = cid
                                     steps.update()
