@@ -77,9 +77,9 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate.isEqualToDate(NSDate().beginningOfDay) {
                 //AppDelegate.getAppDelegate().getActivity()
-                //self.bulidChart(NSDate().beginningOfDay)
-                //let stepsDict:[String:Int] = notification.object as! [String:Int]
-                //self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                self.bulidChart(NSDate().beginningOfDay)
+                let stepsDict:[String:Int] = notification.object as! [String:Int]
+                self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
                 
             }
         }
@@ -88,7 +88,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             self.bulidChart(NSDate().beginningOfDay)
         }
         
-        queryTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(StepsViewController.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
+        queryTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -104,7 +104,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     }
 
     func queryStepsGoalAction(timer:NSTimer) {
-        AppDelegate.getAppDelegate().getActivity()
+        AppDelegate.getAppDelegate().getGoal()
     }
 }
 
@@ -174,6 +174,7 @@ extension StepsViewController {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
                 if hSteps.steps>0 {
+                    XCGLogger.defaultInstance().debug("Hour Steps:\(hSteps.steps)")
                     lastTimeframe += 5
                 }
                 if index == hours.count-1 {
