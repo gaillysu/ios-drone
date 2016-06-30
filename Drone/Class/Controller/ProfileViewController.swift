@@ -87,7 +87,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             loadingIndicator = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
             loadingIndicator.setTintColor(UIColor.getBaseColor())
             
-            HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length,"birthday":profile.birthday]]) { (result) in
+            HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length,"birthday":profile.birthday,"weight":profile.weight]]) { (result) in
                 let json = JSON(result)
                 let message = json["message"].stringValue
                 let status = json["status"].intValue
