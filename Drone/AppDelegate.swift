@@ -19,6 +19,7 @@ import Crashlytics
 
 let DRONEDBFILE:String = "droneDBFile";
 let DRONEDBNAME:String = "drone.sqlite";
+private let RESET_STATE:String = "RESET_STATE"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
@@ -203,6 +204,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       if daySteps>0 {
          sendRequest(SetStepsToWatchReuqest(steps: daySteps))
          setupResponseTimer(["index":NSNumber(int: 7)])
+         AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
       }
     }
    
@@ -275,6 +277,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                     //step1 : Set systemconfig next 1
                     self.setSystemConfig(0)
                     setupResponseTimer(["index":NSNumber(int: 1)])
+                  //Records need to use 0x30
+                  AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
                 }
 
                 if(systemStatus == SystemStatus.InvalidTime.rawValue) {
@@ -358,9 +362,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          
             if(packet.getHeader() == SetGoalRequest.HEADER()) {
                 sendIndex?(index: 0)
-                //step6: start set user steps
-                releaseResponseTimer()
-                self.setStepsToWatch()
+               //Records need to use 0x30
+               let stateArray:NSArray = AppTheme.LoadKeyedArchiverName(RESET_STATE) as! NSArray
+               if stateArray.count>0 {
+                  let state:[String:Bool] = stateArray[0] as! [String:Bool]
+                  if state[RESET_STATE]! {
+                     AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false])
+                     //step6: start set user steps
+                     releaseResponseTimer()
+                     self.setStepsToWatch()
+                  }
+                  
+               }
             }
          
             if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
@@ -377,7 +390,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
                 let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
                 let stepsDict:[String:Int] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal()]
-
                 SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
             }
             

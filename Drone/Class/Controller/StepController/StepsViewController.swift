@@ -89,7 +89,19 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
                 //self.bulidChart(NSDate().beginningOfDay)
                 let stepsDict:[String:Int] = notification.object as! [String:Int]
                 AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict)
-                self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                
+                let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
+                if lastData.count>0 {
+                    let steps:[String:AnyObject] = lastData[0] as! [String:AnyObject]
+                    let dateString = lastData[1] as! String
+                    if dateString.dateFromFormat("YYYY/MM/dd")!.isEqualToDate(NSDate().beginningOfDay) {
+                        self.setCircleProgress(Int(steps["steps"] as! String)! + stepsDict["dailySteps"]!, goalValue: stepsDict["goal"]!)
+                    }else{
+                        self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                    }
+                }else{
+                    self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                }
                 
             }
         }
@@ -550,6 +562,8 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
                 if result {
                     self.delay(0.3, closure: {
                        self.bulidChart(NSDate(timeIntervalSince1970: dayTime))
+                        //cloud sync
+                        AppDelegate.getAppDelegate().setStepsToWatch()
                     })
                 }
             })
