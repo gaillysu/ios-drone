@@ -18,14 +18,14 @@ import XCGLogger
 import MRProgress
 
 
-let NUMBER_OF_STEPS_GOAL_KEY = "NUMBER_OF_STEPS_GOAL_KEY"
+let SMALL_SYNC_LASTDATA = "SMALL_SYNC_LASTDATA"
+let IS_SEND_0X30_COMMAND = "IS_SEND_0X30_COMMAND"
 
 private let CALENDAR_VIEW_TAG = 1800
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
     @IBOutlet var mainview: UIView!
     @IBOutlet weak var circleProgressView: CircleProgressView!
-    // TODO eventbus: Steps, small & big sync
     @IBOutlet weak var lastMiles: UILabel!
     @IBOutlet weak var lastCalories: UILabel!
     @IBOutlet weak var lastActiveTime: UILabel!
@@ -74,11 +74,21 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
         stepsLabel.text = "0"
         
+        let lastData = AppTheme.LoadKeyedArchiverName(SMALL_SYNC_LASTDATA) as! NSArray
+        if lastData.count>0 {
+            let stepsDict:[String:Int] = lastData[0] as! [String:Int]
+            let dateString = lastData[1] as! String
+            if dateString.dateFromFormat("YYYY/MM/dd")!.isEqualToDate(NSDate().beginningOfDay) {
+                self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+            }
+        }
+        
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate.isEqualToDate(NSDate().beginningOfDay) {
                 //AppDelegate.getAppDelegate().getActivity()
-                self.bulidChart(NSDate().beginningOfDay)
+                //self.bulidChart(NSDate().beginningOfDay)
                 let stepsDict:[String:Int] = notification.object as! [String:Int]
+                AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict)
                 self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
                 
             }
