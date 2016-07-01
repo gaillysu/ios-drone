@@ -34,7 +34,9 @@ class MyDeviceViewController: BaseViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         for cont in viewControllers {
             cont.removeFromParentViewController()
         }

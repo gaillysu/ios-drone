@@ -42,6 +42,7 @@
 		008845EB1CF6A4D5006EA77F /* CheckEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008845E91CF6A4D5006EA77F /* CheckEmailController.xib */; };
 		0089310A1CC779B30013E6D8 /* WhichDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */; };
 		0089310D1CC77D1C0013E6D8 /* WhichDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */; };
+		008AEF161D25FFB200B9E4D0 /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008AEF151D25FFB200B9E4D0 /* TaskQueue.swift */; };
 		008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */; };
 		008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */; };
 		009201DC1CBE2B6600C51707 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009201DA1CBE2B6600C51707 /* WelcomeViewController.swift */; };
@@ -261,6 +262,7 @@
 		008845E91CF6A4D5006EA77F /* CheckEmailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckEmailController.xib; sourceTree = "<group>"; };
 		008931081CC779B30013E6D8 /* WhichDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichDeviceViewController.swift; sourceTree = "<group>"; };
 		0089310C1CC77D1C0013E6D8 /* WhichDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhichDeviceViewController.xib; sourceTree = "<group>"; };
+		008AEF151D25FFB200B9E4D0 /* TaskQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskQueue.swift; sourceTree = "<group>"; };
 		008C5EE81C8D7D3800DCD12D /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = Drone/Class/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		008C5EE91C8D7D3800DCD12D /* MenuViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewCell.xib; path = Drone/Class/MenuViewCell.xib; sourceTree = SOURCE_ROOT; };
 		009201DA1CBE2B6600C51707 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -535,6 +537,14 @@
 			);
 			name = WhichDeviceViewController;
 			path = YouDeviceViewController;
+			sourceTree = "<group>";
+		};
+		008AEF141D25FFB200B9E4D0 /* TaskQueue */ = {
+			isa = PBXGroup;
+			children = (
+				008AEF151D25FFB200B9E4D0 /* TaskQueue.swift */,
+			);
+			path = TaskQueue;
 			sourceTree = "<group>";
 		};
 		009201D91CBE2B5200C51707 /* WelcomeViewController */ = {
@@ -1032,6 +1042,7 @@
 		00982B541C868C89003DA5E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				008AEF141D25FFB200B9E4D0 /* TaskQueue */,
 				00982BD01C868C89003DA5E2 /* NevoBT */,
 				00982BD61C868C8A003DA5E2 /* NevoHK */,
 			);
@@ -1524,6 +1535,7 @@
 			files = (
 				005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */,
 				00982C5B1C868C8A003DA5E2 /* NevoOTAModeProfile.swift in Sources */,
+				008AEF161D25FFB200B9E4D0 /* TaskQueue.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				00982C481C868C8A003DA5E2 /* SetAppConfigRequest.swift in Sources */,
 				9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */,

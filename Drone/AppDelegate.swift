@@ -19,7 +19,7 @@ import Crashlytics
 
 let DRONEDBFILE:String = "droneDBFile";
 let DRONEDBNAME:String = "drone.sqlite";
-private let RESET_STATE:String = "RESET_STATE"
+let RESET_STATE:String = "RESET_STATE"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
@@ -371,6 +371,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                      //step6: start set user steps
                      releaseResponseTimer()
                      self.setStepsToWatch()
+                     setupResponseTimer(["index":NSNumber(int: 7)])
                   }
                   
                }

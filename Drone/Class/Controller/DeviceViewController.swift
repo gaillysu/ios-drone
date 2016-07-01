@@ -32,14 +32,9 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
         deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCellHeader", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: identifier_header)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        deviceTableView.sectionHeaderHeight = 254
-        deviceTableView.scrollEnabled = false
-        deviceTableView.rowHeight = (deviceTableView.frame.height - 254)/2
-
-        AppDelegate.getAppDelegate().sendRequest(GetBatteryRequest())
+        self.delay(seconds: 1) { 
+            AppDelegate.getAppDelegate().sendRequest(GetBatteryRequest())
+        }
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED) { (notification) -> Void in
             self.batteryStatus = notification.object as! [Int]
@@ -52,13 +47,26 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
              <0x03> - Calculating
              */
         }
-        if !AppDelegate.getAppDelegate().isConnected() {
-            deviceTableView.reloadData()
-        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        deviceTableView.sectionHeaderHeight = 254
+        deviceTableView.scrollEnabled = false
+        //deviceTableView.rowHeight =
+        deviceTableView.reloadData()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2;
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        //NSLog("CGRect:\(NSStringFromCGRect(self.view.frame))")
+        return (deviceTableView.frame.height - 254)/2
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -72,6 +80,8 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) in
                 AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
                 UserDevice.removeAll()
+                //Records need to use 0x30
+                AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
                 
                 if self.navigationController == nil {
                     self.dismissViewControllerAnimated(true, completion: nil)

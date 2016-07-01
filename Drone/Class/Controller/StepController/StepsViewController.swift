@@ -74,14 +74,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
         stepsLabel.text = "0"
         
-        let lastData = AppTheme.LoadKeyedArchiverName(SMALL_SYNC_LASTDATA) as! NSArray
-        if lastData.count>0 {
-            let stepsDict:[String:Int] = lastData[0] as! [String:Int]
-            let dateString = lastData[1] as! String
-            if dateString.dateFromFormat("YYYY/MM/dd")!.isEqualToDate(NSDate().beginningOfDay) {
-                self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
-            }
-        }
+        self.getLoclSmallSyncData(nil)
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate.isEqualToDate(NSDate().beginningOfDay) {
@@ -90,27 +83,22 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
                 let stepsDict:[String:Int] = notification.object as! [String:Int]
                 AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict)
                 
-                let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
-                if lastData.count>0 {
-                    let steps:[String:AnyObject] = lastData[0] as! [String:AnyObject]
-                    let dateString = lastData[1] as! String
-                    if dateString.dateFromFormat("YYYY/MM/dd")!.isEqualToDate(NSDate().beginningOfDay) {
-                        self.setCircleProgress(Int(steps["steps"] as! String)! + stepsDict["dailySteps"]!, goalValue: stepsDict["goal"]!)
-                    }else{
-                        self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
-                    }
-                }else{
-                    self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
-                }
+                self.getLoclSmallSyncData(stepsDict)
                 
             }
         }
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
-            self.bulidChart(NSDate().beginningOfDay)
+            self.delay(1) {
+                self.bulidChart(NSDate().beginningOfDay)
+            }
         }
         
-        queryTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
+        AppDelegate.getAppDelegate().setStepsToWatch()
+        self.delay(2) { 
+            self.queryTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
+        }
+        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -118,7 +106,8 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     }
 
     override func viewDidDisappear(animated: Bool) {
-
+        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY)
+        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA)
         if queryTimer!.valid {
             queryTimer?.invalidate()
             queryTimer = nil
@@ -127,6 +116,33 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
     func queryStepsGoalAction(timer:NSTimer) {
         AppDelegate.getAppDelegate().getGoal()
+    }
+    
+    func getLoclSmallSyncData(data:[String:Int]?){
+        let lastData = AppTheme.LoadKeyedArchiverName(SMALL_SYNC_LASTDATA) as! NSArray
+        if lastData.count>0 {
+            let stepsDict:[String:Int] = data==nil ? (lastData[0] as! [String:Int]):data!
+            let smallDateString = data==nil ? (lastData[1] as! String):NSDate().beginningOfDay.stringFromFormat("YYYY/MM/dd")
+            if smallDateString.dateFromFormat("YYYY/MM/dd")!.isEqualToDate(NSDate().beginningOfDay) {
+                let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
+                if last0X30Data.count>0 {
+                    let steps:[String:AnyObject] = last0X30Data[0] as! [String:AnyObject]
+                    let dateString = last0X30Data[1] as! String
+                    if dateString.dateFromFormat("YYYY/MM/dd")!.isEqualToDate(NSDate().beginningOfDay) {
+                        dispatch_async(dispatch_get_main_queue(),{
+                            // do something
+                            let daySteps:Int = Int(steps["steps"] as! String)! + stepsDict["dailySteps"]!
+                            self.setCircleProgress(daySteps, goalValue: stepsDict["goal"]!)
+                        })
+                        
+                    }else{
+                        self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                    }
+                }else{
+                    self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                }
+            }
+        }
     }
 }
 
