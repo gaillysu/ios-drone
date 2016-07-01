@@ -257,8 +257,10 @@ extension StepsViewController {
         }
         
         //display selected today steps data
-        let goal:GoalModel = GoalModel.getAll()[0] as! GoalModel
-        self.setCircleProgress(Int(lastSteps) , goalValue: goal.goalSteps)
+        if !didSelectedDate.isEqualToDate(NSDate().beginningOfDay) {
+            let goal:GoalModel = GoalModel.getAll()[0] as! GoalModel
+            self.setCircleProgress(Int(lastSteps) , goalValue: goal.goalSteps)
+        }
         
         if lastSteps>0 {
             calculationData(lastTimeframe,steps: lastSteps, completionData: { (miles, calories) in
@@ -272,6 +274,10 @@ extension StepsViewController {
                     self.lastActiveTime.text = "\(timerArray[1])m"
                 }
             })
+        }else{
+            self.lastMiles.text = "0"
+            self.lastCalories.text = "0"
+            self.lastActiveTime.text = "0m"
         }
         
         
@@ -317,6 +323,10 @@ extension StepsViewController {
                     self.thisWeekActiveTime.text = "\(timerArray[1])m"
                 }
             })
+        }else{
+            self.thisWeekMiles.text = "0"
+            self.thisWeekCalories.text = "0"
+            self.thisWeekActiveTime.text = "0m"
         }
 
         var lastWeekSteps:Int = 0
@@ -355,6 +365,10 @@ extension StepsViewController {
                     self.lastWeekActiveTime.text = "\(timerArray[1])m"
                 }
             })
+        }else{
+            self.lastWeekMiles.text = "0"
+            self.lastWeekCalories.text = "0"
+            self.lastWeekActiveTime.text = "0m"
         }
 
         let lastBeginningOfMonth:NSTimeInterval = todayDate.beginningOfDay.timeIntervalSince1970
@@ -392,7 +406,10 @@ extension StepsViewController {
                     self.lastMonthActiveTime.text = "\(timerArray[1])m"
                 }
             })
-            
+        }else{
+            self.lastMonthMiles.text = "0"
+            self.lastMonthCalories.text = "0"
+            self.lastMonthActiveTime.text = "0m"
         }
         
         lastWeekChart.invalidateChart()
@@ -563,9 +580,9 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         /// No data for the selected date available.
         let dayDate:NSDate = dayView.date!.convertedDate()!
         let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
-        self.bulidChart(NSDate(timeIntervalSince1970: dayTime))
         didSelectedDate = NSDate(timeIntervalSince1970: dayTime)
         
+        self.bulidChart(NSDate(timeIntervalSince1970: dayTime))
         let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayDate.beginningOfDay.timeIntervalSince1970) AND \(dayDate.endOfDay.timeIntervalSince1970)")
         if hours.count == 0 {
             let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
