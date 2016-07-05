@@ -279,18 +279,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                     setupResponseTimer(["index":NSNumber(int: 1)])
                   //Records need to use 0x30
                   AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
-                }
-
-                if(systemStatus == SystemStatus.InvalidTime.rawValue) {
+                }else if(systemStatus == SystemStatus.InvalidTime.rawValue) {
                     setRTC()
-                }
-
-                if(systemStatus == SystemStatus.GoalCompleted.rawValue) {
+                }else if(systemStatus == SystemStatus.GoalCompleted.rawValue) {
                     setGoal(nil)
-                }
-
-                if(systemStatus == SystemStatus.ActivityDataAvailable.rawValue) {
+                }else if(systemStatus == SystemStatus.ActivityDataAvailable.rawValue) {
                     self.getActivity()
+                }else{
+                  setRTC()
                 }
 
                 SwiftEventBus.post(SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)

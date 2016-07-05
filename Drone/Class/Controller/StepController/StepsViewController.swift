@@ -20,6 +20,7 @@ import MRProgress
 
 let SMALL_SYNC_LASTDATA = "SMALL_SYNC_LASTDATA"
 let IS_SEND_0X30_COMMAND = "IS_SEND_0X30_COMMAND"
+let IS_SEND_0X14_COMMAND_TIMERFRAME = "IS_SEND_0X14_COMMAND_TIMERFRAME"
 
 private let CALENDAR_VIEW_TAG = 1800
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
@@ -88,7 +89,16 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             }
         }
         
+        
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
+            XCGLogger.defaultInstance().debug("Data sync began")
+            self.delay(1) {
+                self.bulidChart(NSDate().beginningOfDay)
+            }
+        }
+        
+        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
+            XCGLogger.defaultInstance().debug("End of the data sync")
             self.delay(1) {
                 self.bulidChart(NSDate().beginningOfDay)
             }
@@ -96,7 +106,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         
         AppDelegate.getAppDelegate().setStepsToWatch()
         self.delay(2) { 
-            self.queryTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
+            self.queryTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(self.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
         }
         
     }
@@ -108,6 +118,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     override func viewDidDisappear(animated: Bool) {
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY)
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA)
+        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY)
         if queryTimer!.valid {
             queryTimer?.invalidate()
             queryTimer = nil
@@ -116,6 +127,23 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 
     func queryStepsGoalAction(timer:NSTimer) {
         AppDelegate.getAppDelegate().getGoal()
+        let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME) as! NSArray
+        if lastData.count>0 {
+            let sendLastDate:NSDate = lastData[0] as! NSDate
+            let nowDate:NSDate = NSDate()
+            let fiveMinutes:NSTimeInterval = 300
+            if (nowDate.timeIntervalSince1970-sendLastDate.timeIntervalSince1970)>=fiveMinutes {
+                self.delay(1.5) {
+                    AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: NSDate())
+                    AppDelegate.getAppDelegate().getActivity()
+                }
+            }
+        }else{
+            self.delay(1.5) {
+                AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: NSDate())
+                AppDelegate.getAppDelegate().getActivity()
+            }
+        }
     }
     
     func getLoclSmallSyncData(data:[String:Int]?){
