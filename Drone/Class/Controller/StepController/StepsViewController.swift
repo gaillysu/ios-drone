@@ -104,7 +104,15 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             }
         }
         
-        AppDelegate.getAppDelegate().setStepsToWatch()
+        let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
+        if lastData.count>0 {
+            let dateString:String = lastData[1] as! String
+            let date:NSDate = dateString.dateFromFormat("YYYY/MM/dd")!
+            if date.isEqualToDate(NSDate().beginningOfDay) {
+                AppDelegate.getAppDelegate().setStepsToWatch()
+            }
+        }
+        
         self.delay(2) { 
             self.queryTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(self.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
         }

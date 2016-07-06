@@ -202,9 +202,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       }
       
       if daySteps>0 {
-         sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-         setupResponseTimer(["index":NSNumber(int: 7)])
-         AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
+         let stateArray:NSArray = AppTheme.LoadKeyedArchiverName(RESET_STATE) as! NSArray
+         if stateArray.count>0 {
+            let state:[String:Bool] = stateArray[0] as! [String:Bool]
+            if state[RESET_STATE]! {
+               sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+               setupResponseTimer(["index":NSNumber(int: 7)])
+               AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
+            }
+            
+         }
+      
       }
     }
    
@@ -269,7 +277,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
         if(!packet.isLastPacket()) {
             SwiftEventBus.post(SWIFTEVENT_BUS_RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
-
+         
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
                 let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
                 log.debug("SystemStatus :\(systemStatus)")
@@ -358,24 +366,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          
             if(packet.getHeader() == SetGoalRequest.HEADER()) {
                 sendIndex?(index: 0)
-               //Records need to use 0x30
-               let stateArray:NSArray = AppTheme.LoadKeyedArchiverName(RESET_STATE) as! NSArray
-               if stateArray.count>0 {
-                  let state:[String:Bool] = stateArray[0] as! [String:Bool]
-                  if state[RESET_STATE]! {
-                     AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false])
-                     //step6: start set user steps
-                     releaseResponseTimer()
-                     self.setStepsToWatch()
-                     setupResponseTimer(["index":NSNumber(int: 7)])
-                  }
-                  
-               }
+               releaseResponseTimer()
+               self.setStepsToWatch()
+               setupResponseTimer(["index":NSNumber(int: 7)])
             }
          
             if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
                releaseResponseTimer()
                self.isSaveWorldClock()
+               //Set steps to watch response
+               AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false])
             }
 
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
