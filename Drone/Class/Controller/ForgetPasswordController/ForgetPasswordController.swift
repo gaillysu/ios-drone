@@ -8,7 +8,6 @@
 
 import UIKit
 import AutocompleteField
-import YYKeyboardManager
 import MRProgress
 import SwiftyJSON
 import BRYXBanner
@@ -35,7 +34,7 @@ class ForgetPasswordController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        YYKeyboardManager.defaultManager().addObserver(self)
+        
     }
 
     
@@ -105,28 +104,9 @@ class ForgetPasswordController: UIViewController {
 }
 
 // MARK: - YYKeyboardObserver
-extension ForgetPasswordController:YYKeyboardObserver,UITextFieldDelegate {
+extension ForgetPasswordController:UITextFieldDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         selectedTextField = textField as? AutocompleteField
         return true
     }
-    
-    func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
-        UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
-            let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
-            if self.selectedTextField != nil {
-                let textFrame:CGRect = self.selectedTextField!.frame
-                let bgview:CGRect = self.textBgView.frame
-                if((bgview.origin.y+textFrame.origin.y+textFrame.size.height)>kbFrame.origin.y) {
-                    self.view.frame = CGRectMake(0, -((bgview.origin.y+textFrame.origin.y+textFrame.size.height)-kbFrame.origin.y), UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-                    
-                }else{
-                    self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-                }
-            }
-            
-        }) { (finished) in
-        }
-    }
-
 }

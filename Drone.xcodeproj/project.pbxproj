@@ -32,8 +32,6 @@
 		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
 		0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */; };
 		0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */; };
-		0065AC121CC8ADF800DC3096 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC111CC8ADF800DC3096 /* MapKit.framework */; };
-		0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */; };
 		006F94301CCA0C320073C150 /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 006F942F1CCA0C310073C150 /* white_background.png */; };
 		007139661CD9E50600787CA2 /* MRProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007139651CD9E50600787CA2 /* MRProgress.framework */; };
 		008845E51CF69F67006EA77F /* ForgetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008845E31CF69F67006EA77F /* ForgetPasswordController.swift */; };
@@ -252,8 +250,6 @@
 		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
 		0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionSetupViewController.swift; sourceTree = "<group>"; };
 		0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionSetupViewController.xib; sourceTree = "<group>"; };
-		0065AC111CC8ADF800DC3096 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		0065AC141CC8C7B300DC3096 /* YYKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYKeyboardManager.framework; path = "Pods/../build/Debug-iphoneos/YYKeyboardManager.framework"; sourceTree = "<group>"; };
 		006F942F1CCA0C310073C150 /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
 		007139651CD9E50600787CA2 /* MRProgress.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MRProgress.framework; path = "Pods/../build/Debug-iphoneos/MRProgress.framework"; sourceTree = "<group>"; };
 		008845E31CF69F67006EA77F /* ForgetPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordController.swift; sourceTree = "<group>"; };
@@ -466,9 +462,7 @@
 				00CE42601CD1F9D3002D1321 /* BRYXBanner.framework in Frameworks */,
 				00CE42611CD1F9D3002D1321 /* RegexKitLite.framework in Frameworks */,
 				CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */,
-				0065AC151CC8C7B300DC3096 /* YYKeyboardManager.framework in Frameworks */,
 				CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */,
-				0065AC121CC8ADF800DC3096 /* MapKit.framework in Frameworks */,
 				CB0B469B1CCF223500411997 /* Crashlytics.framework in Frameworks */,
 				04089D17A4B1CFFB7CBB306C /* Pods.framework in Frameworks */,
 			);

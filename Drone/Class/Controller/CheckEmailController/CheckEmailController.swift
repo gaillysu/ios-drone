@@ -10,7 +10,6 @@ import UIKit
 import AutocompleteField
 import SwiftyJSON
 import MRProgress
-import YYKeyboardManager
 import BRYXBanner
 
 
@@ -31,7 +30,7 @@ class CheckEmailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        YYKeyboardManager.defaultManager().addObserver(self)
+        
     }
 
     @IBAction func buttonManagerAction(sender: AnyObject) {
@@ -106,25 +105,9 @@ class CheckEmailController: UIViewController {
 }
 
 // MARK: - YYKeyboardObserver
-extension CheckEmailController:YYKeyboardObserver,UITextFieldDelegate {
+extension CheckEmailController:UITextFieldDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         emailTextField = textField as? AutocompleteField
         return true
     }
-    
-    func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
-        UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
-            let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
-            let textFrame:CGRect = self.emailTextField!.frame
-            if((textFrame.origin.y+textFrame.size.height)>kbFrame.origin.y) {
-                self.view.frame = CGRectMake(0, -((textFrame.origin.y+textFrame.size.height)-kbFrame.origin.y), UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-                
-            }else{
-                self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-            }
-        }) { (finished) in
-            
-        }
-    }
-    
 }
