@@ -12,6 +12,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - IQKeyboardManagerSwift (4.0.4)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -55,7 +56,6 @@ PODS:
   - Timepiece (0.4.2)
   - UIColor_Hex_Swift (2.1)
   - XCGLogger (3.3)
-  - YYKeyboardManager (1.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -65,6 +65,7 @@ DEPENDENCIES:
   - CircleProgressView (from `https://github.com/CardinalNow/iOS-CircleProgressView.git`)
   - CVCalendar (~> 1.2.9)
   - FMDB
+  - IQKeyboardManagerSwift
   - MRProgress
   - MSCellAccessory
   - PagingMenuController
@@ -77,7 +78,6 @@ DEPENDENCIES:
   - Timepiece
   - UIColor_Hex_Swift (~> 2.1)
   - XCGLogger (~> 3.3)
-  - YYKeyboardManager
 
 EXTERNAL SOURCES:
   CircleProgressView:
@@ -106,6 +106,7 @@ SPEC CHECKSUMS:
   CircleProgressView: 5116fc2d3be792d755e6979d7f7309648de79d11
   CVCalendar: 0799256e0bc3b43e83b7e86c0729ce9ff0624cb6
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  IQKeyboardManagerSwift: e0964d04d6a29b71016fd346dca13ecb80a2823a
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   MSCellAccessory: 8265f3cd2386c1f372da00232472605ab11426e4
   PagingMenuController: 839065014839c033343ea640cba01c0e5b3c0476
@@ -119,6 +120,5 @@ SPEC CHECKSUMS:
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
   XCGLogger: d6e196e78940ff6daab17d6917107876f973fa31
-  YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
 
 COCOAPODS: 0.39.0

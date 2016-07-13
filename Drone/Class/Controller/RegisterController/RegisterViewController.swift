@@ -9,8 +9,6 @@
 import UIKit
 import AutocompleteField
 import BRYXBanner
-import YYKeyboardManager
-
 
 class RegisterViewController: BaseViewController {
     @IBOutlet weak var backB: UIButton!
@@ -37,7 +35,7 @@ class RegisterViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        YYKeyboardManager.defaultManager().addObserver(self)
+        
     }
 
     override func viewDidLayoutSubviews() {
@@ -111,26 +109,9 @@ class RegisterViewController: BaseViewController {
 }
 
 // MARK: - YYKeyboardObserver
-extension RegisterViewController:YYKeyboardObserver,UITextFieldDelegate {
+extension RegisterViewController:UITextFieldDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         selectedTextField = textField as? AutocompleteField
         return true
     }
-    
-    func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
-        UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
-            let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
-            let textFrame:CGRect = self.selectedTextField!.frame
-            let bgview:CGRect = self.textfiledBG.frame
-            if((bgview.origin.y+textFrame.origin.y+textFrame.size.height)>kbFrame.origin.y) {
-                self.view.frame = CGRectMake(0, -((bgview.origin.y+textFrame.origin.y+textFrame.size.height)-kbFrame.origin.y), UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-                
-            }else{
-                self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-            }
-        }) { (finished) in
-
-        }
-    }
-
 }

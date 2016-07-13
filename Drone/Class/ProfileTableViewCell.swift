@@ -14,8 +14,8 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
     private var keyBoardType:Type?{
         didSet {
             if keyBoardType == Type.Email {
-                itemTextField.enabled = false
-                editButton.hidden = true
+//                itemTextField.enabled = false
+//                editButton.hidden = true
             }
         }
     }

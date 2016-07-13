@@ -10,7 +10,6 @@ import UIKit
 import AutocompleteField
 import SMSegmentView
 import UIColor_Hex_Swift
-import YYKeyboardManager
 import BRYXBanner
 import SwiftyJSON
 import MRProgress
@@ -19,7 +18,7 @@ import XCGLogger
 private let DATEPICKER_TAG:Int = 1280
 private let PICKERVIEW_TAG:Int = 1380
 
-class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKeyboardObserver {
+class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!
@@ -54,7 +53,6 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
     override func viewDidLoad() {
         super.viewDidLoad()
         textfiledBG.layer.borderColor = UIColor(rgba: "#6F7179").CGColor
-        YYKeyboardManager.defaultManager().addObserver(self)
         //Init pickerView the data
         for index:Int in 100...250 {
             lengthArray.append(index)
@@ -94,24 +92,6 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate,YYKey
 
         if (nextB.isEqual(sender)) {
             registerRequest()
-        }
-    }
-
-    // MARK: - YYKeyboardObserver
-    func keyboardChangedWithTransition(transition: YYKeyboardTransition) {
-        UIView.animateWithDuration(transition.animationDuration, delay: 0, options: transition.animationOption, animations: {
-            let kbFrame:CGRect = YYKeyboardManager.defaultManager().convertRect(transition.toFrame, toView: self.view)
-            let textFrame:CGRect = self.selectedTextField!.frame
-            let bgview:CGRect = self.textfiledBG.frame
-            if((bgview.origin.y+textFrame.origin.y+textFrame.size.height)>kbFrame.origin.y) {
-                self.view.frame = CGRectMake(0, -((bgview.origin.y+textFrame.origin.y+textFrame.size.height)-kbFrame.origin.y), UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-                
-            }else{
-                self.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-            }
-            
-            }) { (finished) in
-
         }
     }
 

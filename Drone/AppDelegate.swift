@@ -15,8 +15,8 @@ import SwiftEventBus
 import XCGLogger
 import Fabric
 import Crashlytics
-
-
+import IQKeyboardManagerSwift
+    
 let DRONEDBFILE:String = "droneDBFile";
 let DRONEDBNAME:String = "drone.sqlite";
 let RESET_STATE:String = "RESET_STATE"
@@ -61,6 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          self.log.debug("Network Status Changed: \(status)")
       }
       network?.startListening()
+      
+      
+      IQKeyboardManager.sharedManager().enable = true
       
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
