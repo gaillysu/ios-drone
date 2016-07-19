@@ -92,14 +92,16 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
             XCGLogger.defaultInstance().debug("Data sync began")
-            self.delay(1) {
-                self.bulidChart(NSDate().beginningOfDay)
-            }
+            //release timer
+            self.invalidateTimer()
         }
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
             XCGLogger.defaultInstance().debug("End of the data sync")
             self.delay(1) {
+                //start small sync timer
+                self.fireSmallSyncTimer()
+                //refresh chart data
                 self.bulidChart(NSDate().beginningOfDay)
             }
         }
@@ -113,12 +115,30 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             }
         }
         
-        self.delay(2) { 
-            self.queryTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(self.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
+        if AppDelegate.getAppDelegate().syncState != SYNC_STATE.BIG_SYNC {
+            self.delay(2) {
+                self.fireSmallSyncTimer()
+            }
         }
-        
     }
 
+    /**
+     Must release timer when using 0 x14
+     */
+    func invalidateTimer() {
+        if queryTimer!.valid {
+            queryTimer?.invalidate()
+            queryTimer = nil
+        }
+    }
+    
+    /**
+     Cannot be used in conjunction with 0 x14
+     */
+    func fireSmallSyncTimer() {
+        self.queryTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(self.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         self.bulidChart(didSelectedDate)
     }
@@ -127,14 +147,14 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY)
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA)
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY)
-        if queryTimer!.valid {
-            queryTimer?.invalidate()
-            queryTimer = nil
-        }
+        invalidateTimer()
     }
 
     func queryStepsGoalAction(timer:NSTimer) {
-        AppDelegate.getAppDelegate().getGoal()
+        if AppDelegate.getAppDelegate().syncState != SYNC_STATE.BIG_SYNC {
+            AppDelegate.getAppDelegate().getGoal()
+        }
+        
         let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME) as! NSArray
         if lastData.count>0 {
             let sendLastDate:NSDate = lastData[0] as! NSDate

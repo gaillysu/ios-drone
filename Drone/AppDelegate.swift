@@ -21,6 +21,12 @@ let DRONEDBFILE:String = "droneDBFile";
 let DRONEDBNAME:String = "drone.sqlite";
 let RESET_STATE:String = "RESET_STATE"
 
+enum SYNC_STATE{
+   case NO_SYNC
+   case BIG_SYNC
+   case SMALL_SYNC
+}
+    
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
 
@@ -38,6 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     private var responseTimer:NSTimer?
     private var noResponseIndex:Int = 0
     private var sendContactsIndex:Int = 0
+   
+   
+    /**
+    Record the current state of the sync
+    */
+    var syncState:SYNC_STATE = .NO_SYNC
+   
     var sendIndex:((index:Int) -> Void)?
     let network = NetworkReachabilityManager(host: "drone.karljohnchow.com")
 
@@ -208,7 +221,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          let stateArray:NSArray = AppTheme.LoadKeyedArchiverName(RESET_STATE) as! NSArray
          if stateArray.count>0 {
             let state:[String:Bool] = stateArray[0] as! [String:Bool]
-            if state[RESET_STATE]! {
+            let date:NSDate = (stateArray[1] as! String).dateFromFormat("YYYY/MM/dd")!
+            if state[RESET_STATE]! && date.beginningOfDay.isEqualToDate(NSDate().beginningOfDay){
                sendRequest(SetStepsToWatchReuqest(steps: daySteps))
                setupResponseTimer(["index":NSNumber(int: 7)])
                AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
@@ -295,6 +309,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 }else if(systemStatus == SystemStatus.GoalCompleted.rawValue) {
                     setGoal(nil)
                 }else if(systemStatus == SystemStatus.ActivityDataAvailable.rawValue) {
+                  syncState = .BIG_SYNC
                     self.getActivity()
                 }else{
                   setRTC()
@@ -316,6 +331,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
                 if(eventCommandStatus == SystemEventStatus.ActivityDataAvailable.rawValue) {
                     SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
+                  syncState = .BIG_SYNC
                     self.getActivity()
                 }
 
@@ -390,6 +406,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
                 let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
                 let stepsDict:[String:Int] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal()]
+               syncState = .SMALL_SYNC
                 SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
             }
             
@@ -437,8 +454,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
                 //Download more data
                 if(status == ActivityDataStatus.MoreData.rawValue) {
+                    syncState = .BIG_SYNC
                     self.getActivity()
                 }else{
+                    syncState = .NO_SYNC
                     SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
                 }
             }
