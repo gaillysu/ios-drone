@@ -309,7 +309,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 }else if(systemStatus == SystemStatus.GoalCompleted.rawValue) {
                     setGoal(nil)
                 }else if(systemStatus == SystemStatus.ActivityDataAvailable.rawValue) {
-                  syncState = .BIG_SYNC
                     self.getActivity()
                 }else{
                   setRTC()
@@ -331,7 +330,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
                 if(eventCommandStatus == SystemEventStatus.ActivityDataAvailable.rawValue) {
                     SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
-                  syncState = .BIG_SYNC
                     self.getActivity()
                 }
 
