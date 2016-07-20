@@ -126,6 +126,9 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
      Must release timer when using 0 x14
      */
     func invalidateTimer() {
+        if queryTimer == nil {
+            return
+        }
         if queryTimer!.valid {
             queryTimer?.invalidate()
             queryTimer = nil

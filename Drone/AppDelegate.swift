@@ -462,7 +462,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                 }
             }
 
-        }
+        }else{
+         /**
+          Received the incorrect data packets cancel sync state
+          */
+         syncState = .NO_SYNC
+         SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
+      }
     }
 
     func connectionStateChanged(isConnected : Bool) {
