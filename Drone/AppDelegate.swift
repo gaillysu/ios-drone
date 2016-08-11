@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     private var responseTimer:NSTimer?
     private var noResponseIndex:Int = 0
     private var sendContactsIndex:Int = 0
-   
+   private var worldclockDatabaseHelper: WorldClockDatabaseHelper?
    
     /**
     Record the current state of the sync
@@ -64,7 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
-
+      worldclockDatabaseHelper = WorldClockDatabaseHelper()
+      worldclockDatabaseHelper?.setup()
         mConnectionController = ConnectionControllerImpl()
         mConnectionController?.setDelegate(self)
 
