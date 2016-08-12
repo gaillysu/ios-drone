@@ -74,4 +74,16 @@ class Timezone: Object {
         }
         return nil;
     }
+
+    func getOffsetFromUTC() -> Int{
+        if dstTimeOffset > 0 {
+            let startDate = WorldClockUtil.getStartDateForDST(self)
+            let stopDate = WorldClockUtil.getStopDateForDST(self)
+            if startDate < NSDate() && stopDate > NSDate() {
+                return gmtTimeOffset + dstTimeOffset
+            }
+        }
+        return gmtTimeOffset
+    }
+
 }

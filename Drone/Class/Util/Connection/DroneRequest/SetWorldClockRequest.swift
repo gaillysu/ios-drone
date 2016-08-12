@@ -9,18 +9,10 @@
 import UIKit
 
 class SetWorldClockRequest: NevoRequest {
-    private var mWorldTimerCount:Int?
-    private var mTimeZone:[Int] = []
-    private var mTimerName:[String] = []
-
-    init(count:Int,timeZone:[Int],name:[String]) {
+    private let worldClockArray: [(cityName:String,gmtOffset:Float)]
+    init(worldClockArray:[(cityName:String,gmtOffset:Float)]) {
+        self.worldClockArray = worldClockArray
         super.init()
-        mWorldTimerCount = count
-        mTimeZone = timeZone
-        mTimerName = name
-        //let timezone:Int = timeZone.secondsFromGMT
-        //mTimeZone = timeZone.secondsFromGMT/3600*15
-        //mTimerName = name
     }
 
     class func HEADER() -> UInt8 {
@@ -31,17 +23,14 @@ class SetWorldClockRequest: NevoRequest {
         var nameDataArray:[[UInt8]] = []
         nameDataArray.reserveCapacity(16)
         var zoneArray:[Int] = []
-        for name in mTimerName {
-           let namedata:[UInt8] = NSData2Bytes(name.dataUsingEncoding(NSUTF8StringEncoding)!)
+        for worldClock:(cityName:String,gmtOffset:Float) in worldClockArray {
+           let namedata:[UInt8] = NSData2Bytes(worldClock.cityName.dataUsingEncoding(NSUTF8StringEncoding)!)
             nameDataArray.append(namedata)
-        }
-        
-        for timezone in mTimeZone {
             zoneArray.append(timezone * 4)
         }
-        
+         
         var values1 :[UInt8] = [SetWorldClockRequest.HEADER(),
-            UInt8(mWorldTimerCount!&0xFF)]
+            UInt8(worldClockArray.count&0xFF)]
         for (index,value) in zoneArray.enumerate() {
             values1.append(UInt8(value&0xFF))
             values1.append(UInt8(nameDataArray[index].count&0xFF))

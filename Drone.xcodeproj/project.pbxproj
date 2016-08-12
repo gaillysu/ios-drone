@@ -177,6 +177,7 @@
 		9E526F3F1CDC891D0060F63F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E526F3E1CDC891D0060F63F /* StringExtension.swift */; };
 		9E62A1A91CDB1E150098C39B /* AddWorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E62A1A81CDB1E150098C39B /* AddWorldClockViewController.xib */; };
 		9E69A2601CE3354D007501FF /* ContactsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */; };
+		9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEB22061D5D6CB50099A621 /* WorldClockUtil.swift */; };
 		9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF7EEA41CD89DA7009B0928 /* ProfileTableViewCell.swift */; };
 		9EF7EEA71CD89DB4009B0928 /* ProfileTableViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF7EEA61CD89DB4009B0928 /* ProfileTableViewCellHeader.swift */; };
 		9EF7EEA91CD89DD5009B0928 /* ProfileTableViewCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF7EEA81CD89DD5009B0928 /* ProfileTableViewCellHeader.xib */; };
@@ -412,6 +413,7 @@
 		9E526F3E1CDC891D0060F63F /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		9E62A1A81CDB1E150098C39B /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddWorldClockViewController.xib; sourceTree = "<group>"; };
 		9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsFilterModel.swift; sourceTree = "<group>"; };
+		9EEB22061D5D6CB50099A621 /* WorldClockUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockUtil.swift; sourceTree = "<group>"; };
 		9EF7EEA41CD89DA7009B0928 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		9EF7EEA61CD89DB4009B0928 /* ProfileTableViewCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellHeader.swift; sourceTree = "<group>"; };
 		9EF7EEA81CD89DD5009B0928 /* ProfileTableViewCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCellHeader.xib; sourceTree = "<group>"; };
@@ -942,6 +944,7 @@
 				0028F1401C97C08000C8E742 /* EventBusKeys.swift */,
 				9E526F3E1CDC891D0060F63F /* StringExtension.swift */,
 				9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */,
+				9EEB22061D5D6CB50099A621 /* WorldClockUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1685,6 +1688,7 @@
 				00982C1D1C868C8A003DA5E2 /* DailySteps.swift in Sources */,
 				00982C411C868C8A003DA5E2 /* WaterWaveView.m in Sources */,
 				9E455E1B1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift in Sources */,
+				9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */,
 				00982BFF1C868C8A003DA5E2 /* GoalTableViewCell.swift in Sources */,
 				00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */,
 				9E526F3F1CDC891D0060F63F /* StringExtension.swift in Sources */,

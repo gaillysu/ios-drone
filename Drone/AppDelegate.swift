@@ -1,75 +1,76 @@
     //
-//  AppDelegate.swift
-//  Nevo
-//
-//  Created by Hugo Garcia-Cotte on 20/1/15.
-//  Copyright (c) 2015 Nevo. All rights reserved.
-//
-
-import UIKit
-import CoreData
-import HealthKit
-import Alamofire
-import FMDB
-import SwiftEventBus
-import XCGLogger
-import Fabric
-import Crashlytics
-import IQKeyboardManagerSwift
+    //  AppDelegate.swift
+    //  Nevo
+    //
+    //  Created by Hugo Garcia-Cotte on 20/1/15.
+    //  Copyright (c) 2015 Nevo. All rights reserved.
+    //
     
-let DRONEDBFILE:String = "droneDBFile";
-let DRONEDBNAME:String = "drone.sqlite";
-let RESET_STATE:String = "RESET_STATE"
-
-enum SYNC_STATE{
-   case NO_SYNC
-   case BIG_SYNC
-   case SMALL_SYNC
-}
+    import UIKit
+    import CoreData
+    import HealthKit
+    import Alamofire
+    import FMDB
+    import SwiftEventBus
+    import XCGLogger
+    import Fabric
+    import Crashlytics
+    import IQKeyboardManagerSwift
+    import RealmSwift
+    let DRONEDBFILE:String = "droneDBFile";
+    let DRONEDBNAME:String = "drone.sqlite";
+    let RESET_STATE:String = "RESET_STATE"
     
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
-
-    var window: UIWindow?
-    //Let's sync every days
-    let SYNC_INTERVAL:NSTimeInterval = 0*30*60 //unit is second in iOS, every 30min, do sync
-    let LAST_SYNC_DATE_KEY = "LAST_SYNC_DATE_KEY"
-    private var mConnectionController : ConnectionControllerImpl?
-    private let mHealthKitStore:HKHealthStore = HKHealthStore()
-    private var currentDay:UInt8 = 0
-    private var mAlertUpdateFW = false
-
-    private var disConnectAlert:UIAlertView?
-    let log = XCGLogger.defaultInstance()
-    private var responseTimer:NSTimer?
-    private var noResponseIndex:Int = 0
-    private var sendContactsIndex:Int = 0
-   private var worldclockDatabaseHelper: WorldClockDatabaseHelper?
-   
-    /**
-    Record the current state of the sync
-    */
-    var syncState:SYNC_STATE = .NO_SYNC
-   
-    var sendIndex:((index:Int) -> Void)?
-    let network = NetworkReachabilityManager(host: "drone.karljohnchow.com")
-
-
-    let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
-
-    class func getAppDelegate()->AppDelegate {
-        return UIApplication.sharedApplication().delegate as! AppDelegate
+    enum SYNC_STATE{
+      case NO_SYNC
+      case BIG_SYNC
+      case SMALL_SYNC
     }
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        Fabric.with([Crashlytics.self])
-      worldclockDatabaseHelper = WorldClockDatabaseHelper()
-      worldclockDatabaseHelper?.setup()
-        mConnectionController = ConnectionControllerImpl()
-        mConnectionController?.setDelegate(self)
-
-        log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
+    
+    @UIApplicationMain
+    class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
+      
+      var window: UIWindow?
+      //Let's sync every days
+      let SYNC_INTERVAL:NSTimeInterval = 0*30*60 //unit is second in iOS, every 30min, do sync
+      let LAST_SYNC_DATE_KEY = "LAST_SYNC_DATE_KEY"
+      private var mConnectionController : ConnectionControllerImpl?
+      private let mHealthKitStore:HKHealthStore = HKHealthStore()
+      private var currentDay:UInt8 = 0
+      private var mAlertUpdateFW = false
+      
+      private var disConnectAlert:UIAlertView?
+      let log = XCGLogger.defaultInstance()
+      private var responseTimer:NSTimer?
+      private var noResponseIndex:Int = 0
+      private var sendContactsIndex:Int = 0
+      private var worldclockDatabaseHelper: WorldClockDatabaseHelper?
+      private var realm:Realm?
+      /**
+       Record the current state of the sync
+       */
+      var syncState:SYNC_STATE = .NO_SYNC
+      
+      var sendIndex:((index:Int) -> Void)?
+      let network = NetworkReachabilityManager(host: "drone.karljohnchow.com")
+      
+      
+      let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
+      
+      class func getAppDelegate()->AppDelegate {
+         return UIApplication.sharedApplication().delegate as! AppDelegate
+      }
+      
+      func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+         // Override point for customization after application launch.
+         Fabric.with([Crashlytics.self])
+         realm = try! Realm()
+         worldclockDatabaseHelper = WorldClockDatabaseHelper()
+         worldclockDatabaseHelper?.setup()
+         mConnectionController = ConnectionControllerImpl()
+         mConnectionController?.setDelegate(self)
+         
+         log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
       
       network?.listener = { status in
          self.log.debug("Network Status Changed: \(status)")
@@ -171,24 +172,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
         }
     }
 
-    func setWorldClock(clock:SetWorldClockRequest) {
-        sendRequest(clock)
-    }
-   
-    func isSaveWorldClock() {
-       let array:NSArray = WorldClock.getAll()
-       if array.count > 0 {
-          var clockNameArray:[String] = []
-          var zoneArray:[Int] = []
-          for (index,value) in array.enumerate() {
-             let worldclock:WorldClock = value as! WorldClock
-             let beforeGmt:Int = TimeUtil.getGmtOffSetForCity(worldclock.system_name)
-             clockNameArray.append(worldclock.city_name)
-             zoneArray.append(beforeGmt)
-          }
-          setWorldClock(SetWorldClockRequest(count: zoneArray.count, timeZone: zoneArray, name: clockNameArray))
+    func setWorldClock(cities:[City]) {
+      var convertedWorldClockArray:[(cityName:String,gmtOffset:Float)] = []
+      for city:City in cities {
+         if let timezone = city.timezone{
+            convertedWorldClockArray.append((city.name,Float(timezone.getOffsetFromUTC()/60)))
+         }
       }
-   }
+      sendRequest(SetWorldClockRequest(worldClockArray: convertedWorldClockArray))
+    }
+      
+      func isSaveWorldClock() {
+         setWorldClock(Array(realm!.objects(City).filter("selected = true")))
+      }
 
     /**
      Connect BLE Device
