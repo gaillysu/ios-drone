@@ -77,7 +77,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         header.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height)
         let date = NSDate()
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MMM dd,yyyy"
+        formatter.dateFormat = "MMM dd, yyyy"
         let dateString = "\(formatter.stringFromDate(date))"
         header.dateLabel.text = dateString
         
@@ -92,17 +92,24 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         self.navigationItem.rightBarButtonItem = barButton
      }
     
-    func add(){
-        //self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
-//        if AppDelegate.getAppDelegate().isConnected() {
+    func add(){        
+        if worldClockArray.count >= 5 {
+            let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action) in
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        if AppDelegate.getAppDelegate().isConnected() {
             self.presentViewController(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
-//        }else{
-//            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
-//            view.setTintColor(UIColor.getBaseColor())
-//            NSTimer.after(0.6.second) {
-//                view.dismiss(true)
-//            }
-//        }
+        }else{
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            NSTimer.after(0.6.second) {
+                view.dismiss(true)
+            }
+        }
     }
     
 
@@ -133,7 +140,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return worldClockArray.count
+        return worldClockArray.count + 1
     }
 
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -145,7 +152,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let city:City = worldClockArray[indexPath.row]
+            let city:City = worldClockArray[indexPath.row - 1]
             try! realm.write({
                 city.selected = false
                 realm.add(city, update: true)
@@ -161,8 +168,18 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         
         let cell:WorldClockCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! WorldClockCell
         cell.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, cell.frame.height)
-
-        let city:City = worldClockArray[indexPath.row]
+        if (indexPath.row == 0){
+            let now = NSDate()
+            let timeZoneNameData = now.timeZone.name.characters.split{$0 == "/"}.map(String.init)
+            if timeZoneNameData.count >= 2 {
+                cell.cityLabel.text = timeZoneNameData[1].stringByReplacingOccurrencesOfString("_", withString: " ")
+            }
+            cell.timeDescription.text = "Today"
+            cell.time.text = "\(now.hour):\(now.minute)"
+            return cell
+        }
+        
+        let city:City = worldClockArray[(indexPath.row - 1)]
         cell.cityLabel.text = city.name
         var foreignTimeOffsetToGmt:Float = 0.0
         if let timezone:Timezone = city.timezone{

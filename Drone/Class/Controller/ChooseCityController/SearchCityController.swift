@@ -10,10 +10,8 @@ import UIKit
 
 class SearchCityController: UITableViewController {
     var mDelegate:DidSelectedDelegate?
-    var searchList:NSMutableDictionary = NSMutableDictionary()
-    var searchindex:[String] = []
-    var searchGmtDict:NSMutableDictionary = NSMutableDictionary()
-    
+    private var searchList:[String:[(name:String, id:Int)]] = [:]
+    private var index:[String] = []
     init() {
         super.init(nibName: "SearchCityController", bundle: NSBundle.mainBundle())
     }
@@ -27,9 +25,7 @@ class SearchCityController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        searchList = NSMutableDictionary()
-        searchindex = []
-        searchGmtDict = NSMutableDictionary()
+        searchList = [:]
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,23 +33,31 @@ class SearchCityController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func setSearchList(searchList:[String:[(name:String, id:Int)]]){
+        self.searchList = searchList
+        self.index = Array(searchList.keys)
+        self.index = index.sort({ (s1:String, s2:String) -> Bool in
+            return s1 < s2
+        })
+    }
+    
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true);
-        if self.searchindex.count==0 || searchList.count==0 || searchGmtDict.count==0 {
+        if searchList.count == 0{
             return
         }
-        let sectionName: String = self.searchGmtDict.allKeys[indexPath.row] as! String
-//        mDelegate?.didSelectedLocalTimeZone(sectionName)
+        if let cities:[(name:String, id:Int)] = searchList[index[indexPath.section]]{
+            mDelegate?.didSelectedLocalTimeZone(cities[indexPath.row].id)
+        }
     }
-
-    // MARK: - Table view data source
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return searchindex.count
+        return index.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchGmtDict.count
+        return searchList[index[section]]!.count
     }
 
 
@@ -62,9 +66,10 @@ class SearchCityController: UITableViewController {
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "AddClockIdentifier")
         }
-        cell?.textLabel?.text = searchGmtDict.allKeys[indexPath.row] as? String
+        if let cities:[(name:String, id:Int)] = searchList[index[indexPath.section]]{
+            cell?.textLabel?.text = cities[indexPath.row].name
+        }
         cell?.textLabel?.font = UIFont(name: "Helvetica-Light", size: 15.0)
         return cell!
     }
-
 }

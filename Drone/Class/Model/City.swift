@@ -49,4 +49,8 @@ class City: Object {
         return nil;
     }
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
 }
