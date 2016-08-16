@@ -26,7 +26,7 @@ class SetWorldClockRequest: NevoRequest {
         for worldClock:(cityName:String,gmtOffset:Float) in worldClockArray {
            let namedata:[UInt8] = NSData2Bytes(worldClock.cityName.dataUsingEncoding(NSUTF8StringEncoding)!)
             nameDataArray.append(namedata)
-            zoneArray.append(timezone * 4)
+            zoneArray.append(Int(worldClock.gmtOffset * 4))//8.5
         }
          
         var values1 :[UInt8] = [SetWorldClockRequest.HEADER(),
