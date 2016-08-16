@@ -14,10 +14,8 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     private let indexes:[String]
     private var cities:[String:[City]] = [:]
     private var searchController:UISearchController?
-    private var searchList:NSMutableDictionary = NSMutableDictionary()
-    private var searchGmtDict:NSMutableDictionary = NSMutableDictionary()
-    private var searchindex:[String] = []
-    private var searchResults:SearchCityController = SearchCityController()
+    private var searchList:[String:[(name:String, id:Int)]] = [:]
+    private var searchCityController:SearchCityController = SearchCityController()
     @IBOutlet weak var cityTableView: UITableView!
     private let realm:Realm
     
@@ -59,8 +57,8 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
         
-        searchController = UISearchController(searchResultsController: searchResults)
-        searchResults.mDelegate = self
+        searchController = UISearchController(searchResultsController: searchCityController)
+        searchCityController.mDelegate = self
         searchController?.delegate = self
         searchController?.searchResultsUpdater = self;
         searchController?.searchBar.tintColor = UIColor.whiteColor()
@@ -89,10 +87,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         NSLog("didPresentSearchController")
     }
     func willDismissSearchController(searchController: UISearchController) {
-        searchResults.searchGmtDict = NSMutableDictionary()
-        searchResults.searchList = NSMutableDictionary()
-        searchResults.searchindex = []
-        
+        searchCityController.setSearchList( [:])
         NSLog("willDismissSearchController")
     }
     
@@ -101,7 +96,6 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         if searchController.active {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-        
     }
     
     func presentSearchController(searchController: UISearchController) {
@@ -114,38 +108,28 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         if self.searchController!.searchBar.text != nil {
             let searchString:String = self.searchController!.searchBar.text!
             //过滤数据
-            searchList.removeAllObjects()
-            searchindex.removeAll()
-            searchGmtDict.removeAllObjects()
+            searchList.removeAll()
             for cityWithIndex:(String, [City]) in self.cities {
                 for city:City in cityWithIndex.1 {
-                    if ((city.name as NSString).rangeOfString(searchString).length > 0) {
-                        var isKey:Bool = true
-                        for item in searchindex {
-                            if item == cityWithIndex.0{
-                                isKey = false
-                                break
-                            }
-                        }
-                        
-                        if isKey {
-                            searchList["\(cityWithIndex.0)"] = city.name
-                            searchindex.append(cityWithIndex.0)
+                    if (city.name.lowercaseString.rangeOfString(searchString.lowercaseString) != nil || city.country.lowercaseString.rangeOfString(searchString.lowercaseString) != nil) {
+                        if var array = searchList[cityWithIndex.0]{
+                            array.append(("\(city.name), \(city.country)",city.id))
+                            searchList[cityWithIndex.0] = array
+                        }else{
+                            searchList[cityWithIndex.0] = [("\(city.name), \(city.country)",city.id)]
                         }
                     }
                 }
             }
             if searchList.count>0{
-                searchResults.searchGmtDict = searchGmtDict
-                searchResults.searchList = searchList
-                searchResults.searchindex = searchindex
-                searchResults.tableView.reloadData()
+                searchCityController.setSearchList(searchList)
+                searchCityController.tableView.reloadData()
+            }else{
+                searchCityController.setSearchList([:])
+                searchCityController.tableView.reloadData()
             }
-            
         }
-        
     }
-
     
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -175,16 +159,16 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         }
+        
         let sectionName: String = self.indexes[indexPath.section]
         
         if let citiesForSection:[City] = self.cities[sectionName]{
-            cell?.textLabel?.text = citiesForSection[indexPath.row].name
+            cell?.textLabel?.text = "\(citiesForSection[indexPath.row].name), \(citiesForSection[indexPath.row].country)"
         }
         cell?.textLabel?.font = UIFont(name: "Helvetica-Light", size: 15.0)
         cell?.textLabel?.textColor = UIColor.whiteColor()
         cell?.backgroundColor = UIColor.getLightBaseColor()
         return cell!;
-        
     }
     
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
@@ -200,7 +184,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
 extension AddWorldClockViewController:DidSelectedDelegate {
 
     func didSelectedLocalTimeZone(cityId:Int) {
-        let city = realm.objects(City).filter("id", cityId)
+        let city = realm.objects(City).filter("id = \(cityId)")
         if(city.count != 1){
             print("Some programming error, city should always get 1 with unique ID")
             return
@@ -226,6 +210,7 @@ extension AddWorldClockViewController:DidSelectedDelegate {
             })
             AppDelegate.getAppDelegate().setWorldClock(Array(selectedCities))
             self.searchController?.active = false
+            dismissViewControllerAnimated(true, completion: nil)
         } else{
             let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action) in

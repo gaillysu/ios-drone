@@ -21,9 +21,9 @@ class WorldClockUtil: NSObject {
     class func getDateFrom(dateInMonth:Int, month:Int, time:String) -> NSDate{
         let date = NSDate()
         let utcTimeZone = NSTimeZone(name: "UTC")!
-        let dateInUTC = date.beginningOfDay.change(timeZone: utcTimeZone)
+        var dateInUTC = date.beginningOfDay.change(timeZone: utcTimeZone)
         if let unpackedTime = time.dateFromFormat("HH:mm:ss.SSS"){
-            dateInUTC.change(year: dateInUTC.year, month: month, day: dateInMonth, hour: unpackedTime.hour, minute: unpackedTime.minute, second: 0)
+            dateInUTC = dateInUTC.change(year: dateInUTC.year, month: month, day: dateInMonth, hour: unpackedTime.hour, minute: unpackedTime.minute, second: 0)
         }else{
             print("Couldn't parse Time in timezone!!")
             dateInUTC.change(year: dateInUTC.year, month: month, day: dateInMonth, hour: 0, minute: 0, second: 0)

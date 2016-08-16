@@ -635,20 +635,20 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				008845E71CF6A48C006EA77F /* CheckEmailController */,
-				008845E21CF69F2F006EA77F /* ForgetPasswordController */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
-				005699D11CD05A690097938E /* SearchCityController */,
+				008845E71CF6A48C006EA77F /* CheckEmailController */,
 				0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */,
 				CB28AFD31CE2C0EB00639538 /* ContactsNotificationViewController */,
 				9E455E121CD5B90600F79356 /* DeviceViewController */,
+				008845E21CF69F2F006EA77F /* ForgetPasswordController */,
 				00982AA91C868C89003DA5E2 /* LoginViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				9E455E0B1CD5A15500F79356 /* MyDeviceViewController */,
 				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
 				CBD6BD241CD0997E0009F39A /* ProfileViewController */,
 				00982AC81C868C89003DA5E2 /* RegisterViewController */,
+				005699D11CD05A690097938E /* SearchCityController */,
 				CBD6BD181CD0525D0009F39A /* SleepViewController */,
 				CBD6BD131CD04D310009F39A /* SplashScreenViewController */,
 				00982ADB1C868C89003DA5E2 /* StepsViewController */,
