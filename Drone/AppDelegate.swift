@@ -64,13 +64,13 @@
       func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
          // Override point for customization after application launch.
          Fabric.with([Crashlytics.self])
-         let config = Realm.Configuration(
-            schemaVersion: 1,
+         var config = Realm.Configuration(
+            schemaVersion: 3,
+            
             migrationBlock: { migration, oldSchemaVersion in
-               if (oldSchemaVersion < 1) {
-               }
+               
          })
-
+         config.deleteRealmIfMigrationNeeded = true
          Realm.Configuration.defaultConfiguration = config
          realm = try! Realm()
          worldclockDatabaseHelper = WorldClockDatabaseHelper()

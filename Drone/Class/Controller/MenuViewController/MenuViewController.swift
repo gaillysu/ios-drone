@@ -25,8 +25,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.menuItems.append(MenuItem(controllerName: "StepsViewController", title: "Activities", image: UIImage(named: "icon_activities")!));
         
         self.menuItems.append(MenuItem(controllerName: "WorldClockViewController", title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
- 
- 
+        self.menuItems.append(MenuItem(controllerName: "PhysioViewController", title: "Physiotherapy",image: UIImage(named: "icon_world_clock")!))
         if(GoalModel.getAll().count == 0){
             let goalModel:GoalModel = GoalModel()
             goalModel.goalSteps = 10000
@@ -56,7 +55,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
-            NSLog("SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY  :\(connectionState)")
+//            NSLog("SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY  :\(connectionState)")
             if(connectionState){
 
                 let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC)))
