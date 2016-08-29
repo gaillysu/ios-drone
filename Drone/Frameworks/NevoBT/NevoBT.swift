@@ -93,11 +93,18 @@ protocol NevoBTDelegate {
     func connectionStateChanged(isConnected : Bool, fromAddress : NSUUID!)
     
     /**
-    Call when finish reading Firmware
-    @parameter whichfirmware, firmware type
-    @parameter version, return the version
-    */
+     Call when finish reading Firmware
+     @parameter whichfirmware, firmware type
+     @parameter version, return the version
+     */
     func firmwareVersionReceived(whichfirmware:DfuFirmwareTypes, version:NSString)
+
+    /**
+     Call when finish reading Firmware
+     @parameter whichfirmware, firmware type
+     @parameter version, return the version
+     */
+    func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID)
 
     /**
     *  Receiving the current device signal strength value

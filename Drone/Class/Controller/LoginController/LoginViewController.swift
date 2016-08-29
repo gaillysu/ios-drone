@@ -165,7 +165,7 @@ class LoginViewController: UIViewController {
             XCGLogger.defaultInstance().debug("没有网络")
             let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.Cross, animated: true)
             view.setTintColor(UIColor.getBaseColor())
-            let timeout:NSTimer = NSTimer.after(0.6.seconds, {
+            NSTimer.after(0.6.seconds, {
                 MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
             })
         }

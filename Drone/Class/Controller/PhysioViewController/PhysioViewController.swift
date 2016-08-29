@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class PhysioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class PhysioViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource{
 
     let cellIdentifier:String = "cellIdentifier"
     let headerIdentifier:String = "headerIdentifier"
@@ -23,16 +23,10 @@ class PhysioViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Physiotherapy"
-        let button: UIButton = UIButton(type: UIButtonType.Custom)
-        button.setImage(UIImage(named: "addbutton"), forState: UIControlState.Normal)
-        button.addTarget(self, action: #selector(add), forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame = CGRectMake(0, 0, 30, 30)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
+        self.addPlusButton(#selector(add))
         let realm = try! Realm()
         self.exercises = realm.objects(Exercise)
         self.instructions = realm.objects(Instruction)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,26 +34,29 @@ class PhysioViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func add(){
-        let chooseAction = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let addExerciseAction:UIAlertAction = UIAlertAction(title: "Add Exercise", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
-            
-        }
         
-        let doExerciseAction:UIAlertAction = UIAlertAction(title: "Do Exercise", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
-            
+        if self.getAppDelegate().getConnectedCockroaches() == 0 {
+            let chooseAction = UIAlertController(title: "No cockroaches connected", message: "Why don't you connect a cockroach before getting started?", preferredStyle: UIAlertControllerStyle.Alert)
+            let connectAction:UIAlertAction = UIAlertAction(title: "Connect", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
+                self.presentViewController(self.makeStandardUINavigationController(PhysioDeviceViewController()), animated: true, completion: nil)
+            }
+            let cancelAction:UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil)
+            chooseAction.addAction(connectAction)
+            chooseAction.addAction(cancelAction)
+            self.presentViewController(chooseAction, animated: true, completion:nil)
+        }else{
+            self.presentViewController(self.makeStandardUINavigationController(AddInstructionViewController()), animated: true, completion: nil)
         }
-        let alertAction:UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil)
-        chooseAction.addAction(addExerciseAction)
-        chooseAction.addAction(doExerciseAction)
-        chooseAction.addAction(alertAction)
-        
-        self.presentViewController(chooseAction, animated: true, completion:nil)
     }
 }
 
-
 // UITableViewDelegate & Datasource
 extension PhysioViewController{
+    
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var header:UITableViewHeaderFooterView
@@ -73,7 +70,7 @@ extension PhysioViewController{
             header.textLabel?.text = "Instructions"
             break;
         case 1:
-            header.textLabel?.text = "Exercises"
+            header.textLabel?.text = "Past Exercises"
             break;
         default:
             header.textLabel?.text = "Unknown"
@@ -101,7 +98,15 @@ extension PhysioViewController{
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        switch section {
+        case 0:
+            return (instructions?.count)!
+        case 1:
+            return (exercises?.count)!
+        default:
+            return 0
+        }
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

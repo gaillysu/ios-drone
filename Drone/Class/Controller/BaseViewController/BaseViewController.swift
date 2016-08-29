@@ -41,6 +41,7 @@ class BaseViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+
     
     func makeStandardUINavigationController(rootViewController:UIViewController) -> UINavigationController{
         let navigationController:UINavigationController = UINavigationController(rootViewController: rootViewController)
@@ -48,10 +49,28 @@ class BaseViewController: UIViewController {
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
+        navigationController.navigationBar.tintColor = UIColor.whiteColor()
+
         navigationController.navigationBar.hidden = false
+        navigationController.navigationItem.setHidesBackButton(false, animated: true)
         return navigationController
     }
     
+    func addPlusButton(action:Selector){
+        self.navigationItem.rightBarButtonItem = self.createBarButtonItem(withAction: action, withImage: UIImage(named: "addbutton")!);
+    }
+    
+    func addCloseButton(action:Selector){
+        self.navigationItem.leftBarButtonItem = self.createBarButtonItem(withAction: action, withImage: UIImage(named: "closebutton")!);
+    }
+    
+    private func createBarButtonItem(withAction action:Selector, withImage image:UIImage) -> UIBarButtonItem{
+        let button: UIButton = UIButton(type: UIButtonType.Custom)
+        button.setImage(image, forState: UIControlState.Normal)
+        button.addTarget(self, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+        button.frame = CGRectMake(0, 0, 30, 30)
+        return UIBarButtonItem(customView: button)
+    }
     
     func getAppDelegate() -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate

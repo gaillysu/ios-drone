@@ -50,12 +50,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         cityTableView.separatorColor = UIColor.whiteColor()
         cityTableView.sectionIndexColor = UIColor.whiteColor()
         
-        let button: UIButton = UIButton(type: UIButtonType.Custom)
-        button.setImage(UIImage(named: "closebutton"), forState: UIControlState.Normal)
-        button.addTarget(self, action: #selector(close), forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame = CGRectMake(0, 0, 30, 30)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
+        self.addCloseButton(#selector(close))
         
         searchController = UISearchController(searchResultsController: searchCityController)
         searchCityController.mDelegate = self

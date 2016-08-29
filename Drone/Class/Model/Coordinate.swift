@@ -11,4 +11,5 @@ import RealmSwift
 
 class Coordinate: Object{
     dynamic var value = 0
-}
+    
+ }

@@ -198,6 +198,10 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         mDelegate?.packetReceived(packet)
     }
     
+    func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID){
+        mDelegate?.cockRoachDataReceived(coordinates, withAddress: address)
+    }
+    
     /**
     See ConnectionController
     */

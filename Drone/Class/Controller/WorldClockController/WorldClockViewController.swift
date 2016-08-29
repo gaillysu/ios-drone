@@ -84,12 +84,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height))
         headerView.addSubview(header)
         worldClockTableview.tableHeaderView = headerView
-        let button: UIButton = UIButton(type: UIButtonType.Custom)
-        button.setImage(UIImage(named: "addbutton"), forState: UIControlState.Normal)
-        button.addTarget(self, action: #selector(add), forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame = CGRectMake(0, 0, 30, 30)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
+        self.addPlusButton(#selector(add))
      }
     
     func add(){        

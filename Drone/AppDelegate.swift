@@ -66,7 +66,6 @@
          Fabric.with([Crashlytics.self])
          var config = Realm.Configuration(
             schemaVersion: 3,
-            
             migrationBlock: { migration, oldSchemaVersion in
                
          })
@@ -89,7 +88,7 @@
       IQKeyboardManager.sharedManager().enable = true
       
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        UINavigationBar.appearance().tintColor = AppTheme.BASE_COLOR()
+        UINavigationBar.appearance().tintColor = UIColor.getBaseColor()
         let nav:UINavigationController = UINavigationController(rootViewController: SplashScreenViewController())
         nav.navigationBarHidden = true
         self.window?.rootViewController = nav
@@ -272,8 +271,7 @@
     
     func isConnected() -> Bool{
         return mConnectionController!.isConnected()
-
-    }
+     }
 
     func sendContactsRequest(r:Request,index:Int) {
         if(isConnected()) {
@@ -466,9 +464,6 @@
             }
 
         }else{
-         /**
-          Received the incorrect data packets cancel sync state
-          */
          syncState = .NO_SYNC
          SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
       }
@@ -485,7 +480,7 @@
             })
         }
     }
-
+      
     func firmwareVersionReceived(whichfirmware:DfuFirmwareTypes, version:NSString) {
         let mcuver = AppTheme.GET_SOFTWARE_VERSION()
         let blever = AppTheme.GET_FIRMWARE_VERSION()
@@ -493,7 +488,11 @@
         NSLog("Build in software version: \(mcuver), firmware version: \(blever)")
         SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.APPLICATION ? ["BLE":version]:["MCU":version])
     }
-
+      
+   func cockRoachDataReceived(coordinates:CoordinateSet, withAddress fromADdress:NSUUID){
+         
+   }
+      
     /**
      *  Receiving the current device signal strength value
      */
@@ -545,39 +544,20 @@
         }
         noResponseIndex += 1
     }
-    
-    /**
-     setup response timer
-     */
+     
    func setupResponseTimer(userInfo:AnyObject) {
         self.responseTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(noResponseAction(_:)), userInfo: userInfo, repeats: false)
     }
-    
-    /**
-     release response Timer
-     */
+     
     func releaseResponseTimer() {
         self.responseTimer?.invalidate()
         self.responseTimer = nil
     }
 }
 
-protocol SyncControllerDelegate:NSObjectProtocol {
+extension AppDelegate{
 
-    /**
-     Called when a packet is received from the device
-     */
-    func packetReceived(packet: RawPacket)
-    /**
-     Called when a peripheral connects or disconnects
-     */
-    func connectionStateChanged(isConnected : Bool)
-    /**
-     *  Receiving the current device signal strength value
-     */
-    func receivedRSSIValue(number:NSNumber)
-    /**
-     *  Data synchronization is complete callback
-     */
-    func syncFinished()
+   func getConnectedCockroaches() -> Int{
+      return 0
+   }
 }

@@ -154,6 +154,14 @@
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
+		9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109201D73C73F00AA3551 /* AddInstructionViewController.swift */; };
+		9E0109231D73C73F00AA3551 /* AddInstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E0109211D73C73F00AA3551 /* AddInstructionViewController.xib */; };
+		9E0109261D73C85D00AA3551 /* DoExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109241D73C85D00AA3551 /* DoExerciseViewController.swift */; };
+		9E0109271D73C85D00AA3551 /* DoExerciseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E0109251D73C85D00AA3551 /* DoExerciseViewController.xib */; };
+		9E01092B1D73CB7D00AA3551 /* PhysioDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109291D73CB7D00AA3551 /* PhysioDeviceViewController.swift */; };
+		9E01092C1D73CB7D00AA3551 /* PhysioDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E01092A1D73CB7D00AA3551 /* PhysioDeviceViewController.xib */; };
+		9E01092F1D7417B800AA3551 /* CoordinateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01092E1D7417B800AA3551 /* CoordinateSet.swift */; };
+		9E0109311D741CEE00AA3551 /* CockRoachPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109301D741CEE00AA3551 /* CockRoachPacket.swift */; };
 		9E013D3C1D701ED60005DCF8 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E013D391D701ED60005DCF8 /* IQKeyboardManagerSwift.framework */; };
 		9E013D3D1D701ED60005DCF8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E013D3A1D701ED60005DCF8 /* Realm.framework */; };
 		9E013D3E1D701ED60005DCF8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E013D3B1D701ED60005DCF8 /* RealmSwift.framework */; };
@@ -398,6 +406,14 @@
 		00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E0109201D73C73F00AA3551 /* AddInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInstructionViewController.swift; sourceTree = "<group>"; };
+		9E0109211D73C73F00AA3551 /* AddInstructionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddInstructionViewController.xib; sourceTree = "<group>"; };
+		9E0109241D73C85D00AA3551 /* DoExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoExerciseViewController.swift; sourceTree = "<group>"; };
+		9E0109251D73C85D00AA3551 /* DoExerciseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoExerciseViewController.xib; sourceTree = "<group>"; };
+		9E0109291D73CB7D00AA3551 /* PhysioDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioDeviceViewController.swift; sourceTree = "<group>"; };
+		9E01092A1D73CB7D00AA3551 /* PhysioDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhysioDeviceViewController.xib; sourceTree = "<group>"; };
+		9E01092E1D7417B800AA3551 /* CoordinateSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSet.swift; sourceTree = "<group>"; };
+		9E0109301D741CEE00AA3551 /* CockRoachPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockRoachPacket.swift; sourceTree = "<group>"; };
 		9E013D391D701ED60005DCF8 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-dexrbxtshdsjmvbquhcxrfpwxdeo/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"; sourceTree = "<group>"; };
 		9E013D3A1D701ED60005DCF8 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-dexrbxtshdsjmvbquhcxrfpwxdeo/Build/Products/Debug-iphonesimulator/Realm/Realm.framework"; sourceTree = "<group>"; };
 		9E013D3B1D701ED60005DCF8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-dexrbxtshdsjmvbquhcxrfpwxdeo/Build/Products/Debug-iphonesimulator/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
@@ -657,16 +673,19 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9E01091D1D73C6DC00AA3551 /* AddInstructionViewController */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
 				008845E71CF6A48C006EA77F /* CheckEmailController */,
 				0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */,
 				CB28AFD31CE2C0EB00639538 /* ContactsNotificationViewController */,
 				9E455E121CD5B90600F79356 /* DeviceViewController */,
+				9E01091C1D73C6CB00AA3551 /* DoExerciseViewController */,
 				008845E21CF69F2F006EA77F /* ForgetPasswordController */,
 				00982AA91C868C89003DA5E2 /* LoginViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				9E455E0B1CD5A15500F79356 /* MyDeviceViewController */,
+				9E0109281D73CB4700AA3551 /* PhysioDeviceViewController */,
 				9E72CED71D70078300817914 /* PhysioViewController */,
 				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
 				CBD6BD241CD0997E0009F39A /* ProfileViewController */,
@@ -820,9 +839,10 @@
 		00982AEB1C868C89003DA5E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9E01092D1D7417AF00AA3551 /* CoordinateSet */,
 				9E013D5E1D7042AC0005DCF8 /* Coordinate */,
-				9E013D401D70228E0005DCF8 /* ExerciseSet */,
-				9E013D3F1D70225A0005DCF8 /* Exercise */,
+				9E013D401D70228E0005DCF8 /* Exercise */,
+				9E013D3F1D70225A0005DCF8 /* Instruction */,
 				9E1535851D5C219600CB6A01 /* Worldclock */,
 				00982AEC1C868C89003DA5E2 /* Activity */,
 				00982AF11C868C89003DA5E2 /* Alarm */,
@@ -1064,6 +1084,7 @@
 				00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */,
 				004ED1E71CB35A4D009D053C /* StepsGoalPacket.swift */,
 				004ED1E91CB35DDA009D053C /* ActivityPacket.swift */,
+				9E0109301D741CEE00AA3551 /* CockRoachPacket.swift */,
 			);
 			path = Packet;
 			sourceTree = "<group>";
@@ -1194,20 +1215,55 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9E013D3F1D70225A0005DCF8 /* Exercise */ = {
+		9E01091C1D73C6CB00AA3551 /* DoExerciseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9E0109241D73C85D00AA3551 /* DoExerciseViewController.swift */,
+				9E0109251D73C85D00AA3551 /* DoExerciseViewController.xib */,
+			);
+			name = DoExerciseViewController;
+			sourceTree = "<group>";
+		};
+		9E01091D1D73C6DC00AA3551 /* AddInstructionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9E0109201D73C73F00AA3551 /* AddInstructionViewController.swift */,
+				9E0109211D73C73F00AA3551 /* AddInstructionViewController.xib */,
+			);
+			name = AddInstructionViewController;
+			sourceTree = "<group>";
+		};
+		9E0109281D73CB4700AA3551 /* PhysioDeviceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9E0109291D73CB7D00AA3551 /* PhysioDeviceViewController.swift */,
+				9E01092A1D73CB7D00AA3551 /* PhysioDeviceViewController.xib */,
+			);
+			name = PhysioDeviceViewController;
+			sourceTree = "<group>";
+		};
+		9E01092D1D7417AF00AA3551 /* CoordinateSet */ = {
+			isa = PBXGroup;
+			children = (
+				9E01092E1D7417B800AA3551 /* CoordinateSet.swift */,
+			);
+			name = CoordinateSet;
+			sourceTree = "<group>";
+		};
+		9E013D3F1D70225A0005DCF8 /* Instruction */ = {
 			isa = PBXGroup;
 			children = (
 				9E013D411D70229B0005DCF8 /* Instruction.swift */,
 			);
-			name = Exercise;
+			name = Instruction;
 			sourceTree = "<group>";
 		};
-		9E013D401D70228E0005DCF8 /* ExerciseSet */ = {
+		9E013D401D70228E0005DCF8 /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
 				9E013D431D7022AA0005DCF8 /* Exercise.swift */,
 			);
-			name = ExerciseSet;
+			name = Exercise;
 			sourceTree = "<group>";
 		};
 		9E013D5B1D7035620005DCF8 /* ViewModel */ = {
@@ -1518,6 +1574,7 @@
 				9E455E0F1CD5A16C00F79356 /* MyDeviceViewController.xib in Resources */,
 				005699D91CD05F7C0097938E /* SearchCityController.xib in Resources */,
 				9E455E1D1CD5BBEB00F79356 /* DeviceTableViewCellHeader.xib in Resources */,
+				9E01092C1D73CB7D00AA3551 /* PhysioDeviceViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				009D89D21CD0C457004E914A /* WorldClockHeader.xib in Resources */,
 				00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */,
@@ -1527,6 +1584,7 @@
 				9E1999541CE4328800C1D967 /* ContactsNotificationHeader.xib in Resources */,
 				00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */,
 				CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */,
+				9E0109231D73C73F00AA3551 /* AddInstructionViewController.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginViewController.xib in Resources */,
 				CB28AFE01CE2E59B00639538 /* ContactsNotificationViewController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
@@ -1537,6 +1595,7 @@
 				008845EB1CF6A4D5006EA77F /* CheckEmailController.xib in Resources */,
 				9E455E171CD5B95900F79356 /* DeviceTableViewCell.xib in Resources */,
 				008845E61CF69F67006EA77F /* ForgetPasswordController.xib in Resources */,
+				9E0109271D73C85D00AA3551 /* DoExerciseViewController.xib in Resources */,
 				CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */,
 				9EF7EEAB1CD89DDC009B0928 /* ProfileTableViewCell.xib in Resources */,
 				9E72CED61D70077A00817914 /* PhysioViewController.xib in Resources */,
@@ -1660,6 +1719,8 @@
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
 				00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */,
+				9E0109261D73C85D00AA3551 /* DoExerciseViewController.swift in Sources */,
+				9E0109311D741CEE00AA3551 /* CockRoachPacket.swift in Sources */,
 				CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */,
 				CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */,
 				CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */,
@@ -1675,8 +1736,10 @@
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */,
 				00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */,
+				9E01092B1D73CB7D00AA3551 /* PhysioDeviceViewController.swift in Sources */,
 				00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */,
 				00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */,
+				9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */,
 				00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */,
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
 				00982C421C868C8A003DA5E2 /* WaveProgressView.m in Sources */,
@@ -1694,6 +1757,7 @@
 				004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
+				9E01092F1D7417B800AA3551 /* CoordinateSet.swift in Sources */,
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
 				9E2978731CDC40D000821704 /* WorldClockModel.swift in Sources */,
 				00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */,

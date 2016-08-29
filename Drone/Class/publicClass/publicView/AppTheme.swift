@@ -15,31 +15,7 @@ This class holds all app-wide constants.
 Colors, fonts etc...
 */
 class AppTheme {
-
-    /**
-    This color should be used app wide on all actionable elements
-    sRGB value : #ff9933
-    */
-    class func BASE_COLOR() -> UIColor {
-        return UIColor(red: 60/255.0, green: 60/255.0, blue: 165/255.0, alpha: 1)
-    }
-
-    class func BASE_COLOR_TINT() -> UIColor {
-        return UIColor(red: 236/255.0, green: 220/255.0, blue: 59/255.0, alpha: 1)
-    }
-
-    /**
-    Custom colors
-
-    :param: reds   The red channel value
-    :param: greens The green channel value
-    :param: blue   The blue channel value
-
-    :returns: Custom colors
-    */
-    class func NEVO_CUSTOM_COLOR(Red reds:CGFloat = 186, Green greens:CGFloat = 185, Blue blue:CGFloat = 182) -> UIColor {
-        return UIColor(red: reds/255.0 , green: greens/255.0, blue: blue/255.0, alpha: 1)
-    }
+ 
 
     class func SYSTEMFONTOFSIZE(mSize size:CGFloat = 25) -> UIFont {
         return UIFont.systemFontOfSize(size)
@@ -203,21 +179,10 @@ class AppTheme {
         return preferredLang;
     
     }
-
-    /**
-    To obtain the version number on AppStore
-
-    :param: resulVersion It contains a string version and a Double type version
-    */
-    class func getAppStoreVersion(resulVersion:((stringVersion:NSString?,version:Double?) -> Void)){
-        let url:NSString = NSString(string: "https://itunes.apple.com/lookup?id=977526892")
-        
-    }
-
     /**
     Access to the local version number
 
-    :returns: <#return value description#>
+    :returns: return value description
     */
     class func getLoclAppStoreVersion()->String{
         let loclString:String = (NSBundle.mainBundle().infoDictionary! as NSDictionary).objectForKey("CFBundleShortVersionString") as! String
@@ -316,7 +281,7 @@ class AppTheme {
     }
 
     class func navigationbar(navigation:UINavigationController) {
-        if(navigation.navigationBar.respondsToSelector(Selector("setBackgroundImage:forBarMetrics:"))){
+        if(navigation.navigationBar.respondsToSelector(#selector(UINavigationBar.setBackgroundImage(_:forBarMetrics:)))){
             let list:NSArray = navigation.navigationBar.subviews
             for obj in list{
                 if(obj.isKindOfClass(UIImageView.classForCoder())){
@@ -326,7 +291,8 @@ class AppTheme {
             }
             let imageView:UIImageView = UIImageView(frame: CGRectMake(0, -20, 420, 64))
              imageView.image = UIImage(named: "navigationBar")
-            imageView.backgroundColor = AppTheme.NEVO_CUSTOM_COLOR(Red: 227.0, Green: 227.0, Blue: 227.0)
+            
+            imageView.backgroundColor = UIColor(red: 227.0/255.0 , green: 227.0/255.0, blue: 227.0/255.0, alpha: 1)
             navigation.navigationBar.addSubview(imageView)
             navigation.navigationBar.sendSubviewToBack(imageView)
         }
