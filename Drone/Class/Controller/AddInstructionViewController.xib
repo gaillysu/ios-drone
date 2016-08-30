@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddInstructionViewController" customModule="Drone" customModuleProvider="target">
             <connections>
+                <outlet property="tableview" destination="VBX-2Q-0G0" id="Pan-UT-dFl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,11 +15,23 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VBX-2Q-0G0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VBX-2Q-0G0" secondAttribute="trailing" id="1V9-fK-Epc"/>
+                <constraint firstItem="VBX-2Q-0G0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ULK-lO-7Bc"/>
+                <constraint firstAttribute="bottom" secondItem="VBX-2Q-0G0" secondAttribute="bottom" id="fkX-1C-VWz"/>
+                <constraint firstItem="VBX-2Q-0G0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="t1c-uX-nGz"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="275.5" y="400.5"/>
+            <point key="canvasLocation" x="329.5" y="364.5"/>
         </view>
     </objects>
 </document>

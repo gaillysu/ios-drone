@@ -83,6 +83,7 @@ protocol ConnectionControllerDelegate {
     
     func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID)
     
+    func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!, devices:[NSUUID])
     /**
     Call when finish reading Firmware
     @parameter whichfirmware, firmware type

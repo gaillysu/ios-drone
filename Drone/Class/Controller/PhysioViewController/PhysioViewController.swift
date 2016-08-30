@@ -35,7 +35,7 @@ class PhysioViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func add(){
         
-        if self.getAppDelegate().getConnectedCockroaches() == 0 {
+        if self.getAppDelegate().getConnectedCockroaches() != 0 {
             let chooseAction = UIAlertController(title: "No cockroaches connected", message: "Why don't you connect a cockroach before getting started?", preferredStyle: UIAlertControllerStyle.Alert)
             let connectAction:UIAlertAction = UIAlertAction(title: "Connect", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
                 self.presentViewController(self.makeStandardUINavigationController(PhysioDeviceViewController()), animated: true, completion: nil)
@@ -75,9 +75,7 @@ extension PhysioViewController{
         default:
             header.textLabel?.text = "Unknown"
             break;
-            
         }
-        print(section);
         return header
     }
     
@@ -91,10 +89,7 @@ extension PhysioViewController{
         return cell
     }
     
-    
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,11 +101,9 @@ extension PhysioViewController{
         default:
             return 0
         }
-        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
-    
 }

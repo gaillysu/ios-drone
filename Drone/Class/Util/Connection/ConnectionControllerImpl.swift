@@ -227,9 +227,11 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         } else {
             mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
         }
-
     }
 
+    func cockRoachesChanged(isConnected: Bool, fromAddress: NSUUID!, devices: [NSUUID]) {
+        mDelegate?.cockRoachesChanged(isConnected, fromAddress: fromAddress, devices: devices)
+    }
     
     func getOTAMode() -> Bool {
         if let profile = mNevoBT?.getProfile() {

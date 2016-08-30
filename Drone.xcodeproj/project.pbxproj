@@ -217,6 +217,12 @@
 		CB28AFE01CE2E59B00639538 /* ContactsNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB28AFDE1CE2E59B00639538 /* ContactsNotificationViewController.xib */; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
 		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
+		CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */; };
+		CBB37AF81D751B1100A90920 /* PhysioDeviceHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBB37AF71D751B1100A90920 /* PhysioDeviceHeader.xib */; };
+		CBB37AFC1D75331000A90920 /* CockroachesChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AFB1D75331000A90920 /* CockroachesChanged.swift */; };
+		CBB37AFF1D7534C200A90920 /* CockroachDataReceived.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AFE1D7534C200A90920 /* CockroachDataReceived.swift */; };
+		CBB37B021D757B7500A90920 /* AddInstructionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37B011D757B7500A90920 /* AddInstructionHeader.swift */; };
+		CBB37B041D757DEB00A90920 /* AddInstructionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBB37B031D757DEB00A90920 /* AddInstructionHeader.xib */; };
 		CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */; };
 		CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6E01CCF6AEF00B4935E /* StepsTitleView.swift */; };
 		CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */; };
@@ -471,6 +477,12 @@
 		CB28AFDE1CE2E59B00639538 /* ContactsNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsNotificationViewController.xib; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
+		CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioDeviceHeader.swift; sourceTree = "<group>"; };
+		CBB37AF71D751B1100A90920 /* PhysioDeviceHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhysioDeviceHeader.xib; sourceTree = "<group>"; };
+		CBB37AFB1D75331000A90920 /* CockroachesChanged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachesChanged.swift; sourceTree = "<group>"; };
+		CBB37AFE1D7534C200A90920 /* CockroachDataReceived.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachDataReceived.swift; sourceTree = "<group>"; };
+		CBB37B011D757B7500A90920 /* AddInstructionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInstructionHeader.swift; sourceTree = "<group>"; };
+		CBB37B031D757DEB00A90920 /* AddInstructionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddInstructionHeader.xib; sourceTree = "<group>"; };
 		CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
 		CBD2F6E01CCF6AEF00B4935E /* StepsTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTitleView.swift; sourceTree = "<group>"; };
 		CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTitleView.xib; sourceTree = "<group>"; };
@@ -839,6 +851,7 @@
 		00982AEB1C868C89003DA5E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBB37AF91D75329900A90920 /* Eventbus */,
 				9E01092D1D7417AF00AA3551 /* CoordinateSet */,
 				9E013D5E1D7042AC0005DCF8 /* Coordinate */,
 				9E013D401D70228E0005DCF8 /* Exercise */,
@@ -1394,12 +1407,14 @@
 		CBA06BEB1C8EB2C800E3257B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9E1999521CE4327400C1D967 /* ContactsNotificationHeader */,
+				CBB37B001D7577DC00A90920 /* AddInstructionHeader */,
 				9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */,
+				9E1999521CE4327400C1D967 /* ContactsNotificationHeader */,
 				9E455E151CD5B94100F79356 /* DeviceTableView */,
 				CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */,
 				00982AAF1C868C89003DA5E2 /* MyDroneView */,
 				00982AB51C868C89003DA5E2 /* NevoOtaView */,
+				CBB37AF41D751AAA00A90920 /* PhysioDeviceHeader */,
 				00982AC01C868C89003DA5E2 /* PresetView */,
 				9EF7EEA31CD89D7C009B0928 /* ProfileTableView */,
 				00982AD01C868C89003DA5E2 /* queryTableviewCell */,
@@ -1420,6 +1435,49 @@
 			);
 			name = AddWorldClockView;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		CBB37AF41D751AAA00A90920 /* PhysioDeviceHeader */ = {
+			isa = PBXGroup;
+			children = (
+				CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */,
+				CBB37AF71D751B1100A90920 /* PhysioDeviceHeader.xib */,
+			);
+			name = PhysioDeviceHeader;
+			sourceTree = "<group>";
+		};
+		CBB37AF91D75329900A90920 /* Eventbus */ = {
+			isa = PBXGroup;
+			children = (
+				CBB37AFD1D75343200A90920 /* CockroachDataReceived */,
+				CBB37AFA1D7532B900A90920 /* CockroachesChanged */,
+			);
+			name = Eventbus;
+			sourceTree = "<group>";
+		};
+		CBB37AFA1D7532B900A90920 /* CockroachesChanged */ = {
+			isa = PBXGroup;
+			children = (
+				CBB37AFB1D75331000A90920 /* CockroachesChanged.swift */,
+			);
+			name = CockroachesChanged;
+			sourceTree = "<group>";
+		};
+		CBB37AFD1D75343200A90920 /* CockroachDataReceived */ = {
+			isa = PBXGroup;
+			children = (
+				CBB37AFE1D7534C200A90920 /* CockroachDataReceived.swift */,
+			);
+			name = CockroachDataReceived;
+			sourceTree = "<group>";
+		};
+		CBB37B001D7577DC00A90920 /* AddInstructionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				CBB37B011D757B7500A90920 /* AddInstructionHeader.swift */,
+				CBB37B031D757DEB00A90920 /* AddInstructionHeader.xib */,
+			);
+			name = AddInstructionHeader;
 			sourceTree = "<group>";
 		};
 		CBD6BD131CD04D310009F39A /* SplashScreenViewController */ = {
@@ -1607,6 +1665,8 @@
 				CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockViewController.xib in Resources */,
 				0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */,
+				CBB37AF81D751B1100A90920 /* PhysioDeviceHeader.xib in Resources */,
+				CBB37B041D757DEB00A90920 /* AddInstructionHeader.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
 				009201DD1CBE2B6600C51707 /* WelcomeViewController.xib in Resources */,
@@ -1657,7 +1717,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B06361A71EE02A87A0A6EE9E /* [CP] Copy Pods Resources */ = {
@@ -1714,6 +1774,7 @@
 				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
 				00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
+				CBB37AFC1D75331000A90920 /* CockroachesChanged.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
@@ -1734,6 +1795,7 @@
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
+				CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */,
 				00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */,
 				9E01092B1D73CB7D00AA3551 /* PhysioDeviceViewController.swift in Sources */,
@@ -1794,6 +1856,7 @@
 				9E455E141CD5B91600F79356 /* DeviceViewController.swift in Sources */,
 				9E013D5D1D70356D0005DCF8 /* PhysioViewModel.swift in Sources */,
 				00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */,
+				CBB37AFF1D7534C200A90920 /* CockroachDataReceived.swift in Sources */,
 				9E013D421D70229B0005DCF8 /* Instruction.swift in Sources */,
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,
 				00982C341C868C8A003DA5E2 /* Goal.swift in Sources */,
@@ -1819,6 +1882,7 @@
 				00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */,
 				00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */,
 				9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */,
+				CBB37B021D757B7500A90920 /* AddInstructionHeader.swift in Sources */,
 				00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */,
 				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */,

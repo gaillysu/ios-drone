@@ -106,6 +106,7 @@ protocol NevoBTDelegate {
      */
     func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID)
 
+    func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!, devices:[NSUUID])
     /**
     *  Receiving the current device signal strength value
     */

@@ -118,9 +118,9 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         
         //We save this periphral for later use
         
-        
         if(aPeripheral.services![0].UUID == cockRoach.service){
             cockroaches.append(aPeripheral)
+            SWIFTEVENT_BUS_GOAL_COMPLETED
         }else{
             setPeripheral(aPeripheral)
         }
@@ -152,10 +152,16 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
 
 
         //Let's forget this device
-        setPeripheral(nil)
-
-        mDelegate?.connectionStateChanged(false, fromAddress: aPeripheral.identifier)
-
+        if let localPeripheral = mPeripheral{
+            if localPeripheral.identifier == aPeripheral.identifier{
+                setPeripheral(nil)
+                mDelegate?.connectionStateChanged(false, fromAddress: aPeripheral.identifier)
+            }else{
+                mDelegate?.cockRoachesChanged(false, fromAddress: aPeripheral.identifier, devices: getCockroachesUUID())
+                removeCockroach(aPeripheral)
+            }
+        }
+    
         if(redRssiTimer.valid){
             redRssiTimer.invalidate()
         }
@@ -190,7 +196,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         }
     }
     
-    
     /*
     Invoked upon completion of a -[discoverCharacteristics:forService:] request.
     Perform appropriate operations on interested characteristics
@@ -215,6 +220,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                     log.debug("read software version char : \(aChar.UUID.UUIDString)")
                 } else if(aChar.UUID==cockRoach.characteristics) {
                     // this characteristic is for the cockroach.
+                    mDelegate?.cockRoachesChanged(true, fromAddress: aPeripheral.identifier, devices: getCockroachesUUID())
                     mPeripheral?.readValueForCharacteristic(aChar)
                 }
             }
@@ -415,7 +421,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             mDelegate?.connectionStateChanged(false, fromAddress: mPeripheral?.identifier)
         }
         setPeripheral(nil)
-        
     }
     
     /**
@@ -545,5 +550,23 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         }
         return false
     }
-
+    
+    func removeCockroach(aPeripheral: CBPeripheral){
+        var i = 0
+        for peripheral:CBPeripheral in cockroaches {
+            if peripheral.identifier == aPeripheral.identifier {
+                cockroaches.removeAtIndex(i)
+                break;
+            }
+            i += 1
+        }
+    }
+    
+    func getCockroachesUUID() -> [NSUUID]{
+        var cockroachUUIDArray: [NSUUID] = []
+        for peripheral:CBPeripheral in cockroaches {
+            cockroachUUIDArray.append(peripheral.identifier)
+        }
+        return cockroachUUIDArray
+    }
 }
