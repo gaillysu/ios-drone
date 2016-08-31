@@ -215,6 +215,7 @@
 		CB28AFDB1CE2C34300639538 /* ContactsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB28AFDA1CE2C34300639538 /* ContactsFilter.swift */; };
 		CB28AFDF1CE2E59B00639538 /* ContactsNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB28AFDD1CE2E59B00639538 /* ContactsNotificationViewController.swift */; };
 		CB28AFE01CE2E59B00639538 /* ContactsNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB28AFDE1CE2E59B00639538 /* ContactsNotificationViewController.xib */; };
+		CB5754261D76BA260008E0EC /* CoordinateSerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5754251D76BA260008E0EC /* CoordinateSerie.swift */; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
 		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
 		CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */; };
@@ -475,6 +476,7 @@
 		CB28AFDA1CE2C34300639538 /* ContactsFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsFilter.swift; sourceTree = "<group>"; };
 		CB28AFDD1CE2E59B00639538 /* ContactsNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsNotificationViewController.swift; sourceTree = "<group>"; };
 		CB28AFDE1CE2E59B00639538 /* ContactsNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsNotificationViewController.xib; sourceTree = "<group>"; };
+		CB5754251D76BA260008E0EC /* CoordinateSerie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSerie.swift; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
 		CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioDeviceHeader.swift; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 		00982AEB1C868C89003DA5E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB5754241D76BA150008E0EC /* CoordinateSerie */,
 				CBB37AF91D75329900A90920 /* Eventbus */,
 				9E01092D1D7417AF00AA3551 /* CoordinateSet */,
 				9E013D5E1D7042AC0005DCF8 /* Coordinate */,
@@ -1395,6 +1398,14 @@
 			name = ContactsNotificationViewController;
 			sourceTree = "<group>";
 		};
+		CB5754241D76BA150008E0EC /* CoordinateSerie */ = {
+			isa = PBXGroup;
+			children = (
+				CB5754251D76BA260008E0EC /* CoordinateSerie.swift */,
+			);
+			name = CoordinateSerie;
+			sourceTree = "<group>";
+		};
 		CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1850,6 +1861,7 @@
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
 				9E72CED51D70077A00817914 /* PhysioViewController.swift in Sources */,
 				0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */,
+				CB5754261D76BA260008E0EC /* CoordinateSerie.swift in Sources */,
 				0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */,
 				9E013D441D7022AA0005DCF8 /* Exercise.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,

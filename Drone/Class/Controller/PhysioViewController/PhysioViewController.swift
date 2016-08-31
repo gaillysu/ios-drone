@@ -35,7 +35,7 @@ class PhysioViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func add(){
         
-        if self.getAppDelegate().getConnectedCockroaches() != 0 {
+        if self.getAppDelegate().getConnectedCockroaches().count != 0 {
             let chooseAction = UIAlertController(title: "No cockroaches connected", message: "Why don't you connect a cockroach before getting started?", preferredStyle: UIAlertControllerStyle.Alert)
             let connectAction:UIAlertAction = UIAlertAction(title: "Connect", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
                 self.presentViewController(self.makeStandardUINavigationController(PhysioDeviceViewController()), animated: true, completion: nil)

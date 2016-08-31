@@ -13,6 +13,7 @@ import SwiftEventBus
 class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var tableview: UITableView!
+
     let cellIdentifier:String = "cellIdentifier"
 
     var cockroachUUIDS:[NSUUID] = []
@@ -65,10 +66,6 @@ extension PhysioDeviceViewController{
             self.cockroachUUIDS = object.devices
             self.tableview.reloadData()
         }
-        
-//        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
-//            let object = data.object! as! CockroachDataReceived
-//        }
     }
     
     

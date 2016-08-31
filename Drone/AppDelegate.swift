@@ -38,7 +38,7 @@
       private let mHealthKitStore:HKHealthStore = HKHealthStore()
       private var currentDay:UInt8 = 0
       private var mAlertUpdateFW = false
-      private var amountOfCockroaches = 0
+      private var cockroaches:[NSUUID] = []
       
       private var disConnectAlert:UIAlertView?
       let log = XCGLogger.defaultInstance()
@@ -559,10 +559,10 @@
       
       func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!, devices:[NSUUID]){
          SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_CHANGED, sender: CockroachesChanged(connected: isConnected, address: fromAddress, devices: devices))
-         self.amountOfCockroaches = devices.count
+         self.cockroaches = devices
       }
       
-      func getConnectedCockroaches() -> Int{
-         return self.amountOfCockroaches
+      func getConnectedCockroaches() -> [NSUUID]{
+         return self.cockroaches
       }
     }

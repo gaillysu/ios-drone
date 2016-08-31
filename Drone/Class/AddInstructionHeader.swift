@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import IQKeyboardManagerSwift
 
 class AddInstructionHeader: UIView {
 
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var amountOfSensorLabel: UILabel!
+    
+    @IBOutlet var instructionNameEditTextField: UITextField!
+    @IBOutlet var recordedTimeLabel: UILabel!
     
     @IBOutlet var startRecordingButton: UIButton!
     @IBOutlet var stopRecordingButton: UIButton!

@@ -15,5 +15,5 @@ class Instruction: Object {
     dynamic var name = ""
     dynamic var amountDevices = 0
     dynamic var createdDate:NSDate = NSDate()
-    let Coordinates = List<CoordinateSet>()
+    let coordinateSeries = List<CoordinateSerie>()
 }

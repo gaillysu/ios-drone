@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 class CoordinateSet: Object {
+    
     dynamic var X0Coordinates:Coordinate?
     dynamic var X1Coordinates:Coordinate?
     dynamic var X2Coordinates:Coordinate?
@@ -47,5 +48,9 @@ class CoordinateSet: Object {
         
         coordinate.value = cockroachPacket.getZ2()
         self.Z2Coordinates = coordinate
+    }
+    
+    func getString () -> String{
+        return "X0 = \(X0Coordinates?.value), X1 = \(X1Coordinates?.value), X2 = \(X2Coordinates?.value), Y0 = \(Y0Coordinates?.value), Y1 = \(Y1Coordinates?.value), Y2 = \(Y2Coordinates?.value), Z0 = \(Z0Coordinates?.value), Z1 = \(Z1Coordinates?.value), Z1 = \(Z1Coordinates?.value)"
     }
 }
