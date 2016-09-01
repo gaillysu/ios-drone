@@ -8,13 +8,15 @@
 
 import Foundation
 
-class CockroachDataReceived {
+class CockroachMasterDataReceived {
     
     let coordinates: CoordinateSet
     let address : NSUUID
+    let babyCockroachNumber: Int
     
-    init(coordinates: CoordinateSet, address: NSUUID){
+    init(coordinates: CoordinateSet, address: NSUUID, babyCockroachNumber:Int){
         self.coordinates = coordinates
         self.address = address
+        self.babyCockroachNumber = babyCockroachNumber
     }
 }

@@ -81,9 +81,9 @@ protocol ConnectionControllerDelegate {
     */
     func connectionStateChanged(isConnected : Bool)
     
-    func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID)
+    func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID, forBabyCockroach number:Int)
     
-    func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!, devices:[NSUUID])
+    func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!)
     /**
     Call when finish reading Firmware
     @parameter whichfirmware, firmware type

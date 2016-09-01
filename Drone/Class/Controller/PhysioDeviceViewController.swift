@@ -16,8 +16,6 @@ class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITab
 
     let cellIdentifier:String = "cellIdentifier"
 
-    var cockroachUUIDS:[NSUUID] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Add Device"
@@ -39,7 +37,7 @@ class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITab
 extension PhysioDeviceViewController{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell
-        let cockroachUUID = self.cockroachUUIDS[indexPath.row]
+//        let cockroachUUID = self.cockroachUUIDS[indexPath.row]
         if let dequeuedCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier){
             cell = dequeuedCell
         }else{
@@ -54,7 +52,7 @@ extension PhysioDeviceViewController{
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cockroachUUIDS.count
+        return 0
     }
 }
 
@@ -62,8 +60,8 @@ extension PhysioDeviceViewController{
 extension PhysioDeviceViewController{
     private func initEventbus(){
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
-            let object = data.object! as! CockroachesChanged
-            self.cockroachUUIDS = object.devices
+            let object = data.object! as! CockroachMasterChanged
+                object.address
             self.tableview.reloadData()
         }
     }

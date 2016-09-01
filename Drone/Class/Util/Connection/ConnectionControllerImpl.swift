@@ -198,10 +198,10 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         mDelegate?.packetReceived(packet)
     }
     
-    func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID){
-        mDelegate?.cockRoachDataReceived(coordinates, withAddress: address)
+    func cockRoachDataReceived(coordinates: CoordinateSet, withAddress address: NSUUID, forBabyCockroach number: Int) {
+        mDelegate?.cockRoachDataReceived(coordinates, withAddress: address, forBabyCockroach: number)
     }
-    
+
     /**
     See ConnectionController
     */
@@ -229,8 +229,8 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         }
     }
 
-    func cockRoachesChanged(isConnected: Bool, fromAddress: NSUUID!, devices: [NSUUID]) {
-        mDelegate?.cockRoachesChanged(isConnected, fromAddress: fromAddress, devices: devices)
+    func cockRoachesChanged(isConnected: Bool, fromAddress: NSUUID!) {
+        mDelegate?.cockRoachesChanged(isConnected, fromAddress: fromAddress)
     }
     
     func getOTAMode() -> Bool {

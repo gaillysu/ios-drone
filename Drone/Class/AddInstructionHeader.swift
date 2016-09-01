@@ -20,6 +20,9 @@ class AddInstructionHeader: UIView {
     @IBOutlet var startRecordingButton: UIButton!
     @IBOutlet var stopRecordingButton: UIButton!
 
+    private var timer:NSTimer = NSTimer()
+    private var amountDots:Int = 0
+    
     override func awakeFromNib() {
         startRecordingButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Disabled)
         stopRecordingButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Disabled)
@@ -34,13 +37,23 @@ class AddInstructionHeader: UIView {
     func startRecordToggle(){
         startRecordingButton.enabled = false
         stopRecordingButton.enabled = true
-        statusLabel.text = "Started Recording"
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(updateStatusLabel), userInfo: nil, repeats: true)
+        statusLabel.text = "Recording"
+    }
+    
+    func updateStatusLabel() {
+        if (statusLabel.text?.componentsSeparatedByString(".").count == 3 ){
+            statusLabel.text = "Recording"
+        }else{
+            statusLabel.text = statusLabel.text! + "."
+        }
     }
     
     func stopRecordToggle(){
         startRecordingButton.enabled = true
         stopRecordingButton.enabled = false
-        statusLabel.text = "Finished Recording"
+        timer.invalidate()
+        statusLabel.text = "Finished"
         startRecordingButton.setTitle("Record again", forState: UIControlState.Normal)
     }
 }

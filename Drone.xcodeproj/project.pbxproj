@@ -220,8 +220,8 @@
 		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
 		CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */; };
 		CBB37AF81D751B1100A90920 /* PhysioDeviceHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBB37AF71D751B1100A90920 /* PhysioDeviceHeader.xib */; };
-		CBB37AFC1D75331000A90920 /* CockroachesChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AFB1D75331000A90920 /* CockroachesChanged.swift */; };
-		CBB37AFF1D7534C200A90920 /* CockroachDataReceived.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AFE1D7534C200A90920 /* CockroachDataReceived.swift */; };
+		CBB37AFC1D75331000A90920 /* CockroachesMasterChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AFB1D75331000A90920 /* CockroachesMasterChanged.swift */; };
+		CBB37AFF1D7534C200A90920 /* CockroachMasterDataReceived.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AFE1D7534C200A90920 /* CockroachMasterDataReceived.swift */; };
 		CBB37B021D757B7500A90920 /* AddInstructionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37B011D757B7500A90920 /* AddInstructionHeader.swift */; };
 		CBB37B041D757DEB00A90920 /* AddInstructionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBB37B031D757DEB00A90920 /* AddInstructionHeader.xib */; };
 		CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */; };
@@ -481,8 +481,8 @@
 		CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
 		CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioDeviceHeader.swift; sourceTree = "<group>"; };
 		CBB37AF71D751B1100A90920 /* PhysioDeviceHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhysioDeviceHeader.xib; sourceTree = "<group>"; };
-		CBB37AFB1D75331000A90920 /* CockroachesChanged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachesChanged.swift; sourceTree = "<group>"; };
-		CBB37AFE1D7534C200A90920 /* CockroachDataReceived.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachDataReceived.swift; sourceTree = "<group>"; };
+		CBB37AFB1D75331000A90920 /* CockroachesMasterChanged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachesMasterChanged.swift; sourceTree = "<group>"; };
+		CBB37AFE1D7534C200A90920 /* CockroachMasterDataReceived.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachMasterDataReceived.swift; sourceTree = "<group>"; };
 		CBB37B011D757B7500A90920 /* AddInstructionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInstructionHeader.swift; sourceTree = "<group>"; };
 		CBB37B031D757DEB00A90920 /* AddInstructionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddInstructionHeader.xib; sourceTree = "<group>"; };
 		CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
@@ -1469,7 +1469,7 @@
 		CBB37AFA1D7532B900A90920 /* CockroachesChanged */ = {
 			isa = PBXGroup;
 			children = (
-				CBB37AFB1D75331000A90920 /* CockroachesChanged.swift */,
+				CBB37AFB1D75331000A90920 /* CockroachesMasterChanged.swift */,
 			);
 			name = CockroachesChanged;
 			sourceTree = "<group>";
@@ -1477,7 +1477,7 @@
 		CBB37AFD1D75343200A90920 /* CockroachDataReceived */ = {
 			isa = PBXGroup;
 			children = (
-				CBB37AFE1D7534C200A90920 /* CockroachDataReceived.swift */,
+				CBB37AFE1D7534C200A90920 /* CockroachMasterDataReceived.swift */,
 			);
 			name = CockroachDataReceived;
 			sourceTree = "<group>";
@@ -1785,7 +1785,7 @@
 				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
 				00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
-				CBB37AFC1D75331000A90920 /* CockroachesChanged.swift in Sources */,
+				CBB37AFC1D75331000A90920 /* CockroachesMasterChanged.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
@@ -1868,7 +1868,7 @@
 				9E455E141CD5B91600F79356 /* DeviceViewController.swift in Sources */,
 				9E013D5D1D70356D0005DCF8 /* PhysioViewModel.swift in Sources */,
 				00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */,
-				CBB37AFF1D7534C200A90920 /* CockroachDataReceived.swift in Sources */,
+				CBB37AFF1D7534C200A90920 /* CockroachMasterDataReceived.swift in Sources */,
 				9E013D421D70229B0005DCF8 /* Instruction.swift in Sources */,
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,
 				00982C341C868C8A003DA5E2 /* Goal.swift in Sources */,

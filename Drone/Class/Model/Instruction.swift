@@ -13,7 +13,7 @@ class Instruction: Object {
     
     dynamic var id = 0
     dynamic var name = ""
-    dynamic var amountDevices = 0
+    dynamic var totalAmountOfCockroaches = 0
     dynamic var createdDate:NSDate = NSDate()
     let coordinateSeries = List<CoordinateSerie>()
 }

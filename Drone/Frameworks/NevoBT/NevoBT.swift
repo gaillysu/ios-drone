@@ -104,9 +104,9 @@ protocol NevoBTDelegate {
      @parameter whichfirmware, firmware type
      @parameter version, return the version
      */
-    func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID)
+    func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID, forBabyCockroach number:Int)
 
-    func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!, devices:[NSUUID])
+    func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!)
     /**
     *  Receiving the current device signal strength value
     */

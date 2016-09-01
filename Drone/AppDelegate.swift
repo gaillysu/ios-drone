@@ -552,14 +552,11 @@
     }
     
     extension AppDelegate{
-      
-      func cockRoachDataReceived(coordinates:CoordinateSet, withAddress fromADdress:NSUUID){
-         SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED, sender: CockroachDataReceived(coordinates: coordinates, address: fromADdress))
+      func cockRoachesChanged(isConnected: Bool, fromAddress: NSUUID!) {
+         SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_CHANGED, sender: CockroachMasterChanged(connected: isConnected, address: fromAddress))
       }
-      
-      func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!, devices:[NSUUID]){
-         SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_CHANGED, sender: CockroachesChanged(connected: isConnected, address: fromAddress, devices: devices))
-         self.cockroaches = devices
+      func cockRoachDataReceived(coordinates: CoordinateSet, withAddress address: NSUUID, forBabyCockroach number: Int) {
+         SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED, sender: CockroachMasterDataReceived(coordinates: coordinates, address: address, babyCockroachNumber: number))
       }
       
       func getConnectedCockroaches() -> [NSUUID]{

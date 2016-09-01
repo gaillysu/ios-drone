@@ -42,7 +42,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     */
     private var mPeripheral : CBPeripheral?
     
-    private var cockroaches : [CBPeripheral] = []
+    private var cockroach : CBPeripheral?
     
     /**
     The list of peripherals we are trying to reach.
@@ -119,7 +119,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         //We save this periphral for later use
         
         if(aPeripheral.services![0].UUID == cockRoach.service){
-            cockroaches.append(aPeripheral)
+            cockroach = aPeripheral
             SWIFTEVENT_BUS_GOAL_COMPLETED
         }else{
             setPeripheral(aPeripheral)
@@ -157,7 +157,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 setPeripheral(nil)
                 mDelegate?.connectionStateChanged(false, fromAddress: aPeripheral.identifier)
             }else{
-                mDelegate?.cockRoachesChanged(false, fromAddress: aPeripheral.identifier, devices: getCockroachesUUID())
+                mDelegate?.cockRoachesChanged(false, fromAddress: aPeripheral.identifier)
                 removeCockroach(aPeripheral)
             }
         }
@@ -220,7 +220,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                     log.debug("read software version char : \(aChar.UUID.UUIDString)")
                 } else if(aChar.UUID==cockRoach.characteristics) {
                     // this characteristic is for the cockroach.
-                    mDelegate?.cockRoachesChanged(true, fromAddress: aPeripheral.identifier, devices: getCockroachesUUID())
+                    mDelegate?.cockRoachesChanged(true, fromAddress: aPeripheral.identifier)
                     mPeripheral?.readValueForCharacteristic(aChar)
                 }
             }
@@ -260,7 +260,8 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         } else if(characteristic.UUID==cockRoach.characteristics) {
             let coordinateSet = CoordinateSet()
             coordinateSet.setValues(CockRoachPacket(data: characteristic.value!))
-            mDelegate?.cockRoachDataReceived(coordinateSet, withAddress: aPeripheral.identifier)
+            // GET VERSION OF THE BABY COCKROACH PLEASE
+            mDelegate?.cockRoachDataReceived(coordinateSet, withAddress: aPeripheral.identifier,forBabyCockroach: 0)
         }
     }
     
@@ -552,21 +553,17 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     }
     
     func removeCockroach(aPeripheral: CBPeripheral){
-        var i = 0
-        for peripheral:CBPeripheral in cockroaches {
-            if peripheral.identifier == aPeripheral.identifier {
-                cockroaches.removeAtIndex(i)
-                break;
+        if let unpackedcockroach = self.cockroach{
+            if unpackedcockroach.identifier == aPeripheral.identifier{
+                self.cockroach = nil
             }
-            i += 1
         }
     }
     
-    func getCockroachesUUID() -> [NSUUID]{
-        var cockroachUUIDArray: [NSUUID] = []
-        for peripheral:CBPeripheral in cockroaches {
-            cockroachUUIDArray.append(peripheral.identifier)
+    func getCockroachesUUID() -> NSUUID?{
+        if let unpackedCockroach = cockroach {
+            return unpackedCockroach.identifier
         }
-        return cockroachUUIDArray
+        return nil
     }
 }

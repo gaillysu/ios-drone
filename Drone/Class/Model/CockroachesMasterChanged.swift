@@ -8,15 +8,13 @@
 
 import Foundation
 
-class CockroachesChanged {
+class CockroachMasterChanged {
     
     let connected: Bool
     let address: NSUUID
-    let devices: [NSUUID]
     
-    init(connected: Bool, address:NSUUID, devices: [NSUUID]){
+    init(connected: Bool, address:NSUUID){
         self.connected = connected
         self.address = address
-        self.devices = devices
     }
 }
