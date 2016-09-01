@@ -18,7 +18,8 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     var header:AddInstructionHeader?;
     
     let cellIdentifier:String = "cellIdentifier"
-    var cockroach: (address:NSUUID, coordinates:CoordinateSet)?
+    var babyCockroaches: [(number:Int, coordinates:CoordinateSet)] = []
+    
     weak var timer = NSTimer()
     
     private var startTime:NSDate?
@@ -97,19 +98,14 @@ extension AddInstructionViewController{
         }else{
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellIdentifier)
         }
-        if cockroaches.count != 0 || cockroaches.count < self.connectedCockroachAddresses.count{
-            let cockroach = cockroaches[indexPath.row]
-            cell.textLabel?.text = cockroach.address.UUIDString
+            let cockroach = babyCockroaches[indexPath.row]
+            cell.textLabel?.text = "Sensor \(cockroach.number)"
             cell.detailTextLabel?.text = cockroach.coordinates.getString()
-        }else{
-            cell.textLabel?.text = connectedCockroachAddresses[indexPath.row].UUIDString
-            cell.detailTextLabel?.text = CoordinateSet().getString()
-        }
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cockroaches.count != 0 || cockroaches.count < connectedCockroachAddresses.count ? cockroaches.count : self.connectedCockroachAddresses.count
+        return babyCockroaches.count
     }
 }
 
@@ -117,8 +113,8 @@ extension AddInstructionViewController{
     private func initEventBus(){
         SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let cockroachData = data.object! as! CockroachMasterDataReceived
-            for var cockroach in self.cockroaches {
-                if cockroachData.address == cockroach.address {
+            for var cockroach in self.babyCockroaches {
+                if cockroachData.babyCockroachNumber == cockroach.number {
                     cockroach.coordinates = cockroachData.coordinates
                     break
                 }
@@ -145,23 +141,14 @@ extension AddInstructionViewController{
         }
         
         SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
-            self.connectedCockroachAddresses = self.getAppDelegate().getConnectedCockroaches()
             let cockroachesChangedEvent = data.object! as! CockroachMasterChanged
             if !cockroachesChangedEvent.connected {
-                for i in 0..<self.cockroaches.count {
-                    let cockroach = self.cockroaches[i]
-                    if cockroachesChangedEvent.address == cockroach.address{
-                        self.cockroaches.removeAtIndex(i)
-                        self.tableview.reloadData()
-                        break
-                    }
+                if let _ = self.timer{
+                    self.stopRecording()
                 }
-            }else{
-                if !self.cockroaches.contains({ (cockroach: (address: NSUUID, coordinates: CoordinateSet)) -> Bool in
-                   return cockroachesChangedEvent.address == cockroach.address
-                }){
-                    self.cockroaches.append((cockroachesChangedEvent.address , CoordinateSet()))
-                }
+                Banner(title: "Cockroach got disconnected!", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil).show()
+                
+                
             }
             self.tableview.reloadData()
             // Just for verification purposes

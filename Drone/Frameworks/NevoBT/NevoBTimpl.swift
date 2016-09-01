@@ -118,16 +118,13 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         
         //We save this periphral for later use
         
-        if(aPeripheral.services![0].UUID == cockRoach.service){
-            cockroach = aPeripheral
-            SWIFTEVENT_BUS_GOAL_COMPLETED
-        }else{
+        if let _ = aPeripheral.services {
             setPeripheral(aPeripheral)
+        }else{
+            setCockroach(aPeripheral)
+            
         }
-        
-        
-        mPeripheral?.discoverServices(nil)
-        
+        aPeripheral.discoverServices(nil)
         //We don't need to continue searching for peripherals, let's stop connecting to the others
         //We do so by forgetting them
         mTryingToConnectPeripherals = []
@@ -206,6 +203,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     
         if let characteristics:[CBCharacteristic] = service.characteristics {
             for aChar:CBCharacteristic in characteristics {
+                log.debug("characteristic = \(aChar.UUID.UUIDString)")
                 mPeripheral?.setNotifyValue(true,forCharacteristic:aChar)
                 if(aChar.UUID==mProfile?.CALLBACK_CHARACTERISTIC ) {
                     mPeripheral?.setNotifyValue(true,forCharacteristic:aChar)
@@ -221,7 +219,8 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 } else if(aChar.UUID==cockRoach.characteristics) {
                     // this characteristic is for the cockroach.
                     mDelegate?.cockRoachesChanged(true, fromAddress: aPeripheral.identifier)
-                    mPeripheral?.readValueForCharacteristic(aChar)
+                    aPeripheral.setNotifyValue(true, forCharacteristic: aChar)
+                    
                 }
             }
         } else {
@@ -231,6 +230,10 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     
     }
     
+    func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        print("Hello2?")
+        characteristic.value
+    }
     /*
     Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
     */
@@ -261,6 +264,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             let coordinateSet = CoordinateSet()
             coordinateSet.setValues(CockRoachPacket(data: characteristic.value!))
             // GET VERSION OF THE BABY COCKROACH PLEASE
+            print(coordinateSet.getString())
             mDelegate?.cockRoachDataReceived(coordinateSet, withAddress: aPeripheral.identifier,forBabyCockroach: 0)
         }
     }
@@ -290,7 +294,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
 
         //We can't be sure if the Manager is ready, so let's try
         if(self.isBluetoothEnabled()) {
-            let services:[CBUUID] = [mProfile!.CONTROL_SERVICE]
+            let services:[CBUUID] = [mProfile!.CONTROL_SERVICE, cockRoach.service]
             //No address was specified, we'll search for devices with the right profile.
             //We'll try to connect to both known and nearby devices
             //Here we search for all nearby devices
@@ -471,7 +475,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             //We have to save the peripheral, otherwise we will forget it
             //We don't knopw were this peripheral come from,
             //There might be for example 10 peripherals known to the device, but one only is in range
-            //So we need to try to connect to all of them, and hence we need to save all of them
+            //So we need to try to connect to sall of them, and hence we need to save all of them
             mTryingToConnectPeripherals.append(aPeripheral)
 
             mManager?.connectPeripheral(aPeripheral,options:nil)
@@ -480,11 +484,16 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
 
     }
 
+    private func setCockroach(peripheral:CBPeripheral?) {
+        cockroach?.delegate = nil
+        cockroach = peripheral
+        cockroach?.delegate = self
+    }
+    
     private func setPeripheral(aPeripheral:CBPeripheral?) {
         //When setting a new peripheral, there are several steps to do first
 
         mPeripheral?.delegate = nil
-
         mPeripheral = aPeripheral
         mPeripheral?.delegate = self
     }

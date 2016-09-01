@@ -26,6 +26,7 @@ class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITab
         tableview.tableHeaderView = headerView
         self.addCloseButton(#selector(close))
         initEventbus()
+        self.getAppDelegate().startConnect()
     }
     
     func close(){
@@ -43,7 +44,7 @@ extension PhysioDeviceViewController{
         }else{
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
         }
-        cell.textLabel?.text = "Cockroach: \(cockroachUUID.UUIDString)"
+//        cell.textLabel?.text = "Cockroach: \(cockroachUUID.UUIDString)"
         return cell
     }
     
