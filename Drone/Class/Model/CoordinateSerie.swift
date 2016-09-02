@@ -11,6 +11,6 @@ import RealmSwift
 
 class CoordinateSerie: Object {
     dynamic var identifier = ""
-    dynamic var address = ""
+    dynamic var cockroachNumber = 0
     let coordinateSets = List<CoordinateSet>()
 }

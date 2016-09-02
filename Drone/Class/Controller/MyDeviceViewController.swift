@@ -43,7 +43,7 @@ class MyDeviceViewController: BaseViewController {
         viewControllers.removeAll()
         
         let deviceArray:NSArray = UserDevice.getAll()
-        for device in deviceArray {
+        for _ in deviceArray {
             let viewController = DeviceViewController()
             viewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
             viewControllers.append(viewController)

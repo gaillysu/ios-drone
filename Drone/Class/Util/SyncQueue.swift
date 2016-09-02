@@ -105,7 +105,7 @@ class SyncQueue : NSObject {
         //Here we reset the Timeout timer
         mTimeoutTimer?.invalidate()
         
-        mTimeoutTimer = NSTimer.scheduledTimerWithTimeInterval(Double(MAX_LOCK_TIME), target: self, selector:Selector("next"), userInfo: nil, repeats: false)
+        mTimeoutTimer = NSTimer.scheduledTimerWithTimeInterval(Double(MAX_LOCK_TIME), target: self, selector:#selector(next), userInfo: nil, repeats: false)
     
     }
     

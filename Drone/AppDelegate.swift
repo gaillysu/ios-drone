@@ -471,7 +471,6 @@
       
       func connectionStateChanged(isConnected : Bool) {
          SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:isConnected)
-         
          if(isConnected) {
             let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.6 * Double(NSEC_PER_SEC)))
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
@@ -554,6 +553,11 @@
     extension AppDelegate{
       func cockRoachesChanged(isConnected: Bool, fromAddress: NSUUID!) {
          SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_CHANGED, sender: CockroachMasterChanged(connected: isConnected, address: fromAddress))
+         if isConnected && !self.cockroaches.contains(fromAddress) {
+            self.cockroaches.append(fromAddress)
+         }else if self.cockroaches.contains(fromAddress) && !isConnected {
+            self.cockroaches.removeAtIndex(self.cockroaches.indexOf(fromAddress)!)
+         }
       }
       func cockRoachDataReceived(coordinates: CoordinateSet, withAddress address: NSUUID, forBabyCockroach number: Int) {
          SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED, sender: CockroachMasterDataReceived(coordinates: coordinates, address: address, babyCockroachNumber: number))

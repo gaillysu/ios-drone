@@ -167,7 +167,6 @@
 		9E013D3E1D701ED60005DCF8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E013D3B1D701ED60005DCF8 /* RealmSwift.framework */; };
 		9E013D421D70229B0005DCF8 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E013D411D70229B0005DCF8 /* Instruction.swift */; };
 		9E013D441D7022AA0005DCF8 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E013D431D7022AA0005DCF8 /* Exercise.swift */; };
-		9E013D5A1D7028CB0005DCF8 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E013D591D7028CB0005DCF8 /* Coordinate.swift */; };
 		9E013D5D1D70356D0005DCF8 /* PhysioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E013D5C1D70356D0005DCF8 /* PhysioViewModel.swift */; };
 		9E1535831D5C20CA00CB6A01 /* timezones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535811D5C20CA00CB6A01 /* timezones.json */; };
 		9E1535841D5C20CA00CB6A01 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535821D5C20CA00CB6A01 /* cities.json */; };
@@ -193,6 +192,9 @@
 		9E69A2601CE3354D007501FF /* ContactsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */; };
 		9E72CED51D70077A00817914 /* PhysioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E72CED31D70077A00817914 /* PhysioViewController.swift */; };
 		9E72CED61D70077A00817914 /* PhysioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E72CED41D70077A00817914 /* PhysioViewController.xib */; };
+		9EA1C9A31D7935C50012C988 /* DoExerciseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */; };
+		9EA1C9A51D7935D30012C988 /* DoExerciseHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */; };
+		9EA1C9A81D7963D90012C988 /* NSDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */; };
 		9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEB22061D5D6CB50099A621 /* WorldClockUtil.swift */; };
 		9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF7EEA41CD89DA7009B0928 /* ProfileTableViewCell.swift */; };
 		9EF7EEA71CD89DB4009B0928 /* ProfileTableViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF7EEA61CD89DB4009B0928 /* ProfileTableViewCellHeader.swift */; };
@@ -426,7 +428,6 @@
 		9E013D3B1D701ED60005DCF8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-dexrbxtshdsjmvbquhcxrfpwxdeo/Build/Products/Debug-iphonesimulator/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
 		9E013D411D70229B0005DCF8 /* Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		9E013D431D7022AA0005DCF8 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
-		9E013D591D7028CB0005DCF8 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		9E013D5C1D70356D0005DCF8 /* PhysioViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioViewModel.swift; sourceTree = "<group>"; };
 		9E1535811D5C20CA00CB6A01 /* timezones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timezones.json; sourceTree = "<group>"; };
 		9E1535821D5C20CA00CB6A01 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
@@ -452,6 +453,9 @@
 		9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsFilterModel.swift; sourceTree = "<group>"; };
 		9E72CED31D70077A00817914 /* PhysioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhysioViewController.swift; path = PhysioViewController/PhysioViewController.swift; sourceTree = "<group>"; };
 		9E72CED41D70077A00817914 /* PhysioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhysioViewController.xib; path = PhysioViewController/PhysioViewController.xib; sourceTree = "<group>"; };
+		9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoExerciseHeader.swift; sourceTree = "<group>"; };
+		9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoExerciseHeader.xib; sourceTree = "<group>"; };
+		9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtension.swift; sourceTree = "<group>"; };
 		9EEB22061D5D6CB50099A621 /* WorldClockUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockUtil.swift; sourceTree = "<group>"; };
 		9EF7EEA41CD89DA7009B0928 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		9EF7EEA61CD89DB4009B0928 /* ProfileTableViewCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellHeader.swift; sourceTree = "<group>"; };
@@ -856,7 +860,6 @@
 				CB5754241D76BA150008E0EC /* CoordinateSerie */,
 				CBB37AF91D75329900A90920 /* Eventbus */,
 				9E01092D1D7417AF00AA3551 /* CoordinateSet */,
-				9E013D5E1D7042AC0005DCF8 /* Coordinate */,
 				9E013D401D70228E0005DCF8 /* Exercise */,
 				9E013D3F1D70225A0005DCF8 /* Instruction */,
 				9E1535851D5C219600CB6A01 /* Worldclock */,
@@ -1001,11 +1004,11 @@
 		00982B251C868C89003DA5E2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				9EA1C9A61D7963D00012C988 /* Extensions */,
 				00982B261C868C89003DA5E2 /* ClockRefresh */,
 				00982B281C868C89003DA5E2 /* Connection */,
 				00982B531C868C89003DA5E2 /* SyncQueue.swift */,
 				0028F1401C97C08000C8E742 /* EventBusKeys.swift */,
-				9E526F3E1CDC891D0060F63F /* StringExtension.swift */,
 				9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */,
 				9EEB22061D5D6CB50099A621 /* WorldClockUtil.swift */,
 			);
@@ -1290,14 +1293,6 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
-		9E013D5E1D7042AC0005DCF8 /* Coordinate */ = {
-			isa = PBXGroup;
-			children = (
-				9E013D591D7028CB0005DCF8 /* Coordinate.swift */,
-			);
-			name = Coordinate;
-			sourceTree = "<group>";
-		};
 		9E1535801D5C20A500CB6A01 /* Worldclock */ = {
 			isa = PBXGroup;
 			children = (
@@ -1370,6 +1365,24 @@
 			name = PhysioViewController;
 			sourceTree = "<group>";
 		};
+		9EA1C9A11D7935B50012C988 /* DoExerciseHeader */ = {
+			isa = PBXGroup;
+			children = (
+				9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */,
+				9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */,
+			);
+			name = DoExerciseHeader;
+			sourceTree = "<group>";
+		};
+		9EA1C9A61D7963D00012C988 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9E526F3E1CDC891D0060F63F /* StringExtension.swift */,
+				9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		9EF7EEA31CD89D7C009B0928 /* ProfileTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1422,6 +1435,7 @@
 				9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */,
 				9E1999521CE4327400C1D967 /* ContactsNotificationHeader */,
 				9E455E151CD5B94100F79356 /* DeviceTableView */,
+				9EA1C9A11D7935B50012C988 /* DoExerciseHeader */,
 				CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */,
 				00982AAF1C868C89003DA5E2 /* MyDroneView */,
 				00982AB51C868C89003DA5E2 /* NevoOtaView */,
@@ -1677,6 +1691,7 @@
 				00982C1C1C868C8A003DA5E2 /* WorldClockViewController.xib in Resources */,
 				0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */,
 				CBB37AF81D751B1100A90920 /* PhysioDeviceHeader.xib in Resources */,
+				9EA1C9A51D7935D30012C988 /* DoExerciseHeader.xib in Resources */,
 				CBB37B041D757DEB00A90920 /* AddInstructionHeader.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
@@ -1767,6 +1782,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */,
+				9EA1C9A31D7935C50012C988 /* DoExerciseHeader.swift in Sources */,
 				00982C5B1C868C8A003DA5E2 /* NevoOTAModeProfile.swift in Sources */,
 				008AEF161D25FFB200B9E4D0 /* TaskQueue.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
@@ -1790,6 +1806,7 @@
 				CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
+				9EA1C9A81D7963D90012C988 /* NSDataExtension.swift in Sources */,
 				00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */,
 				9E0109261D73C85D00AA3551 /* DoExerciseViewController.swift in Sources */,
 				9E0109311D741CEE00AA3551 /* CockRoachPacket.swift in Sources */,
@@ -1800,7 +1817,6 @@
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
-				9E013D5A1D7028CB0005DCF8 /* Coordinate.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
 				00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,

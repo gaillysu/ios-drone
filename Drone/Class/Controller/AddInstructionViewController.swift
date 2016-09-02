@@ -6,6 +6,8 @@
 //  Copyright © 2016 Cloud. All rights reserved.
 //
 
+import RealmSwift
+import MRProgress
 import BRYXBanner
 import SwiftEventBus
 import Timepiece
@@ -32,6 +34,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
         self.navigationItem.title = "New Instruction"
         self.addCloseButton(#selector(close))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(saveInstruction))
+        self.navigationItem.rightBarButtonItem?.enabled = false
         header = UIView.loadFromNibNamed("AddInstructionHeader") as? AddInstructionHeader
         header!.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header!.frame.height)
         let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header!.frame.height))
@@ -39,6 +42,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
         tableview.tableHeaderView = headerView
         header?.addActionToButton(self,startRecordingSelector: #selector(self.startRecording), stopRecordingSelector: #selector(self.stopRecording))
         header!.amountOfSensorLabel.text = "Amount of sensors: \(getAppDelegate().getConnectedCockroaches().count)"
+        initEventBus()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +62,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     }
     
     func stopRecording() {
+        self.navigationItem.rightBarButtonItem?.enabled = true
         header!.stopRecordToggle()
         timer!.invalidate()
         stopDate = NSDate()
@@ -75,17 +80,26 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     }
 
     func saveInstruction(){
-        var banner: Banner?
-        if self.coordinateSeries.isEmpty {
-            banner = Banner(title: "Nothing recorded", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
-        }
-        if ((header!.instructionNameEditTextField.text?.isEmpty) != nil){
-            banner = Banner(title: "No instruction name", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
-        }
-        if let unpackedBanner = banner{
-            unpackedBanner.show()
+        if header!.instructionNameEditTextField.text == "" {
+            Banner(title: "No instruction name", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil).show()
             return
         }
+        let newInstruction = Instruction()
+        newInstruction.coordinateSeries.appendContentsOf(self.coordinateSeries)
+        newInstruction.startTime = self.startTime!
+        newInstruction.stopTime = self.startTime!
+        newInstruction.name = header!.instructionNameEditTextField.text!
+        newInstruction.totalAmountOfCockroaches = self.babyCockroaches.count
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(newInstruction)
+            let view = MRProgressOverlayView.showOverlayAddedTo(self.view, title:"Saved", mode: MRProgressOverlayViewMode.Checkmark, animated: true)
+            view.setTintColor(UIColor.getBaseColor())
+            NSTimer.after(0.6.second) {
+                view.dismiss(true)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }    
     }
 }
 
@@ -110,30 +124,35 @@ extension AddInstructionViewController{
 }
 
 extension AddInstructionViewController{
+    
     private func initEventBus(){
         SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let cockroachData = data.object! as! CockroachMasterDataReceived
-            for var cockroach in self.babyCockroaches {
-                if cockroachData.babyCockroachNumber == cockroach.number {
-                    cockroach.coordinates = cockroachData.coordinates
-                    break
+            if self.babyCockroaches.isEmpty {
+                self.babyCockroaches.append((number: cockroachData.babyCockroachNumber, coordinates: cockroachData.coordinates))
+            }else{
+                for i in 0..<self.babyCockroaches.count {
+                    if cockroachData.babyCockroachNumber == self.babyCockroaches[i].number {
+                        self.babyCockroaches[i].coordinates = cockroachData.coordinates
+                        break
+                    }
                 }
             }
             self.tableview.reloadData()
             if let _ = self.timer {
                 let isInSet:Bool =  self.coordinateSeries.contains({ (serie: (CoordinateSerie)) -> Bool in
-                    serie.address == cockroachData.address
+                    serie.cockroachNumber == cockroachData.babyCockroachNumber
                 })
                 if isInSet{
                     for coordinateSerie in self.coordinateSeries {
-                        if (coordinateSerie.address == cockroachData.address ){
+                        if (coordinateSerie.cockroachNumber == cockroachData.babyCockroachNumber ){
                             coordinateSerie.coordinateSets.append(cockroachData.coordinates)
                             break;
                         }
                     }
                 } else {
                     let coordinateSerie = CoordinateSerie()
-                    coordinateSerie.address = cockroachData.address.UUIDString
+                    coordinateSerie.cockroachNumber = cockroachData.babyCockroachNumber
                     coordinateSerie.coordinateSets.append(cockroachData.coordinates)
                     self.coordinateSeries.append(coordinateSerie)
                 }
@@ -147,8 +166,6 @@ extension AddInstructionViewController{
                     self.stopRecording()
                 }
                 Banner(title: "Cockroach got disconnected!", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil).show()
-                
-                
             }
             self.tableview.reloadData()
             // Just for verification purposes

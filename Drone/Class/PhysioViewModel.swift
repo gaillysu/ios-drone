@@ -14,8 +14,8 @@ class PhysioViewModel: NSObject {
     let createdDate:NSDate
     
     init(withExercise exercise:Exercise) {
-        self.name = exercise.name
-        self.createdDate = exercise.createdDate
+        self.name = exercise.instruction!.name
+        self.createdDate = exercise.instruction!.createdDate
     }
     
     init(withInstruction instruction:Instruction) {

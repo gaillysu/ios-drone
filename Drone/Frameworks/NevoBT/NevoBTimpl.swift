@@ -141,13 +141,9 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     */
     func centralManager(central: CBCentralManager, didDisconnectPeripheral aPeripheral: CBPeripheral, error : NSError?) {
 
-        log.debug("***Peripheral disconnected : \(aPeripheral.name)***")
-
         if(error != nil) {
             log.debug("Error : \(error!.localizedDescription) for peripheral : \(aPeripheral.name)")
         }
-
-
         //Let's forget this device
         if let localPeripheral = mPeripheral{
             if localPeripheral.identifier == aPeripheral.identifier{
@@ -264,7 +260,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             let coordinateSet = CoordinateSet()
             coordinateSet.setValues(CockRoachPacket(data: characteristic.value!))
             // GET VERSION OF THE BABY COCKROACH PLEASE
-            print(coordinateSet.getString())
+//            print(coordinateSet.getString())
             mDelegate?.cockRoachDataReceived(coordinateSet, withAddress: aPeripheral.identifier,forBabyCockroach: 0)
         }
     }
@@ -318,7 +314,9 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         } else {
             //Maybe the Manager is not ready yet, let's try again after a delay
 //            log.debug("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
-
+            if let cockroach = self.cockroach {
+                mDelegate?.cockRoachesChanged(false, fromAddress: cockroach.identifier)
+            }
             let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(RETRY_DURATION * Double(NSEC_PER_SEC)))
             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                 self.scanAndConnect()
@@ -551,7 +549,8 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             break
 
         case CBCentralManagerState.PoweredOff:
-//            log.debug("Bluetooth is currently powered off.")
+            log.debug("Bluetooth is currently powered off.")
+           
             break
 
         default:

@@ -87,6 +87,18 @@ func NSData2Bytes(data:NSData) -> [UInt8]
     return ret
 }
 
+func NSData2BytesSigned(data:NSData) -> [Int8]
+{
+    let bytes = UnsafeBufferPointer<Int8>(start: UnsafePointer(data.bytes), count:data.length)
+    
+    var ret:[Int8] = []
+    for  byte in bytes {
+        ret.append(byte)
+    }
+    return ret
+}
+
+
 func NSString2NSData(string:NSString) -> NSData
 {
     let mString = string

@@ -10,47 +10,51 @@ import Foundation
 import RealmSwift
 class CoordinateSet: Object {
     
-    dynamic var X0Coordinates:Coordinate?
-    dynamic var X1Coordinates:Coordinate?
-    dynamic var X2Coordinates:Coordinate?
-    dynamic var Y0Coordinates:Coordinate?
-    dynamic var Y1Coordinates:Coordinate?
-    dynamic var Y2Coordinates:Coordinate?
-    dynamic var Z0Coordinates:Coordinate?
-    dynamic var Z1Coordinates:Coordinate?
-    dynamic var Z2Coordinates:Coordinate?
+    dynamic var X0:Int = 0
+    dynamic var X1:Int = 0
+    dynamic var X2:Int = 0
+    dynamic var Y0:Int = 0
+    dynamic var Y1:Int = 0
+    dynamic var Y2:Int = 0
+    dynamic var Z0:Int = 0
+    dynamic var Z1:Int = 0
+    dynamic var Z2:Int = 0
+    dynamic var sensorNumber = 0
     
     func setValues(cockroachPacket:CockRoachPacket){
-        var coordinate = Coordinate()
-        coordinate.value = cockroachPacket.getX0()
-        self.X0Coordinates = coordinate
-        
-        coordinate.value = cockroachPacket.getX1()
-        self.X1Coordinates = coordinate
-        
-        coordinate.value = cockroachPacket.getX2()
-        self.X2Coordinates = coordinate
-        
-        coordinate.value = cockroachPacket.getY0()
-        self.Y0Coordinates = coordinate
-        
-        coordinate.value = cockroachPacket.getY1()
-        self.Y1Coordinates = coordinate
-        
-        coordinate.value = cockroachPacket.getY2()
-        self.Y2Coordinates = coordinate
-        
-        coordinate.value = cockroachPacket.getZ0()
-        self.Z0Coordinates = coordinate
-        
-        coordinate.value = cockroachPacket.getZ1()
-        self.Z1Coordinates = coordinate
-        
-        coordinate.value = cockroachPacket.getZ2()
-        self.Z2Coordinates = coordinate
+        self.X0 = cockroachPacket.X0
+        self.X1 = cockroachPacket.X1
+        self.X2 = cockroachPacket.X2
+        self.Y0 = cockroachPacket.Y0
+        self.Y1 = cockroachPacket.Y1
+        self.Y2 = cockroachPacket.Y2
+        self.Z0 = cockroachPacket.Z0
+        self.Z1 = cockroachPacket.Z1
+        self.Z2 = cockroachPacket.Z2
+        self.sensorNumber = cockroachPacket.cockRoachNumber
     }
     
     func getString () -> String{
-        return "X0 = \(self.X0Coordinates!.value), X1 = \(X1Coordinates!.value), X2 = \(X2Coordinates!.value), Y0 = \(Y0Coordinates!.value), Y1 = \(Y1Coordinates!.value), Y2 = \(Y2Coordinates!.value), Z0 = \(Z0Coordinates!.value), Z1 = \(Z1Coordinates!.value), Z1 = \(Z1Coordinates!.value)"
+        return "X0 = \(X0), X1 = \(X1), X2 = \(X2), Y0 = \(Y0), Y1 = \(Y1), Y2 = \(Y2), Z0 = \(Z0), Z1 = \(Z1), Z1 = \(Z1)"
+    }
+    
+    func getAllCoordinates() -> [Int]{
+        return [X0,X1,X2,Y0,Y1,Y2,Z0,Z1,Z2]
+    }
+    
+    func equal(otherCoordinateSet:CoordinateSet) -> Bool{
+        for i in 0..<9{
+            if(!applicableMove(getAllCoordinates()[i], coordinate2: otherCoordinateSet.getAllCoordinates()[i])){
+                return false
+            }
+        }
+        return true
+    }
+    private func applicableMove(coordinate1:Int, coordinate2:Int) -> Bool{
+        let threshold = 20
+        if abs(coordinate1 - coordinate2) < threshold {
+            return true
+        }
+        return false
     }
 }

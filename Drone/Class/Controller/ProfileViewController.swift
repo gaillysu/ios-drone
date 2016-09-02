@@ -89,7 +89,6 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             
             HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length,"birthday":profile.birthday,"weight":profile.weight]]) { (result) in
                 let json = JSON(result)
-                let message = json["message"].stringValue
                 let status = json["status"].intValue
                 let user:[String : JSON] = json["user"].dictionaryValue
                 if(status > 0 && user.count > 0) {
@@ -107,7 +106,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         }else{
             let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.Cross, animated: true)
             view.setTintColor(UIColor.getBaseColor())
-            let timeout:NSTimer = NSTimer.after(0.6.seconds, {
+            let _:NSTimer = NSTimer.after(0.6.seconds, {
                 MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
             })
         }

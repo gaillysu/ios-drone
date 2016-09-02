@@ -9,8 +9,8 @@
 import Foundation
 import RealmSwift
 
-class Exercise: Instruction {
-    dynamic var exercise: Instruction? = nil
-    
+class Exercise: Object {
+    dynamic var instruction: Instruction? = nil
+    dynamic var finishedRepetitions = 0
     
 }

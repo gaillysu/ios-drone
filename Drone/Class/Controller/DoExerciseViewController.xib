@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DoExerciseViewController" customModule="Drone" customModuleProvider="target">
             <connections>
+                <outlet property="tableview" destination="7e3-OO-lbs" id="5Je-Lg-rSe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +15,23 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7e3-OO-lbs">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="nkw-Jd-jfa"/>
+                        <outlet property="delegate" destination="-1" id="j5J-JP-Dup"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7e3-OO-lbs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gh6-r1-6H5"/>
+                <constraint firstAttribute="trailing" secondItem="7e3-OO-lbs" secondAttribute="trailing" id="TO3-4f-6kO"/>
+                <constraint firstAttribute="bottom" secondItem="7e3-OO-lbs" secondAttribute="bottom" id="WVm-Ai-oue"/>
+                <constraint firstItem="7e3-OO-lbs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fjy-AM-FpU"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="295.5" y="317.5"/>
         </view>

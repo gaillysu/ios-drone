@@ -10,91 +10,27 @@ import Foundation
 
 class CockRoachPacket:NSObject {
     
-    let data:[UInt8]
-    let nsDataVersion: NSData
+    let X0:Int
+    let X1:Int
+    let X2:Int
+    let Y0:Int
+    let Y1:Int
+    let Y2:Int
+    let Z0:Int
+    let Z1:Int
+    let Z2:Int
+    let cockRoachNumber:Int
     init(data:NSData){
-        self.nsDataVersion = data
-        self.data = NSData2Bytes(data)
-        print("\(data.hexString)")
-    }
-    // 2212 4461
-    //    X0 X0 Y0 Y0 Z0 Z0 X1 X1 Y1 Y1 Z1 Z1 X2 X2 Y2 Y2 Z2 Z2
-    //    0  1  2  3  4  5  6  7  9  10 11 12 13 14 15 16 17 18
-    
-    func getX0() -> Int{
-        let results =  UInt16(data[0]) + (UInt16(data[1] << 7))
-        let convertedResults = Int(results)
-        return convertedResults
-    }
-    
-    func getX1() -> Int{
-        let results =  UInt16(data[6]) + (UInt16(data[7] << 7))
-        let convertedResults = Int(results)
-        return convertedResults
-    }
-    
-    func getX2() -> Int{
-        let results =  UInt16(data[13]) + (UInt16(data[14] << 7))
-        let convertedResults = Int(results)
-        return convertedResults
-    }
-    
-    func getY0() -> Int{
-        let results =  UInt16(data[2]) + (UInt16(data[3] << 7))
-        let convertedResults = Int(results)
-        return convertedResults
-    }
-    
-    func getY1() -> Int{
-        let results =  UInt16(data[9]) + (UInt16(data[10] << 7))
-        let convertedResults = Int(results)
-        return convertedResults
-    }
-    
-    func getY2() -> Int{
-        let results =  UInt16(data[15]) + (UInt16(data[16] << 7))
-        let convertedResults = Int(results)
-        return convertedResults
-    }
-    
-    func getZ0() -> Int{
-        let results =  UInt16(data[4]) + (UInt16(data[5] << 7))
-        let convertedResults = Int(results)
-        return convertedResults
-    }
-    
-    func getZ1() -> Int{
-        let results =  UInt16(data[11]) + (UInt16(data[12] << 7))
-        let convertedResults = Int(results)
-        return convertedResults
-    }
-    
-    func getZ2() -> Int{
-        let results =  UInt16(data[17]) + (UInt16(data[18] << 7))
-        let convertedResults = Int(results)
-        return convertedResults
-    }
-    
-}
-
-extension NSData {
-    
-    var hexString: String? {
-        let buf = UnsafePointer<UInt8>(bytes)
-        let charA = UInt8(UnicodeScalar("a").value)
-        let char0 = UInt8(UnicodeScalar("0").value)
-        
-        func itoh(value: UInt8) -> UInt8 {
-            return (value > 9) ? (charA + value - 10) : (char0 + value)
-        }
-        
-        let ptr = UnsafeMutablePointer<UInt8>.alloc(length * 2)
-        
-        for i in 0 ..< length {
-            ptr[i*2] = itoh((buf[i] >> 4) & 0xF)
-            ptr[i*2+1] = itoh(buf[i] & 0xF)
-        }
-        
-        return String(bytesNoCopy: ptr, length: length*2, encoding: NSUTF8StringEncoding, freeWhenDone: true)
-    }
+        let intData = NSData2BytesSigned(data)
+        self.X0 = Int(Int16(intData[1] << 7) | Int16(intData[0]))
+        self.X1 = Int(Int16(intData[3] << 7) | Int16(intData[2]))
+        self.X2 = Int(Int16(intData[5] << 7) | Int16(intData[4]))
+        self.Y0 = Int(Int16(intData[7] << 7) | Int16(intData[6]))
+        self.Y1 = Int(Int16(intData[9] << 7) | Int16(intData[8]))
+        self.Y2 = Int(Int16(intData[11] << 7) | Int16(intData[10]))
+        self.Z0 = Int(Int16(intData[13] << 7) | Int16(intData[12]))
+        self.Z1 = Int(Int16(intData[15] << 7) | Int16(intData[14]))
+        self.Z2 = Int(Int16(intData[17] << 7) | Int16(intData[16]))
+        self.cockRoachNumber = Int(intData[18])
+     }
 }
