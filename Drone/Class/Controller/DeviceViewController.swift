@@ -16,12 +16,12 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     var leftRightButtonsNeeded = true;
     
     @IBOutlet weak var deviceTableView: UITableView!
-    private final let identifier = "device_table_view_cell"
-    private final let identifier_header = "device_table_view_cell_header"
+    fileprivate final let identifier = "device_table_view_cell"
+    fileprivate final let identifier_header = "device_table_view_cell_header"
     var batteryStatus:[Int] = []
     
     init() {
-        super.init(nibName: "DeviceViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "DeviceViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,8 +30,8 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
-        deviceTableView.registerNib(UINib(nibName: "DeviceTableViewCellHeader", bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: identifier_header)
+        deviceTableView.register(UINib(nibName: "DeviceTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: identifier)
+        deviceTableView.register(UINib(nibName: "DeviceTableViewCellHeader", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: identifier_header)
         self.delay(seconds: 1) { 
             AppDelegate.getAppDelegate().sendRequest(GetBatteryRequest())
         }
@@ -51,59 +51,59 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     
     override func viewDidLayoutSubviews() {
         deviceTableView.sectionHeaderHeight = 254
-        deviceTableView.scrollEnabled = false
+        deviceTableView.isScrollEnabled = false
         //deviceTableView.rowHeight =
         deviceTableView.reloadData()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED)
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2;
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //NSLog("CGRect:\(NSStringFromCGRect(self.view.frame))")
         return (deviceTableView.frame.height - 254)/2
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.row == 0 {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if (indexPath as NSIndexPath).row == 0 {
             self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
-        }else if indexPath.row == 1 {
+        }else if (indexPath as NSIndexPath).row == 1 {
             // forget watch
-            let alertView:UIAlertController = UIAlertController(title: NSLocalizedString("forget_watch", comment: ""), message: NSLocalizedString("forget_watch_message", comment: ""), preferredStyle: UIAlertControllerStyle.Alert)
+            let alertView:UIAlertController = UIAlertController(title: NSLocalizedString("forget_watch", comment: ""), message: NSLocalizedString("forget_watch_message", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             
-            alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.Default, handler: { (action) in
+            alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
                 AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
                 UserDevice.removeAll()
                 //Records need to use 0x30
                 AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
                 
                 if self.navigationController == nil {
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }else{
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }))
             
-            alertView.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.Cancel, handler: { (action) in
+            alertView.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.cancel, handler: { (action) in
                 
             }))
             
-            self.presentViewController(alertView, animated: true, completion: nil)
+            self.present(alertView, animated: true, completion: nil)
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let  headerCell: DeviceTableViewCellHeader = deviceTableView.dequeueReusableHeaderFooterViewWithIdentifier(identifier_header) as! DeviceTableViewCellHeader
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell: DeviceTableViewCellHeader = deviceTableView.dequeueReusableHeaderFooterView(withIdentifier: identifier_header) as! DeviceTableViewCellHeader
         
         if "\(AppDelegate.getAppDelegate().getFirmwareVersion())".isEmpty {
             headerCell.versionLabel.text = "Not Connected"
@@ -136,17 +136,17 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
         return headerCell;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: DeviceTableViewCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! DeviceTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: DeviceTableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! DeviceTableViewCell
         cell.accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             cell.titleLabel.text = "Contacts Notifications"
-        }else if indexPath.row == 1{
+        }else if (indexPath as NSIndexPath).row == 1{
             cell.titleLabel.text = "Forget this watch"
         }
-        cell.separatorInset = UIEdgeInsetsZero
+        cell.separatorInset = UIEdgeInsets.zero
         cell.preservesSuperviewLayoutMargins = false
-        cell.layoutMargins = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsets.zero
         return cell
     }
 }

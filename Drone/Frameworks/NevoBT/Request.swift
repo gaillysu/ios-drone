@@ -24,7 +24,7 @@ protocol Request {
     /**
     Returns the raw packet to be sent via bluetooth
     */
-    func getRawData() -> NSData
+    func getRawData() -> Data
     
     /**
     for Nevo/ Tracker, the communication protocol has 2 packet(0x00,0xFF)

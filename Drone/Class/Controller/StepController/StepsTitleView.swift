@@ -16,30 +16,30 @@ class StepsTitleView: UIView {
     
     @IBOutlet weak var backButton: UIButton!
 
-    var buttonResultHandler:((result:AnyObject?) -> Void)?
+    var buttonResultHandler:((_ result:AnyObject?) -> Void)?
 
-    class func getStepsTitleView(frame:CGRect)->StepsTitleView {
-        let nibView:NSArray = NSBundle.mainBundle().loadNibNamed("StepsTitleView", owner: nil, options: nil)
-        let view:UIView = nibView.objectAtIndex(0) as! UIView
+    class func getStepsTitleView(_ frame:CGRect)->StepsTitleView {
+        let nibView:NSArray = Bundle.main.loadNibNamed("StepsTitleView", owner: nil, options: nil)
+        let view:UIView = nibView.object(at: 0) as! UIView
         view.frame = frame
-        return nibView.objectAtIndex(0) as! StepsTitleView
+        return nibView.object(at: 0) as! StepsTitleView
     }
 
     
-    @IBAction func buttonActionManager(sender: AnyObject) {
+    @IBAction func buttonActionManager(_ sender: AnyObject) {
         if (sender.isEqual(calendarButton)) {
             self.selectedFinishTitleView()
         }
-        buttonResultHandler?(result: sender)
+        buttonResultHandler?(sender)
     }
 
     /**
      finish selected calendar ,hiden titleView next button and back button
      */
     func selectedFinishTitleView() {
-        calendarButton.selected = (calendarButton.selected ? false:true)
-        nextButton.hidden = (nextButton.hidden ? false:true)
-        backButton.hidden = (backButton.hidden ? false:true)
+        calendarButton.isSelected = (calendarButton.isSelected ? false:true)
+        nextButton.isHidden = (nextButton.isHidden ? false:true)
+        backButton.isHidden = (backButton.isHidden ? false:true)
     }
 
 
@@ -48,10 +48,10 @@ class StepsTitleView: UIView {
 
      - parameter title: title text
      */
-    func setCalendarButtonTitle(title:String) {
-        calendarButton.titleLabel?.font = UIFont.systemFontOfSize(14)
-        calendarButton.setTitle(title, forState: UIControlState.Normal)
-        calendarButton.setTitle(title, forState: UIControlState.Selected)
+    func setCalendarButtonTitle(_ title:String) {
+        calendarButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        calendarButton.setTitle(title, for: UIControlState())
+        calendarButton.setTitle(title, for: UIControlState.selected)
     }
 
     /*

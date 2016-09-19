@@ -23,6 +23,6 @@ class SetAppConfigRequest: NevoRequest {
             0x02,
             appState,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-        return NSArray(array: [NSData(bytes: values1, length: values1.count),NSData(bytes: values2, length: values2.count)])
+        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count),Data(bytes: UnsafePointer<UInt8>(values2), count: values2.count)])
     }
 }

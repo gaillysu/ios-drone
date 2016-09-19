@@ -19,65 +19,65 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
     The scanning time is 10 sec
     */
-    let SCANNING_DURATION : NSTimeInterval = 10.000
+    let SCANNING_DURATION : TimeInterval = 10.000
     
     /**
     How long before we retry to connect when the central manager is powering up
     */
-    private let RETRY_DURATION : NSTimeInterval = 0.500
+    fileprivate let RETRY_DURATION : TimeInterval = 0.500
     
     /**
     Gets notified when a periphare connects/disconnects and when we receive data
     */
-    private var mDelegate : NevoBTDelegate?
+    fileprivate var mDelegate : NevoBTDelegate?
     
     /**
     The central manager, we have to save it
     */
-    private var mManager : CBCentralManager?
+    fileprivate var mManager : CBCentralManager?
     
     /**
     The connected peripheral
     only one peripheral can be connected at a time
     */
-    private var mPeripheral : CBPeripheral?
+    fileprivate var mPeripheral : CBPeripheral?
     
-    private var cockroach : CBPeripheral?
+    fileprivate var cockroach : CBPeripheral?
     
     /**
     The list of peripherals we are trying to reach.
     There might be for example 10 peripherals known to the device, but one only is in range
     So we need to try to connect to all of them
     */
-    private var mTryingToConnectPeripherals : [CBPeripheral] = []
+    fileprivate var mTryingToConnectPeripherals : [CBPeripheral] = []
     
     /**
     The GATT profile we are looking for
     */
-    private var mProfile : Profile?
+    fileprivate var mProfile : Profile?
     
     /**
     The Stop scan timer
     */
-    private var mTimer : NSTimer?
+    fileprivate var mTimer : Timer?
     
     /**
     Ble firmware version
     */
-    private var mFirmwareVersion:NSString = ""
+    fileprivate var mFirmwareVersion:NSString = ""
     
     /**
     MCU Software version
     */
-    private var mSoftwareVersion:NSString = ""
+    fileprivate var mSoftwareVersion:NSString = ""
 
-    private var redRssiTimer:NSTimer = NSTimer()
-    private var log = XCGLogger.defaultInstance()
+    fileprivate var redRssiTimer:Timer = Timer()
+    fileprivate var log = XCGLogger.defaultInstance()
     /**
     Basic constructor, just a Delegate handsake
     */
     
-    private let cockRoach = (service: CBUUID(string:"F0BA3000-6CAC-4C99-9089-4B0A1DF45002"), characteristics: CBUUID(string:"F0BA5001-6CAC-4C99-9089-4B0A1DF45002"))
+    fileprivate let cockRoach = (service: CBUUID(string:"F0BA3000-6CAC-4C99-9089-4B0A1DF45002"), characteristics: CBUUID(string:"F0BA5001-6CAC-4C99-9089-4B0A1DF45002"))
     
     init(externalDelegate : NevoBTDelegate, acceptableDevice : Profile) {
         super.init()
@@ -95,14 +95,14 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
     Invoked whenever the central manager's state is updated.
     */
-    func centralManagerDidUpdateState(central : CBCentralManager) {
+    func centralManagerDidUpdateState(_ central : CBCentralManager) {
         self.isBluetoothEnabled()
     }
     
     /**
     Invoked when the central discovers a compatible device while scanning.
     */
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber){
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber){
     
         self.matchingPeripheralFound(peripheral)
     
@@ -112,7 +112,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     Invoked whenever a connection is succesfully created with the peripheral.
     Discover available services on the peripheral and notifies our delegate
     */
-    func centralManager(central: CBCentralManager, didConnectPeripheral aPeripheral: CBPeripheral) {
+    func centralManager(_ central: CBCentralManager, didConnect aPeripheral: CBPeripheral) {
 
         log.debug("***Peripheral connected : \(aPeripheral.name)***")
         
@@ -129,17 +129,17 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         //We do so by forgetting them
         mTryingToConnectPeripherals = []
 
-        if(redRssiTimer.valid){
+        if(redRssiTimer.isValid){
             redRssiTimer.invalidate()
         }
-        redRssiTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(NevoBTImpl.redRSSI(_:)), userInfo: nil, repeats: true)
+        redRssiTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(NevoBTImpl.redRSSI(_:)), userInfo: nil, repeats: true)
     }
 
     /**
     Invoked whenever an existing connection with the peripheral is torn down.
     Reset local variables and notifies our delegate
     */
-    func centralManager(central: CBCentralManager, didDisconnectPeripheral aPeripheral: CBPeripheral, error : NSError?) {
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral aPeripheral: CBPeripheral, error : Error?) {
 
         if(error != nil) {
             log.debug("Error : \(error!.localizedDescription) for peripheral : \(aPeripheral.name)")
@@ -155,7 +155,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             }
         }
     
-        if(redRssiTimer.valid){
+        if(redRssiTimer.isValid){
             redRssiTimer.invalidate()
         }
     }
@@ -165,27 +165,27 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     Invoked upon completion of a -[discoverServices:] request.
     Discover available characteristics on interested services
     */
-    func peripheral(aPeripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+    func peripheral(_ aPeripheral: CBPeripheral, didDiscoverServices error: Error?) {
     
         //Our aim is to subscribe to the callback characteristic, so we'll have to find it in the control service
         if let services:[CBService] = aPeripheral.services{
         
             for aService:CBService in services {
-                debugPrint("Service found with UUID : \(aService.UUID.UUIDString)")
+                debugPrint("Service found with UUID : \(aService.uuid.uuidString)")
     
-                if (aService.UUID == mProfile?.CONTROL_SERVICE) {
-                    aPeripheral.discoverCharacteristics(nil,forService:aService)
+                if (aService.uuid == mProfile?.CONTROL_SERVICE) {
+                    aPeripheral.discoverCharacteristics(nil,for:aService)
                 }
                 //device info service
-                else if (aService.UUID == CBUUID(string: "0000180a-0000-1000-8000-00805f9b34fb")) {
-                    aPeripheral.discoverCharacteristics(nil,forService:aService)
-                }else if(aService.UUID == cockRoach.service){
+                else if (aService.uuid == CBUUID(string: "0000180a-0000-1000-8000-00805f9b34fb")) {
+                    aPeripheral.discoverCharacteristics(nil,for:aService)
+                }else if(aService.uuid == cockRoach.service){
                     // this service characteristic is for the cockroach.
-                    aPeripheral.discoverCharacteristics(nil,forService:aService)
+                    aPeripheral.discoverCharacteristics(nil,for:aService)
                 }
             }
         } else {
-            log.debug("No services found for \(aPeripheral.identifier.UUIDString), connection impossible")
+            log.debug("No services found for \(aPeripheral.identifier.uuidString), connection impossible")
         }
     }
     
@@ -193,70 +193,70 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     Invoked upon completion of a -[discoverCharacteristics:forService:] request.
     Perform appropriate operations on interested characteristics
     */
-    func peripheral(aPeripheral:CBPeripheral, didDiscoverCharacteristicsForService service:CBService, error :NSError?) {
+    func peripheral(_ aPeripheral:CBPeripheral, didDiscoverCharacteristicsFor service:CBService, error :Error?) {
     
-        log.debug("Service : \(service.UUID.UUIDString)")
+        log.debug("Service : \(service.uuid.uuidString)")
     
         if let characteristics:[CBCharacteristic] = service.characteristics {
             for aChar:CBCharacteristic in characteristics {
-                log.debug("characteristic = \(aChar.UUID.UUIDString)")
-                mPeripheral?.setNotifyValue(true,forCharacteristic:aChar)
-                if(aChar.UUID==mProfile?.CALLBACK_CHARACTERISTIC ) {
-                    mPeripheral?.setNotifyValue(true,forCharacteristic:aChar)
+                log.debug("characteristic = \(aChar.uuid.uuidString)")
+                mPeripheral?.setNotifyValue(true,for:aChar)
+                if(aChar.uuid==mProfile?.CALLBACK_CHARACTERISTIC ) {
+                    mPeripheral?.setNotifyValue(true,for:aChar)
             
-                    log.debug("Callback char : \(aChar.UUID.UUIDString)")
+                    log.debug("Callback char : \(aChar.uuid.uuidString)")
                     mDelegate?.connectionStateChanged(true, fromAddress: aPeripheral.identifier)
-                } else if(aChar.UUID==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
-                    mPeripheral?.readValueForCharacteristic(aChar)
-                    log.debug("read firmware version char : \(aChar.UUID.UUIDString)")
-                } else if(aChar.UUID==CBUUID(string: "00002a28-0000-1000-8000-00805f9b34fb")) {
-                    mPeripheral?.readValueForCharacteristic(aChar)
-                    log.debug("read software version char : \(aChar.UUID.UUIDString)")
-                } else if(aChar.UUID==cockRoach.characteristics) {
+                } else if(aChar.uuid==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
+                    mPeripheral?.readValue(for: aChar)
+                    log.debug("read firmware version char : \(aChar.uuid.uuidString)")
+                } else if(aChar.uuid==CBUUID(string: "00002a28-0000-1000-8000-00805f9b34fb")) {
+                    mPeripheral?.readValue(for: aChar)
+                    log.debug("read software version char : \(aChar.uuid.uuidString)")
+                } else if(aChar.uuid==cockRoach.characteristics) {
                     // this characteristic is for the cockroach.
                     mDelegate?.cockRoachesChanged(true, fromAddress: aPeripheral.identifier)
-                    aPeripheral.setNotifyValue(true, forCharacteristic: aChar)
+                    aPeripheral.setNotifyValue(true, for: aChar)
                     
                 }
             }
         } else {
-            log.debug("No characteristics found for \(service.UUID.UUIDString), can't listen to notifications")
+            log.debug("No characteristics found for \(service.uuid.uuidString), can't listen to notifications")
         }
       
     
     }
     
-    func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         print("Hello2?")
         characteristic.value
     }
     /*
     Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
     */
-    func peripheral(aPeripheral:CBPeripheral, didUpdateValueForCharacteristic characteristic:CBCharacteristic, error  :NSError?) {
+    func peripheral(_ aPeripheral:CBPeripheral, didUpdateValueFor characteristic:CBCharacteristic, error  :Error?) {
         
         //We received a value, if it did came from the calllback char, let's return it
-        if (characteristic.UUID==mProfile?.CALLBACK_CHARACTERISTIC)
+        if (characteristic.uuid==mProfile?.CALLBACK_CHARACTERISTIC)
         {
             
             if error == nil && characteristic.value != nil {
-                log.debug("Received : \(characteristic.UUID.UUIDString) \(hexString(characteristic.value!))")
+                log.debug("Received : \(characteristic.uuid.uuidString) \(hexString(characteristic.value!))")
                 
                 /* It is valid data, let's return it to our delegate */
                 mDelegate?.packetReceived( RawPacketImpl(data: characteristic.value! , profile: mProfile!) ,  fromAddress : aPeripheral.identifier )
             }
-        } else if(characteristic.UUID==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
-            mFirmwareVersion = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)!
-            log.debug("get firmware version char : \(characteristic.UUID.UUIDString), version : \(mFirmwareVersion)")
+        } else if(characteristic.uuid==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
+            mFirmwareVersion = NSString(data: characteristic.value!, encoding: String.Encoding.utf8.rawValue)!
+            log.debug("get firmware version char : \(characteristic.uuid.uuidString), version : \(mFirmwareVersion)")
             //tell OTA new version
-            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.APPLICATION, version: mFirmwareVersion)
-        } else if(characteristic.UUID==CBUUID(string: "00002a28-0000-1000-8000-00805f9b34fb")) {
+            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.application, version: mFirmwareVersion)
+        } else if(characteristic.uuid==CBUUID(string: "00002a28-0000-1000-8000-00805f9b34fb")) {
             if(characteristic.value != nil){
-                mSoftwareVersion = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)!
+                mSoftwareVersion = NSString(data: characteristic.value!, encoding: String.Encoding.utf8.rawValue)!
             }
-            log.debug("get software version char : \(characteristic.UUID.UUIDString), version : \(mSoftwareVersion)")
-            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.SOFTDEVICE, version: mSoftwareVersion)
-        } else if(characteristic.UUID==cockRoach.characteristics) {
+            log.debug("get software version char : \(characteristic.uuid.uuidString), version : \(mSoftwareVersion)")
+            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.softdevice, version: mSoftwareVersion)
+        } else if(characteristic.uuid==cockRoach.characteristics) {
             let coordinateSet = CoordinateSet()
             coordinateSet.setValues(CockRoachPacket(data: characteristic.value!))
             // GET VERSION OF THE BABY COCKROACH PLEASE
@@ -268,7 +268,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /*
     Invoked upon completion of a -[writeValueForCharacteristic:] request
     */
-    func peripheral(_peripheral:CBPeripheral, didWriteValueForCharacteristic characteristic:CBCharacteristic, error :NSError?) {
+    func peripheral(_ _peripheral:CBPeripheral, didWriteValueFor characteristic:CBCharacteristic, error :Error?) {
     
         if (error != nil) {
             log.debug("Failed to write value for characteristic \(characteristic), reason: \(error)")
@@ -278,7 +278,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
 
     }
 
-    func peripheral(peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: NSError?){
+    func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?){
         mDelegate?.receivedRSSIValue(RSSI)
     }
 
@@ -295,16 +295,16 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             //We'll try to connect to both known and nearby devices
             //Here we search for all nearby devices
             //We can't just search for all services, because that's not allowed when the app is in the background
-            mManager?.scanForPeripheralsWithServices(services,options:nil)
+            mManager?.scanForPeripherals(withServices: services,options:nil)
             log.debug("Scan started.")
             //The scan will stop X sec later
             //We scehduele or re-schdeuele the stop scanning
             mTimer?.invalidate()
-            mTimer = NSTimer.scheduledTimerWithTimeInterval(SCANNING_DURATION, target: self, selector: #selector(NevoBTImpl.stopScan), userInfo: nil, repeats: false)
+            mTimer = Timer.scheduledTimer(timeInterval: SCANNING_DURATION, target: self, selector: #selector(NevoBTImpl.stopScan), userInfo: nil, repeats: false)
             //Here, we search for known devices
-            if let systemConnected:[CBPeripheral] = mManager?.retrieveConnectedPeripheralsWithServices(services) {
+            if let systemConnected:[CBPeripheral] = mManager?.retrieveConnectedPeripherals(withServices: services) {
                 for peripheral in systemConnected {
-                    if (peripheral.state == CBPeripheralState.Disconnected) {
+                    if (peripheral.state == CBPeripheralState.disconnected) {
                         //The given devices are known to the system and disconnected
                         //With a bit of luck the device is nearby and available
                         self.matchingPeripheralFound(peripheral)
@@ -317,8 +317,8 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             if let cockroach = self.cockroach {
                 mDelegate?.cockRoachesChanged(false, fromAddress: cockroach.identifier)
             }
-            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(RETRY_DURATION * Double(NSEC_PER_SEC)))
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(RETRY_DURATION * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                 self.scanAndConnect()
             })
         }
@@ -328,15 +328,15 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
     See NevoBT protocol
     */
-    func connectToAddress(peripheralAddress : [NSUUID]) {
+    func connectToAddress(_ peripheralAddress : [UUID]) {
 
         //We can't be sure if the Manager is ready, so let's try
         if(self.isBluetoothEnabled()) {
             log.debug("Connecting to : \(peripheralAddress)")
             //Here, we try to retreive the given peripheral
-            if let potentialMatches:[CBPeripheral] = mManager?.retrievePeripheralsWithIdentifiers(peripheralAddress){
+            if let potentialMatches:[CBPeripheral] = mManager?.retrievePeripherals(withIdentifiers: peripheralAddress){
                 for peripheral in potentialMatches {
-                    if (peripheral.state == CBPeripheralState.Disconnected) {
+                    if (peripheral.state == CBPeripheralState.disconnected) {
                         //The given devices are known to the system and disconnected
                         //With a bit of luck the device is nearby and available
                         self.matchingPeripheralFound(peripheral)
@@ -346,8 +346,8 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         } else {
             //Maybe the Manager is not ready yet, let's try again after a delay
 //            log.debug("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
-            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(RETRY_DURATION * Double(NSEC_PER_SEC)))
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(RETRY_DURATION * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                 self.connectToAddress(peripheralAddress)
             })
         }
@@ -356,7 +356,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
     See NevoBT protocol
     */
-    func sendRequest(request:Request) {
+    func sendRequest(_ request:Request) {
 
         if let services:[CBService] = mPeripheral?.services{
             
@@ -369,13 +369,13 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             //Let's assume that you have already discovered the services
             for service:CBService in services {
                 
-                if(service.UUID == request.getTargetProfile().CONTROL_SERVICE) {
+                if(service.uuid == request.getTargetProfile().CONTROL_SERVICE) {
                     
                     if let characteristics:[CBCharacteristic] = service.characteristics{
                     
                         for charac:CBCharacteristic in characteristics {
                         
-                            if(charac.UUID == request.getTargetProfile().CONTROL_CHARACTERISTIC) {
+                            if(charac.uuid == request.getTargetProfile().CONTROL_CHARACTERISTIC) {
     
                                 if request.getRawDataEx().count == 0
                                 {
@@ -383,22 +383,22 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                                     //OTA control CHAR, need a response
                                     if mProfile is NevoOTAControllerProfile && request.getTargetProfile().CONTROL_CHARACTERISTIC == mProfile?.CONTROL_CHARACTERISTIC
                                     {
-                                        mPeripheral?.writeValue(request.getRawData(),forCharacteristic:charac,type:CBCharacteristicWriteType.WithResponse)
+                                        mPeripheral?.writeValue(request.getRawData() as Data,for:charac,type:CBCharacteristicWriteType.withResponse)
                                     }
                                     else
                                     {
-                                        mPeripheral?.writeValue(request.getRawData(),forCharacteristic:charac,type:CBCharacteristicWriteType.WithoutResponse)
+                                        mPeripheral?.writeValue(request.getRawData() as Data,for:charac,type:CBCharacteristicWriteType.withoutResponse)
                                     }
                                 }else{
                                     for data in request.getRawDataEx() {
                                         log.debug("Request raw data Ex:\(data)")
-                                        mPeripheral?.writeValue(data as! NSData,forCharacteristic:charac,type:CBCharacteristicWriteType.WithoutResponse)
+                                        mPeripheral?.writeValue(data as! Data,for:charac,type:CBCharacteristicWriteType.withoutResponse)
                                     }
                                 }
                             }
                         }
                     } else {
-                        log.debug("No Characteristics found for : \(service.UUID.UUIDString), can't send packet")
+                        log.debug("No Characteristics found for : \(service.uuid.uuidString), can't send packet")
                     }
                     
                 }
@@ -430,7 +430,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     See NevoBT protocol
     */
     func isConnected() -> Bool {
-        return ( mPeripheral != nil && mPeripheral!.state == CBPeripheralState.Connected && isBluetoothEnabled() )
+        return ( mPeripheral != nil && mPeripheral!.state == CBPeripheralState.connected && isBluetoothEnabled() )
     }
     
     /**
@@ -455,7 +455,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     }
 
     // MARK: - Red RSSI NSTimer
-    func redRSSI(timer:NSTimer){
+    func redRSSI(_ timer:Timer){
         getRSSI()
     }
 
@@ -463,12 +463,12 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
     This peripheral is a good candidate, it has the right Services and hence we try to connect to it
     */
-    private func matchingPeripheralFound( aPeripheral : CBPeripheral ){
+    fileprivate func matchingPeripheralFound( _ aPeripheral : CBPeripheral ){
 
         log.debug("Connecting to :\(aPeripheral.description)")
 
         //If it's not connected already, let's connect to it
-        if(aPeripheral.state==CBPeripheralState.Disconnected){
+        if(aPeripheral.state==CBPeripheralState.disconnected){
 
             //We have to save the peripheral, otherwise we will forget it
             //We don't knopw were this peripheral come from,
@@ -476,19 +476,19 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             //So we need to try to connect to sall of them, and hence we need to save all of them
             mTryingToConnectPeripherals.append(aPeripheral)
 
-            mManager?.connectPeripheral(aPeripheral,options:nil)
+            mManager?.connect(aPeripheral,options:nil)
 
         }
 
     }
 
-    private func setCockroach(peripheral:CBPeripheral?) {
+    fileprivate func setCockroach(_ peripheral:CBPeripheral?) {
         cockroach?.delegate = nil
         cockroach = peripheral
         cockroach?.delegate = self
     }
     
-    private func setPeripheral(aPeripheral:CBPeripheral?) {
+    fileprivate func setPeripheral(_ aPeripheral:CBPeripheral?) {
         //When setting a new peripheral, there are several steps to do first
 
         mPeripheral?.delegate = nil
@@ -499,9 +499,9 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
     Converts a binary value to HEX
     */
-    private func hexString(data:NSData) -> NSString {
+    fileprivate func hexString(_ data:Data) -> NSString {
         let str = NSMutableString()
-        let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(data.bytes), count:data.length)
+        let bytes = UnsafeBufferPointer<UInt8>(start: (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count), count:data.count)
         for byte in bytes {
             str.appendFormat("%02hhx", byte)
         }
@@ -537,18 +537,18 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         switch (mManager!.state)
         {
 
-        case CBCentralManagerState.PoweredOn:
+        case CBCentralManagerState.poweredOn:
             return true
 
-        case CBCentralManagerState.Unsupported:
+        case CBCentralManagerState.unsupported:
 //            log.debug("The platform/hardware doesn't support Bluetooth Low Energy.")
             break
 
-        case CBCentralManagerState.Unauthorized:
+        case CBCentralManagerState.unauthorized:
 //            log.debug("The app is not authorized to use Bluetooth Low Energy.")
             break
 
-        case CBCentralManagerState.PoweredOff:
+        case CBCentralManagerState.poweredOff:
             log.debug("Bluetooth is currently powered off.")
            
             break
@@ -560,7 +560,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         return false
     }
     
-    func removeCockroach(aPeripheral: CBPeripheral){
+    func removeCockroach(_ aPeripheral: CBPeripheral){
         if let unpackedcockroach = self.cockroach{
             if unpackedcockroach.identifier == aPeripheral.identifier{
                 self.cockroach = nil
@@ -568,7 +568,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         }
     }
     
-    func getCockroachesUUID() -> NSUUID?{
+    func getCockroachesUUID() -> UUID?{
         if let unpackedCockroach = cockroach {
             return unpackedCockroach.identifier
         }

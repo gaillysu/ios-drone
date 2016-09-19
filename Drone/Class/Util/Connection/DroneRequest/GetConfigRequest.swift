@@ -18,6 +18,6 @@ class GetConfigRequest: NevoRequest {
         let values1 :[UInt8] = [0x80,GetConfigRequest.HEADER(),
             0x02,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-        return NSArray(array: [NSData(bytes: values1, length: values1.count)])
+        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
     }
 }

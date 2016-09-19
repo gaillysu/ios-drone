@@ -38,24 +38,24 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
     override init() {
         super.init()
         let dic:NSDictionary = self.classForCoder.getAllProperties()
-        columeNames = NSMutableArray(array: dic.objectForKey("name") as! NSArray)
-        columeTypes = NSMutableArray(array: dic.objectForKey("type") as! NSArray)
+        columeNames = NSMutableArray(array: dic.object(forKey: "name") as! NSArray)
+        columeTypes = NSMutableArray(array: dic.object(forKey: "type") as! NSArray)
     }
 
     /**
     * 创建表
     * 如果已经创建，返回YES
     */
-    private class func createTable()->Bool {
+    fileprivate class func createTable()->Bool {
         let db:FMDatabase = FMDatabase(path: AppDelegate.dbPath())
         if (!db.open()) {
             NSLog("数据库打开失败!");
             return false;
         }
 
-        var tableName:NSString = NSStringFromClass(self.classForCoder());
-        tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
-        let columeAndType:NSString = self.getColumeAndTypeString()
+        var tableName:NSString = NSStringFromClass(self.classForCoder()) as NSString;
+        tableName = tableName.replacingOccurrences(of: ".", with: "") as NSString
+        let columeAndType:NSString = self.getColumeAndTypeString() as NSString
         let sql:NSString = NSString(format: "CREATE TABLE IF NOT EXISTS %@(%@);", tableName,columeAndType)
 
         do {
@@ -68,21 +68,21 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
             let resultSet:FMResultSet = db.getTableSchema("\(tableName)")
             while (resultSet.next()) {
                 //[resultSet next]
-                let column:NSString = resultSet.stringForColumn("name")
-                columns.addObject(column)
+                let column:NSString = resultSet.string(forColumn: "name") as NSString
+                columns.add(column)
             }
             let dict:NSDictionary = self.getAllProperties()
-            let properties:NSArray = dict.objectForKey("name") as! NSArray
+            let properties:NSArray = dict.object(forKey: "name") as! NSArray
             let filterPredicate:NSPredicate = NSPredicate(format: "NOT (SELF IN %@)",columns)
             //过滤数组
-            let resultArray:NSArray = properties.filteredArrayUsingPredicate(filterPredicate)
+            let resultArray:NSArray = properties.filtered(using: filterPredicate) as NSArray
 
             for column in resultArray {
-                let index:Int = properties.indexOfObject(column)
-                let proType:NSString = (dict.objectForKey("type") as! NSArray).objectAtIndex(index) as! NSString
-                let fieldSql:NSString = NSString(format: "\(column) \(proType)")
+                let index:Int = properties.index(of: column)
+                let proType:NSString = (dict.object(forKey: "type") as! NSArray).object(at: index) as! NSString
+                let fieldSql:NSString = NSString(format: "\(column) \(proType)" as NSString)
                 let sql:NSString = NSString(format: "ALTER TABLE %@ ADD COLUMN %@ ",NSStringFromClass(self),fieldSql)
-                if (!db.executeUpdate("\(sql)", withArgumentsInArray: nil)) {
+                if (!db.executeUpdate("\(sql)", withArgumentsIn: nil)) {
                     return false
                 }
             }
@@ -93,15 +93,15 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         }
     }
 
-    private class func getColumeAndTypeString()->String {
+    fileprivate class func getColumeAndTypeString()->String {
         let pars:NSMutableString = NSMutableString()
         let dict:NSDictionary = self.getAllProperties()
-        let proNames:NSMutableArray = NSMutableArray(array: (dict.objectForKey("name") as! [NSString]))
-        let proTypes:NSMutableArray = NSMutableArray(array: (dict.objectForKey("type") as! [NSString]))
-        for (var i:Int = 0; i < proNames.count; i++) {
-            pars.appendFormat("%@ %@", proNames.objectAtIndex(i) as! NSString,proTypes.objectAtIndex(i) as! NSString)
+        let proNames:NSMutableArray = NSMutableArray(array: (dict.object(forKey: "name") as! [NSString]))
+        let proTypes:NSMutableArray = NSMutableArray(array: (dict.object(forKey: "type") as! [NSString]))
+        for i in 0..<proNames.count {
+            pars.appendFormat("%@ %@", proNames.object(at: i) as! NSString,proTypes.object(at: i) as! NSString)
             if(i+1 != proNames.count){
-                pars.appendString(",")
+                pars.append(",")
             }
         }
         return pars as String;
@@ -112,32 +112,32 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         let dict:NSDictionary = self.getPropertys()
         let proNames:NSMutableArray = NSMutableArray()
         let proTypes:NSMutableArray = NSMutableArray()
-        proNames.addObject(primaryId)
-        proTypes.addObject(NSString(format: "%@ %@", SQLINTEGER,PrimaryKey))
-        proNames.addObjectsFromArray((dict.objectForKey("name") as! [NSString]))
-        proTypes.addObjectsFromArray(dict.objectForKey("type") as! [NSString])
+        proNames.add(primaryId)
+        proTypes.add(NSString(format: "%@ %@", SQLINTEGER,PrimaryKey))
+        proNames.addObjects(from: (dict.object(forKey: "name") as! [NSString]))
+        proTypes.addObjects(from: dict.object(forKey: "type") as! [NSString])
         return NSDictionary(dictionary: ["name":proNames,"type":proTypes])
     }
 
     /**
     *  获取该类的所有属性
     */
-    private class func getPropertys()->NSDictionary {
+    fileprivate class func getPropertys()->NSDictionary {
         let proNames:NSMutableArray = NSMutableArray()
         let proTypes:NSMutableArray = NSMutableArray()
         let theTransients:NSArray = self.transients()
         var outCount:UInt32 = 0, i:UInt32 = 0;
         let properties:UnsafeMutablePointer = class_copyPropertyList(self,&outCount)
-        for (i = 0; i < outCount; i++) {
-            let property:objc_property_t = properties[Int(i)];
+        for (i = 0; i < outCount; i += 1) {
+            let property:objc_property_t = properties[Int(i)]!;
             //获取属性名
-            let propertyName:NSString = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding)!
-            if (theTransients.containsObject(propertyName)) {
+            let propertyName:NSString = NSString(cString: property_getName(property), encoding: String.Encoding.utf8.rawValue)!
+            if (theTransients.contains(propertyName)) {
                 continue;
             }
-            proNames.addObject(propertyName)
+            proNames.add(propertyName)
             //获取属性类型等参数
-            let propertyType:NSString = NSString(CString: property_getAttributes(property), encoding: NSUTF8StringEncoding)!
+            let propertyType:NSString = NSString(cString: property_getAttributes(property), encoding: String.Encoding.utf8.rawValue)!
             /*
             c char         C unsigned char
             i int          I unsigned int
@@ -154,11 +154,11 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
             SQLite 默认支持五种数据类型TEXT、INTEGER、REAL、BLOB、NULL
             */
             if (propertyType.hasPrefix("T@")) {
-                proTypes.addObject(SQLTEXT)
+                proTypes.add(SQLTEXT)
             } else if (propertyType.hasPrefix("Ti")||propertyType.hasPrefix("TI")||propertyType.hasPrefix("Ts")||propertyType.hasPrefix("TS")||propertyType.hasPrefix("TB")) {
-                proTypes.addObject(SQLINTEGER)
+                proTypes.add(SQLINTEGER)
             } else {
-                proTypes.addObject(SQLREAL)
+                proTypes.add(SQLREAL)
             }
         }
         free(properties)
@@ -170,9 +170,9 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         var res:Bool = false
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
         dbQueue.inDatabase { (db) -> Void in
-            var tableName:NSString = NSStringFromClass(self);
-            tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
-            res = db.tableExists("\(tableName)")
+            var tableName:NSString = NSStringFromClass(self) as NSString;
+            tableName = tableName.replacingOccurrences(of: ".", with: "") as NSString
+            res = (db?.tableExists("\(tableName)"))!
         }
         return res;
     }
@@ -189,38 +189,38 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
 
      :returns: Insert results，YES or NO
      */
-    func add(result:((id:Int?,completion:Bool?) -> Void)){
-        var tableName:NSString = NSStringFromClass(self.classForCoder);
-        tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
+    func add(_ result:@escaping ((_ id:Int?,_ completion:Bool?) -> Void)){
+        var tableName:NSString = NSStringFromClass(self.classForCoder) as NSString;
+        tableName = tableName.replacingOccurrences(of: ".", with: "") as NSString
         let keyString:NSMutableString = NSMutableString()
         let valueString:NSMutableString = NSMutableString()
         let insertValues:NSMutableArray = NSMutableArray()
         for i:Int in 0 ..< self.columeNames.count {
-            let proname:NSString = self.columeNames.objectAtIndex(i) as! NSString
-            if (proname.isEqualToString(primaryId) && self.id == 0) {
+            let proname:NSString = self.columeNames.object(at: i) as! NSString
+            if (proname.isEqual(to: primaryId) && self.id == 0) {
                 continue;
             }
             keyString.appendFormat("%@,", proname)
-            valueString.appendString("?,")
+            valueString.append("?,")
 
-            var value = self.valueForKey("\(proname)")
+            var value = self.value(forKey: "\(proname)")
             if (value == nil) {
                 value = "";
             }
-            insertValues.addObject(value!)
+            insertValues.add(value!)
         }
 
-        keyString.deleteCharactersInRange(NSMakeRange(keyString.length - 1, 1))
-        valueString.deleteCharactersInRange(NSMakeRange(valueString.length - 1, 1))
+        keyString.deleteCharacters(in: NSMakeRange(keyString.length - 1, 1))
+        valueString.deleteCharacters(in: NSMakeRange(valueString.length - 1, 1))
 
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
         var res:Bool = false
         dbQueue.inDatabase { (db) -> Void in
             let sql:NSString = NSString(format: "INSERT INTO %@(%@) VALUES (%@);", tableName, keyString, valueString)
-            res = db.executeUpdate("\(sql)", withArgumentsInArray: insertValues as [AnyObject])
-            self.id = res ? NSNumber(longLong: db.lastInsertRowId()).integerValue : 0
+            res = (db?.executeUpdate("\(sql)", withArgumentsIn: insertValues as [AnyObject]))!
+            self.id = res ? NSNumber(value: (db?.lastInsertRowId())! as Int64).intValue : 0
             NSLog("\(res ? "Insert success" : "Insert failed"),SQL:\(sql)");
-            result(id: self.id,completion: res)
+            result(self.id,res)
         }
     }
 
@@ -232,31 +232,31 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
     func update()->Bool{
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
         var res:Bool = false;
-        dbQueue.inDatabase { (let db) -> Void in
-            var tableName:NSString = NSStringFromClass(self.classForCoder);
-            tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
-            let primaryValue = self.valueForKey(primaryId)
+        dbQueue.inDatabase { (db) -> Void in
+            var tableName:NSString = NSStringFromClass(self.classForCoder) as NSString;
+            tableName = tableName.replacingOccurrences(of: ".", with: "") as NSString
+            let primaryValue = self.value(forKey: primaryId)
             if ((primaryValue == nil) || (primaryValue as! Int) <= 0) {
                 return;
             }
             let keyString:NSMutableString = NSMutableString()
             let updateValues:NSMutableArray = NSMutableArray()
-            for (var i:Int = 0; i < self.columeNames.count; i++) {
-                let proname:NSString = self.columeNames.objectAtIndex(i) as! NSString
-                if (proname.isEqualToString(primaryId)) {
+            for i in 0..<self.columeNames.count {
+                let proname:NSString = self.columeNames.object(at: i) as! NSString
+                if (proname.isEqual(to: primaryId)) {
                     continue;
                 }
                 keyString.appendFormat(" %@=?,", proname)
-                var value = self.valueForKey(proname as String)
+                var value = self.value(forKey: proname as String)
                 if (value == nil) {
                     value = "";
                 }
-                updateValues.addObject(value!)
+                updateValues.add(value!)
             }
-            keyString.deleteCharactersInRange(NSMakeRange(keyString.length - 1, 1))
+            keyString.deleteCharacters(in: NSMakeRange(keyString.length - 1, 1))
             let sql:NSString = NSString(format: "UPDATE %@ SET %@ WHERE %@ = ?;", tableName, keyString, primaryId)
-            updateValues.addObject(primaryValue!)
-            res = db.executeUpdate(sql as String, withArgumentsInArray: updateValues as [AnyObject])
+            updateValues.add(primaryValue!)
+            res = (db?.executeUpdate(sql as String, withArgumentsIn: updateValues as [AnyObject]))!
             NSLog("\(res ? "Update Success" : "Update failed")");
         }
         return res
@@ -271,14 +271,14 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
         var res:Bool = false
         dbQueue.inDatabase { (db) -> Void in
-            var tableName:NSString = NSStringFromClass(self.classForCoder);
-            tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
-            let primaryValue = self.valueForKey(primaryId)
+            var tableName:NSString = NSStringFromClass(self.classForCoder) as NSString;
+            tableName = tableName.replacingOccurrences(of: ".", with: "") as NSString
+            let primaryValue = self.value(forKey: primaryId)
             if (primaryValue == nil || (primaryValue as! Int) <= 0) {
                 return ;
             }
             let sql:String = "DELETE FROM \(tableName) WHERE \(primaryId) = ?"
-            res = db.executeUpdate(sql, withArgumentsInArray: [primaryValue!])
+            res = (db?.executeUpdate(sql, withArgumentsIn: [primaryValue!]))!
             NSLog("\(res ? "Delete the success" : "Delete failed")");
         }
         return res;
@@ -289,10 +289,10 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
         var res:Bool = false
         dbQueue.inDatabase { (db) -> Void in
-            var tableName:NSString = NSStringFromClass(self.classForCoder())
-            tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
+            var tableName:NSString = NSStringFromClass(self.classForCoder()) as NSString
+            tableName = tableName.replacingOccurrences(of: ".", with: "") as NSString
             let sql:String = "DELETE FROM \(tableName)"
-            res = db.executeUpdate(sql,withArgumentsInArray: nil)
+            res = (db?.executeUpdate(sql,withArgumentsIn: nil))!
         }
         return res;
     }
@@ -303,27 +303,27 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
      @param criteria To find the condition
      @param returns Returns the find results
      */
-     class func getCriteria(criteria:String)->NSArray {
+     class func getCriteria(_ criteria:String)->NSArray {
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
         let users:NSMutableArray = NSMutableArray()
         dbQueue.inDatabase { (db) -> Void in
             var tableName:String =  NSStringFromClass(self.classForCoder())
-            tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
+            tableName = tableName.replacingOccurrences(of: ".", with: "")
             let sql:String = "SELECT * FROM \(tableName) \(criteria)"
-            let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
+            let resultSet:FMResultSet = db!.executeQuery(sql, withArgumentsIn: nil)
             while (resultSet.next()) {
                 let model:UserDatabaseHelper = UserDatabaseHelper()
 
-                for (var i:Int = 0; i < model.columeNames.count; i++) {
-                    let columeName:NSString = (model.columeNames.objectAtIndex(i) as! NSString)
-                    let columeType:NSString = (model.columeTypes.objectAtIndex(i) as! NSString)
-                    if (columeType.isEqualToString(SQLTEXT)) {
-                        model.setValue(resultSet.stringForColumn("\(columeName)"), forKey: "\(columeName)")
+                for i in 0..<model.columeNames.count {
+                    let columeName:NSString = (model.columeNames.object(at: i) as! NSString)
+                    let columeType:NSString = (model.columeTypes.object(at: i) as! NSString)
+                    if (columeType.isEqual(to: SQLTEXT)) {
+                        model.setValue(resultSet.string(forColumn: "\(columeName)"), forKey: "\(columeName)")
                     } else {
-                        model.setValue(NSNumber(longLong: resultSet.longLongIntForColumn("\(columeName)")), forKey: "\(columeName)")
+                        model.setValue(NSNumber(value: resultSet.longLongInt(forColumn: "\(columeName)") as Int64), forKey: "\(columeName)")
                     }
                 }
-                users.addObject(model)
+                users.add(model)
             }
         }
         return users;
@@ -338,25 +338,25 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
         let users:NSMutableArray = NSMutableArray()
         dbQueue.inDatabase { (db) -> Void in
-            var tableName:NSString = NSStringFromClass(self.classForCoder())
-            tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
+            var tableName:NSString = NSStringFromClass(self.classForCoder()) as NSString
+            tableName = tableName.replacingOccurrences(of: ".", with: "") as NSString
             let sql:String = "SELECT * FROM \(tableName)"
-            let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
+            let resultSet:FMResultSet = db!.executeQuery(sql, withArgumentsIn: nil)
             while (resultSet.next()) {
                 //let classType: AnyObject.Type = self.classForCoder()
                 //let nsobjectype : NevoDBModel.Type = classType as! NevoDBModel.Type
                 let model:UserDatabaseHelper = UserDatabaseHelper()
 
-                for (var i:Int = 0; i < model.columeNames.count; i++) {
-                    let columeName:NSString = model.columeNames.objectAtIndex(i) as! NSString
-                    let columeType:NSString = model.columeTypes.objectAtIndex(i) as! NSString
-                    if (columeType.isEqualToString(SQLTEXT)) {
-                        model.setValue(resultSet.stringForColumn("\(columeName)"), forKey: "\(columeName)")
+                for i in 0..<model.columeNames.count {
+                    let columeName:NSString = model.columeNames.object(at: i) as! NSString
+                    let columeType:NSString = model.columeTypes.object(at: i) as! NSString
+                    if (columeType.isEqual(to: SQLTEXT)) {
+                        model.setValue(resultSet.string(forColumn: "\(columeName)"), forKey: "\(columeName)")
                     } else {
-                        model.setValue(NSNumber(longLong: Int64(columeName.integerValue)), forKey: "\(columeName)")
+                        model.setValue(NSNumber(value: Int64(columeName.integerValue) as Int64), forKey: "\(columeName)")
                     }
                 }
-                users.addObject(model)
+                users.add(model)
             }
 
         }
@@ -374,28 +374,28 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
             return false;
         }
 
-        var tableName:NSString = NSStringFromClass(self.classForCoder())
-        tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
+        var tableName:NSString = NSStringFromClass(self.classForCoder()) as NSString
+        tableName = tableName.replacingOccurrences(of: ".", with: "") as NSString
         let columns:NSMutableArray = NSMutableArray()
         let resultSet:FMResultSet = db.getTableSchema(tableName as String)
         while (resultSet.next()) {
-            let column:NSString = resultSet.stringForColumn("name")
-            columns.addObject(column)
+            let column:NSString = resultSet.string(forColumn: "name") as NSString
+            columns.add(column)
         }
 
         let dict:NSDictionary = self.getAllProperties();
-        let properties:NSArray = dict.objectForKey("name") as! NSArray
+        let properties:NSArray = dict.object(forKey: "name") as! NSArray
         let filterPredicate:NSPredicate = NSPredicate(format: "NOT (SELF IN %@)",columns)
         //过滤数组
-        let resultArray:NSArray = properties.filteredArrayUsingPredicate(filterPredicate)
+        let resultArray:NSArray = properties.filtered(using: filterPredicate) as NSArray
 
         for column in resultArray {
-            let index:Int = properties.indexOfObject(column)
-            let proType:String = (dict.objectForKey("type") as! NSArray).objectAtIndex(index) as! String
+            let index:Int = properties.index(of: column)
+            let proType:String = (dict.object(forKey: "type") as! NSArray).object(at: index) as! String
             let fieldSql:String = "\(column) \(proType)"
             //[NSString stringWithFormat:@"%@ %@",column,proType];
             let sql:String = String(format: "ALTER TABLE %@ ADD COLUMN %@ ",tableName,fieldSql)
-            var args:CVaListPointer?
+            let args:CVaListPointer?
             if (db.executeUpdate(sql, withVAList: args!)) {
                 return false;
             }

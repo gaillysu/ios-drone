@@ -17,8 +17,8 @@ class NevoRequest : Request {
         return DroneProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData()
+    func getRawData() -> Data {
+        return Data()
     }
     func getRawDataEx() -> NSArray {
         return NSArray()

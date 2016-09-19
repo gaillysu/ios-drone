@@ -9,9 +9,9 @@
 import UIKit
 
 class ActivityPacket: NSObject {
-    private var packetData:NSData = NSData()
+    fileprivate var packetData:Data = Data()
 
-    init(data:NSData) {
+    init(data:Data) {
         super.init()
         packetData = data
     }

@@ -13,21 +13,21 @@ class UserGoal: NSObject,BaseEntryDatabaseHelper {
     var goalSteps:Int = 0
     var label:String = ""
     var status:Bool = false
-    private var goalModel:GoalModel = GoalModel()
+    fileprivate var goalModel:GoalModel = GoalModel()
 
     init(keyDict:NSDictionary) {
         super.init()
-        keyDict.enumerateKeysAndObjectsUsingBlock { (key, value, stop) in
+        keyDict.enumerateKeysAndObjects { (key, value, stop) in
             self.setValue(value, forKey: key as! String)
         }
     }
 
-    func add(result:((id:Int?,completion:Bool?) -> Void)){
+    func add(_ result:@escaping ((_ id:Int?,_ completion:Bool?) -> Void)){
         goalModel.goalSteps = goalSteps
         goalModel.label = label
         goalModel.status = status
         goalModel.add { (id, completion) -> Void in
-           result(id: id!, completion: completion!)
+           result(id!, completion!)
         }
     }
 
@@ -48,13 +48,13 @@ class UserGoal: NSObject,BaseEntryDatabaseHelper {
         return GoalModel.removeAll()
     }
 
-    class func getCriteria(criteria:String)->NSArray{
+    class func getCriteria(_ criteria:String)->NSArray{
         let modelArray:NSArray = GoalModel.getCriteria(criteria)
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let goalModel:GoalModel = model as! GoalModel
             let goal:UserGoal = UserGoal(keyDict: ["goalSteps":"\(goalModel.goalSteps)","label":"\(goalModel.label)","status":"\(goalModel.status)"])
-            allArray.addObject(goal)
+            allArray.add(goal)
         }
         return allArray
     }
@@ -65,7 +65,7 @@ class UserGoal: NSObject,BaseEntryDatabaseHelper {
         for model in modelArray {
             let goalModel:GoalModel = model as! GoalModel
             let goal:UserGoal = UserGoal(keyDict: ["id":"\(goalModel.id)","goalSteps":"\(goalModel.goalSteps)","label":"\(goalModel.label)","status":"\(goalModel.status)"])
-            allArray.addObject(goal)
+            allArray.add(goal)
         }
         return allArray
     }

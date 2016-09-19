@@ -15,21 +15,21 @@ class WorldClock: NSObject {
     var city_name:String = ""
     var display_name:String = ""
     
-    private var worldClockModel:WorldClockModel = WorldClockModel()
+    fileprivate var worldClockModel:WorldClockModel = WorldClockModel()
     
     init(keyDict:NSDictionary) {
         super.init()
-        keyDict.enumerateKeysAndObjectsUsingBlock { (key, value, stop) in
+        keyDict.enumerateKeysAndObjects { (key, value, stop) in
             self.setValue(value, forKey: key as! String)
         }
     }
     
-    func add(result:((id:Int?,completion:Bool?) -> Void)){
+    func add(_ result:@escaping ((_ id:Int?,_ completion:Bool?) -> Void)){
         worldClockModel.city_name = city_name
         worldClockModel.system_name = system_name
         worldClockModel.display_name = display_name
         worldClockModel.add { (id, completion) -> Void in
-            result(id: id, completion: completion)
+            result(id, completion)
         }
     }
     
@@ -50,13 +50,13 @@ class WorldClock: NSObject {
         return WorldClockModel.removeAll()
     }
     
-    class func getCriteria(criteria:String)->NSArray{
+    class func getCriteria(_ criteria:String)->NSArray{
         let modelArray:NSArray = WorldClockModel.getCriteria(criteria)
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let worldClockModel:WorldClockModel = model as! WorldClockModel
             let worldClock:WorldClock = WorldClock(keyDict: ["id":worldClockModel.id,"city_name":worldClockModel.city_name,"system_name":worldClockModel.system_name, "display_name": worldClockModel.display_name])
-            allArray.addObject(worldClock)
+            allArray.add(worldClock)
         }
         return allArray
     }
@@ -67,7 +67,7 @@ class WorldClock: NSObject {
         for model in modelArray {
             let worldClockModel:WorldClockModel = model as! WorldClockModel
             let worldClock:WorldClock = WorldClock(keyDict: ["id":worldClockModel.id,"city_name":worldClockModel.city_name,"system_name":worldClockModel.system_name, "display_name": worldClockModel.display_name])
-            allArray.addObject(worldClock)
+            allArray.add(worldClock)
         }
         return allArray
     }
@@ -81,5 +81,5 @@ class WorldClock: NSObject {
     }
     
     // Prevent the object properties and KVC dict key don't crash
-    override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 }

@@ -34,12 +34,12 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
 //        let barButton = UIBarButtonItem(customView: button)
 //        self.navigationItem.rightBarButtonItem = barButton
         
-        self.tableView.separatorColor = UIColor.clearColor()
+        self.tableView.separatorColor = UIColor.clear
         self.tableView.rowHeight = 60.0
         
         let header:UIView = UIView.loadFromNibNamed("ContactsNotificationHeader")!
-        header.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height)
-        let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height))
+        header.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height)
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height))
         headerView.addSubview(header)
         self.tableView.tableHeaderView = headerView
 
@@ -50,8 +50,8 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
     }
     
     func add(){
@@ -64,49 +64,49 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
             }
             let authorizationStatus = ABAddressBookGetAuthorizationStatus()
             switch authorizationStatus {
-            case .Denied, .Restricted:
+            case .denied, .restricted:
                 self.displayCantAddContactAlert()
-            case .Authorized:
-                UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-                self.presentViewController(peoplePicker, animated: true, completion: nil)
-            case .NotDetermined:
+            case .authorized:
+                UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+                self.present(peoplePicker, animated: true, completion: nil)
+            case .notDetermined:
                 self.askForAddressBookAccess();
             }
         }else{
             
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.Cross, animated: true)
-            view.setTintColor(UIColor.getBaseColor())
-            NSTimer.after(0.6.second) {
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
+            view?.setTintColor(UIColor.getBaseColor())
+            Timer.after(0.6.second) {
                 view.dismiss(true)
             }
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactsFilterArray.count
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
     
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
-        let button1 = UITableViewRowAction(style: .Default, title: "Delete", handler: { (action, indexPath) in
-            self.tableView(tableView, commitEditingStyle: .Delete, forRowAtIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
+        let button1 = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            self.tableView(tableView, commit: .delete, forRowAt: indexPath)
         })
         button1.backgroundColor = UIColor.getTintColor()
         return [button1]
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let contactsFilter:ContactsFilter = contactsFilterArray[indexPath.row] as! ContactsFilter
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let contactsFilter:ContactsFilter = contactsFilterArray[(indexPath as NSIndexPath).row] as! ContactsFilter
             contactsFilter.remove()
 
             self.contactsFilterArray = ContactsFilter.getAll();
             
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             // Delete worldclock at watch
             if self.contactsFilterArray.count == 0 {
                 let request:SetContactsFilterRequest = SetContactsFilterRequest(contactsMode: 1, appNameMode: 1)
@@ -130,52 +130,52 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("identifier");
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "identifier");
         
         if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: "identifier")
+            cell = UITableViewCell(style: .default, reuseIdentifier: "identifier")
             cell?.accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
         }
-        let contact = contactsFilterArray[indexPath.row] as! String
+        let contact = contactsFilterArray[(indexPath as NSIndexPath).row] as! String
         cell?.backgroundColor = UIColor.transparent()
-        cell?.textLabel?.textColor = UIColor.whiteColor()
-        cell?.textLabel?.font = UIFont.systemFontOfSize(20)
+        cell?.textLabel?.textColor = UIColor.white
+        cell?.textLabel?.font = UIFont.systemFont(ofSize: 20)
         cell?.textLabel?.text = contact
-        cell?.separatorInset = UIEdgeInsetsZero
+        cell?.separatorInset = UIEdgeInsets.zero
         cell?.preservesSuperviewLayoutMargins = false
-        cell?.layoutMargins = UIEdgeInsetsZero
+        cell?.layoutMargins = UIEdgeInsets.zero
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true);
-        var url:NSURL?
-        if indexPath.row == 0 {
-            url = NSURL(string:"prefs:root=NOTIFICATIONS_ID")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true);
+        var url:URL?
+        if (indexPath as NSIndexPath).row == 0 {
+            url = URL(string:"prefs:root=NOTIFICATIONS_ID")
         }else {
-            url = NSURL(string:"prefs:root=Phone&path=Blocked")
+            url = URL(string:"prefs:root=Phone&path=Blocked")
         }
         
-        if UIApplication.sharedApplication().canOpenURL(url!) {
-            UIApplication.sharedApplication().openURL(url!)
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.openURL(url!)
         }
     }
     
-    func showMessage(message: String) {
-        let alertController = UIAlertController(title: "Test", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let dismissAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+    func showMessage(_ message: String) {
+        let alertController = UIAlertController(title: "Test", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let dismissAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action) -> Void in
         }
         
         alertController.addAction(dismissAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func askForAddressBookAccess() {
         var err: Unmanaged<CFError>? = nil
         ABAddressBookRequestAccessWithCompletion(addressBookRef) {
             (granted: Bool, error: CFError!) in
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 if !granted {
                     self.displayCantAddContactAlert()
                 }
@@ -184,24 +184,24 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     }
     
     func openSettings() {
-        let url = NSURL(string: UIApplicationOpenSettingsURLString)
-        UIApplication.sharedApplication().openURL(url!)
+        let url = URL(string: UIApplicationOpenSettingsURLString)
+        UIApplication.shared.openURL(url!)
     }
     
     func displayCantAddContactAlert() {
         let cantAddContactAlert = UIAlertController(title: "Cannot Add Contact",
                                                     message: "You must give the app permission to add the contact first.",
-                                                    preferredStyle: .Alert)
+                                                    preferredStyle: .alert)
         cantAddContactAlert.addAction(UIAlertAction(title: "Change Settings",
-            style: .Default,
+            style: .default,
             handler: { action in
                 self.openSettings()
         }))
-        cantAddContactAlert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-        presentViewController(cantAddContactAlert, animated: true, completion: nil)
+        cantAddContactAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(cantAddContactAlert, animated: true, completion: nil)
     }
     
-    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
+    func peoplePickerNavigationController(_ peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
         let name = ABRecordCopyCompositeName(person).takeRetainedValue()
     
         let contact:ContactsFilter = ContactsFilter(keyDict: ["name":name])

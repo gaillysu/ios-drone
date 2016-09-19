@@ -10,19 +10,19 @@ import UIKit
 
 class ClockView: UIControl {
 
-    private var mHourImageView:UIImageView!
-    private var mMinuteImageView:UIImageView!
-    private var mClockDialView:UIImageView!
+    fileprivate var mHourImageView:UIImageView!
+    fileprivate var mMinuteImageView:UIImageView!
+    fileprivate var mClockDialView:UIImageView!
 
 
     init(frame: CGRect ,hourImage:UIImage ,minuteImage:UIImage ,dialImage:UIImage) {
         super.init(frame: frame)
-        super.backgroundColor = UIColor.clearColor()
+        super.backgroundColor = UIColor.clear
 
         // ------------------------------------------
         // --  Draw the Nevo clockDialeView image  --
         // ------------------------------------------
-        let dialeRect:CGRect = CGRectMake(0, 0, frame.size.width, frame.size.width)
+        let dialeRect:CGRect = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.width)
         mClockDialView = UIImageView(frame: dialeRect)
         mClockDialView.image = dialImage
         self.addSubview(mClockDialView)
@@ -30,7 +30,7 @@ class ClockView: UIControl {
         // --------------------------------
         // --  Draw the Nevo hour image  --
         // --------------------------------
-        let hourImageRect:CGRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)
+        let hourImageRect:CGRect = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.width)
         mHourImageView = UIImageView(frame:hourImageRect)
         mHourImageView.image = hourImage
         self.addSubview(mHourImageView)
@@ -38,7 +38,7 @@ class ClockView: UIControl {
         // ----------------------------------
         // --  Draw the Nevo minute image  --
         // ----------------------------------
-        let minuteImageRect:CGRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)
+        let minuteImageRect:CGRect = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.width)
         mMinuteImageView = UIImageView(frame:minuteImageRect)
         mMinuteImageView.image = minuteImage
         self.addSubview(mMinuteImageView)
@@ -58,31 +58,31 @@ class ClockView: UIControl {
     SET TIMER RADIANS
     */
     func currentTimer() {
-        let now:NSDate = NSDate()
-        let cal:NSCalendar = NSCalendar.currentCalendar()
-        let dd:NSDateComponents = cal.components([NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day ,NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second,], fromDate: now);
-        let seconds:NSInteger = dd.second
-        let hour:NSInteger = dd.hour;
-        let minute:NSInteger = dd.minute;
+        let now:Date = Date()
+        let cal:Calendar = Calendar.current
+        let dd:DateComponents = (cal as NSCalendar).components([NSCalendar.Unit.year, NSCalendar.Unit.month, NSCalendar.Unit.day ,NSCalendar.Unit.hour, NSCalendar.Unit.minute, NSCalendar.Unit.second,], from: now);
+        let seconds:NSInteger = dd.second!
+        let hour:NSInteger = dd.hour!;
+        let minute:NSInteger = dd.minute!;
 
-        let angleOfHour:CGFloat = (CGFloat(hour)%12)*30.0 + ((CGFloat(minute) + CGFloat(seconds)/60.0 )/60.0)*30.0;
-        mHourImageView.transform = CGAffineTransformRotate(CGAffineTransformIdentity,  DegreesToRadians(CGFloat(angleOfHour)));
+        let angleOfHour:CGFloat = (CGFloat(hour).truncatingRemainder(dividingBy: 12))*30.0 + ((CGFloat(minute) + CGFloat(seconds)/60.0 )/60.0)*30.0;
+        mHourImageView.transform = CGAffineTransform.identity.rotated(by: DegreesToRadians(CGFloat(angleOfHour)));
 
         let angleOfMinute:CGFloat = (CGFloat(minute) + CGFloat(seconds)/60.0) * 6.0;
-        mMinuteImageView.transform = CGAffineTransformRotate(CGAffineTransformIdentity,  DegreesToRadians(CGFloat(angleOfMinute)));
+        mMinuteImageView.transform = CGAffineTransform.identity.rotated(by: DegreesToRadians(CGFloat(angleOfMinute)));
     }
 
     /*
     Used to calculate the rotate degree
     */
-    private func DegreesToRadians(degrees:CGFloat) -> CGFloat {
+    fileprivate func DegreesToRadians(_ degrees:CGFloat) -> CGFloat {
 
         return (degrees * CGFloat(M_PI))/180.0;
     }
     /*
     set new Image
     */
-    func setClockImage(dialImage:UIImage)
+    func setClockImage(_ dialImage:UIImage)
     {
        mClockDialView.image = dialImage
     }

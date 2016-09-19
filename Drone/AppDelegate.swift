@@ -22,9 +22,9 @@
     let RESET_STATE:String = "RESET_STATE"
     
     enum SYNC_STATE{
-      case NO_SYNC
-      case BIG_SYNC
-      case SMALL_SYNC
+      case no_SYNC
+      case big_SYNC
+      case small_SYNC
     }
     
     @UIApplicationMain
@@ -32,37 +32,37 @@
       
       var window: UIWindow?
       //Let's sync every days
-      let SYNC_INTERVAL:NSTimeInterval = 0*30*60 //unit is second in iOS, every 30min, do sync
+      let SYNC_INTERVAL:TimeInterval = 0*30*60 //unit is second in iOS, every 30min, do sync
       let LAST_SYNC_DATE_KEY = "LAST_SYNC_DATE_KEY"
-      private var mConnectionController : ConnectionControllerImpl?
-      private let mHealthKitStore:HKHealthStore = HKHealthStore()
-      private var currentDay:UInt8 = 0
-      private var mAlertUpdateFW = false
-      private var cockroaches:[NSUUID] = []
+      fileprivate var mConnectionController : ConnectionControllerImpl?
+      fileprivate let mHealthKitStore:HKHealthStore = HKHealthStore()
+      fileprivate var currentDay:UInt8 = 0
+      fileprivate var mAlertUpdateFW = false
+      fileprivate var cockroaches:[UUID] = []
       
-      private var disConnectAlert:UIAlertView?
-      let log = XCGLogger.defaultInstance()
-      private var responseTimer:NSTimer?
-      private var noResponseIndex:Int = 0
-      private var sendContactsIndex:Int = 0
-      private var worldclockDatabaseHelper: WorldClockDatabaseHelper?
-      private var realm:Realm?
+      fileprivate var disConnectAlert:UIAlertView?
+      let log = XCGLogger.default
+      fileprivate var responseTimer:Timer?
+      fileprivate var noResponseIndex:Int = 0
+      fileprivate var sendContactsIndex:Int = 0
+      fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
+      fileprivate var realm:Realm?
       /**
        Record the current state of the sync
        */
-      var syncState:SYNC_STATE = .NO_SYNC
+      var syncState:SYNC_STATE = .no_SYNC
       
-      var sendIndex:((index:Int) -> Void)?
+      var sendIndex:((_ index:Int) -> Void)?
       let network = NetworkReachabilityManager(host: "drone.karljohnchow.com")
       
       
       let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
       
       class func getAppDelegate()->AppDelegate {
-         return UIApplication.sharedApplication().delegate as! AppDelegate
+         return UIApplication.shared.delegate as! AppDelegate
       }
       
-      func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
          // Override point for customization after application launch.
          Fabric.with([Crashlytics.self])
          var config = Realm.Configuration(
@@ -78,7 +78,7 @@
          mConnectionController = ConnectionControllerImpl()
          mConnectionController?.setDelegate(self)
          
-         log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .Debug)
+         log.setup(.debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .debug)
          
          network?.listener = { status in
             self.log.debug("Network Status Changed: \(status)")
@@ -88,53 +88,53 @@
          
          IQKeyboardManager.sharedManager().enable = true
          
-         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+         self.window = UIWindow(frame: UIScreen.main.bounds)
          UINavigationBar.appearance().tintColor = UIColor.getBaseColor()
          let nav:UINavigationController = UINavigationController(rootViewController: SplashScreenViewController())
-         nav.navigationBarHidden = true
+         nav.isNavigationBarHidden = true
          self.window?.rootViewController = nav
          self.window?.makeKeyAndVisible()
          return true
       }
       
-      func applicationWillResignActive(application: UIApplication) {
+      func applicationWillResignActive(_ application: UIApplication) {
       }
       
-      func applicationDidEnterBackground(application: UIApplication) {
-         UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in }
+      func applicationDidEnterBackground(_ application: UIApplication) {
+         UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
          
       }
       
-      func applicationWillEnterForeground(application: UIApplication) {
+      func applicationWillEnterForeground(_ application: UIApplication) {
       }
       
-      func applicationDidBecomeActive(application: UIApplication) {
+      func applicationDidBecomeActive(_ application: UIApplication) {
       }
       
-      func applicationWillTerminate(application: UIApplication) {
+      func applicationWillTerminate(_ application: UIApplication) {
       }
       
-      func application(application: UIApplication , didReceiveLocalNotification notification: UILocalNotification ) {
+      func application(_ application: UIApplication , didReceive notification: UILocalNotification ) {
          
       }
       
       // MARK: -dbPath
       class func dbPath()->String{
-         var docsdir:String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!
-         let filemanage:NSFileManager = NSFileManager.defaultManager()
+         var docsdir:String = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
+         let filemanage:FileManager = FileManager.default
          //drone DB FileURL
-         docsdir = docsdir.stringByAppendingFormat("%@%@/", "/",DRONEDBFILE)
+         docsdir = docsdir.appendingFormat("%@%@/", "/",DRONEDBFILE)
          var isDir : ObjCBool = false
-         let exit:Bool = filemanage.fileExistsAtPath(docsdir, isDirectory:&isDir )
+         let exit:Bool = filemanage.fileExists(atPath: docsdir, isDirectory:&isDir )
          if (!exit || !isDir) {
             do{
-               try filemanage.createDirectoryAtPath(docsdir, withIntermediateDirectories: true, attributes: nil)
+               try filemanage.createDirectory(atPath: docsdir, withIntermediateDirectories: true, attributes: nil)
             }catch {
                
             }
             
          }
-         let dbpath:String = docsdir.stringByAppendingString(DRONEDBNAME)
+         let dbpath:String = docsdir + DRONEDBNAME
          return dbpath;
       }
       
@@ -143,8 +143,8 @@
          sendRequest(GetSystemStatus())
       }
       
-      func setSystemConfig(index:Int) {
-         sendRequest(SetSystemConfig(autoStart: NSDate().timeIntervalSince1970, autoEnd: NSDate.tomorrow().timeIntervalSince1970, index: index))
+      func setSystemConfig(_ index:Int) {
+         sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, index: index))
       }
       
       func setRTC() {
@@ -155,14 +155,14 @@
          sendRequest(SetAppConfigRequest())
       }
       
-      func setGoal(goal:Goal?) {
+      func setGoal(_ goal:Goal?) {
          if goal == nil {
             let goalArray:NSArray = UserGoal.getAll()
             if goalArray.count>0 {
                let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
                self.setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
             }else{
-               self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.LOW))
+               self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.low))
             }
          }else{
             sendRequest(SetGoalRequest(goal: goal!))
@@ -173,14 +173,14 @@
          let profileArray:NSArray = UserProfile.getAll()
          if profileArray.count>0 {
             //height (CM) X 0.415 ＝ stride length
-            let profile:UserProfile = profileArray.objectAtIndex(0) as! UserProfile
+            let profile:UserProfile = profileArray.object(at: 0) as! UserProfile
             sendRequest(SetUserProfileRequest(weight: profile.weight*100, height: profile.length, gender: Int(profile.gender), stridelength: Int(Double(profile.length)*0.415)))
          }else{
             sendRequest(SetUserProfileRequest(weight: 6000, height: 175, gender: 1, stridelength: 65))
          }
       }
       
-      func setWorldClock(cities:[City]) {
+      func setWorldClock(_ cities:[City]) {
          var convertedWorldClockArray:[(cityName:String,gmtOffset:Float)] = []
          for city:City in cities {
             if let timezone = city.timezone{
@@ -212,8 +212,8 @@
       }
       
       func setStepsToWatch() {
-         let dayDate:NSDate = NSDate()
-         let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+         let dayDate:Date = Date()
+         let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
          let dayStepsArray:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+86400)") //one hour = 3600s
          var daySteps:Int = 0
          for steps in dayStepsArray {
@@ -225,10 +225,10 @@
             let stateArray:NSArray = AppTheme.LoadKeyedArchiverName(RESET_STATE) as! NSArray
             if stateArray.count>0 {
                let state:[String:Bool] = stateArray[0] as! [String:Bool]
-               let date:NSDate = (stateArray[1] as! String).dateFromFormat("YYYY/MM/dd")!
-               if state[RESET_STATE]! && date.beginningOfDay.isEqualToDate(NSDate().beginningOfDay){
+               let date:Date = (stateArray[1] as! String).dateFromFormat("YYYY/MM/dd")!
+               if state[RESET_STATE]! && (date.beginningOfDay == Date().beginningOfDay){
                   sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                  setupResponseTimer(["index":NSNumber(int: 7)])
+                  setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
                   AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
                }
                
@@ -273,14 +273,14 @@
          return mConnectionController!.isConnected()
       }
       
-      func sendContactsRequest(r:Request,index:Int) {
+      func sendContactsRequest(_ r:Request,index:Int) {
          if(isConnected()) {
             sendContactsIndex = index
             self.mConnectionController?.sendRequest(r)
          }
       }
       
-      func sendRequest(r:Request) {
+      func sendRequest(_ r:Request) {
          if(isConnected()){
             self.mConnectionController?.sendRequest(r)
          }else {
@@ -293,7 +293,7 @@
       /**
        Called when a packet is received from the device
        */
-      func packetReceived(packet: RawPacket) {
+      func packetReceived(_ packet: RawPacket) {
          
          if(!packet.isLastPacket()) {
             SwiftEventBus.post(SWIFTEVENT_BUS_RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
@@ -301,17 +301,17 @@
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
                let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
                log.debug("SystemStatus :\(systemStatus)")
-               if(systemStatus == SystemStatus.SystemReset.rawValue) {
+               if(systemStatus == SystemStatus.systemReset.rawValue) {
                   //step1 : Set systemconfig next 1
                   self.setSystemConfig(0)
-                  setupResponseTimer(["index":NSNumber(int: 1)])
+                  setupResponseTimer(["index":NSNumber(value: 1 as Int32)])
                   //Records need to use 0x30
                   AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
-               }else if(systemStatus == SystemStatus.InvalidTime.rawValue) {
+               }else if(systemStatus == SystemStatus.invalidTime.rawValue) {
                   setRTC()
-               }else if(systemStatus == SystemStatus.GoalCompleted.rawValue) {
+               }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
                   setGoal(nil)
-               }else if(systemStatus == SystemStatus.ActivityDataAvailable.rawValue) {
+               }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                   self.getActivity()
                }else{
                   setRTC()
@@ -323,20 +323,20 @@
             if(packet.getHeader() == SystemEventPacket.HEADER()) {
                let eventCommandStatus:Int = SystemEventPacket(data: packet.getRawData()).getSystemEventStatus()
                log.debug("eventCommandStatus :\(eventCommandStatus)")
-               if(eventCommandStatus == SystemEventStatus.GoalCompleted.rawValue) {
+               if(eventCommandStatus == SystemEventStatus.goalCompleted.rawValue) {
                   SwiftEventBus.post(SWIFTEVENT_BUS_GOAL_COMPLETED, sender:nil)
                }
                
-               if(eventCommandStatus == SystemEventStatus.LowMemory.rawValue) {
+               if(eventCommandStatus == SystemEventStatus.lowMemory.rawValue) {
                   SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_SMALL_SYNCACTIVITY, sender:nil)
                }
                
-               if(eventCommandStatus == SystemEventStatus.ActivityDataAvailable.rawValue) {
+               if(eventCommandStatus == SystemEventStatus.activityDataAvailable.rawValue) {
                   SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
                   self.getActivity()
                }
                
-               if(eventCommandStatus == SystemEventStatus.BatteryStatusChanged.rawValue) {
+               if(eventCommandStatus == SystemEventStatus.batteryStatusChanged.rawValue) {
                   sendRequest(GetBatteryRequest())
                }
             }
@@ -347,16 +347,16 @@
                case 0:
                   log.debug("set system config 1")
                   self.setSystemConfig(1)
-                  setupResponseTimer(["index":NSNumber(int: 1)])
+                  setupResponseTimer(["index":NSNumber(value: 1 as Int32)])
                case 1:
                   log.debug("set system config 2")
                   self.setSystemConfig(2)
-                  setupResponseTimer(["index":NSNumber(int: 2)])
+                  setupResponseTimer(["index":NSNumber(value: 2 as Int32)])
                case 2:
                   log.debug("set RTC")
                   //setp2:start set RTC
                   self.setRTC()
-                  setupResponseTimer(["index":NSNumber(int: 3)])
+                  setupResponseTimer(["index":NSNumber(value: 3 as Int32)])
                default:
                   break
                }
@@ -367,28 +367,28 @@
                //setp3:start set AppConfig
                releaseResponseTimer()
                self.setAppConfig()
-               setupResponseTimer(["index":NSNumber(int: 4)])
+               setupResponseTimer(["index":NSNumber(value: 4 as Int32)])
             }
             
             if(packet.getHeader() == SetAppConfigRequest.HEADER()) {
                //step4: start set user profile
                releaseResponseTimer()
                self.setUserProfile()
-               setupResponseTimer(["index":NSNumber(int: 5)])
+               setupResponseTimer(["index":NSNumber(value: 5 as Int32)])
             }
             
             if(packet.getHeader() == SetUserProfileRequest.HEADER()) {
                //step5: start set user default goal
                releaseResponseTimer()
                self.setGoal(nil)
-               setupResponseTimer(["index":NSNumber(int: 6)])
+               setupResponseTimer(["index":NSNumber(value: 6 as Int32)])
             }
             
             if(packet.getHeader() == SetGoalRequest.HEADER()) {
-               sendIndex?(index: 0)
+               sendIndex?(0)
                releaseResponseTimer()
                self.setStepsToWatch()
-               setupResponseTimer(["index":NSNumber(int: 7)])
+               setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
             }
             
             if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
@@ -407,33 +407,33 @@
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
                let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
                let stepsDict:[String:Int] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal()]
-               syncState = .SMALL_SYNC
+               syncState = .small_SYNC
                SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
             }
             
             if (packet.getHeader() == SetNotificationRequest.HEADER()) {
                log.debug("Set Notification response")
-               sendIndex?(index: sendContactsIndex+1)
+               sendIndex?(sendContactsIndex+1)
             }
             
             if (packet.getHeader() == UpdateNotificationRequest.HEADER()) {
                log.debug("Update notification response")
-               sendIndex?(index: sendContactsIndex+1)
+               sendIndex?(sendContactsIndex+1)
             }
             
             if(packet.getHeader() == UpdateContactsFilterRequest.HEADER()) {
                log.debug("Update contacts filter response")
-               sendIndex?(index: sendContactsIndex+1)
+               sendIndex?(sendContactsIndex+1)
             }
             
             if(packet.getHeader() == UpdateContactsApplicationsRequest.HEADER()) {
                log.debug("Update contacts applications response")
-               sendIndex?(index: sendContactsIndex+1)
+               sendIndex?(sendContactsIndex+1)
             }
             
             if(packet.getHeader() == SetContactsFilterRequest.HEADER()) {
                log.debug("Set contacts filter response")
-               sendIndex?(index: sendContactsIndex+1)
+               sendIndex?(sendContactsIndex+1)
             }
             
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
@@ -454,81 +454,81 @@
                SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:bigData)
                
                //Download more data
-               if(status == ActivityDataStatus.MoreData.rawValue) {
-                  syncState = .BIG_SYNC
+               if(status == ActivityDataStatus.moreData.rawValue) {
+                  syncState = .big_SYNC
                   self.getActivity()
                }else{
-                  syncState = .NO_SYNC
+                  syncState = .no_SYNC
                   SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
                }
             }
             
          }else{
-            syncState = .NO_SYNC
+            syncState = .no_SYNC
             SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
          }
       }
       
-      func connectionStateChanged(isConnected : Bool) {
+      func connectionStateChanged(_ isConnected : Bool) {
          SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:isConnected)
          if(isConnected) {
-            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.6 * Double(NSEC_PER_SEC)))
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.6 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                //setp1: cmd:0x01 read system status
                self.readsystemStatus()
             })
          }
       }
       
-      func firmwareVersionReceived(whichfirmware:DfuFirmwareTypes, version:NSString) {
+      func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString) {
          let mcuver = AppTheme.GET_SOFTWARE_VERSION()
          let blever = AppTheme.GET_FIRMWARE_VERSION()
          
          NSLog("Build in software version: \(mcuver), firmware version: \(blever)")
-         SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.APPLICATION ? ["BLE":version]:["MCU":version])
+         SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.application ? ["BLE":version]:["MCU":version])
       }
       
       /**
        *  Receiving the current device signal strength value
        */
-      func receivedRSSIValue(number:NSNumber){
+      func receivedRSSIValue(_ number:NSNumber){
          SwiftEventBus.post(SWIFTEVENT_BUS_RECEIVED_RSSI_VALUE_KEY, sender:number)
       }
       
       // MARK: - noResponseAction
-      func noResponseAction(timer:NSTimer) {
+      func noResponseAction(_ timer:Timer) {
          let info = timer.userInfo
-         let index:Int = (info!["index"] as! NSNumber).integerValue
+         let index:Int = (info!["index"] as! NSNumber).intValue
          releaseResponseTimer()
          switch index {
          case 0:
             log.debug("set system config 1,noResponseIndex:\(noResponseIndex)")
             self.setSystemConfig(1)
-            setupResponseTimer(["index":NSNumber(int: 1)])
+            setupResponseTimer(["index":NSNumber(value: 1 as Int32)])
          case 1:
             log.debug("set system config 2,noResponseIndex:\(noResponseIndex)")
             self.setSystemConfig(2)
-            setupResponseTimer(["index":NSNumber(int: 2)])
+            setupResponseTimer(["index":NSNumber(value: 2 as Int32)])
          case 2:
             log.debug("set RTC,noResponseIndex:\(noResponseIndex)")
             self.setRTC()
-            setupResponseTimer(["index":NSNumber(int: 3)])
+            setupResponseTimer(["index":NSNumber(value: 3 as Int32)])
          case 3:
             log.debug("set app config,noResponseIndex:\(noResponseIndex)")
             self.setAppConfig()
-            setupResponseTimer(["index":NSNumber(int: 4)])
+            setupResponseTimer(["index":NSNumber(value: 4 as Int32)])
          case 4:
             log.debug("set user profile,noResponseIndex:\(noResponseIndex)")
             self.setUserProfile()
-            setupResponseTimer(["index":NSNumber(int: 5)])
+            setupResponseTimer(["index":NSNumber(value: 5 as Int32)])
          case 5:
             log.debug("set user goal,noResponseIndex:\(noResponseIndex)")
             self.setGoal(nil)
-            setupResponseTimer(["index":NSNumber(int: 6)])
+            setupResponseTimer(["index":NSNumber(value: 6 as Int32)])
          case 6:
             log.debug("set user steps watch")
             self.setStepsToWatch()
-            setupResponseTimer(["index":NSNumber(int: 7)])
+            setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
          case 7:
             log.debug("set user world clock")
             self.isSaveWorldClock()
@@ -540,8 +540,8 @@
          noResponseIndex += 1
       }
       
-      func setupResponseTimer(userInfo:AnyObject) {
-         self.responseTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(noResponseAction(_:)), userInfo: userInfo, repeats: false)
+      func setupResponseTimer(_ userInfo:AnyObject) {
+         self.responseTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(noResponseAction(_:)), userInfo: userInfo, repeats: false)
       }
       
       func releaseResponseTimer() {
@@ -551,19 +551,19 @@
     }
     
     extension AppDelegate{
-      func cockRoachesChanged(isConnected: Bool, fromAddress: NSUUID!) {
+      func cockRoachesChanged(_ isConnected: Bool, fromAddress: UUID!) {
          SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_CHANGED, sender: CockroachMasterChanged(connected: isConnected, address: fromAddress))
          if isConnected && !self.cockroaches.contains(fromAddress) {
             self.cockroaches.append(fromAddress)
          }else if self.cockroaches.contains(fromAddress) && !isConnected {
-            self.cockroaches.removeAtIndex(self.cockroaches.indexOf(fromAddress)!)
+            self.cockroaches.remove(at: self.cockroaches.index(of: fromAddress)!)
          }
       }
-      func cockRoachDataReceived(coordinates: CoordinateSet, withAddress address: NSUUID, forBabyCockroach number: Int) {
+      func cockRoachDataReceived(_ coordinates: CoordinateSet, withAddress address: UUID, forBabyCockroach number: Int) {
          SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED, sender: CockroachMasterDataReceived(coordinates: coordinates, address: address, babyCockroachNumber: number))
       }
       
-      func getConnectedCockroaches() -> [NSUUID]{
+      func getConnectedCockroaches() -> [UUID]{
          return self.cockroaches
       }
     }

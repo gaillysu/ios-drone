@@ -15,11 +15,11 @@ class GoalTableViewCell: UITableViewCell{
     @IBOutlet weak var goalStates: UISwitch!
 
 
-    @IBAction func controllManager(sender: AnyObject) {
-        if(goalStates.on){
-            self.backgroundColor = UIColor.whiteColor()
+    @IBAction func controllManager(_ sender: AnyObject) {
+        if(goalStates.isOn){
+            self.backgroundColor = UIColor.white
         }else{
-            self.backgroundColor = UIColor.clearColor()
+            self.backgroundColor = UIColor.clear
         }
     }
 
@@ -28,7 +28,7 @@ class GoalTableViewCell: UITableViewCell{
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

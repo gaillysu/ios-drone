@@ -10,29 +10,29 @@ import UIKit
 
 class UserAlarm: NSObject,BaseEntryDatabaseHelper {
     var id:Int = 0
-    var timer:NSTimeInterval = 0.0
+    var timer:TimeInterval = 0.0
     var label:String = ""
     var status:Bool = false
     var repeatStatus:Bool = false
 
-    private var alarmModel:AlarmModel = AlarmModel()
+    fileprivate var alarmModel:AlarmModel = AlarmModel()
 
     init(keyDict:NSDictionary) {
         super.init()
-        self.setValue(keyDict.objectForKey("id"), forKey: "id")
-        self.setValue(keyDict.objectForKey("timer"), forKey: "timer")
-        self.setValue(keyDict.objectForKey("label"), forKey: "label")
-        self.setValue(keyDict.objectForKey("status"), forKey: "status")
-        self.setValue(keyDict.objectForKey("repeatStatus"), forKey: "repeatStatus")
+        self.setValue(keyDict.object(forKey: "id"), forKey: "id")
+        self.setValue(keyDict.object(forKey: "timer"), forKey: "timer")
+        self.setValue(keyDict.object(forKey: "label"), forKey: "label")
+        self.setValue(keyDict.object(forKey: "status"), forKey: "status")
+        self.setValue(keyDict.object(forKey: "repeatStatus"), forKey: "repeatStatus")
     }
 
-    func add(result:((id:Int?,completion:Bool?) -> Void)){
+    func add(_ result:@escaping ((_ id:Int?,_ completion:Bool?) -> Void)){
         alarmModel.timer = timer
         alarmModel.label = label
         alarmModel.status = status
         alarmModel.repeatStatus = repeatStatus
         alarmModel.add { (id, completion) -> Void in
-            result(id: id, completion: completion)
+            result(id, completion)
         }
     }
 
@@ -54,13 +54,13 @@ class UserAlarm: NSObject,BaseEntryDatabaseHelper {
         return AlarmModel.removeAll()
     }
 
-    class func getCriteria(criteria:String)->NSArray{
+    class func getCriteria(_ criteria:String)->NSArray{
         let modelArray:NSArray = AlarmModel.getCriteria(criteria)
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let alarmModel:AlarmModel = model as! AlarmModel
             let presets:UserAlarm = UserAlarm(keyDict: ["id":alarmModel.id,"timer":alarmModel.timer,"label":"\(alarmModel.label)","status":alarmModel.status,"repeatStatus":alarmModel.repeatStatus])
-            allArray.addObject(presets)
+            allArray.add(presets)
         }
         return allArray
     }
@@ -71,7 +71,7 @@ class UserAlarm: NSObject,BaseEntryDatabaseHelper {
         for model in modelArray {
             let alarmModel:AlarmModel = model as! AlarmModel
             let presets:UserAlarm = UserAlarm(keyDict: ["id":alarmModel.id,"timer":alarmModel.timer,"label":"\(alarmModel.label)","status":alarmModel.status,"repeatStatus":alarmModel.repeatStatus])
-            allArray.addObject(presets)
+            allArray.add(presets)
         }
         return allArray
     }

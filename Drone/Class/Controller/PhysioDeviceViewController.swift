@@ -20,8 +20,8 @@ class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         self.navigationItem.title = "Add Device"
         let header:PhysioDeviceHeader = UIView.loadFromNibNamed("PhysioDeviceHeader") as! PhysioDeviceHeader;
-        header.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height)
-        let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header.frame.height))
+        header.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height)
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height))
         headerView.addSubview(header)
         tableview.tableHeaderView = headerView
         self.addCloseButton(#selector(close))
@@ -30,36 +30,36 @@ class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITab
     }
     
     func close(){
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 }
 
 // extension for TableView
 extension PhysioDeviceViewController{
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
 //        let cockroachUUID = self.cockroachUUIDS[indexPath.row]
-        if let dequeuedCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier){
+        if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
             cell = dequeuedCell
         }else{
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)
         }
 //        cell.textLabel?.text = "Cockroach: \(cockroachUUID.UUIDString)"
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            tableview.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableview.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
 }
 
 // extension for eventbus
 extension PhysioDeviceViewController{
-    private func initEventbus(){
+    fileprivate func initEventbus(){
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
             let object = data.object! as! CockroachMasterChanged
                 object.address

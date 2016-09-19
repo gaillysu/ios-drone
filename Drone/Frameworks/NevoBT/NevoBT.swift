@@ -20,7 +20,7 @@ protocol NevoBT {
     /**
     Determines how long a scan is
     */
-    var SCANNING_DURATION : NSTimeInterval { get }
+    var SCANNING_DURATION : TimeInterval { get }
     
     /**
     Tries to connect to any compatible peripheral
@@ -30,7 +30,7 @@ protocol NevoBT {
     /**
     Tries to connect to the given address
     */
-    func connectToAddress(peripheralAddress : [NSUUID])
+    func connectToAddress(_ peripheralAddress : [UUID])
     
     /**
     Disconnects the given peripheral
@@ -42,7 +42,7 @@ protocol NevoBT {
     NOTE : The Request target profile 's Control characteristic can be different than the one used to initiate the NevoBT
     But the Callback Characteristic should be the same. Or the packet will be rejected for incompatibility.
     */
-    func sendRequest(request: Request)
+    func sendRequest(_ request: Request)
     
     /**
     Checks wether there is a peripheral currently connected
@@ -85,30 +85,30 @@ protocol NevoBTDelegate {
     Warning, this address is not a MAC address and may change in time
 
     */
-    func packetReceived(rawpacket: RawPacket, fromAddress : NSUUID)
+    func packetReceived(_ rawpacket: RawPacket, fromAddress : UUID)
     
     /**
     Called when a peripheral connects or disconnects
     */
-    func connectionStateChanged(isConnected : Bool, fromAddress : NSUUID!)
+    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!)
     
     /**
      Call when finish reading Firmware
      @parameter whichfirmware, firmware type
      @parameter version, return the version
      */
-    func firmwareVersionReceived(whichfirmware:DfuFirmwareTypes, version:NSString)
+    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString)
 
     /**
      Call when finish reading Firmware
      @parameter whichfirmware, firmware type
      @parameter version, return the version
      */
-    func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID, forBabyCockroach number:Int)
+    func cockRoachDataReceived(_ coordinates:CoordinateSet, withAddress address:UUID, forBabyCockroach number:Int)
 
-    func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!)
+    func cockRoachesChanged(_ isConnected : Bool, fromAddress : UUID!)
     /**
     *  Receiving the current device signal strength value
     */
-    func receivedRSSIValue(number:NSNumber)
+    func receivedRSSIValue(_ number:NSNumber)
 }

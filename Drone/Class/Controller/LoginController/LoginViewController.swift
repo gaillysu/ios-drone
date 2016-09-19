@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
     var fromMenu:Bool = false;
     init(fromMenu: Bool = false) {
         self.fromMenu = fromMenu
-        super.init(nibName: "LoginViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "LoginViewController", bundle: Bundle.main)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -44,27 +44,27 @@ class LoginViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         if (usernameT == nil) {
-            usernameT = AutocompleteField(frame: CGRectMake(0, 0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
+            usernameT = AutocompleteField(frame: CGRect(x: 0, y: 0, width: textfiledBG.frame.size.width, height: textfiledBG.frame.size.height/2.0-0.5))
             usernameT!.padding = 15.0
             usernameT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             usernameT!.placeholder = "E-mail"
-            usernameT?.backgroundColor = UIColor.whiteColor()
+            usernameT?.backgroundColor = UIColor.white
             textfiledBG.addSubview(usernameT!)
 
-            passwordT = AutocompleteField(frame: CGRectMake(0, textfiledBG.frame.size.height/2.0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
-            passwordT?.secureTextEntry = true
+            passwordT = AutocompleteField(frame: CGRect(x: 0, y: textfiledBG.frame.size.height/2.0, width: textfiledBG.frame.size.width, height: textfiledBG.frame.size.height/2.0-0.5))
+            passwordT?.isSecureTextEntry = true
             passwordT!.padding = 15.0
             passwordT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             passwordT!.placeholder = "Password"
-            passwordT?.backgroundColor = UIColor.whiteColor()
+            passwordT?.backgroundColor = UIColor.white
             textfiledBG.addSubview(passwordT!)
         }
 
     }
 
-    @IBAction func buttonActionManager(sender: AnyObject) {
+    @IBAction func buttonActionManager(_ sender: AnyObject) {
         if backButton.isEqual(sender) {
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
 
         if loginButton.isEqual(sender) {
@@ -84,7 +84,7 @@ class LoginViewController: UIViewController {
         }
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         usernameT?.resignFirstResponder()
         passwordT?.resignFirstResponder()
     }
@@ -106,15 +106,15 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-            view.setTintColor(UIColor.getBaseColor())
-            let timeout:NSTimer = NSTimer.after(90.seconds, {
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
+            view?.setTintColor(UIColor.getBaseColor())
+            let timeout:Timer = Timer.after(90.seconds, {
+                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
             
             HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/login", data: ["user":["email":usernameT!.text!,"password":passwordT!.text!]]) { (result) in
                 timeout.invalidate()
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
                 
                 let json = JSON(result)
                 let message = json["message"].stringValue.isEmpty ? NSLocalizedString("not_login", comment: ""):json["message"].stringValue
@@ -131,12 +131,12 @@ class LoginViewController: UIViewController {
                     let dateString: String = jsonBirthday["date"].stringValue
                     var birthday:String = ""
                     if !jsonBirthday.isEmpty || !dateString.isEmpty {
-                        let dateFormatter = NSDateFormatter()
+                        let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "y-M-d h:m:s.000000"
                         
-                        let birthdayDate = dateFormatter.dateFromString(dateString)
+                        let birthdayDate = dateFormatter.date(from: dateString)
                         dateFormatter.dateFormat = "y-M-d"
-                        birthday = dateFormatter.stringFromDate(birthdayDate!)
+                        birthday = dateFormatter.string(from: birthdayDate!)
                     }
                     
                     let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"].intValue,"first_name":user["first_name"].stringValue,"last_name":user["last_name"].stringValue,"birthday":birthday,"length":user["length"].intValue,"email":user["email"].stringValue, "weight":user["weight"].floatValue])
@@ -150,10 +150,10 @@ class LoginViewController: UIViewController {
                     
                 }
                 if(status == 1){
-                    let startDate = NSDate(timeIntervalSince1970: NSDate().timeIntervalSince1970-(86400*30))
+                    let startDate = Date(timeIntervalSince1970: Date().timeIntervalSince1970-(86400*30))
                     stepsDownload.getServiceSteps(startDate)
                     if self.fromMenu{
-                        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                        self.navigationController?.dismiss(animated: true, completion: nil)
                     }else{
                         let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: true)
                         self.navigationController?.pushViewController(device, animated: true)
@@ -163,10 +163,10 @@ class LoginViewController: UIViewController {
         }else{
             
             XCGLogger.defaultInstance().debug("没有网络")
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.Cross, animated: true)
-            view.setTintColor(UIColor.getBaseColor())
-            NSTimer.after(0.6.seconds, {
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
+            view?.setTintColor(UIColor.getBaseColor())
+            Timer.after(0.6.seconds, {
+                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
         }
         

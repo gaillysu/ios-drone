@@ -27,11 +27,11 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
         super.viewDidLoad()
         self.navigationItem.title = "Do Exercise!"
         self.addCloseButton(#selector(close))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(saveExercise))
-        self.navigationItem.rightBarButtonItem?.enabled = false
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.plain, target: self, action: #selector(saveExercise))
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         header = UIView.loadFromNibNamed("DoExerciseHeader") as? DoExerciseHeader
-        header!.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header!.frame.height)
-        let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, header!.frame.height))
+        header!.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header!.frame.height)
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header!.frame.height))
         headerView.addSubview(header!)
         tableview.tableHeaderView = headerView
 
@@ -58,23 +58,23 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
     
     func close() {
         SwiftEventBus.unregister(self)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension DoExerciseViewController{
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
-        if let dequeuedCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier){
+        if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
             cell = dequeuedCell
         }else{
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         }
-        switch indexPath.section {
+        switch (indexPath as NSIndexPath).section {
         case 0:
             break
         case 1:
-            let cockroach = babyCockroaches[indexPath.row]
+            let cockroach = babyCockroaches[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = "Sensor \(cockroach.number)"
             cell.detailTextLabel?.text = cockroach.coordinates.getString()
             break
@@ -84,7 +84,7 @@ extension DoExerciseViewController{
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return self.finishedRepetitions
@@ -95,11 +95,11 @@ extension DoExerciseViewController{
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
             return "Completed set"
@@ -112,7 +112,7 @@ extension DoExerciseViewController{
 }
 
 extension DoExerciseViewController{
-    private func initEventBus(){
+    fileprivate func initEventBus(){
         SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let cockroachData = data.object! as! CockroachMasterDataReceived
             if self.babyCockroaches.isEmpty {
@@ -174,7 +174,7 @@ extension DoExerciseViewController{
         SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
             let cockroachesChangedEvent = data.object! as! CockroachMasterChanged
             if !cockroachesChangedEvent.connected {
-                Banner(title: "Cockroach got disconnected!", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil).show()
+                Banner(title: "Cockroach got disconnected!", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil).show()
             }
             self.tableview.reloadData()
         }

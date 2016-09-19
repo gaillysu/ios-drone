@@ -20,29 +20,29 @@ class AddInstructionHeader: UIView {
     @IBOutlet var startRecordingButton: UIButton!
     @IBOutlet var stopRecordingButton: UIButton!
 
-    private var timer:NSTimer = NSTimer()
-    private var amountDots:Int = 0
+    fileprivate var timer:Timer = Timer()
+    fileprivate var amountDots:Int = 0
     
     override func awakeFromNib() {
-        startRecordingButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Disabled)
-        stopRecordingButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Disabled)
+        startRecordingButton.setTitleColor(UIColor.gray, for: UIControlState.disabled)
+        stopRecordingButton.setTitleColor(UIColor.gray, for: UIControlState.disabled)
     }
     
-    func addActionToButton (target:AnyObject,startRecordingSelector:Selector, stopRecordingSelector: Selector ) {
-        startRecordingButton.addTarget(target, action: startRecordingSelector, forControlEvents: UIControlEvents.TouchUpInside)
-        stopRecordingButton.addTarget(target, action: stopRecordingSelector, forControlEvents: UIControlEvents.TouchUpInside)
-        stopRecordingButton.enabled = false
+    func addActionToButton (_ target:AnyObject,startRecordingSelector:Selector, stopRecordingSelector: Selector ) {
+        startRecordingButton.addTarget(target, action: startRecordingSelector, for: UIControlEvents.touchUpInside)
+        stopRecordingButton.addTarget(target, action: stopRecordingSelector, for: UIControlEvents.touchUpInside)
+        stopRecordingButton.isEnabled = false
     }
     
     func startRecordToggle(){
-        startRecordingButton.enabled = false
-        stopRecordingButton.enabled = true
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(updateStatusLabel), userInfo: nil, repeats: true)
+        startRecordingButton.isEnabled = false
+        stopRecordingButton.isEnabled = true
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateStatusLabel), userInfo: nil, repeats: true)
         statusLabel.text = "Recording"
     }
     
     func updateStatusLabel() {
-        if (statusLabel.text?.componentsSeparatedByString(".").count == 3 ){
+        if (statusLabel.text?.components(separatedBy: ".").count == 3 ){
             statusLabel.text = "Recording"
         }else{
             statusLabel.text = statusLabel.text! + "."
@@ -50,10 +50,10 @@ class AddInstructionHeader: UIView {
     }
     
     func stopRecordToggle(){
-        startRecordingButton.enabled = true
-        stopRecordingButton.enabled = false
+        startRecordingButton.isEnabled = true
+        stopRecordingButton.isEnabled = false
         timer.invalidate()
         statusLabel.text = "Finished"
-        startRecordingButton.setTitle("Record again", forState: UIControlState.Normal)
+        startRecordingButton.setTitle("Record again", for: UIControlState())
     }
 }

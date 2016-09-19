@@ -20,10 +20,10 @@ class ConnectionSetupViewController: UIViewController {
     @IBOutlet weak var watchImage: UIImageView!
     
     var watchName:String = ""
-    private var toMenu:Bool = true;
+    fileprivate var toMenu:Bool = true;
     init(toMenu:Bool) {
         self.toMenu = toMenu
-        super.init(nibName: "ConnectionSetupViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "ConnectionSetupViewController", bundle: Bundle.main)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -32,23 +32,23 @@ class ConnectionSetupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nextB.hidden = true
+        self.nextB.isHidden = true
         AppDelegate.getAppDelegate().startConnect()
 
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
             if(connectionState){
-                self.nextB.hidden = false
-                self.connectedView.hidden = false
-                self.connectionView.hidden = true
+                self.nextB.isHidden = false
+                self.connectedView.isHidden = false
+                self.connectionView.isHidden = true
             }else{
-                self.connectionFailView.hidden = false
-                self.connectionView.hidden = true
+                self.connectionFailView.isHidden = false
+                self.connectionView.isHidden = true
             }
         }
 
         //Search device cycle timer ,13s again
-        NSTimer.scheduledTimerWithTimeInterval(13, target: self, selector: #selector(reSearchTimerAction(_:)), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 13, target: self, selector: #selector(reSearchTimerAction(_:)), userInfo: nil, repeats: true)
     }
 
     override func viewDidLayoutSubviews() {
@@ -56,16 +56,16 @@ class ConnectionSetupViewController: UIViewController {
     }
     
     //Search device until find
-    func reSearchTimerAction(timer:NSTimer) {
+    func reSearchTimerAction(_ timer:Timer) {
         if AppDelegate.getAppDelegate().isConnected() {
             timer.invalidate()
         }else{
-            self.connectionFailView.hidden = false
-            self.connectionView.hidden = true
+            self.connectionFailView.isHidden = false
+            self.connectionView.isHidden = true
             if(self.toMenu){
                 AppDelegate.getAppDelegate().startConnect()
             }else{
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -76,16 +76,16 @@ class ConnectionSetupViewController: UIViewController {
     }
     
 
-    @IBAction func buttonActionManager(sender: AnyObject) {
+    @IBAction func buttonActionManager(_ sender: AnyObject) {
         if sender.isEqual(nextB) {
-            self.dismissViewControllerAnimated(true, completion: { 
+            self.dismiss(animated: true, completion: { 
                 AppDelegate.getAppDelegate().setUserProfile()
             })
         }
 
         if sender.isEqual(retryButton) {
-            self.connectionFailView.hidden = true
-            self.connectionView.hidden = false
+            self.connectionFailView.isHidden = true
+            self.connectionView.isHidden = false
         }
     }
 }

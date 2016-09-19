@@ -9,10 +9,10 @@
 import UIKit
 
 class Alarm: NSObject {
-    private var mIndex :Int?
-    private var mHour :Int?
-    private var mMinute:Int?
-    private var mEnable:Bool?
+    fileprivate var mIndex :Int?
+    fileprivate var mHour :Int?
+    fileprivate var mMinute:Int?
+    fileprivate var mEnable:Bool?
     
     init(index: Int, hour:Int,minute:Int,enable:Bool)
     {

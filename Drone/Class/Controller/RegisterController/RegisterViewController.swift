@@ -22,11 +22,11 @@ class RegisterViewController: BaseViewController {
     var fromMenu: Bool = false;
     var emailT: AutocompleteField!
     var passwordT: AutocompleteField!
-    private var selectedTextField:AutocompleteField?
+    fileprivate var selectedTextField:AutocompleteField?
 
     init(fromMenu: Bool = false) {
         self.fromMenu = fromMenu
-        super.init(nibName: "RegisterViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "RegisterViewController", bundle: Bundle.main)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -40,44 +40,44 @@ class RegisterViewController: BaseViewController {
 
     override func viewDidLayoutSubviews() {
         if (emailT == nil) {
-            emailT = AutocompleteField(frame: CGRectMake(0, 0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
+            emailT = AutocompleteField(frame: CGRect(x: 0, y: 0, width: textfiledBG.frame.size.width, height: textfiledBG.frame.size.height/2.0-0.5))
             emailT!.padding = 5.0
             emailT!.placeholder = "E-mail"
-            emailT?.backgroundColor = UIColor.whiteColor()
+            emailT?.backgroundColor = UIColor.white
             emailT.delegate = self
             textfiledBG.addSubview(emailT!)
 
-            passwordT = AutocompleteField(frame: CGRectMake(0, textfiledBG.frame.size.height/2.0, textfiledBG.frame.size.width, textfiledBG.frame.size.height/2.0-0.5))
+            passwordT = AutocompleteField(frame: CGRect(x: 0, y: textfiledBG.frame.size.height/2.0, width: textfiledBG.frame.size.width, height: textfiledBG.frame.size.height/2.0-0.5))
             passwordT!.padding = 5.0
-            passwordT!.secureTextEntry = true
+            passwordT!.isSecureTextEntry = true
             passwordT!.placeholder = "Password"
-            passwordT?.backgroundColor = UIColor.whiteColor()
+            passwordT?.backgroundColor = UIColor.white
             passwordT.delegate = self
             textfiledBG.addSubview(passwordT!)
 
-            let displaypassword:UIButton = UIButton(type: UIButtonType.Custom)
-            displaypassword.frame = CGRectMake(0, 0, 40, 30)
-            displaypassword.setImage(UIImage(named: "check"), forState: UIControlState.Normal)
+            let displaypassword:UIButton = UIButton(type: UIButtonType.custom)
+            displaypassword.frame = CGRect(x: 0, y: 0, width: 40, height: 30)
+            displaypassword.setImage(UIImage(named: "check"), for: UIControlState())
             displaypassword.imageEdgeInsets.right = 10
-            displaypassword.addTarget(self, action: #selector(RegisterViewController.displayPasswordAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-            passwordT.rightViewMode = UITextFieldViewMode.Always
+            displaypassword.addTarget(self, action: #selector(RegisterViewController.displayPasswordAction(_:)), for: UIControlEvents.touchUpInside)
+            passwordT.rightViewMode = UITextFieldViewMode.always
             passwordT.rightView = displaypassword
         }
         
     }
 
-    func displayPasswordAction(sender:UIButton) {
-        if passwordT!.secureTextEntry {
-            passwordT!.secureTextEntry = false
+    func displayPasswordAction(_ sender:UIButton) {
+        if passwordT!.isSecureTextEntry {
+            passwordT!.isSecureTextEntry = false
         }else{
-            passwordT!.secureTextEntry = true
+            passwordT!.isSecureTextEntry = true
         }
     }
 
-    @IBAction func buttonActionManager(sender: AnyObject) {
+    @IBAction func buttonActionManager(_ sender: AnyObject) {
 
         if backB.isEqual(sender) {
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
 
         if nextB.isEqual(sender) {
@@ -102,7 +102,7 @@ class RegisterViewController: BaseViewController {
         }
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         emailT.resignFirstResponder()
         passwordT.resignFirstResponder()
     }
@@ -110,7 +110,7 @@ class RegisterViewController: BaseViewController {
 
 // MARK: - YYKeyboardObserver
 extension RegisterViewController:UITextFieldDelegate {
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         selectedTextField = textField as? AutocompleteField
         return true
     }

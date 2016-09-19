@@ -9,6 +9,17 @@
 import Foundation
 import RealmSwift
 import SwiftyJSON
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 class Timezone: Object {
     
@@ -38,7 +49,7 @@ class Timezone: Object {
     
     dynamic var dstTimeEnd:String = ""
     
-    class func getTimeZoneObject(json:JSON) -> Timezone?{
+    class func getTimeZoneObject(_ json:JSON) -> Timezone?{
         
         if let id = json["id"].string,
             let name = json["name"].string,
@@ -79,7 +90,7 @@ class Timezone: Object {
         if dstTimeOffset > 0 {
             let startDate = WorldClockUtil.getStartDateForDST(self)
             let stopDate = WorldClockUtil.getStopDateForDST(self)
-            if startDate < NSDate() && stopDate > NSDate() {
+            if startDate < Date() && stopDate > Date() {
                 return gmtTimeOffset + dstTimeOffset
             }
         }

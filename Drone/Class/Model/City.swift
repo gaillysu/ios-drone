@@ -28,7 +28,7 @@ class City: Object {
     
     dynamic var timezone: Timezone?
     
-    class func getCityObject(json:JSON) -> City?{
+    class func getCityObject(_ json:JSON) -> City?{
         if let id = json["id"].string,
         let name = json["name"].string,
         let country = json["country"].string,

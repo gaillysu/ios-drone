@@ -14,12 +14,12 @@ This class contains a data point  of how many steps was done at a particular day
 */
 class DaySleep : NevoHKDataPoint {
     
-    private var mNumberOfSleeps:Int
-    private var mDate:NSDate
-    private var lateNight:NSDate
-    private var mIsAsleep:Bool
+    fileprivate var mNumberOfSleeps:Int
+    fileprivate var mDate:Date
+    fileprivate var lateNight:Date
+    fileprivate var mIsAsleep:Bool
     
-    init(isAsleep:Bool, numberOfSleeps:Int, startDate:NSDate,endDate:NSDate) {
+    init(isAsleep:Bool, numberOfSleeps:Int, startDate:Date,endDate:Date) {
         mNumberOfSleeps=numberOfSleeps
         //Here, we normalise the date
         //It's a daily data point, so we normalise it to midnight
@@ -31,19 +31,19 @@ class DaySleep : NevoHKDataPoint {
     }
 
     @objc func toHKQuantitySample() -> HKQuantitySample {
-        let stepCountQuantity = HKQuantity(unit:HKUnit.countUnit(), doubleValue: Double(0))
-        return HKQuantitySample(type: HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!,
+        let stepCountQuantity = HKQuantity(unit:HKUnit.count(), doubleValue: Double(0))
+        return HKQuantitySample(type: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
             quantity: stepCountQuantity,
-            startDate: mDate, endDate: lateNight)
+            start: mDate, end: lateNight)
     }
     @objc func isUpdate()->Bool {return false}
 
     @objc func toHKCategorySample()-> HKCategorySample {
         
-        let sleepType = mIsAsleep ? (HKCategoryValueSleepAnalysis.Asleep.rawValue) : (HKCategoryValueSleepAnalysis.InBed.rawValue)
+        let sleepType = mIsAsleep ? (HKCategoryValueSleepAnalysis.asleep.rawValue) : (HKCategoryValueSleepAnalysis.inBed.rawValue)
 
-        let categoryType:HKCategoryType = HKCategoryType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)!
-        let sleepSample:HKCategorySample = HKCategorySample(type: categoryType, value: sleepType, startDate: mDate, endDate: lateNight);
+        let categoryType:HKCategoryType = HKCategoryType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
+        let sleepSample:HKCategorySample = HKCategorySample(type: categoryType, value: sleepType, start: mDate, end: lateNight);
         return sleepSample
     }
 }

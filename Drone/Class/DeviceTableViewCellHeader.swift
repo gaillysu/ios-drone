@@ -20,9 +20,9 @@ class DeviceTableViewCellHeader: UITableViewHeaderFooterView {
         
     }
  
-    func showLeftRightButtons(visible:Bool ){
-        arrowRight.hidden = !visible;
-        arrowLeft.hidden = !visible;
+    func showLeftRightButtons(_ visible:Bool ){
+        arrowRight.isHidden = !visible;
+        arrowLeft.isHidden = !visible;
     }
     
 }

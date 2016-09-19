@@ -10,10 +10,10 @@ import UIKit
 
 class SearchCityController: UITableViewController {
     var mDelegate:DidSelectedDelegate?
-    private var searchList:[String:[(name:String, id:Int)]] = [:]
-    private var index:[String] = []
+    fileprivate var searchList:[String:[(name:String, id:Int)]] = [:]
+    fileprivate var index:[String] = []
     init() {
-        super.init(nibName: "SearchCityController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "SearchCityController", bundle: Bundle.main)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -24,7 +24,7 @@ class SearchCityController: UITableViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         searchList = [:]
     }
 
@@ -33,41 +33,41 @@ class SearchCityController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func setSearchList(searchList:[String:[(name:String, id:Int)]]){
+    func setSearchList(_ searchList:[String:[(name:String, id:Int)]]){
         self.searchList = searchList
         self.index = Array(searchList.keys)
-        self.index = index.sort({ (s1:String, s2:String) -> Bool in
+        self.index = index.sorted(by: { (s1:String, s2:String) -> Bool in
             return s1 < s2
         })
     }
     
     // MARK: - Table view delegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true);
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true);
         if searchList.count == 0{
             return
         }
-        if let cities:[(name:String, id:Int)] = searchList[index[indexPath.section]]{
-            mDelegate?.didSelectedLocalTimeZone(cities[indexPath.row].id)
+        if let cities:[(name:String, id:Int)] = searchList[index[(indexPath as NSIndexPath).section]]{
+            mDelegate?.didSelectedLocalTimeZone(cities[(indexPath as NSIndexPath).row].id)
         }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return index.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchList[index[section]]!.count
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("AddClockIdentifier")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "AddClockIdentifier")
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "AddClockIdentifier")
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "AddClockIdentifier")
         }
-        if let cities:[(name:String, id:Int)] = searchList[index[indexPath.section]]{
-            cell?.textLabel?.text = cities[indexPath.row].name
+        if let cities:[(name:String, id:Int)] = searchList[index[(indexPath as NSIndexPath).section]]{
+            cell?.textLabel?.text = cities[(indexPath as NSIndexPath).row].name
         }
         cell?.textLabel?.font = UIFont(name: "Helvetica-Light", size: 15.0)
         return cell!

@@ -21,7 +21,7 @@ class CoordinateSet: Object {
     dynamic var Z2:Int = 0
     dynamic var sensorNumber = 0
     
-    func setValues(cockroachPacket:CockRoachPacket){
+    func setValues(_ cockroachPacket:CockRoachPacket){
         self.X0 = cockroachPacket.X0
         self.X1 = cockroachPacket.X1
         self.X2 = cockroachPacket.X2
@@ -42,7 +42,7 @@ class CoordinateSet: Object {
         return [X0,X1,X2,Y0,Y1,Y2,Z0,Z1,Z2]
     }
     
-    func equal(otherCoordinateSet:CoordinateSet) -> Bool{
+    func equal(_ otherCoordinateSet:CoordinateSet) -> Bool{
         for i in 0..<9{
             if(!applicableMove(getAllCoordinates()[i], coordinate2: otherCoordinateSet.getAllCoordinates()[i])){
                 return false
@@ -50,7 +50,7 @@ class CoordinateSet: Object {
         }
         return true
     }
-    private func applicableMove(coordinate1:Int, coordinate2:Int) -> Bool{
+    fileprivate func applicableMove(_ coordinate1:Int, coordinate2:Int) -> Bool{
         let threshold = 20
         if abs(coordinate1 - coordinate2) < threshold {
             return true

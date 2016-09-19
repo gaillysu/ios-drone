@@ -9,25 +9,25 @@
 import UIKit
 
 enum SystemEventStatus:Int {
-    case GoalCompleted = 1,
-    LowMemory = 2,
-    ActivityDataAvailable = 3,
-    BatteryStatusChanged = 5
+    case goalCompleted = 1,
+    lowMemory = 2,
+    activityDataAvailable = 3,
+    batteryStatusChanged = 5
 }
 
 class SystemEventPacket: NSObject {
-    private var packetData:NSData = NSData()
+    fileprivate var packetData:Data = Data()
 
     class func HEADER() -> UInt8 {
         return 0x02
     }
 
-    init(data:NSData) {
+    init(data:Data) {
         super.init()
         packetData = data
     }
 
-    func getSystemEventPacket() -> NSData {
+    func getSystemEventPacket() -> Data {
         return packetData
     }
 

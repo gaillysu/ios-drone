@@ -9,24 +9,24 @@
 import UIKit
 
 enum SystemStatus:Int {
-    case LowMemory = 0,
-    InvalidTime = 3,
-    GoalCompleted = 4,
-    ActivityDataAvailable = 5,
-    SubscribedToNotifications = 7,
-    SystemReset = 8
+    case lowMemory = 0,
+    invalidTime = 3,
+    goalCompleted = 4,
+    activityDataAvailable = 5,
+    subscribedToNotifications = 7,
+    systemReset = 8
 }
 
 class SystemStatusPacket: NSObject {
 
-    private var packetData:NSData = NSData()
+    fileprivate var packetData:Data = Data()
 
-    init(data:NSData) {
+    init(data:Data) {
         super.init()
         packetData = data
     }
 
-    func getSystemStatusPacket() -> NSData {
+    func getSystemStatusPacket() -> Data {
         return packetData
     }
 

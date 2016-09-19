@@ -9,16 +9,17 @@
 import UIKit
 
 class ClockRefreshManager: NSObject {
-    private var refreshObject:[ClockRefreshDelegate] = []
+    private static var __once: () = {
+            Static.instance = ClockRefreshManager()
+        }()
+    fileprivate var refreshObject:[ClockRefreshDelegate] = []
 
     class var sharedInstance : ClockRefreshManager {
         struct Static {
-            static var onceToken : dispatch_once_t = 0
+            static var onceToken : Int = 0
             static var instance : ClockRefreshManager? = nil
         }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = ClockRefreshManager()
-        }
+        _ = ClockRefreshManager.__once
         return Static.instance!
     }
 
@@ -27,10 +28,10 @@ class ClockRefreshManager: NSObject {
         /**
         *  Ten seconds to refresh the clock and read the data
         */
-        NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector:"refreshTimerAction:", userInfo: nil, repeats: true);
+        Timer.scheduledTimer(timeInterval: 10, target: self, selector:#selector(ClockRefreshManager.refreshTimerAction(_:)), userInfo: nil, repeats: true);
     }
 
-    func refreshTimerAction(timer:NSTimer){
+    func refreshTimerAction(_ timer:Timer){
         for delegate in refreshObject {
             delegate.clockRefreshAction()
         }
@@ -41,7 +42,7 @@ class ClockRefreshManager: NSObject {
 
     :param: delegate refresh objects
     */
-    func setRefreshDelegate(delegate:ClockRefreshDelegate){
+    func setRefreshDelegate(_ delegate:ClockRefreshDelegate){
         refreshObject.append(delegate)
     }
 }

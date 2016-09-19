@@ -22,10 +22,10 @@ class ForgetPasswordController: UIViewController {
     var password_token:String = ""
     var user_id:String = ""
     var email:String = ""
-    private var selectedTextField:AutocompleteField?
+    fileprivate var selectedTextField:AutocompleteField?
     
     init() {
-        super.init(nibName: "ForgetPasswordController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "ForgetPasswordController", bundle: Bundle.main)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -38,9 +38,9 @@ class ForgetPasswordController: UIViewController {
     }
 
     
-    @IBAction func buttonManager(sender: AnyObject) {
+    @IBAction func buttonManager(_ sender: AnyObject) {
         if sender.isEqual(backButton) {
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
         
         if sender.isEqual(confirmButton) {
@@ -53,7 +53,7 @@ class ForgetPasswordController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         newTextField.resignFirstResponder()
         newTextField2.resignFirstResponder()
     }
@@ -67,10 +67,10 @@ class ForgetPasswordController: UIViewController {
                 return
             }
             
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-            view.setTintColor(UIColor.getBaseColor())
-            let timeout:NSTimer = NSTimer.after(90.seconds, {
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
+            view?.setTintColor(UIColor.getBaseColor())
+            let timeout:Timer = Timer.after(90.seconds, {
+                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
             
             HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/forget_password", data: ["user":["id":user_id, "email":email, "password":newTextField2.text!, "password_token":password_token]]) { (result) in
@@ -81,10 +81,10 @@ class ForgetPasswordController: UIViewController {
                 let user:[String:JSON] = jason["user"].dictionaryValue
                 var message:String = jason["message"].stringValue
                 if jason["status"].intValue == 1 && user.count>0 {
-                    MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
+                    self.dismiss(animated: true, completion: nil)
                 }else{
-                    MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+                    MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
                     if message.isEmpty {
                         message =  NSLocalizedString("no_network", comment: "")
                     }
@@ -94,10 +94,10 @@ class ForgetPasswordController: UIViewController {
                 }
             }
         }else{
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Your new password cannot be empty", mode: MRProgressOverlayViewMode.Cross, animated: true)
-            view.setTintColor(UIColor.getBaseColor())
-            NSTimer.after(1.seconds, {
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Your new password cannot be empty", mode: MRProgressOverlayViewMode.cross, animated: true)
+            view?.setTintColor(UIColor.getBaseColor())
+            Timer.after(1.seconds, {
+                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
         }
     }
@@ -105,7 +105,7 @@ class ForgetPasswordController: UIViewController {
 
 // MARK: - YYKeyboardObserver
 extension ForgetPasswordController:UITextFieldDelegate {
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         selectedTextField = textField as? AutocompleteField
         return true
     }

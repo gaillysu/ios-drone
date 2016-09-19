@@ -16,40 +16,46 @@ let stepsDownload = DownloadStepsRequest()
 
 class DownloadStepsRequest: NSObject {
     
-    class  func getRequest(url: String, uid:String, start_date:String, end_date:String, completion:(result:NSDictionary) -> Void){
+    class  func getRequest(_ url: String, uid:String, start_date:String, end_date:String, completion:@escaping (_ result:NSDictionary) -> Void){
         let URL:String = url+"/"+uid+"?token=ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei"+"&start_date="+start_date+"&end_date="+end_date
-        Alamofire.request(Method.GET, URL, parameters: nil, encoding:ParameterEncoding.JSON, headers: ["Authorization": "Basic YXBwczptZWRfYXBwX2RldmVsb3BtZW50","Content-Type":"application/json"]).responseJSON { (response) -> Void in
-            if response.result.isSuccess {
-                //XCGLogger.defaultInstance().debug("getJSON: \(response.result.value)")
-                completion(result: response.result.value as! NSDictionary)
-            }else if (response.result.isFailure){
-                if (response.result.value == nil) {
-                    completion(result: NSDictionary(dictionary: ["error" : "request error","status":-1]))
+        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": "Basic YXBwczptZWRfYXBwX2RldmVsb3BtZW50","Content-Type":"application/json"]).response { requestResponse in
+            if let error = requestResponse.error {
+                if (requestResponse.data == nil) {
+                    completion(NSDictionary(dictionary: ["error" : "request error","status":-1]))
                 }else{
-                    completion(result: response.result.value as! NSDictionary)
+                    completion(requestResponse.data!.value as NSDictionary)
                 }
+
+                //XCGLogger.defaultInstance().debug("getJSON: \(response.result.value)")
+            }else if let response = response.response{
+                completion(result: response.result.value as! NSDictionary)
+
             }
+        }
+        
+        Alamofire.request(Method.GET, URL, parameters: nil, encoding:ParameterEncoding.json, headers: ["Authorization": "Basic YXBwczptZWRfYXBwX2RldmVsb3BtZW50","Content-Type":"application/json"]).responseJSON { (response) -> Void in
+
         }
     }
     
-    func getClickTodayServiceSteps(startDate:NSDate,completion:(result:Bool) -> Void) {
-        let start:NSDate = startDate.beginningOfDay
-        let end:NSDate = startDate.endOfDay
+    func getClickTodayServiceSteps(_ startDate:Date,completion:@escaping (_ result:Bool) -> Void) {
+        let start:Date = startDate.beginningOfDay
+        let end:Date = startDate.endOfDay
         
         let profileArray:NSArray = UserProfile.getAll()
-        let profile:UserProfile = profileArray.objectAtIndex(0) as! UserProfile
+        let profile:UserProfile = profileArray.object(at: 0) as! UserProfile
         
         //Download data selected days recently
         DownloadStepsRequest.getRequest("http://drone.karljohnchow.com/steps/user", uid: "\(profile.id)", start_date: "\(Int(start.timeIntervalSince1970))", end_date: "\(Int(end.timeIntervalSince1970))", completion: { (result) in
-            XCGLogger.defaultInstance().debug("getJSON: \(result)")
+            XCGLogger.default.debug("getJSON: \(result)")
             let json = JSON(result)
             let status:Int = json["status"].intValue
             if status>0 {
                 let stepsArray = json["steps"].arrayValue
                 self.savedServiceDataToLocalDatabase(stepsArray)
-                completion(result: true)
+                completion(true)
             }else{
-                completion(result: false)
+                completion(false)
             }
         })
     }
@@ -59,26 +65,26 @@ class DownloadStepsRequest: NSObject {
      
      - parameter startDateWeek: start date
      */
-    func getServiceSteps(startDateWeek:NSDate) {
-        let startDate:NSDate = startDateWeek.beginningOfDay
+    func getServiceSteps(_ startDateWeek:Date) {
+        let startDate:Date = startDateWeek.beginningOfDay
         //Download data 30 days recently
-        let totalOfDay = Int(((NSDate().endOfDay.timeIntervalSince1970+1)-startDate.timeIntervalSince1970)/86400)
+        let totalOfDay = Int(((Date().endOfDay.timeIntervalSince1970+1)-startDate.timeIntervalSince1970)/86400)
         
         let profileArray:NSArray = UserProfile.getAll()
-        let profile:UserProfile = profileArray.objectAtIndex(0) as! UserProfile
+        let profile:UserProfile = profileArray.object(at: 0) as! UserProfile
         
         //create steps network global queue
-        let queue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        let group = dispatch_group_create()
+        let queue:DispatchQueue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
+        let group = DispatchGroup()
         
         //Download data 30 days recently
         for index:Int in 0..<Int(totalOfDay/5) {
-            dispatch_group_async(group, queue, {
+            queue.async(group: group, execute: {
                 let start:Int = Int(startDate.timeIntervalSince1970)+Int((index*5)*86400)
                 let end:Int = Int(startDate.timeIntervalSince1970)+Int((index*5)*86400+(5*86400))
                 //XCGLogger.defaultInstance().debug("startDate: \(start),endtDate:\(end)")
                 DownloadStepsRequest.getRequest("http://drone.karljohnchow.com/steps/user", uid: "\(profile.id)", start_date: "\(start)", end_date: "\(end)", completion: { (result) in
-                    XCGLogger.defaultInstance().debug("getJSON: \(result)")
+                    XCGLogger.default.debug("getJSON: \(result)")
                     let json = JSON(result)
                     let status:Int = json["status"].intValue
                     if status>0 {
@@ -89,29 +95,29 @@ class DownloadStepsRequest: NSObject {
             })
         }
         
-        dispatch_group_notify(group, queue, {
-            XCGLogger.defaultInstance().debug("create steps completed")
+        group.notify(queue: queue, execute: {
+            XCGLogger.default.debug("create steps completed")
         })
     }
     
-    func savedServiceDataToLocalDatabase(array:[JSON]) {
-        for (index,value) in array.enumerate() {
+    func savedServiceDataToLocalDatabase(_ array:[JSON]) {
+        for (_,value) in array.enumerated() {
             let stepsDict = value.dictionaryValue
             let dateString = stepsDict["date"]?.dictionaryValue["date"]?.stringValue
             let stepsString = stepsDict["steps"]?.stringValue
             let cid:Int = stepsDict["id"]!.intValue
             
-            let dateArray = dateString?.componentsSeparatedByString(" ")
-            let formatter = NSDateFormatter()
+            let dateArray = dateString?.components(separatedBy: " ")
+            let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
-            let date = formatter.dateFromString(dateArray![0])
+            let date = formatter.date(from: dateArray![0])
             let dateTimerInterval  = date?.beginningOfDay.timeIntervalSince1970
             if stepsString != nil {
                 let stepsArray:NSArray = AppTheme.jsonToArray(stepsString!)
                 
-                for (index,value) in stepsArray.enumerate() {
+                for (index,value) in stepsArray.enumerated() {
                     var seconds:Int = index*60*60
-                    for (index2,value2) in (value as! NSArray).enumerate() {
+                    for (index2,value2) in (value as! NSArray).enumerated() {
                         if Int(value2 as! NSNumber)>0 {
                             seconds += (index2*5)*60
                             let queryArray:NSArray = UserSteps.getCriteria("WHERE date = \(Double(dateTimerInterval!+Double(seconds)))")
@@ -121,7 +127,7 @@ class DownloadStepsRequest: NSObject {
                                     
                                 })
                             }else{
-                                for (index3,value3) in queryArray.enumerate() {
+                                for (_,value3) in queryArray.enumerated() {
                                     let steps:UserSteps = value3 as! UserSteps
                                     steps.steps = Int(value2 as! NSNumber)
                                     steps.cid = cid

@@ -18,10 +18,10 @@ extension UIViewController {
         view.endEditing(true)
     }
     
-    func delay(seconds seconds:Double, completion:()->()) {
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
+    func delay(seconds:Double, completion:@escaping ()->()) {
+        let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)
         
-        dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.low).asyncAfter(deadline: popTime) {
             completion()
         }
     }
@@ -29,9 +29,9 @@ extension UIViewController {
 
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
-        if((UIDevice.currentDevice().systemVersion as NSString).floatValue>7.0){
-            self.edgesForExtendedLayout = UIRectEdge.None;
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+        if((UIDevice.current.systemVersion as NSString).floatValue>7.0){
+            self.edgesForExtendedLayout = UIRectEdge();
             self.extendedLayoutIncludesOpaqueBars = false;
             self.modalPresentationCapturesStatusBarAppearance = false;
         }
@@ -43,36 +43,36 @@ class BaseViewController: UIViewController {
     
 
     
-    func makeStandardUINavigationController(rootViewController:UIViewController) -> UINavigationController{
+    func makeStandardUINavigationController(_ rootViewController:UIViewController) -> UINavigationController{
         let navigationController:UINavigationController = UINavigationController(rootViewController: rootViewController)
-        navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
-        navigationController.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController.navigationBar.tintColor = UIColor.white
 
-        navigationController.navigationBar.hidden = false
+        navigationController.navigationBar.isHidden = false
         navigationController.navigationItem.setHidesBackButton(false, animated: true)
         return navigationController
     }
     
-    func addPlusButton(action:Selector){
+    func addPlusButton(_ action:Selector){
         self.navigationItem.rightBarButtonItem = self.createBarButtonItem(withAction: action, withImage: UIImage(named: "addbutton")!);
     }
     
-    func addCloseButton(action:Selector){
+    func addCloseButton(_ action:Selector){
         self.navigationItem.leftBarButtonItem = self.createBarButtonItem(withAction: action, withImage: UIImage(named: "closebutton")!);
     }
     
-    private func createBarButtonItem(withAction action:Selector, withImage image:UIImage) -> UIBarButtonItem{
-        let button: UIButton = UIButton(type: UIButtonType.Custom)
-        button.setImage(image, forState: UIControlState.Normal)
-        button.addTarget(self, action: action, forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame = CGRectMake(0, 0, 30, 30)
+    fileprivate func createBarButtonItem(withAction action:Selector, withImage image:UIImage) -> UIBarButtonItem{
+        let button: UIButton = UIButton(type: UIButtonType.custom)
+        button.setImage(image, for: UIControlState())
+        button.addTarget(self, action: action, for: UIControlEvents.touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         return UIBarButtonItem(customView: button)
     }
     
     func getAppDelegate() -> AppDelegate {
-        return UIApplication.sharedApplication().delegate as! AppDelegate
+        return UIApplication.shared.delegate as! AppDelegate
     }
 }

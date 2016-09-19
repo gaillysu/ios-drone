@@ -9,10 +9,10 @@
 import UIKit
 
 class SetUserProfileRequest: NevoRequest {
-    private var mWeight:Int = 0
-    private var mHeight:Int = 0
-    private var mGender:Int = 0
-    private var mStridelength:Int = 0
+    fileprivate var mWeight:Int = 0
+    fileprivate var mHeight:Int = 0
+    fileprivate var mGender:Int = 0
+    fileprivate var mStridelength:Int = 0
 
     class func HEADER() -> UInt8 {
         return 0x31
@@ -35,6 +35,6 @@ class SetUserProfileRequest: NevoRequest {
             UInt8(mGender&0xFF),
             UInt8(mStridelength&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-        return NSArray(array: [NSData(bytes: values1, length: values1.count)])
+        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
     }
 }

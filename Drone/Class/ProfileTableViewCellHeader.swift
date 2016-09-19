@@ -13,18 +13,18 @@ class ProfileTableViewCellHeader: UIView, UITextFieldDelegate{
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
  
-    @IBAction func editButtonAction(sender: AnyObject) {
+    @IBAction func editButtonAction(_ sender: AnyObject) {
         nameTextField.becomeFirstResponder()
     }
     
     override func awakeFromNib() {
         nameTextField.delegate = self;
         preservesSuperviewLayoutMargins = false
-        layoutMargins = UIEdgeInsetsZero
+        layoutMargins = UIEdgeInsets.zero
     }
     
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentCharacterCount = textField.text?.characters.count ?? 0
         if (range.length + range.location > currentCharacterCount){
             return false
@@ -33,11 +33,11 @@ class ProfileTableViewCellHeader: UIView, UITextFieldDelegate{
         return newLength <= 15
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true;
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }    

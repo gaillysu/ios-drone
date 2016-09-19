@@ -25,5 +25,5 @@ protocol Goal {
 }
 
 enum GoalIntensity:UInt8 {
-    case LOW, MEDIUM, HIGH
+    case low, medium, high
 }

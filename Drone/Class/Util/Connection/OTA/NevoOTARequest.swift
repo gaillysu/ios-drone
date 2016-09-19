@@ -30,26 +30,26 @@ class SetOTAModeRequest : Request {
         return NevoOTAModeProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData(bytes: values, length: values.count)
+    func getRawData() -> Data {
+        return Data(bytes: UnsafePointer<UInt8>(values), count: values.count)
     }
     func getRawDataEx() -> NSArray {
-        return NSArray(array: [NSData(bytes: values, length: values.count),
-                               NSData(bytes: values2, length: values2.count)])
+        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values), count: values.count),
+                               Data(bytes: UnsafePointer<UInt8>(values2), count: values2.count)])
     }
 }
 
 
 class StartOTARequest: Request {
     
-    let values :[UInt8] = [DfuOperations.START_DFU_REQUEST.rawValue,DfuFirmwareTypes.APPLICATION.rawValue]
+    let values :[UInt8] = [DfuOperations.start_DFU_REQUEST.rawValue,DfuFirmwareTypes.application.rawValue]
     
     func getTargetProfile() -> Profile {
         return NevoOTAControllerProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData(bytes: values, length: values.count)
+    func getRawData() -> Data {
+        return Data(bytes: UnsafePointer<UInt8>(values), count: values.count)
     }
     func getRawDataEx() -> NSArray {
         return NSArray()
@@ -58,14 +58,14 @@ class StartOTARequest: Request {
 
 class StartOTAOldRequest: Request {
     
-    let values :[UInt8] = [DfuOperations.START_DFU_REQUEST.rawValue,DfuFirmwareTypes.APPLICATION.rawValue]
+    let values :[UInt8] = [DfuOperations.start_DFU_REQUEST.rawValue,DfuFirmwareTypes.application.rawValue]
     
     func getTargetProfile() -> Profile {
         return NevoOTAControllerProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData(bytes: values, length: values.count)
+    func getRawData() -> Data {
+        return Data(bytes: UnsafePointer<UInt8>(values), count: values.count)
     }
     func getRawDataEx() -> NSArray {
         return NSArray()
@@ -84,10 +84,10 @@ class writeFileSizeRequest: Request {
         return NevoOTAPacketProfile()
     }
     
-    func getRawData() -> NSData {
+    func getRawData() -> Data {
         let fileSizeCollection :[UInt32] = [0,0,UInt32(mFilelength!)];
         
-        return NSData(bytes: fileSizeCollection, length: fileSizeCollection.count * sizeof(UInt32))
+        return Data(bytes: UnsafePointer<UInt8>(fileSizeCollection), count: fileSizeCollection.count * MemoryLayout<UInt32>.size)
     }
     func getRawDataEx() -> NSArray {
         return NSArray()
@@ -106,10 +106,10 @@ class writeFileSizeOldRequest: Request {
         return NevoOTAPacketProfile()
     }
     
-    func getRawData() -> NSData {
+    func getRawData() -> Data {
         let fileSizeCollection :[UInt32] = [0,0,UInt32(mFilelength!)];
         
-        return NSData(bytes: fileSizeCollection, length: fileSizeCollection.count * sizeof(UInt32))
+        return Data(bytes: UnsafePointer<UInt8>(fileSizeCollection), count: fileSizeCollection.count * MemoryLayout<UInt32>.size)
     }
     func getRawDataEx() -> NSArray {
         return NSArray()
@@ -119,14 +119,14 @@ class writeFileSizeOldRequest: Request {
 
 class ResetSystemRequest:Request {
     
-    let values :[UInt8] = [DfuOperations.RESET_SYSTEM.rawValue]
+    let values :[UInt8] = [DfuOperations.reset_SYSTEM.rawValue]
     
     func getTargetProfile() -> Profile {
         return NevoOTAControllerProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData(bytes: values, length: values.count)
+    func getRawData() -> Data {
+        return Data(bytes: UnsafePointer<UInt8>(values), count: values.count)
     }
     func getRawDataEx() -> NSArray {
         return NSArray()
@@ -135,14 +135,14 @@ class ResetSystemRequest:Request {
 
 class EnablePacketNotifyRequest:Request {
     
-    let values :[UInt8] = [DfuOperations.PACKET_RECEIPT_NOTIFICATION_REQUEST.rawValue, UInt8(enumPacketOption.PACKETS_NOTIFICATION_INTERVAL.rawValue),0]
+    let values :[UInt8] = [DfuOperations.packet_RECEIPT_NOTIFICATION_REQUEST.rawValue, UInt8(enumPacketOption.packets_NOTIFICATION_INTERVAL.rawValue),0]
     
     func getTargetProfile() -> Profile {
         return NevoOTAControllerProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData(bytes: values, length: values.count)
+    func getRawData() -> Data {
+        return Data(bytes: UnsafePointer<UInt8>(values), count: values.count)
     }
     func getRawDataEx() -> NSArray {
         return NSArray()
@@ -151,14 +151,14 @@ class EnablePacketNotifyRequest:Request {
 
 class ReceiveFirmwareImageRequest:Request {
     
-    let values :[UInt8] = [DfuOperations.RECEIVE_FIRMWARE_IMAGE_REQUEST.rawValue]
+    let values :[UInt8] = [DfuOperations.receive_FIRMWARE_IMAGE_REQUEST.rawValue]
     
     func getTargetProfile() -> Profile {
         return NevoOTAControllerProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData(bytes: values, length: values.count)
+    func getRawData() -> Data {
+        return Data(bytes: UnsafePointer<UInt8>(values), count: values.count)
     }
     func getRawDataEx() -> NSArray {
         return NSArray()
@@ -167,14 +167,14 @@ class ReceiveFirmwareImageRequest:Request {
 
 class ValidateFirmwareRequest:Request {
     
-    let values :[UInt8] = [DfuOperations.VALIDATE_FIRMWARE_REQUEST.rawValue]
+    let values :[UInt8] = [DfuOperations.validate_FIRMWARE_REQUEST.rawValue]
     
     func getTargetProfile() -> Profile {
         return NevoOTAControllerProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData(bytes: values, length: values.count)
+    func getRawData() -> Data {
+        return Data(bytes: UnsafePointer<UInt8>(values), count: values.count)
     }
     func getRawDataEx() -> NSArray {
         return NSArray()
@@ -183,14 +183,14 @@ class ValidateFirmwareRequest:Request {
 
 class ActivateAndResetRequest:Request {
     
-    let values :[UInt8] = [DfuOperations.ACTIVATE_AND_RESET_REQUEST.rawValue]
+    let values :[UInt8] = [DfuOperations.activate_AND_RESET_REQUEST.rawValue]
     
     func getTargetProfile() -> Profile {
         return NevoOTAControllerProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData(bytes: values, length: values.count)
+    func getRawData() -> Data {
+        return Data(bytes: UnsafePointer<UInt8>(values), count: values.count)
     }
     func getRawDataEx() -> NSArray {
         return NSArray()
@@ -199,17 +199,17 @@ class ActivateAndResetRequest:Request {
 
 class OnePacketRequest: Request {
     
-    var mPacketData:NSData?
+    var mPacketData:Data?
     
-    init(packetdata: NSData)
+    init(packetdata: Data)
     {
-        mPacketData = NSData(data: packetdata)
+        mPacketData = NSData(data: packetdata) as Data
     }
     func getTargetProfile() -> Profile {
         return NevoOTAPacketProfile()
     }
     
-    func getRawData() -> NSData {
+    func getRawData() -> Data {
         
         return mPacketData!
     }
@@ -231,28 +231,28 @@ class Mcu_SetOTAModeRequest : Request {
         return NevoOTAModeProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData(bytes: values, length: values.count)
+    func getRawData() -> Data {
+        return Data(bytes: UnsafePointer<UInt8>(values), count: values.count)
     }
     func getRawDataEx() -> NSArray {
-        return NSArray(array: [NSData(bytes: values, length: values.count),
-            NSData(bytes: values2, length: values2.count)])
+        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values), count: values.count),
+            Data(bytes: UnsafePointer<UInt8>(values2), count: values2.count)])
     }
 }
 
 class Mcu_OnePacketRequest: Request {
     
-    var mPacketData:NSData?
+    var mPacketData:Data?
     
-    init(packetdata: NSData)
+    init(packetdata: Data)
     {
-        mPacketData = NSData(data: packetdata)
+        mPacketData = NSData(data: packetdata) as Data
     }
     func getTargetProfile() -> Profile {
         return NevoOTAModeProfile()
     }
     
-    func getRawData() -> NSData {
+    func getRawData() -> Data {
         return mPacketData!
     }
     func getRawDataEx() -> NSArray {
@@ -268,7 +268,7 @@ class Mcu_OnePageRequest: Request {
     {
         mOnePage = []
     }
-    func addPacket(packet:Mcu_OnePacketRequest)
+    func addPacket(_ packet:Mcu_OnePacketRequest)
     {
         mOnePage.append(packet)
     }
@@ -276,14 +276,14 @@ class Mcu_OnePageRequest: Request {
         return NevoOTAModeProfile()
     }
     
-    func getRawData() -> NSData {
-        return NSData()
+    func getRawData() -> Data {
+        return Data()
     }
     
     func getRawDataEx() -> NSArray {
         let packetarray = NSMutableArray()
         for packet in mOnePage {
-           packetarray.addObject(packet.getRawData())
+           packetarray.add(packet.getRawData())
         }
         return packetarray
     }
@@ -304,9 +304,9 @@ class Mcu_CheckSumPacketRequest: Request {
         return NevoOTAModeProfile()
     }
     
-    func getRawData() -> NSData {
+    func getRawData() -> Data {
         
-        return NSData()
+        return Data()
     }
     func getRawDataEx() -> NSArray {
         
@@ -314,8 +314,8 @@ class Mcu_CheckSumPacketRequest: Request {
             ,UInt8(mChecksum&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0]
         let values2 :[UInt8] = [0xFF,0x71,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         
-        return NSArray(array: [NSData(bytes: values, length: values.count),
-            NSData(bytes: values2, length: values2.count)])
+        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values), count: values.count),
+            Data(bytes: UnsafePointer<UInt8>(values2), count: values2.count)])
 
     }
 }

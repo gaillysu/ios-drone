@@ -10,8 +10,8 @@ import UIKit
 
 class HealthModel: UserDatabaseHelper {
     var userId:Int = 0
-    var date:NSDate = NSDate()
-    var createdDate:NSDate = NSDate()
+    var date:Date = Date()
+    var createdDate:Date = Date()
     var maxHRM:Int = 0
     var avgHRM:Int = 0
 

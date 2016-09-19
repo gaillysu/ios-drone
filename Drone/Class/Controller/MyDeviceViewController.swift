@@ -17,20 +17,20 @@ class MyDeviceViewController: BaseViewController {
     var viewControllers:[DeviceViewController] = []
     
     init() {
-        super.init(nibName: "MyDeviceViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "MyDeviceViewController", bundle: Bundle.main)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Watches"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buyButton.titleLabel?.textAlignment = NSTextAlignment.Center
+        buyButton.titleLabel?.textAlignment = NSTextAlignment.center
         
     }
     
@@ -45,7 +45,7 @@ class MyDeviceViewController: BaseViewController {
         let deviceArray:NSArray = UserDevice.getAll()
         for _ in deviceArray {
             let viewController = DeviceViewController()
-            viewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
+            viewController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.devicesView.frame.size.height)
             viewControllers.append(viewController)
         }
         
@@ -53,27 +53,27 @@ class MyDeviceViewController: BaseViewController {
             viewControllers[0].leftRightButtonsNeeded = false;
             let options = PagingMenuOptions()
             options.menuHeight = 0;
-            options.menuDisplayMode = .Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.ScrollEnabled)
+            options.menuDisplayMode = .standard(widthMode: PagingMenuOptions.MenuItemWidthMode.flexible, centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.scrollEnabled)
             let pagingMenuController = PagingMenuController(menuControllerTypes: viewControllers, options: options)
-            pagingMenuController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.devicesView.frame.size.height)
+            pagingMenuController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.devicesView.frame.size.height)
             self.addChildViewController(pagingMenuController)
             self.devicesView.addSubview(pagingMenuController.view)
-            pagingMenuController.didMoveToParentViewController(self)
-            self.noDeviceView.hidden = true
+            pagingMenuController.didMove(toParentViewController: self)
+            self.noDeviceView.isHidden = true
         }else{
-            self.noDeviceView.hidden = false
+            self.noDeviceView.isHidden = false
         }
     }
     
     
-    @IBAction func addDeviceAction(sender: AnyObject) {
+    @IBAction func addDeviceAction(_ sender: AnyObject) {
         let navigationController:UINavigationController = UINavigationController(rootViewController: WhichDeviceViewController(toMenu: false))
-        navigationController.navigationBar.hidden = true
-        self.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
+        navigationController.navigationBar.isHidden = true
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
     
-    @IBAction func buyButtonAction(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.hsn.com/shop/drone-presented-by-shaquille-oneal/13040")!)
+    @IBAction func buyButtonAction(_ sender: AnyObject) {
+        UIApplication.shared.openURL(URL(string: "http://www.hsn.com/shop/drone-presented-by-shaquille-oneal/13040")!)
     }
     
     func pushContactsFilterViewController(){

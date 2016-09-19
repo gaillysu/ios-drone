@@ -11,28 +11,28 @@ import UIColor_Hex_Swift
 
 class SplashScreenViewController: BaseViewController {
  
-    private final let TIMER_DURATION = 1.4;
-    var timer:NSTimer?
+    fileprivate final let TIMER_DURATION = 1.4;
+    var timer:Timer?
     init() {
-        super.init(nibName: "SplashScreenViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "SplashScreenViewController", bundle: Bundle.main)
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidAppear(animated: Bool) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(TIMER_DURATION, target: self, selector: #selector(SplashScreenViewController.nextController), userInfo: nil, repeats: true)
+    override func viewDidAppear(_ animated: Bool) {
+        timer = Timer.scheduledTimer(timeInterval: TIMER_DURATION, target: self, selector: #selector(SplashScreenViewController.nextController), userInfo: nil, repeats: true)
     }
     
     func nextController(){
         let user:NSArray = UserProfile.getAll()
         if(user.count>0) {
-            self.presentViewController(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+            self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
         }else{
             let navigationController = UINavigationController(rootViewController:WelcomeViewController());
-            navigationController.navigationBarHidden = true
-            self.presentViewController(navigationController, animated: true, completion: nil);
+            navigationController.isNavigationBarHidden = true
+            self.present(navigationController, animated: true, completion: nil);
         }
         timer?.invalidate()
         timer = nil;

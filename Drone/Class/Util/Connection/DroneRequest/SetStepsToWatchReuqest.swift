@@ -9,7 +9,7 @@
 import Foundation
 
 class SetStepsToWatchReuqest: NevoRequest {
-    private var mSteps:Int = 0
+    fileprivate var mSteps:Int = 0
     
     class func HEADER() -> UInt8 {
         return 0x30
@@ -26,6 +26,6 @@ class SetStepsToWatchReuqest: NevoRequest {
                                 UInt8((mSteps>>16)&0xFF),
                                 UInt8((mSteps>>24)&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         
-        return NSArray(array: [NSData(bytes: values1, length: values1.count)])
+        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
     }
 }

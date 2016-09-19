@@ -14,9 +14,9 @@ class Instruction: Object {
     dynamic var id = 0
     dynamic var name = ""
     dynamic var totalAmountOfCockroaches = 0
-    dynamic var createdDate:NSDate = NSDate()
-    dynamic var startTime:NSDate = NSDate()
-    dynamic var stopTime:NSDate = NSDate()
+    dynamic var createdDate:Date = Date()
+    dynamic var startTime:Date = Date()
+    dynamic var stopTime:Date = Date()
     
     let coordinateSeries = List<CoordinateSerie>()
 }

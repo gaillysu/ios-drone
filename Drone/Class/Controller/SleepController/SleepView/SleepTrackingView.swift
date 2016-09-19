@@ -11,7 +11,7 @@ import UIKit
 class SleepTrackingView: UIView {
 
     //Put all UI operation HomeView inside
-    private let mClockTimerView = ClockView(frame:CGRectMake(0, 0, UIScreen.mainScreen().bounds.width-60, UIScreen.mainScreen().bounds.width-60), hourImage:  UIImage(named: "clockViewHour")!, minuteImage: UIImage(named: "clockViewMinute")!, dialImage: UIImage(named: "clockView600")!);//init "ClockView" ,Use the code relative layout
+    fileprivate let mClockTimerView = ClockView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-60, height: UIScreen.main.bounds.width-60), hourImage:  UIImage(named: "clockViewHour")!, minuteImage: UIImage(named: "clockViewMinute")!, dialImage: UIImage(named: "clockView600")!);//init "ClockView" ,Use the code relative layout
 
      var progresValue:CGFloat = 0.0
     //var animationView:AnimationView!

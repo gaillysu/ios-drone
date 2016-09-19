@@ -19,23 +19,23 @@ class queryTableviewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         titleLabel.font = AppTheme.FONT_RALEWAY_LIGHT(mSize: 15)
-        detailLabel.textColor = UIColor.whiteColor()
+        detailLabel.textColor = UIColor.white
         detailLabel.font = AppTheme.FONT_RALEWAY_BOLD(mSize: 16)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         let sFrame:CGRect = AppTheme.getWidthLabelSize(titleString!, andObject: titleLabel.frame, andFont: AppTheme.FONT_RALEWAY_LIGHT(mSize: 15))
-        titleLabel.frame = CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y, sFrame.size.width, titleLabel.frame.size.height)
+        titleLabel.frame = CGRect(x: titleLabel.frame.origin.x, y: titleLabel.frame.origin.y, width: sFrame.size.width, height: titleLabel.frame.size.height)
 
         let detailFrame:CGRect = AppTheme.getWidthLabelSize(detailString!, andObject: detailLabel.frame, andFont: AppTheme.FONT_RALEWAY_BOLD(mSize: 16))
-        detailLabel.frame = CGRectMake(titleLabel.frame.origin.x+titleLabel.frame.size.width+5, detailLabel.frame.origin.y, detailFrame.size.width, detailLabel.frame.size.height)
+        detailLabel.frame = CGRect(x: titleLabel.frame.origin.x+titleLabel.frame.size.width+5, y: detailLabel.frame.origin.y, width: detailFrame.size.width, height: detailLabel.frame.size.height)
 
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

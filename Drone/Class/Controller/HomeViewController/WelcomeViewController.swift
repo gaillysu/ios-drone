@@ -18,7 +18,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var forgetButton: UIButton!
 
     init(fromMenu: Bool = false) {
-        super.init(nibName: "WelcomeViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "WelcomeViewController", bundle: Bundle.main)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -27,22 +27,22 @@ class WelcomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        headerImage.contentMode = UIViewContentMode.ScaleAspectFit;
+        headerImage.contentMode = UIViewContentMode.scaleAspectFit;
         loginB.layer.borderWidth = 1
-        loginB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).CGColor
+        loginB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).cgColor
         registB.layer.borderWidth = 1
-        registB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).CGColor
+        registB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).cgColor
 
         // Do any additional setup after loading the view.
     }
 
     override func viewDidLayoutSubviews() {
-        let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, scrollView.bounds.size.width, scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [UIImage(named:"welcome_1")!,UIImage(named:"welcome_2")!,UIImage(named:"welcome_3")!,UIImage(named:"welcome_4")!,UIImage(named:"welcome_5")!])
+        let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: scrollView.bounds.size.width, height: scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [UIImage(named:"welcome_1")!,UIImage(named:"welcome_2")!,UIImage(named:"welcome_3")!,UIImage(named:"welcome_4")!,UIImage(named:"welcome_5")!])
         scrollView.addSubview(sdView)
     }
 
 
-    @IBAction func buttonActionManager(sender: AnyObject) {
+    @IBAction func buttonActionManager(_ sender: AnyObject) {
         if loginB.isEqual(sender) {
             let logoin:LoginViewController = LoginViewController()
             self.navigationController?.pushViewController(logoin, animated: true)
@@ -55,8 +55,8 @@ class WelcomeViewController: UIViewController {
         
         if forgetButton.isEqual(sender) {
             let checkEmail:UINavigationController = UINavigationController(rootViewController: CheckEmailController())
-            checkEmail.navigationBarHidden = true
-            self.presentViewController(checkEmail, animated: true, completion: nil)
+            checkEmail.isNavigationBarHidden = true
+            self.present(checkEmail, animated: true, completion: nil)
         }
     }
     override func didReceiveMemoryWarning() {

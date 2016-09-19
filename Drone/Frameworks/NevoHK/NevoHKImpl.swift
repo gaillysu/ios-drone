@@ -13,7 +13,7 @@ import HealthKit
 See NevoHK protocol
 */
 class NevoHKImpl {
-    private let mHealthKitStore = HKHealthStore()
+    fileprivate let mHealthKitStore = HKHealthStore()
     
     /**
     See NevoHK protocol
@@ -33,14 +33,14 @@ class NevoHKImpl {
         }
     }
     
-    func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!)
+    func authorizeHealthKit(_ completion: ((_ success:Bool, _ error:NSError?) -> Void)!)
     {
         // 1. Set the types you want to read from HK Store  HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)
         //quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
-        let healthKitTypesToRead = NSSet(array: [HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!])
+        let healthKitTypesToRead = NSSet(array: [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!])
         
         // 2. Set the types you want to write to HK Store  HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)
-        let healthKitTypesToWrite = NSSet(array:[HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!])
+        let healthKitTypesToWrite = NSSet(array:[HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!])
         
         // 3. If the store is not available (for instance, iPad) return an error and don't go on.
         if !HKHealthStore.isHealthDataAvailable()
@@ -54,7 +54,7 @@ class NevoHKImpl {
         }
         
         // 4.  Request HealthKit authorization
-        mHealthKitStore.requestAuthorizationToShareTypes(healthKitTypesToWrite as? Set<HKSampleType>, readTypes: healthKitTypesToRead as! Set<HKSampleType>) { (success, error) -> Void in
+        mHealthKitStore.requestAuthorization(toShare: healthKitTypesToWrite as? Set<HKSampleType>, read: healthKitTypesToRead as! Set<HKSampleType>) { (success, error) -> Void in
             
             if( completion != nil )
             {
@@ -66,7 +66,7 @@ class NevoHKImpl {
     /**
     See NevoHK protocol
     */
-    func writeDataPoint(data:NevoHKDataPoint,resultHandler:((result:Bool?,error:NSError?) -> Void)) {
+    func writeDataPoint(_ data:NevoHKDataPoint,resultHandler:@escaping ((_ result:Bool?,_ error:NSError?) -> Void)) {
 
         isPresent(data, handler:  { (present,object) -> Void in
             
@@ -82,9 +82,9 @@ class NevoHKImpl {
 
                 self.saveDataPoint(saveData, resultHandler: { (result, error) -> Void in
                     if( error != nil ) {
-                        resultHandler(result: false,error: error)
+                        resultHandler(false,error)
                     } else {
-                        resultHandler(result: true,error: nil)
+                        resultHandler(true,nil)
                     }
                 })
                 
@@ -94,14 +94,14 @@ class NevoHKImpl {
 
                     self.replaceDataPoint(object!, saveData: saveData, resultHandler: { (result, error) -> Void in
                         if( error != nil ) {
-                            resultHandler(result: false,error: error)
+                            resultHandler(false,error)
                         } else {
-                            resultHandler(result: true,error: nil)
+                            resultHandler(true,nil)
                         }
                     })
 
                 }else{
-                    resultHandler(result:false,error:NSError(domain:"Can't save Health Kit. Already present or Health Kit autorisation wasn't given : \(saveData)" , code: 404, userInfo: nil))
+                    resultHandler(false,NSError(domain:"Can't save Health Kit. Already present or Health Kit autorisation wasn't given : \(saveData)" , code: 404, userInfo: nil))
                 }
 
             }
@@ -111,35 +111,35 @@ class NevoHKImpl {
         
     }
 
-    private func saveDataPoint(data:HKObject,resultHandler:((result:Bool?,error:NSError?) -> Void)){
-        self.mHealthKitStore.saveObject(data, withCompletion: { (success, error) -> Void in
+    fileprivate func saveDataPoint(_ data:HKObject,resultHandler:@escaping ((_ result:Bool?,_ error:NSError?) -> Void)){
+        self.mHealthKitStore.save(data, withCompletion: { (success, error) -> Void in
             if( error != nil ) {
                 print("Error saving sample: \(error!.localizedDescription)")
-                resultHandler(result: false,error: error)
+                resultHandler(false,error as NSError?)
             } else {
                 print("Saved in Health Kit : \(data)")
-                resultHandler(result: true,error: nil)
+                resultHandler(true,nil)
             }
         })
     }
 
-    private func deleteDataPoint(data:HKObject,resultHandler:((result:Bool?,error:NSError?) -> Void)){
-        self.mHealthKitStore.deleteObject(data, withCompletion: { (success, error) -> Void in
+    fileprivate func deleteDataPoint(_ data:HKObject,resultHandler:@escaping ((_ result:Bool?,_ error:NSError?) -> Void)){
+        self.mHealthKitStore.delete(data, withCompletion: { (success, error) -> Void in
             if( error != nil ) {
-                resultHandler(result: false,error: error)
+                resultHandler(false,error as NSError?)
                 print("Error delete sample: \(error!.localizedDescription)")
             } else {
-                resultHandler(result: true,error: nil)
+                resultHandler(true,nil)
                 print("Success delete in Health Kit : \(data as! HKQuantitySample)")
             }
         })
     }
 
-    private func replaceDataPoint(deleData:HKObject,saveData:HKObject,resultHandler:((result:Bool?,error:NSError?) -> Void)){
+    fileprivate func replaceDataPoint(_ deleData:HKObject,saveData:HKObject,resultHandler:@escaping ((_ result:Bool?,_ error:NSError?) -> Void)){
         deleteDataPoint(deleData) { (result, error) -> Void in
             if(error == nil && result == true){
                 self.saveDataPoint(saveData, resultHandler: { (result, error) -> Void in
-                    resultHandler(result: result,error: error)
+                    resultHandler(result,error)
                     if(result!){
                         print("Success replace in Health Kit : \(saveData as! HKQuantitySample)")
                     }else{
@@ -147,7 +147,7 @@ class NevoHKImpl {
                     }
                 })
             }else{
-                resultHandler(result: result,error: error)
+                resultHandler(result,error)
                 print("Error Replace sample:\(deleData as! HKQuantitySample)")
             }
         }
@@ -157,7 +157,7 @@ class NevoHKImpl {
     /**
     See NevoHK protocol
     */
-    func isPresent(data:NevoHKDataPoint, handler:( (Bool?,HKObject?) -> Void) ) {
+    func isPresent(_ data:NevoHKDataPoint, handler:@escaping ( (Bool?,HKObject?) -> Void) ) {
         var sample:AnyObject!
         if(data is HourlySteps){
             sample = data.toHKQuantitySample()
@@ -167,10 +167,10 @@ class NevoHKImpl {
 
         //Check if this data point is present in HK
 
-        let datePredicate = HKQuery.predicateForSamplesWithStartDate(sample.startDate,
-            endDate: sample.endDate, options: .None)
+        let datePredicate = HKQuery.predicateForSamples(withStart: sample.startDate,
+            end: sample.endDate, options: HKQueryOptions())
         
-        let sourcePredicate:NSPredicate = HKQuery.predicateForObjectsFromSource(HKSource.defaultSource());
+        let sourcePredicate:NSPredicate = HKQuery.predicateForObjects(from: HKSource.default());
         
         let dateAndSourcePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [datePredicate,sourcePredicate])
 
@@ -199,7 +199,7 @@ class NevoHKImpl {
 
         })
         
-        mHealthKitStore.executeQuery(query)
+        mHealthKitStore.execute(query)
         
     }
 }

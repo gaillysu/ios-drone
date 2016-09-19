@@ -11,10 +11,10 @@ import Charts
 
 class AnalysisStepsChartView: LineChartView {
 
-    private var xVals:[String] = [];
-    private var yVals:[ChartDataEntry] = [];
+    fileprivate var xVals:[String] = [];
+    fileprivate var yVals:[ChartDataEntry] = [];
     
-    func drawSettings(xAxis:ChartXAxis, yAxis:ChartYAxis, rightAxis:ChartYAxis){
+    func drawSettings(_ xAxis:ChartXAxis, yAxis:ChartYAxis, rightAxis:ChartYAxis){
         noDataText = "No History Available."
         descriptionText = ""
         dragEnabled = false
@@ -26,7 +26,7 @@ class AnalysisStepsChartView: LineChartView {
         let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
         let limitLine = ChartLimitLine(limit: Double(goal.goalSteps),label: "Goal");
         limitLine.lineWidth = 1.5
-        limitLine.labelPosition = ChartLimitLine.ChartLimitLabelPosition.LeftTop
+        limitLine.labelPosition = ChartLimitLine.ChartLimitLabelPosition.leftTop
         limitLine.valueFont = UIFont(name: "Helvetica-Light", size: 7)!
         limitLine.lineColor = UIColor.getGreyColor()
         
@@ -47,15 +47,15 @@ class AnalysisStepsChartView: LineChartView {
         xAxis.labelTextColor = UIColor.getGreyColor();
         xAxis.axisLineColor = UIColor.getGreyColor()
         xAxis.drawLimitLinesBehindDataEnabled = false;
-        xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
+        xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.bottom
         xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 7)!
         
         let marker:BalloonMarker = BalloonMarker(color: UIColor.getBaseColor(), font: UIFont(name: "Helvetica-Light", size: 11)!, insets: UIEdgeInsetsMake(8.0, 8.0, 15.0, 8.0))
-        marker.minimumSize = CGSizeMake(60, 25);
+        marker.minimumSize = CGSize(width: 60, height: 25);
         self.marker = marker;
     }
     
-    func addDataPoint(name:String, entry:ChartDataEntry){
+    func addDataPoint(_ name:String, entry:ChartDataEntry){
         xVals.append(name);
         yVals.append(entry)
     }
@@ -68,18 +68,18 @@ class AnalysisStepsChartView: LineChartView {
         lineChartDataSet.setColor(UIColor.getGreyColor())
         lineChartDataSet.circleRadius = 5.0
         lineChartDataSet.drawCircleHoleEnabled = false
-        lineChartDataSet.valueFont = UIFont.systemFontOfSize(9.0)
+        lineChartDataSet.valueFont = UIFont.systemFont(ofSize: 9.0)
         
         let colorLocations:[CGFloat] = [0.0, 1.0]
-        let gradientColors = NSArray(array: [ChartColorTemplates .colorFromString("#D19D42").CGColor,ChartColorTemplates .colorFromString("#552582").CGColor]);
-        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), gradientColors, colorLocations);
+        let gradientColors = NSArray(array: [ChartColorTemplates .colorFromString("#D19D42").cgColor,ChartColorTemplates .colorFromString("#552582").cgColor]);
+        let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations);
         lineChartDataSet.fillAlpha = 0.5;
         lineChartDataSet.fill = ChartFill.fillWithLinearGradient(gradient!, angle: CGFloat(90.0))
         lineChartDataSet.drawFilledEnabled = true
         let lineChartData = LineChartData(xVals: xVals, dataSet: lineChartDataSet)
         lineChartData.setDrawValues(false)
         data = lineChartData
-        animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseInOutCirc)
+        animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.easeInOutCirc)
     }
     
     func reset(){

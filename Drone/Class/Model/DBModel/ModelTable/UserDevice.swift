@@ -12,24 +12,24 @@ class UserDevice: NSObject,BaseEntryDatabaseHelper {
     var id:Int = 0
     var device_name:String = ""
     var identifiers:String = ""
-    var connectionTimer:NSTimeInterval = NSDate().timeIntervalSince1970
+    var connectionTimer:TimeInterval = Date().timeIntervalSince1970
 
-    private var deviceModel:DeviceModel = DeviceModel()
+    fileprivate var deviceModel:DeviceModel = DeviceModel()
 
     init(keyDict:NSDictionary) {
         super.init()
-        keyDict.enumerateKeysAndObjectsUsingBlock { (key, value, stop) in
+        keyDict.enumerateKeysAndObjects { (key, value, stop) in
             self.setValue(value, forKey: key as! String)
         }
     }
 
-    func add(result:((id:Int?,completion:Bool?) -> Void)){
+    func add(_ result:@escaping ((_ id:Int?,_ completion:Bool?) -> Void)){
         deviceModel.device_name = device_name
         deviceModel.identifiers = identifiers
         deviceModel.connectionTimer = connectionTimer
 
         deviceModel.add { (id, completion) -> Void in
-            result(id: id, completion: completion)
+            result(id, completion)
         }
     }
 
@@ -50,13 +50,13 @@ class UserDevice: NSObject,BaseEntryDatabaseHelper {
         return DeviceModel.removeAll()
     }
 
-    class func getCriteria(criteria:String)->NSArray{
+    class func getCriteria(_ criteria:String)->NSArray{
         let modelArray:NSArray = DeviceModel.getCriteria(criteria)
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let deviceModel:DeviceModel = model as! DeviceModel
             let device:UserDevice = UserDevice(keyDict: ["id":deviceModel.id, "device_name":deviceModel.device_name, "identifiers":deviceModel.identifiers, "connectionTimer":deviceModel.connectionTimer])
-            allArray.addObject(device)
+            allArray.add(device)
         }
         return allArray
     }
@@ -67,7 +67,7 @@ class UserDevice: NSObject,BaseEntryDatabaseHelper {
         for model in modelArray {
             let deviceModel:DeviceModel = model as! DeviceModel
             let device:UserDevice = UserDevice(keyDict: ["id":deviceModel.id, "device_name":deviceModel.device_name, "identifiers":deviceModel.identifiers, "connectionTimer":deviceModel.connectionTimer])
-            allArray.addObject(device)
+            allArray.add(device)
         }
         return allArray
     }

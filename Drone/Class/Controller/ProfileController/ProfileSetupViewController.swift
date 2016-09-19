@@ -14,6 +14,35 @@ import BRYXBanner
 import SwiftyJSON
 import MRProgress
 import XCGLogger
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 private let DATEPICKER_TAG:Int = 1280
 private let PICKERVIEW_TAG:Int = 1380
@@ -32,18 +61,18 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
     @IBOutlet weak var firstNameTextField: AutocompleteField!
 
     var segmentView:SMSegmentView?
-    private var nameDictionary:Dictionary<String,AnyObject> = ["first_name":"DroneUser","last_name":"User"]
-    var account:Dictionary<String,AnyObject> = ["email":"","password":""]
+    fileprivate var nameDictionary:Dictionary<String,AnyObject> = ["first_name":"DroneUser" as AnyObject,"last_name":"User" as AnyObject]
+    var account:Dictionary<String,AnyObject> = ["email":"" as AnyObject,"password":"" as AnyObject]
 
-    private var selectedTextField: AutocompleteField?
-    private var lengthArray:[Int] = []
-    private var weightArray:[Int] = []
-    private var weightFloatArray:[Int] = []
-    private var selectedRow:Int = 0
-    private var selectedRow2:Int = 0
+    fileprivate var selectedTextField: AutocompleteField?
+    fileprivate var lengthArray:[Int] = []
+    fileprivate var weightArray:[Int] = []
+    fileprivate var weightFloatArray:[Int] = []
+    fileprivate var selectedRow:Int = 0
+    fileprivate var selectedRow2:Int = 0
 
     init() {
-        super.init(nibName: "ProfileSetupViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "ProfileSetupViewController", bundle: Bundle.main)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -52,7 +81,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textfiledBG.layer.borderColor = UIColor(rgba: "#6F7179").CGColor
+        textfiledBG.layer.borderColor = UIColor(rgba: "#6F7179").cgColor
         //Init pickerView the data
         for index:Int in 100...250 {
             lengthArray.append(index)
@@ -69,12 +98,12 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
 
     override func viewDidLayoutSubviews() {
         if(segmentView == nil) {
-            let segmentProperties = ["OnSelectionBackgroundColour": UIColor.getBaseColor(),"OffSelectionBackgroundColour": UIColor.whiteColor(),"OnSelectionTextColour": UIColor.whiteColor(),"OffSelectionTextColour": UIColor(rgba: "#95989a")]
+            let segmentProperties = ["OnSelectionBackgroundColour": UIColor.getBaseColor(),"OffSelectionBackgroundColour": UIColor.white,"OnSelectionTextColour": UIColor.white,"OffSelectionTextColour": UIColor(rgba: "#95989a")]
 
             let segmentFrame = CGRect(x: 0, y: 0, width: metricsSegment.frame.size.width, height: metricsSegment.frame.size.height)
             segmentView = SMSegmentView(frame: segmentFrame, separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 1.0, segmentProperties: segmentProperties)
             segmentView!.delegate = self
-            segmentView!.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).CGColor
+            segmentView!.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).cgColor
             segmentView!.layer.borderWidth = 1.0
 
             // Add segments
@@ -85,9 +114,9 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
         }
     }
 
-    @IBAction func buttonActionManager(sender: AnyObject) {
+    @IBAction func buttonActionManager(_ sender: AnyObject) {
         if (backB.isEqual(sender)) {
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
 
         if (nextB.isEqual(sender)) {
@@ -95,7 +124,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
         }
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         ageTextField.resignFirstResponder()
         lengthTextField.resignFirstResponder()
         weightTextField.resignFirstResponder()
@@ -106,7 +135,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
     }
 
     // MARK: - SMSegmentViewDelegate
-    func segmentView(segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
+    func segmentView(_ segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
         debugPrint("Select segment at index: \(index)")
     }
 
@@ -122,12 +151,12 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
             let email:String = account["email"] as! String
             let password:String = account["password"] as! String
             
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-            view.setTintColor(UIColor.getBaseColor())
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
+            view?.setTintColor(UIColor.getBaseColor())
             
             //timeout
-            let timeout:NSTimer = NSTimer.after(90.seconds, {
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            let timeout:Timer = Timer.after(90.seconds, {
+                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
             
             
@@ -136,7 +165,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
                 
                 timeout.invalidate()
                 
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
                 
                 let json = JSON(result)
                 var message = json["message"].stringValue
@@ -144,14 +173,14 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
                 let user:[String : JSON] = json["user"].dictionaryValue
                 
                 if(user.count>0) {
-                    let dateFormatter = NSDateFormatter()
+                    let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "y-M-d h:m:s.000000"
                     let birthdayJSON = user["birthday"]
                     let birthdayBeforeParsed = birthdayJSON!["date"].stringValue
                     
-                    let birthdayDate = dateFormatter.dateFromString(birthdayBeforeParsed)
+                    let birthdayDate = dateFormatter.date(from: birthdayBeforeParsed)
                     dateFormatter.dateFormat = "y-M-d"
-                    let birthday = dateFormatter.stringFromDate(birthdayDate!)
+                    let birthday = dateFormatter.string(from: birthdayDate!)
                     let sex = user["sex"]!.intValue == 1 ? true : false;
                     if(status > 0 && UserProfile.getAll().count == 0) {
                         let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"]!.intValue,"first_name":user["first_name"]!.stringValue,"last_name":user["last_name"]!.stringValue,"length":user["length"]!.intValue,"email":user["email"]!.stringValue,"sex": sex, "weight":(user["weight"]?.floatValue)!, "birthday":birthday])
@@ -171,28 +200,28 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
             }
         }else{
             XCGLogger.defaultInstance().debug("注册的时候没有网络")
-            let view = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.Cross, animated: true)
-            view.setTintColor(UIColor.getBaseColor())
-            let timeout:NSTimer = NSTimer.after(0.6.seconds, {
-                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
+            view?.setTintColor(UIColor.getBaseColor())
+            let timeout:Timer = Timer.after(0.6.seconds, {
+                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
         }
     }
 }
 
 extension ProfileSetupViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
 
     }
 
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if(textField.isEqual(ageTextField)) {
             textField.resignFirstResponder()
         }
         return true
     }
 
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         selectedTextField = textField as? AutocompleteField
 
         if(textField.isEqual(ageTextField)) {
@@ -239,20 +268,20 @@ extension ProfileSetupViewController: UITextFieldDelegate {
         var datePicker:UIDatePicker?
         let picker = self.view.viewWithTag(DATEPICKER_TAG)
         if(picker == nil) {
-            datePicker = UIDatePicker(frame: CGRectMake(0,UIScreen.mainScreen().bounds.size.height,UIScreen.mainScreen().bounds.size.width,200))
-            datePicker?.datePickerMode = UIDatePickerMode.Date
-            datePicker?.backgroundColor = UIColor.whiteColor()
+            datePicker = UIDatePicker(frame: CGRect(x: 0,y: UIScreen.main.bounds.size.height,width: UIScreen.main.bounds.size.width,height: 200))
+            datePicker?.datePickerMode = UIDatePickerMode.date
+            datePicker?.backgroundColor = UIColor.white
             datePicker?.tag = DATEPICKER_TAG
             self.view.addSubview(datePicker!)
-            datePicker?.addTarget(self, action: #selector(ProfileSetupViewController.selectedDateAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+            datePicker?.addTarget(self, action: #selector(ProfileSetupViewController.selectedDateAction(_:)), for: UIControlEvents.valueChanged)
         }else{
             datePicker = picker as? UIDatePicker
         }
 
-        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
-            datePicker?.frame = CGRectMake(0,datePicker?.frame.origin.y>=UIScreen.mainScreen().bounds.size.height ? (UIScreen.mainScreen().bounds.size.height-200):(UIScreen.mainScreen().bounds.size.height),UIScreen.mainScreen().bounds.size.width,200)
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.allowUserInteraction, animations: {
+            datePicker?.frame = CGRect(x: 0,y: datePicker?.frame.origin.y>=UIScreen.main.bounds.size.height ? (UIScreen.main.bounds.size.height-200):(UIScreen.main.bounds.size.height),width: UIScreen.main.bounds.size.width,height: 200)
             }) { (finish) in
-                if(datePicker?.frame.origin.y>UIScreen.mainScreen().bounds.size.height) {
+                if(datePicker?.frame.origin.y>UIScreen.main.bounds.size.height) {
                     datePicker?.removeFromSuperview()
                 }
         }
@@ -267,15 +296,15 @@ extension ProfileSetupViewController: UITextFieldDelegate {
         }
     }
 
-    func selectedDateAction(date:UIDatePicker) {
+    func selectedDateAction(_ date:UIDatePicker) {
         NSLog("date:\(date.date)")
         ageTextField.text = self.dateFormattedStringWithFormat("yyyy-MM-dd", fromDate: date.date)
     }
 
-    func dateFormattedStringWithFormat(format: String, fromDate date: NSDate) -> String {
-        let formatter = NSDateFormatter()
+    func dateFormattedStringWithFormat(_ format: String, fromDate date: Date) -> String {
+        let formatter = DateFormatter()
         formatter.dateFormat = format
-        return formatter.stringFromDate(date)
+        return formatter.string(from: date)
     }
 }
 
@@ -286,8 +315,8 @@ extension ProfileSetupViewController:UIPickerViewDelegate,UIPickerViewDataSource
         var picker:UIPickerView?
         let pickerView = self.view.viewWithTag(PICKERVIEW_TAG)
         if (pickerView == nil) {
-            picker = UIPickerView(frame: CGRectMake(0,UIScreen.mainScreen().bounds.size.height,UIScreen.mainScreen().bounds.size.width,200))
-            picker?.backgroundColor = UIColor.whiteColor()
+            picker = UIPickerView(frame: CGRect(x: 0,y: UIScreen.main.bounds.size.height,width: UIScreen.main.bounds.size.width,height: 200))
+            picker?.backgroundColor = UIColor.white
             picker?.tag = PICKERVIEW_TAG
             picker?.delegate = self
             self.view.addSubview(picker!)
@@ -295,10 +324,10 @@ extension ProfileSetupViewController:UIPickerViewDelegate,UIPickerViewDataSource
             picker = pickerView as? UIPickerView
         }
 
-        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
-            picker?.frame = CGRectMake(0,UIScreen.mainScreen().bounds.size.height-200,UIScreen.mainScreen().bounds.size.width,200)
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.allowUserInteraction, animations: {
+            picker?.frame = CGRect(x: 0,y: UIScreen.main.bounds.size.height-200,width: UIScreen.main.bounds.size.width,height: 200)
         }) { (finish) in
-            if(picker?.frame.origin.y>UIScreen.mainScreen().bounds.size.height) {
+            if(picker?.frame.origin.y>UIScreen.main.bounds.size.height) {
                 picker?.removeFromSuperview()
             }
         }
@@ -309,8 +338,8 @@ extension ProfileSetupViewController:UIPickerViewDelegate,UIPickerViewDataSource
         let pickerView = self.view.viewWithTag(PICKERVIEW_TAG)
         if(pickerView != nil) {
             picker = pickerView as? UIPickerView
-            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
-                picker?.frame = CGRectMake(0,UIScreen.mainScreen().bounds.size.height,UIScreen.mainScreen().bounds.size.width,200)
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.allowUserInteraction, animations: {
+                picker?.frame = CGRect(x: 0,y: UIScreen.main.bounds.size.height,width: UIScreen.main.bounds.size.width,height: 200)
             }) { (finish) in
                 picker?.removeFromSuperview()
             }
@@ -328,7 +357,7 @@ extension ProfileSetupViewController:UIPickerViewDelegate,UIPickerViewDataSource
     }
 
     // MARK: - UIPickerViewDataSource
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         if selectedTextField!.isEqual(lengthTextField) {
             return 2
         }else if selectedTextField!.isEqual(weightTextField) {
@@ -337,7 +366,7 @@ extension ProfileSetupViewController:UIPickerViewDelegate,UIPickerViewDataSource
         return 2
     }
 
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if selectedTextField!.isEqual(lengthTextField) {
             if(component == 0) {
                 return lengthArray.count
@@ -357,11 +386,11 @@ extension ProfileSetupViewController:UIPickerViewDelegate,UIPickerViewDataSource
     }
 
     // MARK: - UIPickerViewDelegate
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 35
     }
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if selectedTextField!.isEqual(lengthTextField) {
             if (component == 0) {
                 return "\(lengthArray[row])"
@@ -380,7 +409,7 @@ extension ProfileSetupViewController:UIPickerViewDelegate,UIPickerViewDataSource
         return ""
     }
 
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if selectedTextField!.isEqual(lengthTextField) {
             if component == 0 {
                 lengthTextField.text = "\(lengthArray[row])"

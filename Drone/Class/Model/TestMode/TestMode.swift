@@ -7,20 +7,40 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class TestMode: NSObject {
-    private var packetData:[NSData]?//所属按键数据包
-    private var pressedData:[NSData]?//松开按键接收数据包
+    private static var __once: () = {
+            TestModeSingleton.instance=TestMode()
+            }()
+    fileprivate var packetData:[Data]?//所属按键数据包
+    fileprivate var pressedData:[Data]?//松开按键接收数据包
 
-    class func shareInstance(datas:[NSData])->TestMode{
+    class func shareInstance(_ datas:[Data])->TestMode{
         struct TestModeSingleton{
-            static var predicate:dispatch_once_t = 0
+            static var predicate:Int = 0
             static var instance:TestMode?
         }
-        dispatch_once(&TestModeSingleton.predicate,{
-            TestModeSingleton.instance=TestMode()
-            }
-        )
+        _ = TestMode.__once
         TestModeSingleton.instance?.setPacketData(datas)
         return TestModeSingleton.instance!
     }
@@ -29,12 +49,12 @@ class TestMode: NSObject {
 
     }
 
-    func setPacketData(data:[NSData]){
+    func setPacketData(_ data:[Data]){
         let header:UInt8 = NSData2Bytes(data[0])[1]
         let instruction:UInt8 = NSData2Bytes(data[0])[2]
         if(header == 0xF1 && (instruction == 0x02)){
             pressedData = data;
-            packetData?.removeAll(keepCapacity: true)
+            packetData?.removeAll(keepingCapacity: true)
         }
 
         if(header == 0xF1 && (instruction == 0x00)){
@@ -51,8 +71,8 @@ class TestMode: NSObject {
             let isModelInstruction:UInt8 = NSData2Bytes(packetData![0])[2]
 
             if(header == 0xF1 && (instruction == 0x02) && isModelHeader == 0xF1 && (isModelInstruction == 0x00)){
-                pressedData?.removeAll(keepCapacity: true)
-                packetData?.removeAll(keepCapacity: true)
+                pressedData?.removeAll(keepingCapacity: true)
+                packetData?.removeAll(keepingCapacity: true)
                 return true;
             }else{
                 return false

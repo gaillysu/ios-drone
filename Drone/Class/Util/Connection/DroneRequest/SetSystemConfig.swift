@@ -9,14 +9,14 @@
 import UIKit
 
 class SetSystemConfig: NevoRequest {
-    private var mAutoStart:NSTimeInterval = 0
-    private var mAutoEnd:NSTimeInterval = 0
-    private var mIndex:Int = 0
+    fileprivate var mAutoStart:TimeInterval = 0
+    fileprivate var mAutoEnd:TimeInterval = 0
+    fileprivate var mIndex:Int = 0
     class func HEADER() -> UInt8 {
         return 0x0F
     }
 
-    init(autoStart:NSTimeInterval,autoEnd:NSTimeInterval,index:Int) {
+    init(autoStart:TimeInterval,autoEnd:TimeInterval,index:Int) {
         super.init()
         mAutoStart = autoStart
         mAutoEnd = autoEnd
@@ -37,6 +37,6 @@ class SetSystemConfig: NevoRequest {
                                 UInt8((Int(mAutoEnd)>>8)&0xFF),0,0,0,0,0,0,0,0,0,0,0,0]
         let requestArray:[[UInt8]] = [values1,values2,values3]
 
-        return NSArray(array: [NSData(bytes: requestArray[mIndex], length: requestArray[mIndex].count)])
+        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(requestArray[mIndex]), count: requestArray[mIndex].count)])
     }
 }

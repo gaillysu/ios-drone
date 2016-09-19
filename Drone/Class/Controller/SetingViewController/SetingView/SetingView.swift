@@ -15,7 +15,7 @@ class SetingView: UIView {
 
 
 
-    @IBAction func buttonAction(sender: AnyObject) {
+    @IBAction func buttonAction(_ sender: AnyObject) {
     }
     
     /**
@@ -27,13 +27,13 @@ class SetingView: UIView {
 
      :returns: UITableViewCell
      */
-    class func NotificationSystemTableViewCell(indexPath:NSIndexPath,tableView:UITableView,title:String,imageName:String)->UITableViewCell {
+    class func NotificationSystemTableViewCell(_ indexPath:IndexPath,tableView:UITableView,title:String,imageName:String)->UITableViewCell {
         let endCellID:String = "NotificationSystemTableViewCell"
-        var endCell = tableView.dequeueReusableCellWithIdentifier(endCellID)
+        var endCell = tableView.dequeueReusableCell(withIdentifier: endCellID)
         if (endCell == nil) {
-            endCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: endCellID)
+            endCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: endCellID)
         }
-        endCell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        endCell?.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         //endCell?.selectionStyle = UITableViewCellSelectionStyle.None;
         endCell?.textLabel?.text = title
         endCell?.imageView?.image = UIImage(named: imageName)

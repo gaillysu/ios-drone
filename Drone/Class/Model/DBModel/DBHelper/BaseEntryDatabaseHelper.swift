@@ -9,10 +9,10 @@
 import Foundation
 
 protocol BaseEntryDatabaseHelper {
-    func add(result:((id:Int?,completion:Bool?) -> Void))
+    func add(_ result:((_ id:Int?,_ completion:Bool?) -> Void))
     func update()->Bool
     func remove()->Bool
     static func removeAll()->Bool
-    static func getCriteria(criteria:String)->NSArray
+    static func getCriteria(_ criteria:String)->NSArray
     static func getAll()->NSArray
 }

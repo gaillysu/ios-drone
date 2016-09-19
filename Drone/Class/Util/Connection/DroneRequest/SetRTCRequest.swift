@@ -19,8 +19,8 @@ class SetRTCRequest: NevoRequest {
 
     override func getRawDataEx() -> NSArray {
         // hahaha
-        let timeZone:Int = NSTimeZone.localTimeZone().secondsFromGMT/900
-        let timer:Int = Int(NSDate().timeIntervalSince1970)
+        let timeZone:Int = NSTimeZone.local.secondsFromGMT()/900
+        let timer:Int = Int(Date().timeIntervalSince1970)
 
         let values1 :[UInt8] = [0x80,SetRTCRequest.HEADER(),
             UInt8(timer&0xFF),
@@ -28,6 +28,6 @@ class SetRTCRequest: NevoRequest {
             UInt8(timer>>16&0xFF),
             UInt8(timer>>24&0xFF),
             UInt8(timeZone&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0]
-        return NSArray(array: [NSData(bytes: values1, length: values1.count)])
+        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
     }
 }

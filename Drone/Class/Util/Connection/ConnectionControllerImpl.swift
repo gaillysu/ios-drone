@@ -14,8 +14,8 @@ See ConnectionController
 🚧🚧🚧Backbone Class : Modify with care🚧🚧🚧
 */
 class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate {
-    private var mNevoBT:NevoBT?
-    private var mDelegate:ConnectionControllerDelegate?
+    fileprivate var mNevoBT:NevoBT?
+    fileprivate var mDelegate:ConnectionControllerDelegate?
     
     /**
     This procedure explain the scan procedure
@@ -32,20 +32,20 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     This status is used to search in SCAN_PROCEDURE to know when is the next time we should scan
     */
-    private var mScanProcedureStatus = 0
+    fileprivate var mScanProcedureStatus = 0
     
     /**
     This time handles the retry procedure
     */
-    private var mRetryTimer:NSTimer?
+    fileprivate var mRetryTimer:Timer?
     
     /**
     this parameter saved old BLE 's  address, when doing BLE OTA, the address has been changed to another one
     so, after finisned BLE ota, must restore it to normal 's address
     */
-    private var savedAddress:String?
+    fileprivate var savedAddress:String?
 
-    private let log = XCGLogger.defaultInstance()
+    fileprivate let log = XCGLogger.default
 
     /**
     No initialisation outside of this class, this is a singleton
@@ -60,7 +60,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See ConnectionController protocol
     */
-    func setDelegate(delegate:ConnectionControllerDelegate) {
+    func setDelegate(_ delegate:ConnectionControllerDelegate) {
         log.debug("New delegate : \(delegate)")
         
         mDelegate = delegate
@@ -69,7 +69,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See ConnectionController protocol
     */
-    func connect(addres:[String]) {
+    func connect(_ addres:[String]) {
         //If we're already connected, no need to reconnect
         if isConnected() {
             return;
@@ -78,9 +78,9 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         //We're not connected, let's connect
         if addres.count>0 {
             log.debug("We have a saved address, let's connect to it directly : \(addres)")
-            var uuidArray:[NSUUID] = []
+            var uuidArray:[UUID] = []
             for addresString:String in addres {
-                let uuid = NSUUID(UUIDString: addresString)
+                let uuid = UUID(uuidString: addresString)
                 if (uuid != nil) {
                     uuidArray.append(uuid!)
                 }
@@ -96,17 +96,17 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See NevoBTDelegate
     */
-    func connectionStateChanged(isConnected : Bool, fromAddress : NSUUID!) {
+    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!) {
         mDelegate?.connectionStateChanged(isConnected)
         
         if (!isConnected) {
-            connect([fromAddress.UUIDString])
+            connect([fromAddress.uuidString])
         } else {
             //Let's save this address
-            let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.UUIDString)","connectionTimer":NSDate().timeIntervalSince1970])
+            let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.uuidString)","connectionTimer":Date().timeIntervalSince1970])
             
             if UserDevice.isExistInTable() {
-                let device:NSArray = UserDevice.getCriteria("WHERE identifiers LIKE '%\(fromAddress.UUIDString)'")
+                let device:NSArray = UserDevice.getCriteria("WHERE identifiers LIKE '%\(fromAddress.uuidString)'")
                 if device.count == 0 {
                     userDevice.add({ (id, completion) in
                         
@@ -125,7 +125,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See NevoBTDelegate
     */
-    func firmwareVersionReceived(whichfirmware:DfuFirmwareTypes, version:NSString) {
+    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString) {
        mDelegate?.firmwareVersionReceived(whichfirmware, version: version)
     }
 
@@ -134,7 +134,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
 
     :param: number, Signal strength value
     */
-    func receivedRSSIValue(number:NSNumber) {
+    func receivedRSSIValue(_ number:NSNumber) {
         //AppTheme.DLog("Red RSSI Value:\(number)")
         mDelegate?.receivedRSSIValue(number)
     }
@@ -160,7 +160,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See ConnectionController protocol
     */
-    func sendRequest(request:Request) {
+    func sendRequest(_ request:Request) {
         if(getOTAMode() && (request.getTargetProfile().CONTROL_SERVICE != NevoOTAModeProfile().CONTROL_SERVICE
                         && request.getTargetProfile().CONTROL_SERVICE != NevoOTAControllerProfile().CONTROL_SERVICE))
         {
@@ -194,18 +194,18 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
     See NevoBTDelegate
     */
-    func packetReceived(packet:RawPacket, fromAddress : NSUUID) {
+    func packetReceived(_ packet:RawPacket, fromAddress : UUID) {
         mDelegate?.packetReceived(packet)
     }
     
-    func cockRoachDataReceived(coordinates: CoordinateSet, withAddress address: NSUUID, forBabyCockroach number: Int) {
+    func cockRoachDataReceived(_ coordinates: CoordinateSet, withAddress address: UUID, forBabyCockroach number: Int) {
         mDelegate?.cockRoachDataReceived(coordinates, withAddress: address, forBabyCockroach: number)
     }
 
     /**
     See ConnectionController
     */
-    func setOTAMode(OTAMode:Bool,Disconnect:Bool) {
+    func setOTAMode(_ OTAMode:Bool,Disconnect:Bool) {
         
         //No need to change the mode if we are already in OTA Mode
         if getOTAMode() == OTAMode {
@@ -229,7 +229,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         }
     }
 
-    func cockRoachesChanged(isConnected: Bool, fromAddress: NSUUID!) {
+    func cockRoachesChanged(_ isConnected: Bool, fromAddress: UUID!) {
         mDelegate?.cockRoachesChanged(isConnected, fromAddress: fromAddress)
     }
     

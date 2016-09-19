@@ -16,11 +16,11 @@ class WorldClockCell: UITableViewCell {
     
     @IBOutlet weak var timeDescription: UILabel!
     
-    class func getWorldClockCell(tableView:UITableView,indexPath:NSIndexPath,clock:WorldClockModel)->UITableViewCell {
+    class func getWorldClockCell(_ tableView:UITableView,indexPath:IndexPath,clock:WorldClockModel)->UITableViewCell {
         let identifier:String = "WorldClockCell"
-        var cell:WorldClockCell = tableView.dequeueReusableCellWithIdentifier(identifier) as! WorldClockCell
-        let nibs:NSArray = NSBundle.mainBundle().loadNibNamed("WorldClockCell", owner: self, options: nil)
-        cell = (nibs.objectAtIndex(0) as? WorldClockCell)!
+        var cell:WorldClockCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! WorldClockCell
+        let nibs:NSArray = Bundle.main.loadNibNamed("WorldClockCell", owner: self, options: nil)
+        cell = (nibs.object(at: 0) as? WorldClockCell)!
         cell.cityLabel.text = clock.city_name
         let systemName:String? = clock.system_name;
         cell.timeDescription.text = "\(TimeUtil.getGmtOffSetForCity(systemName!))"
@@ -31,7 +31,7 @@ class WorldClockCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     

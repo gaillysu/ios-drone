@@ -9,10 +9,10 @@
 import UIKit
 
 class ConnectionManager: NSObject {
-    private var mConnectedLocalMsg:[UILocalNotification] = []
-    private var mDisconnectedLocalMsg:[UILocalNotification] = []
-    private var mIsSendLocalMsg:Bool = false
-    private let mIsSendLocalMsgKey:String = "IsSendLocalMsg"
+    fileprivate var mConnectedLocalMsg:[UILocalNotification] = []
+    fileprivate var mDisconnectedLocalMsg:[UILocalNotification] = []
+    fileprivate var mIsSendLocalMsg:Bool = false
+    fileprivate let mIsSendLocalMsgKey:String = "IsSendLocalMsg"
     
     struct Const {
         static var connectedTime:Int?
@@ -44,7 +44,7 @@ class ConnectionManager: NSObject {
     /**
     No initialisation outside of this class, this is a singleton
     */
-    private override init() {
+    fileprivate override init() {
         super.init()
         mIsSendLocalMsg = getIsSendLocalMsg()
     }
@@ -55,9 +55,9 @@ class ConnectionManager: NSObject {
     :returns: <#return value description#>
     */
     func getIsSendLocalMsg() -> Bool {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let userDefaults = UserDefaults.standard
         var val:Bool = false
-        if let isOpen: AnyObject = userDefaults.objectForKey(mIsSendLocalMsgKey) {
+        if let isOpen: AnyObject = userDefaults.object(forKey: mIsSendLocalMsgKey) as AnyObject? {
             val = isOpen as! Bool
         }
         return val
@@ -68,9 +68,9 @@ class ConnectionManager: NSObject {
     
     :param: val bool
     */
-    func setIsSendLocalMsg(val:Bool){
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setObject(val,forKey:mIsSendLocalMsgKey)
+    func setIsSendLocalMsg(_ val:Bool){
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(val,forKey:mIsSendLocalMsgKey)
         userDefaults.synchronize()
     }
     
@@ -79,10 +79,10 @@ class ConnectionManager: NSObject {
     
     :param: timeInter timeIntervalSince1970
     */
-    func setConnectedTime(timeInter:Int) {
+    func setConnectedTime(_ timeInter:Int) {
         //remove all connected msg before
         removeAllConnectionMsgBefore()
-        let nowTime = Int(NSDate().timeIntervalSince1970)
+        let nowTime = Int(Date().timeIntervalSince1970)
         ConnectionManager.Const.connectedTime = timeInter
         
         if let preConnectedTime = ConnectionManager.Const.connectedTime {
@@ -103,14 +103,14 @@ class ConnectionManager: NSObject {
             if nowTime - preDisconnectedTime < Int(ConnectionManager.Const.maxReconnectTime) {
                 var arrayIndex = 0
                 for disMsg in mDisconnectedLocalMsg {
-                    let disMsgTimer:NSDate = disMsg.fireDate!
+                    let disMsgTimer:Date = disMsg.fireDate!
                     NSLog("cancel disconnect msg \(disMsgTimer.timeIntervalSince1970)")
                     //if the msg is not show , cancel it
-                    if NSDate().timeIntervalSince1970 - disMsgTimer.timeIntervalSince1970 < 0 {
-                        UIApplication.sharedApplication().cancelLocalNotification(disMsg)
-                        mDisconnectedLocalMsg.removeAtIndex(arrayIndex)
+                    if Date().timeIntervalSince1970 - disMsgTimer.timeIntervalSince1970 < 0 {
+                        UIApplication.shared.cancelLocalNotification(disMsg)
+                        mDisconnectedLocalMsg.remove(at: arrayIndex)
                     }
-                    arrayIndex++
+                    arrayIndex += 1
                 }
             }
             
@@ -121,17 +121,17 @@ class ConnectionManager: NSObject {
     /**
     remove all connection msg before, so we only see one msg
     */
-    func removeAllConnectionMsgBefore(type:Const.connectionLocalMsgType = Const.connectionLocalMsgType.all) {
+    func removeAllConnectionMsgBefore(_ type:Const.connectionLocalMsgType = Const.connectionLocalMsgType.all) {
         if ConnectionManager.Const.isShowBeforeMsg == false {
             if type == Const.connectionLocalMsgType.all || type == Const.connectionLocalMsgType.connected {
                 for cmsgTimer in mConnectedLocalMsg {
-                    UIApplication.sharedApplication().cancelLocalNotification(cmsgTimer)
+                    UIApplication.shared.cancelLocalNotification(cmsgTimer)
                 }
                 mConnectedLocalMsg = []
             }
             if type == Const.connectionLocalMsgType.all || type == Const.connectionLocalMsgType.disconnected {
                 for dmsgTimer in mDisconnectedLocalMsg {
-                    UIApplication.sharedApplication().cancelLocalNotification(dmsgTimer)
+                    UIApplication.shared.cancelLocalNotification(dmsgTimer)
                 }
                 mDisconnectedLocalMsg = []
             }
@@ -144,7 +144,7 @@ class ConnectionManager: NSObject {
     
     :param: timeInter timeIntervalSince1970
     */
-    func setDisconnectTime(timeInter:Int) {
+    func setDisconnectTime(_ timeInter:Int) {
         removeAllConnectionMsgBefore(ConnectionManager.Const.connectionLocalMsgType.disconnected)
         ConnectionManager.Const.disconnectTime = timeInter
         if let connectedTime = ConnectionManager.Const.connectedTime {
@@ -163,13 +163,13 @@ class ConnectionManager: NSObject {
     
     :param: type ConnectionManager.Const.connectionStatus
     */
-    func checkConnectSendNotification(type:ConnectionManager.Const.connectionStatus){
+    func checkConnectSendNotification(_ type:ConnectionManager.Const.connectionStatus){
         //if not open the send local notification , not go on
         if getIsSendLocalMsg() == false {
             NSLog("checkConnectSendNotification local notification not open")
             return
         }
-        let nowTime = Int(NSDate().timeIntervalSince1970)
+        let nowTime = Int(Date().timeIntervalSince1970)
         switch type {
         case .connected:
             NSLog("checkConnectSendNotification connected time \(nowTime)")

@@ -12,21 +12,21 @@ class UpdateContactsFilterRequest: NevoRequest {
     /**
      Length of contact field
      */
-    private var mContactLength:Int = 0
+    fileprivate var mContactLength:Int = 0
     /**
      Contact string (Max 64)
      */
-    private var mContactName:String = ""
+    fileprivate var mContactName:String = ""
     /**
      <0x01> - append contact
      <0x02> - remove contact
      <0x03> - append/update contact with ID
      */
-    private var mOperation:Int = 0
+    fileprivate var mOperation:Int = 0
     /**
      [Optional Field] sets contact Id if operation is <0x03>
      */
-    private var mContactID:Int = 3
+    fileprivate var mContactID:Int = 3
 
     class func HEADER() -> UInt8 {
         return 0x1A
@@ -34,7 +34,7 @@ class UpdateContactsFilterRequest: NevoRequest {
 
     init(contact:String,operation:Int,contactID:Int) {
         super.init()
-        mContactLength = contact.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        mContactLength = contact.lengthOfBytes(using: String.Encoding.utf8)
         mContactName = contact
         mOperation = operation
         if(contactID != 0) {
@@ -43,13 +43,13 @@ class UpdateContactsFilterRequest: NevoRequest {
     }
 
     override func getRawDataEx() -> NSArray {
-        let hexArray:[UInt8] = NSData2Bytes(mContactName.dataUsingEncoding(NSUTF8StringEncoding)!)
+        let hexArray:[UInt8] = NSData2Bytes(mContactName.data(using: String.Encoding.utf8)!)
         var values1 :[UInt8] = [UpdateContactsFilterRequest.HEADER(),UInt8(mContactLength&0xFF)]+hexArray+[UInt8(mOperation&0xFF),UInt8(mContactID&0xFF)]
         
         var valueArray:[UInt8] = []
-        var dataArray:[NSData] = []
+        var dataArray:[Data] = []
         if values1.count>=20 {
-            for (index,value) in values1.enumerate() {
+            for (index,value) in values1.enumerated() {
                 let header:UInt8 = 0x00
                 let header1:UInt8 = 0x80
                 
@@ -63,7 +63,7 @@ class UpdateContactsFilterRequest: NevoRequest {
                 valueArray.append(value)
                 
                 if valueArray.count == 20 {
-                    dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                    dataArray.append(Data(bytes: UnsafePointer<UInt8>(valueArray), count: valueArray.count))
                     valueArray.removeAll()
                 }
                 
@@ -73,18 +73,18 @@ class UpdateContactsFilterRequest: NevoRequest {
                             valueArray.append(0x00)
                         }
                     }
-                    dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                    dataArray.append(Data(bytes: UnsafePointer<UInt8>(valueArray), count: valueArray.count))
                     valueArray.removeAll()
                 }
             }
         }else{
-            values1.insert(0x80, atIndex: 0)
+            values1.insert(0x80, at: 0)
             if(values1.count < 20) {
                 for _:Int in values1.count..<20 {
                     values1.append(0x00)
                 }
             }
-            dataArray.append(NSData(bytes: values1, length: values1.count));
+            dataArray.append(Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count));
         }
         return NSArray(array: dataArray)
     }

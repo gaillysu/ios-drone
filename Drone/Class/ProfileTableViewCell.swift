@@ -10,10 +10,10 @@ import Foundation
 
 class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
    
-    private var inputVariables: NSMutableArray = NSMutableArray()
-    private var keyBoardType:Type?{
+    fileprivate var inputVariables: NSMutableArray = NSMutableArray()
+    fileprivate var keyBoardType:Type?{
         didSet {
-            if keyBoardType == Type.Email {
+            if keyBoardType == Type.email {
 //                itemTextField.enabled = false
 //                editButton.hidden = true
             }
@@ -23,13 +23,13 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
     var textPreFix = "";
     var textPostFix = "";
     var cellIndex:Int = 0
-    var editCellTextField:((index:Int, text:String) -> Void)?
+    var editCellTextField:((_ index:Int, _ text:String) -> Void)?
     
-    enum Type{
-        case Numeric
-        case Text
-        case Email
-        case Date
+    enum `Type`{
+        case numeric
+        case text
+        case email
+        case date
     }
     
     @IBOutlet weak var itemTextField: UITextField!
@@ -37,44 +37,44 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
     
     override func awakeFromNib() {
         itemTextField.delegate = self;
-        separatorInset = UIEdgeInsetsZero
+        separatorInset = UIEdgeInsets.zero
         preservesSuperviewLayoutMargins = false
-        layoutMargins = UIEdgeInsetsZero
+        layoutMargins = UIEdgeInsets.zero
     }
     
-    @IBAction func editButtonAction(sender: AnyObject) {
-        if itemTextField.isFirstResponder() {
+    @IBAction func editButtonAction(_ sender: AnyObject) {
+        if itemTextField.isFirstResponder {
             itemTextField.resignFirstResponder()
         }else{
             itemTextField.becomeFirstResponder()
         }
     }
     
-    func setInputVariables(vars:NSMutableArray){
+    func setInputVariables(_ vars:NSMutableArray){
         self.inputVariables = vars
     }
     
-    func setType(type:Type){
+    func setType(_ type:Type){
         keyBoardType = type
-        if type == Type.Email {
-            itemTextField.keyboardType = UIKeyboardType.EmailAddress
-        }else if type == Type.Numeric {
+        if type == Type.email {
+            itemTextField.keyboardType = UIKeyboardType.emailAddress
+        }else if type == Type.numeric {
             let picker = UIPickerView();
             picker.delegate = self;
             picker.dataSource = self;
             itemTextField.inputView = picker;
-        }else if type == Type.Date {
+        }else if type == Type.date {
             let datePicker:UIDatePicker = UIDatePicker()
-            datePicker.datePickerMode = UIDatePickerMode.Date
+            datePicker.datePickerMode = UIDatePickerMode.date
             itemTextField.inputView = datePicker
-            datePicker.addTarget(self, action: #selector(selectedDateAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+            datePicker.addTarget(self, action: #selector(selectedDateAction(_:)), for: UIControlEvents.valueChanged)
         }else{
-            itemTextField.keyboardType = UIKeyboardType.Default
+            itemTextField.keyboardType = UIKeyboardType.default
         }
     }
     
     // MARK: - UITextFieldDelegate
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentCharacterCount = textField.text?.characters.count ?? 0
         if (range.length + range.location > currentCharacterCount){
             return false
@@ -83,52 +83,52 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDe
         return newLength <= 25
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        if keyBoardType == Type.Date {
-            editCellTextField?(index: cellIndex,text: textField.text!.componentsSeparatedByString(" ")[1])
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if keyBoardType == Type.date {
+            editCellTextField?(cellIndex,textField.text!.components(separatedBy: " ")[1])
         }else{
-            editCellTextField?(index: cellIndex,text: textField.text!)
+            editCellTextField?(cellIndex,textField.text!)
         }
         
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true;
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
     
     // MARK: - UIPickerViewDataSource
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return inputVariables.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(inputVariables[row])"+"\(textPostFix)"
     }
     
     // MARK: - UIPickerViewDelegate
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         itemTextField.text = "\(textPreFix)"+"\(inputVariables[row])"+"\(textPostFix)"
-        editCellTextField?(index: cellIndex,text: "\(inputVariables[row])")
+        editCellTextField?(cellIndex,"\(inputVariables[row])")
     }
     
-    func selectedDateAction(date:UIDatePicker) {
+    func selectedDateAction(_ date:UIDatePicker) {
         NSLog("date:\(date.date)")
         itemTextField.text = "\(textPreFix)"+self.dateFormattedStringWithFormat("yyyy-MM-dd", fromDate: date.date)
-        editCellTextField?(index: cellIndex,text: self.dateFormattedStringWithFormat("yyyy-MM-dd", fromDate: date.date))
+        editCellTextField?(cellIndex,self.dateFormattedStringWithFormat("yyyy-MM-dd", fromDate: date.date))
     }
     
-    func dateFormattedStringWithFormat(format: String, fromDate date: NSDate) -> String {
-        let formatter = NSDateFormatter()
+    func dateFormattedStringWithFormat(_ format: String, fromDate date: Date) -> String {
+        let formatter = DateFormatter()
         formatter.dateFormat = format
-        return formatter.stringFromDate(date)
+        return formatter.string(from: date)
     }
 }

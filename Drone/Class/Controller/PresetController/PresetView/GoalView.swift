@@ -13,31 +13,31 @@ class GoalView: UITableView {
 
     var leftButton:UIBarButtonItem?
 
-    func bulidPresetView(navigation:UINavigationItem){
+    func bulidPresetView(_ navigation:UINavigationItem){
         navigation.title = NSLocalizedString("Preset", comment: "")
-        leftButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("controllManager:"))
+        leftButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: Selector("controllManager:"))
         navigation.rightBarButtonItem = leftButton
     }
 
-    func getPresetTableViewCell(indexPath:NSIndexPath,tableView:UITableView,goalArray:[UserGoal])->UITableViewCell{
+    func getPresetTableViewCell(_ indexPath:IndexPath,tableView:UITableView,goalArray:[UserGoal])->UITableViewCell{
         let endCellID:String = "PresetTableViewCell"
-        var endCell = tableView.dequeueReusableCellWithIdentifier(endCellID)
+        var endCell = tableView.dequeueReusableCell(withIdentifier: endCellID)
         if (endCell == nil) {
-            let nibs:NSArray = NSBundle.mainBundle().loadNibNamed("PresetTableViewCell", owner: self, options: nil)
-            endCell = nibs.objectAtIndex(0) as? GoalTableViewCell;
+            let nibs:NSArray = Bundle.main.loadNibNamed("PresetTableViewCell", owner: self, options: nil)
+            endCell = nibs.object(at: 0) as? GoalTableViewCell;
             (endCell as! GoalTableViewCell).goalStates.tintColor = UIColor.getBaseColor()
             (endCell as! GoalTableViewCell).goalStates.onTintColor = UIColor.getBaseColor()
         }
-        (endCell as! GoalTableViewCell).goalStates.tag = indexPath.row
+        (endCell as! GoalTableViewCell).goalStates.tag = (indexPath as NSIndexPath).row
         
-        let goalModel:UserGoal = goalArray[indexPath.row]
+        let goalModel:UserGoal = goalArray[(indexPath as NSIndexPath).row]
         (endCell as! GoalTableViewCell).goalSteps.text = "\(goalModel.goalSteps)"
         (endCell as! GoalTableViewCell).goalName.text = goalModel.label
-        (endCell as! GoalTableViewCell).goalStates.on = goalModel.status
+        (endCell as! GoalTableViewCell).goalStates.isOn = goalModel.status
         if(!goalModel.status){
-            (endCell as! GoalTableViewCell).backgroundColor = UIColor.clearColor()
+            (endCell as! GoalTableViewCell).backgroundColor = UIColor.clear
         }
-        endCell?.selectionStyle = UITableViewCellSelectionStyle.None;
+        endCell?.selectionStyle = UITableViewCellSelectionStyle.none;
         return endCell!
     }
  

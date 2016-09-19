@@ -21,13 +21,13 @@ protocol ConnectionController {
     Layer struct: L1(NevoBT) -->L2 (ConnectionController,Single instance) -->L3 (syncController, single instance)
     -->L4(UI viewController), L1 is the base Layer, L4 is the top layer
     */
-    func setDelegate(connectionDelegate: ConnectionControllerDelegate)
+    func setDelegate(_ connectionDelegate: ConnectionControllerDelegate)
     
     /**
     Tries to connect to a Nevo
     Myabe it will scan for nearby nevo, maybe it will simply connect to a known nevo
     */
-    func connect(addres:[String])
+    func connect(_ addres:[String])
     
     /**
     Checks if there's a device currently connected
@@ -37,14 +37,14 @@ protocol ConnectionController {
     /**
     Tries to send a request, you can't be sure that it will effectively be sent
     */
-    func sendRequest(request: Request)
+    func sendRequest(_ request: Request)
     
     /**
     Enters the OTA mode. In this mode, it searchs for OTA enabled Nevo
     It won't connect to other Nevo and will stop sending regular nevo querries
     add second parameter, when BLE ota, auto disconnect by BLE peer, so no need disconnect it again
     */
-    func setOTAMode(OTAMode:Bool,Disconnect:Bool)
+    func setOTAMode(_ OTAMode:Bool,Disconnect:Bool)
 
     /**
     Checks whether the connection controller is in OTA mode
@@ -74,25 +74,25 @@ protocol ConnectionControllerDelegate {
     /**
     Called when a packet is received from the device
     */
-    func packetReceived(rawPacket: RawPacket)
+    func packetReceived(_ rawPacket: RawPacket)
     
     /**
     Called when a peripheral connects or disconnects
     */
-    func connectionStateChanged(isConnected : Bool)
+    func connectionStateChanged(_ isConnected : Bool)
     
-    func cockRoachDataReceived(coordinates:CoordinateSet, withAddress address:NSUUID, forBabyCockroach number:Int)
+    func cockRoachDataReceived(_ coordinates:CoordinateSet, withAddress address:UUID, forBabyCockroach number:Int)
     
-    func cockRoachesChanged(isConnected : Bool, fromAddress : NSUUID!)
+    func cockRoachesChanged(_ isConnected : Bool, fromAddress : UUID!)
     /**
     Call when finish reading Firmware
     @parameter whichfirmware, firmware type
     @parameter version, return the version
     */
-    func firmwareVersionReceived(whichfirmware:DfuFirmwareTypes, version:NSString)
+    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString)
 
     /**
     *  Receiving the current device signal strength value
     */
-    func receivedRSSIValue(number:NSNumber)
+    func receivedRSSIValue(_ number:NSNumber)
 }

@@ -13,8 +13,8 @@ Represents a series of packets concatenated together to form the response from t
 🚧🚧🚧Backbone Class : Modify with care🚧🚧🚧
 */
 class NevoPacket {
-    private var mPackets:[NSData]=[]
-    private var mHeader:UInt8 = 0
+    fileprivate var mPackets:[Data]=[]
+    fileprivate var mHeader:UInt8 = 0
     let endFlag:UInt8 = 0xFF
     
     struct DailyHistory
@@ -41,14 +41,14 @@ class NevoPacket {
         var TotalDeepTime:Int = 0;
         var HourlyDeepTime:[Int] = [];
         //end add new
-        var Date:NSDate;
-        init( date:NSDate)
+        var Date:Foundation.Date;
+        init( date:Foundation.Date)
         {
            Date = date
         }
     }
     
-    init(packets:[NSData])
+    init(packets:[Data])
     {
         if(packets.count >= 2)
         {
@@ -61,7 +61,7 @@ class NevoPacket {
     {
         return mHeader
     }
-    func getPackets() ->[NSData]
+    func getPackets() ->[Data]
     {
         return mPackets
     }
@@ -75,7 +75,7 @@ class NevoPacket {
         }
         if(mPackets.count == 78)
         {
-            for var i:Int = 0 ;i < mPackets.count ; i++
+            for i:Int in 0  ..< mPackets.count 
             {
                 if UInt8(i) != NSData2Bytes(mPackets[i])[0] && i != mPackets.count - 1
                 {

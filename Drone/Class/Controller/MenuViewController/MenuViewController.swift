@@ -21,7 +21,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     var menuItems: [MenuItem] = []
     
     init() {
-        super.init(nibName: "MenuViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "MenuViewController", bundle: Bundle.main)
         self.menuItems.append(MenuItem(controllerName: "StepsViewController", title: "Activities", image: UIImage(named: "icon_activities")!));
         
         self.menuItems.append(MenuItem(controllerName: "WorldClockViewController", title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
@@ -40,12 +40,12 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         AppDelegate.getAppDelegate().startConnect()
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         
-        menuTableView.registerNib(UINib(nibName: "MenuViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: identifier)
+        menuTableView.register(UINib(nibName: "MenuViewCell", bundle: Bundle.main), forCellReuseIdentifier: identifier)
         AppDelegate.getAppDelegate().startConnect()
 
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY) { (notification) -> Void in
@@ -58,8 +58,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 //            NSLog("SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY  :\(connectionState)")
             if(connectionState){
 
-                let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC)))
-                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                     //setp1: cmd 0x01, set RTC, for every connected Nevo
                     AppDelegate.getAppDelegate().readsystemStatus()
                 })
@@ -76,15 +76,15 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
-            MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
+            MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             let stepsArray:NSArray = UserSteps.getCriteria(String(format: "WHERE syncnext = %@",false))
-            var dayDateArray:[NSDate] = []
+            var dayDateArray:[Date] = []
             for steps in stepsArray{
                 let userSteps:UserSteps = steps as! UserSteps
-                let date:NSDate = NSDate(timeIntervalSince1970: userSteps.date).beginningOfDay
+                let date:Date = Date(timeIntervalSince1970: userSteps.date).beginningOfDay
                 var addKey:Bool = true
-                for queryDate:NSDate in dayDateArray{
-                    if queryDate.isEqualToDate(date) {
+                for queryDate:Date in dayDateArray{
+                    if queryDate == date {
                         addKey = false
                         break
                     }
@@ -125,24 +125,24 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         
 
-        let profileButton:UIButton = UIButton(type: UIButtonType.Custom)
-        profileButton.setImage(UIImage(named: "icon_profile"), forState: UIControlState.Normal)
-        profileButton.frame = CGRectMake(0, 0, 45, 45);
+        let profileButton:UIButton = UIButton(type: UIButtonType.custom)
+        profileButton.setImage(UIImage(named: "icon_profile"), for: UIControlState())
+        profileButton.frame = CGRect(x: 0, y: 0, width: 45, height: 45);
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
-        profileButton.addTarget(self, action: #selector(MenuViewController.leftAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        profileButton.addTarget(self, action: #selector(MenuViewController.leftAction(_:)), for: UIControlEvents.touchUpInside)
         
-        let addWatchButton:UIButton = UIButton(type: UIButtonType.Custom)
-        addWatchButton.setImage(UIImage(named: "icon_add_watch"), forState: UIControlState.Normal)
-        addWatchButton.frame = CGRectMake(0, 0, 45, 45)
-        addWatchButton.addTarget(self, action: #selector(MenuViewController.rightAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        let addWatchButton:UIButton = UIButton(type: UIButtonType.custom)
+        addWatchButton.setImage(UIImage(named: "icon_add_watch"), for: UIControlState())
+        addWatchButton.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        addWatchButton.addTarget(self, action: #selector(MenuViewController.rightAction(_:)), for: UIControlEvents.touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addWatchButton);
         
         var titleView : UIImageView
-        titleView = UIImageView(frame:CGRectMake(0, 0, 50, 70))
-        titleView.contentMode = .ScaleAspectFit
+        titleView = UIImageView(frame:CGRect(x: 0, y: 0, width: 50, height: 70))
+        titleView.contentMode = .scaleAspectFit
         titleView.image = UIImage(named: "drone_logo")
         self.navigationItem.titleView = titleView
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         //add test steps data function
         /**
@@ -164,52 +164,52 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if (UserProfile.getAll().count == 0){
             let navigationController = UINavigationController(rootViewController:WelcomeViewController());
-            navigationController.navigationBarHidden = true
-            self.presentViewController(navigationController, animated: true, completion: nil);
+            navigationController.isNavigationBarHidden = true
+            self.present(navigationController, animated: true, completion: nil);
         }
     }
 
-    func leftAction(item:UIBarButtonItem) {
+    func leftAction(_ item:UIBarButtonItem) {
         if (UserProfile.getAll().count == 0){
             let navigationController = UINavigationController(rootViewController:WelcomeViewController());
-            navigationController.navigationBarHidden = true
-            self.presentViewController(navigationController, animated: true, completion: nil);
+            navigationController.isNavigationBarHidden = true
+            self.present(navigationController, animated: true, completion: nil);
             
         }else{
             let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
-            profileNavigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), forBarMetrics: UIBarMetrics.Default)
-            self.presentViewController(profileNavigationController, animated: true) {}
+            profileNavigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+            self.present(profileNavigationController, animated: true) {}
         }
     }
 
-    func rightAction(item:UIBarButtonItem) {
+    func rightAction(_ item:UIBarButtonItem) {
         self.navigationController?.title = "WATCH SETTINGS"
         self.navigationController?.pushViewController(MyDeviceViewController(), animated: true);
     }
     
     
     //Will be no sync of data sync to the server
-    func syncServiceDayData(dayDateArray:[NSDate]) {
+    func syncServiceDayData(_ dayDateArray:[Date]) {
         
         var dayData:[String:String] = [:]
         var dayTime:[Double] = []
         var cidArray:[Int] = []
-        for day:NSDate in dayDateArray {
+        for day:Date in dayDateArray {
             var yVals:[[Double]] = []
             var activeTime:Double = 0
-            let dayDate:NSDate = day
+            let dayDate:Date = day
             var cid:Int = 0
             for hour:Int in 0 ..< 24 {
-                let dayTime:NSTimeInterval = NSDate.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: hour, minute: 0, second: 0).timeIntervalSince1970
+                let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: hour, minute: 0, second: 0).timeIntervalSince1970
                 let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
                 var hourData:[Double] = [0,0,0,0,0,0,0,0,0,0,0,0]
                 var timer:Double = 0
                 for userSteps in hours {
                     let hSteps:UserSteps = userSteps as! UserSteps
-                    let minutesDate:NSDate = NSDate(timeIntervalSince1970: hSteps.date)
+                    let minutesDate:Date = Date(timeIntervalSince1970: hSteps.date)
                     var k:Int = Int(minutesDate.minute/5)
                     if minutesDate.minute == 0 {
                         k = 0
@@ -236,10 +236,10 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             }
             
             let dailySteps = AppTheme.toJSONString(yVals)
-            let date:NSDate = dayDate
-            let formatter = NSDateFormatter()
+            let date:Date = dayDate
+            let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
-            let dateString = "\(formatter.stringFromDate(date))"
+            let dateString = "\(formatter.string(from: date))"
             dayData[dateString] = "\(dailySteps)"
             dayTime.append(activeTime)
             cidArray.append(cid)
@@ -258,15 +258,15 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     }
  
-    func updateToServerData(cid:Int,key:String,value:String) {
+    func updateToServerData(_ cid:Int,key:String,value:String) {
         let userProfle:NSArray = UserProfile.getAll()
-        let profile:UserProfile = userProfle.objectAtIndex(0) as! UserProfile
+        let profile:UserProfile = userProfle.object(at: 0) as! UserProfile
         
         //create steps network global queue
-        let queue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        let group = dispatch_group_create()
+        let queue:DispatchQueue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
+        let group = DispatchGroup()
         
-        dispatch_group_async(group, queue, {
+        queue.async(group: group, execute: {
             HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/update", data: ["steps": ["id":"\(cid)","uid": "\(profile.id)","steps": "\(value)","date": "\(key)","active_time":0]], completion: { (result) in
                 let json = JSON(result)
                 let message = json["message"].stringValue
@@ -282,20 +282,20 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         })
         
         
-        dispatch_group_notify(group, queue, {
-            XCGLogger.defaultInstance().debug("create steps completed")
+        group.notify(queue: queue, execute: {
+            XCGLogger.default.debug("create steps completed")
         })
     }
     
-    func createToServerData(key:String,value:String) {
+    func createToServerData(_ key:String,value:String) {
         let userProfle:NSArray = UserProfile.getAll()
-        let profile:UserProfile = userProfle.objectAtIndex(0) as! UserProfile
+        let profile:UserProfile = userProfle.object(at: 0) as! UserProfile
         
         //create steps network global queue
-        let queue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        let group = dispatch_group_create()
+        let queue:DispatchQueue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
+        let group = DispatchGroup()
         
-        dispatch_group_async(group, queue, {
+        queue.async(group: group, execute: {
             HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(value)","date": "\(key)","active_time":0]], completion: { (result) in
                 let json = JSON(result)
                 let message = json["message"].stringValue
@@ -311,34 +311,34 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         })
         
         
-        dispatch_group_notify(group, queue, {
-            XCGLogger.defaultInstance().debug("create steps completed")
+        group.notify(queue: queue, execute: {
+            XCGLogger.default.debug("create steps completed")
         })
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: MenuViewCell = menuTableView.dequeueReusableCellWithIdentifier(identifier) as! MenuViewCell
-        let item:MenuItem = self.menuItems[indexPath.row]
-        cell.menuItemLabel.text = item.menuTitle.uppercaseString
-        cell.menuItemLabel.highlightedTextColor = UIColor.whiteColor()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: MenuViewCell = menuTableView.dequeueReusableCell(withIdentifier: identifier) as! MenuViewCell
+        let item:MenuItem = self.menuItems[(indexPath as NSIndexPath).row]
+        cell.menuItemLabel.text = item.menuTitle.uppercased()
+        cell.menuItemLabel.highlightedTextColor = UIColor.white
         cell.imageView?.image = item.image;
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.getTintColor()
         cell.selectedBackgroundView = bgColorView
         if(item.commingSoon){
-            cell.userInteractionEnabled = false;
+            cell.isUserInteractionEnabled = false;
         }
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let item:MenuItem = self.menuItems[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item:MenuItem = self.menuItems[(indexPath as NSIndexPath).row]
 
-        let infoDictionary:[String : AnyObject] = NSBundle.mainBundle().infoDictionary!
+        let infoDictionary:[String : AnyObject] = Bundle.main.infoDictionary! as [String : AnyObject]
         let appName:String = infoDictionary["CFBundleName"] as! String
 
         //Use the init of class name
@@ -346,11 +346,11 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let controllerType : UIViewController.Type = classType as! UIViewController.Type
         let viewController: UIViewController = controllerType.init()
 
-        menuTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        menuTableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat((menuTableView.frame.height/3));
     }
     

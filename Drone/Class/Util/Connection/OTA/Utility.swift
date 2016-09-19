@@ -17,68 +17,68 @@ struct DFUResponse
 }
 
 enum  enumFileExtension: UInt8 {
-    case HEX,ZIP,BIN
+    case hex,zip,bin
 }
 
 enum  enumPacketOption: Int{
-    case PACKETS_NOTIFICATION_INTERVAL = 10,
-    PACKET_SIZE = 20
+    case packets_NOTIFICATION_INTERVAL = 10,
+    packet_SIZE = 20
 }
 
 enum DfuOperations :UInt8 {
-    case START_DFU_REQUEST = 0x01,
-    INITIALIZE_DFU_PARAMETERS_REQUEST = 0x02,
-    RECEIVE_FIRMWARE_IMAGE_REQUEST = 0x03,
-    VALIDATE_FIRMWARE_REQUEST = 0x04,
-    ACTIVATE_AND_RESET_REQUEST = 0x05,
-    RESET_SYSTEM = 0x06,
-    PACKET_RECEIPT_NOTIFICATION_REQUEST = 0x08,
-    RESPONSE_CODE = 0x10,
-    PACKET_RECEIPT_NOTIFICATION_RESPONSE = 0x11
+    case start_DFU_REQUEST = 0x01,
+    initialize_DFU_PARAMETERS_REQUEST = 0x02,
+    receive_FIRMWARE_IMAGE_REQUEST = 0x03,
+    validate_FIRMWARE_REQUEST = 0x04,
+    activate_AND_RESET_REQUEST = 0x05,
+    reset_SYSTEM = 0x06,
+    packet_RECEIPT_NOTIFICATION_REQUEST = 0x08,
+    response_CODE = 0x10,
+    packet_RECEIPT_NOTIFICATION_RESPONSE = 0x11
     
 }
 
 enum DfuOperationStatus:UInt8{
-    case OPERATION_SUCCESSFUL_RESPONSE = 0x01,
-    OPERATION_INVALID_RESPONSE = 0x02,
-    OPERATION_NOT_SUPPORTED_RESPONSE = 0x03,
-    DATA_SIZE_EXCEEDS_LIMIT_RESPONSE = 0x04,
-    CRC_ERROR_RESPONSE = 0x05,
-    OPERATION_FAILED_RESPONSE = 0x06
+    case operation_SUCCESSFUL_RESPONSE = 0x01,
+    operation_INVALID_RESPONSE = 0x02,
+    operation_NOT_SUPPORTED_RESPONSE = 0x03,
+    data_SIZE_EXCEEDS_LIMIT_RESPONSE = 0x04,
+    crc_ERROR_RESPONSE = 0x05,
+    operation_FAILED_RESPONSE = 0x06
     
 }
 
 enum DFUControllerState
 {
-    case INIT,
-    DISCOVERING,
-    IDLE,
-    SEND_NOTIFICATION_REQUEST,
-    SEND_START_COMMAND,
-    SEND_RECEIVE_COMMAND,
-    SEND_FIRMWARE_DATA,
-    SEND_VALIDATE_COMMAND,
-    SEND_RESET,
-    WAIT_RECEIPT,
-    FINISHED,
-    CANCELED,
-    SEND_RECONNECT
+    case `init`,
+    discovering,
+    idle,
+    send_NOTIFICATION_REQUEST,
+    send_START_COMMAND,
+    send_RECEIVE_COMMAND,
+    send_FIRMWARE_DATA,
+    send_VALIDATE_COMMAND,
+    send_RESET,
+    wait_RECEIPT,
+    finished,
+    canceled,
+    send_RECONNECT
 }
 
 enum DfuFirmwareTypes:UInt8{
-    case  SOFTDEVICE = 0x01,
-    BOOTLOADER = 0x02,
-    SOFTDEVICE_AND_BOOTLOADER = 0x03,
-    APPLICATION = 0x04
+    case  softdevice = 0x01,
+    bootloader = 0x02,
+    softdevice_AND_BOOTLOADER = 0x03,
+    application = 0x04
 }
 
-func Bytes2NSData(bytes:[UInt8]) -> NSData
+func Bytes2NSData(_ bytes:[UInt8]) -> Data
 {
-  return NSData(bytes: bytes, length: bytes.count)
+  return Data(bytes: UnsafePointer<UInt8>(bytes), count: bytes.count)
 }
-func NSData2Bytes(data:NSData) -> [UInt8]
+func NSData2Bytes(_ data:Data) -> [UInt8]
 {
-    let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(data.bytes), count:data.length)
+    let bytes = UnsafeBufferPointer<UInt8>(start: (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count), count:data.count)
     
     var ret:[UInt8] = []
     for  byte in bytes {
@@ -87,9 +87,9 @@ func NSData2Bytes(data:NSData) -> [UInt8]
     return ret
 }
 
-func NSData2BytesSigned(data:NSData) -> [Int8]
+func NSData2BytesSigned(_ data:Data) -> [Int8]
 {
-    let bytes = UnsafeBufferPointer<Int8>(start: UnsafePointer(data.bytes), count:data.length)
+    let bytes = UnsafeBufferPointer<Int8>(start: (data as NSData).bytes.bindMemory(to: Int8.self, capacity: data.count), count:data.count)
     
     var ret:[Int8] = []
     for  byte in bytes {
@@ -99,41 +99,44 @@ func NSData2BytesSigned(data:NSData) -> [Int8]
 }
 
 
-func NSString2NSData(string:NSString) -> NSData
+func NSString2NSData(_ string:NSString) -> Data
 {
     let mString = string
-    let trimmedString:String = mString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<> ")).stringByReplacingOccurrencesOfString(" ", withString: "")
+    let trimmedString:String = mString.trimmingCharacters(in: CharacterSet(charactersIn: "<> ")).replacingOccurrences(of: " ", with: "")
     
     // make sure the cleaned up string consists solely of hex digits, and that we have even number of them
     
     var regex:NSRegularExpression?
     do {
-        regex = try NSRegularExpression(pattern: "^[0-9a-f]*$", options: .CaseInsensitive)
+        regex = try NSRegularExpression(pattern: "^[0-9a-f]*$", options: .caseInsensitive)
     } catch {
         // deal with not exist
     }
 
-    let found = regex!.firstMatchInString(trimmedString, options: NSMatchingOptions.Anchored, range: NSMakeRange(0, trimmedString.characters.count))
+    let found = regex!.firstMatch(in: trimmedString, options: NSRegularExpression.MatchingOptions.anchored, range: NSMakeRange(0, trimmedString.characters.count))
     if found == nil || found?.range.location == NSNotFound || trimmedString.characters.count % 2 != 0 {
-        return NSData()
+        return Data()
     }
     
     // everything ok, so now let's build NSData
     
     let data = NSMutableData(capacity: trimmedString.characters.count / 2)
-    
-    for var index = trimmedString.startIndex; index < trimmedString.endIndex; index = index.successor().successor() {
-        let byteString = trimmedString.substringWithRange(Range<String.Index>(start: index, end: index.successor().successor()))
-        let num = UInt8(byteString.withCString { strtoul($0, nil, 16) })
-        data?.appendBytes([num] as [UInt8], length: 1)
+    //for var index = trimmedString.startIndex; index < trimmedString.endIndex; index = index.successor().successor() {
+
+    for index in 0..<trimmedString.characters.count {
+//        let byteString = trimmedString.substringWithRange(Range<String.Index>(start: index, end: index.successor().successor()))
+
+        let byteString2 = trimmedString.substring(to: (index + 2))
+        let num = UInt8(byteString2.withCString { strtoul($0, nil, 16) })
+        data?.append([num] as [UInt8], length: 1)
     }
     
-    return data!
+    return data! as Data
 }
 
-func NSData2NSString(data:NSData) -> NSString {
+func NSData2NSString(_ data:Data) -> NSString {
     let str:NSMutableString = NSMutableString()
-    let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(data.bytes), count:data.length)
+    let bytes = UnsafeBufferPointer<UInt8>(start: (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count), count:data.count)
     for byte in bytes {
         str.appendFormat("%02hhx", byte)
     }
@@ -143,14 +146,14 @@ func NSData2NSString(data:NSData) -> NSString {
 /**
 transfer GMT NSDate to locale NSDate
 */
-func GmtNSDate2LocaleNSDate(gmtDate:NSDate) ->NSDate
+func GmtNSDate2LocaleNSDate(_ gmtDate:Date) ->Date
 {
-    let sourceTimeZone:NSTimeZone = NSTimeZone(name: "UTC")!
-    let destinationTimeZone:NSTimeZone = NSTimeZone.localTimeZone()
-    let sourceGMTOffset:Int = sourceTimeZone.secondsFromGMTForDate(gmtDate)
-    let destinationGMTOffset:Int = destinationTimeZone.secondsFromGMTForDate(gmtDate)
-    let interval:NSTimeInterval = NSTimeInterval(destinationGMTOffset) - NSTimeInterval(sourceGMTOffset)
-    let destinationDateNow:NSDate = NSDate(timeInterval: interval, sinceDate: gmtDate)
+    let sourceTimeZone:TimeZone = TimeZone(identifier: "UTC")!
+    let destinationTimeZone:TimeZone = TimeZone.autoupdatingCurrent
+    let sourceGMTOffset:Int = sourceTimeZone.secondsFromGMT(for: gmtDate)
+    let destinationGMTOffset:Int = destinationTimeZone.secondsFromGMT(for: gmtDate)
+    let interval:TimeInterval = TimeInterval(destinationGMTOffset) - TimeInterval(sourceGMTOffset)
+    let destinationDateNow:Date = Date(timeInterval: interval, since: gmtDate)
     return destinationDateNow
 }
 

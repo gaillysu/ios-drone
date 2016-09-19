@@ -11,10 +11,10 @@ import Foundation
 class CockroachMasterDataReceived {
     
     let coordinates: CoordinateSet
-    let address : NSUUID
+    let address : UUID
     let babyCockroachNumber: Int
     
-    init(coordinates: CoordinateSet, address: NSUUID, babyCockroachNumber:Int){
+    init(coordinates: CoordinateSet, address: UUID, babyCockroachNumber:Int){
         self.coordinates = coordinates
         self.address = address
         self.babyCockroachNumber = babyCockroachNumber

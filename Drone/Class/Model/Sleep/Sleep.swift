@@ -10,9 +10,9 @@ import Foundation
 
 class Sleep{
     
-    private var weakSleep:Double;
-    private var lightSleep:Double;
-    private var deepSleep:Double;
+    fileprivate var weakSleep:Double;
+    fileprivate var lightSleep:Double;
+    fileprivate var deepSleep:Double;
     
     init(weakSleep: Double, lightSleep:Double , deepSleep:Double ){
         self.deepSleep  = deepSleep;

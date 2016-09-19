@@ -12,16 +12,16 @@ class UpdateContactsApplicationsRequest: NevoRequest {
     /**
      Application package string length
      */
-    private var mAppPackageLength:Int = 0
+    fileprivate var mAppPackageLength:Int = 0
     /**
      Application package to be updated
      */
-    private var mAppPackage:String = ""
+    fileprivate var mAppPackage:String = ""
     /**
      <0x00> - Use default notification filters.
      <0x01> - Use contacts filtering
      */
-    private var mOperationMode:Int = 0
+    fileprivate var mOperationMode:Int = 0
 
     /**
      Bitfield informing ANCS fields scanning algorithm
@@ -31,7 +31,7 @@ class UpdateContactsApplicationsRequest: NevoRequest {
      b7: <SET> - “Begins with” match;
      <RESET> - “any” match
      */
-    private var mSearchFields:UInt8 = 0x01
+    fileprivate var mSearchFields:UInt8 = 0x01
 
     class func HEADER() -> UInt8 {
         return 0x1B
@@ -40,18 +40,18 @@ class UpdateContactsApplicationsRequest: NevoRequest {
     init(appPackage:String,operationMode:Int) {
         super.init()
         mAppPackage = appPackage
-        mAppPackageLength = appPackage.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        mAppPackageLength = appPackage.lengthOfBytes(using: String.Encoding.utf8)
         mOperationMode = operationMode
     }
 
     override func getRawDataEx() -> NSArray {
-        let hexArray:[UInt8] = NSData2Bytes(mAppPackage.dataUsingEncoding(NSUTF8StringEncoding)!)
+        let hexArray:[UInt8] = NSData2Bytes(mAppPackage.data(using: String.Encoding.utf8)!)
         var values1 :[UInt8] = [UpdateContactsApplicationsRequest.HEADER(),UInt8(mAppPackageLength&0xFF)]+hexArray+[UInt8(mOperationMode&0xFF),UInt8(mSearchFields&0xFF)]
         
         var valueArray:[UInt8] = []
-        var dataArray:[NSData] = []
+        var dataArray:[Data] = []
         if values1.count>=20 {
-            for (index,value) in values1.enumerate() {
+            for (index,value) in values1.enumerated() {
                 let header:UInt8 = 0x00
                 let header1:UInt8 = 0x80
                 
@@ -65,7 +65,7 @@ class UpdateContactsApplicationsRequest: NevoRequest {
                 valueArray.append(value)
                 
                 if valueArray.count == 20 {
-                    dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                    dataArray.append(Data(bytes: UnsafePointer<UInt8>(valueArray), count: valueArray.count))
                     valueArray.removeAll()
                 }
                 
@@ -75,18 +75,18 @@ class UpdateContactsApplicationsRequest: NevoRequest {
                             valueArray.append(0x00)
                         }
                     }
-                    dataArray.append(NSData(bytes: valueArray, length: valueArray.count))
+                    dataArray.append(Data(bytes: UnsafePointer<UInt8>(valueArray), count: valueArray.count))
                     valueArray.removeAll()
                 }
             }
         }else{
-            values1.insert(0x80, atIndex: 0)
+            values1.insert(0x80, at: 0)
             if(values1.count < 20) {
                 for _:Int in values1.count..<20 {
                     values1.append(0x00)
                 }
             }
-            dataArray.append(NSData(bytes: values1, length: values1.count));
+            dataArray.append(Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count));
         }
         return NSArray(array: dataArray)
     }

@@ -23,27 +23,27 @@ class GoalModel: UserDatabaseHelper {
      @param criteria To find the condition
      @param returns Returns the find results
      */
-    override class func getCriteria(criteria:String)->NSArray {
+    override class func getCriteria(_ criteria:String)->NSArray {
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
         let goal:NSMutableArray = NSMutableArray()
         dbQueue.inDatabase { (db) -> Void in
             var tableName:String =  NSStringFromClass(self.classForCoder())
-            tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
+            tableName = tableName.replacingOccurrences(of: ".", with: "")
             let sql:String = "SELECT * FROM \(tableName) \(criteria)"
-            let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
+            let resultSet:FMResultSet = db!.executeQuery(sql, withArgumentsIn: nil)
             while (resultSet.next()) {
                 let model:GoalModel = GoalModel()
 
                 for i:Int in 0 ..< model.columeNames.count {
-                    let columeName:NSString = (model.columeNames.objectAtIndex(i) as! NSString)
-                    let columeType:NSString = (model.columeTypes.objectAtIndex(i) as! NSString)
-                    if (columeType.isEqualToString(SQLTEXT)) {
-                        model.setValue(resultSet.stringForColumn("\(columeName)"), forKey: "\(columeName)")
+                    let columeName:NSString = (model.columeNames.object(at: i) as! NSString)
+                    let columeType:NSString = (model.columeTypes.object(at: i) as! NSString)
+                    if (columeType.isEqual(to: SQLTEXT)) {
+                        model.setValue(resultSet.string(forColumn: "\(columeName)"), forKey: "\(columeName)")
                     } else {
-                        model.setValue(NSNumber(longLong: resultSet.longLongIntForColumn("\(columeName)")), forKey: "\(columeName)")
+                        model.setValue(NSNumber(value: resultSet.longLongInt(forColumn: "\(columeName)") as Int64), forKey: "\(columeName)")
                     }
                 }
-                goal.addObject(model)
+                goal.add(model)
             }
         }
         return goal;
@@ -57,23 +57,23 @@ class GoalModel: UserDatabaseHelper {
         let dbQueue:FMDatabaseQueue = AppDelegate.getAppDelegate().dbQueue
         let goal:NSMutableArray = NSMutableArray()
         dbQueue.inDatabase { (db) -> Void in
-            var tableName:NSString = NSStringFromClass(self.classForCoder())
-            tableName = tableName.stringByReplacingOccurrencesOfString(".", withString: "")
+            var tableName:NSString = NSStringFromClass(self.classForCoder()) as NSString
+            tableName = tableName.replacingOccurrences(of: ".", with: "") as NSString
             let sql:String = "SELECT * FROM \(tableName)"
-            let resultSet:FMResultSet = db.executeQuery(sql, withArgumentsInArray: nil)
+            let resultSet:FMResultSet = db!.executeQuery(sql, withArgumentsIn: nil)
             while (resultSet.next()) {
                 let model:GoalModel = GoalModel()
 
                 for i:Int in 0 ..< model.columeNames.count {
-                    let columeName:NSString = model.columeNames.objectAtIndex(i) as! NSString
-                    let columeType:NSString = model.columeTypes.objectAtIndex(i) as! NSString
-                    if (columeType.isEqualToString(SQLTEXT)) {
-                        model.setValue(resultSet.stringForColumn("\(columeName)"), forKey: "\(columeName)")
+                    let columeName:NSString = model.columeNames.object(at: i) as! NSString
+                    let columeType:NSString = model.columeTypes.object(at: i) as! NSString
+                    if (columeType.isEqual(to: SQLTEXT)) {
+                        model.setValue(resultSet.string(forColumn: "\(columeName)"), forKey: "\(columeName)")
                     } else {
-                        model.setValue(NSNumber(longLong: resultSet.longLongIntForColumn("\(columeName)")), forKey: "\(columeName)")
+                        model.setValue(NSNumber(value: resultSet.longLongInt(forColumn: "\(columeName)") as Int64), forKey: "\(columeName)")
                     }
                 }
-                goal.addObject(model)
+                goal.add(model)
             }
 
         }

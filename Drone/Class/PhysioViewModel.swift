@@ -11,15 +11,15 @@ import Foundation
 class PhysioViewModel: NSObject {
     
     let name:String
-    let createdDate:NSDate
+    let createdDate:Date
     
     init(withExercise exercise:Exercise) {
         self.name = exercise.instruction!.name
-        self.createdDate = exercise.instruction!.createdDate
+        self.createdDate = exercise.instruction!.createdDate as Date
     }
     
     init(withInstruction instruction:Instruction) {
         self.name = instruction.name
-        self.createdDate = instruction.createdDate
+        self.createdDate = instruction.createdDate as Date
     }
 }

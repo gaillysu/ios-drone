@@ -38,32 +38,32 @@ class PhysioViewController: BaseViewController, UITableViewDelegate, UITableView
         if self.getAppDelegate().getConnectedCockroaches().count == 0 {
             self.showNoCockroachConnectedDialog()
         }else{
-            self.presentViewController(self.makeStandardUINavigationController(AddInstructionViewController()), animated: true, completion: nil)
+            self.present(self.makeStandardUINavigationController(AddInstructionViewController()), animated: true, completion: nil)
         }
     }
     
-    private func showNoCockroachConnectedDialog(){
-        let chooseAction = UIAlertController(title: "No cockroaches connected", message: "Why don't you connect a cockroach before getting started?", preferredStyle: UIAlertControllerStyle.Alert)
-        let connectAction:UIAlertAction = UIAlertAction(title: "Connect", style: UIAlertActionStyle.Default) { (action:UIAlertAction) -> Void in
-            self.presentViewController(self.makeStandardUINavigationController(PhysioDeviceViewController()), animated: true, completion: nil)
+    fileprivate func showNoCockroachConnectedDialog(){
+        let chooseAction = UIAlertController(title: "No cockroaches connected", message: "Why don't you connect a cockroach before getting started?", preferredStyle: UIAlertControllerStyle.alert)
+        let connectAction:UIAlertAction = UIAlertAction(title: "Connect", style: UIAlertActionStyle.default) { (action:UIAlertAction) -> Void in
+            self.present(self.makeStandardUINavigationController(PhysioDeviceViewController()), animated: true, completion: nil)
         }
-        let cancelAction:UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil)
+        let cancelAction:UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: nil)
         chooseAction.addAction(connectAction)
         chooseAction.addAction(cancelAction)
-        self.presentViewController(chooseAction, animated: true, completion:nil)
+        self.present(chooseAction, animated: true, completion:nil)
     }
 }
 
 // UITableViewDelegate & Datasource
 extension PhysioViewController{
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.exerciseTableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var header:UITableViewHeaderFooterView
-        if let dequeuedHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(headerIdentifier){
+        if let dequeuedHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerIdentifier){
             header = dequeuedHeader
         }else{
             header = UITableViewHeaderFooterView(reuseIdentifier: headerIdentifier)
@@ -82,27 +82,27 @@ extension PhysioViewController{
         return header
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let instruction:Instruction = self.instructions![indexPath.row]
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let instruction:Instruction = self.instructions![(indexPath as NSIndexPath).row]
             try! realm.write({
                 realm.delete(instruction)
             })
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
-        let button1 = UITableViewRowAction(style: .Default, title: "Delete", handler: { (action, indexPath) in
-            self.tableView(tableView, commitEditingStyle: .Delete, forRowAtIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
+        let button1 = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            self.tableView(tableView, commit: .delete, forRowAt: indexPath)
         })
         button1.backgroundColor = UIColor.getTintColor()
         return [button1]
     }
 
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        switch indexPath.section {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        switch (indexPath as NSIndexPath).section {
         case 0:
             return true
         default:
@@ -110,16 +110,16 @@ extension PhysioViewController{
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
-        if let dequeuedCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier){
+        if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
             cell = dequeuedCell
         }else{
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         }
-        switch indexPath.section {
+        switch (indexPath as NSIndexPath).section {
         case 0:
-            let instruction = self.instructions![indexPath.row]
+            let instruction = self.instructions![(indexPath as NSIndexPath).row]
             cell.textLabel?.text = "Name: \(instruction.name), amount of sensors required: \(instruction.totalAmountOfCockroaches)"
             cell.detailTextLabel?.text = "Created on \(instruction.createdDate.day)/\(instruction.createdDate.month)"
             break
@@ -132,18 +132,18 @@ extension PhysioViewController{
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if self.getAppDelegate().getConnectedCockroaches().count == 0 {
             self.showNoCockroachConnectedDialog()
         }else{
             let doExerciseViewController = DoExerciseViewController()
-            doExerciseViewController.instruction = self.instructions![indexPath.row]
-            self.presentViewController(self.makeStandardUINavigationController(doExerciseViewController), animated: true, completion: nil)
+            doExerciseViewController.instruction = self.instructions![(indexPath as NSIndexPath).row]
+            self.present(self.makeStandardUINavigationController(doExerciseViewController), animated: true, completion: nil)
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return (self.instructions?.count)!
@@ -154,7 +154,7 @@ extension PhysioViewController{
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 }

@@ -11,17 +11,17 @@ import RealmSwift
 import SwiftyJSON
 class WorldClockDatabaseHelper: NSObject {
     
-    private let WORLDCLOCK_KEY:String = "defaults_worldclock_key";
+    fileprivate let WORLDCLOCK_KEY:String = "defaults_worldclock_key";
     
-    private let WORLDCLOCK_NEWEST_VERSION:Int = 4;
-    private let realm:Realm
+    fileprivate let WORLDCLOCK_NEWEST_VERSION:Int = 4;
+    fileprivate let realm:Realm
     
     let worldclockVersion:Int
     
     override init() {
         realm = try! Realm()
-        let defaults = NSUserDefaults.standardUserDefaults()
-        worldclockVersion = defaults.integerForKey(WORLDCLOCK_KEY);
+        let defaults = UserDefaults.standard
+        worldclockVersion = defaults.integer(forKey: WORLDCLOCK_KEY);
     }
     
     func setup(){
@@ -36,11 +36,11 @@ class WorldClockDatabaseHelper: NSObject {
         print(oldCities.count)
         if(forceSync || WORLDCLOCK_NEWEST_VERSION > worldclockVersion){
             print("We need to update.")
-            if let citiesPath = NSBundle.mainBundle().pathForResource("cities", ofType: "json"),
-                let timezonesPath = NSBundle.mainBundle().pathForResource("timezones", ofType: "json"){
+            if let citiesPath = Bundle.main.path(forResource: "cities", ofType: "json"),
+                let timezonesPath = Bundle.main.path(forResource: "timezones", ofType: "json"){
                 do{
-                    let citiesData = try NSData(contentsOfURL: NSURL(fileURLWithPath: citiesPath), options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                    let timezonesData = try NSData(contentsOfURL: NSURL(fileURLWithPath: timezonesPath), options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                    let citiesData = try Data(contentsOf: URL(fileURLWithPath: citiesPath), options: NSData.ReadingOptions.mappedIfSafe)
+                    let timezonesData = try Data(contentsOf: URL(fileURLWithPath: timezonesPath), options: NSData.ReadingOptions.mappedIfSafe)
                     let citiesJSON = JSON(data: citiesData)
                     let timezonesJSON = JSON(data: timezonesData)
                     if citiesJSON != JSON.null && timezonesJSON != JSON.null {
@@ -80,8 +80,8 @@ class WorldClockDatabaseHelper: NSObject {
                                 realm.delete(oldCities)
                                 realm.delete(oldTimezones)
                             })
-                            let defaults = NSUserDefaults.standardUserDefaults()
-                            defaults.setInteger(WORLDCLOCK_NEWEST_VERSION, forKey: WORLDCLOCK_KEY);
+                            let defaults = UserDefaults.standard
+                            defaults.set(WORLDCLOCK_NEWEST_VERSION, forKey: WORLDCLOCK_KEY);
                         }else if addedCities.count > 0 || addedTimezones.count > 0 {
                             try! realm.write({
                                 realm.delete(addedCities)

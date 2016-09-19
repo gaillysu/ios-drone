@@ -25,13 +25,13 @@ protocol NevoHK {
     Writes the given datapoint to the database
     This function will ensure that there are no doublons
     */
-    func writeDataPoint(dataPoint: NevoHKDataPoint,resultHandler:((Bool?,NSError?) -> Void))
+    func writeDataPoint(_ dataPoint: NevoHKDataPoint,resultHandler:((Bool?,NSError?) -> Void))
     
     /**
     Checks if a data point is present in the DB
     returns an empty Optional if we don't have the right to read this kind of data
     */
-    func isPresent(dataPoint: NevoHKDataPoint, resultHandler:((Bool?) -> Void) )
+    func isPresent(_ dataPoint: NevoHKDataPoint, resultHandler:((Bool?) -> Void) )
     
 }
 
@@ -51,5 +51,5 @@ protocol NevoHK {
     HKDataPoint should be mapable to a HealtkKitQuantity sample
     It's the only prerequisite
     */
-    optional func toHKCategorySample()-> HKCategorySample
+    @objc optional func toHKCategorySample()-> HKCategorySample
 }

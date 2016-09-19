@@ -23,7 +23,7 @@ protocol RawPacket {
     /**
     The raw packet data
     */
-    func getRawData() -> NSData
+    func getRawData() -> Data
     
     /**
     return the packet's Header(protocol command)
@@ -41,11 +41,11 @@ protocol RawPacket {
 }
 
 class RawPacketImpl : RawPacket {
-    private var mData:NSData
-    private var mProfile:Profile
+    fileprivate var mData:Data
+    fileprivate var mProfile:Profile
     
     
-    init( data:NSData, profile:Profile ) {
+    init( data:Data, profile:Profile ) {
         mData=data
         mProfile=profile
     }
@@ -54,7 +54,7 @@ class RawPacketImpl : RawPacket {
         return mProfile
     }
     
-    func getRawData() -> NSData {
+    func getRawData() -> Data {
         return mData
     }
     

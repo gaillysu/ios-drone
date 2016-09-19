@@ -20,7 +20,7 @@ class SetGoalRequest : NevoRequest {
         return 0x12
     }
 
-    private var mThisGoal : Goal
+    fileprivate var mThisGoal : Goal
     
     init (goal : Goal) {
         mThisGoal = goal
@@ -45,7 +45,7 @@ class SetGoalRequest : NevoRequest {
             UInt8((goal_steps>>24)&0xFF)
             ,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-    return NSArray(array: [NSData(bytes: values1, length: values1.count)])
+    return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
     }
     
 }

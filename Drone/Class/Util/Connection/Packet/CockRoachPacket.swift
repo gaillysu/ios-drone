@@ -20,7 +20,7 @@ class CockRoachPacket:NSObject {
     let Z1:Int
     let Z2:Int
     let cockRoachNumber:Int
-    init(data:NSData){
+    init(data:Data){
         let intData = NSData2BytesSigned(data)
         self.X0 = Int(Int16(intData[1] << 7) | Int16(intData[0]))
         self.X1 = Int(Int16(intData[3] << 7) | Int16(intData[2]))

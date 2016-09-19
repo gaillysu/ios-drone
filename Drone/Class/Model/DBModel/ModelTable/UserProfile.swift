@@ -18,19 +18,19 @@ class UserProfile: NSObject {
     var length:Int = 0 //CM
     var stride_length:Int = 0 //CM
     var metricORimperial:Bool = false
-    var created:NSTimeInterval = NSDate().timeIntervalSince1970
+    var created:TimeInterval = Date().timeIntervalSince1970
     var email:String = ""
 
-    private var profileModel:ProfileModel = ProfileModel()
+    fileprivate var profileModel:ProfileModel = ProfileModel()
 
     init(keyDict:NSDictionary) {
         super.init()
-        keyDict.enumerateKeysAndObjectsUsingBlock { (key, value, stop) in
+        keyDict.enumerateKeysAndObjects { (key, value, stop) in
             self.setValue(value, forKey: key as! String)
         }
     }
 
-    func add(result:((id:Int?,completion:Bool?) -> Void)){
+    func add(_ result:@escaping ((_ id:Int?,_ completion:Bool?) -> Void)){
         profileModel.id = id
         profileModel.first_name = first_name
         profileModel.last_name = last_name
@@ -43,7 +43,7 @@ class UserProfile: NSObject {
         profileModel.created = created
         profileModel.email = email
         profileModel.add { (id, completion) -> Void in
-            result(id: id, completion: completion)
+            result(id, completion)
         }
     }
 
@@ -71,14 +71,14 @@ class UserProfile: NSObject {
         return ProfileModel.removeAll()
     }
 
-    class func getCriteria(criteria:String)->NSArray{
+    class func getCriteria(_ criteria:String)->NSArray{
         let modelArray:NSArray = ProfileModel.getCriteria(criteria)
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let userProfileModel:ProfileModel = model as! ProfileModel
 
             let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"weight":userProfileModel.weight,"length":userProfileModel.length,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
-            allArray.addObject(profile)
+            allArray.add(profile)
         }
         return allArray
     }
@@ -89,7 +89,7 @@ class UserProfile: NSObject {
         for model in modelArray {
             let userProfileModel:ProfileModel = model as! ProfileModel
             let profile:UserProfile = UserProfile(keyDict: ["id":userProfileModel.id,"first_name":userProfileModel.first_name,"last_name":"\(userProfileModel.last_name)","birthday":userProfileModel.birthday,"gender":userProfileModel.gender,"weight":userProfileModel.weight,"length":userProfileModel.length,"stride_length":userProfileModel.stride_length,"metricORimperial":userProfileModel.metricORimperial,"created":userProfileModel.created,"email":userProfileModel.email])
-            allArray.addObject(profile)
+            allArray.add(profile)
         }
         return allArray
     }
@@ -103,5 +103,5 @@ class UserProfile: NSObject {
     }
 
     // Prevent the object properties and KVC dict key don't crash
-    override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 }
