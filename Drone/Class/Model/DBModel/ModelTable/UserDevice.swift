@@ -9,6 +9,16 @@
 import UIKit
 
 class UserDevice: NSObject,BaseEntryDatabaseHelper {
+    internal func add(_ result: @escaping ((Int?, Bool?) -> Void)) {
+        deviceModel.device_name = device_name
+        deviceModel.identifiers = identifiers
+        deviceModel.connectionTimer = connectionTimer
+        
+        deviceModel.add { (id, completion) -> Void in
+            result(id, completion)
+        }
+    }
+
     var id:Int = 0
     var device_name:String = ""
     var identifiers:String = ""
@@ -18,20 +28,11 @@ class UserDevice: NSObject,BaseEntryDatabaseHelper {
 
     init(keyDict:NSDictionary) {
         super.init()
-        keyDict.enumerateKeysAndObjects { (key, value, stop) in
+        for (key, value) in keyDict{
             self.setValue(value, forKey: key as! String)
         }
     }
-
-    func add(_ result:@escaping ((_ id:Int?,_ completion:Bool?) -> Void)){
-        deviceModel.device_name = device_name
-        deviceModel.identifiers = identifiers
-        deviceModel.connectionTimer = connectionTimer
-
-        deviceModel.add { (id, completion) -> Void in
-            result(id, completion)
-        }
-    }
+ 
 
     func update()->Bool{
         deviceModel.id = id

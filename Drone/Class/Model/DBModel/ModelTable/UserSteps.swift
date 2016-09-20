@@ -20,8 +20,9 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
     
     init(keyDict:NSDictionary) {
         super.init()
-        keyDict.enumerateKeysAndObjects { (key, value, stop) in
-            self.setValue(value, forKey: key as! String)
+    
+        for (key,value) in keyDict{
+         self.setValue(value, forKey: key as! String)
         }
     }
 

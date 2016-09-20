@@ -78,7 +78,7 @@
          mConnectionController = ConnectionControllerImpl()
          mConnectionController?.setDelegate(self)
          
-         log.setup(.debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLogLevel: .debug)
+         log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLevel: .debug)
          
          network?.listener = { status in
             self.log.debug("Network Status Changed: \(status)")
@@ -126,7 +126,7 @@
          docsdir = docsdir.appendingFormat("%@%@/", "/",DRONEDBFILE)
          var isDir : ObjCBool = false
          let exit:Bool = filemanage.fileExists(atPath: docsdir, isDirectory:&isDir )
-         if (!exit || !isDir) {
+         if (!exit || !isDir.boolValue) {
             do{
                try filemanage.createDirectory(atPath: docsdir, withIntermediateDirectories: true, attributes: nil)
             }catch {
@@ -174,7 +174,11 @@
          if profileArray.count>0 {
             //height (CM) X 0.415 ＝ stride length
             let profile:UserProfile = profileArray.object(at: 0) as! UserProfile
-            sendRequest(SetUserProfileRequest(weight: profile.weight*100, height: profile.length, gender: Int(profile.gender), stridelength: Int(Double(profile.length)*0.415)))
+            var gender = 1
+            if !profile.gender{
+               gender = 0
+            }
+            sendRequest(SetUserProfileRequest(weight: profile.weight*100, height: profile.length, gender: gender, stridelength: Int(Double(profile.length)*0.415)))
          }else{
             sendRequest(SetUserProfileRequest(weight: 6000, height: 175, gender: 1, stridelength: 65))
          }
@@ -222,14 +226,14 @@
          }
          
          if daySteps>0 {
-            let stateArray:NSArray = AppTheme.LoadKeyedArchiverName(RESET_STATE) as! NSArray
+            let stateArray:NSArray = AppTheme.LoadKeyedArchiverName(RESET_STATE as NSString) as! NSArray
             if stateArray.count>0 {
                let state:[String:Bool] = stateArray[0] as! [String:Bool]
                let date:Date = (stateArray[1] as! String).dateFromFormat("YYYY/MM/dd")!
                if state[RESET_STATE]! && (date.beginningOfDay == Date().beginningOfDay){
                   sendRequest(SetStepsToWatchReuqest(steps: daySteps))
                   setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
-                  AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
+                  AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND as NSString, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
                }
                
             }
@@ -285,7 +289,7 @@
             self.mConnectionController?.sendRequest(r)
          }else {
             //tell caller
-            SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:false)
+            SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:false as AnyObject)
          }
       }
       
@@ -306,7 +310,7 @@
                   self.setSystemConfig(0)
                   setupResponseTimer(["index":NSNumber(value: 1 as Int32)])
                   //Records need to use 0x30
-                  AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
+                  AppTheme.KeyedArchiverName(RESET_STATE as NSString, andObject: [RESET_STATE:true])
                }else if(systemStatus == SystemStatus.invalidTime.rawValue) {
                   setRTC()
                }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
@@ -395,7 +399,7 @@
                releaseResponseTimer()
                self.isSaveWorldClock()
                //Set steps to watch response
-               AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false])
+               AppTheme.KeyedArchiverName(RESET_STATE as NSString, andObject: [RESET_STATE:false])
             }
             
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
@@ -405,7 +409,7 @@
             }
             
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
-               let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
+               let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData() as NSData)
                let stepsDict:[String:Int] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal()]
                syncState = .small_SYNC
                SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
@@ -502,27 +506,27 @@
          releaseResponseTimer()
          switch index {
          case 0:
-            log.debug("set system config 1,noResponseIndex:\(noResponseIndex)")
+            log.debug("set system config 1,noResponseIndex:\(self.noResponseIndex)")
             self.setSystemConfig(1)
             setupResponseTimer(["index":NSNumber(value: 1 as Int32)])
          case 1:
-            log.debug("set system config 2,noResponseIndex:\(noResponseIndex)")
+            log.debug("set system config 2,noResponseIndex:\(self.noResponseIndex)")
             self.setSystemConfig(2)
             setupResponseTimer(["index":NSNumber(value: 2 as Int32)])
          case 2:
-            log.debug("set RTC,noResponseIndex:\(noResponseIndex)")
+            log.debug("set RTC,noResponseIndex:\(self.noResponseIndex)")
             self.setRTC()
             setupResponseTimer(["index":NSNumber(value: 3 as Int32)])
          case 3:
-            log.debug("set app config,noResponseIndex:\(noResponseIndex)")
+            log.debug("set app config,noResponseIndex:\(self.noResponseIndex)")
             self.setAppConfig()
             setupResponseTimer(["index":NSNumber(value: 4 as Int32)])
          case 4:
-            log.debug("set user profile,noResponseIndex:\(noResponseIndex)")
+            log.debug("set user profile,noResponseIndex:\(self.noResponseIndex)")
             self.setUserProfile()
             setupResponseTimer(["index":NSNumber(value: 5 as Int32)])
          case 5:
-            log.debug("set user goal,noResponseIndex:\(noResponseIndex)")
+            log.debug("set user goal,noResponseIndex:\(self.noResponseIndex)")
             self.setGoal(nil)
             setupResponseTimer(["index":NSNumber(value: 6 as Int32)])
          case 6:
@@ -540,7 +544,7 @@
          noResponseIndex += 1
       }
       
-      func setupResponseTimer(_ userInfo:AnyObject) {
+      func setupResponseTimer(_ userInfo:Any?) {
          self.responseTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(noResponseAction(_:)), userInfo: userInfo, repeats: false)
       }
       

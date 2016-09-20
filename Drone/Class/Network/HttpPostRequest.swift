@@ -12,43 +12,50 @@ import XCGLogger
 
 class HttpPostRequest: NSObject {
     
-    class  func postRequest(_ url: String, data:Dictionary<String,AnyObject>, completion:@escaping (_ result:NSDictionary) -> Void){
+    class  func postRequest(_ url: String, data:Dictionary<String,Any?>, completion:@escaping (_ result:NSDictionary) -> Void){
         var finalData: Dictionary<String,AnyObject> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei" as AnyObject]
         finalData["params"] = data as AnyObject?;
-        XCGLogger.defaultInstance().debug("\(finalData)")
+        XCGLogger.debug("\(finalData)")
         
-        Alamofire.request(Method.POST, url, parameters: finalData, encoding:ParameterEncoding.json, headers: ["Authorization": "Basic YXBwczptZWRfYXBwX2RldmVsb3BtZW50","Content-Type":"application/json"]).responseJSON { (response) -> Void in
-            if response.result.isSuccess {
-                XCGLogger.defaultInstance().debug("getJSON: \(response.result.value)")
-                completion(result: response.result.value as! NSDictionary)
-            }else if (response.result.isFailure){
-                if (response.result.value == nil) {
-                    completion(result: NSDictionary(dictionary: ["error" : "request error"]))
-                }else{
-                    completion(result: response.result.value as! NSDictionary)
-                }
-            }
+        Alamofire.request(url, method: .get, parameters: finalData, encoding: JSONEncoding.default)
+            .authenticate(user: "apps", password: "med_app_development")
+            .responseJSON { response  in
+                if response.result.isSuccess {
+                    XCGLogger.debug("getJSON: \(response.result.value)")
+                    completion(
+                        response.result.value as! NSDictionary)
+                }else if (response.result.isFailure){
+                    if (response.result.value == nil) {
+                        completion(NSDictionary(dictionary: ["error" : "request error"]))
+                    }else{
+                        completion(response.result.value as! NSDictionary)
+                    }
+        }
+
         }
     }
 
     
-    class  func putRequest(_ url: String, data:Dictionary<String,AnyObject>, completion:@escaping (_ result:NSDictionary) -> Void){
+    class  func putRequest(_ url: String, data:[String:AnyObject], completion:@escaping (_ result:NSDictionary) -> Void){
         var finalData: Dictionary<String,AnyObject> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei" as AnyObject]
         finalData["params"] = data as AnyObject?;
-        XCGLogger.defaultInstance().debug("\(finalData)")
-        Alamofire.request(Method.PUT, url, parameters: finalData, encoding:ParameterEncoding.json, headers: ["Authorization": "Basic YXBwczptZWRfYXBwX2RldmVsb3BtZW50","Content-Type":"application/json"]).responseJSON { (response) -> Void in
-            if response.result.isSuccess {
-                XCGLogger.defaultInstance().debug("getJSON: \(response.result.value)")
-                completion(result: response.result.value as! NSDictionary)
-            }else if (response.result.isFailure){
-                print(response.result.description)
-                print(response.result.debugDescription)
-                if (response.result.value == nil) {
-                    completion(result: NSDictionary(dictionary: ["error" : "request error"]))
-                }else{
-                    completion(result: response.result.value as! NSDictionary)
+        XCGLogger.debug("\(finalData)")
+        
+        Alamofire.request(url, method: .put, parameters: finalData, encoding: JSONEncoding.default)
+            .authenticate(user: "apps", password: "med_app_development")
+            .responseJSON { response  in
+                if response.result.isSuccess {
+                    XCGLogger.debug("getJSON: \(response.result.value)")
+                    completion(response.result.value as! NSDictionary)
+                }else if (response.result.isFailure){
+                    print(response.result.description)
+                    print(response.result.debugDescription)
+                    if (response.result.value == nil) {
+                        completion(NSDictionary(dictionary: ["error" : "request error"]))
+                    }else{
+                        completion(response.result.value as! NSDictionary)
+                    }
                 }
-            }
         }
     }
     

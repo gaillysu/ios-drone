@@ -77,7 +77,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
             MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-            let stepsArray:NSArray = UserSteps.getCriteria(String(format: "WHERE syncnext = %@",false))
+            let stepsArray:NSArray = UserSteps.getCriteria(String(format: "WHERE syncnext = \(false)"))
             var dayDateArray:[Date] = []
             for steps in stepsArray{
                 let userSteps:UserSteps = steps as! UserSteps
@@ -235,7 +235,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 yVals.append(hourData);
             }
             
-            let dailySteps = AppTheme.toJSONString(yVals)
+            let dailySteps = AppTheme.toJSONString(yVals as AnyObject!)
             let date:Date = dayDate
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
@@ -267,6 +267,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let group = DispatchGroup()
         
         queue.async(group: group, execute: {
+            
+            
             HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/update", data: ["steps": ["id":"\(cid)","uid": "\(profile.id)","steps": "\(value)","date": "\(key)","active_time":0]], completion: { (result) in
                 let json = JSON(result)
                 let message = json["message"].stringValue
@@ -274,9 +276,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 
                 if status == 1{
                     let date = json["steps"].dictionaryValue["date"]?.dictionaryValue["date"]?.stringValue
-                    XCGLogger.defaultInstance().debug(date!+message+"cloud update succeed")
+                    XCGLogger.debug(date!+message+"cloud update succeed")
                 }else{
-                    XCGLogger.defaultInstance().debug("\(key)"+message+"cloud update error")
+                    XCGLogger.debug("\(key)"+message+"cloud update error")
                 }
             })
         })
@@ -303,9 +305,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 
                 if status == 1{
                     let date = json["steps"].dictionaryValue["date"]?.dictionaryValue["date"]?.stringValue
-                    XCGLogger.defaultInstance().debug(date!+message+"cloud create succeed")
+                    XCGLogger.debug(date!+message+"cloud create succeed")
                 }else{
-                    XCGLogger.defaultInstance().debug("\(key)"+message+"cloud create error")
+                    XCGLogger.debug("\(key)"+message+"cloud create error")
                 }
             })
         })

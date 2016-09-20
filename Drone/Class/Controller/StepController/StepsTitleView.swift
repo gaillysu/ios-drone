@@ -19,10 +19,10 @@ class StepsTitleView: UIView {
     var buttonResultHandler:((_ result:AnyObject?) -> Void)?
 
     class func getStepsTitleView(_ frame:CGRect)->StepsTitleView {
-        let nibView:NSArray = Bundle.main.loadNibNamed("StepsTitleView", owner: nil, options: nil)
-        let view:UIView = nibView.object(at: 0) as! UIView
+        let nibView:[Any?] = Bundle.main.loadNibNamed("StepsTitleView", owner: nil, options: nil)!
+        let view:UIView = nibView[0] as! UIView
         view.frame = frame
-        return nibView.object(at: 0) as! StepsTitleView
+        return nibView[0] as! StepsTitleView
     }
 
     

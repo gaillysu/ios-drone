@@ -11,8 +11,8 @@ import UIKit
 class MyNevoHeaderView: UIImageView {
 
     class func getMyNevoHeaderView()->UIImageView {
-        let nibView:NSArray = Bundle.main.loadNibNamed("MyNevoHeaderView", owner: nil, options: nil)
-        return nibView.object(at: 0) as! UIImageView
+        let nibView:[Any?] = Bundle.main.loadNibNamed("MyNevoHeaderView", owner: nil, options: nil)!
+        return nibView[0] as! UIImageView
     }
 
     /*

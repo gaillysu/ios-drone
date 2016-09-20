@@ -5,7 +5,7 @@ target 'Drone' do
     pod 'Alamofire', '~> 4.0'
     pod 'Charts', :git => 'https://github.com/danielgindi/Charts.git', :branch => 'Swift-3.0'
     pod 'PagingMenuController'
-    pod 'SwiftEventBus', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
+    pod 'SwiftEventBus', :tag => '2.1.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
     pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
     pod 'Timepiece'
     pod 'SMSegmentView', '~> 1.1'
@@ -21,7 +21,9 @@ target 'Drone' do
     pod 'SwiftyTimer', git: 'https://github.com/radex/SwiftyTimer.git', branch: 'swift3'
     pod 'MSCellAccessory'
     pod 'IQKeyboardManagerSwift', '4.0.6'
-    pod 'RealmSwift', '~> 1.1'
+    
+    pod 'RealmSwift'
+
 end
 
 post_install do |installer|

@@ -19,8 +19,8 @@ class WorldClockCell: UITableViewCell {
     class func getWorldClockCell(_ tableView:UITableView,indexPath:IndexPath,clock:WorldClockModel)->UITableViewCell {
         let identifier:String = "WorldClockCell"
         var cell:WorldClockCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! WorldClockCell
-        let nibs:NSArray = Bundle.main.loadNibNamed("WorldClockCell", owner: self, options: nil)
-        cell = (nibs.object(at: 0) as? WorldClockCell)!
+        let nibs:[Any] = Bundle.main.loadNibNamed("WorldClockCell", owner: self, options: nil)!
+        cell = (nibs[0] as? WorldClockCell)!
         cell.cityLabel.text = clock.city_name
         let systemName:String? = clock.system_name;
         cell.timeDescription.text = "\(TimeUtil.getGmtOffSetForCity(systemName!))"

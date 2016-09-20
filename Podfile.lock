@@ -55,7 +55,7 @@ PODS:
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
   - SMSegmentView (1.1)
-  - SwiftEventBus (1.1.0)
+  - SwiftEventBus (2.1.0)
   - SwiftyJSON (2.3.2)
   - SwiftyTimer (1.4.0)
   - Timepiece (0.4.2)
@@ -74,11 +74,11 @@ DEPENDENCIES:
   - MRProgress
   - MSCellAccessory
   - PagingMenuController
-  - RealmSwift (~> 1.1)
+  - RealmSwift
   - RegexKitLite
   - SDCycleScrollView (~> 1.3)
   - SMSegmentView (~> 1.1)
-  - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
+  - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`, tag `2.1.0`)
   - SwiftyJSON (from `https://github.com/IBM-Swift/SwiftyJSON.git`)
   - SwiftyTimer (from `https://github.com/radex/SwiftyTimer.git`, branch `swift3`)
   - Timepiece
@@ -93,6 +93,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/CardinalNow/iOS-CircleProgressView.git
   SwiftEventBus:
     :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 2.1.0
   SwiftyJSON:
     :git: https://github.com/IBM-Swift/SwiftyJSON.git
   SwiftyTimer:
@@ -110,8 +111,8 @@ CHECKOUT OPTIONS:
     :commit: cb2f3707ff3c401184d218f6e335a537d0ba2f13
     :git: https://github.com/CardinalNow/iOS-CircleProgressView.git
   SwiftEventBus:
-    :commit: 4b8cbb5a8227b3c29af75e0416689d26178733d8
     :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 2.1.0
   SwiftyJSON:
     :commit: 73b523a107b798021ca9af74b5f7c20e435c8809
     :git: https://github.com/IBM-Swift/SwiftyJSON.git
@@ -140,13 +141,13 @@ SPEC CHECKSUMS:
   SDCycleScrollView: 806fedb9342ab03b58b84442f985517b42c7cbb7
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   SMSegmentView: a99862f36ea73478558ae665c209cb80c0d4f059
-  SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
+  SwiftEventBus: 03fb72b65f3ae11912dec2591567b89e5908a781
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyTimer: db4458cfaf67fc71e16ad6e4637c60b86f76a649
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
   XCGLogger: dca27c8c2a218a9c176917680d891c8fdf9d4484
 
-PODFILE CHECKSUM: 565968e2a8e29069ab02022e8174c6788d710783
+PODFILE CHECKSUM: 6635bf939f31bde3a84d88954a6a7de4073e3235
 
 COCOAPODS: 1.1.0.rc.2

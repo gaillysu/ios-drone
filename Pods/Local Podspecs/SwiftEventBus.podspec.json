@@ -1,6 +1,6 @@
 {
   "name": "SwiftEventBus",
-  "version": "1.1.0",
+  "version": "2.1.0",
   "license": "MIT",
   "summary": "Publish/subscribe event bus optimized for iOS",
   "homepage": "https://github.com/cesarferreira/SwiftEventBus",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/cesarferreira/SwiftEventBus.git",
-    "tag": "1.1.0"
+    "tag": "2.1.0"
   },
   "platforms": {
     "ios": "8.0"

@@ -18,23 +18,11 @@ class DownloadStepsRequest: NSObject {
     
     class  func getRequest(_ url: String, uid:String, start_date:String, end_date:String, completion:@escaping (_ result:NSDictionary) -> Void){
         let URL:String = url+"/"+uid+"?token=ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei"+"&start_date="+start_date+"&end_date="+end_date
-        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": "Basic YXBwczptZWRfYXBwX2RldmVsb3BtZW50","Content-Type":"application/json"]).response { requestResponse in
-            if let error = requestResponse.error {
-                if (requestResponse.data == nil) {
-                    completion(NSDictionary(dictionary: ["error" : "request error","status":-1]))
-                }else{
-                    completion(requestResponse.data!.value as NSDictionary)
-                }
-
-                //XCGLogger.defaultInstance().debug("getJSON: \(response.result.value)")
-            }else if let response = response.response{
-                completion(result: response.result.value as! NSDictionary)
-
-            }
-        }
-        
-        Alamofire.request(Method.GET, URL, parameters: nil, encoding:ParameterEncoding.json, headers: ["Authorization": "Basic YXBwczptZWRfYXBwX2RldmVsb3BtZW50","Content-Type":"application/json"]).responseJSON { (response) -> Void in
-
+        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default)
+            .authenticate(user: "apps", password: "med_app_development")
+            .responseJSON { response in
+                let dictionary:NSDictionary = NSKeyedUnarchiver.unarchiveObject(with: response.data!)! as! NSDictionary
+                    completion(dictionary)
         }
     }
     

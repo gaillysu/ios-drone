@@ -9,7 +9,7 @@
 import Foundation
 
 protocol BaseEntryDatabaseHelper {
-    func add(_ result:((_ id:Int?,_ completion:Bool?) -> Void))
+    func add(_ result:@escaping((_ id:Int?,_ completion:Bool?) -> Void))
     func update()->Bool
     func remove()->Bool
     static func removeAll()->Bool

@@ -92,8 +92,8 @@ class AppTheme {
     *	@brief	The archive All current data
     *
     */
-    class func KeyedArchiverName(_ name:NSString,andObject object:AnyObject) ->Bool{
-        var objectArray:[AnyObject] = [object]
+    class func KeyedArchiverName(_ name:NSString,andObject object:Any?) ->Bool{
+        var objectArray:[Any?] = [object]
         let senddate:Date = Date()
         let dateformatter:DateFormatter = DateFormatter()
 
@@ -254,22 +254,20 @@ class AppTheme {
     *Hexadecimal color string into UIColor (HTML color values)
     */
     class func hexStringToColor(_ stringToConvert:String)->UIColor{
-        var cString:NSString = stringToConvert.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercased()
-        if (cString.length < 6){ return UIColor.black}
+        var cString = stringToConvert.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
+        if (cString.characters.count < 6){ return UIColor.black}
         // strip 0X if it appears
-        if (cString.hasPrefix("0X")){ cString = cString.substring(from: 2) as NSString}
-        if (cString.hasPrefix("#")){ cString = cString.substring(from: 1) as NSString}
-        if (cString.length != 6){ return UIColor.black}
+        
+        if (cString.hasPrefix("0X")){ cString = cString.substring(from: cString.index(cString.startIndex, offsetBy:2))}
+        if (cString.hasPrefix("#")){  cString = cString.substring(from: cString.index(cString.startIndex, offsetBy:1))}
+        if (cString.characters.count != 6){ return UIColor.black}
         // Separate into r, g, b substrings
 
-        var range:NSRange = NSRange()
-        range.location = 0;
-        range.length = 2;
-        let rString:NSString = cString.substring(with: range) as NSString
-        range.location = 2;
-        let gString:NSString = cString.substring(with: range) as NSString
-        range.location = 4;
-        let bString:NSString  = cString.substring(with: range) as NSString
+        var index = cString.index(cString.startIndex, offsetBy: 2)
+        let rString = cString.substring(from: cString.index(cString.startIndex, offsetBy: 2))
+        let gString = cString.substring(from: cString.index(cString.startIndex, offsetBy: 4))
+        let bString = cString.substring(from: cString.index(cString.startIndex, offsetBy: 6))
+        
         // Scan values
         var r:UInt32 = 0
         var g:UInt32 = 0
@@ -281,7 +279,7 @@ class AppTheme {
     }
 
     class func navigationbar(_ navigation:UINavigationController) {
-        if(navigation.navigationBar.responds(to: #selector(UINavigationBar.setBackgroundImage(_:forBarMetrics:)))){
+        if(navigation.navigationBar.responds(to: #selector(UINavigationBar.setBackgroundImage))){
             let list:NSArray = navigation.navigationBar.subviews as NSArray
             for obj in list{
                 if((obj as AnyObject).isKind(of: UIImageView.classForCoder())){
@@ -381,9 +379,10 @@ class AppTheme {
     class func hexToBytes(_ hexString:String)->Data {
         let data:NSMutableData = NSMutableData()
         for index in stride(from: 0, through: hexString.characters.count, by: 2) {
-            let range:NSRange =  NSMakeRange(index, index+2>hexString.length ? 1:2 )
-            var hexStr:NSString = hexString.substring(with: range) as NSString
-            hexStr = index+2>hexString.length ? hexStr:"0" + (hexStr as String)
+            let range:NSRange =  NSMakeRange(index, index+2>hexString.characters.count ? 1:2 )
+            
+            var hexStr:String = hexString.substring(with: range) as NSString
+            hexStr = index+2>hexString.characters.count ? hexStr:"0" + (hexStr as String)
             let scanner:Scanner = Scanner(string: "\(hexStr)")
             var intValue:UInt32 = 0
             scanner.scanHexInt32(&intValue)

@@ -44,7 +44,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                 let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
                 view?.setTintColor(UIColor.getBaseColor())
                 Timer.after(0.6.second) {
-                    view.dismiss(true)
+                    view?.dismiss(true)
                 }
                 return
             }
@@ -87,7 +87,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             loadingIndicator = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
             loadingIndicator.setTintColor(UIColor.getBaseColor())
             
-            HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length,"birthday":profile.birthday,"weight":profile.weight]]) { (result) in
+            HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length,"birthday":profile.birthday,"weight":profile.weight] as AnyObject]) { (result) in
                 let json = JSON(result)
                 let status = json["status"].intValue
                 let user:[String : JSON] = json["user"].dictionaryValue
@@ -96,7 +96,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                         self.dismiss(animated: true, completion: nil)
                     })
                 }else{
-                    XCGLogger.defaultInstance().debug("Request error");
+                    XCGLogger.debug("Request error");
                     self.loadingIndicator.dismiss(true)
                     let banner:Banner = Banner(title: NSLocalizedString("not_update", comment: ""), subtitle: "", image: nil, backgroundColor: UIColor.getBaseColor(), didTapBlock: nil)
                     banner.dismissesOnTap = true
@@ -197,7 +197,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             cell.textPreFix = "Goal: "
         }else if((indexPath as NSIndexPath).row == 6) {
             cell.itemTextField.placeholder = "Birthday: "
-            cell.itemTextField!.text = "Birthday: \(String(profile.birthday))"
+            cell.itemTextField!.text = "Birthday: \(profile.birthday)"
             cell.setType(.date)
             cell.textPreFix = "Birthday: "
         }
@@ -205,7 +205,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         cell.cellIndex = (indexPath as NSIndexPath).row
         cell.editCellTextField = {
             (index,text) -> Void in
-            XCGLogger.defaultInstance().debug("Profile TextField\(index)")
+            XCGLogger.debug("Profile TextField\(index)")
             switch index {
             case 0:
                 self.profile.first_name = text
