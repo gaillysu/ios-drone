@@ -77,7 +77,7 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
             Timer.after(0.6.second) {
-                view.dismiss(true)
+                view?.dismiss(true)
             }
         }
     }
@@ -173,8 +173,7 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     
     func askForAddressBookAccess() {
         var err: Unmanaged<CFError>? = nil
-        ABAddressBookRequestAccessWithCompletion(addressBookRef) {
-            (granted: Bool, error: CFError!) in
+        ABAddressBookRequestAccessWithCompletion(addressBookRef) { (granted, error) in
             DispatchQueue.main.async {
                 if !granted {
                     self.displayCantAddContactAlert()

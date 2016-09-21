@@ -26,7 +26,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         - Sort cities by name in cities
         - Dismiss whenever selected a city, also in search.
         */
-        for city:City in Array(realm.objects(City)) {
+        for city:City in Array(realm.objects(City.self)) {
             let character:String = String(city.name[city.name.startIndex]).uppercased()
             if var list = cities[character] {
                 list.append(city)
@@ -179,7 +179,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
 extension AddWorldClockViewController:DidSelectedDelegate {
 
     func didSelectedLocalTimeZone(_ cityId:Int) {
-        let city = realm.objects(City).filter("id = \(cityId)")
+        let city = realm.objects(City.self).filter("id = \(cityId)")
         if(city.count != 1){
             print("Some programming error, city should always get 1 with unique ID")
             return
@@ -188,7 +188,7 @@ extension AddWorldClockViewController:DidSelectedDelegate {
     }
     
     fileprivate func addCity(_ city:City){
-        let selectedCities = realm.objects(City).filter("selected = true")
+        let selectedCities = realm.objects(City.self).filter("selected = true")
         if selectedCities.count < 5 {
             for selectedCity:City in selectedCities {
                 if city.id == selectedCity.id {

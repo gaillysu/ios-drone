@@ -26,8 +26,8 @@ class WorldClockDatabaseHelper: NSObject {
     
     func setup(){
         
-        let oldCities = Array(realm.objects(City))
-        let oldTimezones = Array(realm.objects(Timezone))
+        let oldCities = Array(realm.objects(City.self))
+        let oldTimezones = Array(realm.objects(Timezone.self))
         
         var addedCities = [City]()
         var addedTimezones = [Timezone]()
@@ -55,7 +55,7 @@ class WorldClockDatabaseHelper: NSObject {
                                 break
                             }
                         }
-                        let results:Results<Timezone> = realm.objects(Timezone)
+                        let results:Results<Timezone> = realm.objects(Timezone.self)
                         for i in 0...(citiesJSON.count-1){
                             if let city:City = City.getCityObject(citiesJSON[i]){
                                 for timezone:Timezone in results{

@@ -107,8 +107,8 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
             segmentView!.layer.borderWidth = 1.0
 
             // Add segments
-            segmentView!.addSegmentWithTitle("Male", onSelectionImage: nil, offSelectionImage: nil)
-            segmentView!.addSegmentWithTitle("Female", onSelectionImage: nil, offSelectionImage: nil)
+            _ = segmentView!.addSegmentWithTitle("Male", onSelectionImage: nil, offSelectionImage: nil)
+            _ = segmentView!.addSegmentWithTitle("Female", onSelectionImage: nil, offSelectionImage: nil)
             segmentView?.selectSegmentAtIndex(0)
             metricsSegment.addSubview(segmentView!)
         }
@@ -199,7 +199,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
                 banner.show(duration: 1.2)
             }
         }else{
-            XCGLogger.defaultInstance().debug("注册的时候没有网络")
+            XCGLogger.debug("注册的时候没有网络")
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
             let timeout:Timer = Timer.after(0.6.seconds, {

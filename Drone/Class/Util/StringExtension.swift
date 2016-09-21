@@ -20,5 +20,13 @@ extension String {
         let range = start..<end
         return self[range]
     }
+    
+//    let firstChar = someString[someString.startIndex]
+//    let lastChar = someString[someString.index(before: someString.endIndex)]
+//    let charAtIndex = someString[someString.index(someString.startIndex, offsetBy: 10)]
+    
+//    let range = someString.startIndex..<someString.index(someString.startIndex, offsetBy: 10)
+//    let subtring = someString[range]
+
 }
 

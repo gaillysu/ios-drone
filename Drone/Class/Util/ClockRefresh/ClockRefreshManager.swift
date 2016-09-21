@@ -10,7 +10,7 @@ import UIKit
 
 class ClockRefreshManager: NSObject {
     private static var __once: () = {
-            Static.instance = ClockRefreshManager()
+           // Static.instance = ClockRefreshManager()
         }()
     fileprivate var refreshObject:[ClockRefreshDelegate] = []
 

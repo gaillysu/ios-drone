@@ -85,7 +85,10 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
             return
         }
         let newInstruction = Instruction()
-        newInstruction.coordinateSeries.append(contentsOf: self.coordinateSeries)
+        for coordinateSerie in self.coordinateSeries{
+            newInstruction.coordinateSeries.append(coordinateSerie)
+        }
+        
         newInstruction.startTime = self.startTime!
         newInstruction.stopTime = self.startTime!
         newInstruction.name = header!.instructionNameEditTextField.text!
@@ -93,7 +96,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
         let realm = try! Realm()
         try! realm.write {
             realm.add(newInstruction)
-            let view = MRProgressOverlayView.showOverlayAdded(to: self.view, title:"Saved", mode: MRProgressOverlayViewMode.checkmark, animated: true)
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.view, title:"Saved", mode: MRProgressOverlayViewMode.checkmark, animated: true)!
             view.setTintColor(UIColor.getBaseColor())
             Timer.after(0.6.second) {
                 view.dismiss(true)
@@ -104,17 +107,19 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
 }
 
 
+
 extension AddInstructionViewController{
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
         if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
             cell = dequeuedCell
         }else{
             cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         }
-            let cockroach = babyCockroaches[(indexPath as NSIndexPath).row]
-            cell.textLabel?.text = "Sensor \(cockroach.number)"
-            cell.detailTextLabel?.text = cockroach.coordinates.getString()
+        let cockroach = babyCockroaches[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = "Sensor \(cockroach.number)"
+        cell.detailTextLabel?.text = cockroach.coordinates.getString()
         return cell
     }
     
@@ -126,7 +131,7 @@ extension AddInstructionViewController{
 extension AddInstructionViewController{
     
     fileprivate func initEventBus(){
-        SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
+        _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let cockroachData = data.object! as! CockroachMasterDataReceived
             if self.babyCockroaches.isEmpty {
                 self.babyCockroaches.append((number: cockroachData.babyCockroachNumber, coordinates: cockroachData.coordinates))
@@ -159,7 +164,7 @@ extension AddInstructionViewController{
             }
         }
         
-        SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
+        _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
             let cockroachesChangedEvent = data.object! as! CockroachMasterChanged
             if !cockroachesChangedEvent.connected {
                 if let _ = self.timer{

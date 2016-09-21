@@ -7,13 +7,20 @@
 //
 
 import Foundation
-
+import Timepiece
 class TimeUtil: NSObject {
     class func getGmtOffSetForCity(_ city:String) -> Int{
         let now = Date()
         if(!city.isEmpty){
             let cst = TimeZone(identifier: city)!
-            let dateInCST = now.beginningOfDay.change(timeZone: cst)
+            var cstComp = DateComponents()
+            cstComp.year = now.year
+            cstComp.month = now.month
+            cstComp.day = now.day
+            cstComp.timeZone = TimeZone(identifier: "cst")
+            // not sure if this works
+            let dateInCST = Calendar.current.date(from: cstComp)!
+            
             let timezone = dateInCST.timeZone
             var secondsFromGMT = timezone.secondsFromGMT()
         if timezone.isDaylightSavingTime() && !cst.isDaylightSavingTime(for: now) {

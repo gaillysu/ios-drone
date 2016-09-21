@@ -226,14 +226,14 @@
          }
          
          if daySteps>0 {
-            let stateArray:NSArray = AppTheme.LoadKeyedArchiverName(RESET_STATE as NSString) as! NSArray
+            let stateArray:NSArray = AppTheme.LoadKeyedArchiverName(RESET_STATE) as! NSArray
             if stateArray.count>0 {
                let state:[String:Bool] = stateArray[0] as! [String:Bool]
                let date:Date = (stateArray[1] as! String).dateFromFormat("YYYY/MM/dd")!
                if state[RESET_STATE]! && (date.beginningOfDay == Date().beginningOfDay){
                   sendRequest(SetStepsToWatchReuqest(steps: daySteps))
                   setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
-                  AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND as NSString, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
+                  AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
                }
                
             }
@@ -310,7 +310,7 @@
                   self.setSystemConfig(0)
                   setupResponseTimer(["index":NSNumber(value: 1 as Int32)])
                   //Records need to use 0x30
-                  AppTheme.KeyedArchiverName(RESET_STATE as NSString, andObject: [RESET_STATE:true])
+                  _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
                }else if(systemStatus == SystemStatus.invalidTime.rawValue) {
                   setRTC()
                }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
@@ -399,20 +399,20 @@
                releaseResponseTimer()
                self.isSaveWorldClock()
                //Set steps to watch response
-               AppTheme.KeyedArchiverName(RESET_STATE as NSString, andObject: [RESET_STATE:false])
+               AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false])
             }
             
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
                let data:[UInt8] = NSData2Bytes(packet.getRawData())
                let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
-               SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:batteryStatus)
+               SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:(batteryStatus as AnyObject))
             }
             
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
                let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData() as NSData)
                let stepsDict:[String:Int] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal()]
                syncState = .small_SYNC
-               SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:stepsDict)
+               SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(stepsDict as AnyObject))
             }
             
             if (packet.getHeader() == SetNotificationRequest.HEADER()) {
@@ -455,7 +455,7 @@
                
                NSLog("dailySteps:\(stepCount),dailyStepsDate:\(timerInterval),status:\(status)")
                let bigData:[String:Int] = ["timerInterval":timerInterval,"dailySteps":stepCount]
-               SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:bigData)
+               SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:(bigData as AnyObject))
                
                //Download more data
                if(status == ActivityDataStatus.moreData.rawValue) {
@@ -474,7 +474,7 @@
       }
       
       func connectionStateChanged(_ isConnected : Bool) {
-         SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:isConnected)
+         SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:isConnected as AnyObject)
          if(isConnected) {
             let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.6 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
@@ -489,7 +489,11 @@
          let blever = AppTheme.GET_FIRMWARE_VERSION()
          
          NSLog("Build in software version: \(mcuver), firmware version: \(blever)")
-         SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:whichfirmware==DfuFirmwareTypes.application ? ["BLE":version]:["MCU":version])
+         var versionData = ["MCU":version]
+         if whichfirmware == DfuFirmwareTypes.application {
+            versionData = ["BLE":version]
+         }
+         SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:versionData as AnyObject)
       }
       
       /**
@@ -502,7 +506,7 @@
       // MARK: - noResponseAction
       func noResponseAction(_ timer:Timer) {
          let info = timer.userInfo
-         let index:Int = (info!["index"] as! NSNumber).intValue
+         let index:Int = ((info! as AnyObject)["index"] as! NSNumber).intValue
          releaseResponseTimer()
          switch index {
          case 0:

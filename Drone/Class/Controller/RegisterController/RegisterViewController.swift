@@ -88,7 +88,7 @@ class RegisterViewController: BaseViewController {
                 banner.show(duration: 0.7)
                 return
             }
-            profile.account = ["email":emailT.text!,"password":passwordT.text!]
+            profile.account = ["email":emailT.text! as AnyObject,"password":passwordT.text! as AnyObject]
             self.navigationController?.pushViewController(profile, animated: true)
         }
 

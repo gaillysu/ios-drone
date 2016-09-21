@@ -26,7 +26,7 @@ class AnalysisStepsChartView: LineChartView {
         let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
         let limitLine = ChartLimitLine(limit: Double(goal.goalSteps),label: "Goal");
         limitLine.lineWidth = 1.5
-        limitLine.labelPosition = ChartLimitLine.ChartLimitLabelPosition.leftTop
+        limitLine.labelPosition = ChartLimitLine.LabelPosition.leftTop
         limitLine.valueFont = UIFont(name: "Helvetica-Light", size: 7)!
         limitLine.lineColor = UIColor.getGreyColor()
         
@@ -47,7 +47,7 @@ class AnalysisStepsChartView: LineChartView {
         xAxis.labelTextColor = UIColor.getGreyColor();
         xAxis.axisLineColor = UIColor.getGreyColor()
         xAxis.drawLimitLinesBehindDataEnabled = false;
-        xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.bottom
+        xAxis.labelPosition = ChartXAxis.LabelPosition.bottom
         xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 7)!
         
         let marker:BalloonMarker = BalloonMarker(color: UIColor.getBaseColor(), font: UIFont(name: "Helvetica-Light", size: 11)!, insets: UIEdgeInsetsMake(8.0, 8.0, 15.0, 8.0))

@@ -27,17 +27,8 @@ class SetGoalRequest : NevoRequest {
     }
     
     override func getRawDataEx() -> NSArray {
-    
-       
-    let level :UInt8 = mThisGoal.getGoalIntensity().rawValue
-    let display:UInt8 = 0  //default is step goal showing
-    let goal_dist = 10000 //unit ??cm
-  
+
     let goal_steps = mThisGoal.getType() == NumberOfStepsGoal().getType() ? mThisGoal.getValue() : 0
-        
-    let goal_carlories = 2000 // unit ??
-    let goal_time = 0x00 //unit ??
-    let goal_stroke = 3000 // unit ???
         let values1 :[UInt8] = [0x80,SetGoalRequest.HEADER(),
             UInt8(goal_steps&0xFF),
             UInt8((goal_steps>>8)&0xFF),

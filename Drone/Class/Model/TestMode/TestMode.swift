@@ -30,7 +30,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 class TestMode: NSObject {
     private static var __once: () = {
-            TestModeSingleton.instance=TestMode()
+            //TestModeSingleton.instance=TestMode()
             }()
     fileprivate var packetData:[Data]?//所属按键数据包
     fileprivate var pressedData:[Data]?//松开按键接收数据包

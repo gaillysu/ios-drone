@@ -46,20 +46,18 @@ class NevoHKImpl {
         if !HKHealthStore.isHealthDataAvailable()
         {
             let error = NSError(domain: "com.nevowatch.nevo", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in this Device"])
-            if( completion != nil )
-            {
-                completion(success:false, error:error)
+            if let completionUnwrapped = completion {
+                completionUnwrapped(false, error)
             }
             return;
         }
         
         // 4.  Request HealthKit authorization
         mHealthKitStore.requestAuthorization(toShare: healthKitTypesToWrite as? Set<HKSampleType>, read: healthKitTypesToRead as! Set<HKSampleType>) { (success, error) -> Void in
-            
-            if( completion != nil )
-            {
-                completion(success:success,error:error)
+            if let completionUnwrapped = completion {
+                completionUnwrapped(success,error as NSError?)
             }
+        
         }
     }
     

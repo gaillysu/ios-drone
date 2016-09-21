@@ -126,7 +126,11 @@ func NSString2NSData(_ string:NSString) -> Data
     for index in 0..<trimmedString.characters.count {
 //        let byteString = trimmedString.substringWithRange(Range<String.Index>(start: index, end: index.successor().successor()))
 
-        let byteString2 = trimmedString.substring(to: (index + 2))
+        
+        let idx = trimmedString.index(trimmedString.startIndex, offsetBy: index)
+        let idx2 = trimmedString.index(trimmedString.startIndex, offsetBy: index+2)
+        
+        let byteString2 = trimmedString[idx..<idx2]
         let num = UInt8(byteString2.withCString { strtoul($0, nil, 16) })
         data?.append([num] as [UInt8], length: 1)
     }

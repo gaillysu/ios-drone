@@ -63,7 +63,7 @@ class AppTheme {
 
     :param: string Inform the content
     */
-    class func LocalNotificationBody(_ string:NSString, delay:Double=0) -> UILocalNotification {
+    class func LocalNotificationBody(_ string:String, delay:Double=0) -> UILocalNotification {
         if (UIDevice.current.systemVersion as NSString).floatValue >= 8.0 {
             let categorys:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
             categorys.identifier = "alert";
@@ -92,7 +92,7 @@ class AppTheme {
     *	@brief	The archive All current data
     *
     */
-    class func KeyedArchiverName(_ name:NSString,andObject object:Any?) ->Bool{
+    class func KeyedArchiverName(_ name:String,andObject object:Any?) ->Bool{
         var objectArray:[Any?] = [object]
         let senddate:Date = Date()
         let dateformatter:DateFormatter = DateFormatter()
@@ -114,7 +114,7 @@ class AppTheme {
     *	@brief	Load the archived data
     *
     */
-    class func LoadKeyedArchiverName(_ name:NSString) ->AnyObject?{
+    class func LoadKeyedArchiverName(_ name:String) ->AnyObject?{
         let pathArray = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
         let Path:NSString = (pathArray as NSArray).object(at: 0) as! NSString
 
@@ -263,7 +263,6 @@ class AppTheme {
         if (cString.characters.count != 6){ return UIColor.black}
         // Separate into r, g, b substrings
 
-        var index = cString.index(cString.startIndex, offsetBy: 2)
         let rString = cString.substring(from: cString.index(cString.startIndex, offsetBy: 2))
         let gString = cString.substring(from: cString.index(cString.startIndex, offsetBy: 4))
         let bString = cString.substring(from: cString.index(cString.startIndex, offsetBy: 6))
@@ -276,24 +275,6 @@ class AppTheme {
         Scanner(string: gString as String).scanHexInt32(&g)
         Scanner(string: bString as String).scanHexInt32(&b)
         return UIColor(red: CGFloat(r)/255.0, green:  CGFloat(g)/255.0, blue:  CGFloat(b)/255.0, alpha: 1)
-    }
-
-    class func navigationbar(_ navigation:UINavigationController) {
-        if(navigation.navigationBar.responds(to: #selector(UINavigationBar.setBackgroundImage))){
-            let list:NSArray = navigation.navigationBar.subviews as NSArray
-            for obj in list{
-                if((obj as AnyObject).isKind(of: UIImageView.classForCoder())){
-                    let imageView:UIImageView = obj as! UIImageView
-                    imageView.isHidden = true
-                }
-            }
-            let imageView:UIImageView = UIImageView(frame: CGRect(x: 0, y: -20, width: 420, height: 64))
-             imageView.image = UIImage(named: "navigationBar")
-            
-            imageView.backgroundColor = UIColor(red: 227.0/255.0 , green: 227.0/255.0, blue: 227.0/255.0, alpha: 1)
-            navigation.navigationBar.addSubview(imageView)
-            navigation.navigationBar.sendSubview(toBack: imageView)
-        }
     }
 
     /**
@@ -375,22 +356,7 @@ class AppTheme {
             return NSArray()
         }
     }
-
-    class func hexToBytes(_ hexString:String)->Data {
-        let data:NSMutableData = NSMutableData()
-        for index in stride(from: 0, through: hexString.characters.count, by: 2) {
-            let range:NSRange =  NSMakeRange(index, index+2>hexString.characters.count ? 1:2 )
-            
-            var hexStr:String = hexString.substring(with: range) as NSString
-            hexStr = index+2>hexString.characters.count ? hexStr:"0" + (hexStr as String)
-            let scanner:Scanner = Scanner(string: "\(hexStr)")
-            var intValue:UInt32 = 0
-            scanner.scanHexInt32(&intValue)
-            data.append(&intValue, length: 1)
-        }
-        return data as Data;
-    }
-
+    
     class func hexString(_ data:Data) -> NSString {
         let str = NSMutableString()
         let bytes = UnsafeBufferPointer<UInt8>(start: (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count), count:data.count)

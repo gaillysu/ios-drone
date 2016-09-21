@@ -25,7 +25,7 @@ class UserProfile: NSObject {
 
     init(keyDict:NSDictionary) {
         super.init()
-        keyDict.enumerateKeysAndObjects { (key, value, stop) in
+        for(key,value) in keyDict{
             self.setValue(value, forKey: key as! String)
         }
     }

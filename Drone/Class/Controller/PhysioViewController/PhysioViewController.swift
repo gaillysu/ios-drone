@@ -26,8 +26,8 @@ class PhysioViewController: BaseViewController, UITableViewDelegate, UITableView
         self.navigationItem.title = "Physiotherapy"
         self.addPlusButton(#selector(add))
         
-        self.exercises = realm.objects(Exercise)
-        self.instructions = realm.objects(Instruction)
+        self.exercises = realm.objects(Exercise.self)
+        self.instructions = realm.objects(Instruction.self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,17 +82,11 @@ extension PhysioViewController{
         return header
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let instruction:Instruction = self.instructions![(indexPath as NSIndexPath).row]
-            try! realm.write({
-                realm.delete(instruction)
-            })
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+    @objc(tableView:commitEditingStyle:forRowAtIndexPath:) func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
+    @objc(tableView:editActionsForRowAtIndexPath:) func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let button1 = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             self.tableView(tableView, commit: .delete, forRowAt: indexPath)
         })
@@ -101,7 +95,7 @@ extension PhysioViewController{
     }
 
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    @objc(tableView:canEditRowAtIndexPath:) func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         switch (indexPath as NSIndexPath).section {
         case 0:
             return true
@@ -110,7 +104,7 @@ extension PhysioViewController{
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
         if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
             cell = dequeuedCell
@@ -132,7 +126,7 @@ extension PhysioViewController{
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if self.getAppDelegate().getConnectedCockroaches().count == 0 {
             self.showNoCockroachConnectedDialog()
@@ -144,17 +138,18 @@ extension PhysioViewController{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return (self.instructions?.count)!
-        case 1:
-            return (self.exercises?.count)!
-        default:
-            return 0
-        }
+            switch section {
+            case 0:
+                return (self.instructions?.count)!
+            case 1:
+                return (self.exercises?.count)!
+            default:
+                return 0
+            }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
 }

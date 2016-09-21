@@ -36,7 +36,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             AppDelegate.getAppDelegate().sendRequest(GetBatteryRequest())
         }
         
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED) { (notification) -> Void in
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED) { (notification) -> Void in
             self.batteryStatus = notification.object as! [Int]
             NSLog("batteryStatus----:\(self.batteryStatus)")
             self.deviceTableView.reloadData()
@@ -79,14 +79,14 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             
             alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
                 AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
-                UserDevice.removeAll()
+                _ = UserDevice.removeAll()
                 //Records need to use 0x30
-                AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
+                _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
                 
                 if self.navigationController == nil {
                     self.dismiss(animated: true, completion: nil)
                 }else{
-                    self.navigationController?.popViewController(animated: true)
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
             }))
             

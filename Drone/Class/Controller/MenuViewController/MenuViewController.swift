@@ -48,14 +48,13 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         menuTableView.register(UINib(nibName: "MenuViewCell", bundle: Bundle.main), forCellReuseIdentifier: identifier)
         AppDelegate.getAppDelegate().startConnect()
 
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY) { (notification) -> Void in
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY) { (notification) -> Void in
             let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
             NSLog("SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY  :\(data)")
         }
 
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
-//            NSLog("SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY  :\(connectionState)")
             if(connectionState){
 
                 let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -67,7 +66,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         
         
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
 //            let progress = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
 //            progress.setTintColor(UIColor.getBaseColor())
 //            NSTimer.after(120.seconds, {
@@ -75,7 +74,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 //            })
         }
         
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
             MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             let stepsArray:NSArray = UserSteps.getCriteria(String(format: "WHERE syncnext = \(false)"))
             var dayDateArray:[Date] = []
@@ -98,10 +97,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             if AppDelegate.getAppDelegate().network!.isReachable {
                 self.syncServiceDayData(dayDateArray)
             }
-
         }
         
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
             let data:[String:Int] = notification.object as! [String:Int]
             let steps:Int = data["dailySteps"]!
             let timerInterval:Int = data["timerInterval"]!
@@ -111,7 +109,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     let step:UserSteps = stepsArray[0] as! UserSteps
                     NSLog("Data that has been saved····")
                     let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(steps)", "distance": "\(0)","date":timerInterval,"syncnext":false])
-                    stepsModel.update()
+                    _ = stepsModel.update()
                     
                 }else {
                     let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(steps)",  "distance": "\(0)", "date":timerInterval,"syncnext":false])
@@ -143,25 +141,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         titleView.image = UIImage(named: "drone_logo")
         self.navigationItem.titleView = titleView
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        //add test steps data function
-        /**
-        for index:Int in 0..<31 {
-            let date:NSDate = NSDate()
-            let timerInterval:Int = Int(date.beginningOfMonth.timeIntervalSince1970)
-            let daySeconds:Int = 86400
-            for timerIndex:Int in 8..<21 {
-                let randomSteps:Int = Int(arc4random()%500)
-                let randomHour:Int = Int(arc4random()%10)*5
-                let currentDate:Int = timerInterval + (index*daySeconds) + (timerIndex*3600) + (randomHour*60)
-                let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(randomSteps)",  "distance": "\(0)", "date":NSTimeInterval(currentDate),"syncnext":false])
-                stepsModel.add({ (id, completion) -> Void in
-                    XCGLogger.defaultInstance().debug("stepsModel.add completion:\(Bool(completion!))")
-                })
-            }
-            
-        }*/
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -229,7 +208,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                         cid = hSteps.cid
                     }
                     hSteps.syncnext = true
-                    hSteps.update()
+                    _ = hSteps.update()
                 }
                 activeTime = activeTime+timer
                 yVals.append(hourData);
@@ -267,8 +246,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let group = DispatchGroup()
         
         queue.async(group: group, execute: {
-            
-            
             HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/update", data: ["steps": ["id":"\(cid)","uid": "\(profile.id)","steps": "\(value)","date": "\(key)","active_time":0]], completion: { (result) in
                 let json = JSON(result)
                 let message = json["message"].stringValue

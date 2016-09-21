@@ -54,24 +54,21 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         var timeZoneString = dateFormatter.string(from: date)
         if timeZoneString.contains("+"){
             timeZoneString = String(timeZoneString.characters.dropFirst())
-            let hours:String = timeZoneString[0...1]
-            let minutes:String = timeZoneString[2...3]
-            let offsetHours = Float(hours)
-            let offsetMinutes = Int(minutes)
-            localTimeOffsetToGmt = offsetHours!
-            if offsetMinutes > 0 {
-                    localTimeOffsetToGmt += 0.5
-            }
-        }else{
-            let hours = timeZoneString[0...2]
-            let minutes = timeZoneString[3...4]
-            let offsetHours = Float(hours)
-            let offsetMinutes = Int(minutes)
-            localTimeOffsetToGmt = offsetHours!
-            if offsetMinutes > 0 {
-                localTimeOffsetToGmt += 0.5
-            }
         }
+        let idx0 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 0)
+        let idx1 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 1)
+        let idx2 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 2)
+        let idx3 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 3)
+        
+        let hours:String = timeZoneString[idx0..<idx1]
+        let minutes:String = timeZoneString[idx2..<idx3]
+        let offsetHours = Float(hours)
+        let offsetMinutes = Int(minutes)
+        localTimeOffsetToGmt = offsetHours!
+        if offsetMinutes > 0 {
+            localTimeOffsetToGmt += 0.5
+        }
+
         let calendar = Calendar.current
         let components = (calendar as NSCalendar).components([ .hour, .minute, .second], from: date)
         time.hour = components.hour!
@@ -122,7 +119,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
             Timer.after(0.6.second) {
-                view.dismiss(true)
+                view?.dismiss(true)
             }
         }
     }
@@ -130,7 +127,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        worldClockArray = Array(realm.objects(City).filter("selected = true"))
+        worldClockArray = Array(realm.objects(City.self).filter("selected = true"))
         self.worldClockTableview.reloadData()
     }
 
@@ -173,7 +170,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
                 realm.add(city, update: true)
             })
             
-            worldClockArray = Array(realm.objects(City).filter("selected = true"))
+            worldClockArray = Array(realm.objects(City.self).filter("selected = true"))
             tableView.deleteRows(at: [indexPath], with: .fade)
             AppDelegate.getAppDelegate().setWorldClock(worldClockArray)
         }

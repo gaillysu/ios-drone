@@ -70,7 +70,7 @@ class DownloadStepsRequest: NSObject {
             queue.async(group: group, execute: {
                 let start:Int = Int(startDate.timeIntervalSince1970)+Int((index*5)*86400)
                 let end:Int = Int(startDate.timeIntervalSince1970)+Int((index*5)*86400+(5*86400))
-                //XCGLogger.defaultInstance().debug("startDate: \(start),endtDate:\(end)")
+                //XCGLogger.debug("startDate: \(start),endtDate:\(end)")
                 DownloadStepsRequest.getRequest("http://drone.karljohnchow.com/steps/user", uid: "\(profile.id)", start_date: "\(start)", end_date: "\(end)", completion: { (result) in
                     XCGLogger.default.debug("getJSON: \(result)")
                     let json = JSON(result)
@@ -119,7 +119,7 @@ class DownloadStepsRequest: NSObject {
                                     let steps:UserSteps = value3 as! UserSteps
                                     steps.steps = Int(value2 as! NSNumber)
                                     steps.cid = cid
-                                    steps.update()
+                                    _ = steps.update()
                                 }
                             }
                             

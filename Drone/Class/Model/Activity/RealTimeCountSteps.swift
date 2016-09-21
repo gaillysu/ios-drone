@@ -24,7 +24,7 @@ class RealTimeCountSteps: NevoHKDataPoint {
         static let classname = "RealTimeCountSteps"
     }
     struct Variables {
-        static var mLastDate:Date = (Calendar(identifier: NSGregorianCalendar)! as NSCalendar).date(bySettingHour: 0, minute: 0, second: 0, of: Date(), options: NSCalendar.Options())!
+        static var mLastDate:Date = (Calendar(identifier: Calendar.Identifier.gregorian) as NSCalendar).date(bySettingHour: 0, minute: 0, second: 0, of: Date(), options: NSCalendar.Options())!
         static var mLastNumberOfSteps:Int = 0
     }
     

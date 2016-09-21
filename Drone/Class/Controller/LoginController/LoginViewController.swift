@@ -91,7 +91,7 @@ class LoginViewController: UIViewController {
 
     func loginRequest() {
         if AppDelegate.getAppDelegate().network!.isReachable {
-            XCGLogger.defaultInstance().debug("有网络")
+            XCGLogger.debug("有网络")
             if(AppTheme.isNull(usernameT!.text!) || !AppTheme.isEmail(usernameT!.text!)) {
                 let banner = Banner(title: NSLocalizedString("Email is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true
@@ -141,7 +141,7 @@ class LoginViewController: UIViewController {
                     
                     let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"].intValue,"first_name":user["first_name"].stringValue,"last_name":user["last_name"].stringValue,"birthday":birthday,"length":user["length"].intValue,"email":user["email"].stringValue, "weight":user["weight"].floatValue])
                     userprofile.add({ (id, completion) in
-                        XCGLogger.defaultInstance().debug("Added? id = \(id)")
+                        XCGLogger.debug("Added? id = \(id)")
                     })
                     if(UserGoal.getAll().count == 0){
                         let goal:UserGoal = UserGoal(keyDict: ["goalSteps":10000,"label":" ","status":false])
@@ -162,7 +162,7 @@ class LoginViewController: UIViewController {
             }
         }else{
             
-            XCGLogger.defaultInstance().debug("没有网络")
+            XCGLogger.debug("没有网络")
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
             Timer.after(0.6.seconds, {

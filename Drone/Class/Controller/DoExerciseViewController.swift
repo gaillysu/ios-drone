@@ -114,7 +114,7 @@ extension DoExerciseViewController{
 
 extension DoExerciseViewController{
     fileprivate func initEventBus(){
-        SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
+        _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let cockroachData = data.object! as! CockroachMasterDataReceived
             if self.babyCockroaches.isEmpty {
                 self.babyCockroaches.append((number: cockroachData.babyCockroachNumber, coordinates: cockroachData.coordinates))

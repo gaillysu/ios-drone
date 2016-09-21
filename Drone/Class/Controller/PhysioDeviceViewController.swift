@@ -36,7 +36,7 @@ class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITab
 
 // extension for TableView
 extension PhysioDeviceViewController{
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
 //        let cockroachUUID = self.cockroachUUIDS[indexPath.row]
         if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
@@ -48,7 +48,7 @@ extension PhysioDeviceViewController{
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             tableview.deselectRow(at: indexPath, animated: true)
     }
     
@@ -60,9 +60,11 @@ extension PhysioDeviceViewController{
 // extension for eventbus
 extension PhysioDeviceViewController{
     fileprivate func initEventbus(){
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
             let object = data.object! as! CockroachMasterChanged
-                object.address
+                // object.address
+            
+            // left here obviously
             self.tableview.reloadData()
         }
     }

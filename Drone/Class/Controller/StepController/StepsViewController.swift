@@ -37,9 +37,9 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-let SMALL_SYNC_LASTDATA = "SMALL_SYNC_LASTDATA"
-let IS_SEND_0X30_COMMAND = "IS_SEND_0X30_COMMAND"
-let IS_SEND_0X14_COMMAND_TIMERFRAME = "IS_SEND_0X14_COMMAND_TIMERFRAME"
+let SMALL_SYNC_LASTDATA:String = "SMALL_SYNC_LASTDATA"
+let IS_SEND_0X30_COMMAND:String = "IS_SEND_0X30_COMMAND"
+let IS_SEND_0X14_COMMAND_TIMERFRAME:String = "IS_SEND_0X14_COMMAND_TIMERFRAME"
 
 private let CALENDAR_VIEW_TAG = 1800
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
@@ -96,12 +96,12 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         
         self.getLoclSmallSyncData(nil)
         
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate == Foundation.Date().beginningOfDay {
                 //AppDelegate.getAppDelegate().getActivity()
                 //self.bulidChart(NSDate().beginningOfDay)
                 let stepsDict:[String:Int] = notification.object as! [String:Int]
-                AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict)
+                _ = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict)
                 
                 self.getLoclSmallSyncData(stepsDict)
                 
@@ -109,14 +109,14 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         }
         
         
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
-            XCGLogger.defaultInstance().debug("Data sync began")
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
+            XCGLogger.debug("Data sync began")
             //release timer
             self.invalidateTimer()
         }
         
-        SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
-            XCGLogger.defaultInstance().debug("End of the data sync")
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
+            XCGLogger.debug("End of the data sync")
             self.delay(1) {
                 //start small sync timer
                 self.fireSmallSyncTimer()
@@ -184,13 +184,13 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             let fiveMinutes:TimeInterval = 300
             if (nowDate.timeIntervalSince1970-sendLastDate.timeIntervalSince1970)>=fiveMinutes {
                 self.delay(1.5) {
-                    AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date())
+                    _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date())
                     AppDelegate.getAppDelegate().getActivity()
                 }
             }
         }else{
             self.delay(1.5) {
-                AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date())
+                _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date())
                 AppDelegate.getAppDelegate().getActivity()
             }
         }
@@ -251,7 +251,7 @@ extension StepsViewController {
         xAxis.axisLineColor = UIColor.gray
         xAxis.drawAxisLineEnabled = true
         xAxis.drawGridLinesEnabled = true
-        xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.bottom
+        xAxis.labelPosition = ChartXAxis.LabelPosition.bottom
         xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 7)!
 
         let yAxis:ChartYAxis = barChart!.leftAxis
@@ -290,7 +290,7 @@ extension StepsViewController {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
                 if hSteps.steps>0 {
-                    XCGLogger.defaultInstance().debug("Hour Steps:\(hSteps.steps)")
+                    XCGLogger.debug("Hour Steps:\(hSteps.steps)")
                     lastTimeframe += 5
                 }
                 if index == hours.count-1 {

@@ -31,7 +31,7 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
 
     override class func initialize() {
         if (self !== UserDatabaseHelper.self) {
-            self.createTable()
+            _ = self.createTable()
         }
     }
 
@@ -128,8 +128,8 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         let theTransients:NSArray = self.transients()
         var outCount:UInt32 = 0, i:UInt32 = 0;
         let properties:UnsafeMutablePointer = class_copyPropertyList(self,&outCount)
-        for (i = 0; i < outCount; i += 1) {
-            let property:objc_property_t = properties[Int(i)]!;
+        for count in 0..<outCount {
+            let property:objc_property_t = properties[Int(count)]!;
             //获取属性名
             let propertyName:NSString = NSString(cString: property_getName(property), encoding: String.Encoding.utf8.rawValue)!
             if (theTransients.contains(propertyName)) {
@@ -395,7 +395,7 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
             let fieldSql:String = "\(column) \(proType)"
             //[NSString stringWithFormat:@"%@ %@",column,proType];
             let sql:String = String(format: "ALTER TABLE %@ ADD COLUMN %@ ",tableName,fieldSql)
-            let args:CVaListPointer?
+            let args:CVaListPointer? = nil
             if (db.executeUpdate(sql, withVAList: args!)) {
                 return false;
             }

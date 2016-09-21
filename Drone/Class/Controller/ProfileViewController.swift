@@ -49,19 +49,19 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
                 return
             }
             
-            dismissKeyboard()
+            _ = dismissKeyboard()
             
             /**
              *  update goal
              *
              */
-            steps.update()
+            _ = steps.update()
             
             /**
              *  change profile to database
              *
              */
-            profile.update()
+            _ = profile.update()
             
             AppDelegate.getAppDelegate().setGoal(NumberOfStepsGoal(steps: steps.goalSteps))
             let timerout:Timer = Timer.after(5.seconds) {
@@ -121,7 +121,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         let logout:UIAlertController = UIAlertController(title: NSLocalizedString("logout_title", comment: "") , message: NSLocalizedString("logout_message", comment: "") , preferredStyle: UIAlertControllerStyle.alert)
         logout.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
             if(self.profile.remove()){
-                UserSteps.removeAll()
+                _ = UserSteps.removeAll()
                 AppDelegate.getAppDelegate().disconnect()
                 self.dismiss(animated: true, completion: nil)
             }
@@ -137,7 +137,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath as NSIndexPath).section == 1 {
             self.dismiss(animated: true, completion: nil)
-            UserProfile.removeAll()
+            _ = UserProfile.removeAll()
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

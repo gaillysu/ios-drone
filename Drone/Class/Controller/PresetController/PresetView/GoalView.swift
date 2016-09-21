@@ -23,8 +23,8 @@ class GoalView: UITableView {
         let endCellID:String = "PresetTableViewCell"
         var endCell = tableView.dequeueReusableCell(withIdentifier: endCellID)
         if (endCell == nil) {
-            let nibs:NSArray = Bundle.main.loadNibNamed("PresetTableViewCell", owner: self, options: nil)
-            endCell = nibs.object(at: 0) as? GoalTableViewCell;
+            let nibs:[Any?] = Bundle.main.loadNibNamed("PresetTableViewCell", owner: self, options: nil)!
+            endCell = [0] as? GoalTableViewCell;
             (endCell as! GoalTableViewCell).goalStates.tintColor = UIColor.getBaseColor()
             (endCell as! GoalTableViewCell).goalStates.onTintColor = UIColor.getBaseColor()
         }
