@@ -126,7 +126,6 @@ func NSString2NSData(_ string:NSString) -> Data
     for index in 0..<trimmedString.characters.count {
 //        let byteString = trimmedString.substringWithRange(Range<String.Index>(start: index, end: index.successor().successor()))
 
-        
         let idx = trimmedString.index(trimmedString.startIndex, offsetBy: index)
         let idx2 = trimmedString.index(trimmedString.startIndex, offsetBy: index+2)
         

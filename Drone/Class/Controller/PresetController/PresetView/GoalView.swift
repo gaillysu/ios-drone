@@ -15,7 +15,7 @@ class GoalView: UITableView {
 
     func bulidPresetView(_ navigation:UINavigationItem){
         navigation.title = NSLocalizedString("Preset", comment: "")
-        leftButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: Selector("controllManager:"))
+//        leftButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: Selector("controllManager:"))
         navigation.rightBarButtonItem = leftButton
     }
 
@@ -24,7 +24,7 @@ class GoalView: UITableView {
         var endCell = tableView.dequeueReusableCell(withIdentifier: endCellID)
         if (endCell == nil) {
             let nibs:[Any?] = Bundle.main.loadNibNamed("PresetTableViewCell", owner: self, options: nil)!
-            endCell = [0] as? GoalTableViewCell;
+            endCell = nibs[0] as? GoalTableViewCell;
             (endCell as! GoalTableViewCell).goalStates.tintColor = UIColor.getBaseColor()
             (endCell as! GoalTableViewCell).goalStates.onTintColor = UIColor.getBaseColor()
         }

@@ -20,7 +20,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     var header:AddInstructionHeader?;
     
     let cellIdentifier:String = "cellIdentifier"
-    var babyCockroaches: [(number:Int, coordinates:CoordinateSet)] = []
+    var cockroaches: [MasterCockroach] = []
     
     weak var timer = Timer()
     
@@ -92,7 +92,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
         newInstruction.startTime = self.startTime!
         newInstruction.stopTime = self.startTime!
         newInstruction.name = header!.instructionNameEditTextField.text!
-        newInstruction.totalAmountOfCockroaches = self.babyCockroaches.count
+        newInstruction.totalAmountOfCockroaches = self.cockroaches[0].getAmountBabies()
         let realm = try! Realm()
         try! realm.write {
             realm.add(newInstruction)
@@ -111,69 +111,66 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
 extension AddInstructionViewController{
     
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:UITableViewCell
-        if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
-            cell = dequeuedCell
-        }else{
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
-        }
-        let cockroach = babyCockroaches[(indexPath as NSIndexPath).row]
-        cell.textLabel?.text = "Sensor \(cockroach.number)"
-        cell.detailTextLabel?.text = cockroach.coordinates.getString()
-        return cell
+        let cockroach = cockroaches[indexPath.section]
+        let babyCockroach = cockroach.getBabyCockroach(at: indexPath.row)
+        return PhysioCellGenerator.getCellFrom(cockroach: babyCockroach.number, coordinates: babyCockroach.coordinateSet!, tableview: tableView, dequeueIdentifier: self.cellIdentifier)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return babyCockroaches.count
+        if !self.cockroaches.isEmpty {
+            return self.cockroaches[section].getAmountBabies()
+        }
+        return 0
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.cockroaches[section].address.uuidString
+    }
+    
+    @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
+        return self.cockroaches.count
     }
 }
 
 extension AddInstructionViewController{
-    
     fileprivate func initEventBus(){
         _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
-            let cockroachData = data.object! as! CockroachMasterDataReceived
-            if self.babyCockroaches.isEmpty {
-                self.babyCockroaches.append((number: cockroachData.babyCockroachNumber, coordinates: cockroachData.coordinates))
-            }else{
-                for i in 0..<self.babyCockroaches.count {
-                    if cockroachData.babyCockroachNumber == self.babyCockroaches[i].number {
-                        self.babyCockroaches[i].coordinates = cockroachData.coordinates
-                        break
-                    }
+            let object = data.object! as! CockroachMasterDataReceived
+            var found = false
+            for cockroach in self.cockroaches {
+                if cockroach.address == object.address{
+                    cockroach.addOrUpdateBabyCockroach(byCockroachMasterDataReceived: object)
+                    self.tableview.reloadData()
+                    found = true
                 }
             }
-            self.tableview.reloadData()
+            if !found {
+                self.cockroaches.append(MasterCockroach(WithMasterCockroachData: object))
+                self.tableview.reloadData()
+            }
+            var sensors = 0
+            for masterCockroach in self.cockroaches {
+                sensors = sensors + masterCockroach.getAmountBabies()
+            }
+            self.header!.amountOfSensorLabel.text = "Amount of sensors: \(sensors)"
             if let _ = self.timer {
                 let isInSet:Bool =  self.coordinateSeries.contains(where: { (serie: (CoordinateSerie)) -> Bool in
-                    serie.cockroachNumber == cockroachData.babyCockroachNumber
+                    return serie.cockroachNumber == object.babyCockroachNumber
                 })
                 if isInSet{
                     for coordinateSerie in self.coordinateSeries {
-                        if (coordinateSerie.cockroachNumber == cockroachData.babyCockroachNumber ){
-                            coordinateSerie.coordinateSets.append(cockroachData.coordinates)
+                        if coordinateSerie.cockroachNumber == object.babyCockroachNumber {
+                            coordinateSerie.coordinateSets.append(object.coordinates)
                             break;
                         }
                     }
                 } else {
                     let coordinateSerie = CoordinateSerie()
-                    coordinateSerie.cockroachNumber = cockroachData.babyCockroachNumber
-                    coordinateSerie.coordinateSets.append(cockroachData.coordinates)
+                    coordinateSerie.cockroachNumber = object.babyCockroachNumber
+                    coordinateSerie.coordinateSets.append(object.coordinates)
                     self.coordinateSeries.append(coordinateSerie)
                 }
             }
-        }
-        
-        _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
-            let cockroachesChangedEvent = data.object! as! CockroachMasterChanged
-            if !cockroachesChangedEvent.connected {
-                if let _ = self.timer{
-                    self.stopRecording()
-                }
-                Banner(title: "Cockroach got disconnected!", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil).show()
-            }
-            self.tableview.reloadData()
-            // Just for verification purposes
+            
         }
     }
 }

@@ -18,7 +18,7 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
     let cellIdentifier: String = "cellIdentifier"
     var header:DoExerciseHeader?
 
-    var babyCockroaches: [(number:Int, coordinates:CoordinateSet)] = []
+    var cockroaches: [MasterCockroach] = []
     var completedCoordinatesSerie: [Int : (completedSeries:Int, skippedMovements:Int)] = [:]
     
     @IBOutlet weak var tableview: UITableView!
@@ -71,100 +71,95 @@ extension DoExerciseViewController{
         }else{
             cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         }
-        switch (indexPath as NSIndexPath).section {
-        case 0:
-            break
-        case 1:
-            let cockroach = babyCockroaches[(indexPath as NSIndexPath).row]
-            cell.textLabel?.text = "Sensor \(cockroach.number)"
-            cell.detailTextLabel?.text = cockroach.coordinates.getString()
-            break
-        default:
-            break;
+        
+        if indexPath.section == 0 {
+            cell.textLabel?.text = "Nothing yet :)"
+            cell.detailTextLabel?.text = ""
+        } else {
+            let masterCockroach = self.cockroaches[indexPath.section - 1]
+            let babyCockroach = masterCockroach.getBabyCockroach(at: indexPath.row)
+            cell.textLabel?.text = "Sensor \(babyCockroach.number)"
+            cell.detailTextLabel?.text = babyCockroach.coordinateSet?.getString()
         }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        if section == 0 {
             return self.finishedRepetitions
-        case 1:
-            return babyCockroaches.count
-        default:
-            return 0
         }
+        return self.cockroaches[section-1].getAmountBabies()
     }
     
     @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return self.cockroaches.count + 1
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
+        if section == 0 {
             return "Completed set"
-        case 1:
-            return "Sensors"
-        default:
-            return "Unknown section"
         }
+        if self.cockroaches.isEmpty{
+            return ""
+        }
+        return self.cockroaches[section - 1].address.uuidString
     }
 }
 
 extension DoExerciseViewController{
     fileprivate func initEventBus(){
         _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
-            let cockroachData = data.object! as! CockroachMasterDataReceived
-            if self.babyCockroaches.isEmpty {
-                self.babyCockroaches.append((number: cockroachData.babyCockroachNumber, coordinates: cockroachData.coordinates))
-            }else{
-                for i in 0..<self.babyCockroaches.count {
-                    if cockroachData.babyCockroachNumber == self.babyCockroaches[i].number {
-                        self.babyCockroaches[i].coordinates = cockroachData.coordinates
-                        break
-                    }
+            let object = data.object! as! CockroachMasterDataReceived
+            for cockroach in self.cockroaches {
+                if cockroach.address == object.address{
+                    cockroach.addOrUpdateBabyCockroach(byCockroachMasterDataReceived: object)
+                    self.tableview.reloadData()
+                    return
                 }
             }
+            self.cockroaches.append(MasterCockroach(WithMasterCockroachData: object))
             self.tableview.reloadData()
-            
             if self.completedCoordinatesSerie.count == 0 {
                 for coordinateSerie in (self.instruction?.coordinateSeries)!{
-                    if cockroachData.babyCockroachNumber == coordinateSerie.cockroachNumber {
-                        if(cockroachData.coordinates.equal(coordinateSerie.coordinateSets[0])){
+                    if object.babyCockroachNumber == coordinateSerie.cockroachNumber {
+                        if(object.coordinates.equal(coordinateSerie.coordinateSets[0])){
                             print("Close enough for the first add")
-                            self.completedCoordinatesSerie[cockroachData.babyCockroachNumber] = (completedSeries:1, skippedMovements:0)
+                            self.completedCoordinatesSerie[object.babyCockroachNumber] = (completedSeries:1, skippedMovements:0)
                         }
                     }
                 }
             }else{
                 for i in 0..<self.instruction!.coordinateSeries.count {
                     let coordinateSerie = (self.instruction?.coordinateSeries)![i]
-                    if cockroachData.babyCockroachNumber == coordinateSerie.cockroachNumber {
-                        if(cockroachData.coordinates.equal(coordinateSerie.coordinateSets[coordinateSerie.cockroachNumber])){
+                    if object.babyCockroachNumber == coordinateSerie.cockroachNumber {
+                        if(object.coordinates.equal(coordinateSerie.coordinateSets[coordinateSerie.cockroachNumber])){
                             print("Close enough for the add")
-                            var data = self.completedCoordinatesSerie[cockroachData.babyCockroachNumber]!
-                            if (data.completedSeries + data.skippedMovements) >= coordinateSerie.coordinateSets.count{
-                                data.completedSeries = 0
-                                data.skippedMovements = 0
-                                print("Reset Cuz of good stuff!")
-                            }else{
-                                data.completedSeries += 1
-                                if(data.completedSeries == coordinateSerie.coordinateSets.count){
-                                    print("Wow holy shit!")
-                                    data.completedSeries = 0
-                                    data.skippedMovements = 0
-                                    self.finishedRepetitions += 1
-                                    self.header?.repititionLabel.text = "Amount of repetitions: \(self.finishedRepetitions) "
+                            if let data = self.completedCoordinatesSerie[object.babyCockroachNumber]{
+                                var unpackedData = self.completedCoordinatesSerie[object.babyCockroachNumber]!
+                                if (unpackedData.completedSeries + data.skippedMovements) >= coordinateSerie.coordinateSets.count{
+                                    unpackedData.completedSeries = 0
+                                    unpackedData.skippedMovements = 0
+                                    print("Reset Cuz of good stuff!")
+                                }else{
+                                    unpackedData.completedSeries += 1
+                                    if(data.completedSeries == coordinateSerie.coordinateSets.count){
+                                        print("Wow holy shit!")
+                                        unpackedData.completedSeries = 0
+                                        unpackedData.skippedMovements = 0
+                                        self.finishedRepetitions += 1
+                                        self.header?.repititionLabel.text = "Amount of repetitions: \(self.finishedRepetitions) "
+                                    }
                                 }
-                            }
+                                }
                         }else{
-                            var data = self.completedCoordinatesSerie[cockroachData.babyCockroachNumber]!
-                            print("Not good enough unfortunately")
-                            if data.skippedMovements >= 3 {
-                                print("Done, no go.")
-                                data.completedSeries = 0
-                                data.skippedMovements = 0
+                            if let data = self.completedCoordinatesSerie[object.babyCockroachNumber]{
+                                print("Not good enough unfortunately")
+                                if data.skippedMovements >= 3 {
+                                    print("Done, no go.")
+                                    self.completedCoordinatesSerie[object.babyCockroachNumber]!.completedSeries = 0
+                                    self.completedCoordinatesSerie[object.babyCockroachNumber]!.skippedMovements = 0
+                                }
                             }
                         }
                     }

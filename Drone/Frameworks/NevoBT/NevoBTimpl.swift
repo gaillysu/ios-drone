@@ -96,7 +96,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
      Invoked whenever the central manager's state is updated.
      */
     func centralManagerDidUpdateState(_ central : CBCentralManager) {
-        self.isBluetoothEnabled()
     }
     
     /**
@@ -148,9 +147,9 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         if let localPeripheral = mPeripheral{
             if localPeripheral.identifier == aPeripheral.identifier{
                 setPeripheral(nil)
-                mDelegate?.connectionStateChanged(false, fromAddress: aPeripheral.identifier)
+                mDelegate?.connectionStateChanged(false, fromAddress: aPeripheral.identifier, deviceType: NevoBTImpl.TYPE.DRONE)
             }else{
-                mDelegate?.cockRoachesChanged(false, fromAddress: aPeripheral.identifier)
+                mDelegate?.connectionStateChanged(false, fromAddress: aPeripheral.identifier, deviceType: NevoBTImpl.TYPE.COCKROACH)
                 removeCockroach(aPeripheral)
             }
         }
@@ -180,6 +179,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 else if (aService.uuid == CBUUID(string: "0000180a-0000-1000-8000-00805f9b34fb")) {
                     aPeripheral.discoverCharacteristics(nil,for:aService)
                 }else if(aService.uuid == cockRoach.service){
+                    print("Hello! ")
                     // this service characteristic is for the cockroach.
                     aPeripheral.discoverCharacteristics(nil,for:aService)
                 }
@@ -199,13 +199,12 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         
         if let characteristics:[CBCharacteristic] = service.characteristics {
             for aChar:CBCharacteristic in characteristics {
-                XCGLogger.debug("characteristic = \(aChar.uuid.uuidString)")
                 mPeripheral?.setNotifyValue(true,for:aChar)
                 if(aChar.uuid==mProfile?.CALLBACK_CHARACTERISTIC ) {
                     mPeripheral?.setNotifyValue(true,for:aChar)
                     
                     XCGLogger.debug("Callback char : \(aChar.uuid.uuidString)")
-                    mDelegate?.connectionStateChanged(true, fromAddress: aPeripheral.identifier)
+                    mDelegate?.connectionStateChanged(true, fromAddress: aPeripheral.identifier, deviceType: NevoBTImpl.TYPE.DRONE)
                 } else if(aChar.uuid==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
                     mPeripheral?.readValue(for: aChar)
                     XCGLogger.debug("read firmware version char : \(aChar.uuid.uuidString)")
@@ -214,7 +213,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                     XCGLogger.debug("read software version char : \(aChar.uuid.uuidString)")
                 } else if(aChar.uuid==cockRoach.characteristics) {
                     // this characteristic is for the cockroach.
-                    mDelegate?.cockRoachesChanged(true, fromAddress: aPeripheral.identifier)
+                    mDelegate?.connectionStateChanged(true, fromAddress: aPeripheral.identifier, deviceType: NevoBTImpl.TYPE.COCKROACH)
                     aPeripheral.setNotifyValue(true, for: aChar)
                     
                 }
@@ -227,8 +226,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
-        print("Hello2?")
-        characteristic.value
     }
     /*
      Invoked upon completion of a -[readValueForCharacteristic:] request or on the reception of a notification/indication.
@@ -259,9 +256,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         } else if(characteristic.uuid==cockRoach.characteristics) {
             let coordinateSet = CoordinateSet()
             coordinateSet.setValues(CockRoachPacket(data: characteristic.value!))
-            // GET VERSION OF THE BABY COCKROACH PLEASE
-            //            print(coordinateSet.getString())
-            mDelegate?.cockRoachDataReceived(coordinateSet, withAddress: aPeripheral.identifier,forBabyCockroach: 0)
+            mDelegate?.cockRoachDataReceived(coordinateSet, withAddress: aPeripheral.identifier,forBabyCockroach: coordinateSet.sensorNumber)
         }
     }
     
@@ -282,15 +277,23 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         mDelegate?.receivedRSSIValue(RSSI)
     }
     
+    func connectCockroach(){
+        self.scanAndConnectForAddreses(uuid: [cockRoach.service]);
+    }
+    
+    func scanAndConnect(){
+        self.scanAndConnectForAddreses(uuid: [mProfile!.CONTROL_SERVICE, cockRoach.service]);
+    }
+    
     // MARK: - NevoBT
     /**
      See NevoBT protocol
      */
-    func scanAndConnect() {
+    private func scanAndConnectForAddreses(uuid:[CBUUID]) {
         
         //We can't be sure if the Manager is ready, so let's try
         if(self.isBluetoothEnabled()) {
-            let services:[CBUUID] = [mProfile!.CONTROL_SERVICE, cockRoach.service]
+            let services:[CBUUID] = uuid
             //No address was specified, we'll search for devices with the right profile.
             //We'll try to connect to both known and nearby devices
             //Here we search for all nearby devices
@@ -315,7 +318,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             //Maybe the Manager is not ready yet, let's try again after a delay
             //            XCGLogger.debug("Bluetooth Manager unavailable or not initialised, let's retry after a delay")
             if let cockroach = self.cockroach {
-                mDelegate?.cockRoachesChanged(false, fromAddress: cockroach.identifier)
+                mDelegate?.connectionStateChanged(false, fromAddress: cockroach.identifier, deviceType: NevoBTImpl.TYPE.COCKROACH)
             }
             let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(RETRY_DURATION * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
@@ -418,10 +421,14 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
      See NevoBT protocol
      */
     func disconnect() {
-        if(mPeripheral != nil)
+        if let peripheral = mPeripheral
         {
-            mManager?.cancelPeripheralConnection(mPeripheral!)
-            mDelegate?.connectionStateChanged(false, fromAddress: mPeripheral?.identifier)
+            mManager?.cancelPeripheralConnection(peripheral)
+            if peripheral.services![0].uuid == cockRoach.service {
+                mDelegate?.connectionStateChanged(false, fromAddress: peripheral.identifier, deviceType: NevoBTImpl.TYPE.DRONE)
+            }
+            
+            
         }
         setPeripheral(nil)
     }
@@ -562,5 +569,10 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             return unpackedCockroach.identifier
         }
         return nil
+    }
+    
+    enum TYPE {
+        case DRONE
+        case COCKROACH
     }
 }

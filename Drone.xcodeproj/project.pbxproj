@@ -192,6 +192,9 @@
 		9E69A2601CE3354D007501FF /* ContactsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */; };
 		9E72CED51D70077A00817914 /* PhysioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E72CED31D70077A00817914 /* PhysioViewController.swift */; };
 		9E72CED61D70077A00817914 /* PhysioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E72CED41D70077A00817914 /* PhysioViewController.xib */; };
+		9E80C3D51D93B35D005F7940 /* PhysioCellGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3D41D93B35D005F7940 /* PhysioCellGenerator.swift */; };
+		9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3D81D93B469005F7940 /* BabyCockroach.swift */; };
+		9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3DB1D93B4BB005F7940 /* MasterCockroach.swift */; };
 		9EA1C9A31D7935C50012C988 /* DoExerciseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */; };
 		9EA1C9A51D7935D30012C988 /* DoExerciseHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */; };
 		9EA1C9A81D7963D90012C988 /* NSDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */; };
@@ -453,6 +456,9 @@
 		9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsFilterModel.swift; sourceTree = "<group>"; };
 		9E72CED31D70077A00817914 /* PhysioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhysioViewController.swift; path = PhysioViewController/PhysioViewController.swift; sourceTree = "<group>"; };
 		9E72CED41D70077A00817914 /* PhysioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhysioViewController.xib; path = PhysioViewController/PhysioViewController.xib; sourceTree = "<group>"; };
+		9E80C3D41D93B35D005F7940 /* PhysioCellGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioCellGenerator.swift; sourceTree = "<group>"; };
+		9E80C3D81D93B469005F7940 /* BabyCockroach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyCockroach.swift; sourceTree = "<group>"; };
+		9E80C3DB1D93B4BB005F7940 /* MasterCockroach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterCockroach.swift; sourceTree = "<group>"; };
 		9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoExerciseHeader.swift; sourceTree = "<group>"; };
 		9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoExerciseHeader.xib; sourceTree = "<group>"; };
 		9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtension.swift; sourceTree = "<group>"; };
@@ -857,19 +863,21 @@
 		00982AEB1C868C89003DA5E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB5754241D76BA150008E0EC /* CoordinateSerie */,
-				CBB37AF91D75329900A90920 /* Eventbus */,
-				9E01092D1D7417AF00AA3551 /* CoordinateSet */,
-				9E013D401D70228E0005DCF8 /* Exercise */,
-				9E013D3F1D70225A0005DCF8 /* Instruction */,
-				9E1535851D5C219600CB6A01 /* Worldclock */,
 				00982AEC1C868C89003DA5E2 /* Activity */,
 				00982AF11C868C89003DA5E2 /* Alarm */,
+				9E80C3D71D93B43E005F7940 /* BabyCockroach */,
+				CB5754241D76BA150008E0EC /* CoordinateSerie */,
+				9E01092D1D7417AF00AA3551 /* CoordinateSet */,
 				00982AF31C868C89003DA5E2 /* DBModel */,
+				CBB37AF91D75329900A90920 /* Eventbus */,
+				9E013D401D70228E0005DCF8 /* Exercise */,
 				00982B0A1C868C89003DA5E2 /* Goal */,
+				9E013D3F1D70225A0005DCF8 /* Instruction */,
+				9E80C3DA1D93B4B3005F7940 /* MasterCockroach */,
+				CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */,
 				00982B0E1C868C89003DA5E2 /* Sleep */,
 				00982B101C868C89003DA5E2 /* TestMode */,
-				CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */,
+				9E1535851D5C219600CB6A01 /* Worldclock */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1365,6 +1373,30 @@
 			name = PhysioViewController;
 			sourceTree = "<group>";
 		};
+		9E80C3D31D93B33D005F7940 /* PhysioCell */ = {
+			isa = PBXGroup;
+			children = (
+				9E80C3D41D93B35D005F7940 /* PhysioCellGenerator.swift */,
+			);
+			name = PhysioCell;
+			sourceTree = "<group>";
+		};
+		9E80C3D71D93B43E005F7940 /* BabyCockroach */ = {
+			isa = PBXGroup;
+			children = (
+				9E80C3D81D93B469005F7940 /* BabyCockroach.swift */,
+			);
+			name = BabyCockroach;
+			sourceTree = "<group>";
+		};
+		9E80C3DA1D93B4B3005F7940 /* MasterCockroach */ = {
+			isa = PBXGroup;
+			children = (
+				9E80C3DB1D93B4BB005F7940 /* MasterCockroach.swift */,
+			);
+			name = MasterCockroach;
+			sourceTree = "<group>";
+		};
 		9EA1C9A11D7935B50012C988 /* DoExerciseHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -1431,6 +1463,7 @@
 		CBA06BEB1C8EB2C800E3257B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9E80C3D31D93B33D005F7940 /* PhysioCell */,
 				CBB37B001D7577DC00A90920 /* AddInstructionHeader */,
 				9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */,
 				9E1999521CE4327400C1D967 /* ContactsNotificationHeader */,
@@ -1821,6 +1854,7 @@
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
+				9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */,
 				00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
@@ -1836,6 +1870,7 @@
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
 				00982C421C868C8A003DA5E2 /* WaveProgressView.m in Sources */,
 				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
+				9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */,
 				00982C1E1C868C8A003DA5E2 /* DaySleep.swift in Sources */,
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
 				00982BED1C868C8A003DA5E2 /* LoginViewController.swift in Sources */,
@@ -1892,6 +1927,7 @@
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,
 				00982C341C868C8A003DA5E2 /* Goal.swift in Sources */,
 				00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */,
+				9E80C3D51D93B35D005F7940 /* PhysioCellGenerator.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */,
 				CB28AFDB1CE2C34300639538 /* ContactsFilter.swift in Sources */,

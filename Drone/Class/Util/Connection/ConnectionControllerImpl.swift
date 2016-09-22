@@ -10,46 +10,51 @@ import Foundation
 import XCGLogger
 
 /*
-See ConnectionController
-🚧🚧🚧Backbone Class : Modify with care🚧🚧🚧
-*/
+ See ConnectionController
+ 🚧🚧🚧Backbone Class : Modify with care🚧🚧🚧
+ */
 class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate {
+    /**
+     Called when a peripheral connects or disconnects
+     */
+    
+    
     fileprivate var mNevoBT:NevoBT?
     fileprivate var mDelegate:ConnectionControllerDelegate?
     
     /**
-    This procedure explain the scan procedure
-    Every X sec we will check if the peripheral is connected and retry to connect to it
-    X changes depending on how long ago we scaned previously
-    For example, we'll retry afetr 1 sec, then 10s, then 10s, then 10s, then 60s sec, 120s etc..
-    */
+     This procedure explain the scan procedure
+     Every X sec we will check if the peripheral is connected and retry to connect to it
+     X changes depending on how long ago we scaned previously
+     For example, we'll retry afetr 1 sec, then 10s, then 10s, then 10s, then 60s sec, 120s etc..
+     */
     let SCAN_PROCEDURE:[Double] = [1,10,10,10,
-        30,30,30,30,30,30,30,30,30,30,/*5min*/
+                                   30,30,30,30,30,30,30,30,30,30,/*5min*/
         60,60,60,60,60,60,60,60,60,60,/*10min*/
         120,120,120,120,120,120,120,120,120,/*20min*/
         240,3600]
     
     /**
-    This status is used to search in SCAN_PROCEDURE to know when is the next time we should scan
-    */
+     This status is used to search in SCAN_PROCEDURE to know when is the next time we should scan
+     */
     fileprivate var mScanProcedureStatus = 0
     
     /**
-    This time handles the retry procedure
-    */
+     This time handles the retry procedure
+     */
     fileprivate var mRetryTimer:Timer?
     
     /**
-    this parameter saved old BLE 's  address, when doing BLE OTA, the address has been changed to another one
-    so, after finisned BLE ota, must restore it to normal 's address
-    */
+     this parameter saved old BLE 's  address, when doing BLE OTA, the address has been changed to another one
+     so, after finisned BLE ota, must restore it to normal 's address
+     */
     fileprivate var savedAddress:String?
-
+    
     fileprivate let log = XCGLogger.default
-
+    
     /**
-    No initialisation outside of this class, this is a singleton
-    */
+     No initialisation outside of this class, this is a singleton
+     */
     override init() {
         super.init()
         
@@ -58,17 +63,17 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     }
     
     /**
-    See ConnectionController protocol
-    */
+     See ConnectionController protocol
+     */
     func setDelegate(_ delegate:ConnectionControllerDelegate) {
         log.debug("New delegate : \(delegate)")
         
         mDelegate = delegate
     }
-
+    
     /**
-    See ConnectionController protocol
-    */
+     See ConnectionController protocol
+     */
     func connect(_ addres:[String]) {
         //If we're already connected, no need to reconnect
         if isConnected() {
@@ -90,32 +95,40 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
             log.debug("We don't have a saved address, let's scan for nearby devices.")
             mNevoBT?.scanAndConnect()
         }
-
+    }
+    
+    func connectCockroach(){
+        mNevoBT?.connectCockroach()
     }
     
     /**
-    See NevoBTDelegate
-    */
-    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!) {
-        mDelegate?.connectionStateChanged(isConnected)
+     See NevoBTDelegate
+     */
+    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!, deviceType: NevoBTImpl.TYPE) {
+        
         
         if (!isConnected) {
             connect([fromAddress.uuidString])
         } else {
             //Let's save this address
-            let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.uuidString)","connectionTimer":Date().timeIntervalSince1970])
-            
-            if UserDevice.isExistInTable() {
-                let device:NSArray = UserDevice.getCriteria("WHERE identifiers LIKE '%\(fromAddress.uuidString)'")
-                if device.count == 0 {
+            if deviceType == NevoBTImpl.TYPE.DRONE {
+                mDelegate?.connectionStateChanged(isConnected)
+                let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.uuidString)","connectionTimer":Date().timeIntervalSince1970])
+                
+                if UserDevice.isExistInTable() {
+                    let device:NSArray = UserDevice.getCriteria("WHERE identifiers LIKE '%\(fromAddress.uuidString)'")
+                    if device.count == 0 {
+                        userDevice.add({ (id, completion) in
+                            
+                        })
+                    }
+                }else{
                     userDevice.add({ (id, completion) in
                         
                     })
                 }
-            }else{
-                userDevice.add({ (id, completion) in
-                    
-                })
+            }else if deviceType == NevoBTImpl.TYPE.COCKROACH {
+                mDelegate?.cockRoachesChanged(isConnected, fromAddress: fromAddress)
             }
             
         }
@@ -123,25 +136,25 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     }
     
     /**
-    See NevoBTDelegate
-    */
+     See NevoBTDelegate
+     */
     func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString) {
-       mDelegate?.firmwareVersionReceived(whichfirmware, version: version)
+        mDelegate?.firmwareVersionReceived(whichfirmware, version: version)
     }
-
+    
     /**
-    Receiving the current device signal strength value
-
-    :param: number, Signal strength value
-    */
+     Receiving the current device signal strength value
+     
+     :param: number, Signal strength value
+     */
     func receivedRSSIValue(_ number:NSNumber) {
         //AppTheme.DLog("Red RSSI Value:\(number)")
         mDelegate?.receivedRSSIValue(number)
     }
     
     /**
-    See ConnectionController protocol
-    */
+     See ConnectionController protocol
+     */
     func disconnect() {
         mNevoBT!.disconnect()
         
@@ -151,18 +164,18 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     }
     
     /**
-    See ConnectionController protocol
-    */
+     See ConnectionController protocol
+     */
     func isConnected() -> Bool {
         return mNevoBT!.isConnected()
     }
     
     /**
-    See ConnectionController protocol
-    */
+     See ConnectionController protocol
+     */
     func sendRequest(_ request:Request) {
         if(getOTAMode() && (request.getTargetProfile().CONTROL_SERVICE != NevoOTAModeProfile().CONTROL_SERVICE
-                        && request.getTargetProfile().CONTROL_SERVICE != NevoOTAControllerProfile().CONTROL_SERVICE))
+            && request.getTargetProfile().CONTROL_SERVICE != NevoOTAControllerProfile().CONTROL_SERVICE))
         {
             NSLog("ERROR ! The ConnectionController is in OTA mode, impossible to send a normal nevo request !")
             
@@ -175,16 +188,16 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     }
     
     /**
-    See ConnectionController protocol
-    */
+     See ConnectionController protocol
+     */
     func  getFirmwareVersion() -> NSString
     {
         return mNevoBT!.getFirmwareVersion()
     }
     
     /**
-    See ConnectionController protocol
-    */
+     See ConnectionController protocol
+     */
     func  getSoftwareVersion() -> NSString
     {
         return mNevoBT!.getSoftwareVersion()
@@ -192,8 +205,8 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     
     
     /**
-    See NevoBTDelegate
-    */
+     See NevoBTDelegate
+     */
     func packetReceived(_ packet:RawPacket, fromAddress : UUID) {
         mDelegate?.packetReceived(packet)
     }
@@ -201,10 +214,10 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     func cockRoachDataReceived(_ coordinates: CoordinateSet, withAddress address: UUID, forBabyCockroach number: Int) {
         mDelegate?.cockRoachDataReceived(coordinates, withAddress: address, forBabyCockroach: number)
     }
-
+    
     /**
-    See ConnectionController
-    */
+     See ConnectionController
+     */
     func setOTAMode(_ OTAMode:Bool,Disconnect:Bool) {
         
         //No need to change the mode if we are already in OTA Mode
@@ -213,8 +226,8 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         }
         if Disconnect
         {
-           //cancel reconnect timer, make sure OTA can do connect by OTAcontroller
-           disconnect()
+            //cancel reconnect timer, make sure OTA can do connect by OTAcontroller
+            disconnect()
         }
         
         //We don't set the profile on the NevoBT, because it could create too many issues
@@ -228,7 +241,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
             mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
         }
     }
-
+    
     func cockRoachesChanged(_ isConnected: Bool, fromAddress: UUID!) {
         mDelegate?.cockRoachesChanged(isConnected, fromAddress: fromAddress)
     }

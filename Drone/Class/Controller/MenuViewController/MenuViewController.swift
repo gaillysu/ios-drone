@@ -25,7 +25,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.menuItems.append(MenuItem(controllerName: "StepsViewController", title: "Activities", image: UIImage(named: "icon_activities")!));
         
         self.menuItems.append(MenuItem(controllerName: "WorldClockViewController", title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
-        self.menuItems.append(MenuItem(controllerName: "PhysioViewController", title: "Exercise",image: UIImage(named: "icon_world_clock")!))
+        self.menuItems.append(MenuItem(controllerName: "PhysioViewController", title: "Exercise",image: UIImage(named: "researcher")!))
         if(GoalModel.getAll().count == 0){
             let goalModel:GoalModel = GoalModel()
             goalModel.goalSteps = 10000

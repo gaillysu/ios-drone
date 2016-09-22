@@ -126,7 +126,7 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         let proNames:NSMutableArray = NSMutableArray()
         let proTypes:NSMutableArray = NSMutableArray()
         let theTransients:NSArray = self.transients()
-        var outCount:UInt32 = 0, i:UInt32 = 0;
+        var outCount:UInt32 = 0
         let properties:UnsafeMutablePointer = class_copyPropertyList(self,&outCount)
         for count in 0..<outCount {
             let property:objc_property_t = properties[Int(count)]!;

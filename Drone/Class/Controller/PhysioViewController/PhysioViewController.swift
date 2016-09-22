@@ -25,9 +25,9 @@ class PhysioViewController: BaseViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.navigationItem.title = "Physiotherapy"
         self.addPlusButton(#selector(add))
-        
         self.exercises = realm.objects(Exercise.self)
         self.instructions = realm.objects(Instruction.self)
+        self.getAppDelegate().connectCockroach()
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,7 +118,6 @@ extension PhysioViewController{
             cell.detailTextLabel?.text = "Created on \(instruction.createdDate.day)/\(instruction.createdDate.month)"
             break
         case 1:
-
             break
         default:
                 break
@@ -137,6 +136,10 @@ extension PhysioViewController{
         }
     }
     
+    @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             switch section {
             case 0:
@@ -146,10 +149,6 @@ extension PhysioViewController{
             default:
                 return 0
             }
-    }
-    
-    @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
     }
     
 }

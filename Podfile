@@ -21,7 +21,6 @@ target 'Drone' do
     pod 'SwiftyTimer', git: 'https://github.com/radex/SwiftyTimer.git', branch: 'swift3'
     pod 'MSCellAccessory'
     pod 'IQKeyboardManagerSwift', '4.0.6'
-    
     pod 'RealmSwift'
 
 end

@@ -20,15 +20,21 @@ class WorldClockUtil: NSObject {
     
     class func getDateFrom(_ dateInMonth:Int, month:Int, time:String) -> Date{
         let date = Date()
-        let utcTimeZone = TimeZone(identifier: "UTC")!
-        var dateInUTC = date.beginningOfDay.change(timeZone: utcTimeZone)
+       
+        var utcComp = DateComponents()
+        utcComp.year = date.year
+        utcComp.month = date.month
+        utcComp.day = date.day
+        utcComp.timeZone = TimeZone(identifier: "utc")
+        // not sure if this works
+        let dateInUTC = Calendar.current.date(from: utcComp)!
+
         if let unpackedTime = time.dateFromFormat("HH:mm:ss.SSS"){
-            dateInUTC = dateInUTC.change(year: dateInUTC.year, month: month, day: dateInMonth, hour: unpackedTime.hour, minute: unpackedTime.minute, second: 0)
+            return dateInUTC.change(year: dateInUTC.year, month: month, day: dateInMonth, hour: unpackedTime.hour, minute: unpackedTime.minute, second: 0)
         }else{
             print("Couldn't parse Time in timezone!!")
-            dateInUTC.change(year: dateInUTC.year, month: month, day: dateInMonth, hour: 0, minute: 0, second: 0)
+            return dateInUTC.change(year: dateInUTC.year, month: month, day: dateInMonth, hour: 0, minute: 0, second: 0)
         }
-        return dateInUTC
     }
     
     class func getBluetoothWorldClockModel(_ worldClockArray: [City]) -> [(cityName:String,gmtOffset:Float)]{

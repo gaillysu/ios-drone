@@ -102,7 +102,7 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let contactsFilter:ContactsFilter = contactsFilterArray[(indexPath as NSIndexPath).row] as! ContactsFilter
-            contactsFilter.remove()
+            _ = contactsFilter.remove()
 
             self.contactsFilterArray = ContactsFilter.getAll();
             
@@ -172,7 +172,6 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     }
     
     func askForAddressBookAccess() {
-        var err: Unmanaged<CFError>? = nil
         ABAddressBookRequestAccessWithCompletion(addressBookRef) { (granted, error) in
             DispatchQueue.main.async {
                 if !granted {

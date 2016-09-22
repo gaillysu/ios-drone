@@ -13,7 +13,8 @@ import SwiftEventBus
 class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var tableview: UITableView!
-
+    var cockroaches:[MasterCockroach]  = []
+    
     let cellIdentifier:String = "cellIdentifier"
 
     override func viewDidLoad() {
@@ -26,7 +27,7 @@ class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITab
         tableview.tableHeaderView = headerView
         self.addCloseButton(#selector(close))
         initEventbus()
-        self.getAppDelegate().startConnect()
+        self.getAppDelegate().connectCockroach()
     }
     
     func close(){
@@ -37,15 +38,13 @@ class PhysioDeviceViewController: BaseViewController, UITableViewDelegate, UITab
 // extension for TableView
 extension PhysioDeviceViewController{
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:UITableViewCell
-//        let cockroachUUID = self.cockroachUUIDS[indexPath.row]
-        if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
-            cell = dequeuedCell
-        }else{
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)
-        }
-//        cell.textLabel?.text = "Cockroach: \(cockroachUUID.UUIDString)"
-        return cell
+        let masterCockroach = self.cockroaches[indexPath.section]
+        let baby = masterCockroach.getBabyCockroach(at: indexPath.row)
+        return PhysioCellGenerator.getCellFrom(cockroach: baby.number, coordinates: baby.coordinateSet!, tableview: tableview, dequeueIdentifier: cellIdentifier)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.cockroaches[section].address.uuidString
     }
     
     @objc(tableView:didSelectRowAtIndexPath:) func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -53,21 +52,28 @@ extension PhysioDeviceViewController{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.cockroaches[section].getAmountBabies()
+    }
+    
+    @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
+        return cockroaches.count
     }
 }
 
 // extension for eventbus
 extension PhysioDeviceViewController{
     fileprivate func initEventbus(){
-        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
-            let object = data.object! as! CockroachMasterChanged
-                // object.address
-            
-            // left here obviously
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
+            let object = data.object! as! CockroachMasterDataReceived
+            for cockroach in self.cockroaches {
+                if cockroach.address == object.address{
+                    cockroach.addOrUpdateBabyCockroach(byCockroachMasterDataReceived: object)
+                    self.tableview.reloadData()
+                    return
+                }
+            }
+            self.cockroaches.append(MasterCockroach(WithMasterCockroachData: object))
             self.tableview.reloadData()
         }
     }
-    
-    
 }

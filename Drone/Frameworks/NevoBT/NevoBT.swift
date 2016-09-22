@@ -75,22 +75,22 @@ protocol NevoBT {
     */
     func getRSSI()
 
+    func connectCockroach()
 }
 
 protocol NevoBTDelegate {
+    
     /**
     Called when we received a valid packet
-
     fromAddress is the address of the peripheral that sent this packet
     Warning, this address is not a MAC address and may change in time
-
     */
     func packetReceived(_ rawpacket: RawPacket, fromAddress : UUID)
     
     /**
     Called when a peripheral connects or disconnects
     */
-    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!)
+    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!, deviceType: NevoBTImpl.TYPE)
     
     /**
      Call when finish reading Firmware
@@ -106,7 +106,6 @@ protocol NevoBTDelegate {
      */
     func cockRoachDataReceived(_ coordinates:CoordinateSet, withAddress address:UUID, forBabyCockroach number:Int)
 
-    func cockRoachesChanged(_ isConnected : Bool, fromAddress : UUID!)
     /**
     *  Receiving the current device signal strength value
     */

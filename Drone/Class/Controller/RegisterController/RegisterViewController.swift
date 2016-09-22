@@ -77,7 +77,7 @@ class RegisterViewController: BaseViewController {
     @IBAction func buttonActionManager(_ sender: AnyObject) {
 
         if backB.isEqual(sender) {
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
 
         if nextB.isEqual(sender) {

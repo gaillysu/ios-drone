@@ -15,5 +15,6 @@ class MenuViewCell: UITableViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 }
