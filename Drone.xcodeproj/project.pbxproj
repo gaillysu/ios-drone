@@ -195,6 +195,11 @@
 		9E80C3D51D93B35D005F7940 /* PhysioCellGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3D41D93B35D005F7940 /* PhysioCellGenerator.swift */; };
 		9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3D81D93B469005F7940 /* BabyCockroach.swift */; };
 		9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3DB1D93B4BB005F7940 /* MasterCockroach.swift */; };
+		9E9051A71D94C18A00ED140D /* MovementMatchingAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9051A61D94C18A00ED140D /* MovementMatchingAlgorithm.swift */; };
+		9E9051AD1D94CC8B00ED140D /* MachineLearningProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9051AB1D94CC8B00ED140D /* MachineLearningProtocols.swift */; };
+		9E9051AE1D94CC8B00ED140D /* PrincipalComponantAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9051AC1D94CC8B00ED140D /* PrincipalComponantAnalysis.swift */; };
+		9E9051B01D94CCDE00ED140D /* DataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9051AF1D94CCDE00ED140D /* DataSet.swift */; };
+		9E9051B21D94CD0B00ED140D /* Gaussian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9051B11D94CD0B00ED140D /* Gaussian.swift */; };
 		9EA1C9A31D7935C50012C988 /* DoExerciseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */; };
 		9EA1C9A51D7935D30012C988 /* DoExerciseHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */; };
 		9EA1C9A81D7963D90012C988 /* NSDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */; };
@@ -459,6 +464,11 @@
 		9E80C3D41D93B35D005F7940 /* PhysioCellGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioCellGenerator.swift; sourceTree = "<group>"; };
 		9E80C3D81D93B469005F7940 /* BabyCockroach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyCockroach.swift; sourceTree = "<group>"; };
 		9E80C3DB1D93B4BB005F7940 /* MasterCockroach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterCockroach.swift; sourceTree = "<group>"; };
+		9E9051A61D94C18A00ED140D /* MovementMatchingAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementMatchingAlgorithm.swift; sourceTree = "<group>"; };
+		9E9051AB1D94CC8B00ED140D /* MachineLearningProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachineLearningProtocols.swift; sourceTree = "<group>"; };
+		9E9051AC1D94CC8B00ED140D /* PrincipalComponantAnalysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalComponantAnalysis.swift; sourceTree = "<group>"; };
+		9E9051AF1D94CCDE00ED140D /* DataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSet.swift; sourceTree = "<group>"; };
+		9E9051B11D94CD0B00ED140D /* Gaussian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gaussian.swift; sourceTree = "<group>"; };
 		9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoExerciseHeader.swift; sourceTree = "<group>"; };
 		9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoExerciseHeader.xib; sourceTree = "<group>"; };
 		9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtension.swift; sourceTree = "<group>"; };
@@ -683,6 +693,7 @@
 		00982A971C868C89003DA5E2 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				9E9051A51D94C17D00ED140D /* Algorithm */,
 				9E013D5B1D7035620005DCF8 /* ViewModel */,
 				CBA06BEB1C8EB2C800E3257B /* View */,
 				00982A981C868C89003DA5E2 /* Controller */,
@@ -874,7 +885,7 @@
 				00982B0A1C868C89003DA5E2 /* Goal */,
 				9E013D3F1D70225A0005DCF8 /* Instruction */,
 				9E80C3DA1D93B4B3005F7940 /* MasterCockroach */,
-				CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */,
+				9E9051A81D94C2AD00ED140D /* MenuItem */,
 				00982B0E1C868C89003DA5E2 /* Sleep */,
 				00982B101C868C89003DA5E2 /* TestMode */,
 				9E1535851D5C219600CB6A01 /* Worldclock */,
@@ -1397,6 +1408,26 @@
 			name = MasterCockroach;
 			sourceTree = "<group>";
 		};
+		9E9051A51D94C17D00ED140D /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				9E9051B11D94CD0B00ED140D /* Gaussian.swift */,
+				9E9051AF1D94CCDE00ED140D /* DataSet.swift */,
+				9E9051AB1D94CC8B00ED140D /* MachineLearningProtocols.swift */,
+				9E9051AC1D94CC8B00ED140D /* PrincipalComponantAnalysis.swift */,
+				9E9051A61D94C18A00ED140D /* MovementMatchingAlgorithm.swift */,
+			);
+			name = Algorithm;
+			sourceTree = "<group>";
+		};
+		9E9051A81D94C2AD00ED140D /* MenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */,
+			);
+			name = MenuItem;
+			sourceTree = "<group>";
+		};
 		9EA1C9A11D7935B50012C988 /* DoExerciseHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -1852,6 +1883,7 @@
 				0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */,
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
+				9E9051B01D94CCDE00ED140D /* DataSet.swift in Sources */,
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
 				9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */,
@@ -1884,6 +1916,7 @@
 				004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
+				9E9051B21D94CD0B00ED140D /* Gaussian.swift in Sources */,
 				9E01092F1D7417B800AA3551 /* CoordinateSet.swift in Sources */,
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
 				9E2978731CDC40D000821704 /* WorldClockModel.swift in Sources */,
@@ -1934,8 +1967,10 @@
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
 				CBD6BD1C1CD052C30009F39A /* SleepViewController.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
+				9E9051AD1D94CC8B00ED140D /* MachineLearningProtocols.swift in Sources */,
 				00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
+				9E9051A71D94C18A00ED140D /* MovementMatchingAlgorithm.swift in Sources */,
 				008845EA1CF6A4D5006EA77F /* CheckEmailController.swift in Sources */,
 				0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */,
 				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,
@@ -1943,6 +1978,7 @@
 				008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */,
 				00982C1B1C868C8A003DA5E2 /* WorldClockViewController.swift in Sources */,
 				00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */,
+				9E9051AE1D94CC8B00ED140D /* PrincipalComponantAnalysis.swift in Sources */,
 				005699D81CD05F7C0097938E /* SearchCityController.swift in Sources */,
 				9EF7EEAE1CD8A47E009B0928 /* UIViewExtension.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,

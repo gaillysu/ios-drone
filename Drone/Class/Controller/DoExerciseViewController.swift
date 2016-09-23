@@ -10,16 +10,22 @@ import UIKit
 import SwiftEventBus
 import BRYXBanner
 import RealmSwift
+import MRProgress
 
 class DoExerciseViewController: BaseViewController, UITableViewDataSource{
-
-    var finishedRepetitions: Int = 0
-    var instruction: Instruction?
+    
     let cellIdentifier: String = "cellIdentifier"
+    var listenToEvents = false
+    var timedSeconds = 0
+    
+    var instruction: Instruction?
     var header:DoExerciseHeader?
-
+    var algorithm:MovementMatchingAlgorithm?
+    weak var timer = Timer()
+    
     var cockroaches: [MasterCockroach] = []
-    var completedCoordinatesSerie: [Int : (completedSeries:Int, skippedMovements:Int)] = [:]
+    var completedDates: [Date] = []
+    
     
     @IBOutlet weak var tableview: UITableView!
     
@@ -34,13 +40,48 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header!.frame.height))
         headerView.addSubview(header!)
         tableview.tableHeaderView = headerView
-
+        algorithm = MovementMatchingAlgorithm(withInstruction: self.instruction!, repCompleteCallback: { () in
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            self.header?.repititionLabel.text = "Amount of repetitions: \(self.algorithm!.finishedRepetitions)"
+            self.header?.statusLabel.text =  "Repetition Done! Take a rest for 2 seconds"
+            self.listenToEvents = false
+            self.completedDates.append(Date())
+            self.tableview.reloadData()
+            self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timerSecondTriggeredAction), userInfo: nil, repeats: true)
+            }, threshold: 75, amountFailedMovements: 7)
+        
+        algorithm?.setEqualCallback {
+            if self.listenToEvents {
+                let string:String = (self.header?.statusLabel.text!)!
+                self.header?.statusLabel.text =  "\(string)!"
+            }
+        }
+        algorithm?.setResetCallback {
+            self.header?.statusLabel.text = "Too bad. Try again! Restart in 2 seconds"
+            self.listenToEvents = false
+            self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timerSecondTriggeredAction), userInfo: nil, repeats: true)
+        }
+        
         header?.exerciseNameLabel.text = "Exercise name: \(instruction!.name)"
-        header?.statusLabel.text = "Status: Go ahead, follow the instruction"
+        header?.statusLabel.text = "Ready?"
         header?.repititionLabel.text = "Amount of repetitions: 0 "
         initEventBus()
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerSecondTriggeredAction), userInfo: nil, repeats: true)
     }
-
+    
+    func timerSecondTriggeredAction(){
+        timedSeconds = timedSeconds +  1
+        self.header?.statusLabel.text = "Starting in \((3 - timedSeconds))"
+        if timedSeconds >= 3 {
+            self.listenToEvents = true
+            self.timedSeconds = 0
+            self.header?.statusLabel.text = "Status: Going Strong!"
+            if let timer = self.timer{
+                timer.invalidate()
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -48,12 +89,19 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
     func saveExercise(){
         let realm = try! Realm()
         let exercise = Exercise()
-        exercise.finishedRepetitions = self.finishedRepetitions
+        exercise.finishedRepetitions = (self.algorithm?.finishedRepetitions)!
         exercise.instruction = self.instruction!
+        exercise.exerciseDate = Date()
         try! realm.write {
             realm.add(exercise)
-            
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.view, title:"Saved", mode: MRProgressOverlayViewMode.checkmark, animated: true)!
+            view.setTintColor(UIColor.getBaseColor())
+            Timer.after(0.6.second) {
+                view.dismiss(true)
+                self.close()
+            }
         }
+        
     }
     
     func close() {
@@ -73,7 +121,8 @@ extension DoExerciseViewController{
         }
         
         if indexPath.section == 0 {
-            cell.textLabel?.text = "Nothing yet :)"
+            let now = self.completedDates[indexPath.row]
+            cell.textLabel?.text = "\(now.hour):\(now.minute):\(now.second) - \(now.day)/\(now.month)"
             cell.detailTextLabel?.text = ""
         } else {
             let masterCockroach = self.cockroaches[indexPath.section - 1]
@@ -87,7 +136,11 @@ extension DoExerciseViewController{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.finishedRepetitions
+            if let algorithm = self.algorithm{
+                return self.completedDates.count
+            }
+            return 0
+            
         }
         return self.cockroaches[section-1].getAmountBabies()
     }
@@ -114,65 +167,27 @@ extension DoExerciseViewController{
             for cockroach in self.cockroaches {
                 if cockroach.address == object.address{
                     cockroach.addOrUpdateBabyCockroach(byCockroachMasterDataReceived: object)
-                    self.tableview.reloadData()
+                    self.updateAlgorithm(cockroachData: object)
                     return
                 }
             }
             self.cockroaches.append(MasterCockroach(WithMasterCockroachData: object))
-            self.tableview.reloadData()
-            if self.completedCoordinatesSerie.count == 0 {
-                for coordinateSerie in (self.instruction?.coordinateSeries)!{
-                    if object.babyCockroachNumber == coordinateSerie.cockroachNumber {
-                        if(object.coordinates.equal(coordinateSerie.coordinateSets[0])){
-                            print("Close enough for the first add")
-                            self.completedCoordinatesSerie[object.babyCockroachNumber] = (completedSeries:1, skippedMovements:0)
-                        }
-                    }
-                }
-            }else{
-                for i in 0..<self.instruction!.coordinateSeries.count {
-                    let coordinateSerie = (self.instruction?.coordinateSeries)![i]
-                    if object.babyCockroachNumber == coordinateSerie.cockroachNumber {
-                        if(object.coordinates.equal(coordinateSerie.coordinateSets[coordinateSerie.cockroachNumber])){
-                            print("Close enough for the add")
-                            if let data = self.completedCoordinatesSerie[object.babyCockroachNumber]{
-                                var unpackedData = self.completedCoordinatesSerie[object.babyCockroachNumber]!
-                                if (unpackedData.completedSeries + data.skippedMovements) >= coordinateSerie.coordinateSets.count{
-                                    unpackedData.completedSeries = 0
-                                    unpackedData.skippedMovements = 0
-                                    print("Reset Cuz of good stuff!")
-                                }else{
-                                    unpackedData.completedSeries += 1
-                                    if(data.completedSeries == coordinateSerie.coordinateSets.count){
-                                        print("Wow holy shit!")
-                                        unpackedData.completedSeries = 0
-                                        unpackedData.skippedMovements = 0
-                                        self.finishedRepetitions += 1
-                                        self.header?.repititionLabel.text = "Amount of repetitions: \(self.finishedRepetitions) "
-                                    }
-                                }
-                                }
-                        }else{
-                            if let data = self.completedCoordinatesSerie[object.babyCockroachNumber]{
-                                print("Not good enough unfortunately")
-                                if data.skippedMovements >= 3 {
-                                    print("Done, no go.")
-                                    self.completedCoordinatesSerie[object.babyCockroachNumber]!.completedSeries = 0
-                                    self.completedCoordinatesSerie[object.babyCockroachNumber]!.skippedMovements = 0
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            self.updateAlgorithm(cockroachData: object)
         }
         
-        SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
+       _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
             let cockroachesChangedEvent = data.object! as! CockroachMasterChanged
             if !cockroachesChangedEvent.connected {
                 Banner(title: "Cockroach got disconnected!", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil).show()
             }
             self.tableview.reloadData()
         }
+    }
+    
+    private func updateAlgorithm(cockroachData: CockroachMasterDataReceived){
+        if listenToEvents {
+            self.algorithm?.addMovement(byMasterCockroachData: cockroachData)
+        }
+        self.tableview.reloadData()
     }
 }

@@ -73,7 +73,7 @@ class MyDeviceViewController: BaseViewController {
     }
     
     @IBAction func buyButtonAction(_ sender: AnyObject) {
-        UIApplication.shared.openURL(URL(string: "http://www.hsn.com/shop/drone-presented-by-shaquille-oneal/13040")!)
+        UIApplication.shared.openURL(URL(string: "")!)
     }
     
     func pushContactsFilterViewController(){

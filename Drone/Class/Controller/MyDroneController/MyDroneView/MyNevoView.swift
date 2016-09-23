@@ -25,7 +25,7 @@ class MyNevoView: UITableView {
     
     func bulidMyNevoView(_ navigation:UINavigationItem){
 
-        navigation.title = NSLocalizedString("My Drone", comment: "")
+        navigation.title = NSLocalizedString("My Watch", comment: "")
         //title.text = NSLocalizedString("My nevo", comment: "")
         //let objArray:NSArray = AppTheme.LoadKeyedArchiverName("LatestUpdate") as! NSArray
     }

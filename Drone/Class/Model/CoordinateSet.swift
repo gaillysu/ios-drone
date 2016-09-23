@@ -42,16 +42,15 @@ class CoordinateSet: Object {
         return [X0,X1,X2,Y0,Y1,Y2,Z0,Z1,Z2]
     }
     
-    func equal(_ otherCoordinateSet:CoordinateSet) -> Bool{
-        for i in 0..<9{
-            if(!applicableMove(getAllCoordinates()[i], coordinate2: otherCoordinateSet.getAllCoordinates()[i])){
+    func equal(_ threshold:Int, otherCoordinateSet:CoordinateSet) -> Bool{
+        for i in 0..<getAllCoordinates().count{
+            if(!applicableMove(threshold, coordinate1: getAllCoordinates()[i], coordinate2: otherCoordinateSet.getAllCoordinates()[i])){
                 return false
             }
         }
         return true
     }
-    fileprivate func applicableMove(_ coordinate1:Int, coordinate2:Int) -> Bool{
-        let threshold = 20
+    fileprivate func applicableMove(_ threshold:Int, coordinate1:Int, coordinate2:Int) -> Bool{
         if abs(coordinate1 - coordinate2) < threshold {
             return true
         }

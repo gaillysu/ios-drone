@@ -9,7 +9,7 @@
 import UIKit
 import SDCycleScrollView
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: BaseViewController {
 
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var scrollView: UIView!
@@ -40,8 +40,10 @@ class WelcomeViewController: UIViewController {
         let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: scrollView.bounds.size.width, height: scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [UIImage(named:"welcome_1")!,UIImage(named:"welcome_2")!,UIImage(named:"welcome_3")!,UIImage(named:"welcome_4")!,UIImage(named:"welcome_5")!])
         scrollView.addSubview(sdView)
     }
-
-
+ 
+    @IBAction func skipLoginAction(_ sender: AnyObject) {
+        self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+    }
     @IBAction func buttonActionManager(_ sender: AnyObject) {
         if loginB.isEqual(sender) {
             let logoin:LoginViewController = LoginViewController()

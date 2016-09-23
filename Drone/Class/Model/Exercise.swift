@@ -12,5 +12,5 @@ import RealmSwift
 class Exercise: Object {
     dynamic var instruction: Instruction? = nil
     dynamic var finishedRepetitions = 0
-    
+    dynamic var exerciseDate:Date = Date()
 }

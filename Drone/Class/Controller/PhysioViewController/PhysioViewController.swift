@@ -1,4 +1,4 @@
-//
+                  //
 //  PhysioViewController.swift
 //  Drone
 //
@@ -60,6 +60,16 @@ extension PhysioViewController{
         super.viewDidAppear(animated)
         self.exerciseTableView.reloadData()
     }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Instructions"
+        case 1:
+            return "Past Exercises"
+        default:
+            return "Unknown"
+        }
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var header:UITableViewHeaderFooterView
@@ -83,7 +93,13 @@ extension PhysioViewController{
     }
     
     @objc(tableView:commitEditingStyle:forRowAtIndexPath:) func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
+        if editingStyle == .delete {
+            let instruction:Instruction = self.instructions![(indexPath as NSIndexPath).row]
+            try! realm.write({
+                realm.delete(instruction)
+            })
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     @objc(tableView:editActionsForRowAtIndexPath:) func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -111,13 +127,21 @@ extension PhysioViewController{
         }else{
             cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         }
-        switch (indexPath as NSIndexPath).section {
+        switch indexPath.section {
         case 0:
-            let instruction = self.instructions![(indexPath as NSIndexPath).row]
+            let instruction = self.instructions![indexPath.row]
             cell.textLabel?.text = "Name: \(instruction.name), amount of sensors required: \(instruction.totalAmountOfCockroaches)"
             cell.detailTextLabel?.text = "Created on \(instruction.createdDate.day)/\(instruction.createdDate.month)"
             break
         case 1:
+            let exercise = self.exercises![indexPath.row]
+            if let instruction = exercise.instruction {
+                cell.textLabel?.text = "Name: \(instruction.name), amount of reps done: \(exercise.finishedRepetitions)"
+            }else{
+                cell.textLabel?.text = "Name: EXERCISE DELETED, amount of reps done: \(exercise.finishedRepetitions)"
+            }
+            
+            cell.detailTextLabel?.text = "Exercise finished on \(exercise.exerciseDate.day)/\(exercise.exerciseDate.month)"
             break
         default:
                 break
@@ -130,9 +154,12 @@ extension PhysioViewController{
         if self.getAppDelegate().getConnectedCockroaches().count == 0 {
             self.showNoCockroachConnectedDialog()
         }else{
-            let doExerciseViewController = DoExerciseViewController()
-            doExerciseViewController.instruction = self.instructions![(indexPath as NSIndexPath).row]
-            self.present(self.makeStandardUINavigationController(doExerciseViewController), animated: true, completion: nil)
+            if indexPath.section == 0 {
+                let doExerciseViewController = DoExerciseViewController()
+                doExerciseViewController.instruction = self.instructions![(indexPath as NSIndexPath).row]
+                self.present(self.makeStandardUINavigationController(doExerciseViewController), animated: true, completion: nil)
+            }
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
