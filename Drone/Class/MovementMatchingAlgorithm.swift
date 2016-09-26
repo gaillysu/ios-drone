@@ -19,13 +19,15 @@ class MovementMatchingAlgorithm {
     var finishedRepetitions:Int = 0
     let instruction:CoordinateSerie
     let threshold:Int
-    
-    var correctInput:[CoordinateSet] = []
+    var hardMode:Bool = false
+
+    var correctInput:[Vector] = []
     var skippedIndexForSensor:[Int : Int] = [:]
     
     let repetitionFinishedCallback: ((Void) -> Void)
     var equalCallback: ((Void) -> Void)?
     var resetCallback: ((Void) -> Void)?
+    var previousInputCoordinate:CoordinateSet?
     
     init(withInstruction instruction:Instruction, repCompleteCallback callback: @escaping ((Void) -> Void), threshold:Int, amountFailedMovements:Int){
         self.threshold = threshold
@@ -56,43 +58,59 @@ class MovementMatchingAlgorithm {
     }
     
     private func addMovement(babyCockroachNumber:Int, coordinateSet:CoordinateSet){
-        let mustMatch = instruction.coordinateSets[((correctInput.count - 1) < 0 ?  0 : (correctInput.count - 1))]
-        if mustMatch.sensorNumber == babyCockroachNumber {
-            if mustMatch.equal(self.threshold, otherCoordinateSet: coordinateSet) {
-                if let unpackedEqualCallback = self.equalCallback{
-                    unpackedEqualCallback()
-                }
-                print("Equal!")
-                correctInput.append(coordinateSet)
-                if let _ = self.skippedIndexForSensor[coordinateSet.sensorNumber]{
-                    self.skippedIndexForSensor[coordinateSet.sensorNumber] = 0
-                }
-                if correctInput.count == instruction.coordinateSets.count {
-                    print("One repetition Finished!")
-                    self.finishedRepetitions += 1
-                    self.repetitionFinishedCallback()
-                    self.reset()
-                    return
-                }
-            }else{
-                if let skipped = self.skippedIndexForSensor[coordinateSet.sensorNumber]{
-                    if skipped >= self.amountFailedMovements {
+        if let previousInput = previousInputCoordinate {
+            let inputVector = Vector(withCoordinates: coordinateSet, right: previousInput)
+            let mustMatch = instruction.coordinateSets[((correctInput.count - 1) < 0 ?  0 : (correctInput.count - 1))]
+            let mustMatchNext = instruction.coordinateSets[(correctInput.count + 1 < instruction.coordinateSets.count ? (correctInput.count + 1) : instruction.coordinateSets.count - 1)]
+            let comparedVector = Vector(withCoordinates: mustMatch, right: mustMatchNext)
+            print("Vector Input = \(inputVector.getString())")
+            print("Vector Match = \(comparedVector.getString())")
+            if mustMatch.sensorNumber == babyCockroachNumber {
+                if inputVector.equal(self.threshold, otherVector: comparedVector) {
+                    if let unpackedEqualCallback = self.equalCallback{
+                        unpackedEqualCallback()
+                    }
+                    print("Equal!")
+                    correctInput.append(inputVector)
+                    if let _ = self.skippedIndexForSensor[coordinateSet.sensorNumber]{
+                        self.skippedIndexForSensor[coordinateSet.sensorNumber] = 0
+                    }
+                    if correctInput.count == instruction.coordinateSets.count {
+                        print("One repetition Finished!")
+                        self.finishedRepetitions += 1
+                        self.repetitionFinishedCallback()
                         self.reset()
-                        if let unpackedResetCallback = self.resetCallback{
-                            unpackedResetCallback()
-                        }
                         return
                     }
-                    self.skippedIndexForSensor[coordinateSet.sensorNumber] = self.skippedIndexForSensor[coordinateSet.sensorNumber]! + 1
-                }else{
-                    self.skippedIndexForSensor[coordinateSet.sensorNumber] = 1
+                }else if hardMode {
+                    if let skipped = self.skippedIndexForSensor[coordinateSet.sensorNumber]{
+                        if skipped >= self.amountFailedMovements {
+                            self.reset()
+                            if let unpackedResetCallback = self.resetCallback{
+                                unpackedResetCallback()
+                            }
+                            return
+                        }
+                        self.skippedIndexForSensor[coordinateSet.sensorNumber] = self.skippedIndexForSensor[coordinateSet.sensorNumber]! + 1
+                    }else{
+                        self.skippedIndexForSensor[coordinateSet.sensorNumber] = 1
+                    }
                 }
             }
+        }else{
+            print(coordinateSet.getString())
+            print(instruction.coordinateSets[0].getString())
+            if coordinateSet.equal(self.threshold, otherCoordinateSet: instruction.coordinateSets[0]) {
+                self.previousInputCoordinate = coordinateSet
+            }
+            return
         }
     }
     
-    private func reset(){
         
+    
+    private func reset(){
+        self.previousInputCoordinate = nil
         self.skippedIndexForSensor.removeAll()
         self.correctInput.removeAll()
     }

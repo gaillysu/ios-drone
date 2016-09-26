@@ -48,7 +48,7 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
             self.completedDates.append(Date())
             self.tableview.reloadData()
             self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timerSecondTriggeredAction), userInfo: nil, repeats: true)
-            }, threshold: 75, amountFailedMovements: 7)
+            }, threshold: 30, amountFailedMovements: 7)
         
         algorithm?.setEqualCallback {
             if self.listenToEvents {
@@ -75,7 +75,7 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
         if timedSeconds >= 3 {
             self.listenToEvents = true
             self.timedSeconds = 0
-            self.header?.statusLabel.text = "Status: Going Strong!"
+            self.header?.statusLabel.text = "Status: Try to replicate the movement!"
             if let timer = self.timer{
                 timer.invalidate()
             }
@@ -140,7 +140,6 @@ extension DoExerciseViewController{
                 return self.completedDates.count
             }
             return 0
-            
         }
         return self.cockroaches[section-1].getAmountBabies()
     }

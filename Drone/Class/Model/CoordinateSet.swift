@@ -35,7 +35,7 @@ class CoordinateSet: Object {
     }
     
     func getString () -> String{
-        return "X0 = \(X0), X1 = \(X1), X2 = \(X2), Y0 = \(Y0), Y1 = \(Y1), Y2 = \(Y2), Z0 = \(Z0), Z1 = \(Z1), Z1 = \(Z1)"
+        return "X0 = \(X0), X1 = \(X1), X2 = \(X2), Y0 = \(Y0), Y1 = \(Y1), Y2 = \(Y2), Z0 = \(Z0), Z1 = \(Z1), Z2 = \(Z2)"
     }
     
     func getAllCoordinates() -> [Int]{
@@ -44,14 +44,15 @@ class CoordinateSet: Object {
     
     func equal(_ threshold:Int, otherCoordinateSet:CoordinateSet) -> Bool{
         for i in 0..<getAllCoordinates().count{
-            if(!applicableMove(threshold, coordinate1: getAllCoordinates()[i], coordinate2: otherCoordinateSet.getAllCoordinates()[i])){
+            if(!applicableMove(threshold, vectorLeft: getAllCoordinates()[i], vectorRight: otherCoordinateSet.getAllCoordinates()[i])){
                 return false
             }
         }
         return true
     }
-    fileprivate func applicableMove(_ threshold:Int, coordinate1:Int, coordinate2:Int) -> Bool{
-        if abs(coordinate1 - coordinate2) < threshold {
+    
+    fileprivate func applicableMove(_ threshold:Int, vectorLeft:Int, vectorRight:Int) -> Bool{
+        if abs(vectorLeft - vectorRight) < threshold {
             return true
         }
         return false

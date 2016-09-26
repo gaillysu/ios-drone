@@ -17,6 +17,7 @@
     import Crashlytics
     import IQKeyboardManagerSwift
     import RealmSwift
+    
     let DRONEDBFILE:String = "droneDBFile";
     let DRONEDBNAME:String = "drone.sqlite";
     let RESET_STATE:String = "RESET_STATE"
@@ -63,6 +64,7 @@
       }
       
       func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+       
          // Override point for customization after application launch.
          Fabric.with([Crashlytics.self])
          var config = Realm.Configuration(

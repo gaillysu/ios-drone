@@ -50,6 +50,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     }
     
     func close() {
+        SwiftEventBus.unregister(self)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -80,6 +81,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     }
 
     func saveInstruction(){
+        
         if header!.instructionNameEditTextField.text == "" {
             Banner(title: "No instruction name", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil).show()
             return
@@ -101,6 +103,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
             Timer.after(0.6.second) {
                 view.dismiss(true)
                 self.dismiss(animated: true, completion: nil)
+                SwiftEventBus.unregister(self)
             }
         }    
     }
@@ -136,6 +139,7 @@ extension AddInstructionViewController{
         _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let object = data.object! as! CockroachMasterDataReceived
             var found = false
+            print(object.coordinates.getString())
             for cockroach in self.cockroaches {
                 if cockroach.address == object.address{
                     cockroach.addOrUpdateBabyCockroach(byCockroachMasterDataReceived: object)
