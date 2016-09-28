@@ -222,6 +222,10 @@
 		CB28AFDB1CE2C34300639538 /* ContactsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB28AFDA1CE2C34300639538 /* ContactsFilter.swift */; };
 		CB28AFDF1CE2E59B00639538 /* ContactsNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB28AFDD1CE2E59B00639538 /* ContactsNotificationViewController.swift */; };
 		CB28AFE01CE2E59B00639538 /* ContactsNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB28AFDE1CE2E59B00639538 /* ContactsNotificationViewController.xib */; };
+		CB3533C31D9B617100E5DE40 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3533C21D9B617100E5DE40 /* Human.swift */; };
+		CB3533EB1D9B646B00E5DE40 /* HumanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3533E91D9B646B00E5DE40 /* HumanViewController.swift */; };
+		CB3533EC1D9B646B00E5DE40 /* HumanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB3533EA1D9B646B00E5DE40 /* HumanViewController.xib */; };
+		CB3533EE1D9B67D100E5DE40 /* Human.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3533ED1D9B67D100E5DE40 /* Human.scnassets */; };
 		CB5754261D76BA260008E0EC /* CoordinateSerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5754251D76BA260008E0EC /* CoordinateSerie.swift */; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
 		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
@@ -490,6 +494,10 @@
 		CB28AFDA1CE2C34300639538 /* ContactsFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsFilter.swift; sourceTree = "<group>"; };
 		CB28AFDD1CE2E59B00639538 /* ContactsNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsNotificationViewController.swift; sourceTree = "<group>"; };
 		CB28AFDE1CE2E59B00639538 /* ContactsNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsNotificationViewController.xib; sourceTree = "<group>"; };
+		CB3533C21D9B617100E5DE40 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		CB3533E91D9B646B00E5DE40 /* HumanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumanViewController.swift; sourceTree = "<group>"; };
+		CB3533EA1D9B646B00E5DE40 /* HumanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HumanViewController.xib; sourceTree = "<group>"; };
+		CB3533ED1D9B67D100E5DE40 /* Human.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Human.scnassets; sourceTree = "<group>"; };
 		CB5754251D76BA260008E0EC /* CoordinateSerie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSerie.swift; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
@@ -662,6 +670,7 @@
 				00982A701C868B15003DA5E2 /* Assets.xcassets */,
 				00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */,
 				00982A751C868B15003DA5E2 /* Info.plist */,
+				CB3533ED1D9B67D100E5DE40 /* Human.scnassets */,
 			);
 			path = Drone;
 			sourceTree = "<group>";
@@ -702,6 +711,7 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CB3533E41D9B62DE00E5DE40 /* HumanViewController */,
 				9E01091D1D73C6DC00AA3551 /* AddInstructionViewController */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
@@ -1465,6 +1475,15 @@
 			name = ContactsNotificationViewController;
 			sourceTree = "<group>";
 		};
+		CB3533E41D9B62DE00E5DE40 /* HumanViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB3533E91D9B646B00E5DE40 /* HumanViewController.swift */,
+				CB3533EA1D9B646B00E5DE40 /* HumanViewController.xib */,
+			);
+			name = HumanViewController;
+			sourceTree = "<group>";
+		};
 		CB5754241D76BA150008E0EC /* CoordinateSerie */ = {
 			isa = PBXGroup;
 			children = (
@@ -1503,6 +1522,7 @@
 				00982ADF1C868C89003DA5E2 /* StepView */,
 				9EF7EEAC1CD8A46D009B0928 /* UIView */,
 				00982AE61C868C89003DA5E2 /* WorldClockView */,
+				CB3533C21D9B617100E5DE40 /* Human.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1711,6 +1731,7 @@
 				0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */,
 				00982C091C868C8A003DA5E2 /* queryTableviewCell.xib in Resources */,
 				005699DB1CD0673D0097938E /* localTimeZone in Resources */,
+				CB3533EE1D9B67D100E5DE40 /* Human.scnassets in Resources */,
 				00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */,
 				9E455E0F1CD5A16C00F79356 /* MyDeviceViewController.xib in Resources */,
 				005699D91CD05F7C0097938E /* SearchCityController.xib in Resources */,
@@ -1724,6 +1745,7 @@
 				00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */,
 				9E1999541CE4328800C1D967 /* ContactsNotificationHeader.xib in Resources */,
 				00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */,
+				CB3533EC1D9B646B00E5DE40 /* HumanViewController.xib in Resources */,
 				CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */,
 				9E0109231D73C73F00AA3551 /* AddInstructionViewController.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginViewController.xib in Resources */,
@@ -1879,6 +1901,7 @@
 				9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */,
 				00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
+				CB3533EB1D9B646B00E5DE40 /* HumanViewController.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
 				CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */,
@@ -1978,6 +2001,7 @@
 				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */,
 				00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */,
+				CB3533C31D9B617100E5DE40 /* Human.swift in Sources */,
 				0024C0FB1CB73A7C00E0A23D /* ProfileModel.swift in Sources */,
 				00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */,
 				00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */,

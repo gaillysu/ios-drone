@@ -36,7 +36,6 @@ class MovementMatchingAlgorithm {
         self.amountFailedMovements = amountFailedMovements
     }
     
-    
     func addMovement(byMasterCockroachData masterCockroachData:CockroachMasterDataReceived){
         addMovement(babyCockroachNumber: masterCockroachData.babyCockroachNumber, coordinateSet: masterCockroachData.coordinates)
     }
@@ -106,8 +105,6 @@ class MovementMatchingAlgorithm {
             return
         }
     }
-    
-        
     
     private func reset(){
         self.previousInputCoordinate = nil

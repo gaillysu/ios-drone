@@ -65,9 +65,10 @@ class GoalModel: UserDatabaseHelper {
                 let model:GoalModel = GoalModel()
 
                 for i:Int in 0 ..< model.columeNames.count {
-                    let columeName:NSString = model.columeNames.object(at: i) as! NSString
-                    let columeType:NSString = model.columeTypes.object(at: i) as! NSString
-                    if (columeType.isEqual(to: SQLTEXT)) {
+                    let test = model.columeNames.object(at: i)
+                    let columeName:String = model.columeNames.object(at: i) as! String
+                    let columeType:String = model.columeTypes.object(at: i) as! String
+                    if (columeType.isEqual(SQLTEXT)) {
                         model.setValue(resultSet.string(forColumn: "\(columeName)"), forKey: "\(columeName)")
                     } else {
                         model.setValue(NSNumber(value: resultSet.longLongInt(forColumn: "\(columeName)") as Int64), forKey: "\(columeName)")

@@ -11,14 +11,14 @@ import UIKit
 import FMDB
 
 /** SQLite Five types of data */
-let SQLTEXT = "TEXT"
-let SQLINTEGER = "INTEGER"
-let SQLREAL = "REAL"
-let SQLBLOB = "BLOB"
-let SQLNULL = "NULL"
+let SQLTEXT:String = "TEXT"
+let SQLINTEGER:String = "INTEGER"
+let SQLREAL:String = "REAL"
+let SQLBLOB:String = "BLOB"
+let SQLNULL:String = "NULL"
 
-let PrimaryKey = "primary key"
-let primaryId = "id"
+let PrimaryKey:String = "primary key"
+let primaryId:String = "id"
 
 class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
 
@@ -38,7 +38,7 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
     override init() {
         super.init()
         
-        let dic:NSDictionary = UserDatabaseHelper.getAllProperties()
+        let dic:NSDictionary = self.classForCoder.getAllProperties()
         columeNames = NSMutableArray(array: dic.object(forKey: "name") as! NSArray)
         columeTypes = NSMutableArray(array: dic.object(forKey: "type") as! NSArray)
     }
