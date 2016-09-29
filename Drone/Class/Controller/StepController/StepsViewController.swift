@@ -17,23 +17,23 @@ import SwiftEventBus
 import XCGLogger
 import MRProgress
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
 }
 
 fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
 }
 
 
@@ -43,7 +43,7 @@ let IS_SEND_0X14_COMMAND_TIMERFRAME:String = "IS_SEND_0X14_COMMAND_TIMERFRAME"
 
 private let CALENDAR_VIEW_TAG = 1800
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
-
+    
     @IBOutlet var mainview: UIView!
     @IBOutlet weak var circleProgressView: CircleProgressView!
     @IBOutlet weak var lastMiles: UILabel!
@@ -53,7 +53,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
     @IBOutlet weak var barChart: BarChartView!
     @IBOutlet weak var percentageLabel: UILabel!
-
+    
     @IBOutlet weak var thisWeekMiles: UILabel!
     @IBOutlet weak var thisWeekCalories: UILabel!
     @IBOutlet weak var thisWeekActiveTime: UILabel!
@@ -76,16 +76,16 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
     fileprivate var didSelectedDate:Foundation.Date = Foundation.Date().beginningOfDay
     fileprivate var queryTimer:Timer?
-
+    
     init() {
         super.init(nibName: "StepsViewController", bundle: Bundle.main)
         self.tabBarItem.title="Steps"
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initTitleView()
@@ -125,7 +125,8 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             }
         }
         
-        let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
+        if let unwrappedData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND){
+            let lastData = unwrappedData as! NSArray
         if lastData.count>0 {
             let dateString:String = lastData[1] as! String
             let date:Foundation.Date = dateString.dateFromFormat("YYYY/MM/dd")!
@@ -139,8 +140,9 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
                 self.fireSmallSyncTimer()
             }
         }
+            }
     }
-
+    
     /**
      Must release timer when using 0 x14
      */
@@ -164,14 +166,14 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.bulidChart(didSelectedDate)
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY)
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA)
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY)
         invalidateTimer()
     }
-
+    
     func queryStepsGoalAction(_ timer:Timer) {
         if AppDelegate.getAppDelegate().syncState != SYNC_STATE.big_SYNC {
             AppDelegate.getAppDelegate().getGoal()
@@ -197,27 +199,30 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     }
     
     func getLoclSmallSyncData(_ data:[String:Int]?){
-        let lastData = AppTheme.LoadKeyedArchiverName(SMALL_SYNC_LASTDATA) as! NSArray
-        if lastData.count>0 {
-            let stepsDict:[String:Int] = data==nil ? (lastData[0] as! [String:Int]):data!
-            let smallDateString = data==nil ? (lastData[1] as! String):Foundation.Date().beginningOfDay.stringFromFormat("YYYY/MM/dd")
-            if smallDateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
-                let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
-                if last0X30Data.count>0 {
-                    let steps:[String:AnyObject] = last0X30Data[0] as! [String:AnyObject]
-                    let dateString = last0X30Data[1] as! String
-                    if dateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
-                        DispatchQueue.main.async(execute: {
-                            // do something
-                            let daySteps:Int = Int(steps["steps"] as! String)! + stepsDict["dailySteps"]!
-                            self.setCircleProgress(daySteps, goalValue: stepsDict["goal"]!)
-                        })
-                        
+        if let unpackeddata  = AppTheme.LoadKeyedArchiverName(SMALL_SYNC_LASTDATA){
+            let lastData = unpackeddata as! NSArray
+            
+            if lastData.count>0 {
+                let stepsDict:[String:Int] = data==nil ? (lastData[0] as! [String:Int]):data!
+                let smallDateString = data==nil ? (lastData[1] as! String):Foundation.Date().beginningOfDay.stringFromFormat("YYYY/MM/dd")
+                if smallDateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
+                    let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
+                    if last0X30Data.count>0 {
+                        let steps:[String:AnyObject] = last0X30Data[0] as! [String:AnyObject]
+                        let dateString = last0X30Data[1] as! String
+                        if dateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
+                            DispatchQueue.main.async(execute: {
+                                // do something
+                                let daySteps:Int = Int(steps["steps"] as! String)! + stepsDict["dailySteps"]!
+                                self.setCircleProgress(daySteps, goalValue: stepsDict["goal"]!)
+                            })
+                            
+                        }else{
+                            self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                        }
                     }else{
                         self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
                     }
-                }else{
-                    self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
                 }
             }
         }
@@ -225,13 +230,13 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
 }
 
 extension StepsViewController {
-
+    
     func setCircleProgress(_ stepsValue:Int,goalValue:Int) {
         circleProgressView.setProgress(Double(stepsValue)/Double(goalValue), animated: true)
         stepsLabel.text = String(format:"%d",stepsValue)
         
     }
-
+    
     func bulidChart(_ todayDate:Foundation.Date) {
         lastWeekChart.reset()
         lastMonthChart.reset()
@@ -253,7 +258,7 @@ extension StepsViewController {
         xAxis.drawGridLinesEnabled = true
         xAxis.labelPosition = ChartXAxis.LabelPosition.bottom
         xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 7)!
-
+        
         let yAxis:ChartYAxis = barChart!.leftAxis
         yAxis.labelTextColor = UIColor.gray
         yAxis.axisLineColor = UIColor.gray
@@ -270,7 +275,7 @@ extension StepsViewController {
         rightAxis.drawGridLinesEnabled  = true
         rightAxis.drawLimitLinesBehindDataEnabled = true
         rightAxis.drawZeroLineEnabled = true
-
+        
         barChart!.rightAxis.enabled = false
         barChart.drawBarShadowEnabled = false
         var xVals = [String]();
@@ -318,7 +323,7 @@ extension StepsViewController {
             }else{
                 xVals.append("")
             }
-
+            
             let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "")
             let dataSet = NSMutableArray()
             dataSet.add(barChartSet);
@@ -363,7 +368,7 @@ extension StepsViewController {
         lastWeekChart.drawSettings(lastWeekChart.xAxis, yAxis: lastWeekChart.leftAxis, rightAxis: lastWeekChart.rightAxis)
         thisWeekChart.drawSettings(thisWeekChart.xAxis, yAxis: thisWeekChart.leftAxis, rightAxis: thisWeekChart.rightAxis)
         lastMonthChart.drawSettings(lastMonthChart.xAxis, yAxis: lastMonthChart.leftAxis, rightAxis: lastMonthChart.rightAxis)
-
+        
         let oneWeekSeconds:Double = 604800
         let oneDaySeconds:Double = 86400
         
@@ -406,7 +411,7 @@ extension StepsViewController {
             self.thisWeekCalories.text = "0"
             self.thisWeekActiveTime.text = "0m"
         }
-
+        
         var lastWeekSteps:Int = 0
         var lastWeekTime:Int = 0
         for i in 0 ..< 7 {
@@ -448,7 +453,7 @@ extension StepsViewController {
             self.lastWeekCalories.text = "0"
             self.lastWeekActiveTime.text = "0m"
         }
-
+        
         let lastBeginningOfMonth:TimeInterval = todayDate.beginningOfDay.timeIntervalSince1970
         
         var lastMonthSteps:Int = 0
@@ -498,7 +503,7 @@ extension StepsViewController {
 
 // MARK: - Data calculation
 extension StepsViewController {
-
+    
     func calculationData(_ activeTimer:Int,steps:Int,completionData:((_ miles:String,_ calories:String) -> Void)) {
         let profile:NSArray = UserProfile.getAll()
         let userProfile:UserProfile = profile.object(at: 0) as! UserProfile
@@ -512,7 +517,7 @@ extension StepsViewController {
 
 // MARK: - Title View
 extension StepsViewController {
-
+    
     func initTitleView() {
         titleView = StepsTitleView.getStepsTitleView(CGRect(x: 0,y: 0,width: 190,height: 50))
         let formatter = DateFormatter()
@@ -533,7 +538,7 @@ extension StepsViewController {
             }
         }
     }
-
+    
     func showCalendar() {
         let view = self.view.viewWithTag(CALENDAR_VIEW_TAG)
         if(view == nil) {
@@ -544,11 +549,11 @@ extension StepsViewController {
             let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StepsViewController.tapAction(_:)))
             calendarBackGroundView.addGestureRecognizer(tap)
             self.view.addSubview(calendarBackGroundView)
-
+            
             let fillView:UIView = UIView(frame: CGRect(x: 0,y: 0,width: UIScreen.main.bounds.size.width,height: 280))
             fillView.backgroundColor = UIColor.white.withAlphaComponent(1)
             calendarBackGroundView.addSubview(fillView)
-
+            
             self.menuView = CVCalendarMenuView(frame: CGRect(x: 10, y: 40, width: UIScreen.main.bounds.size.width - 20, height: 20))
             self.menuView?.dayOfWeekTextColor = UIColor.white
             self.menuView?.dayOfWeekTextColor = UIColor.gray
@@ -556,7 +561,7 @@ extension StepsViewController {
             self.menuView?.backgroundColor = UIColor.white.withAlphaComponent(1)
             self.menuView!.menuViewDelegate = self
             fillView.addSubview(menuView!)
-
+            
             // CVCalendarView initialization with frame
             self.calendarView = CVCalendarView(frame: CGRect(x: 10, y: 60, width: UIScreen.main.bounds.size.width - 20, height: 220))
             self.calendarView?.backgroundColor = UIColor.white.withAlphaComponent(1)
@@ -565,19 +570,19 @@ extension StepsViewController {
             self.calendarView!.calendarAppearanceDelegate = self
             self.calendarView!.animatorDelegate = self
             self.calendarView!.calendarDelegate = self
-
+            
             // Commit frames' updates
             self.calendarView!.commitCalendarViewUpdate()
             self.menuView!.commitMenuViewUpdate()
-
+            
             calendarView?.coordinator.selectedDayView?.selectionView?.shape = CVShape.rect
-
+            
             UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
                 calendarBackGroundView.alpha = 1
             }) { (finish) in
-
+                
             }
-
+            
         }else {
             view?.isHidden = false
             UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
@@ -586,7 +591,7 @@ extension StepsViewController {
             }
         }
     }
-
+    
     /**
      Finish the selected calendar call
      */
@@ -600,7 +605,7 @@ extension StepsViewController {
             }
         }
     }
-
+    
     /**
      Click on the calendar the blanks
      - parameter recognizer: recognizer description
@@ -623,12 +628,12 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     func presentationMode() -> CalendarMode {
         return .monthView
     }
-
+    
     /// Required method to implement!
     func firstWeekday() -> Weekday {
         return .sunday
     }
-
+    
     func dayOfWeekTextUppercase() -> Bool {
         return false
     }
@@ -636,11 +641,11 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     func shouldShowWeekdaysOut() -> Bool {
         return false
     }
-
+    
     func shouldAnimateResizing() -> Bool {
         return true // Default value is true
     }
-
+    
     func shouldAutoSelectDayOnMonthChange() -> Bool {
         return false
     }
@@ -668,7 +673,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
                 
                 if result {
                     self.delay(0.3, closure: {
-                       self.bulidChart(Foundation.Date(timeIntervalSince1970: dayTime))
+                        self.bulidChart(Foundation.Date(timeIntervalSince1970: dayTime))
                         //cloud sync
                         AppDelegate.getAppDelegate().setStepsToWatch()
                     })
@@ -677,38 +682,38 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         }
         
     }
-
+    
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
         dayView.selectionView?.shape = CVShape.rect
         return false
     }
-
+    
     func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
         dayView.selectionView?.shape = CVShape.rect
         return true
     }
-
+    
     func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
         dayView.selectionView?.shape = CVShape.rect
         return false
     }
-
+    
     func presentedDateUpdated(_ date: CVDate) {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM"
         let dateString = "\(formatter.string(from: date.convertedDate()!)), \(date.day)"
         titleView?.setCalendarButtonTitle(dateString)
     }
-
+    
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
         dayView.selectionView?.shape = CVShape.rect
         return false
     }
-
+    
     func weekdaySymbolType() -> WeekdaySymbolType {
         return .veryShort
     }
-
+    
     func shouldShowCustomSingleSelection() -> Bool {
         return false
     }
@@ -719,16 +724,16 @@ extension StepsViewController: CVCalendarViewAppearanceDelegate {
     func dayLabelPresentWeekdayInitallyBold() -> Bool {
         return false
     }
-
+    
     func spaceBetweenDayViews() -> CGFloat {
         return 2
     }
     
-
+    
     func dayLabelWeekdayInTextColor() -> UIColor {
         return UIColor(rgba: "#676767")
     }
-
+    
     func dayLabelWeekdaySelectedBackgroundColor() -> UIColor {
         return UIColor(rgba: "#55028C")
     }

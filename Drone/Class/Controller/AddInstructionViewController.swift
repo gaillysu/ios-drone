@@ -12,6 +12,7 @@ import BRYXBanner
 import SwiftEventBus
 import Timepiece
 import UIKit
+import SceneKit
 
 class AddInstructionViewController: BaseViewController, UITableViewDataSource {
 
@@ -19,9 +20,10 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     
     var header:AddInstructionHeader?;
     
+    @IBOutlet weak var sceneView: SCNView!
     let cellIdentifier:String = "cellIdentifier"
     var cockroaches: [MasterCockroach] = []
-    
+    var human:Human?
     weak var timer = Timer()
     
     fileprivate var startTime:Date?
@@ -43,6 +45,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
         header?.addActionToButton(self,startRecordingSelector: #selector(self.startRecording), stopRecordingSelector: #selector(self.stopRecording))
         header!.amountOfSensorLabel.text = "Amount of sensors: \(getAppDelegate().getConnectedCockroaches().count)"
         initEventBus()
+        initHuman()
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,6 +134,23 @@ extension AddInstructionViewController{
     
     @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
         return self.cockroaches.count
+    }
+}
+
+extension AddInstructionViewController{
+    func initHuman(){
+        let scnScene = SCNScene()
+        sceneView.scene = scnScene
+        scnScene.background.contents = "Human.scnassets/Background_Diffuse.png"
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 100)
+        scnScene.rootNode.addChildNode(cameraNode)
+        self.human = Human()
+        scnScene.rootNode.addChildNode(human!)
+        
+        sceneView.showsStatistics = true
+        sceneView.autoenablesDefaultLighting = true
     }
 }
 

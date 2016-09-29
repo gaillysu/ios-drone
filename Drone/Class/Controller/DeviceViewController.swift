@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftEventBus
 import MSCellAccessory
+import SceneKit
 
 class DeviceViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     

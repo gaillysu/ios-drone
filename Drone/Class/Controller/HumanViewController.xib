@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SCNView">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HumanViewController" customModule="Drone" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -15,7 +15,55 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="SCNView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayL-pc-gyh">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="Pig-NS-r7d"/>
+                    </constraints>
+                    <state key="normal" title="RightLeg"/>
+                    <connections>
+                        <action selector="rightLegAction:" destination="-1" eventType="touchUpInside" id="gNk-gY-GDU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAt-xG-BiL">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="e7U-H3-k8u"/>
+                    </constraints>
+                    <state key="normal" title="LeftArm"/>
+                    <connections>
+                        <action selector="leftArmAction:" destination="-1" eventType="touchUpInside" id="yBH-X9-lhw"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSz-f1-bS5">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="UZP-kQ-xiy"/>
+                    </constraints>
+                    <state key="normal" title="LeftLeg"/>
+                    <connections>
+                        <action selector="leftLegAction:" destination="-1" eventType="touchUpInside" id="Fzl-3P-lX3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C22-31-cjb">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="ELz-JP-Nbg"/>
+                    </constraints>
+                    <state key="normal" title="RightArm"/>
+                    <connections>
+                        <action selector="rightArmAction:" destination="-1" eventType="touchUpInside" id="R0D-lt-ulE"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uSz-f1-bS5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GH6-hz-PuN"/>
+                <constraint firstItem="C22-31-cjb" firstAttribute="leading" secondItem="GAt-xG-BiL" secondAttribute="trailing" constant="30" id="Gen-SV-k4n"/>
+                <constraint firstAttribute="bottom" secondItem="uSz-f1-bS5" secondAttribute="bottom" constant="10" id="Kap-hh-1Ox"/>
+                <constraint firstAttribute="bottom" secondItem="ayL-pc-gyh" secondAttribute="bottom" constant="10" id="O9K-Z6-Om8"/>
+                <constraint firstAttribute="bottom" secondItem="GAt-xG-BiL" secondAttribute="bottom" constant="10" id="bFp-Ek-K06"/>
+                <constraint firstItem="GAt-xG-BiL" firstAttribute="leading" secondItem="ayL-pc-gyh" secondAttribute="trailing" constant="38" id="hx5-Sp-Yez"/>
+                <constraint firstItem="ayL-pc-gyh" firstAttribute="leading" secondItem="uSz-f1-bS5" secondAttribute="trailing" constant="27" id="rFw-iE-9JJ"/>
+                <constraint firstAttribute="bottom" secondItem="C22-31-cjb" secondAttribute="bottom" constant="10" id="wc2-hO-VKP"/>
+            </constraints>
         </view>
     </objects>
 </document>

@@ -11,6 +11,7 @@ import SwiftEventBus
 import BRYXBanner
 import RealmSwift
 import MRProgress
+import SceneKit
 
 class DoExerciseViewController: BaseViewController, UITableViewDataSource{
     
@@ -18,11 +19,15 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
     var listenToEvents = false
     var timedSeconds = 0
     
+    @IBOutlet weak var sceneview: SCNView!
+    var human:Human?
+    
     var instruction: Instruction?
     var header:DoExerciseHeader?
     var algorithm:MovementMatchingAlgorithm?
     weak var timer = Timer()
     
+    @IBOutlet weak var sceneView: UIView!
     var cockroaches: [MasterCockroach] = []
     var completedDates: [Date] = []
     
@@ -67,6 +72,7 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
         header?.repititionLabel.text = "Amount of repetitions: 0 "
         initEventBus()
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerSecondTriggeredAction), userInfo: nil, repeats: true)
+        initHuman()
     }
     
     func timerSecondTriggeredAction(){
@@ -156,6 +162,23 @@ extension DoExerciseViewController{
             return ""
         }
         return self.cockroaches[section - 1].address.uuidString
+    }
+}
+
+extension DoExerciseViewController{
+    func initHuman(){
+        let scnScene = SCNScene()
+        sceneview.scene = scnScene
+        scnScene.background.contents = "Human.scnassets/Background_Diffuse.png"
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 100)
+        scnScene.rootNode.addChildNode(cameraNode)
+        self.human = Human()
+        scnScene.rootNode.addChildNode(human!)
+        
+        sceneview.showsStatistics = true
+        sceneview.autoenablesDefaultLighting = true
     }
 }
 

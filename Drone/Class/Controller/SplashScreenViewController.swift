@@ -27,14 +27,14 @@ class SplashScreenViewController: BaseViewController {
     
     func nextController(){
         let user:NSArray = UserProfile.getAll()
-        self.present(HumanViewController(),animated: true,completion: nil)
-//        if(user.count>0) {
-//            self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
-//        }else{
-//            let navigationController = UINavigationController(rootViewController:WelcomeViewController());
-//            navigationController.isNavigationBarHidden = true
-//            self.present(navigationController, animated: true, completion: nil);
-//        }
+//        self.present(HumanViewController(),animated: true,completion: nil)
+        if(user.count>0) {
+            self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+        }else{
+            let navigationController = UINavigationController(rootViewController:WelcomeViewController());
+            navigationController.isNavigationBarHidden = true
+            self.present(navigationController, animated: true, completion: nil);
+        }
         timer?.invalidate()
         timer = nil;
     }
