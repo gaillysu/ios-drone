@@ -148,7 +148,6 @@ extension AddInstructionViewController{
         scnScene.rootNode.addChildNode(cameraNode)
         self.human = Human()
         scnScene.rootNode.addChildNode(human!)
-        
         sceneView.showsStatistics = true
         sceneView.autoenablesDefaultLighting = true
     }
@@ -159,7 +158,9 @@ extension AddInstructionViewController{
         _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let object = data.object! as! CockroachMasterDataReceived
             var found = false
-            print(object.coordinates.getString())
+            if let human = self.human{
+                human.rotateLeftArm(withCoordinates: object.coordinates)
+            }
             for cockroach in self.cockroaches {
                 if cockroach.address == object.address{
                     cockroach.addOrUpdateBabyCockroach(byCockroachMasterDataReceived: object)
@@ -180,7 +181,7 @@ extension AddInstructionViewController{
                 let isInSet:Bool =  self.coordinateSeries.contains(where: { (serie: (CoordinateSerie)) -> Bool in
                     return serie.cockroachNumber == object.babyCockroachNumber
                 })
-                if isInSet{
+                if isInSet {
                     for coordinateSerie in self.coordinateSeries {
                         if coordinateSerie.cockroachNumber == object.babyCockroachNumber {
                             coordinateSerie.coordinateSets.append(object.coordinates)
@@ -194,7 +195,6 @@ extension AddInstructionViewController{
                     self.coordinateSeries.append(coordinateSerie)
                 }
             }
-            
         }
     }
 }

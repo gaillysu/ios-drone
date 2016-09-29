@@ -38,7 +38,7 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
     override init() {
         super.init()
         
-        let dic:NSDictionary = self.classForCoder.getAllProperties()
+        let dic:NSDictionary = UserDatabaseHelper.getAllProperties()
         columeNames = NSMutableArray(array: dic.object(forKey: "name") as! NSArray)
         columeTypes = NSMutableArray(array: dic.object(forKey: "type") as! NSArray)
     }

@@ -711,7 +711,6 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CB3533E41D9B62DE00E5DE40 /* HumanViewController */,
 				9E01091D1D73C6DC00AA3551 /* AddInstructionViewController */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
@@ -721,6 +720,7 @@
 				9E455E121CD5B90600F79356 /* DeviceViewController */,
 				9E01091C1D73C6CB00AA3551 /* DoExerciseViewController */,
 				008845E21CF69F2F006EA77F /* ForgetPasswordController */,
+				CB3533E41D9B62DE00E5DE40 /* HumanViewController */,
 				00982AA91C868C89003DA5E2 /* LoginViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				9E455E0B1CD5A15500F79356 /* MyDeviceViewController */,

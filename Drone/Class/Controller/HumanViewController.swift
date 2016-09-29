@@ -38,22 +38,18 @@ class HumanViewController: BaseViewController {
     }
     
     @IBAction func leftLegAction(_ sender: AnyObject) {
-        print("Test1")
         human?.rotateLeftLeg(x: 10.0, y: 10.0)
     }
     
     @IBAction func rightLegAction(_ sender: AnyObject) {
-        print("Test2")
         human?.rotateRightLeg(x: 10.0, y: 10.0)
     }
     
     @IBAction func leftArmAction(_ sender: AnyObject) {
-        print("Test3")
         human?.rotateLeftArm(x: 10.0, y: 10.0)
     }
     
     @IBAction func rightArmAction(_ sender: AnyObject) {
-        print("Test4")
         human?.rotateRightArm(x: 10.0, y: 10.0)
     }
 

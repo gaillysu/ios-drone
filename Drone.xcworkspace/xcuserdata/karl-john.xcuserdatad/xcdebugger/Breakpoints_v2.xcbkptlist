@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Drone/Class/MovementMatchingAlgorithm.swift"
-            timestampString = "496573002.402992"
+            timestampString = "496826575.435939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123">
+            startingLineNumber = "161"
+            endingLineNumber = "161">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -56,27 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Drone/Class/MovementMatchingAlgorithm.swift"
-            timestampString = "496573002.402992"
+            timestampString = "496826575.435939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Drone/Class/MovementMatchingAlgorithm.swift"
-            timestampString = "496573002.402992"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "addMovement(babyCockroachNumber:coordinateSet:)"
-            landmarkType = "7">
+            startingLineNumber = "160"
+            endingLineNumber = "160">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

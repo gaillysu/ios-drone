@@ -21,7 +21,8 @@ class MovementMatchingAlgorithm {
     let threshold:Int
     var hardMode:Bool = false
 
-    var correctInput:[Vector] = []
+    var correctInput:[CoordinateSet] = []
+    var correctInputVector:[Vector] = []
     var skippedIndexForSensor:[Int : Int] = [:]
     
     let repetitionFinishedCallback: ((Void) -> Void)
@@ -56,11 +57,47 @@ class MovementMatchingAlgorithm {
         self.resetCallback = callback
     }
     
+    
     private func addMovement(babyCockroachNumber:Int, coordinateSet:CoordinateSet){
+        let mustMatch = instruction.coordinateSets[((correctInput.count - 1) < 0 ?  0 : (correctInput.count - 1))]
+        if mustMatch.sensorNumber == babyCockroachNumber {
+            if mustMatch.equal(self.threshold, otherCoordinateSet: coordinateSet) {
+                if let unpackedEqualCallback = self.equalCallback{
+                    unpackedEqualCallback()
+                }
+                correctInput.append(coordinateSet)
+                if let _ = self.skippedIndexForSensor[coordinateSet.sensorNumber]{
+                    self.skippedIndexForSensor[coordinateSet.sensorNumber] = 0
+                }
+                if correctInput.count == instruction.coordinateSets.count {
+                    print("One repetition Finished!")
+                    self.finishedRepetitions += 1
+                    self.repetitionFinishedCallback()
+                    self.reset()
+                    return
+                }
+            }else if hardMode{
+                if let skipped = self.skippedIndexForSensor[coordinateSet.sensorNumber]{
+                    if skipped >= self.amountFailedMovements {
+                        self.reset()
+                        if let unpackedResetCallback = self.resetCallback{
+                            unpackedResetCallback()
+                        }
+                        return
+                    }
+                    self.skippedIndexForSensor[coordinateSet.sensorNumber] = self.skippedIndexForSensor[coordinateSet.sensorNumber]! + 1
+                }else{
+                    self.skippedIndexForSensor[coordinateSet.sensorNumber] = 1
+                }
+            }
+        }
+    }
+
+    private func addMovementVector(babyCockroachNumber:Int, coordinateSet:CoordinateSet){
         if let previousInput = previousInputCoordinate {
             let inputVector = Vector(withCoordinates: coordinateSet, right: previousInput)
-            let mustMatch = instruction.coordinateSets[((correctInput.count - 1) < 0 ?  0 : (correctInput.count - 1))]
-            let mustMatchNext = instruction.coordinateSets[(correctInput.count + 1 < instruction.coordinateSets.count ? (correctInput.count + 1) : instruction.coordinateSets.count - 1)]
+            let mustMatch = instruction.coordinateSets[((correctInputVector.count - 1) < 0 ?  0 : (correctInputVector.count - 1))]
+            let mustMatchNext = instruction.coordinateSets[(correctInputVector.count + 1 < instruction.coordinateSets.count ? (correctInputVector.count + 1) : instruction.coordinateSets.count - 1)]
             let comparedVector = Vector(withCoordinates: mustMatch, right: mustMatchNext)
             print("Vector Input = \(inputVector.getString())")
             print("Vector Match = \(comparedVector.getString())")
@@ -69,12 +106,11 @@ class MovementMatchingAlgorithm {
                     if let unpackedEqualCallback = self.equalCallback{
                         unpackedEqualCallback()
                     }
-                    print("Equal!")
-                    correctInput.append(inputVector)
+                    correctInputVector.append(inputVector)
                     if let _ = self.skippedIndexForSensor[coordinateSet.sensorNumber]{
                         self.skippedIndexForSensor[coordinateSet.sensorNumber] = 0
                     }
-                    if correctInput.count == instruction.coordinateSets.count {
+                    if correctInputVector.count == instruction.coordinateSets.count {
                         print("One repetition Finished!")
                         self.finishedRepetitions += 1
                         self.repetitionFinishedCallback()

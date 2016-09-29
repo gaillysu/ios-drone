@@ -73,15 +73,8 @@ class Human:SCNNode {
         self.rightLegNode = rightLegNode
         self.leftArmNode = leftArmNode
         self.rightArmNode = rightArmNode
-//        self.rightArmNode?.position = SCNVector3.init(-10.0, -10.0, 0.0)
-        
-//        self.rightArmNode?.pivot = SCNMatrix4MakeTranslation(0.0, 0.0, 0.0)
-//        self.leftArmNode?.position = SCNVector3.init(-10.0, -10.0, 0.0)
-        print(self.leftArmNode?.position.x)
-        print(self.leftArmNode?.position.y)
-        print(self.leftArmNode?.position.z)
         self.leftArmNode?.pivot = SCNMatrix4MakeTranslation(-10.0,0.0, 0.0)
-        print("LOololol")
+        self.rightArmNode?.pivot = SCNMatrix4MakeTranslation(10.0,0.0, 0.0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -89,38 +82,70 @@ class Human:SCNNode {
     }
     
     private func rotateNode(node:SCNNode, x:CGFloat, y:CGFloat){
-        node.runAction(SCNAction.rotateTo(x: 0.0, y: 0.0, z: 5.0, duration: 10.0))
+        node.runAction(SCNAction.rotateTo(x: x, y: y, z: 0, duration: 0.0))
     }
     
     func rotateLeftLeg(x:CGFloat, y:CGFloat){
         if let node = self.leftLegNode{
             rotateNode(node: node, x: x, y: y)
-        }else{
-            print("Something is not right into the code!")
         }
     }
     
     func rotateRightLeg(x:CGFloat, y:CGFloat){
         if let node = self.rightLegNode{
             rotateNode(node: node, x: x, y: y)
-        }else{
-            print("Something is not right into the code!")
         }
     }
     
     func rotateLeftArm(x:CGFloat, y:CGFloat){
         if let node = self.leftArmNode{
             rotateNode(node: node, x: x, y: y)
-        }else{
-            print("Something is not right into the code!")
         }
     }
     
     func rotateRightArm(x:CGFloat, y:CGFloat){
         if let node = self.rightArmNode{
             rotateNode(node: node, x: x, y: y)
-        }else{
-            print("Something is not right into the code!")
         }
+    }
+    
+    func rotateLeftLeg(withCoordinates coordinate:CoordinateSet){
+        if let node = self.leftLegNode{
+            rotateNode(node: node, x: getXCoordinatesForHuman(coordinate: coordinate), y: getYCoordinatesForHuman(coordinate: coordinate))
+        }
+    }
+    
+    func rotateRightLeg(withCoordinates coordinate:CoordinateSet){
+        if let node = self.rightLegNode{
+            rotateNode(node: node, x: getXCoordinatesForHuman(coordinate: coordinate), y: getYCoordinatesForHuman(coordinate: coordinate))
+        }
+    }
+    
+    func rotateLeftArm(withCoordinates coordinate:CoordinateSet){
+        if let node = self.leftArmNode{
+            rotateNode(node: node, x: getXCoordinatesForHuman(coordinate: coordinate), y: getYCoordinatesForHuman(coordinate: coordinate))
+        }
+    }
+    
+    func rotateRightArm(withCoordinates coordinate:CoordinateSet){
+        if let node = self.rightArmNode{
+            rotateNode(node: node, x: getXCoordinatesForHuman(coordinate: coordinate), y: getYCoordinatesForHuman(coordinate: coordinate))
+        }
+    }
+
+    private func getXCoordinatesForHuman(coordinate: CoordinateSet) -> CGFloat{
+        return self.getCoordinatesForHuman(one: coordinate.X0, two: coordinate.X1)
+    }
+    
+    private func getYCoordinatesForHuman(coordinate: CoordinateSet) -> CGFloat{
+        return self.getCoordinatesForHuman(one: coordinate.Y0, two: coordinate.Y1)
+    }
+    
+    private func getZCoordinatesForHuman(coordinate: CoordinateSet) -> CGFloat{
+        return self.getCoordinatesForHuman(one: coordinate.Z0, two: coordinate.Z1)
+    }
+    
+    private func getCoordinatesForHuman(one:Int, two:Int) -> CGFloat{
+        return CGFloat((6/127) * (CGFloat(one) - CGFloat(two)))
     }
 }

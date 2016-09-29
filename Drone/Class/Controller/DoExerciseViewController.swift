@@ -30,7 +30,8 @@ class DoExerciseViewController: BaseViewController, UITableViewDataSource{
     @IBOutlet weak var sceneView: UIView!
     var cockroaches: [MasterCockroach] = []
     var completedDates: [Date] = []
-    
+  
+
     
     @IBOutlet weak var tableview: UITableView!
     
@@ -120,9 +121,9 @@ extension DoExerciseViewController{
     
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell
-        if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier){
+        if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
             cell = dequeuedCell
-        }else{
+        } else {
             cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         }
         
@@ -142,7 +143,7 @@ extension DoExerciseViewController{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            if let algorithm = self.algorithm{
+            if let _ = self.algorithm{
                 return self.completedDates.count
             }
             return 0
@@ -186,6 +187,9 @@ extension DoExerciseViewController{
     fileprivate func initEventBus(){
         _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let object = data.object! as! CockroachMasterDataReceived
+            if let human = self.human{
+                human.rotateLeftArm(withCoordinates: object.coordinates)
+            }
             for cockroach in self.cockroaches {
                 if cockroach.address == object.address{
                     cockroach.addOrUpdateBabyCockroach(byCockroachMasterDataReceived: object)
