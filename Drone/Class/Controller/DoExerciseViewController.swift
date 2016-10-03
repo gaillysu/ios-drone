@@ -135,7 +135,7 @@ extension DoExerciseViewController{
             let masterCockroach = self.cockroaches[indexPath.section - 1]
             let babyCockroach = masterCockroach.getBabyCockroach(at: indexPath.row)
             cell.textLabel?.text = "Sensor \(babyCockroach.number)"
-            cell.detailTextLabel?.text = babyCockroach.coordinateSet?.getString()
+            cell.detailTextLabel?.text = babyCockroach.coordinateSet?.getString1()
         }
         
         return cell
@@ -173,11 +173,14 @@ extension DoExerciseViewController{
         scnScene.background.contents = "Human.scnassets/Background_Diffuse.png"
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 100)
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 60)
+        cameraNode.camera?.xFov = 60
+        cameraNode.camera?.yFov  = 60
+        cameraNode.camera?.zFar = 1000
+        cameraNode.camera?.zNear = 0.01
         scnScene.rootNode.addChildNode(cameraNode)
         self.human = Human()
         scnScene.rootNode.addChildNode(human!)
-        
         sceneview.showsStatistics = true
         sceneview.autoenablesDefaultLighting = true
     }
@@ -188,7 +191,7 @@ extension DoExerciseViewController{
         _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let object = data.object! as! CockroachMasterDataReceived
             if let human = self.human{
-                human.rotateLeftArm(withCoordinates: object.coordinates)
+//                human.rotateLeftArm(withCoordinates: object.coordinates)
             }
             for cockroach in self.cockroaches {
                 if cockroach.address == object.address{
@@ -204,7 +207,7 @@ extension DoExerciseViewController{
        _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_CHANGED) { (data) -> Void in
             let cockroachesChangedEvent = data.object! as! CockroachMasterChanged
             if !cockroachesChangedEvent.connected {
-                Banner(title: "Cockroach got disconnected!", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil).show()
+                Banner(title: "Sensor got disconnected!", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil).show()
             }
             self.tableview.reloadData()
         }

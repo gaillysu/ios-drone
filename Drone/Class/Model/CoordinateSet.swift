@@ -34,8 +34,21 @@ class CoordinateSet: Object {
         self.sensorNumber = cockroachPacket.cockRoachNumber
     }
     
-    func getString () -> String{
-        return "X0 = \(X0), X1 = \(X1), X2 = \(X2), Y0 = \(Y0), Y1 = \(Y1), Y2 = \(Y2), Z0 = \(Z0), Z1 = \(Z1), Z2 = \(Z2)"
+    func getString() -> String{
+        return "X0 = \(X0), Y0 = \(Y0), Z0 = \(Z0), X1 = \(X1), Y1 = \(Y1), Z1 = \(Z1), X2 = \(X2), Y2 = \(Y2), Z2 = \(Z2)"
+    }
+    
+    
+    func getString0() -> String{
+        return "X0 = \(X0), Y0 = \(Y0), Z0 = \(Z0)"
+    }
+    
+    func getString1() -> String{
+        return "X1 = \(X1), Y1 = \(Y1), Z1 = \(Z1)"
+    }
+    
+    func getString2() -> String{
+        return "X2 = \(X2), Y2 = \(Y2), Z2 = \(Z2)"
     }
     
     func getAllCoordinates() -> [Int]{

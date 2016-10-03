@@ -19,7 +19,9 @@ class AddInstructionHeader: UIView {
     
     @IBOutlet var startRecordingButton: UIButton!
     @IBOutlet var stopRecordingButton: UIButton!
-
+    @IBOutlet var resetDummyButton: UIButton!
+    
+    
     fileprivate var timer:Timer = Timer()
     fileprivate var amountDots:Int = 0
     
@@ -28,9 +30,10 @@ class AddInstructionHeader: UIView {
         stopRecordingButton.setTitleColor(UIColor.gray, for: UIControlState.disabled)
     }
     
-    func addActionToButton (_ target:AnyObject,startRecordingSelector:Selector, stopRecordingSelector: Selector ) {
+    func addActionToButton (_ target:AnyObject,startRecordingSelector:Selector, stopRecordingSelector: Selector, resetDummySelector: Selector) {
         startRecordingButton.addTarget(target, action: startRecordingSelector, for: UIControlEvents.touchUpInside)
         stopRecordingButton.addTarget(target, action: stopRecordingSelector, for: UIControlEvents.touchUpInside)
+        resetDummyButton.addTarget(target, action: resetDummySelector, for: UIControlEvents.touchUpInside)
         stopRecordingButton.isEnabled = false
     }
     

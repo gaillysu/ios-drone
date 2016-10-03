@@ -63,5 +63,53 @@
             endingLineNumber = "160">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Drone/Class/Controller/DoExerciseViewController.swift"
+            timestampString = "496921743.391172"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "initEventBus()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Drone.DoExerciseViewController.((initEventBus in _7ED9369752E450EC16F1F9E2D1E76BD1) () -&gt; ()).(closure #1)"
+                  moduleName = "Drone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karl-john/Projects/ios-drone/Drone/Class/Controller/DoExerciseViewController.swift"
+                  timestampString = "497172696.77513"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "1116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Drone.DoExerciseViewController.((initEventBus in _7ED9369752E450EC16F1F9E2D1E76BD1) () -&gt; ()).(closure #1)"
+                  moduleName = "Drone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karl-john/Projects/ios-drone/Drone/Class/Controller/DoExerciseViewController.swift"
+                  timestampString = "497172696.777507"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "1168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

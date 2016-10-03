@@ -43,7 +43,7 @@ class PhysioViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     fileprivate func showNoCockroachConnectedDialog(){
-        let chooseAction = UIAlertController(title: "No cockroaches connected", message: "Why don't you connect a cockroach before getting started?", preferredStyle: UIAlertControllerStyle.alert)
+        let chooseAction = UIAlertController(title: "No sensors connected", message: "Why don't you connect a sensor before getting started?", preferredStyle: UIAlertControllerStyle.alert)
         let connectAction:UIAlertAction = UIAlertAction(title: "Connect", style: UIAlertActionStyle.default) { (action:UIAlertAction) -> Void in
             self.present(self.makeStandardUINavigationController(PhysioDeviceViewController()), animated: true, completion: nil)
         }

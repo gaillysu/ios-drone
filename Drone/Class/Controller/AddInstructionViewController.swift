@@ -29,6 +29,9 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     fileprivate var startTime:Date?
     fileprivate var stopDate:Date?
     
+    var pointOffset: (x:Int,y:Int,z:Int) = (0,0,0)
+    var pointOffsetEnabled = false
+    
     fileprivate var coordinateSeries:[CoordinateSerie] = []
     
     override func viewDidLoad() {
@@ -42,7 +45,7 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header!.frame.height))
         headerView.addSubview(header!)
         tableview.tableHeaderView = headerView
-        header?.addActionToButton(self,startRecordingSelector: #selector(self.startRecording), stopRecordingSelector: #selector(self.stopRecording))
+        header?.addActionToButton(self,startRecordingSelector: #selector(self.startRecording), stopRecordingSelector: #selector(self.stopRecording), resetDummySelector: #selector(self.resetDummy))
         header!.amountOfSensorLabel.text = "Amount of sensors: \(getAppDelegate().getConnectedCockroaches().count)"
         initEventBus()
         initHuman()
@@ -70,6 +73,11 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
         header!.stopRecordToggle()
         timer!.invalidate()
         stopDate = Date()
+    }
+    
+    func resetDummy(){
+//        self.human?.test()
+        self.pointOffsetEnabled = true
     }
     
     func timerSecondTriggeredAction(){
@@ -144,7 +152,11 @@ extension AddInstructionViewController{
         scnScene.background.contents = "Human.scnassets/Background_Diffuse.png"
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 100)
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 60)
+        cameraNode.camera?.xFov = 60
+        cameraNode.camera?.yFov  = 60
+        cameraNode.camera?.zFar = 1000
+        cameraNode.camera?.zNear = 0.01
         scnScene.rootNode.addChildNode(cameraNode)
         self.human = Human()
         scnScene.rootNode.addChildNode(human!)
@@ -154,13 +166,35 @@ extension AddInstructionViewController{
 }
 
 extension AddInstructionViewController{
+    private func updateCoordinatesAndHuman(x:Int, y:Int, z:Int){
+        if let human = self.human{
+            print("\(x), \(y), \(z)")
+            human.rotateLeftArm(x: CGFloat(x), y: CGFloat(y), z:CGFloat(z))
+        }
+    }
+    
     fileprivate func initEventBus(){
         _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let object = data.object! as! CockroachMasterDataReceived
             var found = false
-            if let human = self.human{
-                human.rotateLeftArm(withCoordinates: object.coordinates)
+            let x = object.coordinates.X1
+            let y = object.coordinates.Y1
+            let z = object.coordinates.Z1
+            
+            
+            if self.pointOffsetEnabled {
+                self.pointOffsetEnabled = false
+                self.pointOffset = (x: x * -1, y: y * -1, z:z * -1)
             }
+            self.updateCoordinatesAndHuman(x: x + self.pointOffset.x, y: y + self.pointOffset.y, z: z + self.pointOffset.z)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                self.updateCoordinatesAndHuman(x: object.coordinates.X1, y: object.coordinates.Y1, z: object.coordinates.Z1)
+//             }
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//                self.updateCoordinatesAndHuman(x: object.coordinates.X2, y: object.coordinates.Y2, z: object.coordinates.Z2)
+//            }
+            
             for cockroach in self.cockroaches {
                 if cockroach.address == object.address{
                     cockroach.addOrUpdateBabyCockroach(byCockroachMasterDataReceived: object)

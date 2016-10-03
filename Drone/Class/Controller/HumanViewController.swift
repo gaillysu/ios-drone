@@ -38,7 +38,7 @@ class HumanViewController: BaseViewController {
     }
     
     @IBAction func leftLegAction(_ sender: AnyObject) {
-        human?.rotateLeftLeg(x: 10.0, y: 10.0)
+//        human?.rotateLeftLeg(x: 10.0, y: 10.0)
     }
     
     @IBAction func rightLegAction(_ sender: AnyObject) {
