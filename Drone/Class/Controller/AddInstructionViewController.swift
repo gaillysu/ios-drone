@@ -126,13 +126,13 @@ extension AddInstructionViewController{
     
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cockroach = cockroaches[indexPath.section]
-        let babyCockroach = cockroach.getBabyCockroach(at: indexPath.row)
-        return PhysioCellGenerator.getCellFrom(cockroach: babyCockroach.number, coordinates: babyCockroach.coordinateSet!, tableview: tableView, dequeueIdentifier: self.cellIdentifier)
+        let babyCockroach = cockroach.getBabyCockroach(at: 0)
+        return PhysioCellGenerator.getCellFrom(cockroach: babyCockroach.number, coordinates: babyCockroach.coordinateSet!, tableview: tableView, dequeueIdentifier: self.cellIdentifier, numberCoordinate: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !self.cockroaches.isEmpty {
-            return self.cockroaches[section].getAmountBabies()
+            return self.cockroaches[section].getAmountBabies() * 3
         }
         return 0
     }

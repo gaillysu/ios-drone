@@ -40,15 +40,15 @@ class CoordinateSet: Object {
     
     
     func getString0() -> String{
-        return "X0 = \(X0), Y0 = \(Y0), Z0 = \(Z0)"
+        return "Set 0: X0 = \(X0), Y0 = \(Y0), Z0 = \(Z0)"
     }
     
     func getString1() -> String{
-        return "X1 = \(X1), Y1 = \(Y1), Z1 = \(Z1)"
+        return "Set 1: X1 = \(X1), Y1 = \(Y1), Z1 = \(Z1)"
     }
     
     func getString2() -> String{
-        return "X2 = \(X2), Y2 = \(Y2), Z2 = \(Z2)"
+        return "Set 2: X2 = \(X2), Y2 = \(Y2), Z2 = \(Z2)"
     }
     
     func getAllCoordinates() -> [Int]{
