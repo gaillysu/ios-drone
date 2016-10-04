@@ -16,7 +16,7 @@ class PhysioCellGenerator {
         }else{
             cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: dequeueIdentifier)
         }
-        cell.textLabel?.text = "Cockroach: \(number)"
+        cell.textLabel?.text = "Sensor: \(number)"
         if numberCoordinate == 0 {
             cell.detailTextLabel?.text = "Coordinates: \(coordinates.getString0())"
         } else if numberCoordinate == 1 {

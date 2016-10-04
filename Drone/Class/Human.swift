@@ -111,7 +111,7 @@ class Human:SCNNode {
         else {
             reset(node: node)
             //instead of y:0.0, 0.o should be computedZ
-            node.runAction(SCNAction.rotateBy(x: z, y: 0.0, z: 0.0, duration: 0.0))
+            node.runAction(SCNAction.rotateBy(x: x, y: y, z: 0.0, duration: 0.0))
         }
         // So X  is Up Down movement, Z is left right movement on the dummy.
         // Range for the movement is [-6.285...6.285]. So from [0.0...6.285] its CCW/CW and [-6.285...0.0] its CW/CCW
@@ -157,7 +157,7 @@ class Human:SCNNode {
         }
     }
     private func getCoordinatesForHuman(one:CGFloat) -> CGFloat{
-        var outcome:CGFloat = CGFloat((6.285/162.0) * one)
+        var outcome:CGFloat = CGFloat((6.285/512.0) * one)
         if one < 0.0 {
             outcome = outcome * -1
         }

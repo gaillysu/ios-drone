@@ -168,7 +168,6 @@ extension AddInstructionViewController{
 extension AddInstructionViewController{
     private func updateCoordinatesAndHuman(x:Int, y:Int, z:Int){
         if let human = self.human{
-            print("\(x), \(y), \(z)")
             human.rotateLeftArm(x: CGFloat(x), y: CGFloat(y), z:CGFloat(z))
         }
     }
@@ -187,13 +186,6 @@ extension AddInstructionViewController{
                 self.pointOffset = (x: x * -1, y: y * -1, z:z * -1)
             }
             self.updateCoordinatesAndHuman(x: x + self.pointOffset.x, y: y + self.pointOffset.y, z: z + self.pointOffset.z)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                self.updateCoordinatesAndHuman(x: object.coordinates.X1, y: object.coordinates.Y1, z: object.coordinates.Z1)
-//             }
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//                self.updateCoordinatesAndHuman(x: object.coordinates.X2, y: object.coordinates.Y2, z: object.coordinates.Z2)
-//            }
             
             for cockroach in self.cockroaches {
                 if cockroach.address == object.address{

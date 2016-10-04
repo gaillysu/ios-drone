@@ -34,6 +34,18 @@ class CoordinateSet: Object {
         self.sensorNumber = cockroachPacket.cockRoachNumber
     }
     
+    func getCoordinates(whichPacket:Int) -> (x:Int,y:Int,z:Int ){
+        if whichPacket == 0{
+            return (self.X0,self.Y0,self.Z0)
+        } else if whichPacket == 1{
+            return (self.X1,self.Y1,self.Z1)
+        } else if whichPacket == 2{
+            return (self.X2,self.Y2,self.Z2)
+        } else {
+            return (0,0,0)
+        }
+    }
+    
     func getString() -> String{
         return "X0 = \(X0), Y0 = \(Y0), Z0 = \(Z0), X1 = \(X1), Y1 = \(Y1), Z1 = \(Z1), X2 = \(X2), Y2 = \(Y2), Z2 = \(Z2)"
     }
