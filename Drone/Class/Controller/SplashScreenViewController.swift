@@ -26,15 +26,15 @@ class SplashScreenViewController: BaseViewController {
     }
     
     func nextController(){
-//        let user:NSArray = UserProfile.getAll()
+        let user:NSArray = UserProfile.getAll()
 //        self.present(PhysioViewController(),animated: true,completion: nil)
-//        if(user.count>0) {
-//            self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
-//        }else{
-            let navigationController = UINavigationController(rootViewController:PhysioViewController());
-//            navigationController.isNavigationBarHidden = true
+        if(user.count>0) {
+            self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+        }else{
+            let navigationController = UINavigationController(rootViewController:WelcomeViewController());
+            navigationController.isNavigationBarHidden = true
             self.present(navigationController, animated: true, completion: nil);
-//        }
+        }
         timer?.invalidate()
         timer = nil;
     }

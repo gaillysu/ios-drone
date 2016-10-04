@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Standing: CockroachPositionProtocol {
+class StandingPosition: CockroachPositionProtocol {
     
 //    Standing:	X = [-2..5], Y = [-2..5] & Z = [-490...-485]
     
@@ -26,5 +26,13 @@ class Standing: CockroachPositionProtocol {
     
     func matchesPosition(coordinationSet: CoordinateSet, whichCoordinate:Int) -> Bool{
         return positionCheckStrategy.execute(coordinationSet: coordinationSet, whichCoordinate: whichCoordinate, xMin: xMin, xMax: xMax, yMin: yMin, yMax: yMax, zMin: zMin, zMax: zMax)
-    }    
+    }
+    
+    func getCoordinatesForHuman() -> (x:CGFloat, y:CGFloat, z:CGFloat){
+        return (0.0,0.0,0.0)
+    }
+    
+    func getDiscription() -> String{
+        return "Standing Position"
+    }
 }

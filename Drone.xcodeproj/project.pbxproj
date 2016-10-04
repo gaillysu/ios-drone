@@ -219,7 +219,7 @@
 		CB0B46B61CCF229400411997 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A71CCF229400411997 /* Timepiece.framework */; };
 		CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */; };
 		CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A91CCF229400411997 /* XCGLogger.framework */; };
-		CB17DD2D1DA38D7000730273 /* Standing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD281DA38D7000730273 /* Standing.swift */; };
+		CB17DD2D1DA38D7000730273 /* StandingPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD281DA38D7000730273 /* StandingPosition.swift */; };
 		CB17DD2E1DA38D7000730273 /* StandingLeftPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD291DA38D7000730273 /* StandingLeftPosition.swift */; };
 		CB17DD2F1DA38D7000730273 /* StandingRightPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD2A1DA38D7000730273 /* StandingRightPosition.swift */; };
 		CB17DD301DA38D7000730273 /* StandingUpsideDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD2B1DA38D7000730273 /* StandingUpsideDown.swift */; };
@@ -500,7 +500,7 @@
 		CB0B46A71CCF229400411997 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/Timepiece.framework"; sourceTree = "<group>"; };
 		CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_Hex_Swift.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/UIColor_Hex_Swift.framework"; sourceTree = "<group>"; };
 		CB0B46A91CCF229400411997 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/XCGLogger.framework"; sourceTree = "<group>"; };
-		CB17DD281DA38D7000730273 /* Standing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Standing.swift; sourceTree = "<group>"; };
+		CB17DD281DA38D7000730273 /* StandingPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingPosition.swift; sourceTree = "<group>"; };
 		CB17DD291DA38D7000730273 /* StandingLeftPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingLeftPosition.swift; sourceTree = "<group>"; };
 		CB17DD2A1DA38D7000730273 /* StandingRightPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingRightPosition.swift; sourceTree = "<group>"; };
 		CB17DD2B1DA38D7000730273 /* StandingUpsideDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingUpsideDown.swift; sourceTree = "<group>"; };
@@ -1506,7 +1506,7 @@
 		CB3567D21DA387D40049FBBC /* CockroachPosition */ = {
 			isa = PBXGroup;
 			children = (
-				CB17DD281DA38D7000730273 /* Standing.swift */,
+				CB17DD281DA38D7000730273 /* StandingPosition.swift */,
 				CB17DD291DA38D7000730273 /* StandingLeftPosition.swift */,
 				CB17DD2A1DA38D7000730273 /* StandingRightPosition.swift */,
 				CB17DD2B1DA38D7000730273 /* StandingUpsideDown.swift */,
@@ -1930,7 +1930,7 @@
 				CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */,
 				CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */,
 				CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */,
-				CB17DD2D1DA38D7000730273 /* Standing.swift in Sources */,
+				CB17DD2D1DA38D7000730273 /* StandingPosition.swift in Sources */,
 				0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */,
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,

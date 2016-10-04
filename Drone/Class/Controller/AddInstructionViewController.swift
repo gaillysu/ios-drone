@@ -25,12 +25,13 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     var cockroaches: [MasterCockroach] = []
     var human:Human?
     weak var timer = Timer()
-    
+    let positions:[CockroachPositionProtocol] = [NormalPosition(),StandingPosition(),StandingLeftPosition(),StandingRightPosition(),StandingUpsideDown(),UpsideDownPosition()]
     fileprivate var startTime:Date?
     fileprivate var stopDate:Date?
     
     var pointOffset: (x:Int,y:Int,z:Int) = (0,0,0)
     var pointOffsetEnabled = false
+    var currentPosition:(x:CGFloat,y:CGFloat,z:CGFloat) = (0.0,0.0,0.0)
     
     fileprivate var coordinateSeries:[CoordinateSerie] = []
     
@@ -76,7 +77,6 @@ class AddInstructionViewController: BaseViewController, UITableViewDataSource {
     }
     
     func resetDummy(){
-//        self.human?.test()
         self.pointOffsetEnabled = true
     }
     
@@ -166,9 +166,9 @@ extension AddInstructionViewController{
 }
 
 extension AddInstructionViewController{
-    private func updateCoordinatesAndHuman(x:Int, y:Int, z:Int){
+    private func updateCoordinatesAndHuman(x:CGFloat, y:CGFloat, z:CGFloat){
         if let human = self.human{
-            human.rotateLeftArm(x: CGFloat(x), y: CGFloat(y), z:CGFloat(z))
+            human.rotateLeftArm(x: x, y: y, z:z)
         }
     }
     
@@ -185,7 +185,6 @@ extension AddInstructionViewController{
                 self.pointOffsetEnabled = false
                 self.pointOffset = (x: x * -1, y: y * -1, z:z * -1)
             }
-            self.updateCoordinatesAndHuman(x: x + self.pointOffset.x, y: y + self.pointOffset.y, z: z + self.pointOffset.z)
             
             for cockroach in self.cockroaches {
                 if cockroach.address == object.address{
@@ -203,6 +202,20 @@ extension AddInstructionViewController{
                 sensors = sensors + masterCockroach.getAmountBabies()
             }
             self.header!.amountOfSensorLabel.text = "Amount of sensors: \(sensors)"
+            
+            for position in self.positions {
+                if position.matchesPosition(coordinationSet: object.coordinates, whichCoordinate: 1){
+                    let coordinates = position.getCoordinatesForHuman()
+                    if self.currentPosition != coordinates {
+                        print("Update.")
+                        print(position.getDiscription())
+                        self.currentPosition = coordinates
+                        self.updateCoordinatesAndHuman(x: coordinates.x, y: coordinates.y, z: coordinates.z)
+                    }
+                    return
+                }
+            }
+            
             if let _ = self.timer {
                 let isInSet:Bool =  self.coordinateSeries.contains(where: { (serie: (CoordinateSerie)) -> Bool in
                     return serie.cockroachNumber == object.babyCockroachNumber

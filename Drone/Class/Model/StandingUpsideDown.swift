@@ -11,12 +11,12 @@ import Foundation
 class StandingUpsideDown: CockroachPositionProtocol {
     //Standing upside down:	X = [0..3], Y = [-2..5] & Z = [-490...-485]
 
-    let xMin:Int = 0;
-    let xMax:Int = 3;
-    let yMin:Int = -2;
-    let yMax:Int = 5
-    let zMin:Int = -490;
-    let zMax:Int = -485;
+    let xMin:Int = 10;
+    let xMax:Int = 35;
+    let yMin:Int = -10;
+    let yMax:Int = 10;
+    let zMin:Int = 15;
+    let zMax:Int = 35;
     
     let positionCheckStrategy:CockroachPositionCheckStrategy
     
@@ -28,4 +28,12 @@ class StandingUpsideDown: CockroachPositionProtocol {
         return positionCheckStrategy.execute(coordinationSet: coordinationSet, whichCoordinate: whichCoordinate, xMin: xMin, xMax: xMax, yMin: yMin, yMax: yMax, zMin: zMin, zMax: zMax)
     }
     
+    func getCoordinatesForHuman() -> (x:CGFloat, y:CGFloat, z:CGFloat){
+        return (3.1425,0.0,0.0)
+    }
+    
+    func getDiscription() -> String{
+        return "Standing Upside Down"
+    }
+
 }
