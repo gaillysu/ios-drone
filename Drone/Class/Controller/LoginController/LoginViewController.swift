@@ -39,8 +39,6 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
     }
 
     override func viewDidLayoutSubviews() {
@@ -50,6 +48,8 @@ class LoginViewController: UIViewController {
             usernameT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             usernameT!.placeholder = "E-mail"
             usernameT?.backgroundColor = UIColor.white
+            usernameT?.text = "test@user.com"
+            
             textfiledBG.addSubview(usernameT!)
 
             passwordT = AutocompleteField(frame: CGRect(x: 0, y: textfiledBG.frame.size.height/2.0, width: textfiledBG.frame.size.width, height: textfiledBG.frame.size.height/2.0-0.5))
@@ -58,6 +58,7 @@ class LoginViewController: UIViewController {
             passwordT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             passwordT!.placeholder = "Password"
             passwordT?.backgroundColor = UIColor.white
+            passwordT?.text = "12341234"
             textfiledBG.addSubview(passwordT!)
         }
 

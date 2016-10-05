@@ -51,13 +51,11 @@ class MyDeviceViewController: BaseViewController {
         
         if(viewControllers.count > 0){
             viewControllers[0].leftRightButtonsNeeded = false;
-            let options = PagingMenuOptions()
-            options.menuHeight = 0;
-            options.menuDisplayMode = .standard(widthMode: PagingMenuOptions.MenuItemWidthMode.flexible, centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.scrollEnabled)
-            let pagingMenuController = PagingMenuController(menuControllerTypes: viewControllers, options: options)
-            pagingMenuController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.devicesView.frame.size.height)
-            self.addChildViewController(pagingMenuController)
-            self.devicesView.addSubview(pagingMenuController.view)
+            let options = PagingMenuOptions(controllers: viewControllers)
+            let pagingMenuController = PagingMenuController(options: options)
+            pagingMenuController.view.frame = CGRect(x: 0, y: -50, width: UIScreen.main.bounds.width, height: self.devicesView.frame.size.height+50)
+            addChildViewController(pagingMenuController)
+            view.addSubview(pagingMenuController.view)
             pagingMenuController.didMove(toParentViewController: self)
             self.noDeviceView.isHidden = true
         }else{
@@ -78,5 +76,30 @@ class MyDeviceViewController: BaseViewController {
     
     func pushContactsFilterViewController(){
         self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
+    }
+    
+    struct PagingMenuOptions: PagingMenuControllerCustomizable {
+        var controllers:[UIViewController] = []
+        init(controllers:[UIViewController]) {
+            self.controllers = controllers
+        }
+        var componentType: ComponentType {
+            return .all(menuOptions: MenuOptions(amountOfItems:self.controllers.count), pagingControllers: controllers)
+        }
+    }
+
+    struct MenuItem1: MenuItemViewCustomizable{}
+    
+    struct MenuOptions: MenuViewCustomizable {
+        var menuOptions:[MenuItemViewCustomizable] = []
+        init(amountOfItems:Int) {
+            for _ in 0..<amountOfItems{
+                let menuItem = MenuItem1()
+                menuOptions.append(menuItem)
+            }
+        }
+        var itemsOptions: [MenuItemViewCustomizable] {
+            return self.menuOptions
+        }
     }
 }

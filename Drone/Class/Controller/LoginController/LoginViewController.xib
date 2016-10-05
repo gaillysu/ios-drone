@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
@@ -24,7 +25,6 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCl-aF-ggh">
-                    <rect key="frame" x="15" y="29" width="28" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="A59-Fu-jhW"/>
                         <constraint firstAttribute="width" constant="28" id="nKt-4E-b6v"/>
@@ -34,12 +34,9 @@
                         <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="zsO-iM-oER"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drone_logo_black" translatesAutoresizingMaskIntoConstraints="NO" id="2xJ-V4-kxN">
-                    <rect key="frame" x="56" y="155" width="263" height="45"/>
-                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drone_logo_black" translatesAutoresizingMaskIntoConstraints="NO" id="2xJ-V4-kxN"/>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lmc-MZ-qDA">
-                    <rect key="frame" x="37" y="301" width="301" height="95"/>
-                    <color key="backgroundColor" red="0.87450987099999999" green="0.87450987099999999" blue="0.87450987099999999" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.84463787078857422" green="0.84461265802383423" blue="0.84462690353393555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                             <integer key="value" value="1"/>
@@ -47,16 +44,14 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or login with your social media" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKx-OS-oVj">
-                    <rect key="frame" x="30" y="455" width="315" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="vLf-kb-w0X"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="highlightedColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="highlightedColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0I-3f-jKR">
-                    <rect key="frame" x="164" y="497" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="B74-wS-Tab"/>
                         <constraint firstAttribute="width" constant="48" id="dHf-QQ-9Li"/>
@@ -67,7 +62,6 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTO-bi-GJE">
-                    <rect key="frame" x="236" y="497" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="48" id="hCF-un-t4T"/>
                         <constraint firstAttribute="height" constant="48" id="knT-3m-xde"/>
@@ -78,7 +72,6 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-Hl-5xE">
-                    <rect key="frame" x="92" y="497" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="48" id="9xY-dv-SoJ"/>
                         <constraint firstAttribute="height" constant="48" id="df0-Jz-A23"/>
@@ -89,20 +82,19 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkV-cH-J6J">
-                    <rect key="frame" x="165" y="411" width="46" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="46" id="bUn-hx-Gmk"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="Login">
-                        <color key="titleColor" red="0.81960784310000001" green="0.61568627450000002" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.81960784310000001" green="0.61568627450000002" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="5KB-zE-J7P"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="2xJ-V4-kxN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7OL-pa-lAg"/>
                 <constraint firstItem="2xJ-V4-kxN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-156" id="B9b-ai-inH"/>
@@ -128,12 +120,11 @@
                 <constraint firstItem="jTO-bi-GJE" firstAttribute="leading" secondItem="l0I-3f-jKR" secondAttribute="trailing" constant="24" id="x98-mg-XnG"/>
                 <constraint firstItem="fkV-cH-J6J" firstAttribute="top" secondItem="Lmc-MZ-qDA" secondAttribute="bottom" constant="15" id="xpm-vO-dmj"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="445.5" y="198.5"/>
         </view>
     </objects>
     <resources>
-        <image name="drone_logo_black" width="284" height="45"/>
+        <image name="drone_logo_black" width="71" height="17"/>
         <image name="facebook" width="50" height="50"/>
         <image name="google+" width="50" height="50"/>
         <image name="left_back_BT" width="35" height="35"/>

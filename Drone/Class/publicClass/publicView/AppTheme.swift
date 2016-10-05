@@ -92,8 +92,8 @@ class AppTheme {
     *	@brief	The archive All current data
     *
     */
-    class func KeyedArchiverName(_ name:String,andObject object:Any?) ->Bool{
-        var objectArray:[Any?] = [object]
+    class func KeyedArchiverName(_ name:String,andObject object:Any) ->Bool{
+        var objectArray:[Any] = [object]
         let senddate:Date = Date()
         let dateformatter:DateFormatter = DateFormatter()
 
@@ -105,9 +105,10 @@ class AppTheme {
         let pathArray = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
         let Path:NSString = (pathArray as NSArray).object(at: 0) as! NSString
 
-        let filename:NSString = Path.appendingPathComponent(name as String) as NSString
-        let iswrite:Bool = NSKeyedArchiver.archiveRootObject(objectArray, toFile: filename as String)
-        return iswrite
+        let filename:String = Path.appendingPathComponent(name as String)
+        let iswrite:Bool = NSKeyedArchiver.archiveRootObject(objectArray[1], toFile: filename)
+        let iswrite2:Bool = NSKeyedArchiver.archiveRootObject(objectArray[0], toFile: filename)
+        return iswrite && iswrite2
     }
 
     /**

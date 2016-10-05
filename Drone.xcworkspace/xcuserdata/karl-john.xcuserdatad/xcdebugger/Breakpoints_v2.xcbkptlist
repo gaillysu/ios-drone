@@ -86,7 +86,7 @@
                   moduleName = "Drone"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karl-john/Projects/ios-drone/Drone/Class/Controller/DoExerciseViewController.swift"
-                  timestampString = "497172696.77513"
+                  timestampString = "497334602.022314"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "193"
@@ -101,7 +101,7 @@
                   moduleName = "Drone"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/karl-john/Projects/ios-drone/Drone/Class/Controller/DoExerciseViewController.swift"
-                  timestampString = "497172696.777507"
+                  timestampString = "497334602.026559"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "193"
@@ -109,6 +109,22 @@
                   offsetFromSymbolStart = "1168">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Drone/Class/Controller/DeviceViewController.swift"
+            timestampString = "497333271.608888"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -65,13 +65,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             }
         }
         
-        
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
-//            let progress = MRProgressOverlayView.showOverlayAddedTo(self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.Indeterminate, animated: true)
-//            progress.setTintColor(UIColor.getBaseColor())
-//            NSTimer.after(120.seconds, {
-//                MRProgressOverlayView.dismissAllOverlaysForView(self.navigationController!.view, animated: true)
-//            })
         }
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
@@ -88,7 +82,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                         break
                     }
                 }
-                
                 if addKey {
                     dayDateArray.append(date)
                 }

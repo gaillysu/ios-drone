@@ -12,13 +12,18 @@ import XCGLogger
 
 class HttpPostRequest: NSObject {
     
-    class  func postRequest(_ url: String, data:Dictionary<String,Any?>, completion:@escaping (_ result:NSDictionary) -> Void){
-        var finalData: Dictionary<String,AnyObject> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei" as AnyObject]
-        finalData["params"] = data as AnyObject?;
+    class  func postRequest(_ url: String, data:Dictionary<String,Any>, completion:@escaping (_ result:NSDictionary) -> Void){
+        var finalData: Dictionary<String,Any> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei" as Any]
+        finalData["params"] = data;
+        let param:Parameters = finalData
         XCGLogger.debug("\(finalData)")
         
-        Alamofire.request(url, method: .get, parameters: finalData, encoding: JSONEncoding.default)
-            .authenticate(user: "apps", password: "med_app_development")
+        var headers: HTTPHeaders = [:]
+        
+        if let authorizationHeader = Alamofire.Request.authorizationHeader(user: "apps", password: "med_app_development") {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response  in
                 if response.result.isSuccess {
                     XCGLogger.debug("getJSON: \(response.result.value)")
@@ -30,19 +35,24 @@ class HttpPostRequest: NSObject {
                     }else{
                         completion(response.result.value as! NSDictionary)
                     }
-        }
-
+                }
+                
         }
     }
-
+    
     
     class  func putRequest(_ url: String, data:[String:AnyObject], completion:@escaping (_ result:NSDictionary) -> Void){
         var finalData: Dictionary<String,AnyObject> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei" as AnyObject]
         finalData["params"] = data as AnyObject?;
         XCGLogger.debug("\(finalData)")
         
-        Alamofire.request(url, method: .put, parameters: finalData, encoding: JSONEncoding.default)
-            .authenticate(user: "apps", password: "med_app_development")
+        var headers: HTTPHeaders = [:]
+        
+        if let authorizationHeader = Alamofire.Request.authorizationHeader(user: "apps", password: "med_app_development") {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        
+        Alamofire.request(url, method: .put, parameters: finalData, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response  in
                 if response.result.isSuccess {
                     XCGLogger.debug("getJSON: \(response.result.value)")
@@ -61,7 +71,6 @@ class HttpPostRequest: NSObject {
     
     static func getCommonParams() -> (md5: String,time: Int){
         let time = Int(Date().timeIntervalSince1970);
-        
         let key = String(format: "%d-nevo2015medappteam",time)
         return (md5: md5(string:key),time: time);
     }

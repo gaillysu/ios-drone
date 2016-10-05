@@ -18,11 +18,27 @@ class DownloadStepsRequest: NSObject {
     
     class  func getRequest(_ url: String, uid:String, start_date:String, end_date:String, completion:@escaping (_ result:NSDictionary) -> Void){
         let URL:String = url+"/"+uid+"?token=ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei"+"&start_date="+start_date+"&end_date="+end_date
-        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default)
+        
+        var headers: HTTPHeaders = [:]
+        
+        if let authorizationHeader = Alamofire.Request.authorizationHeader(user: "apps", password: "med_app_development") {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        
+        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
             .authenticate(user: "apps", password: "med_app_development")
             .responseJSON { response in
-                let dictionary:NSDictionary = NSKeyedUnarchiver.unarchiveObject(with: response.data!)! as! NSDictionary
-                    completion(dictionary)
+                if response.result.isSuccess {
+                    XCGLogger.debug("getJSON: \(response.result.value)")
+                    completion(
+                        response.result.value as! NSDictionary)
+                }else if (response.result.isFailure){
+                    if (response.result.value == nil) {
+                        completion(NSDictionary(dictionary: ["error" : "request error"]))
+                    }else{
+                        completion(response.result.value as! NSDictionary)
+                    }
+                }
         }
     }
     

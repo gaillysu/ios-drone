@@ -5,6 +5,7 @@
 [![Version](https://img.shields.io/cocoapods/v/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![License](https://img.shields.io/cocoapods/l/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![Platform](https://img.shields.io/cocoapods/p/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
+![Swift 2.2.x](https://img.shields.io/badge/Swift-2.2.x-orange.svg)
 
 This library is inspired by [PageMenu](https://github.com/uacaps/PageMenu)
 
@@ -28,132 +29,163 @@ See [CHANGELOG](https://github.com/kitasuke/PagingMenuController/blob/master/CHA
 
 ## Customization
 
+### PagingMenuControllerCustomizable
+
 * default page index to show as a first view
 ```Swift
 defaultPage: Int
 ```
-* scrollEnabled for paging view. **Set false in case of using swipe-to-delete on your table view**
-```swift
-scrollEnabled: Bool
+
+* duration for paging view animation
+```Swift
+animationDuration: TimeInterval
 ```
-* background color for menu view
+
+* isScrollEnabled for paging view. **Set false in case of using swipe-to-delete on your table view**
+```swift
+isScrollEnabled: Bool
+```
+
+* background color for paging view
 ```Swift
 backgroundColor: UIColor
-```
-* background color for selected menu item
-```Swift
-selectedBackgroundColor: UIColor
-```
-* text color for menu item
-```Swift
-textColor: UIColor
-```
-* text color for selected menu item
-```Swift
-selectedTextColor: UIColor
-```
-* font for menu item text
-```Swift
-font: UIFont
-```
-* font for selected menu item text
-```Swift
-selectedFont: UIFont
-```
-* menu position
-```Swift
-menuPosition: MenuPosition
-
-public enum MenuPosition {
-    case Top
-    case Bottom
-}
-```
-* height for menu view
-```Swift
-menuHeight: CGFloat
-```
-* margin for each menu item
-```Swift
-menuItemMargin: CGFloat
-```
-* divider image to display right aligned in each menu item
-```Swift
-menuItemDividerImage: UIImage?
-```
-* duration for menu item view animation
-```Swift
-animationDuration: NSTimeInterval
-```
-* decelerating rate for menu view
-```swift
-deceleratingRate: CGFloat
-```
-* menu item position
-```swift
-menuSelectedItemCenter: Bool
-```
-* menu display mode and scrolling mode
-```Swift
-menuDisplayMode: MenuDisplayMode
-
-public enum MenuDisplayMode {
-    case Standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
-    case SegmentedControl
-    case Infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode) // Requires three paging views at least
-}
-
-public enum MenuItemWidthMode {
-    case Flexible
-    case Fixed(width: CGFloat)
-}
-
-public enum MenuScrollingMode {
-  case ScrollEnabled
-  case ScrollEnabledAndBouces
-  case PagingEnabled
-}
-```
-if `centerItem` is true, selected menu item is always on center
-  
-if `MenuScrollingMode` is `ScrollEnabled` or `ScrollEnabledAndBouces`, menu view allows scrolling to select any menu item
-if `MenuScrollingMode` is `PagingEnabled`, menu item should be selected one by one 
-
-* menu item mode
-```Swift
-public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.whiteColor(), horizontalPadding: 0, verticalPadding: 0)
-public enum MenuItemMode {
-    case None
-    case Underline(height: CGFloat, color: UIColor, horizontalPadding: CGFloat, verticalPadding: CGFloat)
-    case RoundRect(radius: CGFloat, horizontalPadding: CGFloat, verticalPadding: CGFloat, selectedColor: UIColor)
-}
 ```
 
 * number of lazy loading pages
 ```swift
-public var lazyLoadingPage: LazyLoadingPage = .Three
+lazyLoadingPage: LazyLoadingPage
 public enum LazyLoadingPage {
-    case One // Currently sets false to scrollEnabled at this moment. Should be fixed in the future.
-    case Three
+    case one // Currently sets false to isScrollEnabled at this moment. Should be fixed in the future.
+    case three
 }
 ```
 
 * a set of menu controller
 ```swift
-public var menuControllerSet: MenuControllerSet = .Multiple
+menuControllerSet: MenuControllerSet
 public enum MenuControllerSet {
-        case Single
-        case Multiple
+        case single
+        case multiple
     }
 ```
 
 * component type of PagingMenuController
 ```swift
-public var menuComponentType: MenuComponentType = .All
-public enum MenuComponentType {
-    case MenuView
-    case MenuController
-    case All
+componentType: ComponentType
+public enum ComponentType {
+    case menuView(menuOptions: MenuViewCustomizable)
+    case pagingController(pagingControllers: [UIViewController])
+    case all(menuOptions: MenuViewCustomizable, pagingControllers: [UIViewController])
+}
+```
+
+### MenuViewCustomizable
+
+* background color for menu view
+```Swift
+backgroundColor: UIColor
+```
+
+* background color for selected menu item
+```Swift
+selectedBackgroundColor: UIColor
+```
+
+* height for menu view
+```Swift
+height: CGFloat
+```
+
+* duration for menu view animation
+```Swift
+animationDuration: TimeInterval
+```
+
+* decelerating rate for menu view
+```swift
+deceleratingRate: CGFloat
+```
+
+* menu item position
+```swift
+menuSelectedItemCenter: Bool
+```
+
+* menu mode and scrolling mode
+
+```swift
+displayMode: MenuDisplayMode
+
+public enum MenuDisplayMode {
+    case standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
+    case segmentedControl
+    case infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode) // Requires three paging views at least
+}
+
+public enum MenuItemWidthMode {
+    case flexible
+    case fixed(width: CGFloat)
+}
+
+public enum MenuScrollingMode {
+  case scrollEnabled
+  case scrollEnabledAndBouces
+  case pagingEnabled
+}
+```
+
+if `centerItem` is true, selected menu item is always on center
+
+if `MenuScrollingMode` is `ScrollEnabled` or `ScrollEnabledAndBouces`, menu view allows scrolling to select any menu item
+if `MenuScrollingMode` is `PagingEnabled`, menu item should be selected one by one
+
+* menu item focus mode
+```Swift
+focusMode: MenuFocusMode
+public enum MenuFocusMode {
+    case none
+    case underline(height: CGFloat, color: UIColor, horizontalPadding: CGFloat, verticalPadding: CGFloat)
+    case roundRect(radius: CGFloat, horizontalPadding: CGFloat, verticalPadding: CGFloat, selectedColor: UIColor)
+}
+```
+
+* dummy item view number for Infinite mode
+```swift
+dummyItemViewsSet: Int
+```
+
+* menu position
+
+```swift
+menuPosition: MenuPosition
+
+public enum MenuPosition {
+    case top
+    case bottom
+}
+```
+
+* divider image to display right aligned in each menu item  
+
+```swift
+dividerImage: UIImage?
+```
+
+### MenuItemViewCustomizable
+
+* horizontal margin for menu item
+```swift
+horizontalMargin: CGFloat
+```
+
+* menu item mode
+```swift
+displayMode: MenuItemDisplayMode
+public enum MenuItemDisplayMode {
+    case text(title: MenuItemText)
+    case multilineText(title: MenuItemText, description: MenuItemText)
+    case image(image: UIImage, selectedImage: UIImage?)
+    case custom(view: UIView)
 }
 ```
 
@@ -164,16 +196,24 @@ public enum MenuComponentType {
 ### Using Storyboard
 
 ```Swift
-let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
-viewController.title = "Menu title"
-let viewControllers = [viewController]
+struct MenuItem1: MenuItemViewCustomizable {}
+struct MenuItem2: MenuItemViewCustomizable {}
+
+struct MenuOptions: MenuViewCustomizable {
+    var itemsOptions: [MenuItemViewCustomizable] {
+        return [MenuItem1(), MenuItem2()]
+    }
+}
+
+struct PagingMenuOptions: PagingMenuControllerCustomizable {
+    var componentType: ComponentType {
+        return .all(menuOptions: MenuOptions(), pagingControllers: [UIViewController(), UIViewController()])
+    }
+}
 
 let pagingMenuController = self.childViewControllers.first as! PagingMenuController
-
-let options = PagingMenuOptions()
-options.menuHeight = 60
-options.menuDisplayMode = .Standard(widthMode: .Flexible, centerItem: true, scrollingMode: .PagingEnabled)
-pagingMenuController.setup(viewControllers: viewControllers, options: options)
+pagingMenuController.delegate = self
+pagingMenuController.setup(options)
 ```
 * You should add `ContainerView` into your view controller's view and set `PagingMenuController` as the embedded view controller's class
 
@@ -181,17 +221,26 @@ See `PagingMenuControllerDemo` target in demo project for more details
 
 ### Coding only
 ```Swift
-let viewController = UIViewController()
-viewController.title = "Menu title"
-let viewControllers = [viewController]
+struct MenuItem1: MenuItemViewCustomizable {}
+struct MenuItem2: MenuItemViewCustomizable {}
+
+struct MenuOptions: MenuViewCustomizable {
+    var itemsOptions: [MenuItemViewCustomizable] {
+        return [MenuItem1(), MenuItem2()]
+    }
+}
+
+struct PagingMenuOptions: PagingMenuControllerCustomizable {
+    var componentType: ComponentType {
+        return .all(menuOptions: MenuOptions(), pagingControllers: [UIViewController(), UIViewController()])
+    }
+}
 
 let options = PagingMenuOptions()
-options.menuItemMargin = 5
-options.menuDisplayMode = .SegmentedControl
-let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
+let pagingMenuController = PagingMenuController(options: options)
 
-self.addChildViewController(pagingMenuController)
-self.view.addSubview(pagingMenuController.view)
+addChildViewController(pagingMenuController)
+view.addSubview(pagingMenuController.view)
 pagingMenuController.didMoveToParentViewController(self)
 ```
 
@@ -204,18 +253,20 @@ pagingMenuController.delegate = self
 ```
 
 ```Swift
-func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
-}
-
-func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
-}
+func willMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
+    
+func didMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
+    
+func willMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
+    
+func didMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
 ```
 
-### Moving to a menu tag programatically 
+### Moving to a menu tag programmatically
 
 ```swift
 // if you pass a nonexistent page number, it'll be ignored
-pagingMenuController.moveToMenuPage(1, animated: true)
+pagingMenuController.move(toPage: 1, animated: true)
 ```
 
 ### Changing PagingMenuController's option
@@ -226,10 +277,10 @@ It creates a new paging menu controller. Do not forget to cleanup properties in 
 ## Requirements
 
 iOS8+  
-Swift 2.0+  
-Xcode 7.3+  
+Swift 3.0+  
+Xcode 8.0+ 
 
-*Please use 0.8.0 tag for Swift 1.2*
+Please use [v1.2.0](https://github.com/kitasuke/PagingMenuController/releases/tag/1.2.0) for Swift 2.3
 
 ## Installation
 
@@ -243,6 +294,14 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod "PagingMenuController"
+
+post_install do |installer|
+ installer.pods_project.targets.each do |target|
+   target.build_configurations.each do |config|
+     config.build_settings['SWIFT_VERSION'] = '3.0'
+   end
+ end
+end
 ```
 
 Then, run `pod install`
@@ -262,7 +321,7 @@ To install PagingMenuController into your Xcode project using Carthage, specify 
 github "kitasuke/PagingMenuController"
 ```
 
-Then, run `carthage update`
+Then, run `carthage update --toolchain com.apple.dt.toolchain.Swift_3_0`
 
 You can see `Carthage/Build/iOS/PagingMenuController.framework` now, so drag and drop it to `Linked Frameworks and Libraries` in General menu tab with your project.
 Add the following script to `New Run Script Phase` in Build Phases menu tab.
@@ -275,12 +334,7 @@ Also add the following script in `Input Files`
 $(SRCROOT)/Carthage/Build/iOS/PagingMenuController.framework
 ```
 
-In case you haven't installed Carthage yet, run the following command
-
-```ruby
-$ brew update
-$ brew install carthage
-```
+In case you haven't installed Carthage yet, download the latest pkg from [Carthage](https://github.com/Carthage/Carthage/releases)
 
 ### Manual
 
