@@ -40,7 +40,7 @@ class ForgetPasswordController: UIViewController {
     
     @IBAction func buttonManager(_ sender: AnyObject) {
         if sender.isEqual(backButton) {
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
         
         if sender.isEqual(confirmButton) {

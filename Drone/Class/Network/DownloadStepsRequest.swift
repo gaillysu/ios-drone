@@ -47,21 +47,23 @@ class DownloadStepsRequest: NSObject {
         let end:Date = startDate.endOfDay
         
         let profileArray:NSArray = UserProfile.getAll()
-        let profile:UserProfile = profileArray.object(at: 0) as! UserProfile
-        
-        //Download data selected days recently
-        DownloadStepsRequest.getRequest("http://drone.karljohnchow.com/steps/user", uid: "\(profile.id)", start_date: "\(Int(start.timeIntervalSince1970))", end_date: "\(Int(end.timeIntervalSince1970))", completion: { (result) in
-            XCGLogger.default.debug("getJSON: \(result)")
-            let json = JSON(result)
-            let status:Int = json["status"].intValue
-            if status>0 {
-                let stepsArray = json["steps"].arrayValue
-                self.savedServiceDataToLocalDatabase(stepsArray)
-                completion(true)
-            }else{
-                completion(false)
-            }
-        })
+        if profileArray.count > 0  {
+            let profile:UserProfile  = profileArray.object(at: 0) as! UserProfile
+            DownloadStepsRequest.getRequest("http://drone.karljohnchow.com/steps/user", uid: "\(profile.id)", start_date: "\(Int(start.timeIntervalSince1970))", end_date: "\(Int(end.timeIntervalSince1970))", completion: { (result) in
+                XCGLogger.default.debug("getJSON: \(result)")
+                let json = JSON(result)
+                let status:Int = json["status"].intValue
+                if status>0 {
+                    let stepsArray = json["steps"].arrayValue
+                    self.savedServiceDataToLocalDatabase(stepsArray)
+                    completion(true)
+                }else{
+                    completion(false)
+                }
+            })
+        }else {
+            print("Hey something went wrong @ click today service steps")
+        }
     }
     
     /**
@@ -75,33 +77,36 @@ class DownloadStepsRequest: NSObject {
         let totalOfDay = Int(((Date().endOfDay.timeIntervalSince1970+1)-startDate.timeIntervalSince1970)/86400)
         
         let profileArray:NSArray = UserProfile.getAll()
-        let profile:UserProfile = profileArray.object(at: 0) as! UserProfile
         
-        //create steps network global queue
-        let queue:DispatchQueue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
-        let group = DispatchGroup()
-        
-        //Download data 30 days recently
-        for index:Int in 0..<Int(totalOfDay/5) {
-            queue.async(group: group, execute: {
-                let start:Int = Int(startDate.timeIntervalSince1970)+Int((index*5)*86400)
-                let end:Int = Int(startDate.timeIntervalSince1970)+Int((index*5)*86400+(5*86400))
-                //XCGLogger.debug("startDate: \(start),endtDate:\(end)")
-                DownloadStepsRequest.getRequest("http://drone.karljohnchow.com/steps/user", uid: "\(profile.id)", start_date: "\(start)", end_date: "\(end)", completion: { (result) in
-                    XCGLogger.default.debug("getJSON: \(result)")
-                    let json = JSON(result)
-                    let status:Int = json["status"].intValue
-                    if status>0 {
-                        let stepsArray = json["steps"].arrayValue
-                        self.savedServiceDataToLocalDatabase(stepsArray)
-                    }
+        if profileArray.count > 0  {
+            let profile:UserProfile  = profileArray.object(at: 0) as! UserProfile
+            let queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
+            let group = DispatchGroup()
+            
+            //Download data 30 days recently
+            for index:Int in 0..<Int(totalOfDay/5) {
+                queue.async(group: group, execute: {
+                    let start:Int = Int(startDate.timeIntervalSince1970)+Int((index*5)*86400)
+                    let end:Int = Int(startDate.timeIntervalSince1970)+Int((index*5)*86400+(5*86400))
+                    //XCGLogger.debug("startDate: \(start),endtDate:\(end)")
+                    DownloadStepsRequest.getRequest("http://drone.karljohnchow.com/steps/user", uid: "\(profile.id)", start_date: "\(start)", end_date: "\(end)", completion: { (result) in
+                        XCGLogger.default.debug("getJSON: \(result)")
+                        let json = JSON(result)
+                        let status:Int = json["status"].intValue
+                        if status>0 {
+                            let stepsArray = json["steps"].arrayValue
+                            self.savedServiceDataToLocalDatabase(stepsArray)
+                        }
+                    })
                 })
+            }
+            group.notify(queue: queue, execute: {
+                XCGLogger.default.debug("create steps completed")
             })
+        } else {
+            print("Hey something went wrong @ get Service steps")
         }
         
-        group.notify(queue: queue, execute: {
-            XCGLogger.default.debug("create steps completed")
-        })
     }
     
     func savedServiceDataToLocalDatabase(_ array:[JSON]) {

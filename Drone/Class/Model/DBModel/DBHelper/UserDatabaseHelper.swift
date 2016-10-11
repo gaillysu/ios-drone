@@ -37,7 +37,6 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
 
     override init() {
         super.init()
-        
 //        let dic:NSDictionary = self.classForCoder.getAllProperties()
         let dic:NSDictionary = UserDatabaseHelper.getAllProperties()
         columeNames = NSMutableArray(array: dic.object(forKey: "name") as! NSArray)
@@ -60,7 +59,6 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
         let columeAndType:NSString = self.getColumeAndTypeString() as NSString
         let sql:NSString = NSString(format: "CREATE TABLE IF NOT EXISTS %@(%@);", tableName,columeAndType)
 
-        do {
             let args:CVaListPointer = getVaList([1,2,3,4]);
             let isSuccess = db.executeUpdate("\(sql)", withVAList: args)
             if (!isSuccess) {
@@ -90,9 +88,6 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
             }
             db.close()
             return true
-        } catch let error as NSError {
-            print("failed: \(error.localizedDescription)")
-        }
     }
 
     fileprivate class func getColumeAndTypeString()->String {

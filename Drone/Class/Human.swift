@@ -85,34 +85,9 @@ class Human:SCNNode {
     }
     
     private func rotateNode(node:SCNNode, x:CGFloat, y:CGFloat, z:CGFloat = 0.0){
-        var computedX = x;
-        var computedY = y;
-        var computedZ = z;
-        
-        if x < -6.285 {
-            computedX = -6.285
-        }
-        if x > 6.285 {
-            computedX = 6.285
-        }
-        if y < -6.285 {
-            computedY = -6.285
-        }
-        if y > 6.285 {
-            computedY = 6.285
-        }
-        if z < -6.285 {
-            computedZ = -6.285
-        }
-        if z > 6.285 {
-            computedZ = 6.285
-        }
-            
-        else {
-            reset(node: node)
-            //instead of y:0.0, 0.o should be computedZ
-            node.runAction(SCNAction.rotateBy(x: x, y: y, z: z, duration: 0.0))
-        }
+        reset(node: node)
+        //instead of y:0.0, 0.o should be computedZ
+        node.runAction(SCNAction.rotateBy(x: x, y: y, z: z, duration: 0.0))
         // So X  is Up Down movement, Z is left right movement on the dummy.
         // Range for the movement is [-6.285...6.285]. So from [0.0...6.285] its CCW/CW and [-6.285...0.0] its CW/CCW
     }

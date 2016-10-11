@@ -544,14 +544,13 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         if #available(iOS 10.0, *) {
             switch (mManager!.state)
             {
-                
             case CBManagerState.poweredOn:
                 return true
             default:
                 return false
             }
-        } else {
-            
+        } else if mManager!.state.rawValue  == 5{
+                return true
         }
         return false
     }

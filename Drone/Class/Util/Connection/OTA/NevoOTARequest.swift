@@ -85,7 +85,6 @@ class writeFileSizeRequest: Request {
     }
     
     func getRawData() -> Data {
-        let fileSizeCollection :[UInt32] = [0,0,UInt32(mFilelength!)];
         return Data()
         //return Data(bytes: UnsafePointer<UInt8>(fileSizeCollection), count: fileSizeCollection.count * MemoryLayout<UInt32>.size)
     }

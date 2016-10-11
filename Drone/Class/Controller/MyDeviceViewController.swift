@@ -71,6 +71,7 @@ class MyDeviceViewController: BaseViewController {
     }
     
     @IBAction func buyButtonAction(_ sender: AnyObject) {
+        
         UIApplication.shared.openURL(URL(string: "")!)
     }
     

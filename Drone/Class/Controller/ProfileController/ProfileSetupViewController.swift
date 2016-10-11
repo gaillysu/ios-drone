@@ -116,7 +116,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
 
     @IBAction func buttonActionManager(_ sender: AnyObject) {
         if (backB.isEqual(sender)) {
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
 
         if (nextB.isEqual(sender)) {
@@ -202,7 +202,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
             XCGLogger.debug("注册的时候没有网络")
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
-            let timeout:Timer = Timer.after(0.6.seconds, {
+            _ = Timer.after(0.6.seconds, {
                 MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
         }

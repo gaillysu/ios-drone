@@ -27,13 +27,7 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         super.viewDidLoad()
         self.navigationItem.title = "Notifications"
         self.navigationController!.navigationBar.topItem!.title = "";
-//        let button: UIButton = UIButton(type: UIButtonType.Custom)
-//        button.setImage(UIImage(named: "addbutton"), forState: UIControlState.Normal)
-//        button.addTarget(self, action: #selector(add), forControlEvents: UIControlEvents.TouchUpInside)
-//        button.frame = CGRectMake(0, 0, 30, 30)
-//        let barButton = UIBarButtonItem(customView: button)
-//        self.navigationItem.rightBarButtonItem = barButton
-        
+
         self.tableView.separatorColor = UIColor.clear
         self.tableView.rowHeight = 60.0
         
@@ -150,15 +144,17 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true);
-        var url:URL?
+        var url:URL? = URL(string:"prefs:root=Phone&path=Blocked")
         if (indexPath as NSIndexPath).row == 0 {
             url = URL(string:"prefs:root=NOTIFICATIONS_ID")
-        }else {
-            url = URL(string:"prefs:root=Phone&path=Blocked")
         }
         
         if UIApplication.shared.canOpenURL(url!) {
-            UIApplication.shared.openURL(url!)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url!)
+            }
         }
     }
     
@@ -183,7 +179,11 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     
     func openSettings() {
         let url = URL(string: UIApplicationOpenSettingsURLString)
-        UIApplication.shared.openURL(url!)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url!)
+        }
     }
     
     func displayCantAddContactAlert() {

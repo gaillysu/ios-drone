@@ -194,7 +194,13 @@ class AppTheme {
     Go to AppStore updating links
     */
     class func toOpenUpdateURL() {
-        UIApplication.shared.openURL(URL(string: "https://itunes.apple.com/app/nevo-watch/id977526892?mt=8")!)
+        let url = URL(string: "https://itunes.apple.com/app/nevo-watch/id977526892?mt=8")
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url!)
+        }
+        
     }
 
 

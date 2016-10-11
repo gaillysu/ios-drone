@@ -57,10 +57,6 @@
 		00982BF31C868C8A003DA5E2 /* MyNevoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB21C868C89003DA5E2 /* MyNevoView.swift */; };
 		00982BF51C868C8A003DA5E2 /* DeviceScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB61C868C89003DA5E2 /* DeviceScannerView.swift */; };
 		00982BF71C868C8A003DA5E2 /* SelectFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AB81C868C89003DA5E2 /* SelectFileView.swift */; };
-		00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC11C868C89003DA5E2 /* AddGoalView.swift */; };
-		00982BFF1C868C8A003DA5E2 /* GoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC21C868C89003DA5E2 /* GoalTableViewCell.swift */; };
-		00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */; };
-		00982C011C868C8A003DA5E2 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC41C868C89003DA5E2 /* GoalView.swift */; };
 		00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AC71C868C89003DA5E2 /* ProfileSetupViewController.xib */; };
 		00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AC91C868C89003DA5E2 /* RegisterViewController.swift */; };
 		00982C051C868C8A003DA5E2 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ACA1C868C89003DA5E2 /* RegisterViewController.xib */; };
@@ -331,10 +327,6 @@
 		00982AB21C868C89003DA5E2 /* MyNevoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNevoView.swift; sourceTree = "<group>"; };
 		00982AB61C868C89003DA5E2 /* DeviceScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceScannerView.swift; sourceTree = "<group>"; };
 		00982AB81C868C89003DA5E2 /* SelectFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFileView.swift; sourceTree = "<group>"; };
-		00982AC11C868C89003DA5E2 /* AddGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalView.swift; sourceTree = "<group>"; };
-		00982AC21C868C89003DA5E2 /* GoalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalTableViewCell.swift; sourceTree = "<group>"; };
-		00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalTableViewCell.xib; sourceTree = "<group>"; };
-		00982AC41C868C89003DA5E2 /* GoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		00982AC71C868C89003DA5E2 /* ProfileSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSetupViewController.xib; sourceTree = "<group>"; };
 		00982AC91C868C89003DA5E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		00982ACA1C868C89003DA5E2 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -787,18 +779,6 @@
 			);
 			name = NevoOtaView;
 			path = Controller/NevoOtaController/NevoOtaView;
-			sourceTree = "<group>";
-		};
-		00982AC01C868C89003DA5E2 /* PresetView */ = {
-			isa = PBXGroup;
-			children = (
-				00982AC11C868C89003DA5E2 /* AddGoalView.swift */,
-				00982AC21C868C89003DA5E2 /* GoalTableViewCell.swift */,
-				00982AC31C868C89003DA5E2 /* GoalTableViewCell.xib */,
-				00982AC41C868C89003DA5E2 /* GoalView.swift */,
-			);
-			name = PresetView;
-			path = Controller/PresetController/PresetView;
 			sourceTree = "<group>";
 		};
 		00982AC51C868C89003DA5E2 /* ProfileSetupViewController */ = {
@@ -1549,7 +1529,6 @@
 				00982AAF1C868C89003DA5E2 /* MyDroneView */,
 				00982AB51C868C89003DA5E2 /* NevoOtaView */,
 				CBB37AF41D751AAA00A90920 /* PhysioDeviceHeader */,
-				00982AC01C868C89003DA5E2 /* PresetView */,
 				9EF7EEA31CD89D7C009B0928 /* ProfileTableView */,
 				00982AD01C868C89003DA5E2 /* queryTableviewCell */,
 				00982ACC1C868C89003DA5E2 /* SetingView */,
@@ -1809,7 +1788,6 @@
 				9EA1C9A51D7935D30012C988 /* DoExerciseHeader.xib in Resources */,
 				CBB37B041D757DEB00A90920 /* AddInstructionHeader.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
-				00982C001C868C8A003DA5E2 /* GoalTableViewCell.xib in Resources */,
 				009201DD1CBE2B6600C51707 /* WelcomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1937,7 +1915,6 @@
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
 				9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */,
-				00982BFE1C868C8A003DA5E2 /* AddGoalView.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
 				CB3533EB1D9B646B00E5DE40 /* HumanViewController.swift in Sources */,
 				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
@@ -2054,7 +2031,6 @@
 				00982C411C868C8A003DA5E2 /* WaterWaveView.m in Sources */,
 				9E455E1B1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift in Sources */,
 				9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */,
-				00982BFF1C868C8A003DA5E2 /* GoalTableViewCell.swift in Sources */,
 				00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */,
 				9E526F3F1CDC891D0060F63F /* StringExtension.swift in Sources */,
 				9E2978711CDC3D5D00821704 /* WorldClock.swift in Sources */,
@@ -2063,7 +2039,6 @@
 				005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */,
 				9E69A2601CE3354D007501FF /* ContactsFilterModel.swift in Sources */,
 				00982C371C868C8A003DA5E2 /* TestMode.swift in Sources */,
-				00982C011C868C8A003DA5E2 /* GoalView.swift in Sources */,
 				9E1535891D5C21BA00CB6A01 /* Timezone.swift in Sources */,
 				00982C491C868C8A003DA5E2 /* GetActivityRequest.swift in Sources */,
 				9E455E0D1CD5A16000F79356 /* MyDeviceViewController.swift in Sources */,
@@ -2226,7 +2201,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Drone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medcorp.drone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2251,7 +2226,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Drone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medcorp.drone;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -41,7 +41,6 @@
       fileprivate var mAlertUpdateFW = false
       fileprivate var masterCockroaches:[UUID:Int] = [:]
       
-      fileprivate var disConnectAlert:UIAlertView?
       let log = XCGLogger.default
       fileprivate var responseTimer:Timer?
       fileprivate var noResponseIndex:Int = 0
@@ -106,20 +105,6 @@
          UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
          
       }
-      
-      func applicationWillEnterForeground(_ application: UIApplication) {
-      }
-      
-      func applicationDidBecomeActive(_ application: UIApplication) {
-      }
-      
-      func applicationWillTerminate(_ application: UIApplication) {
-      }
-      
-      func application(_ application: UIApplication , didReceive notification: UILocalNotification ) {
-         
-      }
-      
       // MARK: -dbPath
       class func dbPath()->String{
          var docsdir:String = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
@@ -242,7 +227,7 @@
                   if state[RESET_STATE]! && (date.beginningOfDay == Date().beginningOfDay){
                      sendRequest(SetStepsToWatchReuqest(steps: daySteps))
                      setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
-                     AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
+                     _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
                   }
                   
                }
@@ -409,7 +394,7 @@
                releaseResponseTimer()
                self.isSaveWorldClock()
                //Set steps to watch response
-               AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false])
+               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false])
             }
             
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {

@@ -136,23 +136,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if (UserProfile.getAll().count == 0){
-            let alertController = UIAlertController(title: "No user logged in", message: "Do you want to login?", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { action in
-                let navigationController = UINavigationController(rootViewController:WelcomeViewController());
-                navigationController.isNavigationBarHidden = true
-                self.present(navigationController, animated: true, completion: nil);
-                alertController.dismiss(animated: true, completion: nil)
-            }))
-            alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: { action in
-                alertController.dismiss(animated: true, completion: nil)
-            }))
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-
     func leftAction(_ item:UIBarButtonItem) {
         if (UserProfile.getAll().count == 0){
             let navigationController = UINavigationController(rootViewController:WelcomeViewController());
@@ -244,7 +227,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let profile:UserProfile = userProfle.object(at: 0) as! UserProfile
         
         //create steps network global queue
-        let queue:DispatchQueue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
+        let queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
         let group = DispatchGroup()
         
         queue.async(group: group, execute: {
@@ -273,7 +256,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let profile:UserProfile = userProfle.object(at: 0) as! UserProfile
         
         //create steps network global queue
-        let queue:DispatchQueue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
+        let queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
         let group = DispatchGroup()
         
         queue.async(group: group, execute: {
@@ -317,11 +300,29 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item:MenuItem = self.menuItems[(indexPath as NSIndexPath).row]
-
+        if (indexPath.row == 0){
+            if (UserProfile.getAll().count == 0){
+                let alertController = UIAlertController(title: "No user logged in", message: "Do you want to login?", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { action in
+                    let navigationController = UINavigationController(rootViewController:WelcomeViewController());
+                    navigationController.isNavigationBarHidden = true
+                    self.present(navigationController, animated: true, completion: nil);
+                    alertController.dismiss(animated: true, completion: nil)
+                    
+                }))
+                alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: { action in
+                    alertController.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
+        }
+            
+        let item:MenuItem = self.menuItems[indexPath.row]
+        
         let infoDictionary:[String : AnyObject] = Bundle.main.infoDictionary! as [String : AnyObject]
         let appName:String = infoDictionary["CFBundleName"] as! String
-
+        
         //Use the init of class name
         let classType: AnyObject.Type = NSClassFromString("\(appName)."+item.menuViewControllerItem)!
         let controllerType : UIViewController.Type = classType as! UIViewController.Type

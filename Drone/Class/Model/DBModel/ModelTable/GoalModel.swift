@@ -65,7 +65,6 @@ class GoalModel: UserDatabaseHelper {
                 let model:GoalModel = GoalModel()
 
                 for i:Int in 0 ..< model.columeNames.count {
-                    let test = model.columeNames.object(at: i)
                     let columeName:String = model.columeNames.object(at: i) as! String
                     let columeType:String = model.columeTypes.object(at: i) as! String
                     if (columeType.isEqual(SQLTEXT)) {

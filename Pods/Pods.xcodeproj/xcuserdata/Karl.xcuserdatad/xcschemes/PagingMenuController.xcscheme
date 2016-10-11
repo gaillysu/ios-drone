@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5D9D297325978BDCEA36E78ABC869009"
+               BlueprintIdentifier = "C5A82921A1B97047AB8B8D3012D722A5"
                BuildableName = "PagingMenuController.framework"
                BlueprintName = "PagingMenuController"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5D9D297325978BDCEA36E78ABC869009"
+            BlueprintIdentifier = "C5A82921A1B97047AB8B8D3012D722A5"
             BuildableName = "PagingMenuController.framework"
             BlueprintName = "PagingMenuController"
             ReferencedContainer = "container:Pods.xcodeproj">

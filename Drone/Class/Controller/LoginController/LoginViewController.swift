@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
             usernameT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             usernameT!.placeholder = "E-mail"
             usernameT?.backgroundColor = UIColor.white
-            usernameT?.text = "test@user.com"
+//            usernameT?.text = "test@user.com"
             
             textfiledBG.addSubview(usernameT!)
 
@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
             passwordT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             passwordT!.placeholder = "Password"
             passwordT?.backgroundColor = UIColor.white
-            passwordT?.text = "12341234"
+//            passwordT?.text = "12341234"
             textfiledBG.addSubview(passwordT!)
         }
 
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func buttonActionManager(_ sender: AnyObject) {
         if backButton.isEqual(sender) {
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
 
         if loginButton.isEqual(sender) {
@@ -143,8 +143,9 @@ class LoginViewController: UIViewController {
                     
                     let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"].intValue,"first_name":user["first_name"].stringValue,"last_name":user["last_name"].stringValue,"birthday":birthday,"length":user["length"].intValue,"email":user["email"].stringValue, "weight":user["weight"].floatValue])
                     userprofile.add({ (id, completion) in
-                        XCGLogger.debug("Added? id = \(id)")
+                        XCGLogger.debug("Added? id = \(id), completion = \(completion)")
                     })
+
                     if(UserGoal.getAll().count == 0){
                         let goal:UserGoal = UserGoal(keyDict: ["goalSteps":10000,"label":" ","status":false])
                         goal.add({ (id, completion) in})
@@ -163,7 +164,7 @@ class LoginViewController: UIViewController {
                 }
             }
         }else{
-            
+        
             XCGLogger.debug("没有网络")
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())

@@ -190,9 +190,7 @@ extension DoExerciseViewController{
     fileprivate func initEventBus(){
         _ = SwiftEventBus.onMainThread(self, name:SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED) { (data) -> Void in
             let object = data.object! as! CockroachMasterDataReceived
-            if let human = self.human{
-//                human.rotateLeftArm(withCoordinates: object.coordinates)
-            }
+
             for cockroach in self.cockroaches {
                 if cockroach.address == object.address{
                     cockroach.addOrUpdateBabyCockroach(byCockroachMasterDataReceived: object)
