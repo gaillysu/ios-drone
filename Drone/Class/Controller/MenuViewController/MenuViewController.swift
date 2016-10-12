@@ -70,7 +70,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
             MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-            let stepsArray:NSArray = UserSteps.getCriteria(String(format: "WHERE syncnext = \(false)"))
+            
+            let stepsArray:NSArray = UserSteps.getCriteria(String(format: "WHERE syncnext = \(NSNumber(value: false))"))
             var dayDateArray:[Date] = []
             for steps in stepsArray{
                 let userSteps:UserSteps = steps as! UserSteps

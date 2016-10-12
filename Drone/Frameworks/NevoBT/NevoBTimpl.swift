@@ -202,7 +202,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 mPeripheral?.setNotifyValue(true,for:aChar)
                 if(aChar.uuid==mProfile?.CALLBACK_CHARACTERISTIC ) {
                     mPeripheral?.setNotifyValue(true,for:aChar)
-                    
                     XCGLogger.debug("Callback char : \(aChar.uuid.uuidString)")
                     mDelegate?.connectionStateChanged(true, fromAddress: aPeripheral.identifier, deviceType: NevoBTImpl.TYPE.DRONE)
                 } else if(aChar.uuid==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
@@ -267,8 +266,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         
         if (error != nil) {
             XCGLogger.debug("Failed to write value for characteristic \(characteristic), reason: \(error)")
-        } else {
-            XCGLogger.debug("Did write value for characterstic \(characteristic), new value: \(characteristic.value)")
         }
         
     }
@@ -482,9 +479,13 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             //There might be for example 10 peripherals known to the device, but one only is in range
             //So we need to try to connect to sall of them, and hence we need to save all of them
             mTryingToConnectPeripherals.append(aPeripheral)
-            
-            mManager?.connect(aPeripheral,options:nil)
-            
+            if let manager = mManager {
+                manager.connect(aPeripheral,options:nil)
+                setPeripheral(aPeripheral)
+                print("Trying to connect")
+            }else{
+                print("Couldn't connect since mManager = nil")
+            }
         }
         
     }

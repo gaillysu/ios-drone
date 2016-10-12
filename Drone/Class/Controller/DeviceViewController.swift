@@ -81,6 +81,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
                 AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
                 _ = UserDevice.removeAll()
+                 AppDelegate.getAppDelegate().disconnect()
                 //Records need to use 0x30
                 _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
                 

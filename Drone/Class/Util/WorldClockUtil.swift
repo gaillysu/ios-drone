@@ -41,7 +41,7 @@ class WorldClockUtil: NSObject {
         var convertedWorldClockArray:[(cityName:String,gmtOffset:Float)] = []
         for city:City in worldClockArray {
             if let timezone = city.timezone{
-                convertedWorldClockArray.append((city.name,Float(timezone.getOffsetFromUTC()/60)))
+                convertedWorldClockArray.append((city.name,(Float(timezone.getOffsetFromUTC())/60)))
             }
         }
         return convertedWorldClockArray

@@ -220,18 +220,18 @@
          
          if daySteps>0 {
             if let unpackedData = AppTheme.LoadKeyedArchiverName(RESET_STATE) {
-               let stateArray:NSArray =  unpackedData as! NSArray
-               if stateArray.count>0 {
-                  let state:[String:Bool] = stateArray[0] as! [String:Bool]
-                  let date:Date = (stateArray[1] as! String).dateFromFormat("YYYY/MM/dd")!
-                  if state[RESET_STATE]! && (date.beginningOfDay == Date().beginningOfDay){
-                     sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                     setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
-                     _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
+               if let stateArray:NSArray =  unpackedData as? NSArray{
+                  if stateArray.count>0 {
+                     let state:[String:Bool] = stateArray[0] as! [String:Bool]
+                     let date:Date = (stateArray[1] as! String).dateFromFormat("YYYY/MM/dd")!
+                     if state[RESET_STATE]! && (date.beginningOfDay == Date().beginningOfDay){
+                        sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+                        setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
+                     }
+                     
                   }
-                  
                }
-               
             }
          }
       }

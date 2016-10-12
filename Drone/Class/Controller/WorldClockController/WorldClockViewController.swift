@@ -56,12 +56,11 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             timeZoneString = String(timeZoneString.characters.dropFirst())
         }
         let idx0 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 0)
-        let idx1 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 1)
-        let idx2 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 2)
-        let idx3 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 3)
+        let idx1 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 2)
+        let idx2 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 4)
         
         let hours:String = timeZoneString[idx0..<idx1]
-        let minutes:String = timeZoneString[idx2..<idx3]
+        let minutes:String = timeZoneString[idx1..<idx2]
         let offsetHours = Float(hours)
         let offsetMinutes = Int(minutes)
         localTimeOffsetToGmt = offsetHours!
@@ -187,15 +186,21 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
                 cell.cityLabel.text = timeZoneNameData[1].replacingOccurrences(of: "_", with: " ")
             }
             cell.timeDescription.text = "Today"
-            cell.time.text = "\(now.hour):\(now.minute)"
+            var minuteString:String = String(now.minute)
+            if (now.minute < 10){
+                minuteString = "0\(now.minute)"
+            }
+            cell.time.text = "\(now.hour):\(minuteString)"
             return cell
         }
         
         let city:City = worldClockArray[((indexPath as NSIndexPath).row - 1)]
+
         cell.cityLabel.text = city.name
         var foreignTimeOffsetToGmt:Float = 0.0
         if let timezone:Timezone = city.timezone{
-            foreignTimeOffsetToGmt = Float(timezone.getOffsetFromUTC()/60)
+            print(timezone.getOffsetFromUTC())
+            foreignTimeOffsetToGmt = Float(timezone.getOffsetFromUTC())/60
         }
         
         var text:String = ""
@@ -222,6 +227,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             cell.time.text = "\(foreignTime.hour):\(foreignTime.minute < 10 ? "0":"")\(foreignTime.minute)"
         }else if foreignTimeOffsetToGmt < localTimeOffsetToGmt{
             let timeBehind = foreignTimeOffsetToGmt - localTimeOffsetToGmt
+            print(timeBehind)
             let halfHourBehind = timeBehind.truncatingRemainder(dividingBy: 1.0)
             var foreignTime:(hour:Int,minute:Int) = (hour:self.time.hour+Int(timeBehind), minute: (abs(halfHourBehind) == 0.5 ? self.time.minute - 30 :self.time.minute))
             if foreignTime.minute < 0 {

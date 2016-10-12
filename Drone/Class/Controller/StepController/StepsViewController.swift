@@ -95,13 +95,13 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         stepsLabel.text = "0"
         
         self.getLoclSmallSyncData(nil)
-        
+        fireSmallSyncTimer()
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate == Foundation.Date().beginningOfDay {
                 //AppDelegate.getAppDelegate().getActivity()
                 //self.bulidChart(NSDate().beginningOfDay)
                 let stepsDict:[String:Int] = notification.object as! [String:Int]
-                _ = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict)
+                let res:Bool = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict)
                 
                 self.getLoclSmallSyncData(stepsDict)
                 
@@ -179,8 +179,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             AppDelegate.getAppDelegate().getGoal()
         }
         
-        let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME) as! NSArray
-        if lastData.count>0 {
+        if let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME) as? NSArray{
             let sendLastDate:Foundation.Date = lastData[0] as! Foundation.Date
             let nowDate:Foundation.Date = Foundation.Date()
             let fiveMinutes:TimeInterval = 300
@@ -200,28 +199,28 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
     func getLoclSmallSyncData(_ data:[String:Int]?){
         if let unpackeddata  = AppTheme.LoadKeyedArchiverName(SMALL_SYNC_LASTDATA){
-            let lastData = unpackeddata as! NSArray
-            
-            if lastData.count>0 {
-                let stepsDict:[String:Int] = data==nil ? (lastData[0] as! [String:Int]):data!
-                let smallDateString = data==nil ? (lastData[1] as! String):Foundation.Date().beginningOfDay.stringFromFormat("YYYY/MM/dd")
-                if smallDateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
-                    let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
-                    if last0X30Data.count>0 {
-                        let steps:[String:AnyObject] = last0X30Data[0] as! [String:AnyObject]
-                        let dateString = last0X30Data[1] as! String
-                        if dateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
-                            DispatchQueue.main.async(execute: {
-                                // do something
-                                let daySteps:Int = Int(steps["steps"] as! String)! + stepsDict["dailySteps"]!
-                                self.setCircleProgress(daySteps, goalValue: stepsDict["goal"]!)
-                            })
-                            
+            if let lastData = unpackeddata as? NSArray{
+                if lastData.count>0 {
+                    let stepsDict:[String:Int] = data==nil ? (lastData[0] as! [String:Int]):data!
+                    let smallDateString = data==nil ? (lastData[1] as! String):Foundation.Date().beginningOfDay.stringFromFormat("YYYY/MM/dd")
+                    if smallDateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
+                        let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
+                        if last0X30Data.count>0 {
+                            let steps:[String:AnyObject] = last0X30Data[0] as! [String:AnyObject]
+                            let dateString = last0X30Data[1] as! String
+                            if dateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
+                                DispatchQueue.main.async(execute: {
+                                    // do something
+                                    let daySteps:Int = Int(steps["steps"] as! String)! + stepsDict["dailySteps"]!
+                                    self.setCircleProgress(daySteps, goalValue: stepsDict["goal"]!)
+                                })
+                                
+                            }else{
+                                self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
+                            }
                         }else{
                             self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
                         }
-                    }else{
-                        self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
                     }
                 }
             }

@@ -106,9 +106,8 @@ class AppTheme {
         let Path:NSString = (pathArray as NSArray).object(at: 0) as! NSString
 
         let filename:String = Path.appendingPathComponent(name as String)
-        let iswrite:Bool = NSKeyedArchiver.archiveRootObject(objectArray[1], toFile: filename)
-        let iswrite2:Bool = NSKeyedArchiver.archiveRootObject(objectArray[0], toFile: filename)
-        return iswrite && iswrite2
+        let result = NSKeyedArchiver.archiveRootObject(objectArray, toFile: filename as String)
+        return result
     }
 
     /**
