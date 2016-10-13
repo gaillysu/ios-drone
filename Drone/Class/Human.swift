@@ -133,6 +133,5 @@ class Human:SCNNode {
             outcome = outcome * -1
         }
         return outcome
-        
     }
 }

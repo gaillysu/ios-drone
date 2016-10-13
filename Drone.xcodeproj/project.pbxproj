@@ -62,7 +62,6 @@
 		00982C051C868C8A003DA5E2 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982ACA1C868C89003DA5E2 /* RegisterViewController.xib */; };
 		00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AD11C868C89003DA5E2 /* queryTableviewCell.swift */; };
 		00982C091C868C8A003DA5E2 /* queryTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AD21C868C89003DA5E2 /* queryTableviewCell.xib */; };
-		00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ADA1C868C89003DA5E2 /* SleepTrackingView.swift */; };
 		00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982ADC1C868C89003DA5E2 /* StepsViewController.swift */; };
 		00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */; };
 		00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */; };
@@ -90,7 +89,6 @@
 		00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B151C868C89003DA5E2 /* HttpPostRequest.swift */; };
 		00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1D1C868C89003DA5E2 /* AppTheme.swift */; };
 		00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */; };
-		00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1F1C868C89003DA5E2 /* ClockView.swift */; };
 		00982C431C868C8A003DA5E2 /* ClockRefreshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B271C868C89003DA5E2 /* ClockRefreshManager.swift */; };
 		00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B291C868C89003DA5E2 /* ConnectionController.swift */; };
 		00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B2A1C868C89003DA5E2 /* ConnectionControllerImpl.swift */; };
@@ -324,7 +322,6 @@
 		00982ACA1C868C89003DA5E2 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		00982AD11C868C89003DA5E2 /* queryTableviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = queryTableviewCell.swift; sourceTree = "<group>"; };
 		00982AD21C868C89003DA5E2 /* queryTableviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = queryTableviewCell.xib; sourceTree = "<group>"; };
-		00982ADA1C868C89003DA5E2 /* SleepTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepTrackingView.swift; sourceTree = "<group>"; };
 		00982ADC1C868C89003DA5E2 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
 		00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepGoalSetingView.swift; sourceTree = "<group>"; };
 		00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepHistoricalView.swift; sourceTree = "<group>"; };
@@ -352,7 +349,6 @@
 		00982B151C868C89003DA5E2 /* HttpPostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpPostRequest.swift; sourceTree = "<group>"; };
 		00982B1D1C868C89003DA5E2 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
-		00982B1F1C868C89003DA5E2 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		00982B271C868C89003DA5E2 /* ClockRefreshManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRefreshManager.swift; sourceTree = "<group>"; };
 		00982B291C868C89003DA5E2 /* ConnectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
 		00982B2A1C868C89003DA5E2 /* ConnectionControllerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionControllerImpl.swift; sourceTree = "<group>"; };
@@ -801,15 +797,6 @@
 			path = Controller/SleepController/queryTableviewCell;
 			sourceTree = "<group>";
 		};
-		00982AD91C868C89003DA5E2 /* SleepView */ = {
-			isa = PBXGroup;
-			children = (
-				00982ADA1C868C89003DA5E2 /* SleepTrackingView.swift */,
-			);
-			name = SleepView;
-			path = Controller/SleepController/SleepView;
-			sourceTree = "<group>";
-		};
 		00982ADB1C868C89003DA5E2 /* StepsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -983,7 +970,6 @@
 			children = (
 				00982B1D1C868C89003DA5E2 /* AppTheme.swift */,
 				00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */,
-				00982B1F1C868C89003DA5E2 /* ClockView.swift */,
 				CBD6BD1D1CD06F890009F39A /* Color.swift */,
 			);
 			path = publicView;
@@ -1498,7 +1484,6 @@
 				9EF7EEA31CD89D7C009B0928 /* ProfileTableView */,
 				00982AD01C868C89003DA5E2 /* queryTableviewCell */,
 				00982ACC1C868C89003DA5E2 /* SetingView */,
-				00982AD91C868C89003DA5E2 /* SleepView */,
 				00982ADF1C868C89003DA5E2 /* StepView */,
 				9EF7EEAC1CD8A46D009B0928 /* UIView */,
 				00982AE61C868C89003DA5E2 /* WorldClockView */,
@@ -1959,7 +1944,6 @@
 				00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */,
 				008C5EEA1C8D7D3800DCD12D /* MenuViewCell.swift in Sources */,
 				00982C1B1C868C8A003DA5E2 /* WorldClockViewController.swift in Sources */,
-				00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */,
 				005699D81CD05F7C0097938E /* SearchCityController.swift in Sources */,
 				9EF7EEAE1CD8A47E009B0928 /* UIViewExtension.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
@@ -1970,7 +1954,6 @@
 				CB3567DA1DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift in Sources */,
 				CB17DD311DA38D7000730273 /* UpsideDownPosition.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */,
-				00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */,
 				CB3533C31D9B617100E5DE40 /* Human.swift in Sources */,
 				0024C0FB1CB73A7C00E0A23D /* ProfileModel.swift in Sources */,
 				00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */,
