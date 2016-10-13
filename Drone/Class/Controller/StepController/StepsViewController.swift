@@ -16,6 +16,7 @@ import Timepiece
 import SwiftEventBus
 import XCGLogger
 import MRProgress
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
@@ -59,7 +60,6 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     @IBOutlet weak var thisWeekActiveTime: UILabel!
     @IBOutlet weak var thisWeekChart: AnalysisStepsChartView!
     
-    
     @IBOutlet weak var lastWeekCalories: UILabel!
     @IBOutlet weak var lastWeekMiles: UILabel!
     @IBOutlet weak var lastWeekActiveTime: UILabel!
@@ -95,13 +95,10 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         stepsLabel.text = "0"
         
         self.getLoclSmallSyncData(nil)
-        fireSmallSyncTimer()
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate == Foundation.Date().beginningOfDay {
-                //AppDelegate.getAppDelegate().getActivity()
-                //self.bulidChart(NSDate().beginningOfDay)
                 let stepsDict:[String:Int] = notification.object as! [String:Int]
-                let res:Bool = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict)
+                let res:Bool = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict as AnyObject)
                 
                 self.getLoclSmallSyncData(stepsDict)
                 
@@ -180,19 +177,21 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         }
         
         if let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME) as? NSArray{
-            let sendLastDate:Foundation.Date = lastData[0] as! Foundation.Date
-            let nowDate:Foundation.Date = Foundation.Date()
-            let fiveMinutes:TimeInterval = 300
-            if (nowDate.timeIntervalSince1970-sendLastDate.timeIntervalSince1970)>=fiveMinutes {
+            if lastData.count > 0 {
+                let sendLastDate:Foundation.Date = lastData[0] as! Foundation.Date
+                let nowDate:Foundation.Date = Foundation.Date()
+                let fiveMinutes:TimeInterval = 300
+                if (nowDate.timeIntervalSince1970-sendLastDate.timeIntervalSince1970)>=fiveMinutes {
+                    self.delay(1.5) {
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date() as AnyObject)
+                        AppDelegate.getAppDelegate().getActivity()
+                    }
+                }
+            }else{
                 self.delay(1.5) {
-                    _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date())
+                    _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date() as AnyObject)
                     AppDelegate.getAppDelegate().getActivity()
                 }
-            }
-        }else{
-            self.delay(1.5) {
-                _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date())
-                AppDelegate.getAppDelegate().getActivity()
             }
         }
     }
@@ -204,7 +203,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
                     let stepsDict:[String:Int] = data==nil ? (lastData[0] as! [String:Int]):data!
                     let smallDateString = data==nil ? (lastData[1] as! String):Foundation.Date().beginningOfDay.stringFromFormat("YYYY/MM/dd")
                     if smallDateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
-                        let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! NSArray
+                        let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! [AnyObject]
                         if last0X30Data.count>0 {
                             let steps:[String:AnyObject] = last0X30Data[0] as! [String:AnyObject]
                             let dateString = last0X30Data[1] as! String
@@ -353,7 +352,7 @@ extension StepsViewController {
                 if Int(timerArray[0])>0 {
                     self.lastActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
                 }else{
-                    self.lastActiveTime.text = "\(timerArray[1])m"
+                    self.lastActiveTime.text = "\(lastTimeframe)m"
                 }
             })
         }else{
@@ -673,7 +672,6 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
                 if result {
                     self.delay(0.3, closure: {
                         self.bulidChart(Foundation.Date(timeIntervalSince1970: dayTime))
-                        //cloud sync
                         AppDelegate.getAppDelegate().setStepsToWatch()
                     })
                 }

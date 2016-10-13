@@ -227,7 +227,7 @@
                      if state[RESET_STATE]! && (date.beginningOfDay == Date().beginningOfDay){
                         sendRequest(SetStepsToWatchReuqest(steps: daySteps))
                         setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
-                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"] as AnyObject)
                      }
                      
                   }
@@ -305,7 +305,7 @@
                   self.setSystemConfig(0)
                   setupResponseTimer(["index":NSNumber(value: 1 as Int32)])
                   //Records need to use 0x30
-                  _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true])
+                  _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true] as AnyObject)
                }else if(systemStatus == SystemStatus.invalidTime.rawValue) {
                   setRTC()
                }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
@@ -394,7 +394,7 @@
                releaseResponseTimer()
                self.isSaveWorldClock()
                //Set steps to watch response
-               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false])
+               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false] as AnyObject)
             }
             
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {

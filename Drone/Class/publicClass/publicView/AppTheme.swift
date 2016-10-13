@@ -92,8 +92,8 @@ class AppTheme {
     *	@brief	The archive All current data
     *
     */
-    class func KeyedArchiverName(_ name:String,andObject object:Any) ->Bool{
-        var objectArray:[Any] = [object]
+    class func KeyedArchiverName(_ name:String,andObject object:AnyObject) ->Bool{
+        var objectArray:[AnyObject] = [object]
         let senddate:Date = Date()
         let dateformatter:DateFormatter = DateFormatter()
 
@@ -112,7 +112,6 @@ class AppTheme {
 
     /**
     *	@brief	Load the archived data
-    *
     */
     class func LoadKeyedArchiverName(_ name:String) ->AnyObject?{
         let pathArray = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
@@ -126,7 +125,7 @@ class AppTheme {
             objectArr = NSKeyedUnarchiver.unarchiveObject(withFile: filename as String)! as AnyObject?
             return objectArr!
         }
-        return nil
+        return [] as AnyObject
     }
 
     /**
