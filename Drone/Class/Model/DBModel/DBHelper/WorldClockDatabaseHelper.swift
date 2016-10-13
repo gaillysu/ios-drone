@@ -103,10 +103,5 @@ class WorldClockDatabaseHelper: NSObject {
         }else{
             print("We are ok! We got the newest version.")
         }
-        
     }
-    
-    
-    
-    
 }

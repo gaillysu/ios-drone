@@ -61,7 +61,6 @@ class LoginViewController: UIViewController {
 //            passwordT?.text = "12341234"
             textfiledBG.addSubview(passwordT!)
         }
-
     }
 
     @IBAction func buttonActionManager(_ sender: AnyObject) {

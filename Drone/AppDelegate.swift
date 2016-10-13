@@ -63,7 +63,7 @@
       }
       
       func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-       
+         
          // Override point for customization after application launch.
          Fabric.with([Crashlytics.self])
          var config = Realm.Configuration(
@@ -184,7 +184,7 @@
       func isSaveWorldClock() {
          setWorldClock(Array(realm!.objects(City.self).filter("selected = true")))
       }
-
+      
       
       /**
        Connect BLE Device

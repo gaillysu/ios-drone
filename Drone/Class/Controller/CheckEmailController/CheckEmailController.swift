@@ -14,7 +14,6 @@ import BRYXBanner
 
 
 class CheckEmailController: UIViewController {
-
     
     @IBOutlet weak var emailTextField: AutocompleteField!
     @IBOutlet weak var forgotButton: UIButton!

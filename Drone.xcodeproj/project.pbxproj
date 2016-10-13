@@ -78,14 +78,10 @@
 		00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF21C868C89003DA5E2 /* Alarm.swift */; };
 		00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF51C868C89003DA5E2 /* BaseEntryDatabaseHelper.swift */; };
 		00982C261C868C8A003DA5E2 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFC1C868C89003DA5E2 /* AlarmModel.swift */; };
-		00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFE1C868C89003DA5E2 /* HealthModel.swift */; };
 		00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B001C868C89003DA5E2 /* UserGoal.swift */; };
 		00982C2B1C868C8A003DA5E2 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B011C868C89003DA5E2 /* GoalModel.swift */; };
-		00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B021C868C89003DA5E2 /* SleepModel.swift */; };
 		00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B031C868C89003DA5E2 /* StepsModel.swift */; };
 		00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B041C868C89003DA5E2 /* UserProfile.swift */; };
-		00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B051C868C89003DA5E2 /* UserAlarm.swift */; };
-		00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B081C868C89003DA5E2 /* UserSleep.swift */; };
 		00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B091C868C89003DA5E2 /* UserSteps.swift */; };
 		00982C341C868C8A003DA5E2 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B0B1C868C89003DA5E2 /* Goal.swift */; };
 		00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B0C1C868C89003DA5E2 /* NumberOfStepsGoal.swift */; };
@@ -95,8 +91,6 @@
 		00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1D1C868C89003DA5E2 /* AppTheme.swift */; };
 		00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */; };
 		00982C401C868C8A003DA5E2 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B1F1C868C89003DA5E2 /* ClockView.swift */; };
-		00982C411C868C8A003DA5E2 /* WaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982B221C868C89003DA5E2 /* WaterWaveView.m */; };
-		00982C421C868C8A003DA5E2 /* WaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982B241C868C89003DA5E2 /* WaveProgressView.m */; };
 		00982C431C868C8A003DA5E2 /* ClockRefreshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B271C868C89003DA5E2 /* ClockRefreshManager.swift */; };
 		00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B291C868C89003DA5E2 /* ConnectionController.swift */; };
 		00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B2A1C868C89003DA5E2 /* ConnectionControllerImpl.swift */; };
@@ -245,8 +239,6 @@
 		CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */; };
 		CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD141CD04D880009F39A /* SplashScreenViewController.swift */; };
 		CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */; };
-		CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD191CD052BB0009F39A /* SleepViewController.xib */; };
-		CBD6BD1C1CD052C30009F39A /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */; };
 		CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD1D1CD06F890009F39A /* Color.swift */; };
 		CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD251CD099880009F39A /* ProfileViewController.xib */; };
 		CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD271CD099900009F39A /* ProfileViewController.swift */; };
@@ -348,14 +340,10 @@
 		00982AF21C868C89003DA5E2 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		00982AF51C868C89003DA5E2 /* BaseEntryDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntryDatabaseHelper.swift; sourceTree = "<group>"; };
 		00982AFC1C868C89003DA5E2 /* AlarmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
-		00982AFE1C868C89003DA5E2 /* HealthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthModel.swift; sourceTree = "<group>"; };
 		00982B001C868C89003DA5E2 /* UserGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGoal.swift; sourceTree = "<group>"; };
 		00982B011C868C89003DA5E2 /* GoalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
-		00982B021C868C89003DA5E2 /* SleepModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepModel.swift; sourceTree = "<group>"; };
 		00982B031C868C89003DA5E2 /* StepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
 		00982B041C868C89003DA5E2 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		00982B051C868C89003DA5E2 /* UserAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAlarm.swift; sourceTree = "<group>"; };
-		00982B081C868C89003DA5E2 /* UserSleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSleep.swift; sourceTree = "<group>"; };
 		00982B091C868C89003DA5E2 /* UserSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSteps.swift; sourceTree = "<group>"; };
 		00982B0B1C868C89003DA5E2 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		00982B0C1C868C89003DA5E2 /* NumberOfStepsGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfStepsGoal.swift; sourceTree = "<group>"; };
@@ -365,10 +353,6 @@
 		00982B1D1C868C89003DA5E2 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		00982B1F1C868C89003DA5E2 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
-		00982B211C868C89003DA5E2 /* WaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterWaveView.h; sourceTree = "<group>"; };
-		00982B221C868C89003DA5E2 /* WaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterWaveView.m; sourceTree = "<group>"; };
-		00982B231C868C89003DA5E2 /* WaveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveProgressView.h; sourceTree = "<group>"; };
-		00982B241C868C89003DA5E2 /* WaveProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveProgressView.m; sourceTree = "<group>"; };
 		00982B271C868C89003DA5E2 /* ClockRefreshManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRefreshManager.swift; sourceTree = "<group>"; };
 		00982B291C868C89003DA5E2 /* ConnectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
 		00982B2A1C868C89003DA5E2 /* ConnectionControllerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionControllerImpl.swift; sourceTree = "<group>"; };
@@ -522,8 +506,6 @@
 		CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTitleView.xib; sourceTree = "<group>"; };
 		CBD6BD141CD04D880009F39A /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashScreenViewController.xib; sourceTree = "<group>"; };
-		CBD6BD191CD052BB0009F39A /* SleepViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SleepViewController.xib; sourceTree = "<group>"; };
-		CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		CBD6BD1D1CD06F890009F39A /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CBD6BD251CD099880009F39A /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		CBD6BD271CD099900009F39A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -740,7 +722,6 @@
 				CBD6BD241CD0997E0009F39A /* ProfileViewController */,
 				00982AC81C868C89003DA5E2 /* RegisterViewController */,
 				005699D11CD05A690097938E /* SearchCityController */,
-				CBD6BD181CD0525D0009F39A /* SleepViewController */,
 				CBD6BD131CD04D310009F39A /* SplashScreenViewController */,
 				00982ADB1C868C89003DA5E2 /* StepsViewController */,
 				009201D91CBE2B5200C51707 /* WelcomeViewController */,
@@ -943,15 +924,11 @@
 				9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */,
 				0015CA4D1CBC830C00820B1F /* DeviceModel.swift */,
 				00982B011C868C89003DA5E2 /* GoalModel.swift */,
-				00982AFE1C868C89003DA5E2 /* HealthModel.swift */,
 				0024C0FA1CB73A7C00E0A23D /* ProfileModel.swift */,
-				00982B021C868C89003DA5E2 /* SleepModel.swift */,
 				00982B031C868C89003DA5E2 /* StepsModel.swift */,
-				00982B051C868C89003DA5E2 /* UserAlarm.swift */,
 				0015CA4F1CBC835900820B1F /* UserDevice.swift */,
 				00982B001C868C89003DA5E2 /* UserGoal.swift */,
 				00982B041C868C89003DA5E2 /* UserProfile.swift */,
-				00982B081C868C89003DA5E2 /* UserSleep.swift */,
 				00982B091C868C89003DA5E2 /* UserSteps.swift */,
 				9E2978701CDC3D5D00821704 /* WorldClock.swift */,
 				9E2978721CDC40D000821704 /* WorldClockModel.swift */,
@@ -1007,21 +984,9 @@
 				00982B1D1C868C89003DA5E2 /* AppTheme.swift */,
 				00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */,
 				00982B1F1C868C89003DA5E2 /* ClockView.swift */,
-				00982B201C868C89003DA5E2 /* WaveProgressView */,
 				CBD6BD1D1CD06F890009F39A /* Color.swift */,
 			);
 			path = publicView;
-			sourceTree = "<group>";
-		};
-		00982B201C868C89003DA5E2 /* WaveProgressView */ = {
-			isa = PBXGroup;
-			children = (
-				00982B211C868C89003DA5E2 /* WaterWaveView.h */,
-				00982B221C868C89003DA5E2 /* WaterWaveView.m */,
-				00982B231C868C89003DA5E2 /* WaveProgressView.h */,
-				00982B241C868C89003DA5E2 /* WaveProgressView.m */,
-			);
-			path = WaveProgressView;
 			sourceTree = "<group>";
 		};
 		00982B251C868C89003DA5E2 /* Util */ = {
@@ -1519,15 +1484,16 @@
 		CBA06BEB1C8EB2C800E3257B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9E80C3D31D93B33D005F7940 /* PhysioCell */,
 				CBB37B001D7577DC00A90920 /* AddInstructionHeader */,
 				9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */,
 				9E1999521CE4327400C1D967 /* ContactsNotificationHeader */,
 				9E455E151CD5B94100F79356 /* DeviceTableView */,
 				9EA1C9A11D7935B50012C988 /* DoExerciseHeader */,
+				CB3533C21D9B617100E5DE40 /* Human.swift */,
 				CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */,
 				00982AAF1C868C89003DA5E2 /* MyDroneView */,
 				00982AB51C868C89003DA5E2 /* NevoOtaView */,
+				9E80C3D31D93B33D005F7940 /* PhysioCell */,
 				CBB37AF41D751AAA00A90920 /* PhysioDeviceHeader */,
 				9EF7EEA31CD89D7C009B0928 /* ProfileTableView */,
 				00982AD01C868C89003DA5E2 /* queryTableviewCell */,
@@ -1536,7 +1502,6 @@
 				00982ADF1C868C89003DA5E2 /* StepView */,
 				9EF7EEAC1CD8A46D009B0928 /* UIView */,
 				00982AE61C868C89003DA5E2 /* WorldClockView */,
-				CB3533C21D9B617100E5DE40 /* Human.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1601,15 +1566,6 @@
 				CBD6BD161CD04D9A0009F39A /* SplashScreenViewController.xib */,
 			);
 			name = SplashScreenViewController;
-			sourceTree = "<group>";
-		};
-		CBD6BD181CD0525D0009F39A /* SleepViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CBD6BD191CD052BB0009F39A /* SleepViewController.xib */,
-				CBD6BD1B1CD052C30009F39A /* SleepViewController.swift */,
-			);
-			name = SleepViewController;
 			sourceTree = "<group>";
 		};
 		CBD6BD241CD0997E0009F39A /* ProfileViewController */ = {
@@ -1766,7 +1722,6 @@
 				CB28AFE01CE2E59B00639538 /* ContactsNotificationViewController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
 				9E62A1A91CDB1E150098C39B /* AddWorldClockViewController.xib in Resources */,
-				CBD6BD1A1CD052BB0009F39A /* SleepViewController.xib in Resources */,
 				9E455E111CD5B90300F79356 /* DeviceViewController.xib in Resources */,
 				006F94301CCA0C320073C150 /* white_background.png in Resources */,
 				008845EB1CF6A4D5006EA77F /* CheckEmailController.xib in Resources */,
@@ -1922,14 +1877,12 @@
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
 				CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */,
-				00982C321C868C8A003DA5E2 /* UserSleep.swift in Sources */,
 				9E01092B1D73CB7D00AA3551 /* PhysioDeviceViewController.swift in Sources */,
 				00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */,
 				00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */,
 				9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */,
 				00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */,
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
-				00982C421C868C8A003DA5E2 /* WaveProgressView.m in Sources */,
 				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
 				9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */,
 				00982C1E1C868C8A003DA5E2 /* DaySleep.swift in Sources */,
@@ -1994,10 +1947,8 @@
 				00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */,
 				9E80C3D51D93B35D005F7940 /* PhysioCellGenerator.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
-				00982C2F1C868C8A003DA5E2 /* UserAlarm.swift in Sources */,
 				CB28AFDB1CE2C34300639538 /* ContactsFilter.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
-				CBD6BD1C1CD052C30009F39A /* SleepViewController.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
 				00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
@@ -2012,13 +1963,11 @@
 				005699D81CD05F7C0097938E /* SearchCityController.swift in Sources */,
 				9EF7EEAE1CD8A47E009B0928 /* UIViewExtension.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
-				00982C281C868C8A003DA5E2 /* HealthModel.swift in Sources */,
 				00982C681C868C8A003DA5E2 /* SyncQueue.swift in Sources */,
 				9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */,
 				CBB37B021D757B7500A90920 /* AddInstructionHeader.swift in Sources */,
 				00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */,
 				CB3567DA1DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift in Sources */,
-				00982C2C1C868C8A003DA5E2 /* SleepModel.swift in Sources */,
 				CB17DD311DA38D7000730273 /* UpsideDownPosition.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */,
 				00982C101C868C8A003DA5E2 /* SleepTrackingView.swift in Sources */,
@@ -2028,7 +1977,6 @@
 				00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */,
 				00982C431C868C8A003DA5E2 /* ClockRefreshManager.swift in Sources */,
 				00982C1D1C868C8A003DA5E2 /* DailySteps.swift in Sources */,
-				00982C411C868C8A003DA5E2 /* WaterWaveView.m in Sources */,
 				9E455E1B1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift in Sources */,
 				9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */,
 				00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */,

@@ -275,7 +275,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             })
         })
         
-        
         group.notify(queue: queue, execute: {
             XCGLogger.default.debug("create steps completed")
         })
