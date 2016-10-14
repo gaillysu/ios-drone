@@ -17,7 +17,11 @@ class StepsModel: UserDatabaseHelper {
     var syncnext:Bool = false
 
     override init() {
-
+        super.init()
+        let dic:NSDictionary = StepsModel.getAllProperties()
+        columeNames = NSMutableArray(array: dic.object(forKey: "name") as! NSArray)
+        columeTypes = NSMutableArray(array: dic.object(forKey: "type") as! NSArray)
+        
     }
 
     /**

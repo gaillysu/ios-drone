@@ -16,6 +16,10 @@ class ContactsFilterModel: UserDatabaseHelper {
     
     override init() {
         super.init()
+        let dic:NSDictionary = ContactsFilterModel.getAllProperties()
+        columeNames = NSMutableArray(array: dic.object(forKey: "name") as! NSArray)
+        columeTypes = NSMutableArray(array: dic.object(forKey: "type") as! NSArray)
+
     }
     
     /**

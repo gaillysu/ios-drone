@@ -76,7 +76,6 @@
 		00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF01C868C89003DA5E2 /* RealTimeCountSteps.swift */; };
 		00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF21C868C89003DA5E2 /* Alarm.swift */; };
 		00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF51C868C89003DA5E2 /* BaseEntryDatabaseHelper.swift */; };
-		00982C261C868C8A003DA5E2 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AFC1C868C89003DA5E2 /* AlarmModel.swift */; };
 		00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B001C868C89003DA5E2 /* UserGoal.swift */; };
 		00982C2B1C868C8A003DA5E2 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B011C868C89003DA5E2 /* GoalModel.swift */; };
 		00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B031C868C89003DA5E2 /* StepsModel.swift */; };
@@ -337,7 +336,6 @@
 		00982AF01C868C89003DA5E2 /* RealTimeCountSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeCountSteps.swift; sourceTree = "<group>"; };
 		00982AF21C868C89003DA5E2 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		00982AF51C868C89003DA5E2 /* BaseEntryDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntryDatabaseHelper.swift; sourceTree = "<group>"; };
-		00982AFC1C868C89003DA5E2 /* AlarmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		00982B001C868C89003DA5E2 /* UserGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGoal.swift; sourceTree = "<group>"; };
 		00982B011C868C89003DA5E2 /* GoalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
 		00982B031C868C89003DA5E2 /* StepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
@@ -908,7 +906,6 @@
 		00982AFB1C868C89003DA5E2 /* ModelTable */ = {
 			isa = PBXGroup;
 			children = (
-				00982AFC1C868C89003DA5E2 /* AlarmModel.swift */,
 				CB28AFDA1CE2C34300639538 /* ContactsFilter.swift */,
 				9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */,
 				0015CA4D1CBC830C00820B1F /* DeviceModel.swift */,
@@ -1904,7 +1901,6 @@
 				0015CA501CBC835900820B1F /* UserDevice.swift in Sources */,
 				00F132B71CEBFC4000CF8F6B /* ClearConnectionRequest.swift in Sources */,
 				9E455E191CD5BB2600F79356 /* DeviceTableViewCell.swift in Sources */,
-				00982C261C868C8A003DA5E2 /* AlarmModel.swift in Sources */,
 				00982C461C868C8A003DA5E2 /* ConnectionManager.swift in Sources */,
 				00982BF71C868C8A003DA5E2 /* SelectFileView.swift in Sources */,
 				0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */,

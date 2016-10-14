@@ -15,6 +15,11 @@ class GoalModel: UserDatabaseHelper {
     var status:Bool = false
 
     override init() {
+        super.init()
+        let dic:NSDictionary = GoalModel.getAllProperties()
+        columeNames = NSMutableArray(array: dic.object(forKey: "name") as! NSArray)
+        columeTypes = NSMutableArray(array: dic.object(forKey: "type") as! NSArray)
+
     }
 
     /**
