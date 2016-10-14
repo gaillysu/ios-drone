@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class ProfileTableViewCellHeader: UIView, UITextFieldDelegate{
     
     @IBOutlet weak var nameTextField: UITextField!

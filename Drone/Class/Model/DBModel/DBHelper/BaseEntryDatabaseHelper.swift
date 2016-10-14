@@ -15,4 +15,12 @@ protocol BaseEntryDatabaseHelper {
     static func removeAll()->Bool
     static func getCriteria(_ criteria:String)->NSArray
     static func getAll()->NSArray
+    func propertyNames() -> [String]
+}
+
+extension BaseEntryDatabaseHelper
+{
+    func propertyNames() -> [String] {
+        return Mirror(reflecting: self).children.flatMap { $0.label }
+    }
 }

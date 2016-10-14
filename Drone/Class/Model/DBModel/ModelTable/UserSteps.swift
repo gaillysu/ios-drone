@@ -20,7 +20,7 @@ class UserSteps: NSObject,BaseEntryDatabaseHelper {
     
     init(keyDict:NSDictionary) {
         super.init()
-    
+        
         for (key,value) in keyDict{
          self.setValue(value, forKey: key as! String)
         }

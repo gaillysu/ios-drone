@@ -16,7 +16,7 @@ class AlarmModel: UserDatabaseHelper {
     var repeatStatus:Bool = false
 
     override init() {
-
+        
     }
 
     /**

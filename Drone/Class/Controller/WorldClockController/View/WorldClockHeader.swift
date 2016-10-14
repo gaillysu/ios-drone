@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class WorldClockHeader: UIView{
 
     var actionHandler:((_ result:AnyObject?) -> Void)?

@@ -38,20 +38,7 @@ protocol ConnectionController {
     Tries to send a request, you can't be sure that it will effectively be sent
     */
     func sendRequest(_ request: Request)
-    
-    /**
-    Enters the OTA mode. In this mode, it searchs for OTA enabled Nevo
-    It won't connect to other Nevo and will stop sending regular nevo querries
-    add second parameter, when BLE ota, auto disconnect by BLE peer, so no need disconnect it again
-    */
-    func setOTAMode(_ OTAMode:Bool,Disconnect:Bool)
-
-    /**
-    Checks whether the connection controller is in OTA mode
-    While in OTA mode, the ConnectionController will stop responding to normal commands
-    */
-    func getOTAMode() -> Bool
-    
+     
     /**
     Checks whether the bluetooth is currently enabled
     */

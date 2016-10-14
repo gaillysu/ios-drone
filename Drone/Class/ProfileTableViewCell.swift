@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
    
     fileprivate var inputVariables: NSMutableArray = NSMutableArray()

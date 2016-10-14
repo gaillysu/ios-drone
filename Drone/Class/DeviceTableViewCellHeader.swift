@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class DeviceTableViewCellHeader: UITableViewHeaderFooterView {
     
     @IBOutlet weak var versionLabel: UILabel!

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PhysioCellGenerator {
     static func getCellFrom(cockroach number:Int, coordinates:CoordinateSet, tableview:UITableView, dequeueIdentifier:String, numberCoordinate:Int = -1) -> UITableViewCell {

@@ -12,6 +12,7 @@ import XCGLogger
 import MRProgress
 import SwiftyJSON
 import SwiftyTimer
+import UIKit
 
 class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
@@ -308,16 +309,14 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     navigationController.isNavigationBarHidden = true
                     self.present(navigationController, animated: true, completion: nil);
                     alertController.dismiss(animated: true, completion: nil)
-                    
                 }))
                 alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: { action in
                     alertController.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alertController, animated: true, completion: nil)
-                return
             }
         }
-            
+        
         let item:MenuItem = self.menuItems[indexPath.row]
         
         let infoDictionary:[String : AnyObject] = Bundle.main.infoDictionary! as [String : AnyObject]

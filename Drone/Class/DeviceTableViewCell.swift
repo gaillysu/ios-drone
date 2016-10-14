@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class DeviceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!

@@ -10,8 +10,6 @@
 #define Drone_Bridging_Header_h
 
 #import "IntelHex2BinConverter.h"
-#import "WaterWaveView.h"
-#import "WaveProgressView.h"
 #import <CommonCrypto/CommonCrypto.h>
 
 #endif /* Drone_Bridging_Header_h */

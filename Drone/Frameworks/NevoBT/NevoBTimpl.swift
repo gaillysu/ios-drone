@@ -381,14 +381,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                                 {
                                     XCGLogger.debug("Request raw data :\(request.getRawData())")
                                     //OTA control CHAR, need a response
-                                    if mProfile is NevoOTAControllerProfile && request.getTargetProfile().CONTROL_CHARACTERISTIC == mProfile?.CONTROL_CHARACTERISTIC
-                                    {
-                                        mPeripheral?.writeValue(request.getRawData() as Data,for:charac,type:CBCharacteristicWriteType.withResponse)
-                                    }
-                                    else
-                                    {
-                                        mPeripheral?.writeValue(request.getRawData() as Data,for:charac,type:CBCharacteristicWriteType.withoutResponse)
-                                    }
+                                    mPeripheral?.writeValue(request.getRawData() as Data,for:charac,type:CBCharacteristicWriteType.withoutResponse)
                                 }else{
                                     for data in request.getRawDataEx() {
                                         XCGLogger.debug("Request raw data Ex:\(data)")

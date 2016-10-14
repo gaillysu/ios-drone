@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class StandingLeftPosition: CockroachPositionProtocol {
 //  Standing on left side:	X = [-484..-478], Y = [-65..-57] & Z = [1..13]

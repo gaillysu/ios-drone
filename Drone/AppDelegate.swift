@@ -315,7 +315,6 @@
                }else{
                   setRTC()
                }
-               
                SwiftEventBus.post(SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
             }
             

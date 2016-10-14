@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 protocol CockroachPositionProtocol {
     func matchesPosition(coordinationSet: CoordinateSet, whichCoordinate:Int) -> Bool
     

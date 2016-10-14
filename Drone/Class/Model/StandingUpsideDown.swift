@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class StandingUpsideDown: CockroachPositionProtocol {
     //Standing upside down:	X = [0..3], Y = [-2..5] & Z = [-490...-485]

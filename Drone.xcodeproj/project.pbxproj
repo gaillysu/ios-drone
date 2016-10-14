@@ -111,10 +111,6 @@
 		00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3D1C868C89003DA5E2 /* WriteSettingRequest.swift */; };
 		00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B3E1C868C89003DA5E2 /* DroneProfile.swift */; };
 		00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 00982B421C868C89003DA5E2 /* IntelHex2BinConverter.m */; };
-		00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B431C868C89003DA5E2 /* NevoOTAControllerProfile.swift */; };
-		00982C5B1C868C8A003DA5E2 /* NevoOTAModeProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B441C868C89003DA5E2 /* NevoOTAModeProfile.swift */; };
-		00982C5C1C868C8A003DA5E2 /* NevoOTAPacketProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B451C868C89003DA5E2 /* NevoOTAPacketProfile.swift */; };
-		00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B461C868C89003DA5E2 /* NevoOTARequest.swift */; };
 		00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B471C868C89003DA5E2 /* Utility.swift */; };
 		00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4D1C868C89003DA5E2 /* NevoPacket.swift */; };
 		00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */; };
@@ -224,6 +220,11 @@
 		CB3567D81DA38A010049FBBC /* CockroachPositionCheckStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D71DA38A010049FBBC /* CockroachPositionCheckStrategy.swift */; };
 		CB3567DA1DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D91DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift */; };
 		CB5754261D76BA260008E0EC /* CoordinateSerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5754251D76BA260008E0EC /* CoordinateSerie.swift */; };
+		CB9B7A6D1DAF7E0B00EEFD54 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A6C1DAF7E0B00EEFD54 /* ClockView.swift */; };
+		CB9B7A741DB06A3100EEFD54 /* NevoOTAControllerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A6F1DB06A3100EEFD54 /* NevoOTAControllerProfile.swift */; };
+		CB9B7A751DB06A3100EEFD54 /* NevoOTAModeProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A701DB06A3100EEFD54 /* NevoOTAModeProfile.swift */; };
+		CB9B7A761DB06A3100EEFD54 /* NevoOTAPacketProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A711DB06A3100EEFD54 /* NevoOTAPacketProfile.swift */; };
+		CB9B7A771DB06A3100EEFD54 /* NevoOTARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A721DB06A3100EEFD54 /* NevoOTARequest.swift */; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
 		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
 		CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */; };
@@ -372,10 +373,6 @@
 		00982B3E1C868C89003DA5E2 /* DroneProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfile.swift; sourceTree = "<group>"; };
 		00982B411C868C89003DA5E2 /* IntelHex2BinConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntelHex2BinConverter.h; sourceTree = "<group>"; };
 		00982B421C868C89003DA5E2 /* IntelHex2BinConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntelHex2BinConverter.m; sourceTree = "<group>"; };
-		00982B431C868C89003DA5E2 /* NevoOTAControllerProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAControllerProfile.swift; sourceTree = "<group>"; };
-		00982B441C868C89003DA5E2 /* NevoOTAModeProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAModeProfile.swift; sourceTree = "<group>"; };
-		00982B451C868C89003DA5E2 /* NevoOTAPacketProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAPacketProfile.swift; sourceTree = "<group>"; };
-		00982B461C868C89003DA5E2 /* NevoOTARequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTARequest.swift; sourceTree = "<group>"; };
 		00982B471C868C89003DA5E2 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		00982B4D1C868C89003DA5E2 /* NevoPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoPacket.swift; sourceTree = "<group>"; };
 		00982B4E1C868C89003DA5E2 /* SystemStatusPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemStatusPacket.swift; sourceTree = "<group>"; };
@@ -489,6 +486,11 @@
 		CB3567D71DA38A010049FBBC /* CockroachPositionCheckStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachPositionCheckStrategy.swift; sourceTree = "<group>"; };
 		CB3567D91DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachPositionXYZMatchStrategy.swift; sourceTree = "<group>"; };
 		CB5754251D76BA260008E0EC /* CoordinateSerie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSerie.swift; sourceTree = "<group>"; };
+		CB9B7A6C1DAF7E0B00EEFD54 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		CB9B7A6F1DB06A3100EEFD54 /* NevoOTAControllerProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAControllerProfile.swift; sourceTree = "<group>"; };
+		CB9B7A701DB06A3100EEFD54 /* NevoOTAModeProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAModeProfile.swift; sourceTree = "<group>"; };
+		CB9B7A711DB06A3100EEFD54 /* NevoOTAPacketProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAPacketProfile.swift; sourceTree = "<group>"; };
+		CB9B7A721DB06A3100EEFD54 /* NevoOTARequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTARequest.swift; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
 		CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioDeviceHeader.swift; sourceTree = "<group>"; };
@@ -971,6 +973,7 @@
 				00982B1D1C868C89003DA5E2 /* AppTheme.swift */,
 				00982B1E1C868C89003DA5E2 /* BalloonMarker.swift */,
 				CBD6BD1D1CD06F890009F39A /* Color.swift */,
+				CB9B7A6C1DAF7E0B00EEFD54 /* ClockView.swift */,
 			);
 			path = publicView;
 			sourceTree = "<group>";
@@ -1050,11 +1053,11 @@
 		00982B3F1C868C89003DA5E2 /* OTA */ = {
 			isa = PBXGroup;
 			children = (
+				CB9B7A6F1DB06A3100EEFD54 /* NevoOTAControllerProfile.swift */,
+				CB9B7A701DB06A3100EEFD54 /* NevoOTAModeProfile.swift */,
+				CB9B7A711DB06A3100EEFD54 /* NevoOTAPacketProfile.swift */,
+				CB9B7A721DB06A3100EEFD54 /* NevoOTARequest.swift */,
 				00982B401C868C89003DA5E2 /* IntelHex2BinConverter */,
-				00982B431C868C89003DA5E2 /* NevoOTAControllerProfile.swift */,
-				00982B441C868C89003DA5E2 /* NevoOTAModeProfile.swift */,
-				00982B451C868C89003DA5E2 /* NevoOTAPacketProfile.swift */,
-				00982B461C868C89003DA5E2 /* NevoOTARequest.swift */,
 				00982B471C868C89003DA5E2 /* Utility.swift */,
 			);
 			path = OTA;
@@ -1817,8 +1820,8 @@
 				005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */,
 				9EA1C9A31D7935C50012C988 /* DoExerciseHeader.swift in Sources */,
 				CB3567D81DA38A010049FBBC /* CockroachPositionCheckStrategy.swift in Sources */,
-				00982C5B1C868C8A003DA5E2 /* NevoOTAModeProfile.swift in Sources */,
 				008AEF161D25FFB200B9E4D0 /* TaskQueue.swift in Sources */,
+				CB9B7A751DB06A3100EEFD54 /* NevoOTAModeProfile.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				00982C481C868C8A003DA5E2 /* SetAppConfigRequest.swift in Sources */,
 				9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */,
@@ -1836,6 +1839,7 @@
 				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
 				00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
+				CB9B7A771DB06A3100EEFD54 /* NevoOTARequest.swift in Sources */,
 				CBB37AFC1D75331000A90920 /* CockroachesMasterChanged.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */,
@@ -1853,6 +1857,7 @@
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
+				CB9B7A741DB06A3100EEFD54 /* NevoOTAControllerProfile.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
 				9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
@@ -1871,9 +1876,9 @@
 				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
 				9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */,
 				00982C1E1C868C8A003DA5E2 /* DaySleep.swift in Sources */,
+				CB9B7A761DB06A3100EEFD54 /* NevoOTAPacketProfile.swift in Sources */,
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
 				00982BED1C868C8A003DA5E2 /* LoginViewController.swift in Sources */,
-				00982C5C1C868C8A003DA5E2 /* NevoOTAPacketProfile.swift in Sources */,
 				00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */,
 				9EF7EEA71CD89DB4009B0928 /* ProfileTableViewCellHeader.swift in Sources */,
 				00982C4C1C868C8A003DA5E2 /* GetBatteryRequest.swift in Sources */,
@@ -1888,6 +1893,7 @@
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
 				9E2978731CDC40D000821704 /* WorldClockModel.swift in Sources */,
 				00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */,
+				CB9B7A6D1DAF7E0B00EEFD54 /* ClockView.swift in Sources */,
 				0043FBE81CA13CED00638BD1 /* SetContactsFilterRequest.swift in Sources */,
 				00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */,
 				00982BF51C868C8A003DA5E2 /* DeviceScannerView.swift in Sources */,
@@ -1929,13 +1935,11 @@
 				9E013D421D70229B0005DCF8 /* Instruction.swift in Sources */,
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,
 				00982C341C868C8A003DA5E2 /* Goal.swift in Sources */,
-				00982C5A1C868C8A003DA5E2 /* NevoOTAControllerProfile.swift in Sources */,
 				9E80C3D51D93B35D005F7940 /* PhysioCellGenerator.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				CB28AFDB1CE2C34300639538 /* ContactsFilter.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
-				00982C5D1C868C8A003DA5E2 /* NevoOTARequest.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
 				9E9051A71D94C18A00ED140D /* MovementMatchingAlgorithm.swift in Sources */,
 				008845EA1CF6A4D5006EA77F /* CheckEmailController.swift in Sources */,

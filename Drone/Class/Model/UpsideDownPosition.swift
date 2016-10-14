@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class UpsideDownPosition: CockroachPositionProtocol {
 //    Flipped upside down:X = [16..26], Y = [-7..-2] & Z = [-15..-4]
     let xMin:Int = 10;
