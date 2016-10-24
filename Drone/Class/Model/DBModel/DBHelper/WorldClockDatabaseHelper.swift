@@ -64,10 +64,12 @@ class WorldClockDatabaseHelper: NSObject {
                                         break
                                     }
                                 }
-                                try! realm.write({ 
-                                    realm.add(city)
+                                try! realm.write({
+                                    //realm.add(city)
+                                    realm.add(city, update: true)
                                     addedCities.append(city)
                                 })
+                                
                             }else{
                                 print("Couldn't parse JSON");
                                 break
