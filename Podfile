@@ -22,6 +22,7 @@ target 'Drone' do
     pod 'MSCellAccessory'
     pod 'IQKeyboardManagerSwift', '4.0.6'
     pod 'RealmSwift'
+    
 
 end
 

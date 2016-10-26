@@ -74,8 +74,13 @@
          config.deleteRealmIfMigrationNeeded = true
          Realm.Configuration.defaultConfiguration = config
          realm = try! Realm()
-         worldclockDatabaseHelper = WorldClockDatabaseHelper()
-         worldclockDatabaseHelper?.setup()
+//         worldclockDatabaseHelper = WorldClockDatabaseHelper()
+         
+         
+         DispatchQueue.global(qos: .background).async {
+               WorldClockDatabaseHelper().setup()
+         }
+
          mConnectionController = ConnectionControllerImpl()
          mConnectionController?.setDelegate(self)
          

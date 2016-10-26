@@ -46,6 +46,7 @@ class WorldClockDatabaseHelper: NSObject {
                     if citiesJSON != JSON.null && timezonesJSON != JSON.null {
                         for i in 0...(timezonesJSON.count-1){
                             if let timezone:Timezone = Timezone.getTimeZoneObject(timezonesJSON[i]){
+                                
                                 try! realm.write({
                                     realm.add(timezone)
                                     addedTimezones.append(timezone)
@@ -65,8 +66,7 @@ class WorldClockDatabaseHelper: NSObject {
                                     }
                                 }
                                 try! realm.write({
-                                    //realm.add(city)
-                                    realm.add(city, update: true)
+                                    realm.add(city)
                                     addedCities.append(city)
                                 })
                                 
@@ -105,5 +105,6 @@ class WorldClockDatabaseHelper: NSObject {
         }else{
             print("We are ok! We got the newest version.")
         }
+        print("Done setting up")
     }
 }

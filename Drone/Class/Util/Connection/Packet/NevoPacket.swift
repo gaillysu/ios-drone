@@ -20,7 +20,6 @@ class NevoPacket {
     struct DailyHistory
     {
         var TotalSteps:Int = 0;
-        var HourlySteps:[Int] = [];
         //add new from v1.2.2
         //unit:cm->meter
         var TotalDist:Int = 0;

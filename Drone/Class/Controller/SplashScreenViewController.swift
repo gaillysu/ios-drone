@@ -27,7 +27,6 @@ class SplashScreenViewController: BaseViewController {
     
     func nextController(){
         let user:NSArray = UserProfile.getAll()
-//        self.present(PhysioViewController(),animated: true,completion: nil)
         if(user.count>0) {
             self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
         }else{

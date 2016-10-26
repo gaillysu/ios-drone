@@ -70,10 +70,6 @@
 		00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AE81C868C89003DA5E2 /* WorldClockCell.xib */; };
 		00982C1B1C868C8A003DA5E2 /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE91C868C89003DA5E2 /* WorldClockViewController.swift */; };
 		00982C1C1C868C8A003DA5E2 /* WorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AEA1C868C89003DA5E2 /* WorldClockViewController.xib */; };
-		00982C1D1C868C8A003DA5E2 /* DailySteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AED1C868C89003DA5E2 /* DailySteps.swift */; };
-		00982C1E1C868C8A003DA5E2 /* DaySleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AEE1C868C89003DA5E2 /* DaySleep.swift */; };
-		00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AEF1C868C89003DA5E2 /* HourlySteps.swift */; };
-		00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF01C868C89003DA5E2 /* RealTimeCountSteps.swift */; };
 		00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF21C868C89003DA5E2 /* Alarm.swift */; };
 		00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF51C868C89003DA5E2 /* BaseEntryDatabaseHelper.swift */; };
 		00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B001C868C89003DA5E2 /* UserGoal.swift */; };
@@ -119,8 +115,6 @@
 		00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD31C868C89003DA5E2 /* Profile.swift */; };
 		00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD41C868C89003DA5E2 /* RawPacket.swift */; };
 		00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD51C868C8A003DA5E2 /* Request.swift */; };
-		00982CCC1C868C8A003DA5E2 /* NevoHK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD71C868C8A003DA5E2 /* NevoHK.swift */; };
-		00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD81C868C8A003DA5E2 /* NevoHKImpl.swift */; };
 		00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982CD91C868CF5003DA5E2 /* StepsViewController.xib */; };
 		00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982CE51C8695AD003DA5E2 /* SetingView.swift */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
@@ -330,10 +324,6 @@
 		00982AE81C868C89003DA5E2 /* WorldClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockCell.xib; sourceTree = "<group>"; };
 		00982AE91C868C89003DA5E2 /* WorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
 		00982AEA1C868C89003DA5E2 /* WorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockViewController.xib; sourceTree = "<group>"; };
-		00982AED1C868C89003DA5E2 /* DailySteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailySteps.swift; sourceTree = "<group>"; };
-		00982AEE1C868C89003DA5E2 /* DaySleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySleep.swift; sourceTree = "<group>"; };
-		00982AEF1C868C89003DA5E2 /* HourlySteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlySteps.swift; sourceTree = "<group>"; };
-		00982AF01C868C89003DA5E2 /* RealTimeCountSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeCountSteps.swift; sourceTree = "<group>"; };
 		00982AF21C868C89003DA5E2 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		00982AF51C868C89003DA5E2 /* BaseEntryDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntryDatabaseHelper.swift; sourceTree = "<group>"; };
 		00982B001C868C89003DA5E2 /* UserGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGoal.swift; sourceTree = "<group>"; };
@@ -380,8 +370,6 @@
 		00982BD31C868C89003DA5E2 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		00982BD41C868C89003DA5E2 /* RawPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawPacket.swift; sourceTree = "<group>"; };
 		00982BD51C868C8A003DA5E2 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		00982BD71C868C8A003DA5E2 /* NevoHK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoHK.swift; sourceTree = "<group>"; };
-		00982BD81C868C8A003DA5E2 /* NevoHKImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoHKImpl.swift; sourceTree = "<group>"; };
 		00982CD91C868CF5003DA5E2 /* StepsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsViewController.xib; sourceTree = "<group>"; };
 		00982CDB1C868E0B003DA5E2 /* Drone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drone-Bridging-Header.h"; sourceTree = "<group>"; };
 		00982CE51C8695AD003DA5E2 /* SetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetingView.swift; sourceTree = "<group>"; };
@@ -845,7 +833,6 @@
 			isa = PBXGroup;
 			children = (
 				CB3567D21DA387D40049FBBC /* CockroachPosition */,
-				00982AEC1C868C89003DA5E2 /* Activity */,
 				00982AF11C868C89003DA5E2 /* Alarm */,
 				9E80C3D71D93B43E005F7940 /* BabyCockroach */,
 				CB5754241D76BA150008E0EC /* CoordinateSerie */,
@@ -863,17 +850,6 @@
 				9E2BACC11D98CA1800EB1903 /* Vector.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		00982AEC1C868C89003DA5E2 /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-				00982AED1C868C89003DA5E2 /* DailySteps.swift */,
-				00982AEE1C868C89003DA5E2 /* DaySleep.swift */,
-				00982AEF1C868C89003DA5E2 /* HourlySteps.swift */,
-				00982AF01C868C89003DA5E2 /* RealTimeCountSteps.swift */,
-			);
-			path = Activity;
 			sourceTree = "<group>";
 		};
 		00982AF11C868C89003DA5E2 /* Alarm */ = {
@@ -1094,7 +1070,6 @@
 			children = (
 				008AEF141D25FFB200B9E4D0 /* TaskQueue */,
 				00982BD01C868C89003DA5E2 /* NevoBT */,
-				00982BD61C868C8A003DA5E2 /* NevoHK */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -1109,15 +1084,6 @@
 				00982BD51C868C8A003DA5E2 /* Request.swift */,
 			);
 			path = NevoBT;
-			sourceTree = "<group>";
-		};
-		00982BD61C868C8A003DA5E2 /* NevoHK */ = {
-			isa = PBXGroup;
-			children = (
-				00982BD71C868C8A003DA5E2 /* NevoHK.swift */,
-				00982BD81C868C8A003DA5E2 /* NevoHKImpl.swift */,
-			);
-			path = NevoHK;
 			sourceTree = "<group>";
 		};
 		00982CE71C86A350003DA5E2 /* Resources */ = {
@@ -1859,7 +1825,6 @@
 				9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
 				CB3533EB1D9B646B00E5DE40 /* HumanViewController.swift in Sources */,
-				00982C201C868C8A003DA5E2 /* RealTimeCountSteps.swift in Sources */,
 				CB3567D41DA387E90049FBBC /* CockroachPositionProtocol.swift in Sources */,
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
 				CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */,
@@ -1872,7 +1837,6 @@
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
 				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
 				9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */,
-				00982C1E1C868C8A003DA5E2 /* DaySleep.swift in Sources */,
 				CB9B7A761DB06A3100EEFD54 /* NevoOTAPacketProfile.swift in Sources */,
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
 				00982BED1C868C8A003DA5E2 /* LoginViewController.swift in Sources */,
@@ -1897,7 +1861,6 @@
 				009201DC1CBE2B6600C51707 /* WelcomeViewController.swift in Sources */,
 				9E15358B1D5C2E2800CB6A01 /* WorldClockDatabaseHelper.swift in Sources */,
 				0043FBE61CA131BD00638BD1 /* UpdateNotificationRequest.swift in Sources */,
-				00982CCC1C868C8A003DA5E2 /* NevoHK.swift in Sources */,
 				0015CA501CBC835900820B1F /* UserDevice.swift in Sources */,
 				00F132B71CEBFC4000CF8F6B /* ClearConnectionRequest.swift in Sources */,
 				9E455E191CD5BB2600F79356 /* DeviceTableViewCell.swift in Sources */,
@@ -1925,7 +1888,6 @@
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
 				9E455E141CD5B91600F79356 /* DeviceViewController.swift in Sources */,
 				9E013D5D1D70356D0005DCF8 /* PhysioViewModel.swift in Sources */,
-				00982C1F1C868C8A003DA5E2 /* HourlySteps.swift in Sources */,
 				CBB37AFF1D7534C200A90920 /* CockroachMasterDataReceived.swift in Sources */,
 				CB17DD301DA38D7000730273 /* StandingUpsideDown.swift in Sources */,
 				9E013D421D70229B0005DCF8 /* Instruction.swift in Sources */,
@@ -1956,10 +1918,8 @@
 				00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */,
 				CB3533C31D9B617100E5DE40 /* Human.swift in Sources */,
 				0024C0FB1CB73A7C00E0A23D /* ProfileModel.swift in Sources */,
-				00982CCD1C868C8A003DA5E2 /* NevoHKImpl.swift in Sources */,
 				00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */,
 				00982C431C868C8A003DA5E2 /* ClockRefreshManager.swift in Sources */,
-				00982C1D1C868C8A003DA5E2 /* DailySteps.swift in Sources */,
 				9E455E1B1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift in Sources */,
 				9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */,
 				00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */,
