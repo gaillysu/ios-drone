@@ -16,6 +16,7 @@ let stepsDownload = DownloadStepsRequest()
 
 class DownloadStepsRequest: NSObject {
     
+    
     class  func getRequest(_ url: String, uid:String, start_date:String, end_date:String, completion:@escaping (_ result:NSDictionary) -> Void){
         let URL:String = url+"/"+uid+"?token=ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei"+"&start_date="+start_date+"&end_date="+end_date
         

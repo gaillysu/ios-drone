@@ -668,7 +668,6 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
             let startDate = didSelectedDate
             stepsDownload.getClickTodayServiceSteps(startDate, completion: { (result) in
                 MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-                
                 if result {
                     self.delay(0.3, closure: {
                         self.bulidChart(Foundation.Date(timeIntervalSince1970: dayTime))

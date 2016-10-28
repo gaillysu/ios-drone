@@ -234,6 +234,15 @@
 		CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD1D1CD06F890009F39A /* Color.swift */; };
 		CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD6BD251CD099880009F39A /* ProfileViewController.xib */; };
 		CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD271CD099900009F39A /* ProfileViewController.swift */; };
+		CBE798151DC30350000B686E /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798141DC30350000B686E /* NetworkRequest.swift */; };
+		CBE798171DC306AC000B686E /* BaseNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798161DC306AC000B686E /* BaseNetworkRequest.swift */; };
+		CBE798191DC32087000B686E /* GetStepsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798181DC32087000B686E /* GetStepsRequest.swift */; };
+		CBE7981B1DC324FC000B686E /* BasePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7981A1DC324FC000B686E /* BasePostRequest.swift */; };
+		CBE7981D1DC32603000B686E /* BaseGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7981C1DC32603000B686E /* BaseGetRequest.swift */; };
+		CBE7981F1DC326D6000B686E /* BasePutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7981E1DC326D6000B686E /* BasePutRequest.swift */; };
+		CBE798221DC328A9000B686E /* BaseDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798211DC328A9000B686E /* BaseDeleteRequest.swift */; };
+		CBE798241DC32CEC000B686E /* StepsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798231DC32CEC000B686E /* StepsNetworkManager.swift */; };
+		CBE798261DC32F01000B686E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798251DC32F01000B686E /* NetworkManager.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -493,6 +502,15 @@
 		CBD6BD1D1CD06F890009F39A /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CBD6BD251CD099880009F39A /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		CBD6BD271CD099900009F39A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CBE798141DC30350000B686E /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		CBE798161DC306AC000B686E /* BaseNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNetworkRequest.swift; sourceTree = "<group>"; };
+		CBE798181DC32087000B686E /* GetStepsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStepsRequest.swift; sourceTree = "<group>"; };
+		CBE7981A1DC324FC000B686E /* BasePostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePostRequest.swift; sourceTree = "<group>"; };
+		CBE7981C1DC32603000B686E /* BaseGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGetRequest.swift; sourceTree = "<group>"; };
+		CBE7981E1DC326D6000B686E /* BasePutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePutRequest.swift; sourceTree = "<group>"; };
+		CBE798211DC328A9000B686E /* BaseDeleteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDeleteRequest.swift; sourceTree = "<group>"; };
+		CBE798231DC32CEC000B686E /* StepsNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsNetworkManager.swift; sourceTree = "<group>"; };
+		CBE798251DC32F01000B686E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -926,8 +944,11 @@
 		00982B141C868C89003DA5E2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				00982B151C868C89003DA5E2 /* HttpPostRequest.swift */,
-				0064B2FE1D06A4210032EF61 /* DownloadStepsRequest.swift */,
+				CBE798271DC32F1B000B686E /* Deprecated */,
+				CBE798201DC32728000B686E /* BaseRequest */,
+				CBE798181DC32087000B686E /* GetStepsRequest.swift */,
+				CBE798231DC32CEC000B686E /* StepsNetworkManager.swift */,
+				CBE798251DC32F01000B686E /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1528,6 +1549,28 @@
 			name = ProfileViewController;
 			sourceTree = "<group>";
 		};
+		CBE798201DC32728000B686E /* BaseRequest */ = {
+			isa = PBXGroup;
+			children = (
+				CBE798211DC328A9000B686E /* BaseDeleteRequest.swift */,
+				CBE7981C1DC32603000B686E /* BaseGetRequest.swift */,
+				CBE798161DC306AC000B686E /* BaseNetworkRequest.swift */,
+				CBE7981A1DC324FC000B686E /* BasePostRequest.swift */,
+				CBE7981E1DC326D6000B686E /* BasePutRequest.swift */,
+				CBE798141DC30350000B686E /* NetworkRequest.swift */,
+			);
+			name = BaseRequest;
+			sourceTree = "<group>";
+		};
+		CBE798271DC32F1B000B686E /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				00982B151C868C89003DA5E2 /* HttpPostRequest.swift */,
+				0064B2FE1D06A4210032EF61 /* DownloadStepsRequest.swift */,
+			);
+			name = Deprecated;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1788,10 +1831,12 @@
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				00982C481C868C8A003DA5E2 /* SetAppConfigRequest.swift in Sources */,
 				9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */,
+				CBE798221DC328A9000B686E /* BaseDeleteRequest.swift in Sources */,
 				00982BF31C868C8A003DA5E2 /* MyNevoView.swift in Sources */,
 				008845E51CF69F67006EA77F /* ForgetPasswordController.swift in Sources */,
 				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
+				CBE7981F1DC326D6000B686E /* BasePutRequest.swift in Sources */,
 				0064B2FF1D06A4210032EF61 /* DownloadStepsRequest.swift in Sources */,
 				0064B2FB1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift in Sources */,
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
@@ -1814,14 +1859,18 @@
 				9E0109311D741CEE00AA3551 /* CockRoachPacket.swift in Sources */,
 				CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */,
 				CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */,
+				CBE7981D1DC32603000B686E /* BaseGetRequest.swift in Sources */,
 				CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */,
+				CBE798241DC32CEC000B686E /* StepsNetworkManager.swift in Sources */,
 				CB17DD2D1DA38D7000730273 /* StandingPosition.swift in Sources */,
 				0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */,
+				CBE798151DC30350000B686E /* NetworkRequest.swift in Sources */,
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
 				CB9B7A741DB06A3100EEFD54 /* NevoOTAControllerProfile.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
+				CBE798261DC32F01000B686E /* NetworkManager.swift in Sources */,
 				9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
 				CB3533EB1D9B646B00E5DE40 /* HumanViewController.swift in Sources */,
@@ -1837,6 +1886,7 @@
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
 				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
 				9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */,
+				CBE798191DC32087000B686E /* GetStepsRequest.swift in Sources */,
 				CB9B7A761DB06A3100EEFD54 /* NevoOTAPacketProfile.swift in Sources */,
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
 				00982BED1C868C8A003DA5E2 /* LoginViewController.swift in Sources */,
@@ -1864,6 +1914,7 @@
 				0015CA501CBC835900820B1F /* UserDevice.swift in Sources */,
 				00F132B71CEBFC4000CF8F6B /* ClearConnectionRequest.swift in Sources */,
 				9E455E191CD5BB2600F79356 /* DeviceTableViewCell.swift in Sources */,
+				CBE798171DC306AC000B686E /* BaseNetworkRequest.swift in Sources */,
 				00982C461C868C8A003DA5E2 /* ConnectionManager.swift in Sources */,
 				00982BF71C868C8A003DA5E2 /* SelectFileView.swift in Sources */,
 				0043FBEE1CA1460800638BD1 /* UpdateContactsApplicationsRequest.swift in Sources */,
@@ -1871,6 +1922,7 @@
 				0089310A1CC779B30013E6D8 /* WhichDeviceViewController.swift in Sources */,
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
 				00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */,
+				CBE7981B1DC324FC000B686E /* BasePostRequest.swift in Sources */,
 				00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */,
 				CB3567D61DA3882D0049FBBC /* NormalPosition.swift in Sources */,
 				00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */,

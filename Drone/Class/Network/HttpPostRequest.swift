@@ -11,8 +11,10 @@ import Alamofire
 import XCGLogger
 
 class HttpPostRequest: NSObject {
+        
     
-    class  func postRequest(_ url: String, data:Dictionary<String,Any>, completion:@escaping (_ result:NSDictionary) -> Void){
+    class func postRequest(_ url: String, data:Dictionary<String,Any>, completion:@escaping (_ result:NSDictionary) -> Void){
+    
         var finalData: Dictionary<String,Any> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei" as Any]
         finalData["params"] = data;
         let param:Parameters = finalData
@@ -36,7 +38,6 @@ class HttpPostRequest: NSObject {
                         completion(response.result.value as! NSDictionary)
                     }
                 }
-                
         }
     }
     
@@ -69,23 +70,4 @@ class HttpPostRequest: NSObject {
         }
     }
     
-    static func getCommonParams() -> (md5: String,time: Int){
-        let time = Int(Date().timeIntervalSince1970);
-        let key = String(format: "%d-nevo2015medappteam",time)
-        return (md5: md5(string:key),time: time);
-    }
-    
-    fileprivate static func md5(string: String) -> String {
-        var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-        if let data = string.data(using: String.Encoding.utf8) {
-            CC_MD5((data as NSData).bytes, CC_LONG(data.count), &digest)
-        }
-        
-        var digestHex = ""
-        for index in 0..<Int(CC_MD5_DIGEST_LENGTH) {
-            digestHex += String(format: "%02x", digest[index])
-        }
-        
-        return digestHex
-    }
 }

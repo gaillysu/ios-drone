@@ -2,7 +2,7 @@
     //  AppDelegate.swift
     //  Nevo
     //
-    //  Created by Karl-John Chow on Today 🤔.
+    //  Created by Karl-John Chow on Today
     //  Copyright (c) 2015 Nevo. All rights reserved.
     //
     
@@ -17,7 +17,7 @@
     import Crashlytics
     import IQKeyboardManagerSwift
     import RealmSwift
-    
+    import SwiftyJSON
     let DRONEDBFILE:String = "droneDBFile";
     let DRONEDBNAME:String = "drone.sqlite";
     let RESET_STATE:String = "RESET_STATE"
@@ -30,6 +30,7 @@
     
     @UIApplicationMain
     class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
+      
       
       var window: UIWindow?
       //Let's sync every days
@@ -63,7 +64,6 @@
       }
       
       func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-         
          // Override point for customization after application launch.
          Fabric.with([Crashlytics.self])
          var config = Realm.Configuration(
@@ -74,13 +74,13 @@
          config.deleteRealmIfMigrationNeeded = true
          Realm.Configuration.defaultConfiguration = config
          realm = try! Realm()
-//         worldclockDatabaseHelper = WorldClockDatabaseHelper()
+         //         worldclockDatabaseHelper = WorldClockDatabaseHelper()
          
          
          DispatchQueue.global(qos: .background).async {
-               WorldClockDatabaseHelper().setup()
+            WorldClockDatabaseHelper().setup()
          }
-
+         
          mConnectionController = ConnectionControllerImpl()
          mConnectionController?.setDelegate(self)
          
@@ -100,6 +100,7 @@
          nav.isNavigationBarHidden = true
          self.window?.rootViewController = nav
          self.window?.makeKeyAndVisible()
+         
          return true
       }
       
@@ -583,4 +584,4 @@
       func getConnectedCockroaches() -> [UUID:Int]{
          return self.masterCockroaches
       }
-    }
+   }
