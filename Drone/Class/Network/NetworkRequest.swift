@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 import Alamofire
 
 protocol NetworkRequest {
@@ -15,5 +16,5 @@ protocol NetworkRequest {
     var encoding:ParameterEncoding? { get }
     var headers:HTTPHeaders? { get }
     var parameters:Parameters { get }
-    var response: (DataResponse<Any>) -> Void { get set }
+    var response: (_ success:Bool, _ response:JSON?, _ error:Error?) -> Void { get set }
 }

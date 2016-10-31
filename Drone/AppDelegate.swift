@@ -91,7 +91,6 @@
          }
          network?.startListening()
          
-         
          IQKeyboardManager.sharedManager().enable = true
          
          self.window = UIWindow(frame: UIScreen.main.bounds)

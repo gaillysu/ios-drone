@@ -8,11 +8,13 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class BaseDeleteRequest: BaseNetworkRequest {
-    override init(response: @escaping (DataResponse<Any>) -> Void) {
+    override init(response: @escaping (_ bool:Bool, _ json:JSON?, _ error:Error?) -> Void) {
         super.init(response: response)
         self.method = .delete
         self.encoding = JSONEncoding.default
+        self.response = response
     }
 }

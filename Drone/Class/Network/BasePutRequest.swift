@@ -8,9 +8,9 @@
 
 import UIKit
 import Alamofire
-
+import SwiftyJSON
 class BasePutRequest: BaseNetworkRequest {
-    override init(response: @escaping (DataResponse<Any>) -> Void) {
+    override init(response: @escaping (_ bool:Bool, _ json:JSON?, _ error:Error?) -> Void) {
         super.init(response: response)
         self.method = .put
         self.encoding = JSONEncoding.default

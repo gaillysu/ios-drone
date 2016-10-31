@@ -12,6 +12,7 @@ import Crashlytics
 import BRYXBanner
 import UIColor_Hex_Swift
 import SwiftyJSON
+import Timepiece
 import MRProgress
 import XCGLogger
 
@@ -92,7 +93,6 @@ class LoginViewController: UIViewController {
 
     func loginRequest() {
         if AppDelegate.getAppDelegate().network!.isReachable {
-            XCGLogger.debug("有网络")
             if(AppTheme.isNull(usernameT!.text!) || !AppTheme.isEmail(usernameT!.text!)) {
                 let banner = Banner(title: NSLocalizedString("Email is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true
@@ -113,47 +113,28 @@ class LoginViewController: UIViewController {
                 MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
             
-            HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/login", data: ["user":["email":usernameT!.text!,"password":passwordT!.text!]]) { (result) in
+            UserNetworkManager.login(email: usernameT!.text!, password: passwordT!.text!, completion: { (success, profile) in
                 timeout.invalidate()
                 MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
                 
-                let json = JSON(result)
-                let message = json["message"].stringValue.isEmpty ? NSLocalizedString("not_login", comment: ""):json["message"].stringValue
-                let status = json["status"].intValue
-                
-                let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor: status > 0 ? UIColor.getBaseColor():UIColor.getBaseColor())
+                let banner = Banner(title: NSLocalizedString(NSLocalizedString("not_login", comment: ""), comment: ""), subtitle: nil, image: nil, backgroundColor: success ? UIColor.getBaseColor():UIColor.getBaseColor())
                 banner.dismissesOnTap = true
                 banner.show(duration: 1.2)
-                
-                //status > 0 login success or login fail
-                if(status > 0 && UserProfile.getAll().count == 0) {
-                    let user = json["user"]
-                    let jsonBirthday = user["birthday"];
-                    let dateString: String = jsonBirthday["date"].stringValue
-                    var birthday:String = ""
-                    if !jsonBirthday.isEmpty || !dateString.isEmpty {
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "y-M-d h:m:s.000000"
-                        
-                        let birthdayDate = dateFormatter.date(from: dateString)
-                        dateFormatter.dateFormat = "y-M-d"
-                        birthday = dateFormatter.string(from: birthdayDate!)
-                    }
-                    
-                    let userprofile:UserProfile = UserProfile(keyDict: ["id":user["id"].intValue,"first_name":user["first_name"].stringValue,"last_name":user["last_name"].stringValue,"birthday":birthday,"length":user["length"].intValue,"email":user["email"].stringValue, "weight":user["weight"].floatValue])
-                    userprofile.add({ (id, completion) in
-                        XCGLogger.debug("Added? id = \(id), completion = \(completion)")
-                    })
+            
+                if success, let unpackedProfile = profile{
+                    XCGLogger.debug("Added? id = \(unpackedProfile.id)")
 
                     if(UserGoal.getAll().count == 0){
                         let goal:UserGoal = UserGoal(keyDict: ["goalSteps":10000,"label":" ","status":false])
                         goal.add({ (id, completion) in})
                     }
                     
-                }
-                if(status == 1){
-                    let startDate = Date(timeIntervalSince1970: Date().timeIntervalSince1970-(86400*30))
-                    stepsDownload.getServiceSteps(startDate)
+                    StepsNetworkManager.stepsForPeriod(uid: unpackedProfile.id, startDate: Date(), endDate: (Date() - 30.days), completion: { result in
+                        print("results = \(result.requestSuccess)")
+                        print("results = \(result.databaseSaved)")
+                        XCGLogger.debug("Synced Steps with the Cloud!")
+                    })
+                    
                     if self.fromMenu{
                         self.navigationController?.dismiss(animated: true, completion: nil)
                     }else{
@@ -161,10 +142,8 @@ class LoginViewController: UIViewController {
                         self.navigationController?.pushViewController(device, animated: true)
                     }
                 }
-            }
+            })
         }else{
-        
-            XCGLogger.debug("没有网络")
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
             Timer.after(0.6.seconds, {

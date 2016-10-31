@@ -73,25 +73,21 @@ class ForgetPasswordController: UIViewController {
                 MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
             
-            HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/forget_password", data: ["user":["id":user_id, "email":email, "password":newTextField2.text!, "password_token":password_token]]) { (result) in
-                
-                timeout.invalidate()
-                
-                let jason = JSON(result)
-                let user:[String:JSON] = jason["user"].dictionaryValue
-                var message:String = jason["message"].stringValue
-                if jason["status"].intValue == 1 && user.count>0 {
-                    MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-                    self.dismiss(animated: true, completion: nil)
-                }else{
-                    MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-                    if message.isEmpty {
-                        message =  NSLocalizedString("no_network", comment: "")
+            if let id:Int = Int(user_id){
+                UserNetworkManager.forgetPassword(email: email, password: newTextField2.text!, id: id, token: password_token, completion: { (result) in
+                    timeout.invalidate()
+                    if result{
+                        MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
+                        self.dismiss(animated: true, completion: nil)
+                    }else{
+                        MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
+                        let banner = Banner(title: NSLocalizedString(NSLocalizedString("no_network", comment: ""), comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                        banner.dismissesOnTap = true
+                        banner.show(duration: 1.2)
                     }
-                    let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 1.2)
-                }
+                })
+            }else{
+                print("How could id not be an int..")
             }
         }else{
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Your new password cannot be empty", mode: MRProgressOverlayViewMode.cross, animated: true)

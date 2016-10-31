@@ -62,31 +62,21 @@ class CheckEmailController: UIViewController {
                 MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
             
-            HttpPostRequest.postRequest("http://drone.karljohnchow.com/user/request_password_token", data: ["user":["email":email]]) { (result) in
-                
-                timeout.invalidate()
-                
-                let jason = JSON(result)
-                let user:[String:JSON] = jason["user"].dictionaryValue
-                var message:String = jason["message"].stringValue
-                
-                if (jason["status"].intValue == 1 && user.count>0) {
-                    MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-                    let  forget:ForgetPasswordController = ForgetPasswordController()
-                    forget.password_token = user["password_token"]!.stringValue
-                    forget.user_id = user["id"]!.stringValue
-                    forget.email = user["email"]!.stringValue
-                    self.navigationController?.pushViewController(forget, animated: true)
+            UserNetworkManager.requestPassword(email: email, completion: { (result: (success: Bool, token: String, id: Int)) in
+                if result.success {
+                    let  forgetPasswordController = ForgetPasswordController()
+                    forgetPasswordController.password_token = result.token
+                    forgetPasswordController.user_id = "\(result.id)"
+                    forgetPasswordController.email = email
+                    self.navigationController?.pushViewController(forgetPasswordController, animated: true)
                 }else{
                     MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-                    if message.isEmpty {
-                        message =  NSLocalizedString("no_network", comment: "")
-                    }
-                    let banner = Banner(title: NSLocalizedString(message, comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                    let banner = Banner(title: NSLocalizedString(NSLocalizedString("no_network", comment: ""), comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                     banner.dismissesOnTap = true
                     banner.show(duration: 1.2)
                 }
-            }
+            })
+            
         }else{
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Incorrect Email address.", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())

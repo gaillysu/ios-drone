@@ -99,9 +99,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             if self.didSelectedDate == Foundation.Date().beginningOfDay {
                 let stepsDict:[String:Int] = notification.object as! [String:Int]
                 let res:Bool = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict as AnyObject)
-                
                 self.getLoclSmallSyncData(stepsDict)
-                
             }
         }
         
@@ -124,20 +122,20 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         
         if let unwrappedData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND){
             let lastData = unwrappedData as! NSArray
-        if lastData.count>0 {
-            let dateString:String = lastData[1] as! String
-            let date:Foundation.Date = dateString.dateFromFormat("YYYY/MM/dd")!
-            if date == Foundation.Date().beginningOfDay {
-                AppDelegate.getAppDelegate().setStepsToWatch()
+            if lastData.count>0 {
+                let dateString:String = lastData[1] as! String
+                let date:Foundation.Date = dateString.dateFromFormat("YYYY/MM/dd")!
+                if date == Foundation.Date().beginningOfDay {
+                    AppDelegate.getAppDelegate().setStepsToWatch()
+                }
+            }
+            
+            if AppDelegate.getAppDelegate().syncState != SYNC_STATE.big_SYNC {
+                self.delay(2) {
+                    self.fireSmallSyncTimer()
+                }
             }
         }
-        
-        if AppDelegate.getAppDelegate().syncState != SYNC_STATE.big_SYNC {
-            self.delay(2) {
-                self.fireSmallSyncTimer()
-            }
-        }
-            }
     }
     
     /**
@@ -649,7 +647,6 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
     
     func didSelectDayView(_ dayView: CVCalendarDayView, animationDidFinish: Bool) {
-        print("\(dayView.date.commonDescription) is selected!")
         dayView.selectionView?.shape = CVShape.rect
         self.dismissCalendar()
         titleView?.selectedFinishTitleView()
@@ -664,19 +661,18 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         if hours.count == 0 {
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
-            
             let startDate = didSelectedDate
-            stepsDownload.getClickTodayServiceSteps(startDate, completion: { (result) in
-                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-                if result {
+            let profile:NSArray = UserProfile.getAll()
+            if let userProfile:UserProfile = profile.object(at: 0) as? UserProfile{
+                StepsNetworkManager.stepsForDate(uid: userProfile.id, date: startDate, completion: { result in
+                    MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
                     self.delay(0.3, closure: {
                         self.bulidChart(Foundation.Date(timeIntervalSince1970: dayTime))
                         AppDelegate.getAppDelegate().setStepsToWatch()
                     })
-                }
-            })
+                })
+            }
         }
-        
     }
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {

@@ -28,7 +28,6 @@
 		005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */; };
 		005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */; };
 		0064B2FB1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0064B2FA1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift */; };
-		0064B2FF1D06A4210032EF61 /* DownloadStepsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0064B2FE1D06A4210032EF61 /* DownloadStepsRequest.swift */; };
 		0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0064CA761CC08D60005AB9DE /* dronelogo.png */; };
 		0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */; };
 		0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */; };
@@ -213,6 +212,10 @@
 		CB3567D81DA38A010049FBBC /* CockroachPositionCheckStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D71DA38A010049FBBC /* CockroachPositionCheckStrategy.swift */; };
 		CB3567DA1DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D91DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift */; };
 		CB5754261D76BA260008E0EC /* CoordinateSerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5754251D76BA260008E0EC /* CoordinateSerie.swift */; };
+		CB66EDBA1DC70165004768B7 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDB91DC70165004768B7 /* LoginRequest.swift */; };
+		CB66EDBC1DC7033C004768B7 /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */; };
+		CB66EDC11DC705CF004768B7 /* RequestPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */; };
+		CB66EDC31DC70636004768B7 /* ForgetPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDC21DC70636004768B7 /* ForgetPasswordRequest.swift */; };
 		CB9B7A6D1DAF7E0B00EEFD54 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A6C1DAF7E0B00EEFD54 /* ClockView.swift */; };
 		CB9B7A741DB06A3100EEFD54 /* NevoOTAControllerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A6F1DB06A3100EEFD54 /* NevoOTAControllerProfile.swift */; };
 		CB9B7A751DB06A3100EEFD54 /* NevoOTAModeProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A701DB06A3100EEFD54 /* NevoOTAModeProfile.swift */; };
@@ -285,7 +288,6 @@
 		005984AE1CA0DC6800C588CA /* SetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserProfileRequest.swift; sourceTree = "<group>"; };
 		005984B01CA0E96200C588CA /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
 		0064B2FA1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetStepsToWatchReuqest.swift; sourceTree = "<group>"; };
-		0064B2FE1D06A4210032EF61 /* DownloadStepsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadStepsRequest.swift; sourceTree = "<group>"; };
 		0064CA761CC08D60005AB9DE /* dronelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dronelogo.png; sourceTree = "<group>"; };
 		0065AC071CC86A9B00DC3096 /* ConnectionSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionSetupViewController.swift; sourceTree = "<group>"; };
 		0065AC081CC86A9B00DC3096 /* ConnectionSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionSetupViewController.xib; sourceTree = "<group>"; };
@@ -481,6 +483,10 @@
 		CB3567D71DA38A010049FBBC /* CockroachPositionCheckStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachPositionCheckStrategy.swift; sourceTree = "<group>"; };
 		CB3567D91DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachPositionXYZMatchStrategy.swift; sourceTree = "<group>"; };
 		CB5754251D76BA260008E0EC /* CoordinateSerie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSerie.swift; sourceTree = "<group>"; };
+		CB66EDB91DC70165004768B7 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkManager.swift; sourceTree = "<group>"; };
+		CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPasswordRequest.swift; sourceTree = "<group>"; };
+		CB66EDC21DC70636004768B7 /* ForgetPasswordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordRequest.swift; sourceTree = "<group>"; };
 		CB9B7A6C1DAF7E0B00EEFD54 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		CB9B7A6F1DB06A3100EEFD54 /* NevoOTAControllerProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAControllerProfile.swift; sourceTree = "<group>"; };
 		CB9B7A701DB06A3100EEFD54 /* NevoOTAModeProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAModeProfile.swift; sourceTree = "<group>"; };
@@ -944,11 +950,10 @@
 		00982B141C868C89003DA5E2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				CBE798271DC32F1B000B686E /* Deprecated */,
 				CBE798201DC32728000B686E /* BaseRequest */,
-				CBE798181DC32087000B686E /* GetStepsRequest.swift */,
-				CBE798231DC32CEC000B686E /* StepsNetworkManager.swift */,
-				CBE798251DC32F01000B686E /* NetworkManager.swift */,
+				CBE798271DC32F1B000B686E /* Deprecated */,
+				CB66EDBD1DC704CA004768B7 /* Manager */,
+				CB66EDBE1DC704D9004768B7 /* Request */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1445,6 +1450,27 @@
 			name = CoordinateSerie;
 			sourceTree = "<group>";
 		};
+		CB66EDBD1DC704CA004768B7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CBE798231DC32CEC000B686E /* StepsNetworkManager.swift */,
+				CBE798251DC32F01000B686E /* NetworkManager.swift */,
+				CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		CB66EDBE1DC704D9004768B7 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				CBE798181DC32087000B686E /* GetStepsRequest.swift */,
+				CB66EDB91DC70165004768B7 /* LoginRequest.swift */,
+				CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */,
+				CB66EDC21DC70636004768B7 /* ForgetPasswordRequest.swift */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
 		CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1566,7 +1592,6 @@
 			isa = PBXGroup;
 			children = (
 				00982B151C868C89003DA5E2 /* HttpPostRequest.swift */,
-				0064B2FE1D06A4210032EF61 /* DownloadStepsRequest.swift */,
 			);
 			name = Deprecated;
 			sourceTree = "<group>";
@@ -1826,6 +1851,7 @@
 				005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */,
 				9EA1C9A31D7935C50012C988 /* DoExerciseHeader.swift in Sources */,
 				CB3567D81DA38A010049FBBC /* CockroachPositionCheckStrategy.swift in Sources */,
+				CB66EDC11DC705CF004768B7 /* RequestPasswordRequest.swift in Sources */,
 				008AEF161D25FFB200B9E4D0 /* TaskQueue.swift in Sources */,
 				CB9B7A751DB06A3100EEFD54 /* NevoOTAModeProfile.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
@@ -1837,7 +1863,6 @@
 				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				CBE7981F1DC326D6000B686E /* BasePutRequest.swift in Sources */,
-				0064B2FF1D06A4210032EF61 /* DownloadStepsRequest.swift in Sources */,
 				0064B2FB1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift in Sources */,
 				00982C4E1C868C8A003DA5E2 /* ReadDailyTrackerInfo.swift in Sources */,
 				00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */,
@@ -1851,6 +1876,7 @@
 				CBB37AFC1D75331000A90920 /* CockroachesMasterChanged.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */,
+				CB66EDBA1DC70165004768B7 /* LoginRequest.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
 				9EA1C9A81D7963D90012C988 /* NSDataExtension.swift in Sources */,
@@ -1939,6 +1965,7 @@
 				9E013D441D7022AA0005DCF8 /* Exercise.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
 				9E455E141CD5B91600F79356 /* DeviceViewController.swift in Sources */,
+				CB66EDC31DC70636004768B7 /* ForgetPasswordRequest.swift in Sources */,
 				9E013D5D1D70356D0005DCF8 /* PhysioViewModel.swift in Sources */,
 				CBB37AFF1D7534C200A90920 /* CockroachMasterDataReceived.swift in Sources */,
 				CB17DD301DA38D7000730273 /* StandingUpsideDown.swift in Sources */,
@@ -1946,6 +1973,7 @@
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,
 				00982C341C868C8A003DA5E2 /* Goal.swift in Sources */,
 				9E80C3D51D93B35D005F7940 /* PhysioCellGenerator.swift in Sources */,
+				CB66EDBC1DC7033C004768B7 /* UserNetworkManager.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				CB28AFDB1CE2C34300639538 /* ContactsFilter.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
