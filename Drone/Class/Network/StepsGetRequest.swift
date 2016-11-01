@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class GetStepsRequest: BaseGetRequest {
+class StepsGetRequest: BaseGetRequest {
 
     init(uid:Int, startDate:Int, endDate:Int, responseBlock: @escaping (_ bool:Bool, _ json:JSON?, _ error:Error?) -> Void) {
         super.init(response: responseBlock)

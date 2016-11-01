@@ -12,6 +12,26 @@ import Alamofire
 
 class StepsNetworkManager: NSObject {
     
+    class func createSteps(uid:Int, steps:String, date:String, activeTime:Int, completion:@escaping ((_ created:Bool) -> Void)){
+        NetworkManager.execute(request: StepsCreateRequest(uid: uid, value: steps, date: date, activeTime: activeTime, responseBlock: { (success, optionalJson, optionalError) in
+            if success, let _ = optionalJson {
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }))
+    }
+    
+    class func updateSteps(id:Int, uid:Int, steps:String, date:String, activeTime:Int, completion: @escaping ((_ updated:Bool)->Void)){
+        NetworkManager.execute(request: StepsUpdateRequest(id: id, uid: uid, steps: steps, date: date, activeTime: activeTime, responseBlock: { (success, optionalJson, optionalError) in
+            if success, let _ = optionalJson{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }))
+    }
+    
     class func stepsForDate(uid:Int, date:Date, completion:@escaping ( _ result:
         (requestSuccess:Bool, databaseSaved:Bool)) -> Void){
         print(date.description)
@@ -19,7 +39,7 @@ class StepsNetworkManager: NSObject {
         print("Start Date \(date.beginningOfDay.description)")
         let endDateInt = Int(date.endOfDay.timeIntervalSince1970)
         print("End Date \(date.endOfDay.description)")
-        NetworkManager.execute(request: GetStepsRequest(uid: uid, startDate: startDateInt, endDate: endDateInt, responseBlock: { success, json, error in
+        NetworkManager.execute(request: StepsGetRequest(uid: uid, startDate: startDateInt, endDate: endDateInt, responseBlock: { success, json, error in
             if success, let unpackedJson = json {
                 completion(handleResponse(json: unpackedJson))
             }else{
@@ -35,7 +55,7 @@ class StepsNetworkManager: NSObject {
         let endDateInt = Int(endDate.endOfDay.timeIntervalSince1970)
         print("End Date \(endDate.endOfDay.description)")
         
-        NetworkManager.execute(request: GetStepsRequest(uid: uid, startDate: startDateInt, endDate: endDateInt, responseBlock: { success, json, error in
+        NetworkManager.execute(request: StepsGetRequest(uid: uid, startDate: startDateInt, endDate: endDateInt, responseBlock: { success, json, error in
             if success, let unpackedJson = json {
                 completion(handleResponse(json: unpackedJson))
             }else{

@@ -216,6 +216,10 @@
 		CB66EDBC1DC7033C004768B7 /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */; };
 		CB66EDC11DC705CF004768B7 /* RequestPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */; };
 		CB66EDC31DC70636004768B7 /* ForgetPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDC21DC70636004768B7 /* ForgetPasswordRequest.swift */; };
+		CB7820A61DC81D7600160213 /* UserUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820A51DC81D7600160213 /* UserUpdateRequest.swift */; };
+		CB7820A81DC81E8A00160213 /* UserCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820A71DC81E8A00160213 /* UserCreateRequest.swift */; };
+		CB7820AA1DC81FD800160213 /* StepsUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820A91DC81FD800160213 /* StepsUpdateRequest.swift */; };
+		CB7820AC1DC820BE00160213 /* StepsCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820AB1DC820BE00160213 /* StepsCreateRequest.swift */; };
 		CB9B7A6D1DAF7E0B00EEFD54 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A6C1DAF7E0B00EEFD54 /* ClockView.swift */; };
 		CB9B7A741DB06A3100EEFD54 /* NevoOTAControllerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A6F1DB06A3100EEFD54 /* NevoOTAControllerProfile.swift */; };
 		CB9B7A751DB06A3100EEFD54 /* NevoOTAModeProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A701DB06A3100EEFD54 /* NevoOTAModeProfile.swift */; };
@@ -239,7 +243,7 @@
 		CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6BD271CD099900009F39A /* ProfileViewController.swift */; };
 		CBE798151DC30350000B686E /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798141DC30350000B686E /* NetworkRequest.swift */; };
 		CBE798171DC306AC000B686E /* BaseNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798161DC306AC000B686E /* BaseNetworkRequest.swift */; };
-		CBE798191DC32087000B686E /* GetStepsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798181DC32087000B686E /* GetStepsRequest.swift */; };
+		CBE798191DC32087000B686E /* StepsGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE798181DC32087000B686E /* StepsGetRequest.swift */; };
 		CBE7981B1DC324FC000B686E /* BasePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7981A1DC324FC000B686E /* BasePostRequest.swift */; };
 		CBE7981D1DC32603000B686E /* BaseGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7981C1DC32603000B686E /* BaseGetRequest.swift */; };
 		CBE7981F1DC326D6000B686E /* BasePutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7981E1DC326D6000B686E /* BasePutRequest.swift */; };
@@ -487,6 +491,10 @@
 		CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkManager.swift; sourceTree = "<group>"; };
 		CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPasswordRequest.swift; sourceTree = "<group>"; };
 		CB66EDC21DC70636004768B7 /* ForgetPasswordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordRequest.swift; sourceTree = "<group>"; };
+		CB7820A51DC81D7600160213 /* UserUpdateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdateRequest.swift; sourceTree = "<group>"; };
+		CB7820A71DC81E8A00160213 /* UserCreateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateRequest.swift; sourceTree = "<group>"; };
+		CB7820A91DC81FD800160213 /* StepsUpdateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsUpdateRequest.swift; sourceTree = "<group>"; };
+		CB7820AB1DC820BE00160213 /* StepsCreateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsCreateRequest.swift; sourceTree = "<group>"; };
 		CB9B7A6C1DAF7E0B00EEFD54 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		CB9B7A6F1DB06A3100EEFD54 /* NevoOTAControllerProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAControllerProfile.swift; sourceTree = "<group>"; };
 		CB9B7A701DB06A3100EEFD54 /* NevoOTAModeProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTAModeProfile.swift; sourceTree = "<group>"; };
@@ -510,7 +518,7 @@
 		CBD6BD271CD099900009F39A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CBE798141DC30350000B686E /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		CBE798161DC306AC000B686E /* BaseNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNetworkRequest.swift; sourceTree = "<group>"; };
-		CBE798181DC32087000B686E /* GetStepsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStepsRequest.swift; sourceTree = "<group>"; };
+		CBE798181DC32087000B686E /* StepsGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsGetRequest.swift; sourceTree = "<group>"; };
 		CBE7981A1DC324FC000B686E /* BasePostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePostRequest.swift; sourceTree = "<group>"; };
 		CBE7981C1DC32603000B686E /* BaseGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGetRequest.swift; sourceTree = "<group>"; };
 		CBE7981E1DC326D6000B686E /* BasePutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePutRequest.swift; sourceTree = "<group>"; };
@@ -1463,10 +1471,14 @@
 		CB66EDBE1DC704D9004768B7 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				CBE798181DC32087000B686E /* GetStepsRequest.swift */,
+				CB66EDC21DC70636004768B7 /* ForgetPasswordRequest.swift */,
 				CB66EDB91DC70165004768B7 /* LoginRequest.swift */,
 				CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */,
-				CB66EDC21DC70636004768B7 /* ForgetPasswordRequest.swift */,
+				CBE798181DC32087000B686E /* StepsGetRequest.swift */,
+				CB7820A91DC81FD800160213 /* StepsUpdateRequest.swift */,
+				CB7820A71DC81E8A00160213 /* UserCreateRequest.swift */,
+				CB7820A51DC81D7600160213 /* UserUpdateRequest.swift */,
+				CB7820AB1DC820BE00160213 /* StepsCreateRequest.swift */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -1876,6 +1888,7 @@
 				CBB37AFC1D75331000A90920 /* CockroachesMasterChanged.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */,
+				CB7820A61DC81D7600160213 /* UserUpdateRequest.swift in Sources */,
 				CB66EDBA1DC70165004768B7 /* LoginRequest.swift in Sources */,
 				00982C521C868C8A003DA5E2 /* SetGoalRequest.swift in Sources */,
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
@@ -1910,9 +1923,10 @@
 				9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */,
 				00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */,
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
+				CB7820AA1DC81FD800160213 /* StepsUpdateRequest.swift in Sources */,
 				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
 				9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */,
-				CBE798191DC32087000B686E /* GetStepsRequest.swift in Sources */,
+				CBE798191DC32087000B686E /* StepsGetRequest.swift in Sources */,
 				CB9B7A761DB06A3100EEFD54 /* NevoOTAPacketProfile.swift in Sources */,
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
 				00982BED1C868C8A003DA5E2 /* LoginViewController.swift in Sources */,
@@ -1949,11 +1963,13 @@
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
 				00982C591C868C8A003DA5E2 /* IntelHex2BinConverter.m in Sources */,
 				CBE7981B1DC324FC000B686E /* BasePostRequest.swift in Sources */,
+				CB7820A81DC81E8A00160213 /* UserCreateRequest.swift in Sources */,
 				00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */,
 				CB3567D61DA3882D0049FBBC /* NormalPosition.swift in Sources */,
 				00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */,
 				9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */,
 				CB28AFDF1CE2E59B00639538 /* ContactsNotificationViewController.swift in Sources */,
+				CB7820AC1DC820BE00160213 /* StepsCreateRequest.swift in Sources */,
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,

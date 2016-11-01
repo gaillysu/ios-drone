@@ -231,22 +231,14 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         //create steps network global queue
         let queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
         let group = DispatchGroup()
-        
-        queue.async(group: group, execute: {
-            HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/update", data: ["steps": ["id":"\(cid)","uid": "\(profile.id)","steps": "\(value)","date": "\(key)","active_time":0]], completion: { (result) in
-                let json = JSON(result)
-                let message = json["message"].stringValue
-                let status = json["status"].intValue
-                
-                if status == 1{
-                    let date = json["steps"].dictionaryValue["date"]?.dictionaryValue["date"]?.stringValue
-                    XCGLogger.debug(date!+message+"cloud update succeed")
-                }else{
-                    XCGLogger.debug("\(key)"+message+"cloud update error")
-                }
-            })
-        })
-        
+    
+        StepsNetworkManager.updateSteps(id: cid, uid: profile.id, steps: value, date: key, activeTime: 0) { (updated) in
+            if updated {
+                XCGLogger.debug("Steps updated in the cloud.")
+            } else {
+                XCGLogger.debug("Could not update steps in the cloud.")
+            }
+        }
         
         group.notify(queue: queue, execute: {
             XCGLogger.default.debug("create steps completed")
@@ -261,20 +253,13 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
         let group = DispatchGroup()
         
-        queue.async(group: group, execute: {
-            HttpPostRequest.postRequest("http://drone.karljohnchow.com/steps/create", data: ["steps": ["uid": "\(profile.id)","steps": "\(value)","date": "\(key)","active_time":0]], completion: { (result) in
-                let json = JSON(result)
-                let message = json["message"].stringValue
-                let status = json["status"].intValue
-                
-                if status == 1{
-                    let date = json["steps"].dictionaryValue["date"]?.dictionaryValue["date"]?.stringValue
-                    XCGLogger.debug(date!+message+"cloud create succeed")
-                }else{
-                    XCGLogger.debug("\(key)"+message+"cloud create error")
-                }
-            })
-        })
+        StepsNetworkManager.createSteps(uid: profile.id, steps: value, date: key, activeTime: 0) { (success) in
+            if success{
+                XCGLogger.debug("Synced with cloud")
+            }else{
+                XCGLogger.debug("Could not sync with cloud")
+            }
+        }
         
         group.notify(queue: queue, execute: {
             XCGLogger.default.debug("create steps completed")

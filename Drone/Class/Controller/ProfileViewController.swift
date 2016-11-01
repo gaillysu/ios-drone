@@ -87,22 +87,19 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             loadingIndicator = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
             loadingIndicator.setTintColor(UIColor.getBaseColor())
             
-            HttpPostRequest.putRequest("http://drone.karljohnchow.com/user/update", data: ["user":["id":profile.id, "first_name":profile.first_name,"last_name":profile.last_name,"email":profile.email,"length":profile.length,"birthday":profile.birthday,"weight":profile.weight] as AnyObject]) { (result) in
-                let json = JSON(result)
-                let status = json["status"].intValue
-                let user:[String : JSON] = json["user"].dictionaryValue
-                if(status > 0 && user.count > 0) {
-                    self.loadingIndicator.dismiss(true, completion: {
-                        self.dismiss(animated: true, completion: nil)
+            UserNetworkManager.updateUser(profile: profile, completion: { (success, optionalProfile) in
+                if success, let _ = optionalProfile {
+                    self.loadingIndicator.dismiss(true, completion: { 
+                        self.dismiss(animated: true)
                     })
                 }else{
-                    XCGLogger.debug("Request error");
+                    XCGLogger.debug("Could not update profile.");
                     self.loadingIndicator.dismiss(true)
                     let banner:Banner = Banner(title: NSLocalizedString("not_update", comment: ""), subtitle: "", image: nil, backgroundColor: UIColor.getBaseColor(), didTapBlock: nil)
                     banner.dismissesOnTap = true
-                    banner.show(duration: 3)
+                    banner.show(duration: 2)
                 }
-            }
+            })
         }else{
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
