@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+
 class BasePutRequest: BaseNetworkRequest {
     override init(response: @escaping (_ bool:Bool, _ json:JSON?, _ error:Error?) -> Void) {
         super.init(response: response)

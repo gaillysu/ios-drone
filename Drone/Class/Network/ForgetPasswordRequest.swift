@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+// implementation
 class ForgetPasswordRequest: BasePostRequest {
     
     init(email:String, password:String, token:String, id:Int,  responseBlock: @escaping (_ bool:Bool, _ json:JSON?, _ error:Error?) -> Void) {

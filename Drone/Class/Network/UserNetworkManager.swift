@@ -22,7 +22,7 @@ class UserNetworkManager: NSObject {
         NetworkManager.execute(request: UserUpdateRequest(profile: profile, responseBlock: { (success, optionalJson, optionalError) in
             if success, let json = optionalJson{
                 let user:UserProfile = jsonToUser(user: json["user"])
-                
+                completion(true, user)
             }else{
                 completion(false, nil)
             }
