@@ -30,7 +30,6 @@ class MyDeviceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buyButton.titleLabel?.textAlignment = NSTextAlignment.center
         
     }
     

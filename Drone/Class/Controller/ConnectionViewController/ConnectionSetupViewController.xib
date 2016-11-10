@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectionSetupViewController" customModule="Drone" customModuleProvider="target">
@@ -36,11 +39,11 @@
                                 <constraint firstAttribute="height" constant="45" id="dOd-Lg-Y3z"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="35"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="G2P-Hv-zhn" firstAttribute="top" secondItem="8nZ-yR-qdN" secondAttribute="top" constant="20" id="PgZ-HY-TCu"/>
                         <constraint firstAttribute="height" constant="157" id="gzt-va-GBf"/>
@@ -57,26 +60,26 @@
                                 <constraint firstAttribute="height" constant="45" id="hYj-sQ-6wS"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="35"/>
-                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0P-Ti-0bi">
                             <rect key="frame" x="65" y="85" width="182" height="57"/>
-                            <color key="backgroundColor" red="0.81960784313725488" green="0.61568627450980395" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.81960784313725488" green="0.61568627450980395" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="182" id="P7Z-pv-YrY"/>
                                 <constraint firstAttribute="height" constant="57" id="oXV-1d-ElL"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <state key="normal" title="RETRY">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="d7g-wc-vvx"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="E0P-Ti-0bi" firstAttribute="top" secondItem="2FL-2D-6Am" secondAttribute="bottom" constant="20" id="4wI-Hl-ePz"/>
                         <constraint firstAttribute="trailing" secondItem="2FL-2D-6Am" secondAttribute="trailing" id="HOb-DY-jUh"/>
@@ -95,16 +98,16 @@
                                 <constraint firstAttribute="height" constant="45" id="dOo-WC-F10"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="35"/>
-                            <color key="textColor" red="0.81960784313725488" green="0.61568627450980395" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.81960784313725488" green="0.61568627450980395" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drone Watch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqm-Ys-Dfg">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dayton Watch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqm-Ys-Dfg">
                             <rect key="frame" x="0.0" y="75" width="312" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="LtF-PQ-KhF"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version： 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niu-vc-FuO">
@@ -113,11 +116,11 @@
                                 <constraint firstAttribute="height" constant="24" id="FjP-Hl-ZUs"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="niu-vc-FuO" firstAttribute="top" secondItem="Zqm-Ys-Dfg" secondAttribute="bottom" constant="1" id="6W6-Nj-IS6"/>
                         <constraint firstItem="Zqm-Ys-Dfg" firstAttribute="leading" secondItem="Pwv-Q2-2pc" secondAttribute="leading" id="Ldn-rt-bGJ"/>
@@ -143,7 +146,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="8nZ-yR-qdN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="31" id="2bA-DL-cLt"/>
                 <constraint firstItem="owU-NB-0hd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4IK-6h-bLL"/>
@@ -161,7 +164,6 @@
                 <constraint firstAttribute="trailing" secondItem="owU-NB-0hd" secondAttribute="trailing" constant="71" id="s4t-gf-hvE"/>
                 <constraint firstItem="owU-NB-0hd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="71" id="z4O-wh-dkC"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="407.5" y="350.5"/>
         </view>
     </objects>
