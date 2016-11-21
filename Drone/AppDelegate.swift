@@ -548,7 +548,8 @@
       }
       
       func setupResponseTimer(_ userInfo:Any?) {
-         self.responseTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(noResponseAction(_:)), userInfo: userInfo, repeats: false)
+         //not response send timer
+         self.responseTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(noResponseAction(_:)), userInfo: userInfo, repeats: false)
       }
       
       func releaseResponseTimer() {
