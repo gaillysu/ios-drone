@@ -18,7 +18,7 @@ class UpdateNotificationRequest: NevoRequest {
 
     //Update Commands
     class func HEADER() -> UInt8 {
-        return 0xB
+        return 0x0B
     }
 
     init(operation:Int,package:String) {

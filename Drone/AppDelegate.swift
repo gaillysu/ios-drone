@@ -74,9 +74,11 @@
          config.deleteRealmIfMigrationNeeded = true
          Realm.Configuration.defaultConfiguration = config
          realm = try! Realm()
-         //         worldclockDatabaseHelper = WorldClockDatabaseHelper()
          
-         
+         let sanbos:SandboxManager = SandboxManager()
+         let res:Bool = sanbos.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
+         let replyString = res ? "Success":"fail"
+         log.debug("copy to file \(replyString)")
          DispatchQueue.global(qos: .background).async {
             WorldClockDatabaseHelper().setup()
          }
