@@ -45,20 +45,25 @@ class SandboxManager: NSObject {
     func copyDictFileToSandBox(folderName:String,fileName:String)->Bool {
         let fileResources = AppTheme.GET_FIRMWARE_FILES(folderName)
         if fileResources.count > 0 {
-            let documentPath:String = self.documentPath().appending("/\(projectName)/\(fileName)")
+            let documentPath:String = self.documentPath().appending("/\(projectName)/")
             let url:URL = fileResources[0] as! URL
-            let notificationDictionary:NSDictionary = NSDictionary(contentsOf: url)!
+            let localDict:NSDictionary = NSDictionary(contentsOf: url)!
             let fileManager:FileManager  = FileManager.default;
             if !fileManager.isExecutableFile(atPath: documentPath) {
-                return notificationDictionary.write(toFile: documentPath, atomically: true)
+                try! fileManager.createDirectory(atPath: documentPath, withIntermediateDirectories: true, attributes: nil)
+                do {
+                    try fileManager.copyItem(atPath: url.path, toPath: documentPath+fileName)
+                    return true;
+                } catch let error as NSError {
+                    NSLog("copyItem error:%@", error)
+                    return false
+                }
             }else{
-                let pacth:String = fileResources[0] as! String
-                let localDict:NSDictionary = NSDictionary(contentsOfFile: pacth)!
                 let sandBoxDict:NSDictionary = self.readDataWithName(type: "",fileName: fileName) as! NSDictionary
                 let sandBoxVersion:String = sandBoxDict.object(forKey: "Version") as! String
                 let localVersion:String = localDict.object(forKey: "Version") as! String
                 if sandBoxVersion.toDouble() < localVersion.toDouble() {
-                    return notificationDictionary.write(toFile: documentPath, atomically: true)
+                    return localDict.write(toFile: documentPath, atomically: true)
                 }else{
                     XCGLogger.default.debug("本地文件是最新的,不需要写入沙盒")
                     return false;
@@ -81,5 +86,12 @@ class SandboxManager: NSObject {
         }
         return NSDictionary.init(contentsOfFile: path)!
         
+    }
+    
+    func saveDataWithName(saveData:Any,fileName:String)->Bool {
+        
+        let path = documentPath().appending("/\(projectName)/\(fileName)")
+        let localDict:NSDictionary = saveData as! NSDictionary
+        return localDict.write(toFile: path, atomically: true)
     }
 }

@@ -15,12 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OKm-J3-IpK">
                         <rect key="frame" x="258" y="9" width="51" height="31"/>
                         <color key="onTintColor" red="0.36470588235294116" green="0.26666666666666666" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <connections>
+                            <action selector="notificationSwicthAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="WVl-nW-CuX"/>
+                        </connections>
                     </switch>
                 </subviews>
                 <constraints>
@@ -28,6 +31,9 @@
                     <constraint firstItem="OKm-J3-IpK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GTA-cI-3dX"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="notificationSwicth" destination="OKm-J3-IpK" id="Mjd-Fu-hjA"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

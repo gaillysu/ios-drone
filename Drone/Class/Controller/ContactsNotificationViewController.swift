@@ -20,7 +20,8 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     @IBOutlet var tableView: UITableView!
     let peoplePicker:ABPeoplePickerNavigationController = ABPeoplePickerNavigationController()
     let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
-    var contactsFilterArray:[String] = []
+    fileprivate var contactsFilterArray:[String] = []
+    fileprivate var contactsFilterDict:[String:Any] = [:]
         //[["Calls":"com.apple.mobilephone"],["Calendar":"com.apple.mobilecal"],["Messaging":"com.apple.MoileSMS"],["Email":"com.apple.mobilemail"],["Social":["Facebook":"com.facebook.Facebook","QQ":"com.tencent.mqq","Twitter":"com.atebits.Tweetie2","Inastagram":"com.burbn.instagram","Messenger(Facebook)":"com.facebook.Messenger","WeChat":"com.tencent.xin"]]]
         //com.apple.calendar
 
@@ -42,7 +43,9 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         peoplePicker.peoplePickerDelegate = self;
         
         let contact:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
-        for key in contact.keys {
+        let notificationType:[String:Any] = contact["NotificationType"] as! [String:Any]
+        contactsFilterDict = notificationType
+        for key in notificationType.keys {
             contactsFilterArray.append(key)
         }
     }
@@ -135,20 +138,21 @@ extension ContactsNotificationViewController{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Notifications_Identifier", for: indexPath);
+        let cell:NotificationsViewCell = tableView.dequeueReusableCell(withIdentifier: "Notifications_Identifier", for: indexPath) as! NotificationsViewCell
         //cell.accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
-    
         cell.backgroundColor = UIColor.transparent()
         let selectedView:UIView = UIView()
         selectedView.backgroundColor = UIColor.getBaseColor()
         cell.selectedBackgroundView = selectedView
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
-        let keys:String = contactsFilterArray[indexPath.row]
-        cell.textLabel?.text = keys
         cell.separatorInset = UIEdgeInsets.zero
         cell.preservesSuperviewLayoutMargins = false
         cell.layoutMargins = UIEdgeInsets.zero
+        let keys:String = contactsFilterArray[indexPath.row]
+        cell.textLabel?.text = keys
+        cell.contactsFilterDict = contactsFilterDict[keys] as! [String : Any]?
+        cell.keys = keys
         return cell
     }
     
