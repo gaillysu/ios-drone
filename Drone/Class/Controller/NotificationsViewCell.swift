@@ -46,6 +46,13 @@ class NotificationsViewCell: UITableViewCell {
         var contact:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
         var notificationType:[String:Any] = contact["NotificationType"] as! [String:Any]
         var value:[String:Any] = contactsFilterDict!
+        
+        var operation:Int = 0
+        if sender.isOn {
+            operation = 1
+        }else{
+            operation = 2
+        }
         if value.count == 2 {
             value["state"] = sender.isOn
             if keys.length()>0 {
@@ -53,6 +60,9 @@ class NotificationsViewCell: UITableViewCell {
                 contact["NotificationType"] = notificationType
                 let res:Bool = SandboxManager().saveDataWithName(saveData: contact, fileName: "NotificationTypeFile.plist")
             }
+            let packageName:String = value["bundleId"] as! String
+            let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
+            AppDelegate.getAppDelegate().sendRequest(updateRequest)
         }else{
             for (key,value1) in value{
                 var value2:[String:Any] = value1 as! [String:Any]

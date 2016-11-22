@@ -130,6 +130,7 @@
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
+		61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */; };
 		61D4709B1DE2A6D800620BD0 /* NotificationsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */; };
 		61D4709C1DE2A6D800620BD0 /* NotificationsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */; };
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
@@ -410,6 +411,7 @@
 		00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate-Extension.swift"; sourceTree = "<group>"; };
 		61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewCell.swift; sourceTree = "<group>"; };
 		61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewCell.xib; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
@@ -688,6 +690,7 @@
 				00982CE71C86A350003DA5E2 /* Resources */,
 				00982A971C868C89003DA5E2 /* Class */,
 				00982A691C868B15003DA5E2 /* AppDelegate.swift */,
+				61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */,
 				00982CDB1C868E0B003DA5E2 /* Drone-Bridging-Header.h */,
 				00982A701C868B15003DA5E2 /* Assets.xcassets */,
 				00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */,
@@ -1959,6 +1962,7 @@
 				CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */,
 				9E01092B1D73CB7D00AA3551 /* PhysioDeviceViewController.swift in Sources */,
+				61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */,
 				00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */,
 				00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */,
 				9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */,

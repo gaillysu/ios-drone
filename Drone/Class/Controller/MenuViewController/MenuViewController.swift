@@ -39,7 +39,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppDelegate.getAppDelegate().startConnect()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
