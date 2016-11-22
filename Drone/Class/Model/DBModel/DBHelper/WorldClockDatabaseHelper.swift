@@ -66,7 +66,7 @@ class WorldClockDatabaseHelper: NSObject {
                                     }
                                 }
                                 try! realm.write({
-                                    realm.add(city)
+                                    realm.add(city, update: true)
                                     addedCities.append(city)
                                 })
                                 
