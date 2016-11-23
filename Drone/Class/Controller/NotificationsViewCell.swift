@@ -58,22 +58,37 @@ class NotificationsViewCell: UITableViewCell {
             if keys.length()>0 {
                 notificationType[keys] = value
                 contact["NotificationType"] = notificationType
-                let res:Bool = SandboxManager().saveDataWithName(saveData: contact, fileName: "NotificationTypeFile.plist")
+                _ = SandboxManager().saveDataWithName(saveData: contact, fileName: "NotificationTypeFile.plist")
             }
             let packageName:String = value["bundleId"] as! String
             let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
             AppDelegate.getAppDelegate().sendRequest(updateRequest)
         }else{
+            let queue = TaskQueue()
             for (key,value1) in value{
                 var value2:[String:Any] = value1 as! [String:Any]
                 value2["state"] = sender.isOn
                 value[key] = value2
-                NSLog("value2:%@", value2)
+                let packageName:String = value2["bundleId"] as! String
+                queue.tasks += {[weak self] result, next in
+                    guard let `self` = self else {return}
+                    let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
+                    AppDelegate.getAppDelegate().sendRequest(updateRequest)
+                    self.delay(seconds: 1) {
+                        next(nil)
+                    }
+                }
             }
+            queue.run()
+            
             notificationType[keys] = value
             contact["NotificationType"] = notificationType
-            let res:Bool = SandboxManager().saveDataWithName(saveData: contact, fileName: "NotificationTypeFile.plist")
+            _ = SandboxManager().saveDataWithName(saveData: contact, fileName: "NotificationTypeFile.plist")
         }
+    }
+    
+    func delay(seconds:Double, completion: @escaping ()-> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
     }
     
     func setSwicth(on:Bool) {

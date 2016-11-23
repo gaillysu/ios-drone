@@ -30,7 +30,7 @@ class UpdateNotificationRequest: NevoRequest {
 
     override func getRawDataEx() -> NSArray {
         let hexArray:[UInt8] = NSData2Bytes(mPackage.data(using: String.Encoding.utf8)!)
-        var values1 :[UInt8] = [UpdateNotificationRequest.HEADER(),UInt8(mOperation&0xFF),UInt8(mPackageLength&0xFF),UInt8(hexArray.count&0xFF)]+hexArray
+        var values1 :[UInt8] = [UpdateNotificationRequest.HEADER(),UInt8(mOperation&0xFF),UInt8(mPackageLength&0xFF)]+hexArray
         
         var valueArray:[UInt8] = []
         var dataArray:[Data] = []

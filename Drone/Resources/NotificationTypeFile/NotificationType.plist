@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Version</key>
-	<string>0.1</string>
+	<string>0.2</string>
 	<key>NotificationType</key>
 	<dict>
 		<key>Calls</key>
@@ -23,7 +23,7 @@
 		<key>iMessenger</key>
 		<dict>
 			<key>bundleId</key>
-			<string>com.apple.MoileSMS</string>
+			<string>com.apple.MobileSMS</string>
 			<key>state</key>
 			<false/>
 		</dict>

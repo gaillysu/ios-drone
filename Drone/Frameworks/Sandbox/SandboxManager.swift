@@ -63,7 +63,7 @@ class SandboxManager: NSObject {
                 let sandBoxVersion:String = sandBoxDict.object(forKey: "Version") as! String
                 let localVersion:String = localDict.object(forKey: "Version") as! String
                 if sandBoxVersion.toDouble() < localVersion.toDouble() {
-                    return localDict.write(toFile: documentPath, atomically: true)
+                    return localDict.write(toFile: documentPath+"/"+fileName, atomically: true)
                 }else{
                     XCGLogger.default.debug("本地文件是最新的,不需要写入沙盒")
                     return false;
