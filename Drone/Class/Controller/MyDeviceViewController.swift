@@ -53,7 +53,7 @@ class MyDeviceViewController: BaseViewController {
             viewControllers[0].leftRightButtonsNeeded = false;
             let options = PagingMenuOptions(controllers: viewControllers)
             let pagingMenuController = PagingMenuController(options: options)
-            pagingMenuController.view.frame = CGRect(x: 0, y: 64, width: UIScreen.main.bounds.width, height: self.noDeviceView.frame.size.height-64)
+            pagingMenuController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.noDeviceView.frame.size.height)
             addChildViewController(pagingMenuController)
             view.addSubview(pagingMenuController.view)
             pagingMenuController.didMove(toParentViewController: self)
