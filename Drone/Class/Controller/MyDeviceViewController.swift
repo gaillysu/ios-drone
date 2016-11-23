@@ -8,6 +8,7 @@
 
 import Foundation
 import PagingMenuController
+import SnapKit
 
 class MyDeviceViewController: BaseViewController {
     @IBOutlet weak var devicesView: UIView!
@@ -52,10 +53,13 @@ class MyDeviceViewController: BaseViewController {
             viewControllers[0].leftRightButtonsNeeded = false;
             let options = PagingMenuOptions(controllers: viewControllers)
             let pagingMenuController = PagingMenuController(options: options)
-            pagingMenuController.view.frame = CGRect(x: 0, y: -50, width: UIScreen.main.bounds.width, height: self.devicesView.frame.size.height+50)
+            pagingMenuController.view.frame = CGRect(x: 0, y: -64, width: UIScreen.main.bounds.width, height: self.devicesView.frame.size.height+50)
             addChildViewController(pagingMenuController)
             view.addSubview(pagingMenuController.view)
             pagingMenuController.didMove(toParentViewController: self)
+            pagingMenuController.view.snp.makeConstraints { (make) -> Void in
+                make.top.equalTo(self.view).offset(0)
+            }
             self.noDeviceView.isHidden = true
         }else{
             self.noDeviceView.isHidden = false
@@ -78,28 +82,14 @@ class MyDeviceViewController: BaseViewController {
         self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
     }
     
+    
     struct PagingMenuOptions: PagingMenuControllerCustomizable {
         var controllers:[UIViewController] = []
         init(controllers:[UIViewController]) {
             self.controllers = controllers
         }
         var componentType: ComponentType {
-            return .all(menuOptions: MenuOptions(amountOfItems:self.controllers.count), pagingControllers: controllers)
-        }
-    }
-
-    struct MenuItem1: MenuItemViewCustomizable{}
-    
-    struct MenuOptions: MenuViewCustomizable {
-        var menuOptions:[MenuItemViewCustomizable] = []
-        init(amountOfItems:Int) {
-            for _ in 0..<amountOfItems{
-                let menuItem = MenuItem1()
-                menuOptions.append(menuItem)
-            }
-        }
-        var itemsOptions: [MenuItemViewCustomizable] {
-            return self.menuOptions
+            return .pagingController(pagingControllers: controllers)
         }
     }
 }
