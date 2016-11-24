@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="Drone" customModuleProvider="target">
@@ -51,12 +54,12 @@
                         <constraint firstAttribute="height" constant="23" id="wxX-uz-Q2r"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaA-Pa-aZT">
                     <rect key="frame" x="38" y="263" width="300" height="95"/>
-                    <color key="backgroundColor" red="0.87450987099999999" green="0.87450987099999999" blue="0.87450987099999999" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.84463787078857422" green="0.84461265802383423" blue="0.84462690353393555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="95" id="IUP-fK-piP"/>
                     </constraints>
@@ -72,7 +75,7 @@
                         <constraint firstAttribute="height" constant="30" id="DBD-qj-0m5"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDp-yz-ebe">
@@ -108,7 +111,7 @@
                         <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="DFC-dZ-Mqe"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drone_logo_black" translatesAutoresizingMaskIntoConstraints="NO" id="eZu-bU-F8m">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drone_logo" translatesAutoresizingMaskIntoConstraints="NO" id="eZu-bU-F8m">
                     <rect key="frame" x="56" y="123" width="263" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="AA3-NI-aTy"/>
@@ -116,7 +119,7 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="xBe-de-6hS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="55" id="1E4-pE-agj"/>
                 <constraint firstItem="yEX-7b-lNR" firstAttribute="leading" secondItem="jDp-yz-ebe" secondAttribute="trailing" constant="25" id="1nv-3r-TgJ"/>
@@ -143,12 +146,11 @@
                 <constraint firstItem="yEX-7b-lNR" firstAttribute="height" secondItem="hLA-KM-6CR" secondAttribute="height" id="z6W-pE-QM0"/>
                 <constraint firstAttribute="trailing" secondItem="rSD-t7-6t9" secondAttribute="trailing" constant="13" id="zDA-Sf-spe"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="232.5" y="370.5"/>
         </view>
     </objects>
     <resources>
-        <image name="drone_logo_black" width="284" height="45"/>
+        <image name="drone_logo" width="701" height="167"/>
         <image name="facebook" width="50" height="50"/>
         <image name="google+" width="50" height="50"/>
         <image name="left_back_BT" width="35" height="35"/>

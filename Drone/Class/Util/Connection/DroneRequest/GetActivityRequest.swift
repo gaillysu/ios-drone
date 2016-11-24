@@ -23,7 +23,6 @@ class GetActivityRequest: NevoRequest {
     }
     
     override func getRawDataEx() -> NSArray {
-        
         let values1 :[UInt8] = [0x80,GetActivityRequest.HEADER(),
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 

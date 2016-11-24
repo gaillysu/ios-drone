@@ -130,7 +130,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addWatchButton);
         
         var titleView : UIImageView
-        titleView = UIImageView(frame:CGRect(x: 0, y: 0, width: 50, height: 70))
+        titleView = UIImageView(frame:CGRect(x: 0, y: 0, width: 40, height: 30))
+        titleView.backgroundColor = UIColor.clear
         titleView.contentMode = .scaleAspectFit
         titleView.image = UIImage(named: "drone_logo")
         self.navigationItem.titleView = titleView

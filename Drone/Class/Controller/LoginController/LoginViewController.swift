@@ -124,10 +124,6 @@ class LoginViewController: UIViewController {
                 if success, let unpackedProfile = profile{
                     XCGLogger.debug("Added? id = \(unpackedProfile.id)")
 
-                    if(UserGoal.getAll().count == 0){
-                        let goal:UserGoal = UserGoal(keyDict: ["goalSteps":10000,"label":" ","status":false])
-                        goal.add({ (id, completion) in})
-                    }
                     
                     StepsNetworkManager.stepsForPeriod(uid: unpackedProfile.id, startDate: Date(), endDate: (Date() - 30.days), completion: { result in
                         print("results = \(result.requestSuccess)")
@@ -143,6 +139,11 @@ class LoginViewController: UIViewController {
                     }
                 }
             })
+            
+            if(UserGoal.getAll().count == 0){
+                let goal:UserGoal = UserGoal(keyDict: ["goalSteps":10000,"label":" ","status":false])
+                goal.add({ (id, completion) in})
+            }
         }else{
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
