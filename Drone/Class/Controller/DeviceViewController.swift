@@ -53,7 +53,6 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     override func viewDidLayoutSubviews() {
         deviceTableView.sectionHeaderHeight = 254
         deviceTableView.isScrollEnabled = false
-        //deviceTableView.rowHeight =
         deviceTableView.reloadData()
     }
     

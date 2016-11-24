@@ -39,7 +39,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppDelegate.getAppDelegate().startConnect()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
@@ -247,23 +246,24 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func createToServerData(_ key:String,value:String) {
         let userProfle:NSArray = UserProfile.getAll()
-        let profile:UserProfile = userProfle.object(at: 0) as! UserProfile
-        
-        //create steps network global queue
-        let queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
-        let group = DispatchGroup()
-        
-        StepsNetworkManager.createSteps(uid: profile.id, steps: value, date: key, activeTime: 0) { (success) in
-            if success{
-                XCGLogger.debug("Synced with cloud")
-            }else{
-                XCGLogger.debug("Could not sync with cloud")
+        if userProfle.count>0 {
+            let profile:UserProfile = userProfle.object(at: 0) as! UserProfile
+            //create steps network global queue
+            let queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
+            let group = DispatchGroup()
+            
+            StepsNetworkManager.createSteps(uid: profile.id, steps: value, date: key, activeTime: 0) { (success) in
+                if success{
+                    XCGLogger.debug("Synced with cloud")
+                }else{
+                    XCGLogger.debug("Could not sync with cloud")
+                }
             }
+            
+            group.notify(queue: queue, execute: {
+                XCGLogger.default.debug("create steps completed")
+            })
         }
-        
-        group.notify(queue: queue, execute: {
-            XCGLogger.default.debug("create steps completed")
-        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

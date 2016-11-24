@@ -130,6 +130,14 @@
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
+		61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */; };
+		61D4709B1DE2A6D800620BD0 /* NotificationsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */; };
+		61D4709C1DE2A6D800620BD0 /* NotificationsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */; };
+		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
+		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
+		61D470AE1DE2F18C00620BD0 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470A81DE2F18B00620BD0 /* Double+Extension.swift */; };
+		61D470B01DE2F18C00620BD0 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470AA1DE2F18C00620BD0 /* Int+Extension.swift */; };
+		61D470B11DE2F18C00620BD0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470AB1DE2F18C00620BD0 /* String+Extension.swift */; };
 		9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109201D73C73F00AA3551 /* AddInstructionViewController.swift */; };
 		9E0109231D73C73F00AA3551 /* AddInstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E0109211D73C73F00AA3551 /* AddInstructionViewController.xib */; };
 		9E0109261D73C85D00AA3551 /* DoExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109241D73C85D00AA3551 /* DoExerciseViewController.swift */; };
@@ -403,6 +411,14 @@
 		00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate-Extension.swift"; sourceTree = "<group>"; };
+		61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewCell.swift; sourceTree = "<group>"; };
+		61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewCell.xib; sourceTree = "<group>"; };
+		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
+		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
+		61D470A81DE2F18B00620BD0 /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		61D470AA1DE2F18C00620BD0 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		61D470AB1DE2F18C00620BD0 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9E0109201D73C73F00AA3551 /* AddInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInstructionViewController.swift; sourceTree = "<group>"; };
 		9E0109211D73C73F00AA3551 /* AddInstructionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddInstructionViewController.xib; sourceTree = "<group>"; };
 		9E0109241D73C85D00AA3551 /* DoExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoExerciseViewController.swift; sourceTree = "<group>"; };
@@ -674,6 +690,7 @@
 				00982CE71C86A350003DA5E2 /* Resources */,
 				00982A971C868C89003DA5E2 /* Class */,
 				00982A691C868B15003DA5E2 /* AppDelegate.swift */,
+				61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */,
 				00982CDB1C868E0B003DA5E2 /* Drone-Bridging-Header.h */,
 				00982A701C868B15003DA5E2 /* Assets.xcassets */,
 				00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */,
@@ -1102,6 +1119,8 @@
 		00982B541C868C89003DA5E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61D470A51DE2F18B00620BD0 /* Global */,
+				61D4709D1DE2E06600620BD0 /* Sandbox */,
 				008AEF141D25FFB200B9E4D0 /* TaskQueue */,
 				00982BD01C868C89003DA5E2 /* NevoBT */,
 			);
@@ -1123,6 +1142,7 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61D470A01DE2E47E00620BD0 /* NotificationTypeFile */,
 				9E1535801D5C20A500CB6A01 /* Worldclock */,
 				005699DA1CD0673D0097938E /* localTimeZone */,
 				00982CEF1C86A350003DA5E2 /* image */,
@@ -1206,6 +1226,24 @@
 				C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61D4709D1DE2E06600620BD0 /* Sandbox */ = {
+			isa = PBXGroup;
+			children = (
+				61D4709E1DE2E07700620BD0 /* SandboxManager.swift */,
+			);
+			path = Sandbox;
+			sourceTree = "<group>";
+		};
+		61D470A51DE2F18B00620BD0 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				61D470A81DE2F18B00620BD0 /* Double+Extension.swift */,
+				61D470AA1DE2F18C00620BD0 /* Int+Extension.swift */,
+				61D470AB1DE2F18C00620BD0 /* String+Extension.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 		9E01091C1D73C6CB00AA3551 /* DoExerciseViewController */ = {
@@ -1421,6 +1459,8 @@
 			children = (
 				CB28AFDD1CE2E59B00639538 /* ContactsNotificationViewController.swift */,
 				CB28AFDE1CE2E59B00639538 /* ContactsNotificationViewController.xib */,
+				61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */,
+				61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */,
 			);
 			name = ContactsNotificationViewController;
 			sourceTree = "<group>";
@@ -1757,6 +1797,7 @@
 				006F94301CCA0C320073C150 /* white_background.png in Resources */,
 				008845EB1CF6A4D5006EA77F /* CheckEmailController.xib in Resources */,
 				9E455E171CD5B95900F79356 /* DeviceTableViewCell.xib in Resources */,
+				61D4709C1DE2A6D800620BD0 /* NotificationsViewCell.xib in Resources */,
 				008845E61CF69F67006EA77F /* ForgetPasswordController.xib in Resources */,
 				9E0109271D73C85D00AA3551 /* DoExerciseViewController.xib in Resources */,
 				CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */,
@@ -1773,6 +1814,7 @@
 				CBB37AF81D751B1100A90920 /* PhysioDeviceHeader.xib in Resources */,
 				9EA1C9A51D7935D30012C988 /* DoExerciseHeader.xib in Resources */,
 				CBB37B041D757DEB00A90920 /* AddInstructionHeader.xib in Resources */,
+				61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				009201DD1CBE2B6600C51707 /* WelcomeViewController.xib in Resources */,
 			);
@@ -1873,6 +1915,7 @@
 				00982BF31C868C8A003DA5E2 /* MyNevoView.swift in Sources */,
 				008845E51CF69F67006EA77F /* ForgetPasswordController.swift in Sources */,
 				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
+				61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				CBE7981F1DC326D6000B686E /* BasePutRequest.swift in Sources */,
 				0064B2FB1D0665CE0032EF61 /* SetStepsToWatchReuqest.swift in Sources */,
@@ -1882,6 +1925,7 @@
 				00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */,
 				CB17DD2E1DA38D7000730273 /* StandingLeftPosition.swift in Sources */,
 				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
+				61D470AE1DE2F18C00620BD0 /* Double+Extension.swift in Sources */,
 				00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				CB9B7A771DB06A3100EEFD54 /* NevoOTARequest.swift in Sources */,
@@ -1918,6 +1962,7 @@
 				CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */,
 				9E01092B1D73CB7D00AA3551 /* PhysioDeviceViewController.swift in Sources */,
+				61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */,
 				00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */,
 				00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */,
 				9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */,
@@ -1949,6 +1994,7 @@
 				00982C501C868C8A003DA5E2 /* GetSystemStatus.swift in Sources */,
 				00982BF51C868C8A003DA5E2 /* DeviceScannerView.swift in Sources */,
 				009201DC1CBE2B6600C51707 /* WelcomeViewController.swift in Sources */,
+				61D470B11DE2F18C00620BD0 /* String+Extension.swift in Sources */,
 				9E15358B1D5C2E2800CB6A01 /* WorldClockDatabaseHelper.swift in Sources */,
 				0043FBE61CA131BD00638BD1 /* UpdateNotificationRequest.swift in Sources */,
 				0015CA501CBC835900820B1F /* UserDevice.swift in Sources */,
@@ -1975,6 +2021,7 @@
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
 				9E72CED51D70077A00817914 /* PhysioViewController.swift in Sources */,
 				0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */,
+				61D4709B1DE2A6D800620BD0 /* NotificationsViewCell.swift in Sources */,
 				CB17DD2F1DA38D7000730273 /* StandingRightPosition.swift in Sources */,
 				CB5754261D76BA260008E0EC /* CoordinateSerie.swift in Sources */,
 				0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */,
@@ -1996,6 +2043,7 @@
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
 				9E9051A71D94C18A00ED140D /* MovementMatchingAlgorithm.swift in Sources */,
+				61D470B01DE2F18C00620BD0 /* Int+Extension.swift in Sources */,
 				008845EA1CF6A4D5006EA77F /* CheckEmailController.swift in Sources */,
 				0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */,
 				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,

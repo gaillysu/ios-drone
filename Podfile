@@ -22,8 +22,7 @@ target 'Drone' do
     pod 'MSCellAccessory'
     pod 'IQKeyboardManagerSwift', '4.0.6'
     pod 'RealmSwift'
-    
-
+    pod 'SnapKit', '~> 3.0.1'
 end
 
 post_install do |installer|

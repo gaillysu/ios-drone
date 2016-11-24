@@ -20,8 +20,11 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     @IBOutlet var tableView: UITableView!
     let peoplePicker:ABPeoplePickerNavigationController = ABPeoplePickerNavigationController()
     let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
-    var contactsFilterArray:NSArray = ["Go to your notifications!","Go to your blocked callers!"]
-        //ContactsFilter.getAll()
+    fileprivate var contactsFilterArray:[String] = []
+    fileprivate var contactsFilterDict:[String:Any] = [:]
+        //[["Calls":"com.apple.mobilephone"],["Calendar":"com.apple.mobilecal"],["Messaging":"com.apple.MoileSMS"],["Email":"com.apple.mobilemail"],["Social":["Facebook":"com.facebook.Facebook","QQ":"com.tencent.mqq","Twitter":"com.atebits.Tweetie2","Inastagram":"com.burbn.instagram","Messenger(Facebook)":"com.facebook.Messenger","WeChat":"com.tencent.xin"]]]
+        //com.apple.calendar
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +38,16 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         header.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height)
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height))
         headerView.addSubview(header)
-        self.tableView.tableHeaderView = headerView
-
+        //self.tableView.tableHeaderView = headerView
+        self.tableView.register(UINib(nibName: "NotificationsViewCell", bundle: nil), forCellReuseIdentifier: "Notifications_Identifier")
         peoplePicker.peoplePickerDelegate = self;
+        
+        let contact:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
+        let notificationType:[String:Any] = contact["NotificationType"] as! [String:Any]
+        contactsFilterDict = notificationType
+        for key in notificationType.keys {
+            contactsFilterArray.append(key)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,88 +82,6 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
             view?.setTintColor(UIColor.getBaseColor())
             Timer.after(0.6.second) {
                 view?.dismiss(true)
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactsFilterArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
-        let button1 = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-            self.tableView(tableView, commit: .delete, forRowAt: indexPath)
-        })
-        button1.backgroundColor = UIColor.getTintColor()
-        return [button1]
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let contactsFilter:ContactsFilter = contactsFilterArray[(indexPath as NSIndexPath).row] as! ContactsFilter
-            _ = contactsFilter.remove()
-
-            self.contactsFilterArray = ContactsFilter.getAll();
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            // Delete worldclock at watch
-            if self.contactsFilterArray.count == 0 {
-                let request:SetContactsFilterRequest = SetContactsFilterRequest(contactsMode: 1, appNameMode: 1)
-                AppDelegate.getAppDelegate().sendContactsRequest(request,index: 0)
-                AppDelegate.getAppDelegate().sendIndex = {
-                    (index) -> Void in
-                    AppDelegate.getAppDelegate().log.debug("send Contacts\(index)")
-                }
-            }else{
-                let request:UpdateContactsFilterRequest = UpdateContactsFilterRequest(contact: contactsFilter.name, operation: 2, contactID: 0)
-                let requestArray:[Request] = [request]
-                AppDelegate.getAppDelegate().sendContactsRequest(request,index: 0)
-                AppDelegate.getAppDelegate().sendIndex = {
-                    (index) -> Void in
-                    if(index != requestArray.count ) {
-                        AppDelegate.getAppDelegate().log.debug("send Contacts\(index)")
-                        AppDelegate.getAppDelegate().sendContactsRequest(requestArray[index],index: index)
-                    }
-                }
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "identifier");
-        
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "identifier")
-            cell?.accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
-        }
-        let contact = contactsFilterArray[(indexPath as NSIndexPath).row] as! String
-        cell?.backgroundColor = UIColor.transparent()
-        cell?.textLabel?.textColor = UIColor.white
-        cell?.textLabel?.font = UIFont.systemFont(ofSize: 20)
-        cell?.textLabel?.text = contact
-        cell?.separatorInset = UIEdgeInsets.zero
-        cell?.preservesSuperviewLayoutMargins = false
-        cell?.layoutMargins = UIEdgeInsets.zero
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true);
-        var url:URL? = URL(string:"prefs:root=Phone&path=Blocked")
-        if (indexPath as NSIndexPath).row == 0 {
-            url = URL(string:"prefs:root=NOTIFICATIONS_ID")
-        }
-        
-        if UIApplication.shared.canOpenURL(url!) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url!)
             }
         }
     }
@@ -198,29 +126,49 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
         cantAddContactAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(cantAddContactAlert, animated: true, completion: nil)
     }
+}
+
+extension ContactsNotificationViewController{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contactsFilterArray.count
+    }
     
-    func peoplePickerNavigationController(_ peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
-        let name = ABRecordCopyCompositeName(person).takeRetainedValue()
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
     
-        let contact:ContactsFilter = ContactsFilter(keyDict: ["name":name])
-        contact.add { (id, completion) in
-            if(completion!) {
-                let request4:UpdateContactsFilterRequest = UpdateContactsFilterRequest(contact: contact.name, operation: 1, contactID: 3)
-                let request5:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.MobileSMS", operationMode: 1)
-                let request6:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilephone", operationMode: 1)
-                let request7:UpdateContactsApplicationsRequest = UpdateContactsApplicationsRequest(appPackage: "com.apple.mobilemail", operationMode: 1)
-                let requestArray:[Request] = [request4,request5,request6,request7]
-                AppDelegate.getAppDelegate().sendContactsRequest(request4,index: 0)
-                AppDelegate.getAppDelegate().sendIndex = {
-                    (index) -> Void in
-                    if(index != requestArray.count ) {
-                        AppDelegate.getAppDelegate().log.debug("send Contacts\(index)")
-                        AppDelegate.getAppDelegate().sendContactsRequest(requestArray[index],index: index)
-                    }
-                }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:NotificationsViewCell = tableView.dequeueReusableCell(withIdentifier: "Notifications_Identifier", for: indexPath) as! NotificationsViewCell
+        //cell.accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
+        cell.backgroundColor = UIColor.transparent()
+        let selectedView:UIView = UIView()
+        selectedView.backgroundColor = UIColor.getBaseColor()
+        cell.selectedBackgroundView = selectedView
+        cell.textLabel?.textColor = UIColor.white
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.preservesSuperviewLayoutMargins = false
+        cell.layoutMargins = UIEdgeInsets.zero
+        let keys:String = contactsFilterArray[indexPath.row]
+        cell.textLabel?.text = keys
+        cell.contactsFilterDict = contactsFilterDict[keys] as! [String : Any]?
+        cell.keys = keys
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true);
+        var url:URL? = URL(string:"prefs:root=Phone&path=Blocked")
+        if (indexPath as NSIndexPath).row == 0 {
+            url = URL(string:"prefs:root=NOTIFICATIONS_ID")
+        }
+        
+        if UIApplication.shared.canOpenURL(url!) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url!)
             }
         }
-        self.contactsFilterArray = ContactsFilter.getAll()
-        self.tableView.reloadData()
     }
 }

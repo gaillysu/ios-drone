@@ -24,7 +24,7 @@ class SetNotificationRequest: NevoRequest {
      - returns: 0xA
      */
     class func HEADER() -> UInt8 {
-        return 0xA
+        return 0x0A
     }
 
     init(mode:Int,force:Int) {

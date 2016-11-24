@@ -95,6 +95,9 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         stepsLabel.text = "0"
         
         self.getLoclSmallSyncData(nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate == Foundation.Date().beginningOfDay {
                 let stepsDict:[String:Int] = notification.object as! [String:Int]
@@ -136,6 +139,15 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
                 }
             }
         }
+        
+        self.bulidChart(didSelectedDate)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY)
+        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA)
+        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY)
+        invalidateTimer()
     }
     
     /**
@@ -155,18 +167,9 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
      Cannot be used in conjunction with 0 x14
      */
     func fireSmallSyncTimer() {
-        self.queryTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.bulidChart(didSelectedDate)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY)
-        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA)
-        SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY)
-        invalidateTimer()
+        if queryTimer == nil {
+            self.queryTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.queryStepsGoalAction(_:)), userInfo: nil, repeats: true)
+        }
     }
     
     func queryStepsGoalAction(_ timer:Timer) {
@@ -176,8 +179,8 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         
         if let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME) as? NSArray{
             if lastData.count > 0 {
-                let sendLastDate:Foundation.Date = lastData[0] as! Foundation.Date
-                let nowDate:Foundation.Date = Foundation.Date()
+                let sendLastDate:Date = lastData[0] as! Date
+                let nowDate:Date = Date()
                 let fiveMinutes:TimeInterval = 300
                 if (nowDate.timeIntervalSince1970-sendLastDate.timeIntervalSince1970)>=fiveMinutes {
                     self.delay(1.5) {
