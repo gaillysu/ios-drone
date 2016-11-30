@@ -141,7 +141,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
         let cell: DeviceTableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! DeviceTableViewCell
         cell.accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
         if (indexPath as NSIndexPath).row == 0 {
-            cell.titleLabel.text = "Contacts Notifications"
+            cell.titleLabel.text = "Notifications"
         }else if (indexPath as NSIndexPath).row == 1{
             cell.titleLabel.text = "Forget this watch"
         }

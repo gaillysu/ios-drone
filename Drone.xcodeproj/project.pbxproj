@@ -219,6 +219,7 @@
 		CB3567D61DA3882D0049FBBC /* NormalPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D51DA3882D0049FBBC /* NormalPosition.swift */; };
 		CB3567D81DA38A010049FBBC /* CockroachPositionCheckStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D71DA38A010049FBBC /* CockroachPositionCheckStrategy.swift */; };
 		CB3567DA1DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D91DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift */; };
+		CB464B6F1DED347B00480C08 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB464B6E1DED347B00480C08 /* MapKit.framework */; };
 		CB5754261D76BA260008E0EC /* CoordinateSerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5754251D76BA260008E0EC /* CoordinateSerie.swift */; };
 		CB66EDBA1DC70165004768B7 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDB91DC70165004768B7 /* LoginRequest.swift */; };
 		CB66EDBC1DC7033C004768B7 /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */; };
@@ -502,6 +503,7 @@
 		CB3567D51DA3882D0049FBBC /* NormalPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalPosition.swift; sourceTree = "<group>"; };
 		CB3567D71DA38A010049FBBC /* CockroachPositionCheckStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachPositionCheckStrategy.swift; sourceTree = "<group>"; };
 		CB3567D91DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachPositionXYZMatchStrategy.swift; sourceTree = "<group>"; };
+		CB464B6E1DED347B00480C08 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CB5754251D76BA260008E0EC /* CoordinateSerie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSerie.swift; sourceTree = "<group>"; };
 		CB66EDB91DC70165004768B7 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkManager.swift; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 				9E013D3D1D701ED60005DCF8 /* Realm.framework in Frameworks */,
 				9E013D3E1D701ED60005DCF8 /* RealmSwift.framework in Frameworks */,
 				00C085361D07B2F2004E58E8 /* MSCellAccessory.framework in Frameworks */,
+				CB464B6F1DED347B00480C08 /* MapKit.framework in Frameworks */,
 				00F132BA1CEC3EAB00CF8F6B /* CVCalendar.framework in Frameworks */,
 				00F132BB1CEC3EAB00CF8F6B /* SwiftyTimer.framework in Frameworks */,
 				9E455E211CD5C98200F79356 /* PagingMenuController.framework in Frameworks */,
@@ -1197,6 +1200,7 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB464B6E1DED347B00480C08 /* MapKit.framework */,
 				9E013D391D701ED60005DCF8 /* IQKeyboardManagerSwift.framework */,
 				9E013D3A1D701ED60005DCF8 /* Realm.framework */,
 				9E013D3B1D701ED60005DCF8 /* RealmSwift.framework */,
@@ -1724,7 +1728,7 @@
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

@@ -20,7 +20,7 @@
 			<key>state</key>
 			<false/>
 		</dict>
-		<key>iMessenger</key>
+		<key>(i)Message</key>
 		<dict>
 			<key>bundleId</key>
 			<string>com.apple.MobileSMS</string>

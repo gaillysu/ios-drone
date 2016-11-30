@@ -22,9 +22,6 @@ class ContactsNotificationViewController: BaseViewController, UITableViewDataSou
     let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
     fileprivate var contactsFilterArray:[String] = []
     fileprivate var contactsFilterDict:[String:Any] = [:]
-        //[["Calls":"com.apple.mobilephone"],["Calendar":"com.apple.mobilecal"],["Messaging":"com.apple.MoileSMS"],["Email":"com.apple.mobilemail"],["Social":["Facebook":"com.facebook.Facebook","QQ":"com.tencent.mqq","Twitter":"com.atebits.Tweetie2","Inastagram":"com.burbn.instagram","Messenger(Facebook)":"com.facebook.Messenger","WeChat":"com.tencent.xin"]]]
-        //com.apple.calendar
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
