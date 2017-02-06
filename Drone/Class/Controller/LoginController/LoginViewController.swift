@@ -12,7 +12,6 @@ import Crashlytics
 import BRYXBanner
 import UIColor_Hex_Swift
 import SwiftyJSON
-import Timepiece
 import MRProgress
 import XCGLogger
 

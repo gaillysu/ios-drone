@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Timepiece
+
 class TimeUtil: NSObject {
     class func getGmtOffSetForCity(_ city:String) -> Int{
         let now = Date()
@@ -21,10 +21,10 @@ class TimeUtil: NSObject {
             // not sure if this works
             let dateInCST = Calendar.current.date(from: cstComp)!
             
-            let timezone = dateInCST.timeZone
-            var secondsFromGMT = timezone.secondsFromGMT()
-        if timezone.isDaylightSavingTime() && !cst.isDaylightSavingTime(for: now) {
-            secondsFromGMT -= Int(timezone.daylightSavingTimeOffset())
+            let timezone = dateInCST.oldTimeZone
+            var secondsFromGMT = timezone.secondsFromGMT
+        if timezone.isDaylightSavingTime && !cst.isDaylightSavingTime(for: now) {
+            secondsFromGMT -= Int(timezone.daylightSavingTimeOffset)
         }
             let gmtOffSet:Int = Int(Float(secondsFromGMT)/(3600.0));
             return gmtOffSet

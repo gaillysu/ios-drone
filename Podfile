@@ -7,7 +7,6 @@ target 'Drone' do
     pod 'PagingMenuController', '~> 1.4.0'
     pod 'SwiftEventBus', :tag => '2.1.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
     pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
-    pod 'Timepiece'
     pod 'SMSegmentView', '~> 1.1'
     pod 'XCGLogger', :git => 'https://github.com/DaveWoodCom/XCGLogger.git', :branch => 'swift_3.0'
     pod 'SDCycleScrollView','~> 1.3'

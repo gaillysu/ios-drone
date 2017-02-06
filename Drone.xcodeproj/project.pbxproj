@@ -130,6 +130,14 @@
 		00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF401CACD82600CB9A15 /* BaseViewController.swift */; };
 		00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */; };
 		00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */; };
+		61078DC21E48249C00898A0D /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBA1E48249C00898A0D /* Duration.swift */; };
+		61078DC31E48249C00898A0D /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBB1E48249C00898A0D /* Int+Timepiece.swift */; };
+		61078DC41E48249C00898A0D /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBC1E48249C00898A0D /* NSCalendar+Timepiece.swift */; };
+		61078DC51E48249C00898A0D /* NSCalendarUnit+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBD1E48249C00898A0D /* NSCalendarUnit+Timepiece.swift */; };
+		61078DC61E48249C00898A0D /* NSDate+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBE1E48249C00898A0D /* NSDate+Timepiece.swift */; };
+		61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */; };
+		61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */; };
+		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
 		61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */; };
 		61D4709B1DE2A6D800620BD0 /* NotificationsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */; };
 		61D4709C1DE2A6D800620BD0 /* NotificationsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */; };
@@ -200,7 +208,6 @@
 		CB0B46B21CCF229400411997 /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A31CCF229400411997 /* SDCycleScrollView.framework */; };
 		CB0B46B31CCF229400411997 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A41CCF229400411997 /* SMSegmentView.framework */; };
 		CB0B46B41CCF229400411997 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A51CCF229400411997 /* SwiftEventBus.framework */; };
-		CB0B46B61CCF229400411997 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A71CCF229400411997 /* Timepiece.framework */; };
 		CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */; };
 		CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A91CCF229400411997 /* XCGLogger.framework */; };
 		CB17DD2D1DA38D7000730273 /* StandingPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD281DA38D7000730273 /* StandingPosition.swift */; };
@@ -412,6 +419,14 @@
 		00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61078DBA1E48249C00898A0D /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		61078DBB1E48249C00898A0D /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
+		61078DBC1E48249C00898A0D /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
+		61078DBD1E48249C00898A0D /* NSCalendarUnit+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendarUnit+Timepiece.swift"; sourceTree = "<group>"; };
+		61078DBE1E48249C00898A0D /* NSDate+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Timepiece.swift"; sourceTree = "<group>"; };
+		61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
+		61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
+		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
 		61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate-Extension.swift"; sourceTree = "<group>"; };
 		61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewCell.swift; sourceTree = "<group>"; };
 		61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewCell.xib; sourceTree = "<group>"; };
@@ -567,7 +582,6 @@
 				CB0B46B21CCF229400411997 /* SDCycleScrollView.framework in Frameworks */,
 				CB0B46B31CCF229400411997 /* SMSegmentView.framework in Frameworks */,
 				CB0B46B41CCF229400411997 /* SwiftEventBus.framework in Frameworks */,
-				CB0B46B61CCF229400411997 /* Timepiece.framework in Frameworks */,
 				CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */,
 				CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */,
 				007139661CD9E50600787CA2 /* MRProgress.framework in Frameworks */,
@@ -1122,6 +1136,7 @@
 		00982B541C868C89003DA5E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61078DB91E48249C00898A0D /* OldTimepiece */,
 				61D470A51DE2F18B00620BD0 /* Global */,
 				61D4709D1DE2E06600620BD0 /* Sandbox */,
 				008AEF141D25FFB200B9E4D0 /* TaskQueue */,
@@ -1230,6 +1245,21 @@
 				C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61078DB91E48249C00898A0D /* OldTimepiece */ = {
+			isa = PBXGroup;
+			children = (
+				61078DBA1E48249C00898A0D /* Duration.swift */,
+				61078DBB1E48249C00898A0D /* Int+Timepiece.swift */,
+				61078DBC1E48249C00898A0D /* NSCalendar+Timepiece.swift */,
+				61078DBD1E48249C00898A0D /* NSCalendarUnit+Timepiece.swift */,
+				61078DBE1E48249C00898A0D /* NSDate+Timepiece.swift */,
+				61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */,
+				61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */,
+				61078DC11E48249C00898A0D /* String+Timepiece.swift */,
+			);
+			path = OldTimepiece;
 			sourceTree = "<group>";
 		};
 		61D4709D1DE2E06600620BD0 /* Sandbox */ = {
@@ -1906,6 +1936,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */,
 				005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */,
 				9EA1C9A31D7935C50012C988 /* DoExerciseHeader.swift in Sources */,
 				CB3567D81DA38A010049FBBC /* CockroachPositionCheckStrategy.swift in Sources */,
@@ -1929,8 +1960,10 @@
 				00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */,
 				CB17DD2E1DA38D7000730273 /* StandingLeftPosition.swift in Sources */,
 				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
+				61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */,
 				61D470AE1DE2F18C00620BD0 /* Double+Extension.swift in Sources */,
 				00982BF11C868C8A003DA5E2 /* MyNevoHeaderView.swift in Sources */,
+				61078DC31E48249C00898A0D /* Int+Timepiece.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				CB9B7A771DB06A3100EEFD54 /* NevoOTARequest.swift in Sources */,
 				CBB37AFC1D75331000A90920 /* CockroachesMasterChanged.swift in Sources */,
@@ -1942,10 +1975,12 @@
 				00982C3F1C868C8A003DA5E2 /* BalloonMarker.swift in Sources */,
 				9EA1C9A81D7963D90012C988 /* NSDataExtension.swift in Sources */,
 				00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */,
+				61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */,
 				9E0109261D73C85D00AA3551 /* DoExerciseViewController.swift in Sources */,
 				9E0109311D741CEE00AA3551 /* CockRoachPacket.swift in Sources */,
 				CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */,
 				CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */,
+				61078DC61E48249C00898A0D /* NSDate+Timepiece.swift in Sources */,
 				CBE7981D1DC32603000B686E /* BaseGetRequest.swift in Sources */,
 				CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */,
 				CBE798241DC32CEC000B686E /* StepsNetworkManager.swift in Sources */,
@@ -1954,6 +1989,7 @@
 				CBE798151DC30350000B686E /* NetworkRequest.swift in Sources */,
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
+				61078DC21E48249C00898A0D /* Duration.swift in Sources */,
 				00982C391C868C8A003DA5E2 /* HttpPostRequest.swift in Sources */,
 				CB9B7A741DB06A3100EEFD54 /* NevoOTAControllerProfile.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
@@ -1972,6 +2008,7 @@
 				9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */,
 				00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */,
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
+				61078DC41E48249C00898A0D /* NSCalendar+Timepiece.swift in Sources */,
 				CB7820AA1DC81FD800160213 /* StepsUpdateRequest.swift in Sources */,
 				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
 				9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */,
@@ -2075,6 +2112,7 @@
 				9E2978711CDC3D5D00821704 /* WorldClock.swift in Sources */,
 				0043FBE41CA12A6D00638BD1 /* GetNotificationRequest.swift in Sources */,
 				00982C551C868C8A003DA5E2 /* SetWorldClockRequest.swift in Sources */,
+				61078DC51E48249C00898A0D /* NSCalendarUnit+Timepiece.swift in Sources */,
 				005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */,
 				9E69A2601CE3354D007501FF /* ContactsFilterModel.swift in Sources */,
 				00982C371C868C8A003DA5E2 /* TestMode.swift in Sources */,

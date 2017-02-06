@@ -179,9 +179,10 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         
         let cell:WorldClockCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! WorldClockCell
         cell.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: cell.frame.height)
-        if ((indexPath as NSIndexPath).row == 0){
+        if (indexPath.row == 0){
             let now = Date()
-            let timeZoneNameData = now.timeZone.identifier.characters.split{$0 == "/"}.map(String.init)
+            
+            let timeZoneNameData = DateFormatter().timeZone.identifier.characters.split{$0 == "/"}.map(String.init)
             if timeZoneNameData.count >= 2 {
                 cell.cityLabel.text = timeZoneNameData[1].replacingOccurrences(of: "_", with: " ")
             }
