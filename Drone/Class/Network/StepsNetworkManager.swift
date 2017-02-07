@@ -96,6 +96,7 @@ class StepsNetworkManager: NSObject {
                             let steps:UserSteps = value3 as! UserSteps
                             steps.steps = Int(minuteValue as! NSNumber)
                             steps.cid = cid
+                            steps.syncnext = true
                             let dbUpdateStatus = steps.update()
                             if successSynced {
                                 successSynced = dbUpdateStatus

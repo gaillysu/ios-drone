@@ -138,6 +138,7 @@
 		61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */; };
 		61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */; };
 		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
+		6136473C1E497847007D58BD /* StepsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6136473B1E497847007D58BD /* StepsManager.swift */; };
 		61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */; };
 		61D4709B1DE2A6D800620BD0 /* NotificationsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */; };
 		61D4709C1DE2A6D800620BD0 /* NotificationsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */; };
@@ -335,7 +336,7 @@
 		00982A851C868B16003DA5E2 /* DroneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DroneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A891C868B16003DA5E2 /* DroneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneUITests.swift; sourceTree = "<group>"; };
 		00982A8B1C868B16003DA5E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00982AAA1C868C89003DA5E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		00982AAA1C868C89003DA5E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LoginViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00982AAB1C868C89003DA5E2 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		00982AB01C868C89003DA5E2 /* MyNevoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNevoHeaderView.swift; sourceTree = "<group>"; };
 		00982AB11C868C89003DA5E2 /* MyNevoHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNevoHeaderView.xib; sourceTree = "<group>"; };
@@ -347,7 +348,7 @@
 		00982ACA1C868C89003DA5E2 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		00982AD11C868C89003DA5E2 /* queryTableviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = queryTableviewCell.swift; sourceTree = "<group>"; };
 		00982AD21C868C89003DA5E2 /* queryTableviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = queryTableviewCell.xib; sourceTree = "<group>"; };
-		00982ADC1C868C89003DA5E2 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
+		00982ADC1C868C89003DA5E2 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StepsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00982AE01C868C89003DA5E2 /* StepGoalSetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepGoalSetingView.swift; sourceTree = "<group>"; };
 		00982AE11C868C89003DA5E2 /* StepHistoricalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepHistoricalView.swift; sourceTree = "<group>"; };
 		00982AE51C868C89003DA5E2 /* AddWorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockViewController.swift; path = Controller/WorldClockController/AddWorldClockViewController.swift; sourceTree = "<group>"; };
@@ -416,7 +417,7 @@
 		00F132B81CEC3EAB00CF8F6B /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/CVCalendar.framework"; sourceTree = "<group>"; };
 		00F132B91CEC3EAB00CF8F6B /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-aagwvdgzymkmuzeicnzzeusdebqd/Build/Products/Debug-iphonesimulator/SwiftyTimer.framework"; sourceTree = "<group>"; };
 		00F1AF401CACD82600CB9A15 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		00F1AF4C1CACD9A100CB9A15 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MenuViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00F1AF4D1CACD9A100CB9A15 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		3551B5D0AAFC39213D5071A3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61078DBA1E48249C00898A0D /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
@@ -427,6 +428,7 @@
 		61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		6136473B1E497847007D58BD /* StepsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsManager.swift; sourceTree = "<group>"; };
 		61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate-Extension.swift"; sourceTree = "<group>"; };
 		61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewCell.swift; sourceTree = "<group>"; };
 		61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewCell.xib; sourceTree = "<group>"; };
@@ -556,7 +558,7 @@
 		CBE7981C1DC32603000B686E /* BaseGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGetRequest.swift; sourceTree = "<group>"; };
 		CBE7981E1DC326D6000B686E /* BasePutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePutRequest.swift; sourceTree = "<group>"; };
 		CBE798211DC328A9000B686E /* BaseDeleteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDeleteRequest.swift; sourceTree = "<group>"; };
-		CBE798231DC32CEC000B686E /* StepsNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsNetworkManager.swift; sourceTree = "<group>"; };
+		CBE798231DC32CEC000B686E /* StepsNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StepsNetworkManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CBE798251DC32F01000B686E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -753,6 +755,7 @@
 		00982A981C868C89003DA5E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6136473A1E49782A007D58BD /* StepsManager */,
 				9E01091D1D73C6DC00AA3551 /* AddInstructionViewController */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
@@ -1260,6 +1263,14 @@
 				61078DC11E48249C00898A0D /* String+Timepiece.swift */,
 			);
 			path = OldTimepiece;
+			sourceTree = "<group>";
+		};
+		6136473A1E49782A007D58BD /* StepsManager */ = {
+			isa = PBXGroup;
+			children = (
+				6136473B1E497847007D58BD /* StepsManager.swift */,
+			);
+			name = StepsManager;
 			sourceTree = "<group>";
 		};
 		61D4709D1DE2E06600620BD0 /* Sandbox */ = {
@@ -2120,6 +2131,7 @@
 				00982C491C868C8A003DA5E2 /* GetActivityRequest.swift in Sources */,
 				9E455E0D1CD5A16000F79356 /* MyDeviceViewController.swift in Sources */,
 				0043FBEA1CA1404500638BD1 /* GetContactsFilterRequest.swift in Sources */,
+				6136473C1E497847007D58BD /* StepsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
