@@ -9,10 +9,8 @@
 import UIKit
 import CircleProgressView
 import Charts
-import Timepiece
 import UIColor_Hex_Swift
 import CVCalendar
-import Timepiece
 import SwiftEventBus
 import XCGLogger
 import MRProgress
@@ -284,9 +282,8 @@ extension StepsViewController {
         var lastTimeframe:Int = 0
         var max:Double = 0
         for i in 0 ..< 24 {
-            let dayDate:Foundation.Date = todayDate
-            
-            let dayTime:TimeInterval = Foundation.Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
+            let dayDate:Date = todayDate
+            let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
             let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600-1)") //one hour = 3600s
             
             var hourData:Double = 0
@@ -369,7 +366,7 @@ extension StepsViewController {
         lastMonthChart.drawSettings(lastMonthChart.xAxis, yAxis: lastMonthChart.leftAxis, rightAxis: lastMonthChart.rightAxis)
         
         let oneWeekSeconds:Double = 604800
-        let oneDaySeconds:Double = 86400
+        let oneDaySeconds:Double  = 86400
         
         var thisWeekSteps:Int = 0
         var thisWeekTime:Int = 0
@@ -413,11 +410,11 @@ extension StepsViewController {
         
         var lastWeekSteps:Int = 0
         var lastWeekTime:Int = 0
+        let beginningOfWeek:TimeInterval = todayDate.beginningOfWeek.timeIntervalSince1970
         for i in 0 ..< 7 {
-            let dayTimeInterval:TimeInterval = todayDate.beginningOfWeek.timeIntervalSince1970+(oneDaySeconds*Double(i))-oneWeekSeconds
-            let dayDate:Foundation.Date = Foundation.Date(timeIntervalSince1970: dayTimeInterval)
-            let dayTime:TimeInterval = Foundation.Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
-            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+oneDaySeconds-1)")
+            let dayTimeInterval:TimeInterval = (beginningOfWeek+(oneDaySeconds*Double(i)))-oneWeekSeconds
+            let dayDate:Date = Date(timeIntervalSince1970: dayTimeInterval)
+            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayDate.beginningOfDay.timeIntervalSince1970) AND \(dayDate.endOfDay.timeIntervalSince1970)")
             var hourData:Double = 0
             for userSteps in hours {
                 let hSteps:UserSteps = userSteps as! UserSteps
@@ -428,10 +425,7 @@ extension StepsViewController {
             }
             lastWeekSteps+=Int(hourData)
             
-            let formatter = DateFormatter()
-            formatter.dateFormat = "M/dd"
-            let dateString = "\(formatter.string(from: dayDate))"
-            
+            let dateString = dayDate.stringFromFormat("M/dd")
             lastWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
         }
         

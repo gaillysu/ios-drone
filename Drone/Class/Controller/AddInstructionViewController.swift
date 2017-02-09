@@ -10,7 +10,6 @@ import RealmSwift
 import MRProgress
 import BRYXBanner
 import SwiftEventBus
-import Timepiece
 import UIKit
 import SceneKit
 

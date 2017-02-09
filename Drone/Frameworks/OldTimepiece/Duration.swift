@@ -14,7 +14,7 @@ prefix func - (duration: Duration) -> (Duration) {
 
 open class Duration {
     open let value: Int
-    open let unit: NSCalendar.Unit
+    open let unit: Calendar.Component
     fileprivate let calendar = Calendar.current
     
     /**
@@ -25,7 +25,7 @@ open class Duration {
     }
     
     open func ago(from date: Date) -> Date {
-        return calendar.dateByAddingDuration(-self, toDate: date, options: .searchBackwards)!
+        return calendar.dateByAdding(duration: -self, to: date)!
     }
     
     /**
@@ -36,7 +36,7 @@ open class Duration {
     }
     
     open func later(from date: Date) -> Date {
-        return calendar.dateByAddingDuration(self, toDate: date, options: .searchBackwards)!
+        return calendar.dateByAdding(duration: self, to: date)!
     }
     
     /**
@@ -48,7 +48,7 @@ open class Duration {
         return self.unit.interval * TimeInterval(self.value)
     }()
     
-    public init(value: Int, unit: NSCalendar.Unit) {
+    public init(value: Int, unit: Calendar.Component) {
         self.value = value
         self.unit = unit
     }

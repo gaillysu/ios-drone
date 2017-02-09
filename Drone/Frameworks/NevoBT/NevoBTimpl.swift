@@ -415,8 +415,10 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         {
             
             mManager?.cancelPeripheralConnection(peripheral)
-            if peripheral.services![0].uuid == cockRoach.service {
-                mDelegate?.connectionStateChanged(false, fromAddress: peripheral.identifier, deviceType: NevoBTImpl.TYPE.DRONE)
+            if let service = peripheral.services {
+                if service[0].uuid == cockRoach.service {
+                    mDelegate?.connectionStateChanged(false, fromAddress: peripheral.identifier, deviceType: NevoBTImpl.TYPE.DRONE)
+                }
             }
         }
         setPeripheral(nil)

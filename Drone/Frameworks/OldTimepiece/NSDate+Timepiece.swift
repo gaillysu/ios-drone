@@ -12,21 +12,15 @@ import ObjectiveC
 // MARK: - Calculation
 
 public func + (lhs: Date, rhs: Duration) -> Date {
-    return Calendar.current.dateByAddingDuration(rhs, toDate: lhs, options: .searchBackwards)!
+    return Calendar.current.dateByAdding(duration: rhs, to: lhs)!
 }
 
 public func - (lhs: Date, rhs: Duration) -> Date {
-    return Calendar.current.dateByAddingDuration(-rhs, toDate: lhs, options: .searchBackwards)!
+    return Calendar.current.dateByAdding(duration: -rhs, to: lhs)!
 }
 
 public func - (lhs: Date, rhs: Date) -> TimeInterval {
     return lhs.timeIntervalSince(rhs)
-}
-
-// MARK: - Equatable
-
-public func < (lhs: Date, rhs: Date) -> Bool {
-    return lhs.compare(rhs) == .orderedAscending
 }
 
 // MARK: -
@@ -66,16 +60,16 @@ public extension Date {
         return components.second!
     }
     
-    var timeZone: TimeZone {
-        return objc_getAssociatedObject(self, &AssociatedKeys.TimeZone) as? TimeZone ?? calendar.timeZone
+    var oldTimeZone: NSTimeZone {
+        return objc_getAssociatedObject(self, &AssociatedKeys.TimeZone) as? NSTimeZone ?? calendar.timeZone as NSTimeZone
     }
     
     fileprivate var components: DateComponents {
-        return (calendar as NSCalendar).components([.year, .month, .weekday, .day, .hour, .minute, .second], from: self)
+        return (calendar as NSCalendar).components([.year, .month, .day, .weekday, .hour, .minute, .second], from: self)
     }
     
-    fileprivate var calendar: Calendar {
-        return Calendar.current
+    fileprivate var calendar: NSCalendar {
+        return NSCalendar.current as NSCalendar
     }
     
     // MARK: - Initialize
@@ -125,7 +119,22 @@ public extension Date {
         return self - (self.weekday - weekday).days
     }
     
-
+    /**
+        Initialize a date by changing the time zone of receiver.
+    */
+    func change(timeZone: NSTimeZone) -> Date {
+        let originalTimeZone = calendar.timeZone
+        calendar.timeZone = timeZone as TimeZone
+        
+        let newDate = calendar.date(from: components)!
+        newDate.calendar.timeZone = timeZone as TimeZone
+        objc_setAssociatedObject(newDate, &AssociatedKeys.TimeZone, timeZone, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
+        calendar.timeZone = originalTimeZone
+        
+        return newDate
+    }
+    
     // MARK: - Initialize a date at beginning/end of each units
     
     var beginningOfYear: Date {
@@ -139,7 +148,7 @@ public extension Date {
         return change(day: 1, hour: 0, minute: 0, second: 0)
     }
     var endOfMonth: Date {
-        let lastDay = (calendar as NSCalendar).range(of: .day, in: .month, for: self).length
+        let lastDay = (calendar as Calendar).range(of: Calendar.Component.day, in: Calendar.Component.month, for: self)?.count
         return change(day: lastDay, hour: 23, minute: 59, second: 59)
     }
 	
@@ -178,6 +187,30 @@ public extension Date {
     func stringFromFormat(_ format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+    
+    func stringFromFormat(_ format: String, locale: Locale) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = locale
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+    
+    // MARK: - Localized time
+        
+    func localizedTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        return formatter.string(from: self)
+    }
+    
+    func localizedTime(_ locale: Locale) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = locale
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
         return formatter.string(from: self)
     }
 }
