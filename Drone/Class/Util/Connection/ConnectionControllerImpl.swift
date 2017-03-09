@@ -96,10 +96,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
             mNevoBT?.scanAndConnect()
         }
     }
-    
-    func connectCockroach(){
-        mNevoBT?.connectCockroach()
-    }
+     
     
     /**
      See NevoBTDelegate
@@ -127,9 +124,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
                         
                     })
                 }
-            }else if deviceType == NevoBTImpl.TYPE.COCKROACH {
-                mDelegate?.cockRoachesChanged(isConnected, fromAddress: fromAddress)
-            }
+            } 
             
         }
         
@@ -210,10 +205,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     func packetReceived(_ packet:RawPacket, fromAddress : UUID) {
         mDelegate?.packetReceived(packet)
     }
-    
-    func cockRoachDataReceived(_ coordinates: CoordinateSet, withAddress address: UUID, forBabyCockroach number: Int) {
-        mDelegate?.cockRoachDataReceived(coordinates, withAddress: address, forBabyCockroach: number)
-    }
+     
     
     /**
      See ConnectionController
@@ -241,10 +233,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
             mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
         }
     }
-    
-    func cockRoachesChanged(_ isConnected: Bool, fromAddress: UUID!) {
-        mDelegate?.cockRoachesChanged(isConnected, fromAddress: fromAddress)
-    }
+     
     
     func getOTAMode() -> Bool {
         if let profile = mNevoBT?.getProfile() {

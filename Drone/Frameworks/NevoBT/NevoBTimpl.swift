@@ -76,9 +76,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
      Basic constructor, just a Delegate handsake
      */
-    
-    fileprivate let cockRoach = (service: CBUUID(string:"F0BA3000-6CAC-4C99-9089-4B0A1DF45002"), characteristics: CBUUID(string:"F0BA5001-6CAC-4C99-9089-4B0A1DF45002"))
-    
+     
     init(externalDelegate : NevoBTDelegate, acceptableDevice : Profile) {
         super.init()
         mDelegate = externalDelegate
@@ -178,10 +176,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                     //device info service
                 else if (aService.uuid == CBUUID(string: "0000180a-0000-1000-8000-00805f9b34fb")) {
                     aPeripheral.discoverCharacteristics(nil,for:aService)
-                }else if(aService.uuid == cockRoach.service){
-                    print("Hello! ")
-                    // this service characteristic is for the cockroach.
-                    aPeripheral.discoverCharacteristics(nil,for:aService)
                 }
             }
         } else {
@@ -210,11 +204,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 } else if(aChar.uuid==CBUUID(string: "00002a28-0000-1000-8000-00805f9b34fb")) {
                     mPeripheral?.readValue(for: aChar)
                     XCGLogger.debug("read software version char : \(aChar.uuid.uuidString)")
-                } else if(aChar.uuid==cockRoach.characteristics) {
-                    // this characteristic is for the cockroach.
-                    mDelegate?.connectionStateChanged(true, fromAddress: aPeripheral.identifier, deviceType: NevoBTImpl.TYPE.COCKROACH)
-                    aPeripheral.setNotifyValue(true, for: aChar)
-                    
                 }
             }
         } else {
@@ -252,10 +241,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             }
             XCGLogger.debug("get software version char : \(characteristic.uuid.uuidString), version : \(self.mSoftwareVersion)")
             mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.softdevice, version: mSoftwareVersion)
-        } else if(characteristic.uuid==cockRoach.characteristics) {
-            let coordinateSet = CoordinateSet()
-            coordinateSet.setValues(CockRoachPacket(data: characteristic.value!))
-            mDelegate?.cockRoachDataReceived(coordinateSet, withAddress: aPeripheral.identifier,forBabyCockroach: coordinateSet.sensorNumber)
         }
     }
     
@@ -274,12 +259,8 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         mDelegate?.receivedRSSIValue(RSSI)
     }
     
-    func connectCockroach(){
-        self.scanAndConnectForAddreses(uuid: [cockRoach.service]);
-    }
-    
     func scanAndConnect(){
-        self.scanAndConnectForAddreses(uuid: [mProfile!.CONTROL_SERVICE, cockRoach.service]);
+        self.scanAndConnectForAddreses(uuid: [mProfile!.CONTROL_SERVICE]);
     }
     
     // MARK: - NevoBT
@@ -416,9 +397,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             
             mManager?.cancelPeripheralConnection(peripheral)
             if let service = peripheral.services {
-                if service[0].uuid == cockRoach.service {
-                    mDelegate?.connectionStateChanged(false, fromAddress: peripheral.identifier, deviceType: NevoBTImpl.TYPE.DRONE)
-                }
+                mDelegate?.connectionStateChanged(false, fromAddress: peripheral.identifier, deviceType: NevoBTImpl.TYPE.DRONE)
             }
         }
         setPeripheral(nil)

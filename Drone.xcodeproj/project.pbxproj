@@ -147,20 +147,10 @@
 		61D470AE1DE2F18C00620BD0 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470A81DE2F18B00620BD0 /* Double+Extension.swift */; };
 		61D470B01DE2F18C00620BD0 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470AA1DE2F18C00620BD0 /* Int+Extension.swift */; };
 		61D470B11DE2F18C00620BD0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470AB1DE2F18C00620BD0 /* String+Extension.swift */; };
-		9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109201D73C73F00AA3551 /* AddInstructionViewController.swift */; };
-		9E0109231D73C73F00AA3551 /* AddInstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E0109211D73C73F00AA3551 /* AddInstructionViewController.xib */; };
-		9E0109261D73C85D00AA3551 /* DoExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109241D73C85D00AA3551 /* DoExerciseViewController.swift */; };
-		9E0109271D73C85D00AA3551 /* DoExerciseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E0109251D73C85D00AA3551 /* DoExerciseViewController.xib */; };
-		9E01092B1D73CB7D00AA3551 /* PhysioDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109291D73CB7D00AA3551 /* PhysioDeviceViewController.swift */; };
-		9E01092C1D73CB7D00AA3551 /* PhysioDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E01092A1D73CB7D00AA3551 /* PhysioDeviceViewController.xib */; };
-		9E01092F1D7417B800AA3551 /* CoordinateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01092E1D7417B800AA3551 /* CoordinateSet.swift */; };
 		9E0109311D741CEE00AA3551 /* CockRoachPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109301D741CEE00AA3551 /* CockRoachPacket.swift */; };
 		9E013D3C1D701ED60005DCF8 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E013D391D701ED60005DCF8 /* IQKeyboardManagerSwift.framework */; };
 		9E013D3D1D701ED60005DCF8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E013D3A1D701ED60005DCF8 /* Realm.framework */; };
 		9E013D3E1D701ED60005DCF8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E013D3B1D701ED60005DCF8 /* RealmSwift.framework */; };
-		9E013D421D70229B0005DCF8 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E013D411D70229B0005DCF8 /* Instruction.swift */; };
-		9E013D441D7022AA0005DCF8 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E013D431D7022AA0005DCF8 /* Exercise.swift */; };
-		9E013D5D1D70356D0005DCF8 /* PhysioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E013D5C1D70356D0005DCF8 /* PhysioViewModel.swift */; };
 		9E1535831D5C20CA00CB6A01 /* timezones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535811D5C20CA00CB6A01 /* timezones.json */; };
 		9E1535841D5C20CA00CB6A01 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535821D5C20CA00CB6A01 /* cities.json */; };
 		9E1535871D5C21A300CB6A01 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1535861D5C21A300CB6A01 /* City.swift */; };
@@ -169,7 +159,6 @@
 		9E1999541CE4328800C1D967 /* ContactsNotificationHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1999531CE4328800C1D967 /* ContactsNotificationHeader.xib */; };
 		9E2978711CDC3D5D00821704 /* WorldClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2978701CDC3D5D00821704 /* WorldClock.swift */; };
 		9E2978731CDC40D000821704 /* WorldClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2978721CDC40D000821704 /* WorldClockModel.swift */; };
-		9E2BACC21D98CA1800EB1903 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2BACC11D98CA1800EB1903 /* Vector.swift */; };
 		9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */; };
 		9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */; };
 		9E455E0D1CD5A16000F79356 /* MyDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E455E0C1CD5A16000F79356 /* MyDeviceViewController.swift */; };
@@ -184,14 +173,6 @@
 		9E526F3F1CDC891D0060F63F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E526F3E1CDC891D0060F63F /* StringExtension.swift */; };
 		9E62A1A91CDB1E150098C39B /* AddWorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E62A1A81CDB1E150098C39B /* AddWorldClockViewController.xib */; };
 		9E69A2601CE3354D007501FF /* ContactsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */; };
-		9E72CED51D70077A00817914 /* PhysioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E72CED31D70077A00817914 /* PhysioViewController.swift */; };
-		9E72CED61D70077A00817914 /* PhysioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E72CED41D70077A00817914 /* PhysioViewController.xib */; };
-		9E80C3D51D93B35D005F7940 /* PhysioCellGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3D41D93B35D005F7940 /* PhysioCellGenerator.swift */; };
-		9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3D81D93B469005F7940 /* BabyCockroach.swift */; };
-		9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E80C3DB1D93B4BB005F7940 /* MasterCockroach.swift */; };
-		9E9051A71D94C18A00ED140D /* MovementMatchingAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9051A61D94C18A00ED140D /* MovementMatchingAlgorithm.swift */; };
-		9EA1C9A31D7935C50012C988 /* DoExerciseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */; };
-		9EA1C9A51D7935D30012C988 /* DoExerciseHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */; };
 		9EA1C9A81D7963D90012C988 /* NSDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */; };
 		9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEB22061D5D6CB50099A621 /* WorldClockUtil.swift */; };
 		9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF7EEA41CD89DA7009B0928 /* ProfileTableViewCell.swift */; };
@@ -211,24 +192,10 @@
 		CB0B46B41CCF229400411997 /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A51CCF229400411997 /* SwiftEventBus.framework */; };
 		CB0B46B71CCF229400411997 /* UIColor_Hex_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */; };
 		CB0B46B81CCF229400411997 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46A91CCF229400411997 /* XCGLogger.framework */; };
-		CB17DD2D1DA38D7000730273 /* StandingPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD281DA38D7000730273 /* StandingPosition.swift */; };
-		CB17DD2E1DA38D7000730273 /* StandingLeftPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD291DA38D7000730273 /* StandingLeftPosition.swift */; };
-		CB17DD2F1DA38D7000730273 /* StandingRightPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD2A1DA38D7000730273 /* StandingRightPosition.swift */; };
-		CB17DD301DA38D7000730273 /* StandingUpsideDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD2B1DA38D7000730273 /* StandingUpsideDown.swift */; };
-		CB17DD311DA38D7000730273 /* UpsideDownPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17DD2C1DA38D7000730273 /* UpsideDownPosition.swift */; };
 		CB28AFDB1CE2C34300639538 /* ContactsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB28AFDA1CE2C34300639538 /* ContactsFilter.swift */; };
 		CB28AFDF1CE2E59B00639538 /* ContactsNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB28AFDD1CE2E59B00639538 /* ContactsNotificationViewController.swift */; };
 		CB28AFE01CE2E59B00639538 /* ContactsNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB28AFDE1CE2E59B00639538 /* ContactsNotificationViewController.xib */; };
-		CB3533C31D9B617100E5DE40 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3533C21D9B617100E5DE40 /* Human.swift */; };
-		CB3533EB1D9B646B00E5DE40 /* HumanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3533E91D9B646B00E5DE40 /* HumanViewController.swift */; };
-		CB3533EC1D9B646B00E5DE40 /* HumanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB3533EA1D9B646B00E5DE40 /* HumanViewController.xib */; };
-		CB3533EE1D9B67D100E5DE40 /* Human.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3533ED1D9B67D100E5DE40 /* Human.scnassets */; };
-		CB3567D41DA387E90049FBBC /* CockroachPositionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D31DA387E90049FBBC /* CockroachPositionProtocol.swift */; };
-		CB3567D61DA3882D0049FBBC /* NormalPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D51DA3882D0049FBBC /* NormalPosition.swift */; };
-		CB3567D81DA38A010049FBBC /* CockroachPositionCheckStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D71DA38A010049FBBC /* CockroachPositionCheckStrategy.swift */; };
-		CB3567DA1DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3567D91DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift */; };
 		CB464B6F1DED347B00480C08 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB464B6E1DED347B00480C08 /* MapKit.framework */; };
-		CB5754261D76BA260008E0EC /* CoordinateSerie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5754251D76BA260008E0EC /* CoordinateSerie.swift */; };
 		CB66EDBA1DC70165004768B7 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDB91DC70165004768B7 /* LoginRequest.swift */; };
 		CB66EDBC1DC7033C004768B7 /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */; };
 		CB66EDC11DC705CF004768B7 /* RequestPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */; };
@@ -244,10 +211,6 @@
 		CB9B7A771DB06A3100EEFD54 /* NevoOTARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B7A721DB06A3100EEFD54 /* NevoOTARequest.swift */; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
 		CBA51D101CC8C0B700B7A5EE /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */; };
-		CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */; };
-		CBB37AF81D751B1100A90920 /* PhysioDeviceHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBB37AF71D751B1100A90920 /* PhysioDeviceHeader.xib */; };
-		CBB37AFC1D75331000A90920 /* CockroachesMasterChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AFB1D75331000A90920 /* CockroachesMasterChanged.swift */; };
-		CBB37AFF1D7534C200A90920 /* CockroachMasterDataReceived.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37AFE1D7534C200A90920 /* CockroachMasterDataReceived.swift */; };
 		CBB37B021D757B7500A90920 /* AddInstructionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB37B011D757B7500A90920 /* AddInstructionHeader.swift */; };
 		CBB37B041D757DEB00A90920 /* AddInstructionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBB37B031D757DEB00A90920 /* AddInstructionHeader.xib */; };
 		CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */; };
@@ -437,20 +400,10 @@
 		61D470A81DE2F18B00620BD0 /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		61D470AA1DE2F18C00620BD0 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		61D470AB1DE2F18C00620BD0 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		9E0109201D73C73F00AA3551 /* AddInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInstructionViewController.swift; sourceTree = "<group>"; };
-		9E0109211D73C73F00AA3551 /* AddInstructionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddInstructionViewController.xib; sourceTree = "<group>"; };
-		9E0109241D73C85D00AA3551 /* DoExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoExerciseViewController.swift; sourceTree = "<group>"; };
-		9E0109251D73C85D00AA3551 /* DoExerciseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoExerciseViewController.xib; sourceTree = "<group>"; };
-		9E0109291D73CB7D00AA3551 /* PhysioDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioDeviceViewController.swift; sourceTree = "<group>"; };
-		9E01092A1D73CB7D00AA3551 /* PhysioDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhysioDeviceViewController.xib; sourceTree = "<group>"; };
-		9E01092E1D7417B800AA3551 /* CoordinateSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSet.swift; sourceTree = "<group>"; };
 		9E0109301D741CEE00AA3551 /* CockRoachPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockRoachPacket.swift; sourceTree = "<group>"; };
 		9E013D391D701ED60005DCF8 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-dexrbxtshdsjmvbquhcxrfpwxdeo/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"; sourceTree = "<group>"; };
 		9E013D3A1D701ED60005DCF8 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-dexrbxtshdsjmvbquhcxrfpwxdeo/Build/Products/Debug-iphonesimulator/Realm/Realm.framework"; sourceTree = "<group>"; };
 		9E013D3B1D701ED60005DCF8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/Drone-dexrbxtshdsjmvbquhcxrfpwxdeo/Build/Products/Debug-iphonesimulator/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
-		9E013D411D70229B0005DCF8 /* Instruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
-		9E013D431D7022AA0005DCF8 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
-		9E013D5C1D70356D0005DCF8 /* PhysioViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioViewModel.swift; sourceTree = "<group>"; };
 		9E1535811D5C20CA00CB6A01 /* timezones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timezones.json; sourceTree = "<group>"; };
 		9E1535821D5C20CA00CB6A01 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		9E1535861D5C21A300CB6A01 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -459,7 +412,6 @@
 		9E1999531CE4328800C1D967 /* ContactsNotificationHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsNotificationHeader.xib; sourceTree = "<group>"; };
 		9E2978701CDC3D5D00821704 /* WorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClock.swift; sourceTree = "<group>"; };
 		9E2978721CDC40D000821704 /* WorldClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockModel.swift; sourceTree = "<group>"; };
-		9E2BACC11D98CA1800EB1903 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
 		9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisStepsChartView.swift; sourceTree = "<group>"; };
 		9E455E0C1CD5A16000F79356 /* MyDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDeviceViewController.swift; sourceTree = "<group>"; };
@@ -474,14 +426,6 @@
 		9E526F3E1CDC891D0060F63F /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		9E62A1A81CDB1E150098C39B /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddWorldClockViewController.xib; sourceTree = "<group>"; };
 		9E69A25F1CE3354D007501FF /* ContactsFilterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsFilterModel.swift; sourceTree = "<group>"; };
-		9E72CED31D70077A00817914 /* PhysioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhysioViewController.swift; path = PhysioViewController/PhysioViewController.swift; sourceTree = "<group>"; };
-		9E72CED41D70077A00817914 /* PhysioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhysioViewController.xib; path = PhysioViewController/PhysioViewController.xib; sourceTree = "<group>"; };
-		9E80C3D41D93B35D005F7940 /* PhysioCellGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioCellGenerator.swift; sourceTree = "<group>"; };
-		9E80C3D81D93B469005F7940 /* BabyCockroach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BabyCockroach.swift; sourceTree = "<group>"; };
-		9E80C3DB1D93B4BB005F7940 /* MasterCockroach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterCockroach.swift; sourceTree = "<group>"; };
-		9E9051A61D94C18A00ED140D /* MovementMatchingAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementMatchingAlgorithm.swift; sourceTree = "<group>"; };
-		9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoExerciseHeader.swift; sourceTree = "<group>"; };
-		9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoExerciseHeader.xib; sourceTree = "<group>"; };
 		9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtension.swift; sourceTree = "<group>"; };
 		9EEB22061D5D6CB50099A621 /* WorldClockUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockUtil.swift; sourceTree = "<group>"; };
 		9EF7EEA41CD89DA7009B0928 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -504,24 +448,10 @@
 		CB0B46A71CCF229400411997 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/Timepiece.framework"; sourceTree = "<group>"; };
 		CB0B46A81CCF229400411997 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_Hex_Swift.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/UIColor_Hex_Swift.framework"; sourceTree = "<group>"; };
 		CB0B46A91CCF229400411997 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphonesimulator/XCGLogger.framework"; sourceTree = "<group>"; };
-		CB17DD281DA38D7000730273 /* StandingPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingPosition.swift; sourceTree = "<group>"; };
-		CB17DD291DA38D7000730273 /* StandingLeftPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingLeftPosition.swift; sourceTree = "<group>"; };
-		CB17DD2A1DA38D7000730273 /* StandingRightPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingRightPosition.swift; sourceTree = "<group>"; };
-		CB17DD2B1DA38D7000730273 /* StandingUpsideDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingUpsideDown.swift; sourceTree = "<group>"; };
-		CB17DD2C1DA38D7000730273 /* UpsideDownPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpsideDownPosition.swift; sourceTree = "<group>"; };
 		CB28AFDA1CE2C34300639538 /* ContactsFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsFilter.swift; sourceTree = "<group>"; };
 		CB28AFDD1CE2E59B00639538 /* ContactsNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsNotificationViewController.swift; sourceTree = "<group>"; };
 		CB28AFDE1CE2E59B00639538 /* ContactsNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsNotificationViewController.xib; sourceTree = "<group>"; };
-		CB3533C21D9B617100E5DE40 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
-		CB3533E91D9B646B00E5DE40 /* HumanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumanViewController.swift; sourceTree = "<group>"; };
-		CB3533EA1D9B646B00E5DE40 /* HumanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HumanViewController.xib; sourceTree = "<group>"; };
-		CB3533ED1D9B67D100E5DE40 /* Human.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Human.scnassets; sourceTree = "<group>"; };
-		CB3567D31DA387E90049FBBC /* CockroachPositionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachPositionProtocol.swift; sourceTree = "<group>"; };
-		CB3567D51DA3882D0049FBBC /* NormalPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalPosition.swift; sourceTree = "<group>"; };
-		CB3567D71DA38A010049FBBC /* CockroachPositionCheckStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachPositionCheckStrategy.swift; sourceTree = "<group>"; };
-		CB3567D91DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachPositionXYZMatchStrategy.swift; sourceTree = "<group>"; };
 		CB464B6E1DED347B00480C08 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		CB5754251D76BA260008E0EC /* CoordinateSerie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateSerie.swift; sourceTree = "<group>"; };
 		CB66EDB91DC70165004768B7 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkManager.swift; sourceTree = "<group>"; };
 		CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPasswordRequest.swift; sourceTree = "<group>"; };
@@ -537,10 +467,6 @@
 		CB9B7A721DB06A3100EEFD54 /* NevoOTARequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoOTARequest.swift; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CBA51D0F1CC8C0B700B7A5EE /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Drone-dtrufrvrzrlruneriqbutulsnnxr/Build/Products/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
-		CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysioDeviceHeader.swift; sourceTree = "<group>"; };
-		CBB37AF71D751B1100A90920 /* PhysioDeviceHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhysioDeviceHeader.xib; sourceTree = "<group>"; };
-		CBB37AFB1D75331000A90920 /* CockroachesMasterChanged.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachesMasterChanged.swift; sourceTree = "<group>"; };
-		CBB37AFE1D7534C200A90920 /* CockroachMasterDataReceived.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockroachMasterDataReceived.swift; sourceTree = "<group>"; };
 		CBB37B011D757B7500A90920 /* AddInstructionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInstructionHeader.swift; sourceTree = "<group>"; };
 		CBB37B031D757DEB00A90920 /* AddInstructionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddInstructionHeader.xib; sourceTree = "<group>"; };
 		CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
@@ -714,7 +640,6 @@
 				00982A701C868B15003DA5E2 /* Assets.xcassets */,
 				00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */,
 				00982A751C868B15003DA5E2 /* Info.plist */,
-				CB3533ED1D9B67D100E5DE40 /* Human.scnassets */,
 			);
 			path = Drone;
 			sourceTree = "<group>";
@@ -740,8 +665,6 @@
 		00982A971C868C89003DA5E2 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				9E9051A51D94C17D00ED140D /* Algorithm */,
-				9E013D5B1D7035620005DCF8 /* ViewModel */,
 				CBA06BEB1C8EB2C800E3257B /* View */,
 				00982A981C868C89003DA5E2 /* Controller */,
 				00982AEB1C868C89003DA5E2 /* Model */,
@@ -756,21 +679,16 @@
 			isa = PBXGroup;
 			children = (
 				6136473A1E49782A007D58BD /* StepsManager */,
-				9E01091D1D73C6DC00AA3551 /* AddInstructionViewController */,
 				CBA06BEE1C8EC2B800E3257B /* AddWorldClockView */,
 				00F1AF3F1CACD82600CB9A15 /* BaseViewController */,
 				008845E71CF6A48C006EA77F /* CheckEmailController */,
 				0065AC061CC86A8100DC3096 /* ConnectionSetupViewController */,
 				CB28AFD31CE2C0EB00639538 /* ContactsNotificationViewController */,
 				9E455E121CD5B90600F79356 /* DeviceViewController */,
-				9E01091C1D73C6CB00AA3551 /* DoExerciseViewController */,
 				008845E21CF69F2F006EA77F /* ForgetPasswordController */,
-				CB3533E41D9B62DE00E5DE40 /* HumanViewController */,
 				00982AA91C868C89003DA5E2 /* LoginViewController */,
 				00F1AF4B1CACD9A100CB9A15 /* MenuViewController */,
 				9E455E0B1CD5A15500F79356 /* MyDeviceViewController */,
-				9E0109281D73CB4700AA3551 /* PhysioDeviceViewController */,
-				9E72CED71D70078300817914 /* PhysioViewController */,
 				00982AC51C868C89003DA5E2 /* ProfileSetupViewController */,
 				CBD6BD241CD0997E0009F39A /* ProfileViewController */,
 				00982AC81C868C89003DA5E2 /* RegisterViewController */,
@@ -901,22 +819,14 @@
 		00982AEB1C868C89003DA5E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB3567D21DA387D40049FBBC /* CockroachPosition */,
 				00982AF11C868C89003DA5E2 /* Alarm */,
-				9E80C3D71D93B43E005F7940 /* BabyCockroach */,
-				CB5754241D76BA150008E0EC /* CoordinateSerie */,
-				9E01092D1D7417AF00AA3551 /* CoordinateSet */,
 				00982AF31C868C89003DA5E2 /* DBModel */,
 				CBB37AF91D75329900A90920 /* Eventbus */,
-				9E013D401D70228E0005DCF8 /* Exercise */,
 				00982B0A1C868C89003DA5E2 /* Goal */,
-				9E013D3F1D70225A0005DCF8 /* Instruction */,
-				9E80C3DA1D93B4B3005F7940 /* MasterCockroach */,
 				9E9051A81D94C2AD00ED140D /* MenuItem */,
 				00982B0E1C868C89003DA5E2 /* Sleep */,
 				00982B101C868C89003DA5E2 /* TestMode */,
 				9E1535851D5C219600CB6A01 /* Worldclock */,
-				9E2BACC11D98CA1800EB1903 /* Vector.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1291,65 +1201,6 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
-		9E01091C1D73C6CB00AA3551 /* DoExerciseViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9E0109241D73C85D00AA3551 /* DoExerciseViewController.swift */,
-				9E0109251D73C85D00AA3551 /* DoExerciseViewController.xib */,
-			);
-			name = DoExerciseViewController;
-			sourceTree = "<group>";
-		};
-		9E01091D1D73C6DC00AA3551 /* AddInstructionViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9E0109201D73C73F00AA3551 /* AddInstructionViewController.swift */,
-				9E0109211D73C73F00AA3551 /* AddInstructionViewController.xib */,
-			);
-			name = AddInstructionViewController;
-			sourceTree = "<group>";
-		};
-		9E0109281D73CB4700AA3551 /* PhysioDeviceViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9E0109291D73CB7D00AA3551 /* PhysioDeviceViewController.swift */,
-				9E01092A1D73CB7D00AA3551 /* PhysioDeviceViewController.xib */,
-			);
-			name = PhysioDeviceViewController;
-			sourceTree = "<group>";
-		};
-		9E01092D1D7417AF00AA3551 /* CoordinateSet */ = {
-			isa = PBXGroup;
-			children = (
-				9E01092E1D7417B800AA3551 /* CoordinateSet.swift */,
-			);
-			name = CoordinateSet;
-			sourceTree = "<group>";
-		};
-		9E013D3F1D70225A0005DCF8 /* Instruction */ = {
-			isa = PBXGroup;
-			children = (
-				9E013D411D70229B0005DCF8 /* Instruction.swift */,
-			);
-			name = Instruction;
-			sourceTree = "<group>";
-		};
-		9E013D401D70228E0005DCF8 /* Exercise */ = {
-			isa = PBXGroup;
-			children = (
-				9E013D431D7022AA0005DCF8 /* Exercise.swift */,
-			);
-			name = Exercise;
-			sourceTree = "<group>";
-		};
-		9E013D5B1D7035620005DCF8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9E013D5C1D70356D0005DCF8 /* PhysioViewModel.swift */,
-			);
-			name = ViewModel;
-			sourceTree = "<group>";
-		};
 		9E1535801D5C20A500CB6A01 /* Worldclock */ = {
 			isa = PBXGroup;
 			children = (
@@ -1413,62 +1264,12 @@
 			name = DeviceTableView;
 			sourceTree = "<group>";
 		};
-		9E72CED71D70078300817914 /* PhysioViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9E72CED31D70077A00817914 /* PhysioViewController.swift */,
-				9E72CED41D70077A00817914 /* PhysioViewController.xib */,
-			);
-			name = PhysioViewController;
-			sourceTree = "<group>";
-		};
-		9E80C3D31D93B33D005F7940 /* PhysioCell */ = {
-			isa = PBXGroup;
-			children = (
-				9E80C3D41D93B35D005F7940 /* PhysioCellGenerator.swift */,
-			);
-			name = PhysioCell;
-			sourceTree = "<group>";
-		};
-		9E80C3D71D93B43E005F7940 /* BabyCockroach */ = {
-			isa = PBXGroup;
-			children = (
-				9E80C3D81D93B469005F7940 /* BabyCockroach.swift */,
-			);
-			name = BabyCockroach;
-			sourceTree = "<group>";
-		};
-		9E80C3DA1D93B4B3005F7940 /* MasterCockroach */ = {
-			isa = PBXGroup;
-			children = (
-				9E80C3DB1D93B4BB005F7940 /* MasterCockroach.swift */,
-			);
-			name = MasterCockroach;
-			sourceTree = "<group>";
-		};
-		9E9051A51D94C17D00ED140D /* Algorithm */ = {
-			isa = PBXGroup;
-			children = (
-				9E9051A61D94C18A00ED140D /* MovementMatchingAlgorithm.swift */,
-			);
-			name = Algorithm;
-			sourceTree = "<group>";
-		};
 		9E9051A81D94C2AD00ED140D /* MenuItem */ = {
 			isa = PBXGroup;
 			children = (
 				CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */,
 			);
 			name = MenuItem;
-			sourceTree = "<group>";
-		};
-		9EA1C9A11D7935B50012C988 /* DoExerciseHeader */ = {
-			isa = PBXGroup;
-			children = (
-				9EA1C9A21D7935C50012C988 /* DoExerciseHeader.swift */,
-				9EA1C9A41D7935D30012C988 /* DoExerciseHeader.xib */,
-			);
-			name = DoExerciseHeader;
 			sourceTree = "<group>";
 		};
 		9EA1C9A61D7963D00012C988 /* Extensions */ = {
@@ -1508,39 +1309,6 @@
 				61D4709A1DE2A6D800620BD0 /* NotificationsViewCell.xib */,
 			);
 			name = ContactsNotificationViewController;
-			sourceTree = "<group>";
-		};
-		CB3533E41D9B62DE00E5DE40 /* HumanViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CB3533E91D9B646B00E5DE40 /* HumanViewController.swift */,
-				CB3533EA1D9B646B00E5DE40 /* HumanViewController.xib */,
-			);
-			name = HumanViewController;
-			sourceTree = "<group>";
-		};
-		CB3567D21DA387D40049FBBC /* CockroachPosition */ = {
-			isa = PBXGroup;
-			children = (
-				CB17DD281DA38D7000730273 /* StandingPosition.swift */,
-				CB17DD291DA38D7000730273 /* StandingLeftPosition.swift */,
-				CB17DD2A1DA38D7000730273 /* StandingRightPosition.swift */,
-				CB17DD2B1DA38D7000730273 /* StandingUpsideDown.swift */,
-				CB17DD2C1DA38D7000730273 /* UpsideDownPosition.swift */,
-				CB3567D31DA387E90049FBBC /* CockroachPositionProtocol.swift */,
-				CB3567D51DA3882D0049FBBC /* NormalPosition.swift */,
-				CB3567D71DA38A010049FBBC /* CockroachPositionCheckStrategy.swift */,
-				CB3567D91DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift */,
-			);
-			name = CockroachPosition;
-			sourceTree = "<group>";
-		};
-		CB5754241D76BA150008E0EC /* CoordinateSerie */ = {
-			isa = PBXGroup;
-			children = (
-				CB5754251D76BA260008E0EC /* CoordinateSerie.swift */,
-			);
-			name = CoordinateSerie;
 			sourceTree = "<group>";
 		};
 		CB66EDBD1DC704CA004768B7 /* Manager */ = {
@@ -1584,13 +1352,9 @@
 				9E44370B1CD33AE300283B14 /* AnalysisStepsChartView */,
 				9E1999521CE4327400C1D967 /* ContactsNotificationHeader */,
 				9E455E151CD5B94100F79356 /* DeviceTableView */,
-				9EA1C9A11D7935B50012C988 /* DoExerciseHeader */,
-				CB3533C21D9B617100E5DE40 /* Human.swift */,
 				CBA06BEA1C8EB2BB00E3257B /* MenuViewCell */,
 				00982AAF1C868C89003DA5E2 /* MyDroneView */,
 				00982AB51C868C89003DA5E2 /* NevoOtaView */,
-				9E80C3D31D93B33D005F7940 /* PhysioCell */,
-				CBB37AF41D751AAA00A90920 /* PhysioDeviceHeader */,
 				9EF7EEA31CD89D7C009B0928 /* ProfileTableView */,
 				00982AD01C868C89003DA5E2 /* queryTableviewCell */,
 				00982ACC1C868C89003DA5E2 /* SetingView */,
@@ -1611,38 +1375,11 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		CBB37AF41D751AAA00A90920 /* PhysioDeviceHeader */ = {
-			isa = PBXGroup;
-			children = (
-				CBB37AF51D751AF700A90920 /* PhysioDeviceHeader.swift */,
-				CBB37AF71D751B1100A90920 /* PhysioDeviceHeader.xib */,
-			);
-			name = PhysioDeviceHeader;
-			sourceTree = "<group>";
-		};
 		CBB37AF91D75329900A90920 /* Eventbus */ = {
 			isa = PBXGroup;
 			children = (
-				CBB37AFD1D75343200A90920 /* CockroachDataReceived */,
-				CBB37AFA1D7532B900A90920 /* CockroachesChanged */,
 			);
 			name = Eventbus;
-			sourceTree = "<group>";
-		};
-		CBB37AFA1D7532B900A90920 /* CockroachesChanged */ = {
-			isa = PBXGroup;
-			children = (
-				CBB37AFB1D75331000A90920 /* CockroachesMasterChanged.swift */,
-			);
-			name = CockroachesChanged;
-			sourceTree = "<group>";
-		};
-		CBB37AFD1D75343200A90920 /* CockroachDataReceived */ = {
-			isa = PBXGroup;
-			children = (
-				CBB37AFE1D7534C200A90920 /* CockroachMasterDataReceived.swift */,
-			);
-			name = CockroachDataReceived;
 			sourceTree = "<group>";
 		};
 		CBB37B001D7577DC00A90920 /* AddInstructionHeader */ = {
@@ -1817,12 +1554,10 @@
 				0064CA771CC08D60005AB9DE /* dronelogo.png in Resources */,
 				00982C091C868C8A003DA5E2 /* queryTableviewCell.xib in Resources */,
 				005699DB1CD0673D0097938E /* localTimeZone in Resources */,
-				CB3533EE1D9B67D100E5DE40 /* Human.scnassets in Resources */,
 				00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */,
 				9E455E0F1CD5A16C00F79356 /* MyDeviceViewController.xib in Resources */,
 				005699D91CD05F7C0097938E /* SearchCityController.xib in Resources */,
 				9E455E1D1CD5BBEB00F79356 /* DeviceTableViewCellHeader.xib in Resources */,
-				9E01092C1D73CB7D00AA3551 /* PhysioDeviceViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				009D89D21CD0C457004E914A /* WorldClockHeader.xib in Resources */,
 				00F1AF4F1CACD9A100CB9A15 /* MenuViewController.xib in Resources */,
@@ -1831,9 +1566,7 @@
 				00982BF21C868C8A003DA5E2 /* MyNevoHeaderView.xib in Resources */,
 				9E1999541CE4328800C1D967 /* ContactsNotificationHeader.xib in Resources */,
 				00982C031C868C8A003DA5E2 /* ProfileSetupViewController.xib in Resources */,
-				CB3533EC1D9B646B00E5DE40 /* HumanViewController.xib in Resources */,
 				CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */,
-				9E0109231D73C73F00AA3551 /* AddInstructionViewController.xib in Resources */,
 				00982BEE1C868C8A003DA5E2 /* LoginViewController.xib in Resources */,
 				CB28AFE01CE2E59B00639538 /* ContactsNotificationViewController.xib in Resources */,
 				008C5EEB1C8D7D3800DCD12D /* MenuViewCell.xib in Resources */,
@@ -1844,10 +1577,8 @@
 				9E455E171CD5B95900F79356 /* DeviceTableViewCell.xib in Resources */,
 				61D4709C1DE2A6D800620BD0 /* NotificationsViewCell.xib in Resources */,
 				008845E61CF69F67006EA77F /* ForgetPasswordController.xib in Resources */,
-				9E0109271D73C85D00AA3551 /* DoExerciseViewController.xib in Resources */,
 				CBD6BD171CD04D9A0009F39A /* SplashScreenViewController.xib in Resources */,
 				9EF7EEAB1CD89DDC009B0928 /* ProfileTableViewCell.xib in Resources */,
-				9E72CED61D70077A00817914 /* PhysioViewController.xib in Resources */,
 				00982CDA1C868CF5003DA5E2 /* StepsViewController.xib in Resources */,
 				9EF7EEA91CD89DD5009B0928 /* ProfileTableViewCellHeader.xib in Resources */,
 				9E1535841D5C20CA00CB6A01 /* cities.json in Resources */,
@@ -1856,8 +1587,6 @@
 				CBD6BD261CD099880009F39A /* ProfileViewController.xib in Resources */,
 				00982C1C1C868C8A003DA5E2 /* WorldClockViewController.xib in Resources */,
 				0065AC0A1CC86A9B00DC3096 /* ConnectionSetupViewController.xib in Resources */,
-				CBB37AF81D751B1100A90920 /* PhysioDeviceHeader.xib in Resources */,
-				9EA1C9A51D7935D30012C988 /* DoExerciseHeader.xib in Resources */,
 				CBB37B041D757DEB00A90920 /* AddInstructionHeader.xib in Resources */,
 				61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
@@ -1949,8 +1678,6 @@
 			files = (
 				61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */,
 				005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */,
-				9EA1C9A31D7935C50012C988 /* DoExerciseHeader.swift in Sources */,
-				CB3567D81DA38A010049FBBC /* CockroachPositionCheckStrategy.swift in Sources */,
 				CB66EDC11DC705CF004768B7 /* RequestPasswordRequest.swift in Sources */,
 				008AEF161D25FFB200B9E4D0 /* TaskQueue.swift in Sources */,
 				CB9B7A751DB06A3100EEFD54 /* NevoOTAModeProfile.swift in Sources */,
@@ -1969,7 +1696,6 @@
 				00982C3E1C868C8A003DA5E2 /* AppTheme.swift in Sources */,
 				00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */,
 				00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */,
-				CB17DD2E1DA38D7000730273 /* StandingLeftPosition.swift in Sources */,
 				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
 				61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */,
 				61D470AE1DE2F18C00620BD0 /* Double+Extension.swift in Sources */,
@@ -1977,7 +1703,6 @@
 				61078DC31E48249C00898A0D /* Int+Timepiece.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				CB9B7A771DB06A3100EEFD54 /* NevoOTARequest.swift in Sources */,
-				CBB37AFC1D75331000A90920 /* CockroachesMasterChanged.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				CBD6BD151CD04D880009F39A /* SplashScreenViewController.swift in Sources */,
 				CB7820A61DC81D7600160213 /* UserUpdateRequest.swift in Sources */,
@@ -1987,7 +1712,6 @@
 				9EA1C9A81D7963D90012C988 /* NSDataExtension.swift in Sources */,
 				00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */,
 				61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */,
-				9E0109261D73C85D00AA3551 /* DoExerciseViewController.swift in Sources */,
 				9E0109311D741CEE00AA3551 /* CockRoachPacket.swift in Sources */,
 				CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */,
 				CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */,
@@ -1995,7 +1719,6 @@
 				CBE7981D1DC32603000B686E /* BaseGetRequest.swift in Sources */,
 				CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */,
 				CBE798241DC32CEC000B686E /* StepsNetworkManager.swift in Sources */,
-				CB17DD2D1DA38D7000730273 /* StandingPosition.swift in Sources */,
 				0015CA4E1CBC830C00820B1F /* DeviceModel.swift in Sources */,
 				CBE798151DC30350000B686E /* NetworkRequest.swift in Sources */,
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
@@ -2005,24 +1728,17 @@
 				CB9B7A741DB06A3100EEFD54 /* NevoOTAControllerProfile.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
 				CBE798261DC32F01000B686E /* NetworkManager.swift in Sources */,
-				9E80C3D91D93B469005F7940 /* BabyCockroach.swift in Sources */,
 				00982C361C868C8A003DA5E2 /* Sleep.swift in Sources */,
-				CB3533EB1D9B646B00E5DE40 /* HumanViewController.swift in Sources */,
-				CB3567D41DA387E90049FBBC /* CockroachPositionProtocol.swift in Sources */,
 				00982C151C868C8A003DA5E2 /* StepHistoricalView.swift in Sources */,
-				CBB37AF61D751AF700A90920 /* PhysioDeviceHeader.swift in Sources */,
 				00982C111C868C8A003DA5E2 /* StepsViewController.swift in Sources */,
-				9E01092B1D73CB7D00AA3551 /* PhysioDeviceViewController.swift in Sources */,
 				61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */,
 				00982C221C868C8A003DA5E2 /* BaseEntryDatabaseHelper.swift in Sources */,
 				00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */,
-				9E0109221D73C73F00AA3551 /* AddInstructionViewController.swift in Sources */,
 				00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */,
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
 				61078DC41E48249C00898A0D /* NSCalendar+Timepiece.swift in Sources */,
 				CB7820AA1DC81FD800160213 /* StepsUpdateRequest.swift in Sources */,
 				CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */,
-				9E80C3DC1D93B4BB005F7940 /* MasterCockroach.swift in Sources */,
 				CBE798191DC32087000B686E /* StepsGetRequest.swift in Sources */,
 				CB9B7A761DB06A3100EEFD54 /* NevoOTAPacketProfile.swift in Sources */,
 				00982C4B1C868C8A003DA5E2 /* NevoRequest.swift in Sources */,
@@ -2035,9 +1751,7 @@
 				9E1535871D5C21A300CB6A01 /* City.swift in Sources */,
 				004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
-				9E2BACC21D98CA1800EB1903 /* Vector.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
-				9E01092F1D7417B800AA3551 /* CoordinateSet.swift in Sources */,
 				0043FBEC1CA1424600638BD1 /* UpdateContactsFilterRequest.swift in Sources */,
 				9E2978731CDC40D000821704 /* WorldClockModel.swift in Sources */,
 				00982C351C868C8A003DA5E2 /* NumberOfStepsGoal.swift in Sources */,
@@ -2063,7 +1777,6 @@
 				CBE7981B1DC324FC000B686E /* BasePostRequest.swift in Sources */,
 				CB7820A81DC81E8A00160213 /* UserCreateRequest.swift in Sources */,
 				00D66E181CA22B8C0049E399 /* GetTrainingRecordRequest.swift in Sources */,
-				CB3567D61DA3882D0049FBBC /* NormalPosition.swift in Sources */,
 				00982C2D1C868C8A003DA5E2 /* StepsModel.swift in Sources */,
 				9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */,
 				CB28AFDF1CE2E59B00639538 /* ContactsNotificationViewController.swift in Sources */,
@@ -2071,30 +1784,20 @@
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
-				9E72CED51D70077A00817914 /* PhysioViewController.swift in Sources */,
 				0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */,
 				61D4709B1DE2A6D800620BD0 /* NotificationsViewCell.swift in Sources */,
-				CB17DD2F1DA38D7000730273 /* StandingRightPosition.swift in Sources */,
-				CB5754261D76BA260008E0EC /* CoordinateSerie.swift in Sources */,
 				0015CA521CBCD4B200820B1F /* SystemEventPacket.swift in Sources */,
-				9E013D441D7022AA0005DCF8 /* Exercise.swift in Sources */,
 				00982C451C868C8A003DA5E2 /* ConnectionControllerImpl.swift in Sources */,
 				9E455E141CD5B91600F79356 /* DeviceViewController.swift in Sources */,
 				CB66EDC31DC70636004768B7 /* ForgetPasswordRequest.swift in Sources */,
-				9E013D5D1D70356D0005DCF8 /* PhysioViewModel.swift in Sources */,
-				CBB37AFF1D7534C200A90920 /* CockroachMasterDataReceived.swift in Sources */,
-				CB17DD301DA38D7000730273 /* StandingUpsideDown.swift in Sources */,
-				9E013D421D70229B0005DCF8 /* Instruction.swift in Sources */,
 				00982CE61C8695AD003DA5E2 /* SetingView.swift in Sources */,
 				00982C341C868C8A003DA5E2 /* Goal.swift in Sources */,
-				9E80C3D51D93B35D005F7940 /* PhysioCellGenerator.swift in Sources */,
 				CB66EDBC1DC7033C004768B7 /* UserNetworkManager.swift in Sources */,
 				00982C081C868C8A003DA5E2 /* queryTableviewCell.swift in Sources */,
 				CB28AFDB1CE2C34300639538 /* ContactsFilter.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
 				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
-				9E9051A71D94C18A00ED140D /* MovementMatchingAlgorithm.swift in Sources */,
 				61D470B01DE2F18C00620BD0 /* Int+Extension.swift in Sources */,
 				008845EA1CF6A4D5006EA77F /* CheckEmailController.swift in Sources */,
 				0024C0FD1CB73C1700E0A23D /* UserDatabaseHelper.swift in Sources */,
@@ -2109,10 +1812,7 @@
 				9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */,
 				CBB37B021D757B7500A90920 /* AddInstructionHeader.swift in Sources */,
 				00982C141C868C8A003DA5E2 /* StepGoalSetingView.swift in Sources */,
-				CB3567DA1DA38A3A0049FBBC /* CockroachPositionXYZMatchStrategy.swift in Sources */,
-				CB17DD311DA38D7000730273 /* UpsideDownPosition.swift in Sources */,
 				00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */,
-				CB3533C31D9B617100E5DE40 /* Human.swift in Sources */,
 				0024C0FB1CB73A7C00E0A23D /* ProfileModel.swift in Sources */,
 				00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */,
 				00982C431C868C8A003DA5E2 /* ClockRefreshManager.swift in Sources */,

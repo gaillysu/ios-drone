@@ -69,15 +69,6 @@ extension AppDelegate {
         sendRequest(SetWorldClockRequest(worldClockArray: convertedWorldClockArray))
     }
     
-    
-    /**
-     Connect BLE Device
-     */
-    
-    func connectCockroach(){
-        self.getMconnectionController()?.connectCockroach()
-    }
-    
     func startConnect(){
         let userDevice:NSArray = UserDevice.getAll()
         if(userDevice.count>0) {
@@ -155,9 +146,6 @@ extension AppDelegate {
     func sendRequest(_ r:Request) {
         if(isConnected()){
             self.getMconnectionController()?.sendRequest(r)
-        }else {
-            //tell caller
-            SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:false as AnyObject)
         }
     }
 }

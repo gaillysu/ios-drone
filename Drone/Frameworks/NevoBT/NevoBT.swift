@@ -74,8 +74,7 @@ protocol NevoBT {
     Get the current connection device of RSSI values
     */
     func getRSSI()
-
-    func connectCockroach()
+ 
 }
 
 protocol NevoBTDelegate {
@@ -99,13 +98,7 @@ protocol NevoBTDelegate {
      */
     func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString)
 
-    /**
-     Call when finish reading Firmware
-     @parameter whichfirmware, firmware type
-     @parameter version, return the version
-     */
-    func cockRoachDataReceived(_ coordinates:CoordinateSet, withAddress address:UUID, forBabyCockroach number:Int)
-
+    
     /**
     *  Receiving the current device signal strength value
     */

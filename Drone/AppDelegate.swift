@@ -240,7 +240,8 @@
             }
             
             if(packet.getHeader() == SetWorldClockRequest.HEADER()) {
-               let notificationRequest = SetNotificationRequest(mode: 1, force: 1)
+               let notificationRequest = SetNotificationRequest(mode: 0, force: 1)
+            
                sendRequest(notificationRequest)
             }
             
@@ -417,30 +418,4 @@
          setWorldClock(Array(realm!.objects(City.self).filter("selected = true")))
       }
       
-      func cockRoachesChanged(_ isConnected: Bool, fromAddress: UUID!) {
-         SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_CHANGED, sender: CockroachMasterChanged(connected: isConnected, address: fromAddress))
-         if isConnected && !self.masterCockroaches.keys.contains(fromAddress) {
-            self.masterCockroaches[fromAddress] = 1
-         }else if self.masterCockroaches.keys.contains(fromAddress) && !isConnected {
-            self.masterCockroaches.removeValue(forKey: fromAddress)
-         }
-         
-      }
-      func cockRoachDataReceived(_ coordinates: CoordinateSet, withAddress address: UUID, forBabyCockroach number: Int) {
-         
-         if let amountCockroach = self.masterCockroaches[address] {
-            if amountCockroach < (number + 1) {
-               self.masterCockroaches[address] = (number + 1)
-            }
-         }else{
-            print("something went wrong")
-         }
-         
-         SwiftEventBus.post(SWIFTEVENT_BUS_COCKROACHES_DATA_UPDATED, sender: CockroachMasterDataReceived(coordinates: coordinates, address: address, babyCockroachNumber: number))
-      }
-      
-      func getConnectedCockroaches() -> [UUID:Int]{
-         return self.masterCockroaches
-      }
-      
-    }
+}
