@@ -60,8 +60,5 @@ class WelcomeViewController: BaseViewController {
             checkEmail.isNavigationBarHidden = true
             self.present(checkEmail, animated: true, completion: nil)
         }
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    } 
 }

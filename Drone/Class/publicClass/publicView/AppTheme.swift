@@ -357,7 +357,7 @@ class AppTheme {
             }
             return AllFilesNames.copy() as! NSArray
         }catch{
-            NSLog("error in opening directory path: \(firmwaresDirectoryPath)");
+            NSLog("GET_FIRMWARE_FILES error in opening directory path: \(firmwaresDirectoryPath)");
             return NSArray()
         }
     }
@@ -438,7 +438,7 @@ class AppTheme {
             }
             return AllFilesNames.copy() as! NSArray
         }catch{
-            debugPrint("error in opening directory path: \(firmwaresDirectoryPath)");
+            debugPrint("GET_RESOURCE_FILES error in opening directory path: \(firmwaresDirectoryPath)");
             return NSArray()
         }
     }

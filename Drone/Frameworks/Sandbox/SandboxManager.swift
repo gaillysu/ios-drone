@@ -13,8 +13,6 @@ class SandboxManager: NSObject {
     private let projectName:String = Bundle.main.infoDictionary![kCFBundleExecutableKey as String] as! String    //获取项目名称
     override init() {
         super.init()
-        
-
     }
     
     //获取沙盒路径
@@ -89,8 +87,7 @@ class SandboxManager: NSObject {
     }
     
     func saveDataWithName(saveData:Any,fileName:String)->Bool {
-        
-        let path = documentPath().appending("/\(projectName)/\(fileName)")
+        let path = documentPath().appending("/\(projectName)/\(fileName).plist")
         let localDict:NSDictionary = saveData as! NSDictionary
         return localDict.write(toFile: path, atomically: true)
     }

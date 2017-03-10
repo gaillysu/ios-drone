@@ -89,7 +89,7 @@ protocol NevoBTDelegate {
     /**
     Called when a peripheral connects or disconnects
     */
-    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!, deviceType: NevoBTImpl.TYPE)
+    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!)
     
     /**
      Call when finish reading Firmware

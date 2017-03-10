@@ -17,6 +17,9 @@ class StepsNetworkManager: NSObject {
             if success, let _ = optionalJson {
                 completion(true)
             }else{
+                if let error = optionalError{
+                    print(error)
+                }
                 completion(false)
             }
         }))

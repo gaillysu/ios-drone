@@ -29,6 +29,7 @@ protocol ConnectionController {
     */
     func connect(_ addres:[String])
     
+    func connectNew()
     /**
     Checks if there's a device currently connected
     */

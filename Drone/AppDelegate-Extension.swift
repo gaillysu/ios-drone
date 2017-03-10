@@ -19,6 +19,7 @@ extension AppDelegate {
     }
     
     func setSystemConfig(_ index:Int) {
+        print("Set system config: \(index)")
         sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, index: index))
     }
     
@@ -70,6 +71,7 @@ extension AppDelegate {
     }
     
     func startConnect(){
+        self.noResponseIndex = 0
         let userDevice:NSArray = UserDevice.getAll()
         if(userDevice.count>0) {
             var deviceAddres:[String] = []
@@ -78,9 +80,12 @@ extension AppDelegate {
                 deviceAddres.append(deviceModel.identifiers)
             }
             self.getMconnectionController()?.connect(deviceAddres)
-        }else{
-            self.getMconnectionController()?.connect([])
         }
+    }
+    
+    func connectNew(){
+        self.noResponseIndex = 0
+        self.getMconnectionController()?.connectNew()
     }
     
     func setStepsToWatch() {

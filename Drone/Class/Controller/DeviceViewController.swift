@@ -72,7 +72,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if (indexPath as NSIndexPath).row == 0 {
-            self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
+            self.navigationController?.pushViewController(NotificationViewController(), animated: true)
         }else if (indexPath as NSIndexPath).row == 1 {
             // forget watch
             let alertView:UIAlertController = UIAlertController(title: NSLocalizedString("forget_watch", comment: ""), message: NSLocalizedString("forget_watch_message", comment: ""), preferredStyle: UIAlertControllerStyle.alert)

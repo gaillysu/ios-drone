@@ -8,7 +8,6 @@
     
     import UIKit
     import CoreData
-    import HealthKit
     import Alamofire
     import FMDB
     import SwiftEventBus
@@ -36,15 +35,16 @@
       //Let's sync every days
       let SYNC_INTERVAL:TimeInterval = 0*30*60 //unit is second in iOS, every 30min, do sync
       let LAST_SYNC_DATE_KEY = "LAST_SYNC_DATE_KEY"
+      let SETUP_KEY = "SETUP_KEY"
+      
       fileprivate var mConnectionController : ConnectionControllerImpl?
-      fileprivate let mHealthKitStore:HKHealthStore = HKHealthStore()
       fileprivate var currentDay:UInt8 = 0
       fileprivate var mAlertUpdateFW = false
       fileprivate var masterCockroaches:[UUID:Int] = [:]
       
       let log = XCGLogger.default
       fileprivate var responseTimer:Timer?
-      fileprivate var noResponseIndex:Int = 0
+      var noResponseIndex:Int = 0
       fileprivate var sendContactsIndex:Int = 0
       fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
       fileprivate var realm:Realm?
@@ -186,11 +186,10 @@
                releaseResponseTimer()
                switch noResponseIndex {
                case 0:
-                  log.debug("set system config 1")
+                  UserDefaults.standard.setValue(true, forKeyPath: SETUP_KEY)
                   self.setSystemConfig(1)
                   setupResponseTimer(["index":NSNumber(value: 1 as Int32)])
                case 1:
-                  log.debug("set system config 2")
                   self.setSystemConfig(2)
                   setupResponseTimer(["index":NSNumber(value: 2 as Int32)])
                case 2:
@@ -240,8 +239,11 @@
             }
             
             if(packet.getHeader() == SetWorldClockRequest.HEADER()) {
-               let notificationRequest = SetNotificationRequest(mode: 0, force: 1)
-            
+               let force = UserDefaults.standard.bool(forKey: SETUP_KEY)
+               if (force){
+                  UserDefaults.standard.set(false, forKey: SETUP_KEY)
+               }
+               let notificationRequest = SetNotificationRequest(mode: 1, force:  force ? 1 : 0)
                sendRequest(notificationRequest)
             }
             
@@ -353,27 +355,27 @@
          releaseResponseTimer()
          switch index {
          case 0:
-            log.debug("set system config 1,noResponseIndex:\(self.noResponseIndex)")
+            log.debug("set system config 1, noResponseIndex:\(self.noResponseIndex)")
             self.setSystemConfig(1)
             setupResponseTimer(["index":NSNumber(value: 1 as Int32)])
          case 1:
-            log.debug("set system config 2,noResponseIndex:\(self.noResponseIndex)")
+            log.debug("set system config 2, noResponseIndex:\(self.noResponseIndex)")
             self.setSystemConfig(2)
             setupResponseTimer(["index":NSNumber(value: 2 as Int32)])
          case 2:
-            log.debug("set RTC,noResponseIndex:\(self.noResponseIndex)")
+            log.debug("set RTC, noResponseIndex:\(self.noResponseIndex)")
             self.setRTC()
             setupResponseTimer(["index":NSNumber(value: 3 as Int32)])
          case 3:
-            log.debug("set app config,noResponseIndex:\(self.noResponseIndex)")
+            log.debug("set app config, noResponseIndex:\(self.noResponseIndex)")
             self.setAppConfig()
             setupResponseTimer(["index":NSNumber(value: 4 as Int32)])
          case 4:
-            log.debug("set user profile,noResponseIndex:\(self.noResponseIndex)")
+            log.debug("set user profile, noResponseIndex:\(self.noResponseIndex)")
             self.setUserProfile()
             setupResponseTimer(["index":NSNumber(value: 5 as Int32)])
          case 5:
-            log.debug("set user goal,noResponseIndex:\(self.noResponseIndex)")
+            log.debug("set user goal, noResponseIndex:\(self.noResponseIndex)")
             self.setGoal(nil)
             setupResponseTimer(["index":NSNumber(value: 6 as Int32)])
          case 6:
@@ -404,6 +406,7 @@
       func getMconnectionController()->ConnectionControllerImpl?{
          return mConnectionController
       }
+      
     }
     
     extension AppDelegate{

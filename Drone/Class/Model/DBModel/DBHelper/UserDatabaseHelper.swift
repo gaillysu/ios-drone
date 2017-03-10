@@ -253,7 +253,6 @@ class UserDatabaseHelper:NSObject,BaseEntryDatabaseHelper {
             let sql:NSString = NSString(format: "UPDATE %@ SET %@ WHERE %@ = ?;", tableName, keyString, primaryId)
             updateValues.add(primaryValue!)
             res = (db?.executeUpdate(sql as String, withArgumentsIn: updateValues as [AnyObject]))!
-            NSLog("\(res ? "Update Success" : "Update failed")");
         }
         return res
     }

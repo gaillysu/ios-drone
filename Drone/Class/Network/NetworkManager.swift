@@ -14,7 +14,7 @@ import SwiftyJSON
 
 class NetworkManager: NSObject {
     
-    private static let baseUrl = "http://drone.karljohnchow.com"
+    private static let baseUrl = "https://drone.karljohnchow.com"
     
     class func execute(request :NetworkRequest){
         if let urlPart = request.url, let encoding = request.encoding, let method = request.method {
@@ -44,6 +44,5 @@ class NetworkManager: NSObject {
             print("Request was successful but, response wasn't good.")
             return (false,nil, error)
         }
-        return (false,nil, nil)
     }
 }
