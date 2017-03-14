@@ -64,22 +64,14 @@ class NotificationsViewCell: UITableViewCell {
             let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
             AppDelegate.getAppDelegate().sendRequest(updateRequest)
         }else{
-            let queue = TaskQueue()
             for (key,value1) in value{
                 var value2:[String:Any] = value1 as! [String:Any]
                 value2["state"] = sender.isOn
                 value[key] = value2
                 let packageName:String = value2["bundleId"] as! String
-                queue.tasks += {[weak self] result, next in
-                    guard let `self` = self else {return}
-                    let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
-                    AppDelegate.getAppDelegate().sendRequest(updateRequest)
-                    self.delay(seconds: 1) {
-                        next(nil)
-                    }
-                }
+                let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
+                AppDelegate.getAppDelegate().sendRequest(updateRequest)
             }
-            queue.run()
             
             notificationType[keys] = value
             contact["NotificationType"] = notificationType

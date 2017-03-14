@@ -203,7 +203,7 @@
             }
             
             if(packet.getHeader() == SetWorldClockRequest.HEADER()) {
-               setNotification()
+
             }
             
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
@@ -325,12 +325,50 @@ extension AppDelegate{
       XCGLogger.default.debug("setp6 0x06")
       self.isSaveWorldClock()
       
-      XCGLogger.default.debug("setp7 0x30")
+      XCGLogger.default.debug("setp7 0x0A")
+      self.setNotification()
+      
+      XCGLogger.default.debug("setp8 0x0B")
+      self.updateNotification()
+      
+      XCGLogger.default.debug("setp9 0x30")
       self.setStepsToWatch()
    }
    
    func setNotification() {
       sendRequest(SetNotificationRequest(mode: 0, force: 1))
+   }
+   
+   func updateNotification() {
+      var contact:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
+      let notification:[String:Any] = contact["NotificationType"] as! [String:Any]
+      
+      for (key,value) in JSON(notification) {
+         var operation:Int = 0
+         if key == "Social" {
+            let social = value["Social"].dictionaryValue
+            for (socialKey,socialValue) in social {
+               let packageName:String = socialValue["bundleId"].stringValue
+               if socialValue["state"].boolValue {
+                  operation = 1
+               }else{
+                  operation = 2
+               }
+               let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
+               AppDelegate.getAppDelegate().sendRequest(updateRequest)
+            }
+         }else{
+            let packageName:String = value["bundleId"].stringValue
+            if value["state"].boolValue {
+               operation = 1
+            }else{
+               operation = 2
+            }
+            let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
+            AppDelegate.getAppDelegate().sendRequest(updateRequest)
+         }
+         
+      }
    }
    
    func isSaveWorldClock() {
