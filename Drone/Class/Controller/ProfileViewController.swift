@@ -63,25 +63,14 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
              */
             _ = profile.update()
             
+            // sync goal to watch
             AppDelegate.getAppDelegate().setGoal(NumberOfStepsGoal(steps: steps.goalSteps))
-            let timerout:Timer = Timer.after(5.seconds) {
-                /**
-                 *  change profile to database sync profile with watch
-                 *
-                 */
-                AppDelegate.getAppDelegate().setUserProfile()
-            }
             
-            AppDelegate.getAppDelegate().sendIndex = {
-                (index) -> Void in
-                timerout.invalidate()
-                AppDelegate.getAppDelegate().log.debug("send set goal")
-                /**
-                 *  change profile to database sync profile with watch
-                 *
-                 */
-                AppDelegate.getAppDelegate().setUserProfile()
-            }
+            /**
+             *  change profile to database sync profile with watch
+             *
+             */
+            AppDelegate.getAppDelegate().setUserProfile()
             
             
             loadingIndicator = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)

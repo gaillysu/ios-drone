@@ -101,7 +101,6 @@ extension AppDelegate {
                         let date:Date = (stateArray[1] as! String).dateFromFormat("YYYY/MM/dd")!
                         if state[RESET_STATE]! && (date.beginningOfDay == Date().beginningOfDay){
                             sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                            setupResponseTimer(["index":NSNumber(value: 7 as Int32)])
                             _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"] as AnyObject)
                         }
                         
@@ -145,7 +144,9 @@ extension AppDelegate {
     
     func sendRequest(_ r:Request) {
         if(isConnected()){
-            self.getMconnectionController()?.sendRequest(r)
+            SyncQueue.sharedInstance.post( { (Void) -> (Void) in
+                self.getMconnectionController()?.sendRequest(r)
+            } )
         }
     }
 }
