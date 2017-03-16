@@ -61,15 +61,10 @@ class WhichDeviceViewController: BaseViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     // MARK: UICollectionViewDataSource
     func numberOfSectionsInCollectionView(_ collectionView: UICollectionView) -> Int {
         return 1
     }
-
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6

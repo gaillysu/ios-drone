@@ -37,12 +37,6 @@ class BaseViewController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-
-    
     func makeStandardUINavigationController(_ rootViewController:UIViewController) -> UINavigationController{
         let navigationController:UINavigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)

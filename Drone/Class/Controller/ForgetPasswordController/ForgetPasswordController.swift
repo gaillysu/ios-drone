@@ -32,12 +32,6 @@ class ForgetPasswordController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
-    
     @IBAction func buttonManager(_ sender: AnyObject) {
         if sender.isEqual(backButton) {
             _ = self.navigationController?.popViewController(animated: true)
@@ -46,11 +40,6 @@ class ForgetPasswordController: UIViewController {
         if sender.isEqual(confirmButton) {
             ChangePassword()
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

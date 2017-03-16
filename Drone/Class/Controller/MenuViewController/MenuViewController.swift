@@ -44,6 +44,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         
+        
+            
+        
         menuTableView.register(UINib(nibName: "MenuViewCell", bundle: Bundle.main), forCellReuseIdentifier: identifier)
         AppDelegate.getAppDelegate().startConnect()
 
@@ -110,7 +113,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
 
         }
         
-
         let profileButton:UIButton = UIButton(type: UIButtonType.custom)
         profileButton.setImage(UIImage(named: "icon_profile"), for: UIControlState())
         profileButton.frame = CGRect(x: 0, y: 0, width: 45, height: 45);
@@ -130,6 +132,12 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         titleView.image = UIImage(named: "drone_logo")
         self.navigationItem.titleView = titleView
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        if(UserDevice.getAll().count == 0){
+            let navigationController:UINavigationController = UINavigationController(rootViewController: WhichDeviceViewController(toMenu: false))
+            navigationController.navigationBar.isHidden = true
+            self.navigationController?.present(navigationController, animated: true, completion: nil)
+        }
     }
     
     func leftAction(_ item:UIBarButtonItem) {
@@ -182,12 +190,18 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 }))
                 alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: { action in
                     alertController.dismiss(animated: true, completion: nil)
+                    self.tableItemClicked(index: indexPath.row)
+
                 }))
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        
-        let item:MenuItem = self.menuItems[indexPath.row]
+        tableItemClicked(index: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableItemClicked(index:Int){
+        let item:MenuItem = self.menuItems[index]
         
         let infoDictionary:[String : AnyObject] = Bundle.main.infoDictionary! as [String : AnyObject]
         let appName:String = infoDictionary["CFBundleName"] as! String
@@ -196,8 +210,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let classType: AnyObject.Type = NSClassFromString("\(appName)."+item.menuViewControllerItem)!
         let controllerType : UIViewController.Type = classType as! UIViewController.Type
         let viewController: UIViewController = controllerType.init()
-
-        menuTableView.deselectRow(at: indexPath, animated: true)
+        
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

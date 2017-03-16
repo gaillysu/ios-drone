@@ -8,7 +8,6 @@
     
     import UIKit
     import CoreData
-    import HealthKit
     import Alamofire
     import FMDB
     import SwiftEventBus
@@ -21,7 +20,8 @@
     let DRONEDBFILE:String = "droneDBFile";
     let DRONEDBNAME:String = "drone.sqlite";
     let RESET_STATE:String = "RESET_STATE"
-    
+    let SETUP_KEY = "SETUP_KEY"
+
     enum SYNC_STATE{
       case no_SYNC
       case big_SYNC
@@ -37,7 +37,6 @@
       let SYNC_INTERVAL:TimeInterval = 0*30*60 //unit is second in iOS, every 30min, do sync
       let LAST_SYNC_DATE_KEY = "LAST_SYNC_DATE_KEY"
       fileprivate var mConnectionController : ConnectionControllerImpl?
-      fileprivate let mHealthKitStore:HKHealthStore = HKHealthStore()
       fileprivate var currentDay:UInt8 = 0
       fileprivate var mAlertUpdateFW = false
       fileprivate var masterCockroaches:[UUID:Int] = [:]
@@ -336,38 +335,28 @@ extension AppDelegate{
    }
    
    func setNotification() {
-      sendRequest(SetNotificationRequest(mode: 0, force: 1))
+      let force = UserDefaults.standard.bool(forKey: SETUP_KEY)
+      if (force){
+         UserDefaults.standard.set(false, forKey: SETUP_KEY)
+      }
+      let notificationRequest = SetNotificationRequest(mode: 1, force:  force ? 1 : 0)
+      sendRequest(notificationRequest)
    }
    
    func updateNotification() {
       var contact:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
       let notification:[String:Any] = contact["NotificationType"] as! [String:Any]
       
-      for (key,value) in JSON(notification) {
+      for (key,value) in JSON(notification).dictionaryValue {
          var operation:Int = 0
-         if key == "Social" {
-            let social = value["Social"].dictionaryValue
-            for (socialKey,socialValue) in social {
-               let packageName:String = socialValue["bundleId"].stringValue
-               if socialValue["state"].boolValue {
-                  operation = 1
-               }else{
-                  operation = 2
-               }
-               let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
-               AppDelegate.getAppDelegate().sendRequest(updateRequest)
-            }
+         let packageName:String = value["bundleId"].stringValue
+         if value["state"].boolValue {
+            operation = 1
          }else{
-            let packageName:String = value["bundleId"].stringValue
-            if value["state"].boolValue {
-               operation = 1
-            }else{
-               operation = 2
-            }
-            let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
-            AppDelegate.getAppDelegate().sendRequest(updateRequest)
+            operation = 2
          }
-         
+         let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
+         AppDelegate.getAppDelegate().sendRequest(updateRequest)
       }
    }
    

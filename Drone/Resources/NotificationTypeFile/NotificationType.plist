@@ -3,20 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Version</key>
-	<string>0.2</string>
+	<string>0.4</string>
 	<key>NotificationType</key>
 	<dict>
 		<key>Calls</key>
 		<dict>
 			<key>bundleId</key>
 			<string>com.apple.mobilephone</string>
-			<key>state</key>
-			<false/>
-		</dict>
-		<key>Calendar</key>
-		<dict>
-			<key>bundleId</key>
-			<string>com.apple.mobilecal</string>
 			<key>state</key>
 			<false/>
 		</dict>
@@ -27,6 +20,13 @@
 			<key>state</key>
 			<false/>
 		</dict>
+		<key>Calendar</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.apple.mobilecal</string>
+			<key>state</key>
+			<false/>
+		</dict>
 		<key>Email</key>
 		<dict>
 			<key>bundleId</key>
@@ -34,50 +34,89 @@
 			<key>state</key>
 			<false/>
 		</dict>
-		<key>Social</key>
+		<key>QQ</key>
 		<dict>
-			<key>QQ</key>
-			<dict>
-				<key>bundleId</key>
-				<string>com.tencent.mqq</string>
-				<key>state</key>
-				<false/>
-			</dict>
-			<key>Twitter</key>
-			<dict>
-				<key>bundleId</key>
-				<string>com.atebits.Tweetie2</string>
-				<key>state</key>
-				<false/>
-			</dict>
-			<key>Inastagram</key>
-			<dict>
-				<key>bundleId</key>
-				<string>com.burbn.instagram</string>
-				<key>state</key>
-				<false/>
-			</dict>
-			<key>Messenger(Facebook)</key>
-			<dict>
-				<key>bundleId</key>
-				<string>com.facebook.Messenger</string>
-				<key>state</key>
-				<false/>
-			</dict>
-			<key>WeChat</key>
-			<dict>
-				<key>bundleId</key>
-				<string>com.tencent.xin</string>
-				<key>state</key>
-				<false/>
-			</dict>
-			<key>Facebook</key>
-			<dict>
-				<key>bundleId</key>
-				<string>com.facebook.Facebook</string>
-				<key>state</key>
-				<false/>
-			</dict>
+			<key>bundleId</key>
+			<string>com.tencent.mqq</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Twitter</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.atebits.Tweetie2</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Instagram</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.burbn.instagram</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Facebook Messenger</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.facebook.Messenger</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>WeChat</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.tencent.xin</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Facebook</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.facebook.Facebook</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Whatsapp</key>
+		<dict>
+			<key>bundleId</key>
+			<string>net.whatsapp.WhatsApp</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Snapchat</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.toyopagroup.picaboo</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Skype</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.skype.skype</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Telegram Messenger</key>
+		<dict>
+			<key>bundleId</key>
+			<string>ph.telegra.Telegraph</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Microsoft Outlook</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.microsoft.Office.Outlook</string>
+			<key>state</key>
+			<false/>
+		</dict>
+		<key>Inbox By Gmail</key>
+		<dict>
+			<key>bundleId</key>
+			<string>com.google.inbox</string>
+			<key>state</key>
+			<false/>
 		</dict>
 	</dict>
 </dict>

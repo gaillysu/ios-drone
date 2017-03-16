@@ -13,7 +13,6 @@ import SnapKit
 class MyDeviceViewController: BaseViewController {
     @IBOutlet weak var devicesView: UIView!
     @IBOutlet weak var noDeviceView: UIView!
-    @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var myDevicePagesView: UIView!
     var viewControllers:[DeviceViewController] = []
     
@@ -31,12 +30,12 @@ class MyDeviceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("Test1")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        print("Test2")
         for cont in viewControllers {
             cont.removeFromParentViewController()
         }
@@ -64,21 +63,13 @@ class MyDeviceViewController: BaseViewController {
     }
     
     
+    
+    
     @IBAction func addDeviceAction(_ sender: AnyObject) {
         let navigationController:UINavigationController = UINavigationController(rootViewController: WhichDeviceViewController(toMenu: false))
         navigationController.navigationBar.isHidden = true
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
-    
-    @IBAction func buyButtonAction(_ sender: AnyObject) {
-        
-        UIApplication.shared.openURL(URL(string: "")!)
-    }
-    
-    func pushContactsFilterViewController(){
-        self.navigationController?.pushViewController(ContactsNotificationViewController(), animated: true)
-    }
-    
     
     struct PagingMenuOptions: PagingMenuControllerCustomizable {
         var controllers:[UIViewController] = []

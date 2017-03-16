@@ -15,10 +15,10 @@ class UserGoal: NSObject,BaseEntryDatabaseHelper {
     var status:Bool = false
     fileprivate var goalModel:GoalModel = GoalModel()
 
-    init(keyDict:NSDictionary) {
+    init(keyDict:[String:Any]) {
         super.init()
         for(key, value) in keyDict {
-            self.setValue(value, forKey: key as! String)
+            self.setValue(value, forKey: key)
         }
     }
 
@@ -64,7 +64,7 @@ class UserGoal: NSObject,BaseEntryDatabaseHelper {
         let allArray:NSMutableArray = NSMutableArray()
         for model in modelArray {
             let goalModel:GoalModel = model as! GoalModel
-            let goal:UserGoal = UserGoal(keyDict: ["id":"\(goalModel.id)","goalSteps":"\(goalModel.goalSteps)","label":"\(goalModel.label)","status":"\(goalModel.status)"])
+            let goal:UserGoal = UserGoal(keyDict: ["id":goalModel.id,"goalSteps":goalModel.goalSteps,"label":goalModel.label,"status":goalModel.status])
             allArray.add(goal)
         }
         return allArray

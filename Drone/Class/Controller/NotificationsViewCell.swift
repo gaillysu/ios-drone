@@ -11,36 +11,26 @@ import SwiftyJSON
 
 class NotificationsViewCell: UITableViewCell {
     @IBOutlet weak var notificationSwicth: UISwitch!
-    var keys:String = ""
-    var contactsFilterDict:[String:Any]? {
+    var switchCallback: ((Bool, String) -> Void)?
+    
+    var app:DroneNotification? {
         didSet{
-            let json = JSON(contactsFilterDict!)
-            if contactsFilterDict?.count == 2 {
-                self.setSwicth(on: json["state"].boolValue)
-            }else{
-                var res:Bool = true
-                for (key,value) in json {
-                    if !value["state"].boolValue {
-                        res = false
-                        break
-                    }
-                    res = true
-                }
-                self.setSwicth(on: res)
-            }
+            self.setSwicth(on: app!.state)
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backgroundColor = UIColor.transparent()
+        let selectedView:UIView = UIView()
+        selectedView.backgroundColor = UIColor.getBaseColor()
+        selectedBackgroundView = selectedView
+        textLabel?.textColor = UIColor.white
+        textLabel?.font = UIFont.systemFont(ofSize: 20)
+        separatorInset = UIEdgeInsets.zero
+        preservesSuperviewLayoutMargins = false
+        layoutMargins = UIEdgeInsets.zero
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     
     @IBAction func notificationSwicthAction(_ sender: UISwitch) {
         var contact:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
@@ -76,6 +66,10 @@ class NotificationsViewCell: UITableViewCell {
             notificationType[keys] = value
             contact["NotificationType"] = notificationType
             _ = SandboxManager().saveDataWithName(saveData: contact, fileName: "NotificationTypeFile.plist")
+        let updateRequest = UpdateNotificationRequest(operation: sender.isOn ? 1 : 2, package: app!.bundleIdentifier)
+        AppDelegate.getAppDelegate().sendRequest(updateRequest)
+        if let callback = switchCallback{
+            callback(sender.isOn, app!.bundleIdentifier)
         }
     }
     

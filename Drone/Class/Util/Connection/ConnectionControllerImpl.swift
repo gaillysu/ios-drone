@@ -91,40 +91,39 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
                 }
             }
             mNevoBT?.connectToAddress(uuidArray)
-        } else {
-            log.debug("We don't have a saved address, let's scan for nearby devices.")
-            mNevoBT?.scanAndConnect()
         }
     }
-     
+    
+    func connectNew(){
+        if isConnected() {
+            return;
+        }
+        mNevoBT?.scanAndConnect()
+    }
+    
     
     /**
      See NevoBTDelegate
      */
-    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!, deviceType: NevoBTImpl.TYPE) {
+    func connectionStateChanged(_ isConnected : Bool, fromAddress : UUID!) {
         
         
         if (!isConnected) {
             connect([fromAddress.uuidString])
         } else {
             //Let's save this address
-            if deviceType == NevoBTImpl.TYPE.DRONE {
-                mDelegate?.connectionStateChanged(isConnected)
-                let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.uuidString)","connectionTimer":Date().timeIntervalSince1970])
-                
-                if UserDevice.isExistInTable() {
-                    let device:NSArray = UserDevice.getCriteria("WHERE identifiers LIKE '%\(fromAddress.uuidString)'")
-                    if device.count == 0 {
-                        userDevice.add({ (id, completion) in
-                            
-                        })
-                    }
-                }else{
+            mDelegate?.connectionStateChanged(isConnected)
+            let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.uuidString)","connectionTimer":Date().timeIntervalSince1970])
+            
+            if UserDevice.isExistInTable() {
+                let device:NSArray = UserDevice.getCriteria("WHERE identifiers LIKE '%\(fromAddress.uuidString)'")
+                if device.count == 0 {
                     userDevice.add({ (id, completion) in
                         
                     })
                 }
-            } 
+                
+            }
             
         }
         
@@ -169,16 +168,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
      See ConnectionController protocol
      */
     func sendRequest(_ request:Request) {
-        if(getOTAMode() && (request.getTargetProfile().CONTROL_SERVICE != NevoOTAModeProfile().CONTROL_SERVICE
-            && request.getTargetProfile().CONTROL_SERVICE != NevoOTAControllerProfile().CONTROL_SERVICE))
-        {
-            NSLog("ERROR ! The ConnectionController is in OTA mode, impossible to send a normal nevo request !")
-            
-        } else if (!getOTAMode() && request.getTargetProfile().CONTROL_SERVICE != DroneProfile().CONTROL_SERVICE) {
-            
-            NSLog("ERROR ! The ConnectionController is NOT in OTA mode, impossible to send an OTA nevo request !")
-            
-        }
+        
         mNevoBT?.sendRequest(request)
     }
     
@@ -205,7 +195,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     func packetReceived(_ packet:RawPacket, fromAddress : UUID) {
         mDelegate?.packetReceived(packet)
     }
-     
+    
     
     /**
      See ConnectionController
@@ -224,21 +214,12 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         
         //We don't set the profile on the NevoBT, because it could create too many issues
         //So we destroy the previous instance and recreate one
-        if(OTAMode) {
-            if Disconnect
-            { mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: NevoOTAModeProfile())}
-            else
-            { mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: NevoOTAControllerProfile())}
-        } else {
-            mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
-        }
+        mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
+        
     }
-     
+    
     
     func getOTAMode() -> Bool {
-        if let profile = mNevoBT?.getProfile() {
-            return profile is NevoOTAControllerProfile || profile is NevoOTAModeProfile
-        }
         return false
     }
     

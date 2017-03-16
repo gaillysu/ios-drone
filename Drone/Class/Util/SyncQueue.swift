@@ -1,11 +1,3 @@
-//
-//  SyncQueue.swift
-//  Nevo
-//
-//  Created by Hugo Garcia-Cotte on 9/3/15.
-//  Copyright (c) 2015 Nevo. All rights reserved.
-//
-
 import Foundation
 
 /**

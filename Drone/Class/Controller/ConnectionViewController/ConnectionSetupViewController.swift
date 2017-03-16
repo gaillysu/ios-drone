@@ -33,8 +33,7 @@ class ConnectionSetupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextB.isHidden = true
-        AppDelegate.getAppDelegate().startConnect()
-
+        AppDelegate.getAppDelegate().connectNew()
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
             if(connectionState){
@@ -69,13 +68,7 @@ class ConnectionSetupViewController: UIViewController {
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
+ 
     @IBAction func buttonActionManager(_ sender: AnyObject) {
         if sender.isEqual(nextB) {
             self.dismiss(animated: true, completion: { 

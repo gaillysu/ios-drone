@@ -116,14 +116,10 @@ class LoginViewController: UIViewController {
                 timeout.invalidate()
                 MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
                 
-                let banner = Banner(title: NSLocalizedString(NSLocalizedString("not_login", comment: ""), comment: ""), subtitle: nil, image: nil, backgroundColor: success ? UIColor.getBaseColor():UIColor.getBaseColor())
-                banner.dismissesOnTap = true
-                banner.show(duration: 1.2)
-            
                 if success, let unpackedProfile = profile{
-                    XCGLogger.debug("Added? id = \(unpackedProfile.id)")
-
-                    
+                    let banner = Banner(title: NSLocalizedString(NSLocalizedString("logged_in", comment: ""), comment: ""), subtitle: nil, image: nil, backgroundColor: success ? UIColor.getBaseColor():UIColor.getBaseColor())
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 1.2)
                     StepsNetworkManager.stepsForPeriod(uid: unpackedProfile.id, startDate: Date(), endDate: (Date() - 30.days), completion: { result in
                         print("results = \(result.requestSuccess)")
                         print("results = \(result.databaseSaved)")
@@ -136,6 +132,11 @@ class LoginViewController: UIViewController {
                         let device:WhichDeviceViewController = WhichDeviceViewController(toMenu: true)
                         self.navigationController?.pushViewController(device, animated: true)
                     }
+                }else{
+                    let banner = Banner(title: NSLocalizedString(NSLocalizedString("not_login", comment: ""), comment: ""), subtitle: nil, image: nil, backgroundColor: success ? UIColor.getBaseColor():UIColor.getBaseColor())
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 1.2)
+                    
                 }
             })
             

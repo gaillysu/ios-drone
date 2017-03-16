@@ -9,6 +9,7 @@
 import UIKit
 import MRProgress
 import RealmSwift
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -130,10 +131,6 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         self.worldClockTableview.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
         let button1 = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             self.tableView(tableView, commit: .delete, forRowAt: indexPath)

@@ -19,20 +19,11 @@ class SearchCityController: UITableViewController {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         searchList = [:]
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+ 
     func setSearchList(_ searchList:[String:[(name:String, id:Int)]]){
         self.searchList = searchList
         self.index = Array(searchList.keys)
