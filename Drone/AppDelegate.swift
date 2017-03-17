@@ -149,18 +149,17 @@
                XCGLogger.default.debug("SystemStatus :\(systemStatus)")
                if(systemStatus == SystemStatus.systemReset.rawValue) {
                   //step1 : Set systemconfig next 1
+                  UserDefaults.standard.setValue(true, forKeyPath: SETUP_KEY)
                   self.setSystemConfig(0)
                   self.setSystemConfig(1)
                   self.setSystemConfig(2)
                   //Records need to use 0x30
                   _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true] as AnyObject)
-               }else if(systemStatus == SystemStatus.invalidTime.rawValue) {
-                  setRTC()
                }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
                   setGoal(nil)
                }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                   self.getActivity()
-               }else{
+               }else if(systemStatus != SystemStatus.lowMemory.rawValue && systemStatus != SystemStatus.subscribedToNotifications.rawValue) {
                   setRTC()
                }
                SwiftEventBus.post(SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
@@ -188,11 +187,6 @@
             }
             
             if(packet.getHeader() == SetSystemConfig.HEADER()) {
-               //setp2:start set RTC
-               self.setRTC()
-            }
-            
-            if(packet.getHeader() == SetRTCRequest.HEADER()) {
                self.watchConfig()
             }
             
@@ -311,6 +305,9 @@
     
 extension AppDelegate{
    func watchConfig() {
+      XCGLogger.default.debug("setp2 0x03")
+      //setp2:start set RTC
+      self.setRTC()
       //setp3:start set AppConfig
       XCGLogger.default.debug("setp3 0x04")
       self.setAppConfig()
