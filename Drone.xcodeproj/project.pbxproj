@@ -125,6 +125,7 @@
 		61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */; };
 		61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */; };
 		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
+		612D5A401E7A1D5B0010012A /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */; };
 		6136473C1E497847007D58BD /* StepsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6136473B1E497847007D58BD /* StepsManager.swift */; };
 		61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */; };
 		61D4709B1DE2A6D800620BD0 /* NotificationsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */; };
@@ -358,6 +359,7 @@
 		61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
 		6136473B1E497847007D58BD /* StepsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsManager.swift; sourceTree = "<group>"; };
 		61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate-Extension.swift"; sourceTree = "<group>"; };
 		61D470991DE2A6D800620BD0 /* NotificationsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewCell.swift; sourceTree = "<group>"; };
@@ -834,6 +836,7 @@
 		00982B251C868C89003DA5E2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */,
 				9EA1C9A61D7963D00012C988 /* Extensions */,
 				00982B281C868C89003DA5E2 /* Connection */,
 				0028F1401C97C08000C8E742 /* EventBusKeys.swift */,
@@ -1550,6 +1553,7 @@
 				00982C4F1C868C8A003DA5E2 /* GetSystemConfig.swift in Sources */,
 				00982C471C868C8A003DA5E2 /* GetConfigRequest.swift in Sources */,
 				61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */,
+				612D5A401E7A1D5B0010012A /* SyncQueue.swift in Sources */,
 				61D470AE1DE2F18C00620BD0 /* Double+Extension.swift in Sources */,
 				61078DC31E48249C00898A0D /* Int+Timepiece.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
