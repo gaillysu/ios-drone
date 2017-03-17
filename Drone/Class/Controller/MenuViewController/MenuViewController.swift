@@ -13,6 +13,7 @@ import MRProgress
 import SwiftyJSON
 import SwiftyTimer
 import UIKit
+import RealmSwift
 
 class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
@@ -26,10 +27,12 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.menuItems.append(MenuItem(controllerName: "StepsViewController", title: "Activities", image: UIImage(named: "icon_activities")!));
         
         self.menuItems.append(MenuItem(controllerName: "WorldClockViewController", title: "World\nClock",image: UIImage(named: "icon_world_clock")!))
-        if(GoalModel.getAll().count == 0){
-            let goalModel:GoalModel = GoalModel()
+        if(UserGoal.getAll().count == 0){
+            let goalModel:UserGoal = UserGoal()
             goalModel.goalSteps = 10000
-            goalModel.add({ (id, completion) in})
+            goalModel.label = " "
+            goalModel.status = true
+            _ = goalModel.add()
         }
     }
 
@@ -77,7 +80,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
             MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             
-            let stepsArray:NSArray = UserSteps.getCriteria(String(format: "WHERE syncnext = \(NSNumber(value: false))"))
+            let stepsArray = UserSteps.getFilter("syncnext == \(false)")
             var dayDateArray:[Date] = []
             for steps in stepsArray{
                 let userSteps:UserSteps = steps as! UserSteps
@@ -95,19 +98,25 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             let steps:Int = data.dailySteps
             let timerInterval:Int = data.timerInterval
             if (steps != 0) {
-                let stepsArray = UserSteps.getCriteria("WHERE date = \(timerInterval)")
+                let stepsArray = UserSteps.getFilter("date == \(timerInterval)")
                 if(stepsArray.count>0) {
                     let step:UserSteps = stepsArray[0] as! UserSteps
                     NSLog("Data that has been saved····")
-                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":step.id, "steps":"\(steps)", "distance": "\(0)","date":timerInterval,"syncnext":true])
-                    _ = stepsModel.update()
-                    
-                }else {
-                    let stepsModel:UserSteps = UserSteps(keyDict: ["id":0, "steps":"\(steps)",  "distance": "\(0)", "date":timerInterval,"syncnext":false])
-                    stepsModel.add({ (id, completion) -> Void in
-                        
+                    let realm = try! Realm()
+                    try! realm.write({
+                        step.steps = steps
+                        step.date = TimeInterval(timerInterval)
+                        step.syncnext = true
                     })
                     
+                }else {
+                    let stepsModel:UserSteps = UserSteps()
+                    stepsModel.id = Int(Date().timeIntervalSince1970)
+                    stepsModel.distance = 0
+                    stepsModel.steps = steps
+                    stepsModel.date = TimeInterval(timerInterval)
+                    stepsModel.syncnext = false
+                    _ = stepsModel.add()
                 }
             }
 

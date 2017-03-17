@@ -12,12 +12,14 @@ import MRProgress
 import SwiftyJSON
 import BRYXBanner
 import XCGLogger
+import RealmSwift
 
 class ProfileViewController:BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     fileprivate final let identifier = "profile_table_view_cell"
     fileprivate var profile:UserProfile!
-    fileprivate var steps:UserGoal!
+    fileprivate var goal:UserGoal!
+    
     @IBOutlet weak var profileTableView: UITableView!
     var loadingIndicator: MRProgressOverlayView!
     
@@ -34,8 +36,8 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         self.navigationItem.leftBarButtonItem = closeButton
         self.navigationItem.rightBarButtonItem = saveButton
         self.profileTableView.allowsSelection  = false;
-        profile = UserProfile.getAll()[0] as! UserProfile;
-        steps = UserGoal.getAll()[0] as! UserGoal
+        profile = UserProfile.getAll().first as! UserProfile;
+        goal = UserGoal.getAll().first as! UserGoal
     }
 
     func save(){
@@ -51,20 +53,8 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             
             _ = dismissKeyboard()
             
-            /**
-             *  update goal
-             *
-             */
-            _ = steps.update()
-            
-            /**
-             *  change profile to database
-             *
-             */
-            _ = profile.update()
-            
             // sync goal to watch
-            AppDelegate.getAppDelegate().setGoal(NumberOfStepsGoal(steps: steps.goalSteps))
+            AppDelegate.getAppDelegate().setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
             
             /**
              *  change profile to database sync profile with watch
@@ -150,72 +140,76 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! ProfileTableViewCell
         
-        if((indexPath as NSIndexPath).row == 0){
+        if(indexPath.row == 0){
             cell.backgroundColor = UIColor(rgba: "#DCDCDC")
             cell.itemTextField.placeholder = "First Name"
             cell.itemTextField!.text = profile.first_name
             cell.setType(.text)
-        }else if((indexPath as NSIndexPath).row == 1){
+        }else if(indexPath.row == 1){
             cell.itemTextField.placeholder = "Last Name"
             cell.itemTextField!.text = profile.last_name
             cell.setType(.text)
-        }else if((indexPath as NSIndexPath).row == 2){
+        }else if(indexPath.row == 2){
             cell.itemTextField.placeholder = "Email"
             cell.itemTextField!.text = profile.email
             cell.setType(.email)
-        }else  if((indexPath as NSIndexPath).row == 3){
+        }else  if(indexPath.row == 3){
             cell.itemTextField.placeholder = "Length"
             cell.itemTextField!.text = "\(String(profile.length)) CM"
             cell.setInputVariables(self.generatePickerData(100, rangeEnd: 250, interval: 0))
             cell.setType(.numeric)
             cell.textPostFix = " CM"
-        }else  if((indexPath as NSIndexPath).row == 4){
+        }else  if(indexPath.row == 4){
             cell.itemTextField.placeholder = "Weight"
             cell.itemTextField!.text = "\(String(profile.weight)) KG"
             cell.setInputVariables(self.generatePickerData(35, rangeEnd: 150, interval: 0))
             cell.setType(.numeric)
             cell.textPostFix = " KG"
-        }else  if((indexPath as NSIndexPath).row == 5){
+        }else  if(indexPath.row == 5){
             cell.itemTextField.placeholder = "Goal: "
-            cell.itemTextField!.text = "Goal: \(String(steps.goalSteps))"
+            cell.itemTextField!.text = "Goal: \(String(goal.goalSteps))"
             cell.setInputVariables(self.generatePickerData(1000, rangeEnd: 20000, interval: 1000))
             cell.setType(.numeric)
             cell.textPreFix = "Goal: "
-        }else if((indexPath as NSIndexPath).row == 6) {
+        }else if(indexPath.row == 6) {
             cell.itemTextField.placeholder = "Birthday: "
             cell.itemTextField!.text = "Birthday: \(profile.birthday)"
             cell.setType(.date)
             cell.textPreFix = "Birthday: "
         }
         
-        cell.cellIndex = (indexPath as NSIndexPath).row
+        NSLog("profile:\(profile)")
+        cell.cellIndex = indexPath.row
         cell.editCellTextField = {
             (index,text) -> Void in
             XCGLogger.debug("Profile TextField\(index)")
-            switch index {
-            case 0:
-                self.profile.first_name = text
-            case 1:
-                self.profile.last_name = text
-            case 2:
-                self.profile.email = text
-            case 3:
-                if Int(text) != nil {
-                    self.profile.length = Int(text)!
+            let relam = try! Realm()
+            try! relam.write({
+                switch index {
+                case 0:
+                    self.profile.first_name = text
+                case 1:
+                    self.profile.last_name = text
+                case 2:
+                    self.profile.email = text
+                case 3:
+                    if Int(text) != nil {
+                        self.profile.length = text.toInt()
+                    }
+                case 4:
+                    if Int(text) != nil {
+                        self.profile.weight = text.toInt()
+                    }
+                case 5:
+                    if Int(text) != nil {
+                        self.goal.goalSteps = text.toInt()
+                    }
+                case 6:
+                    self.profile.birthday = text
+                default:
+                    break
                 }
-            case 4:
-                if Int(text) != nil {
-                    self.profile.weight = Int(text)!
-                }
-            case 5:
-                if Int(text) != nil {
-                    self.steps.goalSteps = Int(text)!
-                }
-            case 6:
-                self.profile.birthday = text
-            default:
-                break
-            }
+            })
         }
         
         return cell;

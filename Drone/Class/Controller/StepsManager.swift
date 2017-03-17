@@ -8,6 +8,8 @@
 
 import UIKit
 import XCGLogger
+import SwiftyJSON
+import RealmSwift
 
 class StepsManager: NSObject {
     static let sharedInstance:StepsManager = StepsManager()
@@ -38,7 +40,7 @@ class StepsManager: NSObject {
             var cid:Int = 0
             for hour:Int in 0 ..< 24 {
                 let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: hour, minute: 0, second: 0).timeIntervalSince1970
-                let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600)") //one hour = 3600s
+                let hours = UserSteps.getFilter("date >= \(dayTime) AND date <= \(dayTime+3600)")//one hour = 3600s
                 var hourData:[Double] = [0,0,0,0,0,0,0,0,0,0,0,0]
                 var timer:Double = 0
                 for userSteps in hours {
@@ -62,9 +64,10 @@ class StepsManager: NSObject {
                     if cid != hSteps.cid {
                         cid = hSteps.cid
                     }
-                    //TODO: 不能再这里修改上传标识符
-                    hSteps.syncnext = true
-                    _ = hSteps.update()
+                    let realm = try! Realm()
+                    try! realm.write({ 
+                        hSteps.syncnext = true
+                    })
                 }
                 activeTime = activeTime+timer
                 yVals.append(hourData);
@@ -92,8 +95,8 @@ class StepsManager: NSObject {
     }
     
     func updateToServerData(_ cid:Int,key:String,value:String) {
-        let userProfle:NSArray = UserProfile.getAll()
-        let profile:UserProfile = userProfle.object(at: 0) as! UserProfile
+        let userProfle = UserProfile.getAll()
+        let profile:UserProfile = userProfle.first as! UserProfile
         
         //create steps network global queue
         let queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
@@ -113,9 +116,9 @@ class StepsManager: NSObject {
     }
     
     func createToServerData(_ key:String,value:String) {
-        let userProfle:NSArray = UserProfile.getAll()
+        let userProfle = UserProfile.getAll()
         if userProfle.count>0 {
-            let profile:UserProfile = userProfle.object(at: 0) as! UserProfile
+            let profile:UserProfile = userProfle.first as! UserProfile
             //create steps network global queue
             let queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
             let group = DispatchGroup()

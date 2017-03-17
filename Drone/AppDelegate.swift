@@ -154,7 +154,7 @@
                   self.setSystemConfig(1)
                   self.setSystemConfig(2)
                   //Records need to use 0x30
-                  _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true] as AnyObject)
+                  _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true,"RESET_STATE_DATE":Date().timeIntervalSince1970])
                }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
                   setGoal(nil)
                }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
@@ -192,7 +192,7 @@
             
             if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
                //Set steps to watch response
-               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false] as AnyObject)
+               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false,"RESET_STATE1":Date()] as AnyObject)
             }
             
             if(packet.getHeader() == SetWorldClockRequest.HEADER()) {
@@ -265,7 +265,7 @@
          }
       }
       
-      func connectionStateChanged(_ isConnected : Bool) {
+      func connectionStateChanged(_ isConnected : Bool, fromAddress:String) {
          SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:isConnected as AnyObject)
          if(isConnected) {
             let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.6 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -273,6 +273,22 @@
                //setp1: cmd:0x01 read system status
                self.readsystemStatus()
             })
+            
+            let userDevice = UserDevice.getFilter(String(format: "identifiers = '%@'", fromAddress))
+            if userDevice.count == 0 {
+               let device:UserDevice = UserDevice()
+               device.id = Int(Date().timeIntervalSince1970)
+               device.device_name = "Drone"
+               device.identifiers = fromAddress
+               device.connectionTimer = Date().timeIntervalSince1970
+               _ = device.add()
+            }else{
+               let device:UserDevice = userDevice.first as! UserDevice
+               try! realm!.write {
+                  device.connectionTimer = Date().timeIntervalSince1970
+               }
+            }
+            
          }else{
             SyncQueue.sharedInstance.clear()
          }

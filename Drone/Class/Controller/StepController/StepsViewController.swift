@@ -89,10 +89,13 @@
             super.viewDidLoad()
             self.initTitleView()
             if (UserGoal.getAll().count > 0){
-                goal = UserGoal.getAll()[0] as! UserGoal
+                goal = UserGoal.getAll().first as? UserGoal
             }else{
-                goal = UserGoal(keyDict: ["goalSteps":10000,"label":" ","status":false])
-                goal?.add({ (id, completion) in})
+                goal = UserGoal()
+                goal?.goalSteps = 10000
+                goal?.label = " "
+                goal?.status = false
+                _ = goal?.add()
             }
             
             percentageLabel.text = String(format:"Goal: %d",(goal?.goalSteps)!)
@@ -106,7 +109,7 @@
             _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
                 if self.didSelectedDate == Foundation.Date().beginningOfDay {
                     let stepsDict:[String:Int] = notification.object as! [String:Int]
-                    let res:Bool = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict as AnyObject)
+                    _ = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict as AnyObject)
                     self.getLoclSmallSyncData(stepsDict)
                 }
             }
@@ -291,7 +294,7 @@
             for i in 0 ..< 24 {
                 let dayDate:Date = todayDate
                 let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
-                let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+3600-1)") //one hour = 3600s
+                let hours = UserSteps.getFilter("date >= \(dayTime) AND date <= \(dayTime+3600-1)")
                 
                 var hourData:Double = 0
                 for (index,userSteps) in hours.enumerated() {
@@ -380,7 +383,7 @@
                 let dayTimeInterval:TimeInterval = todayDate.beginningOfWeek.timeIntervalSince1970+(oneDaySeconds*Double(i))
                 let dayDate:Foundation.Date = Foundation.Date(timeIntervalSince1970: dayTimeInterval)
                 let dayTime:TimeInterval = Foundation.Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
-                let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+oneDaySeconds-1)")
+                let hours = UserSteps.getFilter("date >= \(dayTime) AND date <= \(dayTime+oneDaySeconds-1)")
                 var hourData:Double = 0
                 for userSteps in hours {
                     let hSteps:UserSteps = userSteps as! UserSteps
@@ -420,7 +423,7 @@
             for i in 0 ..< 7 {
                 let dayTimeInterval:TimeInterval = (beginningOfWeek+(oneDaySeconds*Double(i)))-oneWeekSeconds
                 let dayDate:Date = Date(timeIntervalSince1970: dayTimeInterval)
-                let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayDate.beginningOfDay.timeIntervalSince1970) AND \(dayDate.endOfDay.timeIntervalSince1970)")
+                let hours = UserSteps.getFilter("date >= \(dayDate.beginningOfDay.timeIntervalSince1970) AND date <= \(dayDate.endOfDay.timeIntervalSince1970)")
                 var hourData:Double = 0
                 for userSteps in hours {
                     let hSteps:UserSteps = userSteps as! UserSteps
@@ -459,7 +462,7 @@
             var lastMonthTime:Int = 0
             for i in 0 ..< 30 {
                 let monthTimeInterval:TimeInterval = lastBeginningOfMonth-oneDaySeconds*Double(i)
-                let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(monthTimeInterval) AND \(monthTimeInterval+oneDaySeconds-1)")
+                let hours = UserSteps.getFilter("date >= \(monthTimeInterval)  AND date <= \(monthTimeInterval+oneDaySeconds-1)")
                 var hourData:Double = 0
                 for userSteps in hours {
                     let hSteps:UserSteps = userSteps as! UserSteps
@@ -504,9 +507,9 @@
     extension StepsViewController {
         
         func calculationData(_ activeTimer:Int,steps:Int,completionData:((_ miles:String,_ calories:String) -> Void)) {
-            let profile:NSArray = UserProfile.getAll()
+            let profile = UserProfile.getAll()
             if(profile.count > 0){
-                let userProfile:UserProfile = profile.object(at: 0) as! UserProfile
+                let userProfile:UserProfile = profile.first as! UserProfile
                 let strideLength:Double = Double(userProfile.length)*0.415/100
                 let miles:Double = strideLength*Double(steps)/1000
                 //Formula's = (2.0 X persons KG X 3.5)/200 = calories per minute
@@ -662,13 +665,13 @@
             didSelectedDate = Foundation.Date(timeIntervalSince1970: dayTime)
             
             self.bulidChart(Foundation.Date(timeIntervalSince1970: dayTime))
-            let hours:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayDate.beginningOfDay.timeIntervalSince1970) AND \(dayDate.endOfDay.timeIntervalSince1970)")
+            let hours = UserSteps.getFilter("date >= \(dayDate.beginningOfDay.timeIntervalSince1970) AND date <= \(dayDate.endOfDay.timeIntervalSince1970)")
             if hours.count == 0 {
                 let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
                 view?.setTintColor(UIColor.getBaseColor())
                 let startDate = didSelectedDate
-                let profile:NSArray = UserProfile.getAll()
-                if let userProfile:UserProfile = profile.object(at: 0) as? UserProfile{
+                let profile = UserProfile.getAll()
+                if let userProfile:UserProfile = profile.first as? UserProfile{
                     StepsNetworkManager.stepsForDate(uid: userProfile.id, date: startDate, completion: { result in
                         MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
                         self.delay(0.3, closure: {

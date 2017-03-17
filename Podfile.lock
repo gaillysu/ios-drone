@@ -7,7 +7,7 @@ PODS:
   - Charts (2.2.5):
     - Charts/Core (= 2.2.5)
   - Charts/Core (2.2.5)
-  - CircleProgressView (1.0.10)
+  - CircleProgressView (1.1.1)
   - CVCalendar (1.4.0)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
@@ -57,17 +57,19 @@ PODS:
   - SMSegmentView (1.1)
   - SnapKit (3.0.1)
   - SwiftEventBus (2.1.0)
-  - SwiftyJSON (2.3.2)
-  - SwiftyTimer (1.4.0)
+  - SwiftyJSON (3.1.4)
+  - SwiftyTimer (2.0.0)
   - UIColor_Hex_Swift (2.1)
-  - XCGLogger (4.0.0-beta.4)
+  - XCGLogger (4.0.0):
+    - XCGLogger/Core (= 4.0.0)
+  - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - AutocompleteField (~> 1.1)
   - BRYXBanner
   - Charts (from `https://github.com/danielgindi/Charts.git`, branch `Swift-3.0`)
-  - CircleProgressView (from `https://github.com/CardinalNow/iOS-CircleProgressView.git`)
+  - CircleProgressView
   - CVCalendar (~> 1.4.0)
   - FMDB
   - IQKeyboardManagerSwift (= 4.0.6)
@@ -80,55 +82,33 @@ DEPENDENCIES:
   - SMSegmentView (~> 1.1)
   - SnapKit (~> 3.0.1)
   - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`, tag `2.1.0`)
-  - SwiftyJSON (from `https://github.com/IBM-Swift/SwiftyJSON.git`)
-  - SwiftyTimer (from `https://github.com/radex/SwiftyTimer.git`, branch `swift3`)
+  - SwiftyJSON (~> 3.1.4)
+  - SwiftyTimer (~> 2.0.0)
   - UIColor_Hex_Swift (~> 2.1)
-  - XCGLogger (from `https://github.com/DaveWoodCom/XCGLogger.git`, branch `swift_3.0`)
+  - XCGLogger (~> 4.0.0)
 
 EXTERNAL SOURCES:
   Charts:
     :branch: Swift-3.0
     :git: https://github.com/danielgindi/Charts.git
-  CircleProgressView:
-    :git: https://github.com/CardinalNow/iOS-CircleProgressView.git
   SwiftEventBus:
     :git: https://github.com/cesarferreira/SwiftEventBus.git
     :tag: 2.1.0
-  SwiftyJSON:
-    :git: https://github.com/IBM-Swift/SwiftyJSON.git
-  SwiftyTimer:
-    :branch: swift3
-    :git: https://github.com/radex/SwiftyTimer.git
-  XCGLogger:
-    :branch: swift_3.0
-    :git: https://github.com/DaveWoodCom/XCGLogger.git
 
 CHECKOUT OPTIONS:
   Charts:
     :commit: 2dd22b903a78d0d34d07ef71728c41ac22f6a114
     :git: https://github.com/danielgindi/Charts.git
-  CircleProgressView:
-    :commit: cb2f3707ff3c401184d218f6e335a537d0ba2f13
-    :git: https://github.com/CardinalNow/iOS-CircleProgressView.git
   SwiftEventBus:
     :git: https://github.com/cesarferreira/SwiftEventBus.git
     :tag: 2.1.0
-  SwiftyJSON:
-    :commit: 73b523a107b798021ca9af74b5f7c20e435c8809
-    :git: https://github.com/IBM-Swift/SwiftyJSON.git
-  SwiftyTimer:
-    :commit: 8cb3860bfef05fc86860b73398a02b96ae0b789b
-    :git: https://github.com/radex/SwiftyTimer.git
-  XCGLogger:
-    :commit: f7d6bea1924424157d70cb78b120cb576d5f99a8
-    :git: https://github.com/DaveWoodCom/XCGLogger.git
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   AutocompleteField: 212b36bef0218f22c05d80035be2d382acd5a4e2
   BRYXBanner: 5f0911d52e0a77e088f7ea7ddcdebd02afb7828a
   Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
-  CircleProgressView: 5116fc2d3be792d755e6979d7f7309648de79d11
+  CircleProgressView: 3a02912b8cb05ca68f31d8a08e242f7b0f067665
   CVCalendar: ec1a06a508f99d8e5067258754f811a8a1433a3f
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
@@ -143,11 +123,11 @@ SPEC CHECKSUMS:
   SMSegmentView: a99862f36ea73478558ae665c209cb80c0d4f059
   SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
   SwiftEventBus: 03fb72b65f3ae11912dec2591567b89e5908a781
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  SwiftyTimer: db4458cfaf67fc71e16ad6e4637c60b86f76a649
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
-  XCGLogger: dca27c8c2a218a9c176917680d891c8fdf9d4484
+  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: cfe7c88f1a6e3854beda95a9063499b1d841dca7
+PODFILE CHECKSUM: 19e59e7b722573e87f0f9562df7828f7650db394
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.2.1.beta.1

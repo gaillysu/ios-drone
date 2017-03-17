@@ -34,13 +34,8 @@ class UserNetworkManager: NSObject {
         NetworkManager.execute(request: LoginRequest(email: email, password: password, responseBlock: { (success, optionalJson, optionalError) in
             if success, let json = optionalJson{
                 let user:UserProfile = jsonToUser(user: json["user"])
-                user.add({ id, successAdded in
-                    if successAdded! {
-                        completion(true, user)
-                    }else{
-                        completion(false, nil)
-                    }
-                })
+                _ = user.add()
+                completion(true, user)
             }else{
                 completion(false, nil)
             }
@@ -82,6 +77,14 @@ class UserNetworkManager: NSObject {
             dateFormatter.dateFormat = "y-M-d"
             birthday = dateFormatter.string(from: birthdayDate!)
         }
-        return UserProfile(keyDict: ["id":user["id"].intValue,"first_name":user["first_name"].stringValue,"last_name":user["last_name"].stringValue,"birthday":birthday,"length":user["length"].intValue,"email":user["email"].stringValue, "weight":user["weight"].floatValue])
+        let userProfile:UserProfile = UserProfile()
+        userProfile.id = user["id"].intValue
+        userProfile.first_name = user["first_name"].stringValue
+        userProfile.last_name = user["last_name"].stringValue
+        userProfile.birthday = birthday
+        userProfile.length = user["length"].intValue
+        userProfile.email = user["email"].stringValue
+        userProfile.weight = user["weight"].intValue
+        return userProfile
     }
 }

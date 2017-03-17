@@ -9,6 +9,7 @@
 import Foundation
 import XCGLogger
 import SwiftEventBus
+import SwiftyJSON
 
 // MARK: - LAUNCH LOGIC
 extension AppDelegate {
@@ -33,9 +34,9 @@ extension AppDelegate {
     
     func setGoal(_ goal:Goal?) {
         if goal == nil {
-            let goalArray:NSArray = UserGoal.getAll()
+            let goalArray = UserGoal.getAll()
             if goalArray.count>0 {
-                let goal:UserGoal = UserGoal.getAll()[0] as! UserGoal
+                let goal:UserGoal = goalArray.first as! UserGoal
                 self.setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
             }else{
                 self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.low))
@@ -46,10 +47,10 @@ extension AppDelegate {
     }
     
     func setUserProfile() {
-        let profileArray:NSArray = UserProfile.getAll()
+        let profileArray = UserProfile.getAll()
         if profileArray.count>0 {
             //height (CM) X 0.415 ＝ stride length
-            let profile:UserProfile = profileArray.object(at: 0) as! UserProfile
+            let profile:UserProfile = profileArray.first as! UserProfile
             var gender = 1
             if !profile.gender{
                 gender = 0
@@ -71,7 +72,7 @@ extension AppDelegate {
     }
     
     func startConnect(){
-        let userDevice:NSArray = UserDevice.getAll()
+        let userDevice = UserDevice.getAll()
         if(userDevice.count>0) {
             var deviceAddres:[String] = []
             for device in userDevice {
@@ -89,7 +90,8 @@ extension AppDelegate {
     func setStepsToWatch() {
         let dayDate:Date = Date()
         let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
-        let dayStepsArray:NSArray = UserSteps.getCriteria("WHERE date BETWEEN \(dayTime) AND \(dayTime+86400)") //one hour = 3600s
+        let query:String = String(format: "date > %f AND date < %f", dayTime ,dayTime+86400)
+        let dayStepsArray = UserSteps.getFilter(query)
         var daySteps:Int = 0
         for steps in dayStepsArray {
             let userSteps:UserSteps = steps as! UserSteps
@@ -98,15 +100,13 @@ extension AppDelegate {
         
         if daySteps>0 {
             if let unpackedData = AppTheme.LoadKeyedArchiverName(RESET_STATE) {
-                if let stateArray:NSArray =  unpackedData as? NSArray{
-                    if stateArray.count>0 {
-                        let state:[String:Bool] = stateArray[0] as! [String:Bool]
-                        let date:Date = (stateArray[1] as! String).dateFromFormat("YYYY/MM/dd")!
-                        if state[RESET_STATE]! && (date.beginningOfDay == Date().beginningOfDay){
-                            sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                            _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"] as AnyObject)
-                        }
-                        
+                let stateArray = JSON(unpackedData).dictionaryValue
+                if stateArray.count>0 {
+                    let state:Bool = stateArray["RESET_STATE"]!.boolValue
+                    let date:Date = Date(timeIntervalSince1970: stateArray["RESET_STATE_DATE"]!.doubleValue)
+                    if state && (date.beginningOfDay == Date().beginningOfDay){
+                        sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
                     }
                 }
             }

@@ -112,19 +112,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
             connect([fromAddress.uuidString])
         } else {
             //Let's save this address
-            mDelegate?.connectionStateChanged(isConnected)
-            let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.uuidString)","connectionTimer":Date().timeIntervalSince1970])
-            
-            if UserDevice.isExistInTable() {
-                let device:NSArray = UserDevice.getCriteria("WHERE identifiers LIKE '%\(fromAddress.uuidString)'")
-                if device.count == 0 {
-                    userDevice.add({ (id, completion) in
-                        
-                    })
-                }
-                
-            }
-            
+            mDelegate?.connectionStateChanged(isConnected,fromAddress:fromAddress.uuidString)
         }
         
     }

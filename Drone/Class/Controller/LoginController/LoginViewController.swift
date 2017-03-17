@@ -141,8 +141,11 @@ class LoginViewController: UIViewController {
             })
             
             if(UserGoal.getAll().count == 0){
-                let goal:UserGoal = UserGoal(keyDict: ["goalSteps":10000,"label":" ","status":false])
-                goal.add({ (id, completion) in})
+                let goal:UserGoal = UserGoal()
+                goal.goalSteps = 10000
+                goal.label = " "
+                goal.status = false
+                _ = goal.add()
             }
         }else{
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
