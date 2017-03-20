@@ -134,7 +134,18 @@
                }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                   self.getActivity()
                }else if(systemStatus != SystemStatus.lowMemory.rawValue && systemStatus != SystemStatus.subscribedToNotifications.rawValue) {
-                  setRTC()
+                  if let date = UserDefaults.standard.object(forKey: "SET_RTC") {
+                     let syncDate:Date = date as! Date
+                     if (Date().timeIntervalSince1970 - syncDate.timeIntervalSince1970) > 60 {
+                        UserDefaults.standard.setValue(Date(), forKeyPath: "SET_RTC")
+                        UserDefaults.standard.synchronize()
+                        self.watchConfig()
+                     }
+                  }else{
+                     UserDefaults.standard.setValue(Date(), forKeyPath: "SET_RTC")
+                     UserDefaults.standard.synchronize()
+                     self.watchConfig()
+                  }
                }
                SwiftEventBus.post(SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
             }
