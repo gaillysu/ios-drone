@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XCGLogger
 
 class SandboxManager: NSObject {
     private let projectName:String = Bundle.main.infoDictionary![kCFBundleExecutableKey as String] as! String    //获取项目名称
@@ -68,7 +67,7 @@ class SandboxManager: NSObject {
                 if sandBoxVersion.toDouble() < localVersion.toDouble() {
                     return sandBoxDict.write(toFile: documentPath+"/"+fileName, atomically: true)
                 }else{
-                    XCGLogger.default.debug("本地文件是最新的,不需要写入沙盒")
+                    debugPrint("本地文件是最新的,不需要写入沙盒")
                     return false;
                 }
             }

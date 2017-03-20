@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftEventBus
-import XCGLogger
+
 import MRProgress
 import SwiftyJSON
 import SwiftyTimer

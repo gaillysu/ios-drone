@@ -12,7 +12,7 @@
     import UIColor_Hex_Swift
     import CVCalendar
     import SwiftEventBus
-    import XCGLogger
+    
     import MRProgress
     
     fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
@@ -116,13 +116,13 @@
             
             
             _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY) { (notification) in
-                XCGLogger.debug("Data sync began")
+                debugPrint("Data sync began")
                 //release timer
                 self.invalidateTimer()
             }
             
             _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
-                XCGLogger.debug("End of the data sync")
+                debugPrint("End of the data sync")
                 self.delay(1) {
                     //start small sync timer
                     self.fireSmallSyncTimer()
@@ -258,15 +258,15 @@
             barChart!.rightAxis.enabled = true
             barChart!.setScaleEnabled(false)
             
-            let xAxis:ChartXAxis = barChart!.xAxis
+            let xAxis:XAxis = barChart!.xAxis
             xAxis.labelTextColor = UIColor.gray
             xAxis.axisLineColor = UIColor.gray
             xAxis.drawAxisLineEnabled = true
             xAxis.drawGridLinesEnabled = true
-            xAxis.labelPosition = ChartXAxis.LabelPosition.bottom
+            xAxis.labelPosition = XAxis.LabelPosition.bottom
             xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 7)!
             
-            let yAxis:ChartYAxis = barChart!.leftAxis
+            let yAxis:YAxis = barChart!.leftAxis
             yAxis.labelTextColor = UIColor.gray
             yAxis.axisLineColor = UIColor.gray
             yAxis.drawAxisLineEnabled  = true
@@ -275,7 +275,7 @@
             yAxis.axisMinValue = 0
             yAxis.setLabelCount(5, force: true)
             
-            let rightAxis:ChartYAxis = barChart!.rightAxis
+            let rightAxis:YAxis = barChart!.rightAxis
             rightAxis.labelTextColor = UIColor.clear
             rightAxis.axisLineColor = UIColor.gray
             rightAxis.drawAxisLineEnabled  = true
@@ -301,7 +301,7 @@
                     let hSteps:UserSteps = userSteps as! UserSteps
                     hourData += Double(hSteps.steps)
                     if hSteps.steps>0 {
-                        XCGLogger.debug("Hour Steps:\(hSteps.steps)")
+                        debugPrint("Hour Steps:\(hSteps.steps)")
                         lastTimeframe += 5
                     }
                     if index == hours.count-1 {
@@ -321,7 +321,7 @@
                 }
                 
                 lastSteps += Int(hourData)
-                yVals.append(BarChartDataEntry(value: hourData, xIndex:i));
+                yVals.append(BarChartDataEntry(x: Double(i) ,y: hourData));
                 if(i%6 == 0){
                     xVals.append("\(i):00")
                 }else if(i == 23) {
@@ -330,13 +330,13 @@
                     xVals.append("")
                 }
                 
-                let barChartSet:BarChartDataSet = BarChartDataSet(yVals: yVals, label: "")
+                let barChartSet:BarChartDataSet = BarChartDataSet(values: yVals, label: "")
                 let dataSet = NSMutableArray()
                 dataSet.add(barChartSet);
                 barChartSet.colors = [UIColor.getBaseColor()]
                 barChartSet.highlightColor = UIColor.getBaseColor()
                 barChartSet.valueColors = [UIColor.getGreyColor()]
-                let barChartData = BarChartData(xVals: xVals, dataSet: barChartSet)
+                let barChartData = BarChartData(dataSet: barChartSet)
                 barChartData.setDrawValues(false)
                 if lastSteps>0 {
                     self.barChart.data = barChartData
@@ -396,7 +396,7 @@
                 let formatter = DateFormatter()
                 formatter.dateFormat = "M/dd"
                 let dateString = "\(formatter.string(from: dayDate))"
-                thisWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
+                thisWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(x:Double(i) ,y: hourData))
             }
             
             if thisWeekSteps>0 {
@@ -435,7 +435,7 @@
                 lastWeekSteps+=Int(hourData)
                 
                 let dateString = dayDate.stringFromFormat("M/dd")
-                lastWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
+                lastWeekChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(x:Double(i), y: hourData))
             }
             
             if lastWeekSteps>0 {
@@ -476,7 +476,7 @@
                 formatter.dateFormat = "M/dd"
                 let dateString = "\(formatter.string(from: Foundation.Date(timeIntervalSince1970: monthTimeInterval)))"
                 
-                lastMonthChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(value: hourData, xIndex:i))
+                lastMonthChart.addDataPoint("\(dateString)", entry: BarChartDataEntry(x: Double(i), y: hourData))
             }
             
             if lastMonthSteps>0 {

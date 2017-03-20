@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import XCGLogger
+
 import SwiftyJSON
 import RealmSwift
 
@@ -104,14 +104,14 @@ class StepsManager: NSObject {
         
         StepsNetworkManager.updateSteps(id: cid, uid: profile.id, steps: value, date: key, activeTime: 0) { (updated) in
             if updated {
-                XCGLogger.debug("Steps updated in the cloud.")
+                debugPrint("Steps updated in the cloud.")
             } else {
-                XCGLogger.debug("Could not update steps in the cloud.")
+                debugPrint("Could not update steps in the cloud.")
             }
         }
         
         group.notify(queue: queue, execute: {
-            XCGLogger.default.debug("create steps completed")
+            debugPrint("create steps completed")
         })
     }
     
@@ -125,14 +125,14 @@ class StepsManager: NSObject {
             
             StepsNetworkManager.createSteps(uid: profile.id, steps: value, date: key, activeTime: 0) { (success) in
                 if success{
-                    XCGLogger.debug("Synced with cloud")
+                    debugPrint("Synced with cloud")
                 }else{
-                    XCGLogger.debug("Could not sync with cloud")
+                    debugPrint("Could not sync with cloud")
                 }
             }
             
             group.notify(queue: queue, execute: {
-                XCGLogger.default.debug("create steps completed")
+                debugPrint("create steps completed")
             })
         }
     }

@@ -13,7 +13,7 @@ import BRYXBanner
 import UIColor_Hex_Swift
 import SwiftyJSON
 import MRProgress
-import XCGLogger
+
 
 class LoginViewController: UIViewController {
 
@@ -123,7 +123,7 @@ class LoginViewController: UIViewController {
                     StepsNetworkManager.stepsForPeriod(uid: unpackedProfile.id, startDate: Date(), endDate: (Date() - 30.days), completion: { result in
                         print("results = \(result.requestSuccess)")
                         print("results = \(result.databaseSaved)")
-                        XCGLogger.debug("Synced Steps with the Cloud!")
+                        debugPrint("Synced Steps with the Cloud!")
                     })
                     
                     if self.fromMenu{

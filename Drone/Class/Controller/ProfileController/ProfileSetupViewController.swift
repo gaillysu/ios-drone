@@ -13,7 +13,7 @@ import UIColor_Hex_Swift
 import BRYXBanner
 import SwiftyJSON
 import MRProgress
-import XCGLogger
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -175,7 +175,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
                 banner.show(duration: 1.2)
             })
         }else{
-            XCGLogger.debug("注册的时候没有网络")
+            debugPrint("注册的时候没有网络")
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
             _ = Timer.after(0.6.seconds, {
