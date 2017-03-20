@@ -50,7 +50,7 @@
         @IBOutlet weak var lastActiveTime: UILabel!
         @IBOutlet weak var stepsLabel: UILabel!
         
-        @IBOutlet weak var barChart: BarChartView!
+        @IBOutlet weak var barChart: StepsBarChartView!
         @IBOutlet weak var percentageLabel: UILabel!
         
         @IBOutlet weak var thisWeekMiles: UILabel!
@@ -71,9 +71,20 @@
         var calendarView:CVCalendarView?
         var menuView:CVCalendarMenuView?
         var titleView:StepsTitleView?
-        var goal:UserGoal?
+        lazy var goal: UserGoal = {
+            if UserGoal.getAll().count > 0 {
+                let userGoal:UserGoal = UserGoal.getAll().first as! UserGoal
+                return userGoal
+            }
+            let userGoal:UserGoal = UserGoal()
+            userGoal.goalSteps = 10000
+            userGoal.label = " "
+            userGoal.status = false
+            _ = userGoal.add()
+            return userGoal
+        }()
         
-        fileprivate var didSelectedDate:Foundation.Date = Foundation.Date().beginningOfDay
+        fileprivate var didSelectedDate:Date = Date()
         fileprivate var queryTimer:Timer?
         
         init() {
@@ -88,17 +99,8 @@
         override func viewDidLoad() {
             super.viewDidLoad()
             self.initTitleView()
-            if (UserGoal.getAll().count > 0){
-                goal = UserGoal.getAll().first as? UserGoal
-            }else{
-                goal = UserGoal()
-                goal?.goalSteps = 10000
-                goal?.label = " "
-                goal?.status = false
-                _ = goal?.add()
-            }
             
-            percentageLabel.text = String(format:"Goal: %d",(goal?.goalSteps)!)
+            percentageLabel.text = String(format:"Goal: %d",(goal.goalSteps))
             self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
             stepsLabel.text = "0"
             
@@ -107,10 +109,11 @@
         
         override func viewWillAppear(_ animated: Bool) {
             _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
-                if self.didSelectedDate == Foundation.Date().beginningOfDay {
-                    let stepsDict:[String:Int] = notification.object as! [String:Int]
-                    _ = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: stepsDict as AnyObject)
-                    self.getLoclSmallSyncData(stepsDict)
+                if self.didSelectedDate.beginningOfDay == Date().beginningOfDay {
+                    let rawGoalPacket:StepsGoalPacket = notification.object as! StepsGoalPacket
+                    let saveData:[String:Any] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal(),"date":Date()]
+                    _ = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: saveData)
+                    self.getLoclSmallSyncData(saveData)
                 }
             }
             
@@ -123,30 +126,21 @@
             
             _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
                 debugPrint("End of the data sync")
-                self.delay(1) {
-                    //start small sync timer
-                    self.fireSmallSyncTimer()
-                    //refresh chart data
-                    self.bulidChart(Foundation.Date().beginningOfDay)
-                }
+                //start small sync timer
+                self.fireSmallSyncTimer()
+                //refresh chart data
+                self.bulidChart(Foundation.Date().beginningOfDay)
             }
             
             if let unwrappedData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND){
-                let lastData = unwrappedData as! NSArray
-                if lastData.count>0 {
-                    let dateString:String = lastData[1] as! String
-                    let date:Foundation.Date = dateString.dateFromFormat("YYYY/MM/dd")!
-                    if date == Foundation.Date().beginningOfDay {
-                        AppDelegate.getAppDelegate().setStepsToWatch()
-                    }
-                }
-                
-                if AppDelegate.getAppDelegate().syncState != SYNC_STATE.big_SYNC {
-                    self.delay(2) {
-                        self.fireSmallSyncTimer()
-                    }
+                let lastData:[String:Any] = unwrappedData as! [String:Any]
+                let date:Date = lastData["date"] as! Date
+                if date == Date().beginningOfDay {
+                    AppDelegate.getAppDelegate().setStepsToWatch()
                 }
             }
+            
+            self.fireSmallSyncTimer()
             
             self.bulidChart(didSelectedDate)
         }
@@ -191,45 +185,40 @@
                     let nowDate:Date = Date()
                     let fiveMinutes:TimeInterval = 300
                     if (nowDate.timeIntervalSince1970-sendLastDate.timeIntervalSince1970)>=fiveMinutes {
-                        self.delay(1.5) {
-                            _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date() as AnyObject)
-                            AppDelegate.getAppDelegate().getActivity()
-                        }
-                    }
-                }else{
-                    self.delay(1.5) {
-                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Foundation.Date() as AnyObject)
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Date())
                         AppDelegate.getAppDelegate().getActivity()
                     }
+                }else{
+                    _ = AppTheme.KeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME, andObject: Date())
+                    AppDelegate.getAppDelegate().getActivity()
                 }
             }
         }
         
-        func getLoclSmallSyncData(_ data:[String:Int]?){
+        func getLoclSmallSyncData(_ data:[String:Any]?){
             if let unpackeddata  = AppTheme.LoadKeyedArchiverName(SMALL_SYNC_LASTDATA){
-                if let lastData = unpackeddata as? NSArray{
-                    if lastData.count>0 {
-                        let stepsDict:[String:Int] = data==nil ? (lastData[0] as! [String:Int]):data!
-                        let smallDateString = data==nil ? (lastData[1] as! String):Foundation.Date().beginningOfDay.stringFromFormat("YYYY/MM/dd")
-                        if smallDateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
-                            let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) as! [AnyObject]
-                            if last0X30Data.count>0 {
-                                let steps:[String:AnyObject] = last0X30Data[0] as! [String:AnyObject]
-                                let dateString = last0X30Data[1] as! String
-                                if dateString.dateFromFormat("YYYY/MM/dd")! == Foundation.Date().beginningOfDay {
-                                    DispatchQueue.main.async(execute: {
-                                        // do something
-                                        let daySteps:Int = Int(steps["steps"] as! String)! + stepsDict["dailySteps"]!
-                                        self.setCircleProgress(daySteps, goalValue: stepsDict["goal"]!)
-                                    })
-                                    
-                                }else{
-                                    self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
-                                }
-                            }else{
-                                self.setCircleProgress(stepsDict["dailySteps"]! , goalValue: stepsDict["goal"]!)
-                            }
+                let stepsDict:[String:Any] = unpackeddata as! [String:Any]
+                let smallDate = stepsDict["date"] as! Date
+                let dailySteps:String = String(format: "%d", stepsDict["dailySteps"] as! Int)
+                let stepsGoal:String = String(format: "%d", stepsDict["goal"] as! Int)
+                
+                if smallDate.beginningOfDay == Date().beginningOfDay {
+                    if let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) {
+                        let data:[String:Any] = last0X30Data as! [String:Any]
+                        let date:Date = data["date"] as! Date
+                        if date.beginningOfDay == Date().beginningOfDay {
+                            DispatchQueue.main.async(execute: {
+                                // do something
+                                let steps:String =  String(format: "%@", data["steps"] as! Int)
+                                let daySteps:Int = steps.toInt() + dailySteps.toInt()
+                                self.setCircleProgress(daySteps, goalValue: stepsGoal.toInt())
+                            })
+                            
+                        }else{
+                            self.setCircleProgress(dailySteps.toInt() , goalValue: stepsGoal.toInt())
                         }
+                    }else{
+                        self.setCircleProgress(dailySteps.toInt(), goalValue: stepsGoal.toInt())
                     }
                 }
             }
@@ -249,105 +238,14 @@
             lastMonthChart.reset()
             thisWeekChart.reset()
             
-            barChart!.noDataText = NSLocalizedString("no_data_selected_date", comment: "")
-            barChart!.descriptionText = ""
-            barChart!.pinchZoomEnabled = false
-            barChart!.doubleTapToZoomEnabled = false
-            barChart!.legend.enabled = false
-            barChart!.dragEnabled = true
-            barChart!.rightAxis.enabled = true
-            barChart!.setScaleEnabled(false)
+            barChart.drawSettings(barChart.xAxis, yAxis: barChart.leftAxis, rightAxis: barChart.rightAxis)
             
-            let xAxis:XAxis = barChart!.xAxis
-            xAxis.labelTextColor = UIColor.gray
-            xAxis.axisLineColor = UIColor.gray
-            xAxis.drawAxisLineEnabled = true
-            xAxis.drawGridLinesEnabled = true
-            xAxis.labelPosition = XAxis.LabelPosition.bottom
-            xAxis.labelFont = UIFont(name: "Helvetica-Light", size: 7)!
-            
-            let yAxis:YAxis = barChart!.leftAxis
-            yAxis.labelTextColor = UIColor.gray
-            yAxis.axisLineColor = UIColor.gray
-            yAxis.drawAxisLineEnabled  = true
-            yAxis.drawGridLinesEnabled  = true
-            yAxis.drawLimitLinesBehindDataEnabled = true
-            yAxis.axisMinValue = 0
-            yAxis.setLabelCount(5, force: true)
-            
-            let rightAxis:YAxis = barChart!.rightAxis
-            rightAxis.labelTextColor = UIColor.clear
-            rightAxis.axisLineColor = UIColor.gray
-            rightAxis.drawAxisLineEnabled  = true
-            rightAxis.drawGridLinesEnabled  = true
-            rightAxis.drawLimitLinesBehindDataEnabled = true
-            rightAxis.drawZeroLineEnabled = true
-            
-            barChart!.rightAxis.enabled = false
-            barChart.drawBarShadowEnabled = false
-            var xVals = [String]();
-            var yVals = [ChartDataEntry]();
-            
-            var lastSteps:Int = 0
-            var lastTimeframe:Int = 0
-            var max:Double = 0
-            for i in 0 ..< 24 {
-                let dayDate:Date = todayDate
-                let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
-                let hours = UserSteps.getFilter("date >= \(dayTime) AND date <= \(dayTime+3600-1)")
-                
-                var hourData:Double = 0
-                for (index,userSteps) in hours.enumerated() {
-                    let hSteps:UserSteps = userSteps as! UserSteps
-                    hourData += Double(hSteps.steps)
-                    if hSteps.steps>0 {
-                        debugPrint("Hour Steps:\(hSteps.steps)")
-                        lastTimeframe += 5
-                    }
-                    if index == hours.count-1 {
-                        if hourData > max {
-                            max = hourData
-                        }
-                    }
-                }
-                
-                if(max > 500){
-                    while max.truncatingRemainder(dividingBy: 100) != 0 {
-                        max += 1
-                    }
-                    yAxis.axisMaxValue = max
-                }else{
-                    yAxis.axisMaxValue = 500
-                }
-                
-                lastSteps += Int(hourData)
-                yVals.append(BarChartDataEntry(x: Double(i) ,y: hourData));
-                if(i%6 == 0){
-                    xVals.append("\(i):00")
-                }else if(i == 23) {
-                    xVals.append("\(i+1):00")
-                }else{
-                    xVals.append("")
-                }
-                
-                let barChartSet:BarChartDataSet = BarChartDataSet(values: yVals, label: "")
-                let dataSet = NSMutableArray()
-                dataSet.add(barChartSet);
-                barChartSet.colors = [UIColor.getBaseColor()]
-                barChartSet.highlightColor = UIColor.getBaseColor()
-                barChartSet.valueColors = [UIColor.getGreyColor()]
-                let barChartData = BarChartData(dataSet: barChartSet)
-                barChartData.setDrawValues(false)
-                if lastSteps>0 {
-                    self.barChart.data = barChartData
-                }else{
-                    self.barChart.data = nil
-                }
-            }
-            
+            let lastValue = barChart.invalidateChart(date: todayDate)
+            let lastSteps:Int = lastValue.lastSteps
+            let lastTimeframe:Int = lastValue.lastTimeframe
             //display selected today steps data
             if didSelectedDate != Foundation.Date().beginningOfDay {
-                self.setCircleProgress(Int(lastSteps) , goalValue: (goal?.goalSteps)!)
+                self.setCircleProgress(lastSteps , goalValue: goal.goalSteps)
             }
             
             if lastSteps>0 {
@@ -368,8 +266,6 @@
                 self.lastActiveTime.text = "0m"
             }
             
-            
-            barChart?.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.easeInOutCirc)
             lastWeekChart.drawSettings(lastWeekChart.xAxis, yAxis: lastWeekChart.leftAxis, rightAxis: lastWeekChart.rightAxis)
             thisWeekChart.drawSettings(thisWeekChart.xAxis, yAxis: thisWeekChart.leftAxis, rightAxis: thisWeekChart.rightAxis)
             lastMonthChart.drawSettings(lastMonthChart.xAxis, yAxis: lastMonthChart.leftAxis, rightAxis: lastMonthChart.rightAxis)

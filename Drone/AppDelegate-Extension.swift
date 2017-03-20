@@ -106,7 +106,7 @@ extension AppDelegate {
                     let date:Date = Date(timeIntervalSince1970: stateArray["RESET_STATE_DATE"]!.doubleValue)
                     if state && (date.beginningOfDay == Date().beginningOfDay){
                         sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)"])
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)","date":Date()])
                     }
                 }
             }

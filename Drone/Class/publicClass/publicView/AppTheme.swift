@@ -96,7 +96,7 @@ class AppTheme {
         let pathArray:[String] = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
         let path:String = pathArray.first!
 
-        let filename:String = path.appendingFormat("/%@.data", path)
+        let filename:String = path.appendingFormat("/%@.data", name)
         let result = NSKeyedArchiver.archiveRootObject(object, toFile: filename)
         return result
     }
