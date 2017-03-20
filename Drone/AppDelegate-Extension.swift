@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import XCGLogger
+
 import SwiftEventBus
 import SwiftyJSON
 

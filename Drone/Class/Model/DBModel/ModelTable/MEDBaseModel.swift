@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-import XCGLogger
+
 
 class MEDBaseModel: Object,MEDDataBaseRequest {
     
@@ -32,7 +32,7 @@ class MEDBaseModel: Object,MEDDataBaseRequest {
                 realm.delete(self)
             }
         } catch let error {
-            XCGLogger.default.debug("write database error:\(error)")
+            debugPrint("write database error:\(error)")
             return false
         }
         return true
@@ -47,7 +47,7 @@ class MEDBaseModel: Object,MEDDataBaseRequest {
                     realm.delete(object)
                 }
             } catch let error {
-                XCGLogger.default.debug("write database error:\(error)")
+                debugPrint("write database error:\(error)")
                 return false
             }
         }

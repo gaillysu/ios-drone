@@ -10,10 +10,10 @@ import Foundation
 import RealmSwift
 
 class UserDevice: MEDBaseModel {
-    var id:Int = 0
-    var device_name:String = ""
-    var identifiers:String = ""
-    var connectionTimer:TimeInterval = Date().timeIntervalSince1970
+    dynamic var id:Int = 0
+    dynamic var device_name:String = ""
+    dynamic var identifiers:String = ""
+    dynamic var connectionTimer:TimeInterval = Date().timeIntervalSince1970
     
     override static func primaryKey() -> String? {
         return "identifiers"

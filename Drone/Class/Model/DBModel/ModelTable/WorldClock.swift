@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 class WorldClock: MEDBaseModel {
-    var id:Int = 0
-    var system_name:String = ""
-    var city_name:String = ""
-    var display_name:String = ""
+    dynamic var id:Int = 0
+    dynamic var system_name:String = ""
+    dynamic var city_name:String = ""
+    dynamic var display_name:String = ""
     
     override static func primaryKey() -> String? {
         return "id"

@@ -1,14 +1,12 @@
 platform :ios, '9.0'
 use_frameworks!
 target 'Drone' do
-    pod 'FMDB'
     pod 'Alamofire', '~> 4.0'
-    pod 'Charts', :git => 'https://github.com/danielgindi/Charts.git', :branch => 'Swift-3.0'
+    pod 'Charts'
     pod 'PagingMenuController', '~> 1.4.0'
     pod 'SwiftEventBus', :tag => '2.1.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
     pod 'CircleProgressView'
     pod 'SMSegmentView', '~> 1.1'
-    pod 'XCGLogger', '~> 4.0.0'
     pod 'SDCycleScrollView','~> 1.3'
     pod 'AutocompleteField','~> 1.1'
     pod 'UIColor_Hex_Swift', '~> 2.1'

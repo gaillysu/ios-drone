@@ -9,10 +9,10 @@
 import UIKit
 
 class UserGoal: MEDBaseModel {
-    var id:Int = 0
-    var goalSteps:Int = 0
-    var label:String = ""
-    var status:Bool = false
+    dynamic var id:Int = 0
+    dynamic var goalSteps:Int = 0
+    dynamic var label:String = ""
+    dynamic var status:Bool = false
     
     override static func primaryKey() -> String? {
         return "id"

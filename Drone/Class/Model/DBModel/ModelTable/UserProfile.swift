@@ -9,17 +9,17 @@
 import UIKit
 
 class UserProfile: MEDBaseModel {
-    var id:Int = 0
-    var first_name:String = ""
-    var last_name:String = ""
-    var birthday:String = "" //2016-06-07
-    var gender:Bool = false // true = male || false = female
-    var weight:Int = 0 //KG
-    var length:Int = 0 //CM
-    var stride_length:Int = 0 //CM
-    var metricORimperial:Bool = false
-    var created:TimeInterval = Date().timeIntervalSince1970
-    var email:String = ""
+    dynamic var id:Int = 0
+    dynamic var first_name:String = ""
+    dynamic var last_name:String = ""
+    dynamic var birthday:String = "" //2016-06-07
+    dynamic var gender:Bool = false // true = male || false = female
+    dynamic var weight:Int = 0 //KG
+    dynamic var length:Int = 0 //CM
+    dynamic var stride_length:Int = 0 //CM
+    dynamic var metricORimperial:Bool = false
+    dynamic var created:TimeInterval = Date().timeIntervalSince1970
+    dynamic var email:String = ""
     override static func primaryKey() -> String? {
         return "id"
     }
