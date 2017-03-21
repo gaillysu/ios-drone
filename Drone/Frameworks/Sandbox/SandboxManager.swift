@@ -57,11 +57,16 @@ class SandboxManager: NSObject {
                     return false
                 }
             }else{
-                let sandBoxDict:NSDictionary = self.readDataWithName(type: "",fileName: fileName) as! NSDictionary
+                let sandBoxDict:NSMutableDictionary = NSMutableDictionary()
+                for (key ,value) in (self.readDataWithName(type: "",fileName: fileName) as! NSDictionary) {
+                    sandBoxDict.setValue(value, forKey: key as! String)
+                }
+            
                 let sandBoxVersion:String = sandBoxDict.object(forKey: "Version") as! String
                 let localVersion:String = localDict.object(forKey: "Version") as! String
+                
                 if sandBoxVersion.toDouble() < localVersion.toDouble() {
-                    return localDict.write(toFile: documentPath+"/"+fileName, atomically: true)
+                    return sandBoxDict.write(toFile: documentPath+"/"+fileName, atomically: true)
                 }else{
                     XCGLogger.default.debug("本地文件是最新的,不需要写入沙盒")
                     return false;
@@ -80,7 +85,9 @@ class SandboxManager: NSObject {
         }else if type.isEqual(to: "Data") {
             return try! Data(contentsOf: URL(fileURLWithPath: path))
         }else if type.isEqual(to: "Array") {
-            return []
+            return NSArray(contentsOfFile: path)!
+        }else if type.isEqual(to: "Dictionary") {
+            return NSDictionary.init(contentsOfFile: path)!
         }
         return NSDictionary.init(contentsOfFile: path)!
         
