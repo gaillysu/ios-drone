@@ -54,8 +54,7 @@
       var syncState:SYNC_STATE = .no_SYNC
       
       var sendIndex:((_ index:Int) -> Void)?
-      let network = NetworkReachabilityManager(host: "drone.karljohnchow.com")
-      
+      let network = NetworkReachabilityManager(host: "https://drone.dayton.med-corp.net")
       
       let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
       
