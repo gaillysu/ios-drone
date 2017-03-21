@@ -9,16 +9,13 @@
     import UIKit
     import CoreData
     import Alamofire
-    import FMDB
     import SwiftEventBus
-    import XCGLogger
+    
     import Fabric
     import Crashlytics
     import IQKeyboardManagerSwift
     import RealmSwift
     import SwiftyJSON
-    let DRONEDBFILE:String = "droneDBFile";
-    let DRONEDBNAME:String = "drone.sqlite";
     let RESET_STATE:String = "RESET_STATE"
     let SETUP_KEY = "SETUP_KEY"
 
@@ -49,9 +46,8 @@
       var syncState:SYNC_STATE = .no_SYNC
       
       var sendIndex:((_ index:Int) -> Void)?
+
       let network = NetworkReachabilityManager(host: "https://drone.dayton.med-corp.net")
-      
-      let dbQueue:FMDatabaseQueue = FMDatabaseQueue(path: AppDelegate.dbPath())
       
       class func getAppDelegate()->AppDelegate {
          return UIApplication.shared.delegate as! AppDelegate
@@ -66,7 +62,7 @@
          let sanbos:SandboxManager = SandboxManager()
          let res:Bool = sanbos.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
          let replyString = res ? "Success":"fail"
-         XCGLogger.default.debug("copy to file \(replyString)")
+         debugPrint("copy to file \(replyString)")
          
          DispatchQueue.global(qos: .background).async {
             WorldClockDatabaseHelper().setup()
@@ -77,7 +73,7 @@
          
          
          network?.listener = { status in
-            XCGLogger.default.debug("Network Status Changed: \(status)")
+            debugPrint("Network Status Changed: \(status)")
          }
          network?.startListening()
          
@@ -111,26 +107,6 @@
          Realm.Configuration.defaultConfiguration = config
          realm = try! Realm()
       }
-      
-      // MARK: -dbPath
-      class func dbPath()->String{
-         var docsdir:String = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
-         let filemanage:FileManager = FileManager.default
-         //drone DB FileURL
-         docsdir = docsdir.appendingFormat("%@%@/", "/",DRONEDBFILE)
-         var isDir : ObjCBool = false
-         let exit:Bool = filemanage.fileExists(atPath: docsdir, isDirectory:&isDir )
-         if (!exit || !isDir.boolValue) {
-            do{
-               try filemanage.createDirectory(atPath: docsdir, withIntermediateDirectories: true, attributes: nil)
-            }catch {
-               
-            }
-            
-         }
-         let dbpath:String = docsdir + DRONEDBNAME
-         return dbpath;
-      }
 
       // MARK: - ConnectionControllerDelegate
       /**
@@ -145,7 +121,7 @@
             SwiftEventBus.post(SWIFTEVENT_BUS_RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
             if(packet.getHeader() == GetSystemStatus.HEADER()) {
                let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
-               XCGLogger.default.debug("SystemStatus :\(systemStatus)")
+               debugPrint("SystemStatus :\(systemStatus)")
                if(systemStatus == SystemStatus.systemReset.rawValue) {
                   //step1 : Set systemconfig next 1
                   UserDefaults.standard.setValue(true, forKeyPath: SETUP_KEY)
@@ -153,20 +129,31 @@
                   self.setSystemConfig(1)
                   self.setSystemConfig(2)
                   //Records need to use 0x30
-                  _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true] as AnyObject)
+                  _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true,"RESET_STATE_DATE":Date().timeIntervalSince1970])
                }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
                   setGoal(nil)
                }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                   self.getActivity()
                }else if(systemStatus != SystemStatus.lowMemory.rawValue && systemStatus != SystemStatus.subscribedToNotifications.rawValue) {
-                  setRTC()
+                  if let date = UserDefaults.standard.object(forKey: "SET_RTC") {
+                     let syncDate:Date = date as! Date
+                     if (Date().timeIntervalSince1970 - syncDate.timeIntervalSince1970) > 60 {
+                        UserDefaults.standard.setValue(Date(), forKeyPath: "SET_RTC")
+                        UserDefaults.standard.synchronize()
+                        self.watchConfig()
+                     }
+                  }else{
+                     UserDefaults.standard.setValue(Date(), forKeyPath: "SET_RTC")
+                     UserDefaults.standard.synchronize()
+                     self.watchConfig()
+                  }
                }
                SwiftEventBus.post(SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
             }
             
             if(packet.getHeader() == SystemEventPacket.HEADER()) {
                let eventCommandStatus:Int = SystemEventPacket(data: packet.getRawData()).getSystemEventStatus()
-               XCGLogger.default.debug("eventCommandStatus :\(eventCommandStatus)")
+               debugPrint("eventCommandStatus :\(eventCommandStatus)")
                if(eventCommandStatus == SystemEventStatus.goalCompleted.rawValue) {
                   SwiftEventBus.post(SWIFTEVENT_BUS_GOAL_COMPLETED, sender:nil)
                }
@@ -191,7 +178,7 @@
             
             if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
                //Set steps to watch response
-               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false] as AnyObject)
+               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false,"RESET_STATE1":Date()] as AnyObject)
             }
             
             if(packet.getHeader() == SetWorldClockRequest.HEADER()) {
@@ -206,29 +193,28 @@
             
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
                let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData() as NSData)
-               let stepsDict:[String:Int] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal()]
                syncState = .small_SYNC
-               SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(stepsDict as AnyObject))
+               SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
             }
             
             if (packet.getHeader() == SetNotificationRequest.HEADER()) {
-               XCGLogger.default.debug("Set Notification response")
+               debugPrint("Set Notification response")
             }
             
             if (packet.getHeader() == UpdateNotificationRequest.HEADER()) {
-               XCGLogger.default.debug("Update notification response")
+               debugPrint("Update notification response")
             }
             
             if(packet.getHeader() == UpdateContactsFilterRequest.HEADER()) {
-               XCGLogger.default.debug("Update contacts filter response")
+               debugPrint("Update contacts filter response")
             }
             
             if(packet.getHeader() == UpdateContactsApplicationsRequest.HEADER()) {
-               XCGLogger.default.debug("Update contacts applications response")
+               debugPrint("Update contacts applications response")
             }
             
             if(packet.getHeader() == SetContactsFilterRequest.HEADER()) {
-               XCGLogger.default.debug("Set contacts filter response")
+               debugPrint("Set contacts filter response")
             }
             
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
@@ -244,7 +230,7 @@
                
                let status:Int = Int(syncStatus[8])
                
-               XCGLogger.default.debug("dailySteps:\(stepCount),dailyStepsDate:\(timerInterval),status:\(status)")
+               debugPrint("dailySteps:\(stepCount),dailyStepsDate:\(timerInterval),status:\(status)")
                let bigData = (time:timerInterval,dailySteps:stepCount)
                SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:(bigData as AnyObject))
                
@@ -264,7 +250,7 @@
          }
       }
       
-      func connectionStateChanged(_ isConnected : Bool) {
+      func connectionStateChanged(_ isConnected : Bool, fromAddress:String) {
          SwiftEventBus.post(SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY, sender:isConnected as AnyObject)
          if(isConnected) {
             let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.6 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -272,6 +258,22 @@
                //setp1: cmd:0x01 read system status
                self.readsystemStatus()
             })
+            
+            let userDevice = UserDevice.getFilter(String(format: "identifiers = '%@'", fromAddress))
+            if userDevice.count == 0 {
+               let device:UserDevice = UserDevice()
+               device.id = Int(Date().timeIntervalSince1970)
+               device.device_name = "Drone"
+               device.identifiers = fromAddress
+               device.connectionTimer = Date().timeIntervalSince1970
+               _ = device.add()
+            }else{
+               let device:UserDevice = userDevice.first as! UserDevice
+               try! realm!.write {
+                  device.connectionTimer = Date().timeIntervalSince1970
+               }
+            }
+            
          }else{
             SyncQueue.sharedInstance.clear()
          }
@@ -304,29 +306,29 @@
     
 extension AppDelegate{
    func watchConfig() {
-      XCGLogger.default.debug("setp2 0x03")
+      debugPrint("setp2 0x03")
       //setp2:start set RTC
       self.setRTC()
       //setp3:start set AppConfig
-      XCGLogger.default.debug("setp3 0x04")
+      debugPrint("setp3 0x04")
       self.setAppConfig()
       //step4: start set user profile
-      XCGLogger.default.debug("setp4 0x31")
+      debugPrint("setp4 0x31")
       self.setUserProfile()
       //step5: start set user default goal
-      XCGLogger.default.debug("setp5 0x12")
+      debugPrint("setp5 0x12")
       self.setGoal(nil)
       
-      XCGLogger.default.debug("setp6 0x06")
+      debugPrint("setp6 0x06")
       self.isSaveWorldClock()
       
-      XCGLogger.default.debug("setp7 0x0A")
+      debugPrint("setp7 0x0A")
       self.setNotification()
       
-      XCGLogger.default.debug("setp8 0x0B")
+      debugPrint("setp8 0x0B")
       self.updateNotification()
       
-      XCGLogger.default.debug("setp9 0x30")
+      debugPrint("setp9 0x30")
       self.setStepsToWatch()
    }
    

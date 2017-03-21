@@ -92,40 +92,28 @@ class AppTheme {
     *	@brief	The archive All current data
     *
     */
-    class func KeyedArchiverName(_ name:String,andObject object:AnyObject) ->Bool{
-        var objectArray:[AnyObject] = [object]
-        let senddate:Date = Date()
-        let dateformatter:DateFormatter = DateFormatter()
+    class func KeyedArchiverName(_ name:String,andObject object:Any) ->Bool{
+        let pathArray:[String] = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
+        let path:String = pathArray.first!
 
-        dateformatter.dateFormat = "YYYY/MM/dd"// HH:mm:ss
-        let locationString:NSString = dateformatter.string(from: senddate) as NSString
-        objectArray.append(locationString)
-        NSLog("locationString:%@",locationString);
-
-        let pathArray = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
-        let Path:NSString = (pathArray as NSArray).object(at: 0) as! NSString
-
-        let filename:String = Path.appendingPathComponent(name as String)
-        let result = NSKeyedArchiver.archiveRootObject(objectArray, toFile: filename as String)
+        let filename:String = path.appendingFormat("/%@.data", name)
+        let result = NSKeyedArchiver.archiveRootObject(object, toFile: filename)
         return result
     }
 
     /**
     *	@brief	Load the archived data
     */
-    class func LoadKeyedArchiverName(_ name:String) ->AnyObject?{
-        let pathArray = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
-        let Path:NSString = (pathArray as NSArray).object(at: 0) as! NSString
-
-        let filename:NSString = Path.appendingPathComponent(name as String) as NSString
+    class func LoadKeyedArchiverName(_ name:String) ->Any?{
+        let pathArray:[String] = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
+        let path:String = pathArray.first!
+        let filename:String = path.appendingFormat("/%@.data",name)
 
         let flierManager:Bool = FileManager.default.fileExists(atPath: filename as String)
         if(flierManager){
-            var objectArr:AnyObject?
-            objectArr = NSKeyedUnarchiver.unarchiveObject(withFile: filename as String)! as AnyObject?
-            return objectArr!
+            return NSKeyedUnarchiver.unarchiveObject(withFile: filename as String)
         }
-        return [] as AnyObject
+        return nil
     }
 
     /**
@@ -453,5 +441,14 @@ class AppTheme {
 
     class func isNull(_ object:String)->Bool{
         return object.isEmpty
+    }
+    
+    class func timerFormatValue(value:Double)->String {
+        let hours:Int = Int(value).hours.value
+        let minutes:Int = Int((value-Double(hours))*60).minutes.value
+        if hours == 0 {
+            return String(format:"%d m",minutes)
+        }
+        return String(format:"%d h %d m",hours,minutes)
     }
 }

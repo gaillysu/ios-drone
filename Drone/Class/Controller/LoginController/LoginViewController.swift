@@ -13,7 +13,7 @@ import BRYXBanner
 import UIColor_Hex_Swift
 import SwiftyJSON
 import MRProgress
-import XCGLogger
+
 
 class LoginViewController: UIViewController {
 
@@ -123,7 +123,7 @@ class LoginViewController: UIViewController {
                     StepsNetworkManager.stepsForPeriod(uid: unpackedProfile.id, startDate: Date(), endDate: (Date() - 30.days), completion: { result in
                         print("results = \(result.requestSuccess)")
                         print("results = \(result.databaseSaved)")
-                        XCGLogger.debug("Synced Steps with the Cloud!")
+                        debugPrint("Synced Steps with the Cloud!")
                     })
                     
                     if self.fromMenu{
@@ -141,8 +141,11 @@ class LoginViewController: UIViewController {
             })
             
             if(UserGoal.getAll().count == 0){
-                let goal:UserGoal = UserGoal(keyDict: ["goalSteps":10000,"label":" ","status":false])
-                goal.add({ (id, completion) in})
+                let goal:UserGoal = UserGoal()
+                goal.goalSteps = 10000
+                goal.label = " "
+                goal.status = false
+                _ = goal.add()
             }
         }else{
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)

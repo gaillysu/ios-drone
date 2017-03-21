@@ -67,7 +67,7 @@ protocol ConnectionControllerDelegate {
     /**
     Called when a peripheral connects or disconnects
     */
-    func connectionStateChanged(_ isConnected : Bool)
+    func connectionStateChanged(_ isConnected : Bool, fromAddress : String)
     
     
     func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString)

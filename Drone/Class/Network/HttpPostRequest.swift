@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import XCGLogger
+
 
 class HttpPostRequest: NSObject {
         
@@ -18,7 +18,7 @@ class HttpPostRequest: NSObject {
         var finalData: Dictionary<String,Any> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei" as Any]
         finalData["params"] = data;
         let param:Parameters = finalData
-        XCGLogger.debug("\(finalData)")
+        debugPrint("\(finalData)")
         
         var headers: HTTPHeaders = [:]
         
@@ -28,7 +28,7 @@ class HttpPostRequest: NSObject {
         Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response  in
                 if response.result.isSuccess {
-                    XCGLogger.debug("getJSON: \(response.result.value)")
+                    debugPrint("getJSON: \(response.result.value)")
                     completion(
                         response.result.value as! NSDictionary)
                 }else if (response.result.isFailure){
@@ -45,7 +45,7 @@ class HttpPostRequest: NSObject {
     class  func putRequest(_ url: String, data:[String:AnyObject], completion:@escaping (_ result:NSDictionary) -> Void){
         var finalData: Dictionary<String,AnyObject> = ["token":"ZQpFYPBMqFbUQq8E99FztS2x6yQ2v1Ei" as AnyObject]
         finalData["params"] = data as AnyObject?;
-        XCGLogger.debug("\(finalData)")
+        debugPrint("\(finalData)")
         
         var headers: HTTPHeaders = [:]
         
@@ -56,7 +56,7 @@ class HttpPostRequest: NSObject {
         Alamofire.request(url, method: .put, parameters: finalData, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response  in
                 if response.result.isSuccess {
-                    XCGLogger.debug("getJSON: \(response.result.value)")
+                    debugPrint("getJSON: \(response.result.value)")
                     completion(response.result.value as! NSDictionary)
                 }else if (response.result.isFailure){
                     print(response.result.description)

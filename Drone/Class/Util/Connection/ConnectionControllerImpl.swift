@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import XCGLogger
+
 
 /*
  See ConnectionController
@@ -50,8 +50,6 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
      */
     fileprivate var savedAddress:String?
     
-    fileprivate let log = XCGLogger.default
-    
     /**
      No initialisation outside of this class, this is a singleton
      */
@@ -66,7 +64,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
      See ConnectionController protocol
      */
     func setDelegate(_ delegate:ConnectionControllerDelegate) {
-        log.debug("New delegate : \(delegate)")
+        debugPrint("New delegate : \(delegate)")
         
         mDelegate = delegate
     }
@@ -82,7 +80,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         
         //We're not connected, let's connect
         if addres.count>0 {
-            log.debug("We have a saved address, let's connect to it directly : \(addres)")
+            debugPrint("We have a saved address, let's connect to it directly : \(addres)")
             var uuidArray:[UUID] = []
             for addresString:String in addres {
                 let uuid = UUID(uuidString: addresString)
@@ -112,19 +110,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
             connect([fromAddress.uuidString])
         } else {
             //Let's save this address
-            mDelegate?.connectionStateChanged(isConnected)
-            let userDevice:UserDevice = UserDevice(keyDict: ["id":0, "device_name":"Drone", "identifiers": "\(fromAddress.uuidString)","connectionTimer":Date().timeIntervalSince1970])
-            
-            if UserDevice.isExistInTable() {
-                let device:NSArray = UserDevice.getCriteria("WHERE identifiers LIKE '%\(fromAddress.uuidString)'")
-                if device.count == 0 {
-                    userDevice.add({ (id, completion) in
-                        
-                    })
-                }
-                
-            }
-            
+            mDelegate?.connectionStateChanged(isConnected,fromAddress:fromAddress.uuidString)
         }
         
     }

@@ -9,7 +9,7 @@
 
 import UIKit
 import Alamofire
-import XCGLogger
+
 import SwiftyJSON
 
 class NetworkManager: NSObject {
@@ -25,7 +25,7 @@ class NetworkManager: NSObject {
             })
             
         }else{
-            XCGLogger.error("URL/METHOD/ENCODING IS WRONGLY/NOT SPECIFIED IN THE REQUEST. DID NOT EXECUTE NETWORK REQUEST!")
+            debugPrint("URL/METHOD/ENCODING IS WRONGLY/NOT SPECIFIED IN THE REQUEST. DID NOT EXECUTE NETWORK REQUEST!")
         }
     }
     
