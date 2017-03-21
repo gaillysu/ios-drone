@@ -46,7 +46,8 @@
       var syncState:SYNC_STATE = .no_SYNC
       
       var sendIndex:((_ index:Int) -> Void)?
-      let network = NetworkReachabilityManager(host: "drone.karljohnchow.com")
+
+      let network = NetworkReachabilityManager(host: "https://drone.dayton.med-corp.net")
       
       class func getAppDelegate()->AppDelegate {
          return UIApplication.shared.delegate as! AppDelegate

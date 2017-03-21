@@ -14,7 +14,7 @@ import SwiftyJSON
 
 class NetworkManager: NSObject {
     
-    private static let baseUrl = "https://drone.karljohnchow.com"
+    private static let baseUrl = "https://drone.dayton.med-corp.net"
     
     class func execute(request :NetworkRequest){
         if let urlPart = request.url, let encoding = request.encoding, let method = request.method {
