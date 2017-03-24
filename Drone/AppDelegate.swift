@@ -18,7 +18,7 @@
     import SwiftyJSON
     let RESET_STATE:String = "RESET_STATE"
     let SETUP_KEY = "SETUP_KEY"
-
+    
     enum SYNC_STATE{
       case no_SYNC
       case big_SYNC
@@ -46,7 +46,7 @@
       var syncState:SYNC_STATE = .no_SYNC
       
       var sendIndex:((_ index:Int) -> Void)?
-
+      
       let network = NetworkReachabilityManager(host: "https://drone.dayton.med-corp.net")
       
       class func getAppDelegate()->AppDelegate {
@@ -89,9 +89,6 @@
          return true
       }
       
-      func applicationWillResignActive(_ application: UIApplication) {
-      }
-      
       func applicationDidEnterBackground(_ application: UIApplication) {
          UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
          
@@ -107,7 +104,7 @@
          Realm.Configuration.defaultConfiguration = config
          realm = try! Realm()
       }
-
+      
       // MARK: - ConnectionControllerDelegate
       /**
        Called when a packet is received from the device
@@ -182,7 +179,7 @@
             }
             
             if(packet.getHeader() == SetWorldClockRequest.HEADER()) {
-
+               
             }
             
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
@@ -302,63 +299,63 @@
          return mConnectionController
       }
     }
-
     
-extension AppDelegate{
-   func watchConfig() {
-      debugPrint("setp2 0x03")
-      //setp2:start set RTC
-      self.setRTC()
-      //setp3:start set AppConfig
-      debugPrint("setp3 0x04")
-      self.setAppConfig()
-      //step4: start set user profile
-      debugPrint("setp4 0x31")
-      self.setUserProfile()
-      //step5: start set user default goal
-      debugPrint("setp5 0x12")
-      self.setGoal(nil)
-      
-      debugPrint("setp6 0x06")
-      self.isSaveWorldClock()
-      
-      debugPrint("setp7 0x0A")
-      self.setNotification()
-      
-      debugPrint("setp8 0x0B")
-      self.updateNotification()
-      
-      debugPrint("setp9 0x30")
-      self.setStepsToWatch()
-   }
-   
-   func setNotification() {
-      let force = UserDefaults.standard.bool(forKey: SETUP_KEY)
-      if (force){
-         UserDefaults.standard.set(false, forKey: SETUP_KEY)
+    
+    extension AppDelegate{
+      func watchConfig() {
+         debugPrint("setp2 0x03")
+         //setp2:start set RTC
+         self.setRTC()
+         //setp3:start set AppConfig
+         debugPrint("setp3 0x04")
+         self.setAppConfig()
+         //step4: start set user profile
+         debugPrint("setp4 0x31")
+         self.setUserProfile()
+         //step5: start set user default goal
+         debugPrint("setp5 0x12")
+         self.setGoal(nil)
+         
+         debugPrint("setp6 0x06")
+         self.isSaveWorldClock()
+         
+         debugPrint("setp7 0x0A")
+         self.setNotification()
+         
+         debugPrint("setp8 0x0B")
+         self.updateNotification()
+         
+         debugPrint("setp9 0x30")
+         self.setStepsToWatch()
       }
-      let notificationRequest = SetNotificationRequest(mode: 1, force:  force ? 1 : 0)
-      sendRequest(notificationRequest)
-   }
-   
-   func updateNotification() {
-      var contact:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
-      let notification:[String:Any] = contact["NotificationType"] as! [String:Any]
       
-      for (key,value) in JSON(notification).dictionaryValue {
-         var operation:Int = 0
-         let packageName:String = value["bundleId"].stringValue
-         if value["state"].boolValue {
-            operation = 1
-         }else{
-            operation = 2
+      func setNotification() {
+         let force = UserDefaults.standard.bool(forKey: SETUP_KEY)
+         if (force){
+            UserDefaults.standard.set(false, forKey: SETUP_KEY)
          }
-         let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
-         AppDelegate.getAppDelegate().sendRequest(updateRequest)
+         let notificationRequest = SetNotificationRequest(mode: 1, force:  force ? 1 : 0)
+         sendRequest(notificationRequest)
       }
-   }
-   
-   func isSaveWorldClock() {
-      setWorldClock(Array(realm!.objects(City.self).filter("selected = true")))
-   }
-}
+      
+      func updateNotification() {
+         var contact:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
+         let notification:[String:Any] = contact["NotificationType"] as! [String:Any]
+         
+         for (key,value) in JSON(notification).dictionaryValue {
+            var operation:Int = 0
+            let packageName:String = value["bundleId"].stringValue
+            if value["state"].boolValue {
+               operation = 1
+            }else{
+               operation = 2
+            }
+            let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
+            AppDelegate.getAppDelegate().sendRequest(updateRequest)
+         }
+      }
+      
+      func isSaveWorldClock() {
+         setWorldClock(Array(realm!.objects(City.self).filter("selected = true")))
+      }
+    }
