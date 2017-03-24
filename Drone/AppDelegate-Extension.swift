@@ -49,7 +49,6 @@ extension AppDelegate {
     func setUserProfile() {
         let profileArray = UserProfile.getAll()
         if profileArray.count>0 {
-            //height (CM) X 0.415 ＝ stride length
             let profile:UserProfile = profileArray.first as! UserProfile
             var gender = 1
             if !profile.gender{
@@ -102,11 +101,19 @@ extension AppDelegate {
             if let unpackedData = AppTheme.LoadKeyedArchiverName(RESET_STATE) {
                 let stateArray = JSON(unpackedData).dictionaryValue
                 if stateArray.count>0 {
-                    let state:Bool = stateArray["RESET_STATE"]!.boolValue
-                    let date:Date = Date(timeIntervalSince1970: stateArray["RESET_STATE_DATE"]!.doubleValue)
-                    if state && (date.beginningOfDay == Date().beginningOfDay){
-                        sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)","date":Date()])
+                    let state:Bool = stateArray[RESET_STATE]!.boolValue
+                    print(stateArray)
+                    if  let obj = stateArray[RESET_STATE_DATE] {
+                        let date:Date = Date(timeIntervalSince1970: obj.doubleValue)
+                        if state && (date.beginningOfDay == Date().beginningOfDay){
+                            sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+                            _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)","date":Date()])
+                        }
+                    }else{
+                        if state {
+                            sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+                            _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)","date":Date()])
+                        }
                     }
                 }
             }

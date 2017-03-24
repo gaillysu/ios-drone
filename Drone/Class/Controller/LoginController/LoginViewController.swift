@@ -48,7 +48,6 @@ class LoginViewController: UIViewController {
             usernameT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             usernameT!.placeholder = "E-mail"
             usernameT?.backgroundColor = UIColor.white
-//            usernameT?.text = "test@user.com"
             
             textfiledBG.addSubview(usernameT!)
 
@@ -58,7 +57,6 @@ class LoginViewController: UIViewController {
             passwordT?.font = UIFont(name: usernameT!.font!.fontName, size: 15);
             passwordT!.placeholder = "Password"
             passwordT?.backgroundColor = UIColor.white
-//            passwordT?.text = "12341234"
             textfiledBG.addSubview(passwordT!)
         }
     }

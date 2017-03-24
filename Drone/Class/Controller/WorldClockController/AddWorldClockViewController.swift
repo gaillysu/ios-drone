@@ -181,7 +181,6 @@ extension AddWorldClockViewController:DidSelectedDelegate {
     func didSelectedLocalTimeZone(_ cityId:Int) {
         let city = realm.objects(City.self).filter("id = \(cityId)")
         if(city.count != 1){
-            print("Some programming error, city should always get 1 with unique ID")
             return
         }
         addCity(city[0])

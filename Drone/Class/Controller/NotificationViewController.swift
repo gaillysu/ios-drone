@@ -57,6 +57,7 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
     }
     
     func callback(isOn:Bool, bundleIdentifier:String){
+        print("Turned \(bundleIdentifier) \(isOn)")
         for realmApp in realmApps{
             if realmApp.bundleIdentifier == bundleIdentifier {
                 try! realm?.write ({

@@ -17,6 +17,8 @@
     import RealmSwift
     import SwiftyJSON
     let RESET_STATE:String = "RESET_STATE"
+    let RESET_STATE_DATE:String = "RESET_STATE_DATE"
+
     let SETUP_KEY = "SETUP_KEY"
     
     enum SYNC_STATE{
@@ -54,7 +56,6 @@
       }
       
       func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-         // Override point for customization after application launch.
          Fabric.with([Crashlytics.self])
          
          self.setUpRelam()
@@ -126,7 +127,7 @@
                   self.setSystemConfig(1)
                   self.setSystemConfig(2)
                   //Records need to use 0x30
-                  _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true,"RESET_STATE_DATE":Date().timeIntervalSince1970])
+                  _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true,RESET_STATE_DATE:Date().timeIntervalSince1970])
                }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
                   setGoal(nil)
                }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
@@ -175,13 +176,8 @@
             
             if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
                //Set steps to watch response
-               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false,"RESET_STATE1":Date()] as AnyObject)
+               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false,RESET_STATE_DATE:Date()] as AnyObject)
             }
-            
-            if(packet.getHeader() == SetWorldClockRequest.HEADER()) {
-               
-            }
-            
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
                let data:[UInt8] = NSData2Bytes(packet.getRawData())
                let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
@@ -339,18 +335,9 @@
       }
       
       func updateNotification() {
-         var contact:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
-         let notification:[String:Any] = contact["NotificationType"] as! [String:Any]
-         
-         for (key,value) in JSON(notification).dictionaryValue {
-            var operation:Int = 0
-            let packageName:String = value["bundleId"].stringValue
-            if value["state"].boolValue {
-               operation = 1
-            }else{
-               operation = 2
-            }
-            let updateRequest = UpdateNotificationRequest(operation: operation, package: packageName)
+         let notifications = realm?.objects(DroneNotification.self)
+         for notification in notifications!{
+            let updateRequest = UpdateNotificationRequest(operation: notification.state ? 1 : 2, package: notification.bundleIdentifier)
             AppDelegate.getAppDelegate().sendRequest(updateRequest)
          }
       }

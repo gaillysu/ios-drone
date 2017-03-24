@@ -64,7 +64,6 @@ class AnalysisStepsChartView: LineChartView {
         let formatter:ChartFormatter = ChartFormatter(xVals)
         let xaxis:XAxis = XAxis()
         for (index,vlaue) in xVals.enumerated() {
-            let array = (vlaue as String).components(separatedBy: ":")
             _ = formatter.stringForValue(Double(index), axis: nil)
         }
         xaxis.valueFormatter = formatter

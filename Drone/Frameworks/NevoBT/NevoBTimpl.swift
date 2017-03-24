@@ -42,7 +42,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
      */
     fileprivate var mPeripheral : CBPeripheral?
     
-    fileprivate var cockroach : CBPeripheral?
     
     /**
      The list of peripherals we are trying to reach.
@@ -117,10 +116,8 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         
         if let _ = aPeripheral.services {
             setPeripheral(aPeripheral)
-        }else{
-            setCockroach(aPeripheral)
-            
         }
+        
         aPeripheral.discoverServices(nil)
         //We don't need to continue searching for peripherals, let's stop connecting to the others
         //We do so by forgetting them
@@ -372,11 +369,9 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
      See NevoBT protocol
      */
     func disconnect() {
-        if let peripheral = mPeripheral
-        {
-            
+        if let peripheral = mPeripheral{
             mManager?.cancelPeripheralConnection(peripheral)
-            if let service = peripheral.services {
+            if let _ = peripheral.services {
                 mDelegate?.connectionStateChanged(false, fromAddress: peripheral.identifier)
             }
         }
@@ -441,12 +436,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             }
         }
         
-    }
-    
-    fileprivate func setCockroach(_ peripheral:CBPeripheral?) {
-        cockroach?.delegate = nil
-        cockroach = peripheral
-        cockroach?.delegate = self
     }
     
     fileprivate func setPeripheral(_ aPeripheral:CBPeripheral?) {

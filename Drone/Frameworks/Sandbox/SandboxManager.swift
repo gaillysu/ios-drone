@@ -14,29 +14,9 @@ class SandboxManager: NSObject {
         super.init()
     }
     
-    //获取沙盒路径
-    func homePath() -> String {
-        return NSHomeDirectory();
-    }
-    
     //获取document路径
     func documentPath() -> String {
         return NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0];
-    }
-    
-    //获取library路径
-    func libraryPath() -> String {
-        return NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0];
-    }
-    
-    //获取tmp文件路径
-    func tmpPath() -> String {
-        return NSTemporaryDirectory();
-    }
-    
-    //获取caches文件路径
-    func cachesPath() -> String {
-        return NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0];
     }
     
     func copyDictFileToSandBox(folderName:String,fileName:String)->Bool {
@@ -90,11 +70,5 @@ class SandboxManager: NSObject {
         }
         return NSDictionary.init(contentsOfFile: path)!
         
-    }
-    
-    func saveDataWithName(saveData:Any,fileName:String)->Bool {
-        let path = documentPath().appending("/\(projectName)/\(fileName).plist")
-        let localDict:NSDictionary = saveData as! NSDictionary
-        return localDict.write(toFile: path, atomically: true)
     }
 }

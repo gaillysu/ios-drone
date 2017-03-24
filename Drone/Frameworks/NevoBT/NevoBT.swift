@@ -15,7 +15,6 @@ This class is rather low level, it doesn't handle timeout, disconnections etc...
 It only can connect to one peripheral at a time
 🚧🚧🚧Backbone Class : Modify with care🚧🚧🚧
 */
-//This is a cat -----> 🐱
 protocol NevoBT {
     /**
     Determines how long a scan is
