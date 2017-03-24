@@ -191,4 +191,17 @@ class AppTheme {
         }
         return String(format:"%d h %d m",hours,minutes)
     }
+    
+    class func toJSONString(_ object:AnyObject!)->NSString{
+        do{
+            let data = try JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions.prettyPrinted)
+            var strJson=NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            strJson = strJson?.replacingOccurrences(of: "\n", with: "") as NSString?
+            strJson = strJson?.replacingOccurrences(of: " ", with: "") as NSString?
+            return strJson!
+        }catch{
+            return ""
+        }
+    }
+
 }
