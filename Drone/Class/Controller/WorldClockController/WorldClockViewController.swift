@@ -64,9 +64,6 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         self.navigationItem.title = "World Clock"
         self.navigationController?.navigationBar.tintColor = UIColor.white
         worldClockTableview.register(UINib(nibName: identifier,bundle: Bundle.main), forCellReuseIdentifier: identifier)
-        worldClockTableview.backgroundColor = UIColor(rgba: "#E4C590")
-        worldClockTableview.allowsSelectionDuringEditing = true;
-        worldClockTableview.separatorColor = UIColor.clear
         worldClockTableview.reorder.delegate = self
         let header:WorldClockHeader = UIView.loadFromNibNamed("WorldClockHeader") as! WorldClockHeader;
         header.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height)
