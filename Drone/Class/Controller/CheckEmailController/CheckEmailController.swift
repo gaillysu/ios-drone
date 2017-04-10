@@ -53,7 +53,7 @@ class CheckEmailController: UIViewController {
         if AppTheme.isEmail(email) {
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
-            let timeout:Timer = Timer.after(90.seconds, {
+            let _:Timer = Timer.after(90.seconds, {
                 MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
             

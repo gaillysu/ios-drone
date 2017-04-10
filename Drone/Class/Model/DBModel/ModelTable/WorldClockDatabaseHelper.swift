@@ -16,12 +16,8 @@ class WorldClockDatabaseHelper: NSObject {
     fileprivate let WORLDCLOCK_NEWEST_VERSION:Int = 4;
     fileprivate let realm:Realm
     
-    let worldclockVersion:Int
-    
     override init() {
         realm = try! Realm()
-        let defaults = UserDefaults.standard
-        worldclockVersion = defaults.integer(forKey: WORLDCLOCK_KEY);
     }
     
     func setup(){
@@ -34,7 +30,7 @@ class WorldClockDatabaseHelper: NSObject {
         let forceSync:Bool = oldCities.count == 0 || oldTimezones.count == 0
         print(oldTimezones.count)
         print(oldCities.count)
-        if(forceSync || WORLDCLOCK_NEWEST_VERSION > worldclockVersion){
+        if(forceSync || WORLDCLOCK_NEWEST_VERSION > DTUserDefaults.worldClockVersion){
             print("We need to update.")
             if let citiesPath = Bundle.main.path(forResource: "cities", ofType: "json"),
                 let timezonesPath = Bundle.main.path(forResource: "timezones", ofType: "json"){
@@ -82,8 +78,7 @@ class WorldClockDatabaseHelper: NSObject {
                                 realm.delete(oldCities)
                                 realm.delete(oldTimezones)
                             })
-                            let defaults = UserDefaults.standard
-                            defaults.set(WORLDCLOCK_NEWEST_VERSION, forKey: WORLDCLOCK_KEY);
+                            DTUserDefaults.worldClockVersion = WORLDCLOCK_NEWEST_VERSION
                         }else if addedCities.count > 0 || addedTimezones.count > 0 {
                             try! realm.write({
                                 realm.delete(addedCities)

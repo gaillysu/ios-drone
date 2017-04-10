@@ -21,11 +21,6 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     
     init() {
         realm = try! Realm()
-            /* TODO:
-        - Fix search
-        - Sort cities by name in cities
-        - Dismiss whenever selected a city, also in search.
-        */
         for city:City in Array(realm.objects(City.self)) {
             let character:String = String(city.name[city.name.startIndex]).uppercased()
             if var list = cities[character] {
@@ -71,30 +66,6 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return indexes
-    }
-    
-    // MARK: - UISearchControllerDelegate
-    func willPresentSearchController(_ searchController: UISearchController) {
-        NSLog("willPresentSearchController")
-    }
-    
-    func didPresentSearchController(_ searchController: UISearchController) {
-        NSLog("didPresentSearchController")
-    }
-    func willDismissSearchController(_ searchController: UISearchController) {
-        searchCityController.setSearchList( [:])
-        NSLog("willDismissSearchController")
-    }
-    
-    func didDismissSearchController(_ searchController: UISearchController) {
-        NSLog("didDismissSearchController")
-        if searchController.isActive {
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    func presentSearchController(_ searchController: UISearchController) {
-        NSLog("presentSearchController")
     }
     
     // MARK: - UISearchResultsUpdating
@@ -189,27 +160,26 @@ extension AddWorldClockViewController:DidSelectedDelegate {
     fileprivate func addCity(_ city:City){
         let selectedCities = realm.objects(City.self).filter("selected = true")
         if selectedCities.count < 5 {
-            for selectedCity:City in selectedCities {
-                if city.id == selectedCity.id {
-                    let alert:UIAlertController = UIAlertController(title: "Add City", message: NSLocalizedString("add_city", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-                    }))
-                    self.searchController?.isActive = false
-                    self.present(alert, animated: true, completion:nil)
-                    return
-                }
+            if selectedCities.contains(where: { $0.id == city.id }){
+                let alert:UIAlertController = UIAlertController(title: "Add City", message: NSLocalizedString("add_city", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
+                }))
+                self.searchController?.isActive = false
+                self.present(alert, animated: true, completion:nil)
+                return
             }
             try! realm.write({
                 city.selected = true
+                if !DTUserDefaults.selectedCityOrder.isEmpty{
+                    DTUserDefaults.selectedCityOrder.append(city.id)
+                }
             })
             AppDelegate.getAppDelegate().setWorldClock(Array(selectedCities))
             self.searchController?.isActive = false
             dismiss(animated: true, completion: nil)
         } else{
             let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-                
-            }))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { alert in }))
             self.present(alert, animated: true, completion: nil)
         }
     }

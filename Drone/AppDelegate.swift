@@ -18,7 +18,7 @@
     import SwiftyJSON
     let RESET_STATE:String = "RESET_STATE"
     let RESET_STATE_DATE:String = "RESET_STATE_DATE"
-
+    
     let SETUP_KEY = "SETUP_KEY"
     
     enum SYNC_STATE{
@@ -122,7 +122,7 @@
                debugPrint("SystemStatus :\(systemStatus)")
                if(systemStatus == SystemStatus.systemReset.rawValue) {
                   //step1 : Set systemconfig next 1
-                  UserDefaults.standard.setValue(true, forKeyPath: SETUP_KEY)
+                  DTUserDefaults.setupKey = true
                   self.setSystemConfig(0)
                   self.setSystemConfig(1)
                   self.setSystemConfig(2)
@@ -133,16 +133,13 @@
                }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                   self.getActivity()
                }else if(systemStatus != SystemStatus.lowMemory.rawValue && systemStatus != SystemStatus.subscribedToNotifications.rawValue) {
-                  if let date = UserDefaults.standard.object(forKey: "SET_RTC") {
-                     let syncDate:Date = date as! Date
-                     if (Date().timeIntervalSince1970 - syncDate.timeIntervalSince1970) > 60 {
-                        UserDefaults.standard.setValue(Date(), forKeyPath: "SET_RTC")
-                        UserDefaults.standard.synchronize()
+                  if let date = DTUserDefaults.rtcDate {
+                     if (Date().timeIntervalSince1970 - date.timeIntervalSince1970) > 60 {
+                        DTUserDefaults.rtcDate = Date()
                         self.watchConfig()
                      }
                   }else{
-                     UserDefaults.standard.setValue(Date(), forKeyPath: "SET_RTC")
-                     UserDefaults.standard.synchronize()
+                     DTUserDefaults.rtcDate = Date()
                      self.watchConfig()
                   }
                }
@@ -326,9 +323,9 @@
       }
       
       func setNotification() {
-         let force = UserDefaults.standard.bool(forKey: SETUP_KEY)
+         let force = DTUserDefaults.setupKey
          if (force){
-            UserDefaults.standard.set(false, forKey: SETUP_KEY)
+            DTUserDefaults.setupKey = false
          }
          let notificationRequest = SetNotificationRequest(mode: 1, force:  force ? 1 : 0)
          sendRequest(notificationRequest)

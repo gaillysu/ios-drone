@@ -16,7 +16,7 @@ class AnalysisStepsChartView: LineChartView {
     
     func drawSettings(_ xAxis:XAxis, yAxis:YAxis, rightAxis:YAxis){
         noDataText = "No History Available."
-        descriptionText = ""
+        chartDescription?.text = ""
         dragEnabled = false
         setScaleEnabled(false)
         pinchZoomEnabled = false

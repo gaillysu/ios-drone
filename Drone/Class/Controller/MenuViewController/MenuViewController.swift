@@ -46,10 +46,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
-        
-        
-            
-        
+       
         menuTableView.register(UINib(nibName: "MenuViewCell", bundle: Bundle.main), forCellReuseIdentifier: identifier)
         AppDelegate.getAppDelegate().startConnect()
 

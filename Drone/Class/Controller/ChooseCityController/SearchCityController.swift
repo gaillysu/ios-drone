@@ -27,9 +27,7 @@ class SearchCityController: UITableViewController {
     func setSearchList(_ searchList:[String:[(name:String, id:Int)]]){
         self.searchList = searchList
         self.index = Array(searchList.keys)
-        self.index = index.sorted(by: { (s1:String, s2:String) -> Bool in
-            return s1 < s2
-        })
+        self.index = index.sorted(by: { $0 < $1 })
     }
     
     // MARK: - Table view delegate
@@ -50,8 +48,7 @@ class SearchCityController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchList[index[section]]!.count
     }
-
-
+ 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "AddClockIdentifier")
         if cell == nil {

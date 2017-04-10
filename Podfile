@@ -24,6 +24,8 @@ target 'Drone' do
     pod 'IQKeyboardManagerSwift', '4.0.6'
     pod 'RealmSwift'
     pod 'SnapKit', '~> 3.0.1'
+    pod 'SwiftReorder', '~> 2.0'
+
 end
 
 post_install do |installer|

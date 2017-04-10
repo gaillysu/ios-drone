@@ -52,7 +52,6 @@
 		00982C1A1C868C8A003DA5E2 /* WorldClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AE81C868C89003DA5E2 /* WorldClockCell.xib */; };
 		00982C1B1C868C8A003DA5E2 /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AE91C868C89003DA5E2 /* WorldClockViewController.swift */; };
 		00982C1C1C868C8A003DA5E2 /* WorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00982AEA1C868C89003DA5E2 /* WorldClockViewController.xib */; };
-		00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982AF21C868C89003DA5E2 /* Alarm.swift */; };
 		00982C2A1C868C8A003DA5E2 /* UserGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B001C868C89003DA5E2 /* UserGoal.swift */; };
 		00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B041C868C89003DA5E2 /* UserProfile.swift */; };
 		00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982B091C868C89003DA5E2 /* UserSteps.swift */; };
@@ -157,6 +156,7 @@
 		CB7820A81DC81E8A00160213 /* UserCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820A71DC81E8A00160213 /* UserCreateRequest.swift */; };
 		CB7820AA1DC81FD800160213 /* StepsUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820A91DC81FD800160213 /* StepsUpdateRequest.swift */; };
 		CB7820AC1DC820BE00160213 /* StepsCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820AB1DC820BE00160213 /* StepsCreateRequest.swift */; };
+		CB9AF3E41E9B2D3000F7B9EA /* DTUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AF3E31E9B2D3000F7B9EA /* DTUserDefaults.swift */; };
 		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
 		CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */; };
 		CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6E01CCF6AEF00B4935E /* StepsTitleView.swift */; };
@@ -247,7 +247,6 @@
 		00982AE81C868C89003DA5E2 /* WorldClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockCell.xib; sourceTree = "<group>"; };
 		00982AE91C868C89003DA5E2 /* WorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
 		00982AEA1C868C89003DA5E2 /* WorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockViewController.xib; sourceTree = "<group>"; };
-		00982AF21C868C89003DA5E2 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		00982B001C868C89003DA5E2 /* UserGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGoal.swift; sourceTree = "<group>"; };
 		00982B041C868C89003DA5E2 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		00982B091C868C89003DA5E2 /* UserSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSteps.swift; sourceTree = "<group>"; };
@@ -356,6 +355,7 @@
 		CB7820A71DC81E8A00160213 /* UserCreateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateRequest.swift; sourceTree = "<group>"; };
 		CB7820A91DC81FD800160213 /* StepsUpdateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsUpdateRequest.swift; sourceTree = "<group>"; };
 		CB7820AB1DC820BE00160213 /* StepsCreateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsCreateRequest.swift; sourceTree = "<group>"; };
+		CB9AF3E31E9B2D3000F7B9EA /* DTUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTUserDefaults.swift; sourceTree = "<group>"; };
 		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
 		CBD2F6E01CCF6AEF00B4935E /* StepsTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTitleView.swift; sourceTree = "<group>"; };
@@ -523,12 +523,12 @@
 		00982A971C868C89003DA5E2 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				CBA06BEB1C8EB2C800E3257B /* View */,
 				00982A981C868C89003DA5E2 /* Controller */,
 				00982AEB1C868C89003DA5E2 /* Model */,
 				00982B141C868C89003DA5E2 /* Network */,
 				00982B161C868C89003DA5E2 /* publicClass */,
 				00982B251C868C89003DA5E2 /* Util */,
+				CBA06BEB1C8EB2C800E3257B /* View */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -627,21 +627,12 @@
 		00982AEB1C868C89003DA5E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				00982AF11C868C89003DA5E2 /* Alarm */,
 				00982AF31C868C89003DA5E2 /* DBModel */,
 				00982B0A1C868C89003DA5E2 /* Goal */,
 				9E9051A81D94C2AD00ED140D /* MenuItem */,
 				9E1535851D5C219600CB6A01 /* Worldclock */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		00982AF11C868C89003DA5E2 /* Alarm */ = {
-			isa = PBXGroup;
-			children = (
-				00982AF21C868C89003DA5E2 /* Alarm.swift */,
-			);
-			path = Alarm;
 			sourceTree = "<group>";
 		};
 		00982AF31C868C89003DA5E2 /* DBModel */ = {
@@ -712,6 +703,7 @@
 				0028F1401C97C08000C8E742 /* EventBusKeys.swift */,
 				9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */,
 				9EEB22061D5D6CB50099A621 /* WorldClockUtil.swift */,
+				CB9AF3E31E9B2D3000F7B9EA /* DTUserDefaults.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1362,7 +1354,6 @@
 				9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */,
 				CBE798221DC328A9000B686E /* BaseDeleteRequest.swift in Sources */,
 				008845E51CF69F67006EA77F /* ForgetPasswordController.swift in Sources */,
-				00982C211C868C8A003DA5E2 /* Alarm.swift in Sources */,
 				61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				CBE7981F1DC326D6000B686E /* BasePutRequest.swift in Sources */,
@@ -1402,6 +1393,7 @@
 				61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */,
 				00982C531C868C8A003DA5E2 /* SetRTCRequest.swift in Sources */,
 				00982C641C868C8A003DA5E2 /* SystemStatusPacket.swift in Sources */,
+				CB9AF3E41E9B2D3000F7B9EA /* DTUserDefaults.swift in Sources */,
 				00982C4D1C868C8A003DA5E2 /* ReadDailyTracker.swift in Sources */,
 				61078DC41E48249C00898A0D /* NSCalendar+Timepiece.swift in Sources */,
 				CB7820AA1DC81FD800160213 /* StepsUpdateRequest.swift in Sources */,

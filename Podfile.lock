@@ -54,6 +54,7 @@ PODS:
   - SMSegmentView (1.1)
   - SnapKit (3.0.1)
   - SwiftEventBus (2.1.0)
+  - SwiftReorder (2.0.1)
   - SwiftyJSON (3.1.4)
   - SwiftyTimer (2.0.0)
   - UIColor_Hex_Swift (2.1)
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - SMSegmentView (~> 1.1)
   - SnapKit (~> 3.0.1)
   - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`, tag `2.1.0`)
+  - SwiftReorder (~> 2.0)
   - SwiftyJSON (~> 3.1.4)
   - SwiftyTimer (~> 2.0.0)
   - UIColor_Hex_Swift (~> 2.1)
@@ -108,10 +110,11 @@ SPEC CHECKSUMS:
   SMSegmentView: a99862f36ea73478558ae665c209cb80c0d4f059
   SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
   SwiftEventBus: 03fb72b65f3ae11912dec2591567b89e5908a781
+  SwiftReorder: 8b1599696a5a7317297bf230b6d18d1836613e41
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
 
-PODFILE CHECKSUM: 09d4724a5ea6bad122526299b0c216f7eabd297c
+PODFILE CHECKSUM: 490df96a596ba5e6d1b2a79e6983971bdecf4310
 
 COCOAPODS: 1.2.1.beta.1

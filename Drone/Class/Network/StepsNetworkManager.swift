@@ -108,6 +108,7 @@ class StepsNetworkManager: NSObject {
                             successSynced = true
                         } catch let error {
                             successSynced = false
+                            debugPrint("Error at StepsNetworkManager: \(error.localizedDescription)")
                         }
                     }
                 }

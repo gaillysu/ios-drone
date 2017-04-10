@@ -11,8 +11,6 @@ import UIKit
 class ConnectionManager: NSObject {
     fileprivate var mConnectedLocalMsg:[UILocalNotification] = []
     fileprivate var mDisconnectedLocalMsg:[UILocalNotification] = []
-    fileprivate var mIsSendLocalMsg:Bool = false
-    fileprivate let mIsSendLocalMsgKey:String = "IsSendLocalMsg"
     
     struct Const {
         static var connectedTime:Int?
@@ -46,21 +44,15 @@ class ConnectionManager: NSObject {
     */
     fileprivate override init() {
         super.init()
-        mIsSendLocalMsg = getIsSendLocalMsg()
     }
     
     /**
     get mIsSendLocalMsg
     
-    :returns: <#return value description#>
+    :returns: Bool
     */
     func getIsSendLocalMsg() -> Bool {
-        let userDefaults = UserDefaults.standard
-        var val:Bool = false
-        if let isOpen: AnyObject = userDefaults.object(forKey: mIsSendLocalMsgKey) as AnyObject? {
-            val = isOpen as! Bool
-        }
-        return val
+        return DTUserDefaults.sendLocalMessageEnabled
     }
     
     /**
@@ -69,9 +61,7 @@ class ConnectionManager: NSObject {
     :param: val bool
     */
     func setIsSendLocalMsg(_ val:Bool){
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(val,forKey:mIsSendLocalMsgKey)
-        userDefaults.synchronize()
+        DTUserDefaults.sendLocalMessageEnabled = val
     }
     
     /**
