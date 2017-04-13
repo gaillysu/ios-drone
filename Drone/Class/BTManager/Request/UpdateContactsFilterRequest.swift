@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpdateContactsFilterRequest: NevoRequest {
+class UpdateContactsFilterRequest: DroneRequest {
     /**
      Length of contact field
      */
@@ -42,7 +42,7 @@ class UpdateContactsFilterRequest: NevoRequest {
         }
     }
 
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
         let hexArray:[UInt8] = NSData2Bytes(mContactName.data(using: String.Encoding.utf8)!)
         var values1 :[UInt8] = [UpdateContactsFilterRequest.HEADER(),UInt8(mContactLength&0xFF)]+hexArray+[UInt8(mOperation&0xFF),UInt8(mContactID&0xFF)]
         
@@ -86,6 +86,6 @@ class UpdateContactsFilterRequest: NevoRequest {
             }
             dataArray.append(Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count));
         }
-        return NSArray(array: dataArray)
+        return dataArray
     }
 }

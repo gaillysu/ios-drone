@@ -29,7 +29,8 @@ extension AppDelegate {
     }
     
     func setAppConfig() {
-        sendRequest(SetAppConfigRequest())
+        sendRequest(SetAppConfigRequest(appid: ApplicationID.WorldClock, state: AppState.on))
+        sendRequest(SetAppConfigRequest(appid: ApplicationID.ActivityTracking, state: AppState.on))
     }
     
     func setGoal(_ goal:Goal?) {

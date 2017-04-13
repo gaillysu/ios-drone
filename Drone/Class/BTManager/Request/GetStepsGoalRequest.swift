@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetStepsGoalRequest: NevoRequest {
+class GetStepsGoalRequest: DroneRequest {
     
     /*
     This header is the key by which this kind of packet is called.
@@ -17,12 +17,9 @@ class GetStepsGoalRequest: NevoRequest {
         return 0x13
     }
     
-    override func getRawDataEx() -> NSArray {
-        
+    override func getRawDataEx() -> [Data] {
         let values1 :[UInt8] = [0x80,GetStepsGoalRequest.HEADER(),
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        
-        
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
 }

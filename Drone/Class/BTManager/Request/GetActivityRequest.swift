@@ -13,7 +13,7 @@ enum ActivityDataStatus:Int {
     moreData = 1
 }
 
-class GetActivityRequest: NevoRequest {
+class GetActivityRequest: DroneRequest {
     
     /*
     This header is the key by which this kind of packet is called.
@@ -22,10 +22,10 @@ class GetActivityRequest: NevoRequest {
         return 0x14
     }
     
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
         let values1 :[UInt8] = [0x80,GetActivityRequest.HEADER(),
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
 }

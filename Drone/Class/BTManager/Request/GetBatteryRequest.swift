@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GetBatteryRequest: NevoRequest {
+class GetBatteryRequest: DroneRequest {
     /**
     batt_level
     0 - low battery level
@@ -22,12 +22,10 @@ class GetBatteryRequest: NevoRequest {
         return 0x0E
     }
     
-    override func getRawDataEx() -> NSArray {
-        
+    override func getRawDataEx() -> [Data] {
         let values1 :[UInt8] = [0x80,GetBatteryRequest.HEADER(),
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
 
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetWorldClockRequest: NevoRequest {
+class SetWorldClockRequest: DroneRequest {
     fileprivate let worldClockArray: [(cityName:String,gmtOffset:Float)]
     init(worldClockArray:[(cityName:String,gmtOffset:Float)]) {
         self.worldClockArray = worldClockArray
@@ -19,7 +19,7 @@ class SetWorldClockRequest: NevoRequest {
         return 0x06
     }
 
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
         var nameDataArray:[[UInt8]] = []
         nameDataArray.reserveCapacity(16)
         var zoneArray:[Int] = []
@@ -80,6 +80,6 @@ class SetWorldClockRequest: NevoRequest {
             dataArray.append(Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count));
         }
         
-        return NSArray(array: dataArray)
+        return dataArray
     }
 }

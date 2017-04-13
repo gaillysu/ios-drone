@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GetNotificationRequest: NevoRequest {
+class GetNotificationRequest: DroneRequest {
     /**
      <Read Notification Filter> and <Update Notification Filter> Commands
      - returns: 0x17
@@ -17,11 +17,9 @@ class GetNotificationRequest: NevoRequest {
         return 0x17
     }
 
-    override func getRawDataEx() -> NSArray {
-
+    override func getRawDataEx() -> [Data] {
         let values1 :[UInt8] = [0x80,GetNotificationRequest.HEADER(),
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
 }

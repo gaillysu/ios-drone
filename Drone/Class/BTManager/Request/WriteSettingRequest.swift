@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WriteSettingRequest: NevoRequest {
+class WriteSettingRequest: DroneRequest {
     
     /*
     This header is the key by which this kind of packet is called.
@@ -17,13 +17,12 @@ class WriteSettingRequest: NevoRequest {
         return 0x21
     }
     
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
    
         let walk_stride :UInt16 = 73
         let run_stride :UInt16 =  122
         let swiming_stride :UInt16 = 105
         let enable:UInt8 = 3; //bit0:1, bit1:1
-        
         
         let values1 :[UInt8] = [0x00,WriteSettingRequest.HEADER(),
             UInt8(walk_stride&0xFF),
@@ -43,8 +42,8 @@ class WriteSettingRequest: NevoRequest {
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         
         
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)
-            ,Data(bytes: UnsafePointer<UInt8>(values2), count: values2.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)
+            ,Data(bytes: UnsafePointer<UInt8>(values2), count: values2.count)]
     }
    
 }

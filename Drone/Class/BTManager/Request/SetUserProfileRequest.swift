@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetUserProfileRequest: NevoRequest {
+class SetUserProfileRequest: DroneRequest {
     fileprivate var mWeight:Int = 0
     fileprivate var mHeight:Int = 0
     fileprivate var mGender:Int = 0
@@ -26,7 +26,7 @@ class SetUserProfileRequest: NevoRequest {
         mStridelength = stridelength
     }
 
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
 
         let values1 :[UInt8] = [0x80,SetUserProfileRequest.HEADER(),
             UInt8(mWeight&0xFF),
@@ -35,6 +35,6 @@ class SetUserProfileRequest: NevoRequest {
             UInt8(mGender&0xFF),
             UInt8(mStridelength&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
 }

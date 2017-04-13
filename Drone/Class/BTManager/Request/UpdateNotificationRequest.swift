@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpdateNotificationRequest: NevoRequest {
+class UpdateNotificationRequest: DroneRequest {
     //Notification Operation default 0
     fileprivate var mOperation:Int = 0
     //Package Length
@@ -28,7 +28,7 @@ class UpdateNotificationRequest: NevoRequest {
         mPackageLength = package.lengthOfBytes(using: String.Encoding.utf8)
     }
 
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
         let hexArray:[UInt8] = NSData2Bytes(mPackage.data(using: String.Encoding.utf8)!)
         var values1 :[UInt8] = [UpdateNotificationRequest.HEADER(),UInt8(mOperation&0xFF),UInt8(mPackageLength&0xFF)]+hexArray
         
@@ -73,6 +73,6 @@ class UpdateNotificationRequest: NevoRequest {
             dataArray.append(Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count));
         }
         
-        return NSArray(array: dataArray)
+        return dataArray
     }
 }

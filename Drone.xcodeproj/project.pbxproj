@@ -91,7 +91,7 @@
 		618322D61E9F08310054966D /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322AF1E9F08310054966D /* GetTrainingRecordRequest.swift */; };
 		618322D71E9F08310054966D /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322B01E9F08310054966D /* GetUserProfileRequest.swift */; };
 		618322D81E9F08310054966D /* GetWorldClockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322B11E9F08310054966D /* GetWorldClockRequest.swift */; };
-		618322D91E9F08310054966D /* NevoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322B21E9F08310054966D /* NevoRequest.swift */; };
+		618322D91E9F08310054966D /* DroneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322B21E9F08310054966D /* DroneRequest.swift */; };
 		618322DA1E9F08310054966D /* ReadDailyTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322B31E9F08310054966D /* ReadDailyTracker.swift */; };
 		618322DB1E9F08310054966D /* ReadDailyTrackerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322B41E9F08310054966D /* ReadDailyTrackerInfo.swift */; };
 		618322DC1E9F08310054966D /* SetAppConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322B51E9F08310054966D /* SetAppConfigRequest.swift */; };
@@ -286,7 +286,7 @@
 		618322AF1E9F08310054966D /* GetTrainingRecordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTrainingRecordRequest.swift; sourceTree = "<group>"; };
 		618322B01E9F08310054966D /* GetUserProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserProfileRequest.swift; sourceTree = "<group>"; };
 		618322B11E9F08310054966D /* GetWorldClockRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetWorldClockRequest.swift; sourceTree = "<group>"; };
-		618322B21E9F08310054966D /* NevoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NevoRequest.swift; sourceTree = "<group>"; };
+		618322B21E9F08310054966D /* DroneRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneRequest.swift; sourceTree = "<group>"; };
 		618322B31E9F08310054966D /* ReadDailyTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDailyTracker.swift; sourceTree = "<group>"; };
 		618322B41E9F08310054966D /* ReadDailyTrackerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDailyTrackerInfo.swift; sourceTree = "<group>"; };
 		618322B51E9F08310054966D /* SetAppConfigRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAppConfigRequest.swift; sourceTree = "<group>"; };
@@ -833,7 +833,7 @@
 				618322AF1E9F08310054966D /* GetTrainingRecordRequest.swift */,
 				618322B01E9F08310054966D /* GetUserProfileRequest.swift */,
 				618322B11E9F08310054966D /* GetWorldClockRequest.swift */,
-				618322B21E9F08310054966D /* NevoRequest.swift */,
+				618322B21E9F08310054966D /* DroneRequest.swift */,
 				618322B31E9F08310054966D /* ReadDailyTracker.swift */,
 				618322B41E9F08310054966D /* ReadDailyTrackerInfo.swift */,
 				618322B51E9F08310054966D /* SetAppConfigRequest.swift */,
@@ -1415,7 +1415,7 @@
 				00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */,
 				61AE4B511E7F821600B4AD7C /* WorldClockDatabaseHelper.swift in Sources */,
 				618322CC1E9F08310054966D /* SystemStatusPacket.swift in Sources */,
-				618322D91E9F08310054966D /* NevoRequest.swift in Sources */,
+				618322D91E9F08310054966D /* DroneRequest.swift in Sources */,
 				9E455E1B1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift in Sources */,
 				618322E61E9F08310054966D /* UpdateContactsApplicationsRequest.swift in Sources */,
 				9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */,

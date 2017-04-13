@@ -12,7 +12,7 @@ import Foundation
 All requests that should be sent to nevo have to extend this class
 🚧🚧🚧Backbone Class : Modify with care🚧🚧🚧
 */
-class NevoRequest : Request {
+class DroneRequest : Request {
     func getTargetProfile() -> Profile {
         return DroneProfile()
     }
@@ -20,8 +20,9 @@ class NevoRequest : Request {
     func getRawData() -> Data {
         return Data()
     }
-    func getRawDataEx() -> NSArray {
-        return NSArray()
+    
+    func getRawDataEx() -> [Data] {
+        return []
     }
     
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpdateContactsApplicationsRequest: NevoRequest {
+class UpdateContactsApplicationsRequest: DroneRequest {
     /**
      Application package string length
      */
@@ -44,7 +44,7 @@ class UpdateContactsApplicationsRequest: NevoRequest {
         mOperationMode = operationMode
     }
 
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
         let hexArray:[UInt8] = NSData2Bytes(mAppPackage.data(using: String.Encoding.utf8)!)
         var values1 :[UInt8] = [UpdateContactsApplicationsRequest.HEADER(),UInt8(mAppPackageLength&0xFF)]+hexArray+[UInt8(mOperationMode&0xFF),UInt8(mSearchFields&0xFF)]
         
@@ -88,6 +88,6 @@ class UpdateContactsApplicationsRequest: NevoRequest {
             }
             dataArray.append(Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count));
         }
-        return NSArray(array: dataArray)
+        return dataArray
     }
 }

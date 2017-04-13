@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SetStepsToWatchReuqest: NevoRequest {
+class SetStepsToWatchReuqest: DroneRequest {
     fileprivate var mSteps:Int = 0
     
     class func HEADER() -> UInt8 {
@@ -19,13 +19,13 @@ class SetStepsToWatchReuqest: NevoRequest {
         mSteps = steps
     }
     
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
         let values1 :[UInt8] = [0x80,SetStepsToWatchReuqest.HEADER(),
                                 UInt8(mSteps&0xFF),
                                 UInt8((mSteps>>8)&0xFF),
                                 UInt8((mSteps>>16)&0xFF),
                                 UInt8((mSteps>>24)&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
 }

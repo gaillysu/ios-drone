@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetRTCRequest: NevoRequest {
+class SetRTCRequest: DroneRequest {
     
     /*
     This header is the key by which this kind of packet is called.
@@ -17,8 +17,7 @@ class SetRTCRequest: NevoRequest {
         return 0x03
     }
 
-    override func getRawDataEx() -> NSArray {
-        // hahaha
+    override func getRawDataEx() -> [Data] {
         let timeZone:Int = NSTimeZone.local.secondsFromGMT()/900
         let timer:Int = Int(Date().timeIntervalSince1970)
 
@@ -28,6 +27,6 @@ class SetRTCRequest: NevoRequest {
             UInt8(timer>>16&0xFF),
             UInt8(timer>>24&0xFF),
             UInt8(timeZone&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0]
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
 }

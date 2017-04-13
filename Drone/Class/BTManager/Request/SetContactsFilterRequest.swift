@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetContactsFilterRequest: NevoRequest {
+class SetContactsFilterRequest: DroneRequest {
     /**
      <0x00> keep contacts list as it it
      <0x01> clear contacts list
@@ -33,12 +33,12 @@ class SetContactsFilterRequest: NevoRequest {
         mContacts_AppName_Mode = appNameMode
     }
 
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
 
         let values1 :[UInt8] = [0x80,SetContactsFilterRequest.HEADER(),
             UInt8(mContactsMode&0xFF),
             UInt8(mContacts_AppName_Mode&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
 }

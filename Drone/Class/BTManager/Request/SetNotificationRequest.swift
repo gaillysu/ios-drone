@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetNotificationRequest: NevoRequest {
+class SetNotificationRequest: DroneRequest {
     /**
      <0x00> - Blacklist Mode -> app packages included in filter list are blocked
      <0x01> - Whitelist Mode -> app packages NOT included in filter list are blocked
@@ -33,13 +33,12 @@ class SetNotificationRequest: NevoRequest {
         mForce_List_Clear = force
     }
 
-    override func getRawDataEx() -> NSArray {
-
-        let values1 :[UInt8] = [0x80,SetNotificationRequest.HEADER(),
-            UInt8(mOperationMode&0xFF),
-            UInt8(mForce_List_Clear&0xFF),
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)])
+    override func getRawDataEx() -> [Data] {
+        let values1 :[UInt8] = [0x80,
+                                SetNotificationRequest.HEADER(),
+                                UInt8(mOperationMode&0xFF),
+                                UInt8(mForce_List_Clear&0xFF),
+                                0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
 }

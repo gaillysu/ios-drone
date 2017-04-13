@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReadDailyTracker: NevoRequest {
+class ReadDailyTracker: DroneRequest {
     /*
     This header is the key by which this kind of packet is called.
     */
@@ -24,7 +24,7 @@ class ReadDailyTracker: NevoRequest {
         mTrackerNo = trackerno
     }
     
-    override func getRawDataEx() -> NSArray {
+    override func getRawDataEx() -> [Data] {
         
         let values1 :[UInt8] = [0x00,ReadDailyTracker.HEADER(),
             mTrackerNo,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -33,8 +33,8 @@ class ReadDailyTracker: NevoRequest {
             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         
         
-        return NSArray(array: [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)
-            ,Data(bytes: UnsafePointer<UInt8>(values2), count: values2.count)])
+        return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)
+            ,Data(bytes: UnsafePointer<UInt8>(values2), count: values2.count)]
     }
 
 }
