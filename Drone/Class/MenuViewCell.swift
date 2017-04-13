@@ -8,14 +8,21 @@
 
 import Foundation
 import UIKit
+import Font_Awesome_Swift
 
-class MenuViewCell: UITableViewCell{
+class MenuViewCell: UICollectionViewCell{
     
     @IBOutlet weak var menuItemLabel: UILabel!
-    @IBOutlet var backgroundItem: UIImageView!
+    @IBOutlet var menuItemImage: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    var menuItem:MenuItem?{
+        didSet{
+            menuItemLabel.text = menuItem?.title()
+            if let faIcon = menuItem?.icon() {
+                menuItemImage.setFAIconWithName(icon: faIcon, textColor: UIColor.getDarkBaseColor())
+            }else if let image = menuItem?.image(){
+                menuItemImage.image = image
+            }
+        }
     }
 }

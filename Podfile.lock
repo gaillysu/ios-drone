@@ -9,6 +9,7 @@ PODS:
   - Charts/Core (3.0.1)
   - CircleProgressView (1.1.1)
   - CVCalendar (1.4.0)
+  - Font-Awesome-Swift (1.6.1)
   - IQKeyboardManagerSwift (4.0.6)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - Charts
   - CircleProgressView
   - CVCalendar (~> 1.4.0)
+  - Font-Awesome-Swift
   - IQKeyboardManagerSwift (= 4.0.6)
   - MRProgress
   - MSCellAccessory
@@ -103,6 +105,7 @@ SPEC CHECKSUMS:
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   CircleProgressView: 3a02912b8cb05ca68f31d8a08e242f7b0f067665
   CVCalendar: ec1a06a508f99d8e5067258754f811a8a1433a3f
+  Font-Awesome-Swift: 70ab020f6749d7048bb49807c3e78b702d78afca
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   MSCellAccessory: 8265f3cd2386c1f372da00232472605ab11426e4
@@ -122,6 +125,6 @@ SPEC CHECKSUMS:
   SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
 
-PODFILE CHECKSUM: 586be2fb93b571b2f6a4a35c1b5e3b070bfdb840
+PODFILE CHECKSUM: 07d7d3ee28ca4051fd678528f8fac4291e6c553c
 
 COCOAPODS: 1.2.1.beta.1

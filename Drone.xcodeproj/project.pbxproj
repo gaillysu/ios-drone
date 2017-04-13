@@ -121,8 +121,6 @@
 		9E0109311D741CEE00AA3551 /* CockRoachPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0109301D741CEE00AA3551 /* CockRoachPacket.swift */; };
 		9E1535831D5C20CA00CB6A01 /* timezones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535811D5C20CA00CB6A01 /* timezones.json */; };
 		9E1535841D5C20CA00CB6A01 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535821D5C20CA00CB6A01 /* cities.json */; };
-		9E1535871D5C21A300CB6A01 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1535861D5C21A300CB6A01 /* City.swift */; };
-		9E1535891D5C21BA00CB6A01 /* Timezone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1535881D5C21BA00CB6A01 /* Timezone.swift */; };
 		9E2978711CDC3D5D00821704 /* WorldClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2978701CDC3D5D00821704 /* WorldClock.swift */; };
 		9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */; };
 		9E44370D1CD33B5400283B14 /* AnalysisStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */; };
@@ -152,12 +150,24 @@
 		CB66EDBC1DC7033C004768B7 /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */; };
 		CB66EDC11DC705CF004768B7 /* RequestPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */; };
 		CB66EDC31DC70636004768B7 /* ForgetPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66EDC21DC70636004768B7 /* ForgetPasswordRequest.swift */; };
+		CB715F7B1E9F3082005B5C22 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F7A1E9F3082005B5C22 /* UIView+Extension.swift */; };
+		CB715F8D1E9F8061005B5C22 /* StepsMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F8C1E9F8061005B5C22 /* StepsMenuItem.swift */; };
+		CB715F8F1E9F811C005B5C22 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F8E1E9F811C005B5C22 /* MenuItem.swift */; };
+		CB715F951E9F8154005B5C22 /* CityMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F901E9F8154005B5C22 /* CityMenuItem.swift */; };
+		CB715F961E9F8154005B5C22 /* CompassMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F911E9F8154005B5C22 /* CompassMenuItem.swift */; };
+		CB715F971E9F8154005B5C22 /* HotKeyMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F921E9F8154005B5C22 /* HotKeyMenuItem.swift */; };
+		CB715F981E9F8154005B5C22 /* NotificationsMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F931E9F8154005B5C22 /* NotificationsMenuItem.swift */; };
+		CB715F991E9F8154005B5C22 /* TimeMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F941E9F8154005B5C22 /* TimeMenuItem.swift */; };
+		CB715F9B1E9F819C005B5C22 /* LoginMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F9A1E9F819C005B5C22 /* LoginMenuItem.swift */; };
+		CB715F9E1E9F838F005B5C22 /* DeviceMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F9C1E9F838F005B5C22 /* DeviceMenuItem.swift */; };
+		CB715F9F1E9F838F005B5C22 /* ProfileMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715F9D1E9F838F005B5C22 /* ProfileMenuItem.swift */; };
+		CB715FA21E9F8435005B5C22 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA01E9F8435005B5C22 /* City.swift */; };
+		CB715FA31E9F8435005B5C22 /* Timezone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA11E9F8435005B5C22 /* Timezone.swift */; };
 		CB7820A61DC81D7600160213 /* UserUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820A51DC81D7600160213 /* UserUpdateRequest.swift */; };
 		CB7820A81DC81E8A00160213 /* UserCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820A71DC81E8A00160213 /* UserCreateRequest.swift */; };
 		CB7820AA1DC81FD800160213 /* StepsUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820A91DC81FD800160213 /* StepsUpdateRequest.swift */; };
 		CB7820AC1DC820BE00160213 /* StepsCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7820AB1DC820BE00160213 /* StepsCreateRequest.swift */; };
 		CB9AF3E41E9B2D3000F7B9EA /* DTUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AF3E31E9B2D3000F7B9EA /* DTUserDefaults.swift */; };
-		CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */; };
 		CBD2F6DF1CCF66D500B4935E /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */; };
 		CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F6E01CCF6AEF00B4935E /* StepsTitleView.swift */; };
 		CBD2F6E41CCF6AEF00B4935E /* StepsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */; };
@@ -318,8 +328,6 @@
 		9E0109301D741CEE00AA3551 /* CockRoachPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockRoachPacket.swift; sourceTree = "<group>"; };
 		9E1535811D5C20CA00CB6A01 /* timezones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timezones.json; sourceTree = "<group>"; };
 		9E1535821D5C20CA00CB6A01 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
-		9E1535861D5C21A300CB6A01 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
-		9E1535881D5C21BA00CB6A01 /* Timezone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timezone.swift; sourceTree = "<group>"; };
 		9E2978701CDC3D5D00821704 /* WorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClock.swift; sourceTree = "<group>"; };
 		9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
 		9E44370C1CD33B5400283B14 /* AnalysisStepsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisStepsChartView.swift; sourceTree = "<group>"; };
@@ -351,12 +359,24 @@
 		CB66EDBB1DC7033C004768B7 /* UserNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkManager.swift; sourceTree = "<group>"; };
 		CB66EDC01DC705CF004768B7 /* RequestPasswordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPasswordRequest.swift; sourceTree = "<group>"; };
 		CB66EDC21DC70636004768B7 /* ForgetPasswordRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordRequest.swift; sourceTree = "<group>"; };
+		CB715F7A1E9F3082005B5C22 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		CB715F8C1E9F8061005B5C22 /* StepsMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StepsMenuItem.swift; path = MenuItem/StepsMenuItem.swift; sourceTree = "<group>"; };
+		CB715F8E1E9F811C005B5C22 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItem.swift; path = MenuItem/MenuItem.swift; sourceTree = "<group>"; };
+		CB715F901E9F8154005B5C22 /* CityMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityMenuItem.swift; path = MenuItem/CityMenuItem.swift; sourceTree = "<group>"; };
+		CB715F911E9F8154005B5C22 /* CompassMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassMenuItem.swift; path = MenuItem/CompassMenuItem.swift; sourceTree = "<group>"; };
+		CB715F921E9F8154005B5C22 /* HotKeyMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyMenuItem.swift; path = MenuItem/HotKeyMenuItem.swift; sourceTree = "<group>"; };
+		CB715F931E9F8154005B5C22 /* NotificationsMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsMenuItem.swift; path = MenuItem/NotificationsMenuItem.swift; sourceTree = "<group>"; };
+		CB715F941E9F8154005B5C22 /* TimeMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeMenuItem.swift; path = MenuItem/TimeMenuItem.swift; sourceTree = "<group>"; };
+		CB715F9A1E9F819C005B5C22 /* LoginMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginMenuItem.swift; path = MenuItem/LoginMenuItem.swift; sourceTree = "<group>"; };
+		CB715F9C1E9F838F005B5C22 /* DeviceMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceMenuItem.swift; path = MenuItem/DeviceMenuItem.swift; sourceTree = "<group>"; };
+		CB715F9D1E9F838F005B5C22 /* ProfileMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileMenuItem.swift; path = MenuItem/ProfileMenuItem.swift; sourceTree = "<group>"; };
+		CB715FA01E9F8435005B5C22 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = City.swift; path = WorldClock/City.swift; sourceTree = "<group>"; };
+		CB715FA11E9F8435005B5C22 /* Timezone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timezone.swift; path = WorldClock/Timezone.swift; sourceTree = "<group>"; };
 		CB7820A51DC81D7600160213 /* UserUpdateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdateRequest.swift; sourceTree = "<group>"; };
 		CB7820A71DC81E8A00160213 /* UserCreateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateRequest.swift; sourceTree = "<group>"; };
 		CB7820A91DC81FD800160213 /* StepsUpdateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsUpdateRequest.swift; sourceTree = "<group>"; };
 		CB7820AB1DC820BE00160213 /* StepsCreateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsCreateRequest.swift; sourceTree = "<group>"; };
 		CB9AF3E31E9B2D3000F7B9EA /* DTUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTUserDefaults.swift; sourceTree = "<group>"; };
-		CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CBD2F6DE1CCF66D500B4935E /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
 		CBD2F6E01CCF6AEF00B4935E /* StepsTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTitleView.swift; sourceTree = "<group>"; };
 		CBD2F6E11CCF6AEF00B4935E /* StepsTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTitleView.xib; sourceTree = "<group>"; };
@@ -929,8 +949,8 @@
 		9E1535851D5C219600CB6A01 /* Worldclock */ = {
 			isa = PBXGroup;
 			children = (
-				9E1535861D5C21A300CB6A01 /* City.swift */,
-				9E1535881D5C21BA00CB6A01 /* Timezone.swift */,
+				CB715FA01E9F8435005B5C22 /* City.swift */,
+				CB715FA11E9F8435005B5C22 /* Timezone.swift */,
 			);
 			name = Worldclock;
 			sourceTree = "<group>";
@@ -975,7 +995,16 @@
 		9E9051A81D94C2AD00ED140D /* MenuItem */ = {
 			isa = PBXGroup;
 			children = (
-				CBA06BFD1C8FD0AA00E3257B /* MenuItem.swift */,
+				CB715F9C1E9F838F005B5C22 /* DeviceMenuItem.swift */,
+				CB715F9D1E9F838F005B5C22 /* ProfileMenuItem.swift */,
+				CB715F901E9F8154005B5C22 /* CityMenuItem.swift */,
+				CB715F911E9F8154005B5C22 /* CompassMenuItem.swift */,
+				CB715F921E9F8154005B5C22 /* HotKeyMenuItem.swift */,
+				CB715F9A1E9F819C005B5C22 /* LoginMenuItem.swift */,
+				CB715F8E1E9F811C005B5C22 /* MenuItem.swift */,
+				CB715F931E9F8154005B5C22 /* NotificationsMenuItem.swift */,
+				CB715F8C1E9F8061005B5C22 /* StepsMenuItem.swift */,
+				CB715F941E9F8154005B5C22 /* TimeMenuItem.swift */,
 			);
 			name = MenuItem;
 			sourceTree = "<group>";
@@ -985,6 +1014,7 @@
 			children = (
 				9E526F3E1CDC891D0060F63F /* StringExtension.swift */,
 				9EA1C9A71D7963D90012C988 /* NSDataExtension.swift */,
+				CB715F7A1E9F3082005B5C22 /* UIView+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1350,10 +1380,14 @@
 				005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */,
 				CB66EDC11DC705CF004768B7 /* RequestPasswordRequest.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
+				CB715FA31E9F8435005B5C22 /* Timezone.swift in Sources */,
 				00982C481C868C8A003DA5E2 /* SetAppConfigRequest.swift in Sources */,
 				9EF7EEA51CD89DA7009B0928 /* ProfileTableViewCell.swift in Sources */,
 				CBE798221DC328A9000B686E /* BaseDeleteRequest.swift in Sources */,
+				CB715F9B1E9F819C005B5C22 /* LoginMenuItem.swift in Sources */,
+				CB715F7B1E9F3082005B5C22 /* UIView+Extension.swift in Sources */,
 				008845E51CF69F67006EA77F /* ForgetPasswordController.swift in Sources */,
+				CB715F8D1E9F8061005B5C22 /* StepsMenuItem.swift in Sources */,
 				61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				CBE7981F1DC326D6000B686E /* BasePutRequest.swift in Sources */,
@@ -1375,10 +1409,13 @@
 				9EA1C9A81D7963D90012C988 /* NSDataExtension.swift in Sources */,
 				00982C331C868C8A003DA5E2 /* UserSteps.swift in Sources */,
 				61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */,
+				CB715FA21E9F8435005B5C22 /* City.swift in Sources */,
+				CB715F971E9F8154005B5C22 /* HotKeyMenuItem.swift in Sources */,
 				9E0109311D741CEE00AA3551 /* CockRoachPacket.swift in Sources */,
 				CBD6BD1E1CD06F890009F39A /* Color.swift in Sources */,
 				CBD2F6E31CCF6AEF00B4935E /* StepsTitleView.swift in Sources */,
 				61D2F0C41E7B83DE00ADD1FB /* MEDDataBaseRequest.swift in Sources */,
+				CB715F951E9F8154005B5C22 /* CityMenuItem.swift in Sources */,
 				61078DC61E48249C00898A0D /* NSDate+Timepiece.swift in Sources */,
 				CBE7981D1DC32603000B686E /* BaseGetRequest.swift in Sources */,
 				CBD6BD281CD099900009F39A /* ProfileViewController.swift in Sources */,
@@ -1386,6 +1423,7 @@
 				CBE798151DC30350000B686E /* NetworkRequest.swift in Sources */,
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
+				CB715F991E9F8154005B5C22 /* TimeMenuItem.swift in Sources */,
 				61078DC21E48249C00898A0D /* Duration.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
 				CBE798261DC32F01000B686E /* NetworkManager.swift in Sources */,
@@ -1405,7 +1443,6 @@
 				9EF7EEA71CD89DB4009B0928 /* ProfileTableViewCellHeader.swift in Sources */,
 				00982C4C1C868C8A003DA5E2 /* GetBatteryRequest.swift in Sources */,
 				009D89D11CD0C457004E914A /* WorldClockHeader.swift in Sources */,
-				9E1535871D5C21A300CB6A01 /* City.swift in Sources */,
 				004ED1EA1CB35DDA009D053C /* ActivityPacket.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				00F1AF481CACD82600CB9A15 /* BaseViewController.swift in Sources */,
@@ -1434,6 +1471,7 @@
 				9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */,
 				CB28AFDF1CE2E59B00639538 /* NotificationViewController.swift in Sources */,
 				CB7820AC1DC820BE00160213 /* StepsCreateRequest.swift in Sources */,
+				CB715F981E9F8154005B5C22 /* NotificationsMenuItem.swift in Sources */,
 				00982C571C868C8A003DA5E2 /* WriteSettingRequest.swift in Sources */,
 				00982C5E1C868C8A003DA5E2 /* Utility.swift in Sources */,
 				00982C511C868C8A003DA5E2 /* GetWorldClockRequest.swift in Sources */,
@@ -1447,8 +1485,8 @@
 				00982C341C868C8A003DA5E2 /* Goal.swift in Sources */,
 				CB66EDBC1DC7033C004768B7 /* UserNetworkManager.swift in Sources */,
 				00982C581C868C8A003DA5E2 /* DroneProfile.swift in Sources */,
-				CBA06BFE1C8FD0AA00E3257B /* MenuItem.swift in Sources */,
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
+				CB715F9F1E9F838F005B5C22 /* ProfileMenuItem.swift in Sources */,
 				61D470B01DE2F18C00620BD0 /* Int+Extension.swift in Sources */,
 				008845EA1CF6A4D5006EA77F /* CheckEmailController.swift in Sources */,
 				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,
@@ -1462,6 +1500,7 @@
 				00982C181C868C8A003DA5E2 /* AddWorldClockViewController.swift in Sources */,
 				61AE4B511E7F821600B4AD7C /* WorldClockDatabaseHelper.swift in Sources */,
 				00982C631C868C8A003DA5E2 /* NevoPacket.swift in Sources */,
+				CB715F961E9F8154005B5C22 /* CompassMenuItem.swift in Sources */,
 				9E455E1B1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift in Sources */,
 				9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */,
 				00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */,
@@ -1471,9 +1510,10 @@
 				00982C551C868C8A003DA5E2 /* SetWorldClockRequest.swift in Sources */,
 				61078DC51E48249C00898A0D /* NSCalendarUnit+Timepiece.swift in Sources */,
 				005984AF1CA0DC6800C588CA /* SetUserProfileRequest.swift in Sources */,
-				9E1535891D5C21BA00CB6A01 /* Timezone.swift in Sources */,
+				CB715F9E1E9F838F005B5C22 /* DeviceMenuItem.swift in Sources */,
 				00982C491C868C8A003DA5E2 /* GetActivityRequest.swift in Sources */,
 				9E455E0D1CD5A16000F79356 /* MyDeviceViewController.swift in Sources */,
+				CB715F8F1E9F811C005B5C22 /* MenuItem.swift in Sources */,
 				0043FBEA1CA1404500638BD1 /* GetContactsFilterRequest.swift in Sources */,
 				6136473C1E497847007D58BD /* StepsManager.swift in Sources */,
 			);
