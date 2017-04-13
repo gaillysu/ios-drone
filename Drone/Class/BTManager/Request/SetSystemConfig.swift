@@ -9,34 +9,52 @@
 import UIKit
 
 class SetSystemConfig: DroneRequest {
-    fileprivate var mAutoStart:TimeInterval = 0
-    fileprivate var mAutoEnd:TimeInterval = 0
+    
     fileprivate var mIndex:Int = 0
+    fileprivate var clockFormat:Int = 0;
+    fileprivate var sleepMode:Int = 0 ;
+    fileprivate var sleepAutoStartTime:TimeInterval = 0;
+    fileprivate var sleepAutoEndTime:TimeInterval = 0;
+    fileprivate var systemConfig:SystemConfigID = SystemConfigID.dndConfig
+    
     class func HEADER() -> UInt8 {
         return 0x0F
     }
 
-    init(autoStart:TimeInterval,autoEnd:TimeInterval,index:Int) {
+    init(autoStart:TimeInterval,autoEnd:TimeInterval,configtype:SystemConfigID) {
         super.init()
-        mAutoStart = autoStart
-        mAutoEnd = autoEnd
-        mIndex = index
+        sleepAutoStartTime = autoStart
+        sleepAutoEndTime = autoEnd
+        systemConfig = configtype
     }
 
     override func getRawDataEx() -> [Data] {
-
-        let values1 :[UInt8] = [0x80,SetSystemConfig.HEADER(),
-            0x08,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        let values2 :[UInt8] = [0x80,SetSystemConfig.HEADER(),
-            0x04,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        let values3 :[UInt8] = [0x80,SetSystemConfig.HEADER(),
-                                0x09,0x05,
-                                UInt8(Int(mAutoStart)&0xFF),
-                                UInt8((Int(mAutoStart)>>8)&0xFF),
-                                UInt8(Int(mAutoEnd)&0xFF),
-                                UInt8((Int(mAutoEnd)>>8)&0xFF),0,0,0,0,0,0,0,0,0,0,0,0]
-        let requestArray:[[UInt8]] = [values1,values2,values3]
-
-        return [Data(bytes: UnsafePointer<UInt8>(requestArray[mIndex]), count: requestArray[mIndex].count)]
+        switch systemConfig {
+        case SystemConfigID.dndConfig:
+            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
+        case SystemConfigID.airplaneMode:
+            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
+        case SystemConfigID.enabled:
+            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
+        case SystemConfigID.clockFormat:
+            let values:[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
+        case SystemConfigID.sleepConfig:
+            let values:[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x05,
+                                    UInt8(Int(sleepAutoStartTime)&0xFF),
+                                    UInt8((Int(sleepAutoStartTime)>>8)&0xFF),
+                                    UInt8(Int(sleepAutoEndTime)&0xFF),
+                                    UInt8((Int(sleepAutoEndTime)>>8)&0xFF),0,0,0,0,0,0,0,0,0,0,0,0]
+            return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
+        case SystemConfigID.compassAutoOnDuration:
+            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x02,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
+        case SystemConfigID.topKeyCustomization:
+            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
+        }
     }
 }

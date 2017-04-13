@@ -108,6 +108,11 @@
 		618322E71E9F08310054966D /* UpdateContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322C01E9F08310054966D /* UpdateContactsFilterRequest.swift */; };
 		618322E81E9F08310054966D /* UpdateNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322C11E9F08310054966D /* UpdateNotificationRequest.swift */; };
 		618322E91E9F08310054966D /* WriteSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322C21E9F08310054966D /* WriteSettingRequest.swift */; };
+		618322EB1E9F53020054966D /* SetWeatherLocationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322EA1E9F53020054966D /* SetWeatherLocationsRequest.swift */; };
+		618322EE1E9F65B10054966D /* WeatherLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322ED1E9F65B10054966D /* WeatherLocationModel.swift */; };
+		618322F01E9F6B240054966D /* WeatherUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322EF1E9F6B240054966D /* WeatherUpdateModel.swift */; };
+		618322F21E9F76080054966D /* UpdateWeatherInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F11E9F76080054966D /* UpdateWeatherInfoRequest.swift */; };
+		618322F41E9F77680054966D /* StartSystemSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F31E9F77680054966D /* StartSystemSettingRequest.swift */; };
 		61AE4B511E7F821600B4AD7C /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */; };
 		61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
 		61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
@@ -303,6 +308,11 @@
 		618322C01E9F08310054966D /* UpdateContactsFilterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateContactsFilterRequest.swift; sourceTree = "<group>"; };
 		618322C11E9F08310054966D /* UpdateNotificationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateNotificationRequest.swift; sourceTree = "<group>"; };
 		618322C21E9F08310054966D /* WriteSettingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteSettingRequest.swift; sourceTree = "<group>"; };
+		618322EA1E9F53020054966D /* SetWeatherLocationsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetWeatherLocationsRequest.swift; sourceTree = "<group>"; };
+		618322ED1E9F65B10054966D /* WeatherLocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLocationModel.swift; sourceTree = "<group>"; };
+		618322EF1E9F6B240054966D /* WeatherUpdateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUpdateModel.swift; sourceTree = "<group>"; };
+		618322F11E9F76080054966D /* UpdateWeatherInfoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateWeatherInfoRequest.swift; sourceTree = "<group>"; };
+		618322F31E9F77680054966D /* StartSystemSettingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSystemSettingRequest.swift; sourceTree = "<group>"; };
 		61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
 		61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFormatter.swift; sourceTree = "<group>"; };
 		61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -624,6 +634,7 @@
 		00982AEB1C868C89003DA5E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				618322EC1E9F65A70054966D /* WeatherModel */,
 				00982AF31C868C89003DA5E2 /* DBModel */,
 				00982B0A1C868C89003DA5E2 /* Goal */,
 				9E9051A81D94C2AD00ED140D /* MenuItem */,
@@ -850,8 +861,20 @@
 				618322C01E9F08310054966D /* UpdateContactsFilterRequest.swift */,
 				618322C11E9F08310054966D /* UpdateNotificationRequest.swift */,
 				618322C21E9F08310054966D /* WriteSettingRequest.swift */,
+				618322EA1E9F53020054966D /* SetWeatherLocationsRequest.swift */,
+				618322F11E9F76080054966D /* UpdateWeatherInfoRequest.swift */,
+				618322F31E9F77680054966D /* StartSystemSettingRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		618322EC1E9F65A70054966D /* WeatherModel */ = {
+			isa = PBXGroup;
+			children = (
+				618322ED1E9F65B10054966D /* WeatherLocationModel.swift */,
+				618322EF1E9F6B240054966D /* WeatherUpdateModel.swift */,
+			);
+			path = WeatherModel;
 			sourceTree = "<group>";
 		};
 		61AE4B521E7F838300B4AD7C /* ValueFormatter */ = {
@@ -1373,6 +1396,7 @@
 				9E455E191CD5BB2600F79356 /* DeviceTableViewCell.swift in Sources */,
 				CBE798171DC306AC000B686E /* BaseNetworkRequest.swift in Sources */,
 				61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */,
+				618322EE1E9F65B10054966D /* WeatherLocationModel.swift in Sources */,
 				618322C81E9F08310054966D /* CockRoachPacket.swift in Sources */,
 				0089310A1CC779B30013E6D8 /* WhichDeviceViewController.swift in Sources */,
 				618322D31E9F08310054966D /* GetStepsGoalRequest.swift in Sources */,
@@ -1382,12 +1406,14 @@
 				618322DE1E9F08310054966D /* SetContactsFilterRequest.swift in Sources */,
 				618322D01E9F08310054966D /* GetConfigRequest.swift in Sources */,
 				9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */,
+				618322EB1E9F53020054966D /* SetWeatherLocationsRequest.swift in Sources */,
 				618322D51E9F08310054966D /* GetSystemStatus.swift in Sources */,
 				618322E81E9F08310054966D /* UpdateNotificationRequest.swift in Sources */,
 				618322CF1E9F08310054966D /* GetBatteryRequest.swift in Sources */,
 				618322961E9F07BC0054966D /* AppTheme.swift in Sources */,
 				618322E31E9F08310054966D /* SetSystemConfig.swift in Sources */,
 				CB28AFDF1CE2E59B00639538 /* NotificationViewController.swift in Sources */,
+				618322F41E9F77680054966D /* StartSystemSettingRequest.swift in Sources */,
 				CB7820AC1DC820BE00160213 /* StepsCreateRequest.swift in Sources */,
 				0065AC091CC86A9B00DC3096 /* ConnectionSetupViewController.swift in Sources */,
 				61D4709B1DE2A6D800620BD0 /* NotificationsViewCell.swift in Sources */,
@@ -1408,6 +1434,7 @@
 				618322E01E9F08310054966D /* SetNotificationRequest.swift in Sources */,
 				618322DD1E9F08310054966D /* SetClearConnectionWatch.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
+				618322F21E9F76080054966D /* UpdateWeatherInfoRequest.swift in Sources */,
 				618322D71E9F08310054966D /* GetUserProfileRequest.swift in Sources */,
 				618322D81E9F08310054966D /* GetWorldClockRequest.swift in Sources */,
 				618322D41E9F08310054966D /* GetSystemConfig.swift in Sources */,
@@ -1417,6 +1444,7 @@
 				618322CC1E9F08310054966D /* SystemStatusPacket.swift in Sources */,
 				618322D91E9F08310054966D /* DroneRequest.swift in Sources */,
 				9E455E1B1CD5BBC200F79356 /* DeviceTableViewCellHeader.swift in Sources */,
+				618322F01E9F6B240054966D /* WeatherUpdateModel.swift in Sources */,
 				618322E61E9F08310054966D /* UpdateContactsApplicationsRequest.swift in Sources */,
 				9EEB22071D5D6CB50099A621 /* WorldClockUtil.swift in Sources */,
 				00982C041C868C8A003DA5E2 /* RegisterViewController.swift in Sources */,

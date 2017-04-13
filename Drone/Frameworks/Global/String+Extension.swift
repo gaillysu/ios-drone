@@ -17,7 +17,10 @@ extension String {
         return NSString(format: "%@", self).doubleValue
     }
     
-    func length() ->Int {
-        return NSString(format: "%@", self).length
+    var length:Int {
+        get{
+            return NSString(format: "%@", self).length
+        }
     }
+    
 }

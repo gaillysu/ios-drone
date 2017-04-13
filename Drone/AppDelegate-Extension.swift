@@ -19,9 +19,12 @@ extension AppDelegate {
         sendRequest(GetSystemStatus())
     }
     
-    func setSystemConfig(_ index:Int) {
-        print("Set system config: \(index)")
-        sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, index: index))
+    func setSystemConfig() {
+        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.clockFormat))
+        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.enabled))
+        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig))
+        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration))
+        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.topKeyCustomization))
     }
     
     func setRTC() {

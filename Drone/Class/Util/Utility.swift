@@ -8,63 +8,6 @@
 
 import Foundation
 
-
-struct DFUResponse
-{
-    var responseCode:UInt8;
-    var requestedCode:UInt8;
-    var responseStatus:UInt8;
-}
-
-enum  enumFileExtension: UInt8 {
-    case hex,zip,bin
-}
-
-enum  enumPacketOption: Int{
-    case packets_NOTIFICATION_INTERVAL = 10,
-    packet_SIZE = 20
-}
-
-enum DfuOperations :UInt8 {
-    case start_DFU_REQUEST = 0x01,
-    initialize_DFU_PARAMETERS_REQUEST = 0x02,
-    receive_FIRMWARE_IMAGE_REQUEST = 0x03,
-    validate_FIRMWARE_REQUEST = 0x04,
-    activate_AND_RESET_REQUEST = 0x05,
-    reset_SYSTEM = 0x06,
-    packet_RECEIPT_NOTIFICATION_REQUEST = 0x08,
-    response_CODE = 0x10,
-    packet_RECEIPT_NOTIFICATION_RESPONSE = 0x11
-    
-}
-
-enum DfuOperationStatus:UInt8{
-    case operation_SUCCESSFUL_RESPONSE = 0x01,
-    operation_INVALID_RESPONSE = 0x02,
-    operation_NOT_SUPPORTED_RESPONSE = 0x03,
-    data_SIZE_EXCEEDS_LIMIT_RESPONSE = 0x04,
-    crc_ERROR_RESPONSE = 0x05,
-    operation_FAILED_RESPONSE = 0x06
-    
-}
-
-enum DFUControllerState
-{
-    case `init`,
-    discovering,
-    idle,
-    send_NOTIFICATION_REQUEST,
-    send_START_COMMAND,
-    send_RECEIVE_COMMAND,
-    send_FIRMWARE_DATA,
-    send_VALIDATE_COMMAND,
-    send_RESET,
-    wait_RECEIPT,
-    finished,
-    canceled,
-    send_RECONNECT
-}
-
 enum DfuFirmwareTypes:UInt8{
     case  softdevice = 0x01,
     bootloader = 0x02,
@@ -72,10 +15,33 @@ enum DfuFirmwareTypes:UInt8{
     application = 0x04
 }
 
+enum SystemConfigID:UInt8 {
+    case dndConfig = 0x01
+    case airplaneMode = 0x02
+    case enabled = 0x04
+    case clockFormat = 0x08
+    case sleepConfig = 0x09
+    case compassAutoOnDuration = 0x10
+    case topKeyCustomization = 0x11
+}
+
+enum ApplicationID:Int {
+    case WorldClock = 1
+    case ActivityTracking = 2
+    case Weather = 3
+    case Compass = 10
+}
+
+enum AppState:Int {
+    case on = 1
+    case off = 0
+}
+
 func Bytes2NSData(_ bytes:[UInt8]) -> Data
 {
   return Data(bytes: UnsafePointer<UInt8>(bytes), count: bytes.count)
 }
+
 func NSData2Bytes(_ data:Data) -> [UInt8]
 {
     let bytes = UnsafeBufferPointer<UInt8>(start: (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count), count:data.count)
@@ -160,3 +126,54 @@ func GmtNSDate2LocaleNSDate(_ gmtDate:Date) ->Date
     return destinationDateNow
 }
 
+class Utility: NSObject {
+    fileprivate static let packetLenght:Int = 20
+    
+    static func splitPacketConverter(data:[UInt8]) ->[Data] {
+        var valuesData:[UInt8] = data
+        
+        var rawData:[Data] = []
+        
+        var valueArray:[UInt8] = []
+
+        if valuesData.count>=packetLenght {
+            for (index,value) in valuesData.enumerated() {
+                let header:UInt8 = 0x00
+                let header1:UInt8 = 0x80
+                
+                if(valueArray.count == 0) {
+                    if valuesData.count-index < packetLenght {
+                        valueArray.append(header1+UInt8(rawData.count&0xFF))
+                    }else{
+                        valueArray.append(header+UInt8(rawData.count&0xFF))
+                    }
+                }
+                valueArray.append(value)
+                
+                if valueArray.count == packetLenght {
+                    rawData.append(Data(bytes: UnsafePointer<UInt8>(valueArray), count: valueArray.count))
+                    valueArray.removeAll()
+                }
+                
+                if(index == valuesData.count-1) {
+                    if(valueArray.count < packetLenght) {
+                        for _:Int in valueArray.count..<packetLenght {
+                            valueArray.append(0x00)
+                        }
+                    }
+                    rawData.append(Data(bytes: UnsafePointer<UInt8>(valueArray), count: valueArray.count))
+                    valueArray.removeAll()
+                }
+            }
+        }else{
+            valuesData.insert(0x80, at: 0)
+            if(valuesData.count < 20) {
+                for _:Int in valuesData.count..<packetLenght {
+                    valuesData.append(0x00)
+                }
+            }
+            rawData.append(Data(bytes: UnsafePointer<UInt8>(valuesData), count: valuesData.count));
+        }
+        return rawData
+    }
+}

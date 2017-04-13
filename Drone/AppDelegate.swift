@@ -123,11 +123,12 @@
                if(systemStatus == SystemStatus.systemReset.rawValue) {
                   //step1 : Set systemconfig next 1
                   DTUserDefaults.setupKey = true
-                  self.setSystemConfig(0)
-                  self.setSystemConfig(1)
-                  self.setSystemConfig(2)
+                  
+                  self.setSystemConfig()
+
                   //Records need to use 0x30
                   _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true,RESET_STATE_DATE:Date().timeIntervalSince1970])
+                  
                }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
                   setGoal(nil)
                }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
