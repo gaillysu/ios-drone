@@ -182,7 +182,7 @@
             }
             
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
-               let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData() as NSData)
+               let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
                syncState = .small_SYNC
                SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
             }

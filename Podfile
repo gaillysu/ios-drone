@@ -8,7 +8,7 @@ target 'Drone' do
     pod 'Alamofire', '~> 4.0'
     pod 'Charts'
     pod 'PagingMenuController', '~> 1.4.0'
-    pod 'SwiftEventBus', :tag => '2.1.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
+    pod 'SwiftEventBus', :tag => '2.2.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
     pod 'CircleProgressView'
     pod 'SMSegmentView', '~> 1.1'
     pod 'SDCycleScrollView','~> 1.3'
