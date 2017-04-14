@@ -32,7 +32,7 @@ class SystemEventPacket: NSObject {
     }
 
     func getSystemEventStatus() -> Int {
-        let data:[UInt8] = NSData2Bytes(packetData)
+        let data:[UInt8] = Constants.NSData2Bytes(packetData)
         let eventCommandStatus:Int = Int(data[2])
         return eventCommandStatus
     }

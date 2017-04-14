@@ -60,10 +60,10 @@ class RawPacketImpl : RawPacket {
     
     func getHeader() -> UInt8
     {
-        return NSData2Bytes(mData)[1]
+        return Constants.NSData2Bytes(mData)[1]
     }
     func isLastPacket() ->Bool
     {
-        return (NSData2Bytes(mData)[0] == 0xFF)
+        return (Constants.NSData2Bytes(mData)[0] == 0xFF)
     }
 }

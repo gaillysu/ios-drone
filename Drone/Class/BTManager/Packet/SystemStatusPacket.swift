@@ -31,7 +31,7 @@ class SystemStatusPacket: NSObject {
     }
 
     func getSystemStatus() -> Int {
-        let data:[UInt8] = NSData2Bytes(packetData)
+        let data:[UInt8] = Constants.NSData2Bytes(packetData)
         let systemStatus:Int = Int(data[2])
         return systemStatus
     }

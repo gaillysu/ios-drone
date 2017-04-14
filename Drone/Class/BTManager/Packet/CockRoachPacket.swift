@@ -24,7 +24,7 @@ class CockRoachPacket:NSObject {
     let cockRoachNumber:Int
     init(data:Data){
 
-        let intData = NSData2BytesSigned(data)
+        let intData = Constants.NSData2BytesSigned(data)
         let convertedX0 = Int((Int16(intData[1]) << 8) | Int16(intData[0]))
         self.X0 = convertedX0 > smallerThen ? convertedX0 - minusBit : convertedX0
         let convertedY0 = Int((Int16(intData[3]) << 8) | Int16(intData[2]))

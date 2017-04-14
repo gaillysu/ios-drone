@@ -40,7 +40,7 @@ class DronePacket {
         if(packets.count >= 2)
         {
         mPackets = packets
-        mHeader = NSData2Bytes(mPackets[0])[1]
+        mHeader = Constants.NSData2Bytes(mPackets[0])[1]
         }
     }
     
@@ -64,11 +64,11 @@ class DronePacket {
         {
             for i:Int in 0  ..< mPackets.count 
             {
-                if UInt8(i) != NSData2Bytes(mPackets[i])[0] && i != mPackets.count - 1
+                if UInt8(i) != Constants.NSData2Bytes(mPackets[i])[0] && i != mPackets.count - 1
                 {
                     return false
                 }
-                if mHeader != NSData2Bytes(mPackets[i])[1]
+                if mHeader != Constants.NSData2Bytes(mPackets[i])[1]
                 {
                     return false
                 }

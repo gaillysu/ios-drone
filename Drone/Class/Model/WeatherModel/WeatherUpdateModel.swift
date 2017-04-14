@@ -13,16 +13,16 @@ class WeatherUpdateModel: NSObject {
     
     fileprivate var identification :UInt8 = 0
     fileprivate var temperature:UInt8 = 0;
-    fileprivate var weatherStatus:UInt8 = 0;
+    fileprivate var weatherIcon:WeatherStatusIcon = WeatherStatusIcon.invalidData.rawValue;
     
-    init(id:Int,temp:UInt8,status:UInt8) {
+    init(id:Int,temp:UInt8,statusIcon:WeatherStatusIcon) {
         super.init()
         identification = UInt8(id)
         temperature = temp
-        weatherStatus = status
+        weatherIcon = statusIcon
     }
     
-    func getWeatherUpdateInfo() -> (id:UInt8,temperature:UInt8,status:UInt8) {
-        return (identification,temperature,weatherStatus)
+    func getWeatherUpdateInfo() -> (id:UInt8,temperature:UInt8,statusIcon:WeatherStatusIcon) {
+        return (identification,temperature,weatherIcon)
     }
 }

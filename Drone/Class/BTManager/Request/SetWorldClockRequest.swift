@@ -24,7 +24,7 @@ class SetWorldClockRequest: DroneRequest {
         nameDataArray.reserveCapacity(16)
         var zoneArray:[Int] = []
         for worldClock:(cityName:String,gmtOffset:Float) in worldClockArray {
-           let namedata:[UInt8] = NSData2Bytes(worldClock.cityName.data(using: String.Encoding.utf8)!)
+           let namedata:[UInt8] = Constants.NSData2Bytes(worldClock.cityName.data(using: String.Encoding.utf8)!)
             nameDataArray.append(namedata)
             zoneArray.append(Int(worldClock.gmtOffset * 4))//8.5
         }

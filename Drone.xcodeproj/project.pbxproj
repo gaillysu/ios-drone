@@ -66,7 +66,6 @@
 		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
 		612D5A401E7A1D5B0010012A /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */; };
 		6136473C1E497847007D58BD /* StepsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6136473B1E497847007D58BD /* StepsManager.swift */; };
-		618322921E9F07690054966D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322911E9F07690054966D /* Utility.swift */; };
 		618322961E9F07BC0054966D /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322931E9F07BC0054966D /* AppTheme.swift */; };
 		618322971E9F07BC0054966D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322941E9F07BC0054966D /* Color.swift */; };
 		618322981E9F07BC0054966D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322951E9F07BC0054966D /* UIViewExtension.swift */; };
@@ -114,6 +113,7 @@
 		618322F21E9F76080054966D /* UpdateWeatherInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F11E9F76080054966D /* UpdateWeatherInfoRequest.swift */; };
 		618322F41E9F77680054966D /* StartSystemSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F31E9F77680054966D /* StartSystemSettingRequest.swift */; };
 		618322F61EA0645A0054966D /* ReadWeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F51EA0645A0054966D /* ReadWeatherRequest.swift */; };
+		618322FE1EA0A2B90054966D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
 		61AE4B511E7F821600B4AD7C /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */; };
 		61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
 		61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
@@ -267,7 +267,6 @@
 		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
 		612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
 		6136473B1E497847007D58BD /* StepsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsManager.swift; sourceTree = "<group>"; };
-		618322911E9F07690054966D /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		618322931E9F07BC0054966D /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		618322941E9F07BC0054966D /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		618322951E9F07BC0054966D /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -315,6 +314,7 @@
 		618322F11E9F76080054966D /* UpdateWeatherInfoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateWeatherInfoRequest.swift; sourceTree = "<group>"; };
 		618322F31E9F77680054966D /* StartSystemSettingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSystemSettingRequest.swift; sourceTree = "<group>"; };
 		618322F51EA0645A0054966D /* ReadWeatherRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWeatherRequest.swift; sourceTree = "<group>"; };
+		618322FD1EA0A2B90054966D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
 		61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFormatter.swift; sourceTree = "<group>"; };
 		61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -693,7 +693,6 @@
 				618322931E9F07BC0054966D /* AppTheme.swift */,
 				618322941E9F07BC0054966D /* Color.swift */,
 				618322951E9F07BC0054966D /* UIViewExtension.swift */,
-				618322911E9F07690054966D /* Utility.swift */,
 				612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */,
 				0028F1401C97C08000C8E742 /* EventBusKeys.swift */,
 				9E301BC01CF3054C00D7ADFD /* TimeUtil.swift */,
@@ -719,6 +718,7 @@
 		00982BD01C868C89003DA5E2 /* NevoBT */ = {
 			isa = PBXGroup;
 			children = (
+				618322FD1EA0A2B90054966D /* Constants.swift */,
 				00982BD11C868C89003DA5E2 /* NevoBT.swift */,
 				00982BD21C868C89003DA5E2 /* NevoBTimpl.swift */,
 				00982BD31C868C89003DA5E2 /* Profile.swift */,
@@ -1337,7 +1337,6 @@
 				618322C31E9F08310054966D /* ConnectionController.swift in Sources */,
 				61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */,
 				618322D21E9F08310054966D /* GetNotificationRequest.swift in Sources */,
-				618322921E9F07690054966D /* Utility.swift in Sources */,
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				CBE7981F1DC326D6000B686E /* BasePutRequest.swift in Sources */,
 				00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */,
@@ -1407,6 +1406,7 @@
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
 				CBE7981B1DC324FC000B686E /* BasePostRequest.swift in Sources */,
 				CB7820A81DC81E8A00160213 /* UserCreateRequest.swift in Sources */,
+				618322FE1EA0A2B90054966D /* Constants.swift in Sources */,
 				618322DE1E9F08310054966D /* SetContactsFilterRequest.swift in Sources */,
 				618322D01E9F08310054966D /* GetConfigRequest.swift in Sources */,
 				9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */,

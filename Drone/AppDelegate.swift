@@ -177,7 +177,7 @@
                _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false,RESET_STATE_DATE:Date()] as AnyObject)
             }
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
-               let data:[UInt8] = NSData2Bytes(packet.getRawData())
+               let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
                let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
                SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:(batteryStatus as AnyObject))
             }
@@ -210,7 +210,7 @@
             
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
                //let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
-               let syncStatus:[UInt8] = NSData2Bytes(packet.getRawData())
+               let syncStatus:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
                var timerInterval:Int = Int(syncStatus[2])
                timerInterval =  timerInterval + Int(syncStatus[3])<<8
                timerInterval =  timerInterval + Int(syncStatus[4])<<16

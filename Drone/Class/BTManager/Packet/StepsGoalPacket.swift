@@ -21,7 +21,7 @@ class StepsGoalPacket: NSObject {
     }
 
     func getGoal() -> Int {
-        let data:[UInt8] = NSData2Bytes(packetData)
+        let data:[UInt8] = Constants.NSData2Bytes(packetData)
         var goal:Int = Int(data[2] )
         goal =  goal + Int(data[3])<<8
         goal =  goal + Int(data[4])<<16
@@ -30,7 +30,7 @@ class StepsGoalPacket: NSObject {
     }
 
     func getDailySteps() -> Int {
-        let data:[UInt8] = NSData2Bytes(packetData)
+        let data:[UInt8] = Constants.NSData2Bytes(packetData)
         var dailySteps:Int = Int(data[7])
         dailySteps =  dailySteps + Int(data[8])<<8
         dailySteps =  dailySteps + Int(data[9])<<16

@@ -45,7 +45,7 @@ class UpdateContactsApplicationsRequest: DroneRequest {
     }
 
     override func getRawDataEx() -> [Data] {
-        let hexArray:[UInt8] = NSData2Bytes(mAppPackage.data(using: String.Encoding.utf8)!)
+        let hexArray:[UInt8] = Constants.NSData2Bytes(mAppPackage.data(using: String.Encoding.utf8)!)
         var values1 :[UInt8] = [UpdateContactsApplicationsRequest.HEADER(),UInt8(mAppPackageLength&0xFF)]+hexArray+[UInt8(mOperationMode&0xFF),UInt8(mSearchFields&0xFF)]
         
         var valueArray:[UInt8] = []

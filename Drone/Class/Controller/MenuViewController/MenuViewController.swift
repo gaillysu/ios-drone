@@ -55,7 +55,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY) { (notification) -> Void in
-            let data:[UInt8] = NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
+            let data:[UInt8] = Constants.NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
             NSLog("SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY  :\(data)")
         }
 

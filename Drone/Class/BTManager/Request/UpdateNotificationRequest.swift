@@ -29,7 +29,7 @@ class UpdateNotificationRequest: DroneRequest {
     }
 
     override func getRawDataEx() -> [Data] {
-        let hexArray:[UInt8] = NSData2Bytes(mPackage.data(using: String.Encoding.utf8)!)
+        let hexArray:[UInt8] = Constants.NSData2Bytes(mPackage.data(using: String.Encoding.utf8)!)
         let values1 :[UInt8] = [UpdateNotificationRequest.HEADER(),UInt8(mOperation&0xFF),UInt8(mPackageLength&0xFF)]+hexArray
         return Utility.splitPacketConverter(data: values1)
     }
