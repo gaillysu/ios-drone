@@ -9,9 +9,9 @@
 import UIKit
 
 class PostActivityData: NSObject,NSCoding {
-    var step:Int?
-    var stepsDate:Int?
-    var activityStatus:Int?
+    var step:Int = 0
+    var stepsDate:Int = 0
+    var activityStatus:Int = 0
     
     override init() {
         super.init()

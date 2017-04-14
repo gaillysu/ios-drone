@@ -41,15 +41,12 @@
       fileprivate var masterCockroaches:[UUID:Int] = [:]
       
       fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
-      fileprivate var realm:Realm?
       /**
        Record the current state of the sync
        */
       var syncState:SYNC_STATE = .no_SYNC
       
       var sendIndex:((_ index:Int) -> Void)?
-      
-      let network = NetworkReachabilityManager(host: "https://drone.dayton.med-corp.net")
       
       class func getAppDelegate()->AppDelegate {
          return UIApplication.shared.delegate as! AppDelegate
@@ -58,22 +55,16 @@
       func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
          Fabric.with([Crashlytics.self])
          
-         self.setUpRelam()
+         _ = DataBaseManager.manager
+         _ = NetworkManager.manager
          
          let sanbos:SandboxManager = SandboxManager()
          let _ = sanbos.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
          
-         DispatchQueue.global(qos: .background).async {
-            WorldClockDatabaseHelper().setup()
-         }
          
          mConnectionController = ConnectionControllerImpl()
          mConnectionController?.setDelegate(self)
-         
-         network?.listener = { status in
-            debugPrint("Network Status Changed: \(status)")
-         }
-         network?.startListening()
+
          
          IQKeyboardManager.sharedManager().enable = true
          
@@ -90,17 +81,6 @@
       func applicationDidEnterBackground(_ application: UIApplication) {
          UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
          
-      }
-      
-      func setUpRelam() {
-         var config = Realm.Configuration(
-            schemaVersion: 4,
-            migrationBlock: { migration, oldSchemaVersion in
-               
-         })
-         config.deleteRealmIfMigrationNeeded = true
-         Realm.Configuration.defaultConfiguration = config
-         realm = try! Realm()
       }
       
       // MARK: - ConnectionControllerDelegate
@@ -174,14 +154,16 @@
             }
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
                let data:[UInt8] = NSData2Bytes(packet.getRawData())
-               let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
-               SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:(batteryStatus as AnyObject))
+               let batteryStatus:Int = Int(data[2])
+               let percent:Int = Int(data[3])
+               let postBattery:PostBatteryStatus = PostBatteryStatus(state: batteryStatus, percent: percent)
+               SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:postBattery)
             }
             
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
                let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData() as NSData)
                syncState = .small_SYNC
-               SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
+               SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket))
             }
             
             if (packet.getHeader() == SetNotificationRequest.HEADER()) {
@@ -212,7 +194,6 @@
                
                let postData:PostActivityData = PostActivityData(steps: activityPacket.getStepCount(), date: activityPacket.gettimerInterval(), state: status)
                
-               debugPrint("dailySteps:\(stepCount),dailyStepsDate:\(timerInterval),status:\(status)")
                SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:postData)
                
                //Download more data

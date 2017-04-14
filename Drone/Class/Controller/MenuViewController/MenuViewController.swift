@@ -95,9 +95,9 @@ class MenuViewController: BaseViewController  {
         }
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
-            let data = notification.object as! (timerInterval:Int,dailySteps:Int)
-            let steps:Int = data.dailySteps
-            let timerInterval:Int = data.timerInterval
+            let data:PostActivityData = notification.object as! PostActivityData
+            let steps:Int = data.step
+            let timerInterval:Int = data.stepsDate
             if (steps != 0) {
                 let stepsArray = UserSteps.getFilter("date == \(timerInterval)")
                 if(stepsArray.count>0) {

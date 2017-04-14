@@ -13,14 +13,35 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkManager: NSObject {
+    static let manager:NetworkManager = NetworkManager()
+    fileprivate static let baseUrl = "https://drone.dayton.med-corp.net"
     
-    private static let baseUrl = "https://drone.dayton.med-corp.net"
+    fileprivate lazy var networkState: NetworkReachabilityManager = {
+        let network:NetworkReachabilityManager = NetworkReachabilityManager(host: baseUrl)
+        return network
+    }()
     
+    fileprivate override init() {
+        super.init()
+        networkState.startListening()
+        
+        networkState.listener = { status in
+            debugPrint("Network Status Changed: \(status)")
+        }
+    }
+    
+    func getNetworkState() -> Bool {
+        return networkState.isReachable
+    }
+
+}
+
+extension NetworkManager {
     class func execute(request :NetworkRequest){
         if let urlPart = request.url, let encoding = request.encoding, let method = request.method {
             let url = NetworkManager.baseUrl + urlPart
             Alamofire.request(url, method: method, parameters: request.parameters, encoding: encoding, headers: request.headers).responseJSON(completionHandler: { response in
-                 let result = isValidResponse(response: response)
+                let result = isValidResponse(response: response)
                 request.response(result.success, result.json, result.error)
             })
             

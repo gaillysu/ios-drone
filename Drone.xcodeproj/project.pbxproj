@@ -107,6 +107,8 @@
 		612D5A401E7A1D5B0010012A /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */; };
 		6136473C1E497847007D58BD /* StepsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6136473B1E497847007D58BD /* StepsManager.swift */; };
 		618322F91EA07E6B0054966D /* PostActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F81EA07E6B0054966D /* PostActivityData.swift */; };
+		618323011EA0AB4C0054966D /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323001EA0AB4C0054966D /* DataBaseManager.swift */; };
+		618323031EA0B5660054966D /* PostBatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323021EA0B5660054966D /* PostBatteryStatus.swift */; };
 		61AE4B511E7F821600B4AD7C /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */; };
 		61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
 		61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
@@ -315,6 +317,8 @@
 		612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
 		6136473B1E497847007D58BD /* StepsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsManager.swift; sourceTree = "<group>"; };
 		618322F81EA07E6B0054966D /* PostActivityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostActivityData.swift; sourceTree = "<group>"; };
+		618323001EA0AB4C0054966D /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		618323021EA0B5660054966D /* PostBatteryStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBatteryStatus.swift; sourceTree = "<group>"; };
 		61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
 		61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFormatter.swift; sourceTree = "<group>"; };
 		61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -545,6 +549,7 @@
 		00982A971C868C89003DA5E2 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				618322FF1EA0AAB30054966D /* DataBaseManager */,
 				00982A981C868C89003DA5E2 /* Controller */,
 				00982AEB1C868C89003DA5E2 /* Model */,
 				00982B141C868C89003DA5E2 /* Network */,
@@ -918,8 +923,17 @@
 			isa = PBXGroup;
 			children = (
 				618322F81EA07E6B0054966D /* PostActivityData.swift */,
+				618323021EA0B5660054966D /* PostBatteryStatus.swift */,
 			);
 			path = PostObject;
+			sourceTree = "<group>";
+		};
+		618322FF1EA0AAB30054966D /* DataBaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				618323001EA0AB4C0054966D /* DataBaseManager.swift */,
+			);
+			path = DataBaseManager;
 			sourceTree = "<group>";
 		};
 		61AE4B521E7F838300B4AD7C /* ValueFormatter */ = {
@@ -1389,6 +1403,7 @@
 			files = (
 				61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */,
 				005984B11CA0E96200C588CA /* GetUserProfileRequest.swift in Sources */,
+				618323031EA0B5660054966D /* PostBatteryStatus.swift in Sources */,
 				CB66EDC11DC705CF004768B7 /* RequestPasswordRequest.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				CB715FA31E9F8435005B5C22 /* Timezone.swift in Sources */,
@@ -1435,6 +1450,7 @@
 				00982C4A1C868C8A003DA5E2 /* GetStepsGoalRequest.swift in Sources */,
 				0043FBE21CA11C9800638BD1 /* SetNotificationRequest.swift in Sources */,
 				CB715F991E9F8154005B5C22 /* TimeMenuItem.swift in Sources */,
+				618323011EA0AB4C0054966D /* DataBaseManager.swift in Sources */,
 				61078DC21E48249C00898A0D /* Duration.swift in Sources */,
 				00982C2E1C868C8A003DA5E2 /* UserProfile.swift in Sources */,
 				CBE798261DC32F01000B686E /* NetworkManager.swift in Sources */,
