@@ -8,6 +8,18 @@
 
 import UIKit
 
+enum AppConfigApplicationID:Int {
+    case worldClock         = 1
+    case activityTracking   = 2
+    case weather            = 3
+    case compass            = 10
+}
+
+enum AppConfigAppState:Int {
+    case on     = 1
+    case off    = 0
+}
+
 class SetAppConfigRequest: DroneRequest {
     
     fileprivate var applicationID:Int = ApplicationID.ActivityTracking.rawValue
@@ -17,7 +29,7 @@ class SetAppConfigRequest: DroneRequest {
         return 0x04
     }
     
-    init(appid:ApplicationID,state:AppState) {
+    init(appid:AppConfigApplicationID,state:AppConfigAppState) {
         super.init()
         applicationID = appid.rawValue
         appState = state.rawValue

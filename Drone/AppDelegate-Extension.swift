@@ -33,7 +33,7 @@ extension AppDelegate {
     
     func setAppConfig() {
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.worldClock, state: AppConfigAppState.on))
-        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.activityTracking, AppConfigAppState: AppState.on))
+        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.activityTracking, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.weather, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.on))
     }

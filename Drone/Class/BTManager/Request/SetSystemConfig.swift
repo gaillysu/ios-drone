@@ -8,6 +8,16 @@
 
 import UIKit
 
+enum SystemConfigID:UInt8 {
+    case dndConfig              = 0x01
+    case airplaneMode           = 0x02
+    case enabled                = 0x04
+    case clockFormat            = 0x08
+    case sleepConfig            = 0x09
+    case compassAutoOnDuration  = 0x10
+    case topKeyCustomization    = 0x11
+}
+
 class SetSystemConfig: DroneRequest {
     
     fileprivate var mIndex:Int = 0

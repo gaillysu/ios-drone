@@ -8,6 +8,34 @@
 
 import UIKit
 
+enum SystemSettingApplicationID:UInt8 {
+    case analogMovement = 0x01
+    case compass        = 0x02
+}
+
+enum SettingAnalogMovementOperation:UInt8 {
+    case exitHandsMode          = 0x00
+    case startHandsMode         = 0x01
+    case stopHandsMovement      = 0x10
+    case secondAdvanceOneStep   = 0x11
+    case secondReverseOneStep   = 0x12
+    case secondStartAC          = 0x13
+    case secondStartRC          = 0x14
+    case minuteAdvanceOneStep   = 0x15
+    case minuteReverseOneStep   = 0x16
+    case minuteStartAC          = 0x17
+    case minuteStartRC          = 0x18
+    case hourAdvanceOneStep     = 0x19
+    case hourReverseOneStep     = 0x1A
+    case hourStartAC            = 0x1B
+    case hourStartRC            = 0x1C
+}
+
+enum SettingCompassOperation {
+    case stopCompassCalibration     = 0x00
+    case startCompassCalibration    = 0x01
+}
+
 class StartSystemSettingRequest: DroneRequest {
     fileprivate var appid:UInt8 = 0;
     fileprivate var appOperation:UInt8 = 0;
