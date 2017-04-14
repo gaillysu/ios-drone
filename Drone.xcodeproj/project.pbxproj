@@ -113,6 +113,7 @@
 		618322F01E9F6B240054966D /* WeatherUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322EF1E9F6B240054966D /* WeatherUpdateModel.swift */; };
 		618322F21E9F76080054966D /* UpdateWeatherInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F11E9F76080054966D /* UpdateWeatherInfoRequest.swift */; };
 		618322F41E9F77680054966D /* StartSystemSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F31E9F77680054966D /* StartSystemSettingRequest.swift */; };
+		618322F61EA0645A0054966D /* ReadWeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F51EA0645A0054966D /* ReadWeatherRequest.swift */; };
 		61AE4B511E7F821600B4AD7C /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */; };
 		61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
 		61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
@@ -313,6 +314,7 @@
 		618322EF1E9F6B240054966D /* WeatherUpdateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUpdateModel.swift; sourceTree = "<group>"; };
 		618322F11E9F76080054966D /* UpdateWeatherInfoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateWeatherInfoRequest.swift; sourceTree = "<group>"; };
 		618322F31E9F77680054966D /* StartSystemSettingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSystemSettingRequest.swift; sourceTree = "<group>"; };
+		618322F51EA0645A0054966D /* ReadWeatherRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWeatherRequest.swift; sourceTree = "<group>"; };
 		61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
 		61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFormatter.swift; sourceTree = "<group>"; };
 		61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 				618322EA1E9F53020054966D /* SetWeatherLocationsRequest.swift */,
 				618322F11E9F76080054966D /* UpdateWeatherInfoRequest.swift */,
 				618322F31E9F77680054966D /* StartSystemSettingRequest.swift */,
+				618322F51EA0645A0054966D /* ReadWeatherRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1386,6 +1389,7 @@
 				61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */,
 				618322E41E9F08310054966D /* SetUserProfileRequest.swift in Sources */,
 				618322971E9F07BC0054966D /* Color.swift in Sources */,
+				618322F61EA0645A0054966D /* ReadWeatherRequest.swift in Sources */,
 				618322D61E9F08310054966D /* GetTrainingRecordRequest.swift in Sources */,
 				009201DC1CBE2B6600C51707 /* WelcomeViewController.swift in Sources */,
 				61D470B11DE2F18C00620BD0 /* String+Extension.swift in Sources */,
