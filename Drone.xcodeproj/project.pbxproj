@@ -106,6 +106,7 @@
 		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
 		612D5A401E7A1D5B0010012A /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */; };
 		6136473C1E497847007D58BD /* StepsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6136473B1E497847007D58BD /* StepsManager.swift */; };
+		618322F91EA07E6B0054966D /* PostActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F81EA07E6B0054966D /* PostActivityData.swift */; };
 		61AE4B511E7F821600B4AD7C /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */; };
 		61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
 		61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
@@ -313,6 +314,7 @@
 		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
 		612D5A3F1E7A1D5B0010012A /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
 		6136473B1E497847007D58BD /* StepsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsManager.swift; sourceTree = "<group>"; };
+		618322F81EA07E6B0054966D /* PostActivityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostActivityData.swift; sourceTree = "<group>"; };
 		61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
 		61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFormatter.swift; sourceTree = "<group>"; };
 		61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 		00982AEB1C868C89003DA5E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				618322F71EA07E260054966D /* PostObject */,
 				00982AF31C868C89003DA5E2 /* DBModel */,
 				00982B0A1C868C89003DA5E2 /* Goal */,
 				9E9051A81D94C2AD00ED140D /* MenuItem */,
@@ -909,6 +912,14 @@
 				6136473B1E497847007D58BD /* StepsManager.swift */,
 			);
 			name = StepsManager;
+			sourceTree = "<group>";
+		};
+		618322F71EA07E260054966D /* PostObject */ = {
+			isa = PBXGroup;
+			children = (
+				618322F81EA07E6B0054966D /* PostActivityData.swift */,
+			);
+			path = PostObject;
 			sourceTree = "<group>";
 		};
 		61AE4B521E7F838300B4AD7C /* ValueFormatter */ = {
@@ -1488,6 +1499,7 @@
 				00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */,
 				CB715F9F1E9F838F005B5C22 /* ProfileMenuItem.swift in Sources */,
 				61D470B01DE2F18C00620BD0 /* Int+Extension.swift in Sources */,
+				618322F91EA07E6B0054966D /* PostActivityData.swift in Sources */,
 				008845EA1CF6A4D5006EA77F /* CheckEmailController.swift in Sources */,
 				004ED1E81CB35A4D009D053C /* StepsGoalPacket.swift in Sources */,
 				00982C441C868C8A003DA5E2 /* ConnectionController.swift in Sources */,

@@ -205,21 +205,15 @@
             }
             
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
-               //let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
                let syncStatus:[UInt8] = NSData2Bytes(packet.getRawData())
-               var timerInterval:Int = Int(syncStatus[2])
-               timerInterval =  timerInterval + Int(syncStatus[3])<<8
-               timerInterval =  timerInterval + Int(syncStatus[4])<<16
-               timerInterval =  timerInterval + Int(syncStatus[5])<<24
-               
-               var stepCount:Int = Int(syncStatus[6])
-               stepCount =  stepCount + Int(syncStatus[7])<<8
-               
                let status:Int = Int(syncStatus[8])
                
+               let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
+               
+               let postData:PostActivityData = PostActivityData(steps: activityPacket.getStepCount(), date: activityPacket.gettimerInterval(), state: status)
+               
                debugPrint("dailySteps:\(stepCount),dailyStepsDate:\(timerInterval),status:\(status)")
-               let bigData = (time:timerInterval,dailySteps:stepCount)
-               SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:(bigData as AnyObject))
+               SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:postData)
                
                //Download more data
                if(status == ActivityDataStatus.moreData.rawValue) {
