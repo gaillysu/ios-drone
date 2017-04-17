@@ -14,7 +14,7 @@ class BuddyViewController: BaseViewController {
     }
     
     init() {
-        super.init(nibName: "BuddyViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "BuddyViewController", bundle: Bundle.main)
         
     }
     

@@ -8,38 +8,12 @@
 
 import Foundation
 import AudioToolbox
-import RegexKitLite
 
 /**
 This class holds all app-wide constants.
 Colors, fonts etc...
 */
 class AppTheme {
-    /**
-    Local notifications
-
-    :param: string Inform the content
-    */
-    class func LocalNotificationBody(_ string:String, delay:Double=0) -> UILocalNotification {
-        if (UIDevice.current.systemVersion as NSString).floatValue >= 8.0 {
-            let categorys:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
-            categorys.identifier = "alert";
-            //UIUserNotificationType.Badge|UIUserNotificationType.Sound|UIUserNotificationType.Alert
-            let localUns:UIUserNotificationSettings = UIUserNotificationSettings(types: [UIUserNotificationType.badge,UIUserNotificationType.sound,UIUserNotificationType.alert], categories: Set(arrayLiteral: categorys))
-            UIApplication.shared.registerUserNotificationSettings(localUns)
-        }
-
-        
-        let notification:UILocalNotification=UILocalNotification()
-        notification.timeZone = TimeZone.current
-        notification.fireDate = Date().addingTimeInterval(delay)
-        notification.alertBody=string as String;
-        notification.applicationIconBadgeNumber = 0;
-        notification.soundName = UILocalNotificationDefaultSoundName;
-        notification.category = "invite"
-        UIApplication.shared.scheduleLocalNotification(notification)
-        return notification
-    }
 
     /**
     *	@brief	The archive All current data
@@ -172,11 +146,17 @@ class AppTheme {
     }
 
     class func isEmail(_ email:String)->Bool{
-        return email.isMatched(byRegex: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")
+        let currObject:String = email
+        let predicateStr:String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let predicate =  NSPredicate(format: "SELF MATCHES %@" ,predicateStr)
+        return predicate.evaluate(with: currObject)
     }
 
     class func isPassword(_ password:String)->Bool{
-        return password.isMatched(byRegex: "^[a-zA-Z]w{5,17}$")
+        let currObject:String = password
+        let predicateStr:String = "^[a-zA-Z]w{5,17}$"
+        let predicate =  NSPredicate(format: "SELF MATCHES %@" ,predicateStr)
+        return predicate.evaluate(with: currObject)
     }
 
     class func isNull(_ object:String)->Bool{

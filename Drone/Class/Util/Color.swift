@@ -17,7 +17,7 @@ extension UIColor{
     }
 
     public class func getDarkBaseColor() -> UIColor {
-        return UIColor(rgba: "#987332");
+        return UIColor("#987332");
     }
  
     public class func getTintColor() -> UIColor {
@@ -31,6 +31,7 @@ extension UIColor{
     public class func getColor(hex:String) -> UIColor {
         return UIColor(hex);
     }
+    
     public class func getLightBaseColor() -> UIColor {
         return UIColor(red: 209/255.0 , green: 157/255.0, blue: 66/255.0, alpha: 0.6)
     }
