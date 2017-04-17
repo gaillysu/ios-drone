@@ -61,9 +61,7 @@
          self.setUpRelam()
          
          let sanbos:SandboxManager = SandboxManager()
-         let res:Bool = sanbos.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
-         let replyString = res ? "Success":"fail"
-         debugPrint("copy to file \(replyString)")
+         let _ = sanbos.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
          
          DispatchQueue.global(qos: .background).async {
             WorldClockDatabaseHelper().setup()
@@ -71,7 +69,6 @@
          
          mConnectionController = ConnectionControllerImpl()
          mConnectionController?.setDelegate(self)
-         
          
          network?.listener = { status in
             debugPrint("Network Status Changed: \(status)")

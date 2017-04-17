@@ -27,11 +27,17 @@ class LoginViewController: UIViewController {
     var usernameT: AutocompleteField?
     var passwordT: AutocompleteField?
     var fromMenu:Bool = false;
+    
     init(fromMenu: Bool = false) {
         self.fromMenu = fromMenu
         super.init(nibName: "LoginViewController", bundle: Bundle.main)
     }
 
+    init(){
+        self.fromMenu = true
+        super.init(nibName: "LoginViewController", bundle: Bundle.main)
+    }
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -7,6 +7,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'Drone' do
     pod 'Alamofire', '~> 4.0'
     pod 'Charts'
+    pod 'SDCycleScrollView'
     pod 'PagingMenuController', '~> 1.4.0'
     pod 'SwiftEventBus', :tag => '2.2.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
     pod 'CircleProgressView'
@@ -23,6 +24,7 @@ target 'Drone' do
     pod 'SwiftReorder', '~> 2.0'
     pod 'RxSwift',    '~> 3.0'
     pod 'RxCocoa',    '~> 3.0'
+    pod 'Font-Awesome-Swift'
 end
 
 post_install do |installer|
