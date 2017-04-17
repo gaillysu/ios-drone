@@ -74,6 +74,11 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         headerView.addSubview(header)
         worldClockTableview.tableHeaderView = headerView
         self.addPlusButton(#selector(add))
+        self.addCloseButton(#selector(dismissViewController))
+    }
+    
+    func dismissViewController(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     func add(){

@@ -30,12 +30,15 @@ class MyDeviceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Test1")
+        addCloseButton(#selector(dismissViewController))
+    }
+    
+    func dismissViewController(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        print("Test2")
         for cont in viewControllers {
             cont.removeFromParentViewController()
         }
@@ -61,9 +64,6 @@ class MyDeviceViewController: BaseViewController {
             self.noDeviceView.isHidden = false
         }
     }
-    
-    
-    
     
     @IBAction func addDeviceAction(_ sender: AnyObject) {
         let navigationController:UINavigationController = UINavigationController(rootViewController: WhichDeviceViewController(toMenu: false))

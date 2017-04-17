@@ -13,7 +13,7 @@ import Font_Awesome_Swift
 class LoginMenuItem: MenuItem {
     
     func viewController() -> UIViewController{
-        return LoginViewController()
+        return WelcomeViewController(fromMenu: true)
     }
     
     func icon() -> FAType?{

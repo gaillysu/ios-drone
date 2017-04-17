@@ -16,9 +16,12 @@ class WelcomeViewController: BaseViewController {
     @IBOutlet weak var loginB: UIButton!
     @IBOutlet weak var registB: UIButton!
     @IBOutlet weak var forgetButton: UIButton!
-
+    
+    var fromMenu = false
+    
     init(fromMenu: Bool = false) {
         super.init(nibName: "WelcomeViewController", bundle: Bundle.main)
+        self.fromMenu = fromMenu
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -42,7 +45,12 @@ class WelcomeViewController: BaseViewController {
     }
  
     @IBAction func skipLoginAction(_ sender: AnyObject) {
-        self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+        if fromMenu {
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+        }
+        
     }
     @IBAction func buttonActionManager(_ sender: AnyObject) {
         if loginB.isEqual(sender) {

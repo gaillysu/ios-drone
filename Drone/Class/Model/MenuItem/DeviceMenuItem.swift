@@ -13,7 +13,7 @@ import Font_Awesome_Swift
 class DeviceMenuItem: MenuItem {
     
     func viewController() -> UIViewController{
-        return WorldClockViewController()
+        return MyDeviceViewController()
     }
     
     func icon() -> FAType?{

@@ -179,13 +179,14 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        let item:MenuItem = self.menuItems.value[indexPath.row]
-        //        let infoDictionary:[String : AnyObject] = Bundle.main.infoDictionary! as [String : AnyObject]
-        //        let appName:String = infoDictionary["CFBundleName"] as! String
-        //        let classType: AnyObject.Type = NSClassFromString("\(appName)."+item.menuViewControllerItem)!
-        //        let controllerType : UIViewController.Type = classType as! UIViewController.Type
-        //        let viewController: UIViewController = controllerType.init()
-        //        self.navigationController?.pushViewController(viewController, animated: true)
+        let item:MenuItem = self.menuItems.value[indexPath.row]
+        
+        let navigationViewController = makeStandardUINavigationController(item.viewController())
+        if indexPath.row == 6 && UserProfile.getAll().first == nil {
+                navigationViewController.navigationBar.isHidden = true
+        }
+        navigationViewController.title = item.title()
+        self.present(navigationViewController, animated: true, completion: nil)
     }
     
     

@@ -39,19 +39,11 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED) { (notification) -> Void in
             self.batteryStatus = notification.object as! [Int]
-            NSLog("batteryStatus----:\(self.batteryStatus)")
             self.deviceTableView.reloadData()
-            /**
-             <0x00> - In use
-             <0x01> - Charging
-             <0x02> - Damaged
-             <0x03> - Calculating
-             */
         }
     }
     
     override func viewDidLayoutSubviews() {
-        deviceTableView.sectionHeaderHeight = 254
         deviceTableView.isScrollEnabled = false
         deviceTableView.reloadData()
     }
@@ -65,7 +57,6 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //NSLog("CGRect:\(NSStringFromCGRect(self.view.frame))")
         return (deviceTableView.frame.height - 254)/2
     }
     
@@ -127,9 +118,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
                 headerCell.batteryLabel.text = "Damaged"
             case 3:
                 headerCell.batteryLabel.text = "Calculating"
-                
             default: break
-                
             }
         }
         

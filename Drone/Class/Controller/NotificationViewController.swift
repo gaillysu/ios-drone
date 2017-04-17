@@ -48,8 +48,11 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
         realm!.objects(DroneNotification.self).forEach { notification in
             realmApps.insert(notification, at: 0)
         }
-        
-        
+        addCloseButton(#selector(dismissViewController))
+    }
+    
+    func dismissViewController(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

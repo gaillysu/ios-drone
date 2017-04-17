@@ -105,7 +105,33 @@
             stepsLabel.text = "0"
             
             self.getLoclSmallSyncData(nil)
+            addCloseButton(#selector(dismissViewController))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Set Goal", style: .plain, target: self, action: #selector(setGoal))
         }
+        
+        func setGoal(){
+            let alertController = UIAlertController(title: "Select your goal", message: "", preferredStyle: .actionSheet)
+            alertController.addAction(UIAlertAction(title: "7000", style: .default) { _ in
+                
+            })
+            alertController.addAction(UIAlertAction(title: "10000", style: .default) { _ in
+                
+            })
+            alertController.addAction(UIAlertAction(title: "20000", style: .default) { _ in
+                
+            })
+            alertController.addAction(UIAlertAction(title: "Custom...", style: .default) { _ in
+                
+            })
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                
+            })
+            present(alertController, animated: true, completion: nil)
+        }
+        func dismissViewController(){
+            self.dismiss(animated: true, completion: nil)
+        }
+        
         
         override func viewWillAppear(_ animated: Bool) {
             _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
@@ -230,7 +256,6 @@
         func setCircleProgress(_ stepsValue:Int,goalValue:Int) {
             circleProgressView.setProgress(Double(stepsValue)/Double(goalValue), animated: true)
             stepsLabel.text = String(format:"%d",stepsValue)
-            
         }
         
         func bulidChart(_ todayDate:Foundation.Date) {
@@ -492,9 +517,6 @@
             }
         }
         
-        /**
-         Finish the selected calendar call
-         */
         func dismissCalendar() {
             let view = self.view.viewWithTag(CALENDAR_VIEW_TAG)
             if(view != nil) {
@@ -506,10 +528,6 @@
             }
         }
         
-        /**
-         Click on the calendar the blanks
-         - parameter recognizer: recognizer description
-         */
         func tapAction(_ recognizer:UITapGestureRecognizer) {
             self.dismissCalendar()
             titleView?.selectedFinishTitleView()
