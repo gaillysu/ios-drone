@@ -165,7 +165,7 @@ public enum AutocompleteType {
             let words = self.text!.components(separatedBy: " ")
             let suggestionWords = text.components(separatedBy: " ")
             var string : String = ""
-            for i in 0..<words.count {
+            for i in 0 ..< words.count {
                 string = string + suggestionWords[i] + " "
             }
             text = string

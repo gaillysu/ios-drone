@@ -12,7 +12,6 @@ target 'Drone' do
     pod 'CircleProgressView'
     pod 'SMSegmentView', '~> 1.1'
     pod 'SDCycleScrollView','~> 1.3'
-    pod 'AutocompleteField','~> 1.1'
     pod 'UIColor_Hex_Swift', '~> 2.1'
     pod 'CVCalendar', '~> 1.4.0'
     pod 'BRYXBanner'

@@ -114,6 +114,7 @@
 		618322F41E9F77680054966D /* StartSystemSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F31E9F77680054966D /* StartSystemSettingRequest.swift */; };
 		618322F61EA0645A0054966D /* ReadWeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F51EA0645A0054966D /* ReadWeatherRequest.swift */; };
 		618322FE1EA0A2B90054966D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
+		618323081EA459F00054966D /* AutocompleteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323071EA459F00054966D /* AutocompleteField.swift */; };
 		61AE4B511E7F821600B4AD7C /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */; };
 		61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
 		61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
@@ -315,6 +316,7 @@
 		618322F31E9F77680054966D /* StartSystemSettingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSystemSettingRequest.swift; sourceTree = "<group>"; };
 		618322F51EA0645A0054966D /* ReadWeatherRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWeatherRequest.swift; sourceTree = "<group>"; };
 		618322FD1EA0A2B90054966D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		618323071EA459F00054966D /* AutocompleteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteField.swift; sourceTree = "<group>"; };
 		61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
 		61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFormatter.swift; sourceTree = "<group>"; };
 		61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 		00982B541C868C89003DA5E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				618323061EA459F00054966D /* AutocompleteField */,
 				61AE4B521E7F838300B4AD7C /* ValueFormatter */,
 				61078DB91E48249C00898A0D /* OldTimepiece */,
 				61D470A51DE2F18B00620BD0 /* Global */,
@@ -878,6 +881,14 @@
 				618322EF1E9F6B240054966D /* WeatherUpdateModel.swift */,
 			);
 			path = WeatherModel;
+			sourceTree = "<group>";
+		};
+		618323061EA459F00054966D /* AutocompleteField */ = {
+			isa = PBXGroup;
+			children = (
+				618323071EA459F00054966D /* AutocompleteField.swift */,
+			);
+			path = AutocompleteField;
 			sourceTree = "<group>";
 		};
 		61AE4B521E7F838300B4AD7C /* ValueFormatter */ = {
@@ -1438,6 +1449,7 @@
 				618322E01E9F08310054966D /* SetNotificationRequest.swift in Sources */,
 				618322DD1E9F08310054966D /* SetClearConnectionWatch.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
+				618323081EA459F00054966D /* AutocompleteField.swift in Sources */,
 				618322F21E9F76080054966D /* UpdateWeatherInfoRequest.swift in Sources */,
 				618322D71E9F08310054966D /* GetUserProfileRequest.swift in Sources */,
 				618322D81E9F08310054966D /* GetWorldClockRequest.swift in Sources */,
