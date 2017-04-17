@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AutocompleteField
 import BRYXBanner
 
 class RegisterViewController: BaseViewController {

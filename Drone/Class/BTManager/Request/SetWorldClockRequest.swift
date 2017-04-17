@@ -39,6 +39,6 @@ class SetWorldClockRequest: DroneRequest {
             }
         }
         
-        return Utility.splitPacketConverter(data: values1)
+        return Constants.splitPacketConverter(data: values1)
     }
 }

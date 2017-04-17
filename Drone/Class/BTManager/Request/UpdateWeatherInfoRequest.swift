@@ -35,6 +35,6 @@ class UpdateWeatherInfoRequest: DroneRequest {
             values.append(temperature)
             values.append(statusIcon)
         }
-        return Utility.splitPacketConverter(data: values)
+        return Constants.splitPacketConverter(data: values)
     }
 }

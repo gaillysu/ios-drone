@@ -33,6 +33,6 @@ class SetWeatherLocationsRequest: DroneRequest {
             values.append(length)
             values = values+titleHex
         }
-        return Utility.splitPacketConverter(data: values)
+        return Constants.splitPacketConverter(data: values)
     }
 }

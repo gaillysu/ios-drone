@@ -17,7 +17,7 @@ class ActivityPacket: NSObject {
     }
 
     func gettimerInterval() -> Int {
-        let syncData:[UInt8] = Constants.Constants.NSData2Bytes(packetData)
+        let syncData:[UInt8] = Constants.NSData2Bytes(packetData)
         var timerInterval:Int = Int(syncData[2])
         timerInterval =  timerInterval + Int(syncData[3])<<8
         timerInterval =  timerInterval + Int(syncData[4])<<16

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import AutocompleteField
 import MRProgress
 import SwiftyJSON
 import BRYXBanner
@@ -148,7 +147,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ProfileTableViewCell
         if(indexPath.row == 0){
-            cell.backgroundColor = UIColor(rgba: "#DCDCDC")
+            cell.backgroundColor = UIColor("#DCDCDC")
             cell.itemTextField.placeholder = "First Name"
             let firstName:String = profile.first_name
             cell.itemTextField!.text = firstName

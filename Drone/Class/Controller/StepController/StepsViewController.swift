@@ -534,7 +534,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         titleView?.selectedFinishTitleView()
         
         /// No data for the selected date available.
-        let dayDate:Foundation.Date = dayView.date!.convertedDate()!
+        let dayDate:Foundation.Date = dayView.date!.convertedDate(calendar: Calendar.current)!
         let dayTime:TimeInterval = Foundation.Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
         didSelectedDate = Foundation.Date(timeIntervalSince1970: dayTime)
         
@@ -575,7 +575,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     func presentedDateUpdated(_ date: CVDate) {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM"
-        let dateString = "\(formatter.string(from: date.convertedDate()!)), \(date.day)"
+        let dateString = "\(formatter.string(from: date.convertedDate(calendar: Calendar.current)!)), \(date.day)"
         titleView?.setCalendarButtonTitle(dateString)
     }
     
@@ -605,10 +605,10 @@ extension StepsViewController: CVCalendarViewAppearanceDelegate {
     
     
     func dayLabelWeekdayInTextColor() -> UIColor {
-        return UIColor(rgba: "#676767")
+        return UIColor("#676767")
     }
     
     func dayLabelWeekdaySelectedBackgroundColor() -> UIColor {
-        return UIColor(rgba: "#55028C")
+        return UIColor("#55028C")
     }
 }

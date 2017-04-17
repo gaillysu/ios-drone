@@ -31,7 +31,7 @@ enum SettingAnalogMovementOperation:UInt8 {
     case hourStartRC            = 0x1C
 }
 
-enum SettingCompassOperation {
+enum SettingCompassOperation:UInt8 {
     case stopCompassCalibration     = 0x00
     case startCompassCalibration    = 0x01
 }

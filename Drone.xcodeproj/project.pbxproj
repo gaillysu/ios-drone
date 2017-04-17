@@ -115,6 +115,10 @@
 		618322F61EA0645A0054966D /* ReadWeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322F51EA0645A0054966D /* ReadWeatherRequest.swift */; };
 		618322FE1EA0A2B90054966D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
 		618323081EA459F00054966D /* AutocompleteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323071EA459F00054966D /* AutocompleteField.swift */; };
+		6183230E1EA4609C0054966D /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230A1EA4609C0054966D /* SMSegment.swift */; };
+		6183230F1EA4609C0054966D /* SMSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230B1EA4609C0054966D /* SMSegmentAppearance.swift */; };
+		618323101EA4609C0054966D /* SMSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230C1EA4609C0054966D /* SMSegmentView.swift */; };
+		618323111EA4609C0054966D /* SMSegmentViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230D1EA4609C0054966D /* SMSegmentViewConstants.swift */; };
 		61AE4B511E7F821600B4AD7C /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */; };
 		61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
 		61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
@@ -317,6 +321,10 @@
 		618322F51EA0645A0054966D /* ReadWeatherRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWeatherRequest.swift; sourceTree = "<group>"; };
 		618322FD1EA0A2B90054966D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618323071EA459F00054966D /* AutocompleteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteField.swift; sourceTree = "<group>"; };
+		6183230A1EA4609C0054966D /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
+		6183230B1EA4609C0054966D /* SMSegmentAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentAppearance.swift; sourceTree = "<group>"; };
+		6183230C1EA4609C0054966D /* SMSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentView.swift; sourceTree = "<group>"; };
+		6183230D1EA4609C0054966D /* SMSegmentViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentViewConstants.swift; sourceTree = "<group>"; };
 		61AE4B501E7F821600B4AD7C /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
 		61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFormatter.swift; sourceTree = "<group>"; };
 		61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -708,6 +716,7 @@
 		00982B541C868C89003DA5E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				618323091EA4609C0054966D /* SMSegmentView */,
 				618323061EA459F00054966D /* AutocompleteField */,
 				61AE4B521E7F838300B4AD7C /* ValueFormatter */,
 				61078DB91E48249C00898A0D /* OldTimepiece */,
@@ -889,6 +898,17 @@
 				618323071EA459F00054966D /* AutocompleteField.swift */,
 			);
 			path = AutocompleteField;
+			sourceTree = "<group>";
+		};
+		618323091EA4609C0054966D /* SMSegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				6183230A1EA4609C0054966D /* SMSegment.swift */,
+				6183230B1EA4609C0054966D /* SMSegmentAppearance.swift */,
+				6183230C1EA4609C0054966D /* SMSegmentView.swift */,
+				6183230D1EA4609C0054966D /* SMSegmentViewConstants.swift */,
+			);
+			path = SMSegmentView;
 			sourceTree = "<group>";
 		};
 		61AE4B521E7F838300B4AD7C /* ValueFormatter */ = {
@@ -1351,6 +1371,7 @@
 				00F1AF4E1CACD9A100CB9A15 /* MenuViewController.swift in Sources */,
 				CBE7981F1DC326D6000B686E /* BasePutRequest.swift in Sources */,
 				00982C191C868C8A003DA5E2 /* WorldClockCell.swift in Sources */,
+				618323101EA4609C0054966D /* SMSegmentView.swift in Sources */,
 				618322C71E9F08310054966D /* ActivityPacket.swift in Sources */,
 				61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */,
 				612D5A401E7A1D5B0010012A /* SyncQueue.swift in Sources */,
@@ -1422,10 +1443,12 @@
 				618322D01E9F08310054966D /* GetConfigRequest.swift in Sources */,
 				9E301BC11CF3054C00D7ADFD /* TimeUtil.swift in Sources */,
 				618322EB1E9F53020054966D /* SetWeatherLocationsRequest.swift in Sources */,
+				618323111EA4609C0054966D /* SMSegmentViewConstants.swift in Sources */,
 				618322D51E9F08310054966D /* GetSystemStatus.swift in Sources */,
 				618322E81E9F08310054966D /* UpdateNotificationRequest.swift in Sources */,
 				618322CF1E9F08310054966D /* GetBatteryRequest.swift in Sources */,
 				618322961E9F07BC0054966D /* AppTheme.swift in Sources */,
+				6183230E1EA4609C0054966D /* SMSegment.swift in Sources */,
 				618322E31E9F08310054966D /* SetSystemConfig.swift in Sources */,
 				CB28AFDF1CE2E59B00639538 /* NotificationViewController.swift in Sources */,
 				618322F41E9F77680054966D /* StartSystemSettingRequest.swift in Sources */,
@@ -1447,6 +1470,7 @@
 				00982C1B1C868C8A003DA5E2 /* WorldClockViewController.swift in Sources */,
 				005699D81CD05F7C0097938E /* SearchCityController.swift in Sources */,
 				618322E01E9F08310054966D /* SetNotificationRequest.swift in Sources */,
+				6183230F1EA4609C0054966D /* SMSegmentAppearance.swift in Sources */,
 				618322DD1E9F08310054966D /* SetClearConnectionWatch.swift in Sources */,
 				0028F1411C97C08000C8E742 /* EventBusKeys.swift in Sources */,
 				618323081EA459F00054966D /* AutocompleteField.swift in Sources */,

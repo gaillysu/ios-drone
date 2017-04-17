@@ -22,8 +22,8 @@ enum AppConfigAppState:Int {
 
 class SetAppConfigRequest: DroneRequest {
     
-    fileprivate var applicationID:Int = ApplicationID.ActivityTracking.rawValue
-    fileprivate var appState:Int = AppState.on.rawValue
+    fileprivate var applicationID:Int = AppConfigApplicationID.activityTracking.rawValue
+    fileprivate var appState:Int = AppConfigAppState.on.rawValue
     
     class func HEADER() -> UInt8 {
         return 0x04

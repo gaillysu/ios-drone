@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AutocompleteField
 import SwiftyJSON
 import MRProgress
 import BRYXBanner

@@ -17,11 +17,15 @@ extension UIColor{
     }
     
     public class func getTintColor() -> UIColor {
-        return UIColor(rgba: "#5D447A");
+        return UIColor("#5D447A");
     }
     
     public class func getGreyColor() -> UIColor {
-        return UIColor(rgba: "#666666");
+        return UIColor("#666666");
+    }
+    
+    public class func getColor(hex:String) -> UIColor {
+        return UIColor(hex);
     }
     
     public class func getLightBaseColor() -> UIColor {
