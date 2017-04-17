@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AutocompleteField
 import Crashlytics
 import BRYXBanner
 import UIColor_Hex_Swift

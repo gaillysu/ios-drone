@@ -120,11 +120,12 @@
                if(systemStatus == SystemStatus.systemReset.rawValue) {
                   //step1 : Set systemconfig next 1
                   DTUserDefaults.setupKey = true
-                  self.setSystemConfig(0)
-                  self.setSystemConfig(1)
-                  self.setSystemConfig(2)
+                  
+                  self.setSystemConfig()
+
                   //Records need to use 0x30
                   _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:true,RESET_STATE_DATE:Date().timeIntervalSince1970])
+                  
                }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
                   setGoal(nil)
                }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
@@ -173,13 +174,13 @@
                _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false,RESET_STATE_DATE:Date()] as AnyObject)
             }
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
-               let data:[UInt8] = NSData2Bytes(packet.getRawData())
+               let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
                let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
                SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:(batteryStatus as AnyObject))
             }
             
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
-               let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData() as NSData)
+               let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
                syncState = .small_SYNC
                SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
             }
@@ -206,7 +207,7 @@
             
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
                //let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
-               let syncStatus:[UInt8] = NSData2Bytes(packet.getRawData())
+               let syncStatus:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
                var timerInterval:Int = Int(syncStatus[2])
                timerInterval =  timerInterval + Int(syncStatus[3])<<8
                timerInterval =  timerInterval + Int(syncStatus[4])<<16

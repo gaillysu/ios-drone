@@ -339,11 +339,11 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                                 {
                                     // debugPrint("Request raw data :\(request.getRawData())")
                                     //OTA control CHAR, need a response
-                                    mPeripheral?.writeValue(request.getRawData() as Data,for:charac,type:CBCharacteristicWriteType.withoutResponse)
+                                    mPeripheral?.writeValue(request.getRawData(), for:charac,type:CBCharacteristicWriteType.withoutResponse)
                                 }else{
                                     for data in request.getRawDataEx() {
                                         // debugPrint("Request raw data Ex:\(data)")
-                                        mPeripheral?.writeValue(data as! Data,for:charac,type:CBCharacteristicWriteType.withoutResponse)
+                                        mPeripheral?.writeValue(data, for:charac,type:CBCharacteristicWriteType.withoutResponse)
                                     }
                                 }
                             }

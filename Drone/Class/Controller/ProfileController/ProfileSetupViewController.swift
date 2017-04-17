@@ -7,47 +7,16 @@
 //
 
 import UIKit
-import AutocompleteField
-import SMSegmentView
 import UIColor_Hex_Swift
 import BRYXBanner
 import SwiftyJSON
 import MRProgress
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l >= r
-  default:
-    return !(lhs < rhs)
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 private let DATEPICKER_TAG:Int = 1280
 private let PICKERVIEW_TAG:Int = 1380
 
-class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
+class ProfileSetupViewController: BaseViewController {
 
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!
@@ -81,7 +50,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textfiledBG.layer.borderColor = UIColor(rgba: "#6F7179").cgColor
+        textfiledBG.layer.borderColor = UIColor.getColor(hex:"#6F7179").cgColor
         //Init pickerView the data
         for index:Int in 100...250 {
             lengthArray.append(index)
@@ -98,19 +67,26 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
 
     override func viewDidLayoutSubviews() {
         if(segmentView == nil) {
-            let segmentProperties = ["OnSelectionBackgroundColour": UIColor.getBaseColor(),"OffSelectionBackgroundColour": UIColor.white,"OnSelectionTextColour": UIColor.white,"OffSelectionTextColour": UIColor(rgba: "#95989a")]
-
+            let appearance = SMSegmentAppearance()
+            appearance.titleOnSelectionColour       = UIColor.white
+            appearance.titleOffSelectionColour      = UIColor.getColor(hex:"#95989a")
+            appearance.segmentOnSelectionColour     = UIColor.getBaseColor()
+            appearance.segmentOffSelectionColour    = UIColor.white
+            appearance.titleOnSelectionFont         = UIFont.systemFont(ofSize: 12.0)
+            appearance.titleOffSelectionFont        = UIFont.systemFont(ofSize: 12.0)
+            appearance.contentVerticalMargin        = 10.0
+            
             let segmentFrame = CGRect(x: 0, y: 0, width: metricsSegment.frame.size.width, height: metricsSegment.frame.size.height)
-            segmentView = SMSegmentView(frame: segmentFrame, separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 1.0, segmentProperties: segmentProperties)
-            segmentView!.delegate = self
+            segmentView = SMSegmentView(frame: segmentFrame, dividerColour: UIColor(white: 0.95, alpha: 0.3), dividerWidth: 1.0, segmentAppearance: appearance)
             segmentView!.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).cgColor
             segmentView!.layer.borderWidth = 1.0
-
-            // Add segments
-            _ = segmentView!.addSegmentWithTitle("Male", onSelectionImage: nil, offSelectionImage: nil)
-            _ = segmentView!.addSegmentWithTitle("Female", onSelectionImage: nil, offSelectionImage: nil)
-            segmentView?.selectSegmentAtIndex(0)
+            segmentView?.layer.cornerRadius = 10
+            
+            segmentView!.addSegmentWithTitle(NSLocalizedString("Male", comment: ""), onSelectionImage: nil, offSelectionImage: nil)
+            segmentView!.addSegmentWithTitle(NSLocalizedString("Female", comment: ""), onSelectionImage: nil, offSelectionImage: nil)
+            segmentView?.selectedSegmentIndex = 0
             metricsSegment.addSubview(segmentView!)
+            segmentView?.layer.borderColor = UIColor.getBaseColor().cgColor
         }
     }
 
@@ -134,11 +110,6 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
         self.removePickerView()
     }
 
-    // MARK: - SMSegmentViewDelegate
-    func segmentView(_ segmentView: SMBasicSegmentView, didSelectSegmentAtIndex index: Int) {
-        debugPrint("Select segment at index: \(index)")
-    }
-
     func registerRequest() {
         if AppDelegate.getAppDelegate().network!.isReachable {
             if(AppTheme.isNull(ageTextField!.text!) || AppTheme.isEmail(lengthTextField!.text!) || AppTheme.isEmail(weightTextField!.text!) || AppTheme.isNull(firstNameTextField.text!) || AppTheme.isNull(lastNameTextField.text!)) {
@@ -159,7 +130,7 @@ class ProfileSetupViewController: BaseViewController,SMSegmentViewDelegate {
                 MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
             })
             
-            let sex:Int = self.segmentView?.indexOfSelectedSegment == 0 ? 1 : 0
+            let sex:Int = self.segmentView?.selectedSegmentIndex == 0 ? 1 : 0
             UserNetworkManager.createUser(firstName: self.firstNameTextField.text!, lastName: self.lastNameTextField.text!, email: email, password: password, birthday: ageTextField.text!, length: lengthTextField.text!, weight: weightTextField.text!, sex: sex, completion: { accountCreated in
                 var message = ""
                 timeout.invalidate()
@@ -255,9 +226,9 @@ extension ProfileSetupViewController: UITextFieldDelegate {
         }
 
         UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.allowUserInteraction, animations: {
-            datePicker?.frame = CGRect(x: 0,y: datePicker?.frame.origin.y>=UIScreen.main.bounds.size.height ? (UIScreen.main.bounds.size.height-200):(UIScreen.main.bounds.size.height),width: UIScreen.main.bounds.size.width,height: 200)
+            datePicker?.frame = CGRect(x: 0,y: datePicker!.frame.origin.y>=UIScreen.main.bounds.size.height ? (UIScreen.main.bounds.size.height-200):(UIScreen.main.bounds.size.height),width: UIScreen.main.bounds.size.width,height: 200)
             }) { (finish) in
-                if(datePicker?.frame.origin.y>UIScreen.main.bounds.size.height) {
+                if(datePicker!.frame.origin.y>UIScreen.main.bounds.size.height) {
                     datePicker?.removeFromSuperview()
                 }
         }
@@ -303,7 +274,7 @@ extension ProfileSetupViewController:UIPickerViewDelegate,UIPickerViewDataSource
         UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.allowUserInteraction, animations: {
             picker?.frame = CGRect(x: 0,y: UIScreen.main.bounds.size.height-200,width: UIScreen.main.bounds.size.width,height: 200)
         }) { (finish) in
-            if(picker?.frame.origin.y>UIScreen.main.bounds.size.height) {
+            if(picker!.frame.origin.y>UIScreen.main.bounds.size.height) {
                 picker?.removeFromSuperview()
             }
         }

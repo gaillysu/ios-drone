@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,6 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ry5-Aa-cai">
+                    <rect key="frame" x="13" y="28" width="28" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="28" id="RNT-4u-IzQ"/>
                         <constraint firstAttribute="height" constant="28" id="sGz-j6-sWx"/>
@@ -35,6 +39,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoK-Cw-H4g">
+                    <rect key="frame" x="334" y="28" width="28" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="GL4-R8-Dbf"/>
                         <constraint firstAttribute="width" constant="28" id="jwl-k0-aRD"/>
@@ -45,6 +50,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us a little bit about your self." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hK-yO-jRt">
+                    <rect key="frame" x="79" y="100" width="217" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="Que-ks-xgB"/>
                         <constraint firstAttribute="width" constant="217" id="umM-Uy-X3c"/>
@@ -54,6 +60,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We promise, we will never share this info." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVH-PX-BPg">
+                    <rect key="frame" x="70" y="158" width="235" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="235" id="0CV-C3-KTb"/>
                         <constraint firstAttribute="height" constant="21" id="Y4N-uk-abG"/>
@@ -63,8 +70,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rb8-33-61L">
+                    <rect key="frame" x="50" y="187" width="275" height="122"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfz-FT-0BM" customClass="AutocompleteField" customModule="AutocompleteField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfz-FT-0BM" customClass="AutocompleteField">
+                            <rect key="frame" x="0.0" y="62" width="275" height="60"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="FHB-ap-mKr"/>
@@ -81,7 +90,8 @@
                                 <outlet property="delegate" destination="-1" id="GGM-RE-ags"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-7s-BJh" customClass="AutocompleteField" customModule="AutocompleteField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-7s-BJh" customClass="AutocompleteField">
+                            <rect key="frame" x="0.0" y="0.0" width="275" height="61"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="61" id="6YH-a3-BM5"/>
@@ -117,13 +127,16 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggg-Sd-Oku">
+                    <rect key="frame" x="50" y="317" width="275" height="57"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="57" id="DDe-8s-k9i"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1s-Eu-J5f">
+                    <rect key="frame" x="50" y="382" width="275" height="184"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Height" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Goa-Bq-FHb" customClass="AutocompleteField" customModule="AutocompleteField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Height" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Goa-Bq-FHb" customClass="AutocompleteField">
+                            <rect key="frame" x="0.0" y="61" width="275" height="61"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="61" id="iPq-WQ-4D8"/>
@@ -140,7 +153,8 @@
                                 <outlet property="delegate" destination="-1" id="IGo-HH-8su"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Weight" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6l-WV-9Jl" customClass="AutocompleteField" customModule="AutocompleteField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Weight" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6l-WV-9Jl" customClass="AutocompleteField">
+                            <rect key="frame" x="0.0" y="123" width="275" height="61"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="61" id="Fgv-V4-Jlq"/>
@@ -157,7 +171,8 @@
                                 <outlet property="delegate" destination="-1" id="re7-ij-Zfd"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date of birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98S-al-o4l" customClass="AutocompleteField" customModule="AutocompleteField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date of birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98S-al-o4l" customClass="AutocompleteField">
+                            <rect key="frame" x="0.0" y="0.0" width="275" height="60"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="Mja-oM-Gce"/>

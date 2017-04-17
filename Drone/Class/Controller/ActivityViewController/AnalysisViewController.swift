@@ -15,7 +15,7 @@ class AnalysisViewController: UIViewController {
     @IBOutlet var milesLabel: UILabel!
     
     init() {
-        super.init(nibName: "ActivityViewController", bundle: NSBundle.mainBundle())
+        super.init(nibName: "ActivityViewController", bundle: Bundle.main)
     }
 
     required init(coder aDecoder: NSCoder) {

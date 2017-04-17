@@ -29,5 +29,5 @@ protocol Request {
     /**
     for Nevo/ Tracker, the communication protocol has 2 packet(0x00,0xFF)
     */
-    func getRawDataEx() -> NSArray
+    func getRawDataEx() -> [Data]
 }
