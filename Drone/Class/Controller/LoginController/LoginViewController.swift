@@ -146,8 +146,6 @@ class LoginViewController: UIViewController {
             if(UserGoal.getAll().count == 0){
                 let goal:UserGoal = UserGoal()
                 goal.goalSteps = 10000
-                goal.label = " "
-                goal.status = false
                 _ = goal.add()
             }
         }else{

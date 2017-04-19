@@ -81,8 +81,6 @@
 		61C28BE61EA46F810019F574 /* AnalysisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B281EA46F800019F574 /* AnalysisViewController.xib */; };
 		61C28BE71EA46F810019F574 /* AnalysisStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B2A1EA46F800019F574 /* AnalysisStepsChartView.swift */; };
 		61C28BE81EA46F810019F574 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B2B1EA46F800019F574 /* BaseViewController.swift */; };
-		61C28BE91EA46F810019F574 /* BuddyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B2D1EA46F800019F574 /* BuddyViewController.swift */; };
-		61C28BEA1EA46F810019F574 /* BuddyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B2E1EA46F800019F574 /* BuddyViewController.xib */; };
 		61C28BEB1EA46F810019F574 /* CheckEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B301EA46F800019F574 /* CheckEmailController.swift */; };
 		61C28BEC1EA46F810019F574 /* CheckEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B311EA46F800019F574 /* CheckEmailController.xib */; };
 		61C28BED1EA46F810019F574 /* SearchCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B331EA46F800019F574 /* SearchCityController.swift */; };
@@ -183,12 +181,10 @@
 		61C28C4D1EA46F810019F574 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB11EA46F810019F574 /* Color.swift */; };
 		61C28C4E1EA46F810019F574 /* DTUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB21EA46F810019F574 /* DTUserDefaults.swift */; };
 		61C28C4F1EA46F810019F574 /* EventBusKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB31EA46F810019F574 /* EventBusKeys.swift */; };
-		61C28C501EA46F810019F574 /* NSDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB41EA46F810019F574 /* NSDataExtension.swift */; };
 		61C28C511EA46F810019F574 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB51EA46F810019F574 /* StringExtension.swift */; };
 		61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB61EA46F810019F574 /* SyncQueue.swift */; };
 		61C28C531EA46F810019F574 /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB71EA46F810019F574 /* TimeUtil.swift */; };
 		61C28C541EA46F810019F574 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB81EA46F810019F574 /* UIView+Extension.swift */; };
-		61C28C551EA46F810019F574 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB91EA46F810019F574 /* UIViewExtension.swift */; };
 		61C28C561EA46F810019F574 /* WorldClockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BBA1EA46F810019F574 /* WorldClockUtil.swift */; };
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
@@ -199,6 +195,12 @@
 		CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46981CCF223500411997 /* Fabric.framework */; };
 		CB0B469B1CCF223500411997 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46991CCF223500411997 /* Crashlytics.framework */; };
 		CB464B6F1DED347B00480C08 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB464B6E1DED347B00480C08 /* MapKit.framework */; };
+		CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */; };
+		CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
+		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
+		CB715FB51EA5F20E005B5C22 /* CompassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */; };
+		CB9F65241EA610C5007982B0 /* Compass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65231EA610C5007982B0 /* Compass.swift */; };
+		CB9F65261EA6144D007982B0 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65251EA6144D007982B0 /* IntExtension.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -301,8 +303,6 @@
 		61C28B281EA46F800019F574 /* AnalysisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalysisViewController.xib; sourceTree = "<group>"; };
 		61C28B2A1EA46F800019F574 /* AnalysisStepsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisStepsChartView.swift; sourceTree = "<group>"; };
 		61C28B2B1EA46F800019F574 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		61C28B2D1EA46F800019F574 /* BuddyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyViewController.swift; sourceTree = "<group>"; };
-		61C28B2E1EA46F800019F574 /* BuddyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuddyViewController.xib; sourceTree = "<group>"; };
 		61C28B301EA46F800019F574 /* CheckEmailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckEmailController.swift; sourceTree = "<group>"; };
 		61C28B311EA46F800019F574 /* CheckEmailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckEmailController.xib; sourceTree = "<group>"; };
 		61C28B331EA46F800019F574 /* SearchCityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCityController.swift; sourceTree = "<group>"; };
@@ -313,8 +313,8 @@
 		61C28B3A1EA46F800019F574 /* DeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceViewController.xib; sourceTree = "<group>"; };
 		61C28B3C1EA46F800019F574 /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
 		61C28B3D1EA46F800019F574 /* DeviceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceTableViewCell.xib; sourceTree = "<group>"; };
-		61C28B3E1EA46F800019F574 /* DeviceTableViewCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCellHeader.swift; sourceTree = "<group>"; };
-		61C28B3F1EA46F800019F574 /* DeviceTableViewCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceTableViewCellHeader.xib; sourceTree = "<group>"; };
+		61C28B3E1EA46F800019F574 /* DeviceTableViewCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceTableViewCellHeader.swift; path = View/DeviceTableViewCellHeader.swift; sourceTree = "<group>"; };
+		61C28B3F1EA46F800019F574 /* DeviceTableViewCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DeviceTableViewCellHeader.xib; path = View/DeviceTableViewCellHeader.xib; sourceTree = "<group>"; };
 		61C28B411EA46F800019F574 /* ForgetPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordController.swift; sourceTree = "<group>"; };
 		61C28B421EA46F800019F574 /* ForgetPasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordController.xib; sourceTree = "<group>"; };
 		61C28B441EA46F800019F574 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -347,8 +347,8 @@
 		61C28B6A1EA46F810019F574 /* StepsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsViewController.xib; sourceTree = "<group>"; };
 		61C28B6C1EA46F810019F574 /* StepsTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTitleView.swift; sourceTree = "<group>"; };
 		61C28B6D1EA46F810019F574 /* StepsTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTitleView.xib; sourceTree = "<group>"; };
-		61C28B6F1EA46F810019F574 /* AddWorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWorldClockViewController.swift; sourceTree = "<group>"; };
-		61C28B701EA46F810019F574 /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddWorldClockViewController.xib; sourceTree = "<group>"; };
+		61C28B6F1EA46F810019F574 /* AddWorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockViewController.swift; path = WorldClockController/AddWorldClockViewController.swift; sourceTree = "<group>"; };
+		61C28B701EA46F810019F574 /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWorldClockViewController.xib; path = WorldClockController/AddWorldClockViewController.xib; sourceTree = "<group>"; };
 		61C28B721EA46F810019F574 /* WorldClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockCell.swift; sourceTree = "<group>"; };
 		61C28B731EA46F810019F574 /* WorldClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockCell.xib; sourceTree = "<group>"; };
 		61C28B741EA46F810019F574 /* WorldClockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockHeader.swift; sourceTree = "<group>"; };
@@ -357,14 +357,14 @@
 		61C28B771EA46F810019F574 /* WorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockViewController.xib; sourceTree = "<group>"; };
 		61C28B791EA46F810019F574 /* WhichDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichDeviceViewController.swift; sourceTree = "<group>"; };
 		61C28B7A1EA46F810019F574 /* WhichDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhichDeviceViewController.xib; sourceTree = "<group>"; };
-		61C28B7E1EA46F810019F574 /* MEDBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MEDBaseModel.swift; sourceTree = "<group>"; };
-		61C28B7F1EA46F810019F574 /* MEDDataBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MEDDataBaseRequest.swift; sourceTree = "<group>"; };
-		61C28B801EA46F810019F574 /* UserDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDevice.swift; sourceTree = "<group>"; };
-		61C28B811EA46F810019F574 /* UserGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGoal.swift; sourceTree = "<group>"; };
-		61C28B821EA46F810019F574 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		61C28B831EA46F810019F574 /* UserSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSteps.swift; sourceTree = "<group>"; };
-		61C28B841EA46F810019F574 /* WorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClock.swift; sourceTree = "<group>"; };
-		61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
+		61C28B7E1EA46F810019F574 /* MEDBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MEDBaseModel.swift; path = ModelTable/MEDBaseModel.swift; sourceTree = "<group>"; };
+		61C28B7F1EA46F810019F574 /* MEDDataBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MEDDataBaseRequest.swift; path = ModelTable/MEDDataBaseRequest.swift; sourceTree = "<group>"; };
+		61C28B801EA46F810019F574 /* UserDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDevice.swift; path = ModelTable/UserDevice.swift; sourceTree = "<group>"; };
+		61C28B811EA46F810019F574 /* UserGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserGoal.swift; path = ModelTable/UserGoal.swift; sourceTree = "<group>"; };
+		61C28B821EA46F810019F574 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfile.swift; path = ModelTable/UserProfile.swift; sourceTree = "<group>"; };
+		61C28B831EA46F810019F574 /* UserSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSteps.swift; path = ModelTable/UserSteps.swift; sourceTree = "<group>"; };
+		61C28B841EA46F810019F574 /* WorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldClock.swift; path = ModelTable/WorldClock.swift; sourceTree = "<group>"; };
+		61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldClockDatabaseHelper.swift; path = ModelTable/WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
 		61C28B871EA46F810019F574 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		61C28B881EA46F810019F574 /* NumberOfStepsGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfStepsGoal.swift; sourceTree = "<group>"; };
 		61C28B8A1EA46F810019F574 /* CityMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityMenuItem.swift; sourceTree = "<group>"; };
@@ -403,12 +403,10 @@
 		61C28BB11EA46F810019F574 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		61C28BB21EA46F810019F574 /* DTUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTUserDefaults.swift; sourceTree = "<group>"; };
 		61C28BB31EA46F810019F574 /* EventBusKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusKeys.swift; sourceTree = "<group>"; };
-		61C28BB41EA46F810019F574 /* NSDataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtension.swift; sourceTree = "<group>"; };
 		61C28BB51EA46F810019F574 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		61C28BB61EA46F810019F574 /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
 		61C28BB71EA46F810019F574 /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
 		61C28BB81EA46F810019F574 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		61C28BB91EA46F810019F574 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		61C28BBA1EA46F810019F574 /* WorldClockUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockUtil.swift; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
@@ -421,6 +419,12 @@
 		CB0B46981CCF223500411997 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CB0B46991CCF223500411997 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CB464B6E1DED347B00480C08 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassViewController.swift; path = CompassViewController/CompassViewController.swift; sourceTree = "<group>"; };
+		CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassViewController.xib; path = CompassViewController/CompassViewController.xib; sourceTree = "<group>"; };
+		CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassTableViewCell.swift; sourceTree = "<group>"; };
+		CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompassTableViewCell.xib; sourceTree = "<group>"; };
+		CB9F65231EA610C5007982B0 /* Compass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compass.swift; sourceTree = "<group>"; };
+		CB9F65251EA6144D007982B0 /* IntExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -626,6 +630,7 @@
 				61C28B9B1EA46F810019F574 /* Network */,
 				61C28BAD1EA46F810019F574 /* StepsManager */,
 				61C28BAF1EA46F810019F574 /* Util */,
+				61C28B711EA46F810019F574 /* View */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -699,10 +704,10 @@
 			isa = PBXGroup;
 			children = (
 				61C28B261EA46F800019F574 /* ActivityViewController */,
+				CB715FAC1EA5E6BF005B5C22 /* AddWorldClockViewController */,
 				61C28B291EA46F800019F574 /* BaseViewController */,
-				61C28B2C1EA46F800019F574 /* BuddyViewController */,
 				61C28B2F1EA46F800019F574 /* CheckEmailController */,
-				61C28B321EA46F800019F574 /* ChooseCityController */,
+				CB715FA71EA5CDD3005B5C22 /* CompassViewController */,
 				61C28B351EA46F800019F574 /* ConnectionViewController */,
 				61C28B381EA46F800019F574 /* DeviceViewController */,
 				61C28B401EA46F800019F574 /* ForgetPasswordController */,
@@ -713,10 +718,11 @@
 				61C28B521EA46F800019F574 /* NotificationViewController */,
 				61C28B581EA46F800019F574 /* ProfileController */,
 				61C28B621EA46F800019F574 /* RegisterController */,
+				61C28B321EA46F800019F574 /* SearchCityController */,
 				61C28B651EA46F800019F574 /* SplashScreenViewController */,
 				61C28B681EA46F800019F574 /* StepController */,
+				61C28B781EA46F810019F574 /* WhichDeviceViewController */,
 				61C28B6E1EA46F810019F574 /* WorldClockController */,
-				61C28B781EA46F810019F574 /* YouDeviceViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -739,15 +745,6 @@
 			path = BaseViewController;
 			sourceTree = "<group>";
 		};
-		61C28B2C1EA46F800019F574 /* BuddyViewController */ = {
-			isa = PBXGroup;
-			children = (
-				61C28B2D1EA46F800019F574 /* BuddyViewController.swift */,
-				61C28B2E1EA46F800019F574 /* BuddyViewController.xib */,
-			);
-			path = BuddyViewController;
-			sourceTree = "<group>";
-		};
 		61C28B2F1EA46F800019F574 /* CheckEmailController */ = {
 			isa = PBXGroup;
 			children = (
@@ -757,12 +754,13 @@
 			path = CheckEmailController;
 			sourceTree = "<group>";
 		};
-		61C28B321EA46F800019F574 /* ChooseCityController */ = {
+		61C28B321EA46F800019F574 /* SearchCityController */ = {
 			isa = PBXGroup;
 			children = (
 				61C28B331EA46F800019F574 /* SearchCityController.swift */,
 				61C28B341EA46F800019F574 /* SearchCityController.xib */,
 			);
+			name = SearchCityController;
 			path = ChooseCityController;
 			sourceTree = "<group>";
 		};
@@ -780,20 +778,18 @@
 			children = (
 				61C28B391EA46F800019F574 /* DeviceViewController.swift */,
 				61C28B3A1EA46F800019F574 /* DeviceViewController.xib */,
-				61C28B3B1EA46F800019F574 /* View */,
 			);
 			path = DeviceViewController;
 			sourceTree = "<group>";
 		};
-		61C28B3B1EA46F800019F574 /* View */ = {
+		61C28B3B1EA46F800019F574 /* DeviceTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				61C28B3C1EA46F800019F574 /* DeviceTableViewCell.swift */,
 				61C28B3D1EA46F800019F574 /* DeviceTableViewCell.xib */,
-				61C28B3E1EA46F800019F574 /* DeviceTableViewCellHeader.swift */,
-				61C28B3F1EA46F800019F574 /* DeviceTableViewCellHeader.xib */,
 			);
-			path = View;
+			name = DeviceTableViewCell;
+			path = ../../DeviceViewController/View;
 			sourceTree = "<group>";
 		};
 		61C28B401EA46F800019F574 /* ForgetPasswordController */ = {
@@ -828,18 +824,18 @@
 			children = (
 				61C28B4A1EA46F800019F574 /* MenuViewController.swift */,
 				61C28B4B1EA46F800019F574 /* MenuViewController.xib */,
-				61C28B4C1EA46F800019F574 /* View */,
 			);
 			path = MenuViewController;
 			sourceTree = "<group>";
 		};
-		61C28B4C1EA46F800019F574 /* View */ = {
+		61C28B4C1EA46F800019F574 /* MenuViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				61C28B4D1EA46F800019F574 /* MenuViewCell.swift */,
 				61C28B4E1EA46F800019F574 /* MenuViewCell.xib */,
 			);
-			path = View;
+			name = MenuViewCell;
+			path = ../../MenuViewController/View;
 			sourceTree = "<group>";
 		};
 		61C28B4F1EA46F800019F574 /* MyDeviceViewController */ = {
@@ -856,18 +852,18 @@
 			children = (
 				61C28B531EA46F800019F574 /* NotificationViewController.swift */,
 				61C28B541EA46F800019F574 /* NotificationViewController.xib */,
-				61C28B551EA46F800019F574 /* View */,
 			);
 			path = NotificationViewController;
 			sourceTree = "<group>";
 		};
-		61C28B551EA46F800019F574 /* View */ = {
+		61C28B551EA46F800019F574 /* NotificationsViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				61C28B561EA46F800019F574 /* NotificationsViewCell.swift */,
 				61C28B571EA46F800019F574 /* NotificationsViewCell.xib */,
 			);
-			path = View;
+			name = NotificationsViewCell;
+			path = ../../NotificationViewController/View;
 			sourceTree = "<group>";
 		};
 		61C28B581EA46F800019F574 /* ProfileController */ = {
@@ -916,26 +912,23 @@
 			children = (
 				61C28B691EA46F800019F574 /* StepsViewController.swift */,
 				61C28B6A1EA46F810019F574 /* StepsViewController.xib */,
-				61C28B6B1EA46F810019F574 /* View */,
 			);
 			path = StepController;
 			sourceTree = "<group>";
 		};
-		61C28B6B1EA46F810019F574 /* View */ = {
+		61C28B6B1EA46F810019F574 /* StepsTitleView */ = {
 			isa = PBXGroup;
 			children = (
 				61C28B6C1EA46F810019F574 /* StepsTitleView.swift */,
 				61C28B6D1EA46F810019F574 /* StepsTitleView.xib */,
 			);
-			path = View;
+			name = StepsTitleView;
+			path = ../../StepController/View;
 			sourceTree = "<group>";
 		};
 		61C28B6E1EA46F810019F574 /* WorldClockController */ = {
 			isa = PBXGroup;
 			children = (
-				61C28B6F1EA46F810019F574 /* AddWorldClockViewController.swift */,
-				61C28B701EA46F810019F574 /* AddWorldClockViewController.xib */,
-				61C28B711EA46F810019F574 /* View */,
 				61C28B761EA46F810019F574 /* WorldClockViewController.swift */,
 				61C28B771EA46F810019F574 /* WorldClockViewController.xib */,
 			);
@@ -945,20 +938,26 @@
 		61C28B711EA46F810019F574 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				61C28B721EA46F810019F574 /* WorldClockCell.swift */,
-				61C28B731EA46F810019F574 /* WorldClockCell.xib */,
-				61C28B741EA46F810019F574 /* WorldClockHeader.swift */,
-				61C28B751EA46F810019F574 /* WorldClockHeader.xib */,
+				CB715FB11EA5F1B9005B5C22 /* CompassTableViewCell */,
+				61C28B3B1EA46F800019F574 /* DeviceTableViewCell */,
+				CB715FB01EA5E7A8005B5C22 /* DeviceTableViewCellHeader */,
+				61C28B4C1EA46F800019F574 /* MenuViewCell */,
+				61C28B551EA46F800019F574 /* NotificationsViewCell */,
+				61C28B6B1EA46F810019F574 /* StepsTitleView */,
+				CB715FAD1EA5E6E8005B5C22 /* WorldClockCell */,
+				CB715FAE1EA5E6F7005B5C22 /* WorldClockHeader */,
 			);
-			path = View;
+			name = View;
+			path = Controller/WorldClockController/View;
 			sourceTree = "<group>";
 		};
-		61C28B781EA46F810019F574 /* YouDeviceViewController */ = {
+		61C28B781EA46F810019F574 /* WhichDeviceViewController */ = {
 			isa = PBXGroup;
 			children = (
 				61C28B791EA46F810019F574 /* WhichDeviceViewController.swift */,
 				61C28B7A1EA46F810019F574 /* WhichDeviceViewController.xib */,
 			);
+			name = WhichDeviceViewController;
 			path = YouDeviceViewController;
 			sourceTree = "<group>";
 		};
@@ -977,14 +976,6 @@
 		61C28B7C1EA46F810019F574 /* DBModel */ = {
 			isa = PBXGroup;
 			children = (
-				61C28B7D1EA46F810019F574 /* ModelTable */,
-			);
-			path = DBModel;
-			sourceTree = "<group>";
-		};
-		61C28B7D1EA46F810019F574 /* ModelTable */ = {
-			isa = PBXGroup;
-			children = (
 				61C28B7E1EA46F810019F574 /* MEDBaseModel.swift */,
 				61C28B7F1EA46F810019F574 /* MEDDataBaseRequest.swift */,
 				61C28B801EA46F810019F574 /* UserDevice.swift */,
@@ -993,8 +984,9 @@
 				61C28B831EA46F810019F574 /* UserSteps.swift */,
 				61C28B841EA46F810019F574 /* WorldClock.swift */,
 				61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */,
+				CB9F65231EA610C5007982B0 /* Compass.swift */,
 			);
-			path = ModelTable;
+			path = DBModel;
 			sourceTree = "<group>";
 		};
 		61C28B861EA46F810019F574 /* Goal */ = {
@@ -1080,13 +1072,12 @@
 				61C28BB11EA46F810019F574 /* Color.swift */,
 				61C28BB21EA46F810019F574 /* DTUserDefaults.swift */,
 				61C28BB31EA46F810019F574 /* EventBusKeys.swift */,
-				61C28BB41EA46F810019F574 /* NSDataExtension.swift */,
 				61C28BB51EA46F810019F574 /* StringExtension.swift */,
 				61C28BB61EA46F810019F574 /* SyncQueue.swift */,
 				61C28BB71EA46F810019F574 /* TimeUtil.swift */,
 				61C28BB81EA46F810019F574 /* UIView+Extension.swift */,
-				61C28BB91EA46F810019F574 /* UIViewExtension.swift */,
 				61C28BBA1EA46F810019F574 /* WorldClockUtil.swift */,
+				CB9F65251EA6144D007982B0 /* IntExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1115,6 +1106,61 @@
 				9E1535821D5C20CA00CB6A01 /* cities.json */,
 			);
 			name = Worldclock;
+			sourceTree = "<group>";
+		};
+		CB715FA71EA5CDD3005B5C22 /* CompassViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */,
+				CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */,
+			);
+			name = CompassViewController;
+			sourceTree = "<group>";
+		};
+		CB715FAC1EA5E6BF005B5C22 /* AddWorldClockViewController */ = {
+			isa = PBXGroup;
+			children = (
+				61C28B6F1EA46F810019F574 /* AddWorldClockViewController.swift */,
+				61C28B701EA46F810019F574 /* AddWorldClockViewController.xib */,
+			);
+			name = AddWorldClockViewController;
+			sourceTree = "<group>";
+		};
+		CB715FAD1EA5E6E8005B5C22 /* WorldClockCell */ = {
+			isa = PBXGroup;
+			children = (
+				61C28B721EA46F810019F574 /* WorldClockCell.swift */,
+				61C28B731EA46F810019F574 /* WorldClockCell.xib */,
+			);
+			name = WorldClockCell;
+			sourceTree = "<group>";
+		};
+		CB715FAE1EA5E6F7005B5C22 /* WorldClockHeader */ = {
+			isa = PBXGroup;
+			children = (
+				61C28B741EA46F810019F574 /* WorldClockHeader.swift */,
+				61C28B751EA46F810019F574 /* WorldClockHeader.xib */,
+			);
+			name = WorldClockHeader;
+			sourceTree = "<group>";
+		};
+		CB715FB01EA5E7A8005B5C22 /* DeviceTableViewCellHeader */ = {
+			isa = PBXGroup;
+			children = (
+				61C28B3E1EA46F800019F574 /* DeviceTableViewCellHeader.swift */,
+				61C28B3F1EA46F800019F574 /* DeviceTableViewCellHeader.xib */,
+			);
+			name = DeviceTableViewCellHeader;
+			path = ../../DeviceViewController;
+			sourceTree = "<group>";
+		};
+		CB715FB11EA5F1B9005B5C22 /* CompassTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */,
+				CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */,
+			);
+			name = CompassTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1241,6 +1287,7 @@
 				61C28BF21EA46F810019F574 /* DeviceViewController.xib in Resources */,
 				61C28C1C1EA46F810019F574 /* WorldClockHeader.xib in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
+				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
 				61C28BEC1EA46F810019F574 /* CheckEmailController.xib in Resources */,
 				61C28C1E1EA46F810019F574 /* WorldClockViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
@@ -1255,6 +1302,7 @@
 				9E1535831D5C20CA00CB6A01 /* timezones.json in Resources */,
 				61C28C181EA46F810019F574 /* AddWorldClockViewController.xib in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
+				CB715FB51EA5F20E005B5C22 /* CompassTableViewCell.xib in Resources */,
 				61C28BFC1EA46F810019F574 /* LoginViewController.xib in Resources */,
 				61C28C121EA46F810019F574 /* SplashScreenViewController.xib in Resources */,
 				61C28C141EA46F810019F574 /* StepsViewController.xib in Resources */,
@@ -1271,7 +1319,6 @@
 				61C28BE61EA46F810019F574 /* AnalysisViewController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				61C28BF61EA46F810019F574 /* DeviceTableViewCellHeader.xib in Resources */,
-				61C28BEA1EA46F810019F574 /* BuddyViewController.xib in Resources */,
 				61C28C061EA46F810019F574 /* NotificationsViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1361,16 +1408,17 @@
 				61C28BFB1EA46F810019F574 /* LoginViewController.swift in Sources */,
 				61C28C481EA46F810019F574 /* UserCreateRequest.swift in Sources */,
 				61C28BBF1EA46F810019F574 /* CockRoachPacket.swift in Sources */,
+				CB9F65261EA6144D007982B0 /* IntExtension.swift in Sources */,
 				61C28BF91EA46F810019F574 /* WelcomeViewController.swift in Sources */,
 				61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */,
 				61C28BE41EA46F810019F574 /* WriteSettingRequest.swift in Sources */,
+				CB9F65241EA610C5007982B0 /* Compass.swift in Sources */,
 				61C28BD01EA46F810019F574 /* GetWorldClockRequest.swift in Sources */,
 				61C28C531EA46F810019F574 /* TimeUtil.swift in Sources */,
 				61C28C341EA46F810019F574 /* TimeMenuItem.swift in Sources */,
 				61C28BE21EA46F810019F574 /* UpdateNotificationRequest.swift in Sources */,
 				61C28C561EA46F810019F574 /* WorldClockUtil.swift in Sources */,
 				61C28BD61EA46F810019F574 /* SetContactsFilterRequest.swift in Sources */,
-				61C28C501EA46F810019F574 /* NSDataExtension.swift in Sources */,
 				61C28C261EA46F810019F574 /* UserSteps.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				61C28C1F1EA46F810019F574 /* WhichDeviceViewController.swift in Sources */,
@@ -1385,6 +1433,7 @@
 				61C28BCC1EA46F810019F574 /* GetSystemConfig.swift in Sources */,
 				61078DC31E48249C00898A0D /* Int+Timepiece.swift in Sources */,
 				61C28BD11EA46F810019F574 /* ReadDailyTracker.swift in Sources */,
+				CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */,
 				61C28C4B1EA46F810019F574 /* StepsManager.swift in Sources */,
 				61C28BD91EA46F810019F574 /* SetRTCRequest.swift in Sources */,
 				61C28BE11EA46F810019F574 /* UpdateContactsFilterRequest.swift in Sources */,
@@ -1428,7 +1477,6 @@
 				61078DC21E48249C00898A0D /* Duration.swift in Sources */,
 				61C28C361EA46F810019F574 /* WeatherUpdateModel.swift in Sources */,
 				61C28BC31EA46F810019F574 /* SystemStatusPacket.swift in Sources */,
-				61C28C551EA46F810019F574 /* UIViewExtension.swift in Sources */,
 				61C28BC21EA46F810019F574 /* SystemEventPacket.swift in Sources */,
 				61C28BD31EA46F810019F574 /* ReadWeatherRequest.swift in Sources */,
 				61C28C0D1EA46F810019F574 /* ProfileViewController.swift in Sources */,
@@ -1457,13 +1505,13 @@
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
 				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
 				61C28BBC1EA46F810019F574 /* ConnectionControllerImpl.swift in Sources */,
-				61C28BE91EA46F810019F574 /* BuddyViewController.swift in Sources */,
 				61C28BCA1EA46F810019F574 /* GetNotificationRequest.swift in Sources */,
 				61C28C211EA46F810019F574 /* MEDBaseModel.swift in Sources */,
 				61C28C0B1EA46F810019F574 /* ProfileTableViewCellHeader.swift in Sources */,
 				61C28BC61EA46F810019F574 /* GetActivityRequest.swift in Sources */,
 				61C28C171EA46F810019F574 /* AddWorldClockViewController.swift in Sources */,
 				61C28C131EA46F810019F574 /* StepsViewController.swift in Sources */,
+				CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */,
 				61C28C4E1EA46F810019F574 /* DTUserDefaults.swift in Sources */,
 				61C28C271EA46F810019F574 /* WorldClock.swift in Sources */,
 				61C28C011EA46F810019F574 /* MyDeviceViewController.swift in Sources */,

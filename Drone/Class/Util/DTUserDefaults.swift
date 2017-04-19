@@ -15,6 +15,7 @@ public class DTUserDefaults: NSObject {
     private static let SEND_LOCAL_MESSAGE_KEY = "IsSendLocalMsg"
     private static let WORLDCLOCK_KEY = "defaults_worldclock_key"
     private static let WORLDCLOCK_SORT_KEY = "WORLDCLOCK_SORT_KEY"
+    private static let COMPASS_KEY = "COMPASS_KEY"
     
     public static var setupKey:Bool {
         get{
@@ -28,7 +29,7 @@ public class DTUserDefaults: NSObject {
     
     public static var rtcDate:Date? {
         get{
-            return UserDefaults().object(forKey: SET_RTC_DATE) as! Date
+            return UserDefaults().object(forKey: SET_RTC_DATE) as? Date
         }
         set{
             UserDefaults().set(newValue, forKey: SET_RTC_DATE)
@@ -52,6 +53,16 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: WORLDCLOCK_KEY)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    public static var compassState:Bool {
+        get{
+            return UserDefaults().bool(forKey: COMPASS_KEY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: COMPASS_KEY)
             UserDefaults.standard.synchronize()
         }
     }

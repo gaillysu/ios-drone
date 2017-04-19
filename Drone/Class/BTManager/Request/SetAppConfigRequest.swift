@@ -34,6 +34,17 @@ class SetAppConfigRequest: DroneRequest {
         applicationID = appid.rawValue
         appState = state.rawValue
     }
+    
+    init(appid:AppConfigApplicationID,enabled:Bool) {
+        super.init()
+        applicationID = appid.rawValue
+        if enabled {
+            appState = AppConfigAppState.on.rawValue
+        } else{
+            appState = AppConfigAppState.off.rawValue
+        }
+        
+    }
 
     override func getRawDataEx() -> [Data] {
 

@@ -23,8 +23,15 @@ extension AppDelegate {
         sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.clockFormat))
         sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.enabled))
         sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration))
         sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.topKeyCustomization))
+    }
+    
+    func setCompassAutoMinutes(){
+        if let obj = Compass.getAll().first, let compass = obj as? Compass{
+            sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:compass.activeTime))
+        }else{
+            sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:1))
+        }
     }
     
     func setRTC() {
@@ -35,7 +42,7 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.worldClock, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.activityTracking, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.weather, state: AppConfigAppState.on))
-        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.on))
+        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, enabled: DTUserDefaults.compassState))
     }
     
     func setGoal(_ goal:Goal?) {
@@ -104,12 +111,12 @@ extension AppDelegate {
         }
         
         if daySteps>0 {
-            if let unpackedData = AppTheme.LoadKeyedArchiverName(RESET_STATE) {
+            if let unpackedData = AppTheme.LoadKeyedArchiverName(AppDelegate.RESET_STATE) {
                 let stateArray = JSON(unpackedData).dictionaryValue
                 if stateArray.count>0 {
-                    let state:Bool = stateArray[RESET_STATE]!.boolValue
+                    let state:Bool = stateArray[AppDelegate.RESET_STATE]!.boolValue
                     print(stateArray)
-                    if  let obj = stateArray[RESET_STATE_DATE] {
+                    if  let obj = stateArray[AppDelegate.RESET_STATE_DATE] {
                         let date:Date = Date(timeIntervalSince1970: obj.doubleValue)
                         if state && (date.beginningOfDay == Date().beginningOfDay){
                             sendRequest(SetStepsToWatchReuqest(steps: daySteps))

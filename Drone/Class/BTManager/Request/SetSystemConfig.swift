@@ -26,16 +26,24 @@ class SetSystemConfig: DroneRequest {
     fileprivate var sleepAutoStartTime:TimeInterval = 0;
     fileprivate var sleepAutoEndTime:TimeInterval = 0;
     fileprivate var systemConfig:SystemConfigID = SystemConfigID.dndConfig
+    fileprivate var mode:Int = 0
     
     class func HEADER() -> UInt8 {
         return 0x0F
     }
-
     init(autoStart:TimeInterval,autoEnd:TimeInterval,configtype:SystemConfigID) {
         super.init()
         sleepAutoStartTime = autoStart
         sleepAutoEndTime = autoEnd
         systemConfig = configtype
+    }
+
+    init(autoStart:TimeInterval,autoEnd:TimeInterval,configtype:SystemConfigID,autoMode:Int) {
+        super.init()
+        sleepAutoStartTime = autoStart
+        sleepAutoEndTime = autoEnd
+        systemConfig = configtype
+        mode = autoMode
     }
 
     override func getRawDataEx() -> [Data] {
@@ -60,7 +68,7 @@ class SetSystemConfig: DroneRequest {
                                     UInt8((Int(sleepAutoEndTime)>>8)&0xFF),0,0,0,0,0,0,0,0,0,0,0,0]
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
         case SystemConfigID.compassAutoOnDuration:
-            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x02,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,UInt8(mode&0xFF),UInt8((mode>>8)&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
         case SystemConfigID.topKeyCustomization:
             let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]

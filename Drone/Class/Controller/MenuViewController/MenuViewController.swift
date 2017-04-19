@@ -38,8 +38,6 @@ class MenuViewController: BaseViewController  {
         if(UserGoal.getAll().count == 0){
             let goalModel:UserGoal = UserGoal()
             goalModel.goalSteps = 10000
-            goalModel.label = " "
-            goalModel.status = true
             _ = goalModel.add()
         }
     }
@@ -180,12 +178,12 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item:MenuItem = self.menuItems.value[indexPath.row]
-        
-        let navigationViewController = makeStandardUINavigationController(item.viewController())
+        let controller = item.viewController()
+        controller.navigationItem.title = item.title()
+        let navigationViewController = makeStandardUINavigationController(controller)
         if indexPath.row == 6 && UserProfile.getAll().first == nil {
                 navigationViewController.navigationBar.isHidden = true
         }
-        navigationViewController.title = item.title()
         self.present(navigationViewController, animated: true, completion: nil)
     }
     

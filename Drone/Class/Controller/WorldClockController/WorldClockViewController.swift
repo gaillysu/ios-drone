@@ -25,7 +25,6 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var worldClockTableview: UITableView!
     
-    
     init() {
         let date = Date()
         realm = try! Realm()
