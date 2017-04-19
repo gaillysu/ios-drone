@@ -201,6 +201,14 @@
 		CB715FB51EA5F20E005B5C22 /* CompassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */; };
 		CB9F65241EA610C5007982B0 /* Compass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65231EA610C5007982B0 /* Compass.swift */; };
 		CB9F65261EA6144D007982B0 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65251EA6144D007982B0 /* IntExtension.swift */; };
+		CB9F652C1EA70CA9007982B0 /* CalibrateHourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F652A1EA70CA9007982B0 /* CalibrateHourViewController.swift */; };
+		CB9F652D1EA70CA9007982B0 /* CalibrateHourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F652B1EA70CA9007982B0 /* CalibrateHourViewController.xib */; };
+		CB9F65301EA70CCB007982B0 /* CalibrateMinuteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F652E1EA70CCB007982B0 /* CalibrateMinuteViewController.swift */; };
+		CB9F65311EA70CCB007982B0 /* CalibrateMinuteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F652F1EA70CCB007982B0 /* CalibrateMinuteViewController.xib */; };
+		CB9F65341EA70CDA007982B0 /* CalibrateSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65321EA70CDA007982B0 /* CalibrateSecondViewController.swift */; };
+		CB9F65351EA70CDA007982B0 /* CalibrateSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F65331EA70CDA007982B0 /* CalibrateSecondViewController.xib */; };
+		CB9F653B1EA72D37007982B0 /* CounterClockwiseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F653A1EA72D37007982B0 /* CounterClockwiseButton.swift */; };
+		CB9F653D1EA72D4D007982B0 /* ClockwiseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F653C1EA72D4D007982B0 /* ClockwiseButton.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -425,6 +433,14 @@
 		CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompassTableViewCell.xib; sourceTree = "<group>"; };
 		CB9F65231EA610C5007982B0 /* Compass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compass.swift; sourceTree = "<group>"; };
 		CB9F65251EA6144D007982B0 /* IntExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		CB9F652A1EA70CA9007982B0 /* CalibrateHourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalibrateHourViewController.swift; path = CalibrateHourViewController/CalibrateHourViewController.swift; sourceTree = "<group>"; };
+		CB9F652B1EA70CA9007982B0 /* CalibrateHourViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalibrateHourViewController.xib; path = CalibrateHourViewController/CalibrateHourViewController.xib; sourceTree = "<group>"; };
+		CB9F652E1EA70CCB007982B0 /* CalibrateMinuteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalibrateMinuteViewController.swift; path = CalibrateMinuteViewController/CalibrateMinuteViewController.swift; sourceTree = "<group>"; };
+		CB9F652F1EA70CCB007982B0 /* CalibrateMinuteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalibrateMinuteViewController.xib; path = CalibrateMinuteViewController/CalibrateMinuteViewController.xib; sourceTree = "<group>"; };
+		CB9F65321EA70CDA007982B0 /* CalibrateSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalibrateSecondViewController.swift; path = CalibrateSecondViewController/CalibrateSecondViewController.swift; sourceTree = "<group>"; };
+		CB9F65331EA70CDA007982B0 /* CalibrateSecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalibrateSecondViewController.xib; path = CalibrateSecondViewController/CalibrateSecondViewController.xib; sourceTree = "<group>"; };
+		CB9F653A1EA72D37007982B0 /* CounterClockwiseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CounterClockwiseButton.swift; path = Drone/Class/View/CounterClockwiseButton.swift; sourceTree = SOURCE_ROOT; };
+		CB9F653C1EA72D4D007982B0 /* ClockwiseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockwiseButton.swift; path = Drone/Class/View/ClockwiseButton.swift; sourceTree = SOURCE_ROOT; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -706,6 +722,9 @@
 				61C28B261EA46F800019F574 /* ActivityViewController */,
 				CB715FAC1EA5E6BF005B5C22 /* AddWorldClockViewController */,
 				61C28B291EA46F800019F574 /* BaseViewController */,
+				CB9F65271EA70BB4007982B0 /* CalibrateHourViewController */,
+				CB9F65281EA70BED007982B0 /* CalibrateMinuteViewController */,
+				CB9F65291EA70BF1007982B0 /* CalibrateSecondViewController */,
 				61C28B2F1EA46F800019F574 /* CheckEmailController */,
 				CB715FA71EA5CDD3005B5C22 /* CompassViewController */,
 				61C28B351EA46F800019F574 /* ConnectionViewController */,
@@ -938,6 +957,8 @@
 		61C28B711EA46F810019F574 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB9F65391EA72D18007982B0 /* ClockwiseButton */,
+				CB9F65381EA72D0C007982B0 /* CounterClockwiseButton */,
 				CB715FB11EA5F1B9005B5C22 /* CompassTableViewCell */,
 				61C28B3B1EA46F800019F574 /* DeviceTableViewCell */,
 				CB715FB01EA5E7A8005B5C22 /* DeviceTableViewCellHeader */,
@@ -1163,6 +1184,49 @@
 			name = CompassTableViewCell;
 			sourceTree = "<group>";
 		};
+		CB9F65271EA70BB4007982B0 /* CalibrateHourViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F652A1EA70CA9007982B0 /* CalibrateHourViewController.swift */,
+				CB9F652B1EA70CA9007982B0 /* CalibrateHourViewController.xib */,
+			);
+			name = CalibrateHourViewController;
+			sourceTree = "<group>";
+		};
+		CB9F65281EA70BED007982B0 /* CalibrateMinuteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F652E1EA70CCB007982B0 /* CalibrateMinuteViewController.swift */,
+				CB9F652F1EA70CCB007982B0 /* CalibrateMinuteViewController.xib */,
+			);
+			name = CalibrateMinuteViewController;
+			sourceTree = "<group>";
+		};
+		CB9F65291EA70BF1007982B0 /* CalibrateSecondViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F65321EA70CDA007982B0 /* CalibrateSecondViewController.swift */,
+				CB9F65331EA70CDA007982B0 /* CalibrateSecondViewController.xib */,
+			);
+			name = CalibrateSecondViewController;
+			sourceTree = "<group>";
+		};
+		CB9F65381EA72D0C007982B0 /* CounterClockwiseButton */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F653A1EA72D37007982B0 /* CounterClockwiseButton.swift */,
+			);
+			name = CounterClockwiseButton;
+			sourceTree = "<group>";
+		};
+		CB9F65391EA72D18007982B0 /* ClockwiseButton */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F653C1EA72D4D007982B0 /* ClockwiseButton.swift */,
+			);
+			name = ClockwiseButton;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1288,6 +1352,7 @@
 				61C28C1C1EA46F810019F574 /* WorldClockHeader.xib in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
 				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
+				CB9F65311EA70CCB007982B0 /* CalibrateMinuteViewController.xib in Resources */,
 				61C28BEC1EA46F810019F574 /* CheckEmailController.xib in Resources */,
 				61C28C1E1EA46F810019F574 /* WorldClockViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
@@ -1303,6 +1368,7 @@
 				61C28C181EA46F810019F574 /* AddWorldClockViewController.xib in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
 				CB715FB51EA5F20E005B5C22 /* CompassTableViewCell.xib in Resources */,
+				CB9F65351EA70CDA007982B0 /* CalibrateSecondViewController.xib in Resources */,
 				61C28BFC1EA46F810019F574 /* LoginViewController.xib in Resources */,
 				61C28C121EA46F810019F574 /* SplashScreenViewController.xib in Resources */,
 				61C28C141EA46F810019F574 /* StepsViewController.xib in Resources */,
@@ -1313,6 +1379,7 @@
 				61C28C0E1EA46F810019F574 /* ProfileViewController.xib in Resources */,
 				61C28BF01EA46F810019F574 /* ConnectionSetupViewController.xib in Resources */,
 				61C28C1A1EA46F810019F574 /* WorldClockCell.xib in Resources */,
+				CB9F652D1EA70CA9007982B0 /* CalibrateHourViewController.xib in Resources */,
 				61C28BFE1EA46F810019F574 /* MenuViewController.xib in Resources */,
 				61C28C001EA46F810019F574 /* MenuViewCell.xib in Resources */,
 				61C28C081EA46F810019F574 /* ProfileSetupViewController.xib in Resources */,
@@ -1458,6 +1525,7 @@
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				61C28C2D1EA46F810019F574 /* DeviceMenuItem.swift in Sources */,
+				CB9F65301EA70CCB007982B0 /* CalibrateMinuteViewController.swift in Sources */,
 				61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */,
 				61078DC61E48249C00898A0D /* NSDate+Timepiece.swift in Sources */,
 				61C28BE71EA46F810019F574 /* AnalysisStepsChartView.swift in Sources */,
@@ -1468,6 +1536,7 @@
 				61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */,
 				61C28BDC1EA46F810019F574 /* SetUserProfileRequest.swift in Sources */,
 				61C28BDA1EA46F810019F574 /* SetStepsToWatchReuqest.swift in Sources */,
+				CB9F653B1EA72D37007982B0 /* CounterClockwiseButton.swift in Sources */,
 				61C28BBB1EA46F810019F574 /* ConnectionController.swift in Sources */,
 				61C28C331EA46F810019F574 /* StepsMenuItem.swift in Sources */,
 				61C28BBD1EA46F810019F574 /* DroneProfile.swift in Sources */,
@@ -1499,8 +1568,10 @@
 				61C28BC41EA46F810019F574 /* ClearConnectionRequest.swift in Sources */,
 				61C28C301EA46F810019F574 /* MenuItem.swift in Sources */,
 				61C28BEB1EA46F810019F574 /* CheckEmailController.swift in Sources */,
+				CB9F653D1EA72D4D007982B0 /* ClockwiseButton.swift in Sources */,
 				61C28BDB1EA46F810019F574 /* SetSystemConfig.swift in Sources */,
 				61C28C311EA46F810019F574 /* NotificationsMenuItem.swift in Sources */,
+				CB9F652C1EA70CA9007982B0 /* CalibrateHourViewController.swift in Sources */,
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
 				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
@@ -1535,6 +1606,7 @@
 				61C28BE01EA46F810019F574 /* UpdateContactsApplicationsRequest.swift in Sources */,
 				618323111EA4609C0054966D /* SMSegmentViewConstants.swift in Sources */,
 				61C28C2B1EA46F810019F574 /* CityMenuItem.swift in Sources */,
+				CB9F65341EA70CDA007982B0 /* CalibrateSecondViewController.swift in Sources */,
 				61C28BE31EA46F810019F574 /* UpdateWeatherInfoRequest.swift in Sources */,
 				6183230E1EA4609C0054966D /* SMSegment.swift in Sources */,
 				61C28BC11EA46F810019F574 /* StepsGoalPacket.swift in Sources */,

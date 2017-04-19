@@ -26,9 +26,10 @@ class WhichDeviceViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.backgroundColor = UIColor.white
+        self.navigationItem.title = "Device"
         self.collectionView!.register(UINib(nibName: "MenuViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        addCloseButton(#selector(backButton))
     }
 
 
@@ -50,15 +51,12 @@ class WhichDeviceViewController: BaseViewController {
     }
 
 
-    @IBAction func buttonActionManager(_ sender: AnyObject) {
-        if (sender.isEqual(backB)) {
+    @IBAction func backButton() {
             if self.toMenu {
                 _ = self.navigationController?.popViewController(animated: true)
             }else{
                 self.dismiss(animated: true, completion: nil)
             }
-            
-        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -72,7 +70,7 @@ class WhichDeviceViewController: BaseViewController {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = UIColor.gray
+        
         let view = cell.contentView.viewWithTag(1700)
         if view == nil {
             let watchView:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height))

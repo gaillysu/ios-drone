@@ -40,7 +40,7 @@ class WelcomeViewController: BaseViewController {
     }
 
     override func viewDidLayoutSubviews() {
-        let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: scrollView.bounds.size.width, height: scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [UIImage(named:"welcome_1")!,UIImage(named:"welcome_2")!,UIImage(named:"welcome_3")!,UIImage(named:"welcome_4")!,UIImage(named:"welcome_5")!])
+        let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: scrollView.bounds.size.width, height: scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [UIImage(named:"welcome_1")!,UIImage(named:"welcome_2")!,UIImage(named:"welcome_3")!,UIImage(named:"welcome_4")!,UIImage(named:"welcome_5")!, UIImage(named:"welcome_6")!])
         scrollView.addSubview(sdView)
     }
  
@@ -54,8 +54,9 @@ class WelcomeViewController: BaseViewController {
     }
     @IBAction func buttonActionManager(_ sender: AnyObject) {
         if loginB.isEqual(sender) {
-            let logoin:LoginViewController = LoginViewController()
-            self.navigationController?.pushViewController(logoin, animated: true)
+            let login:LoginViewController = LoginViewController()
+            self.navigationController?.pushViewController(login, animated: true)
+            DTUserDefaults.presentMenu = true
         }
 
         if registB.isEqual(sender) {

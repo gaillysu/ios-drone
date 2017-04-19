@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalibrateSecondViewController" customModule="Drone" customModuleProvider="target">
+            <connections>
+                <outlet property="clockwiseButton" destination="uhl-17-PDI" id="qZA-4h-boO"/>
+                <outlet property="counterClockwiseButton" destination="iev-ki-MtE" id="l8z-g7-csk"/>
+                <outlet property="finishButton" destination="Cwo-Xc-Mo1" id="eCv-Ta-FbW"/>
+                <outlet property="view" destination="KD4-ZE-Wm4" id="MEm-7k-Cwg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KD4-ZE-Wm4">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Align the second-hand at 12 o’clock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5Y-jH-u2K">
+                    <rect key="frame" x="55" y="35" width="265.5" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="IUW-Q7-AKS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iev-ki-MtE" customClass="CounterClockwiseButton" customModule="Drone" customModuleProvider="target">
+                    <rect key="frame" x="113" y="377" width="58" height="58"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="iev-ki-MtE" secondAttribute="height" multiplier="1:1" id="aHZ-9Y-2R4"/>
+                        <constraint firstAttribute="width" constant="58" id="c5m-XH-X7Q"/>
+                        <constraint firstAttribute="height" constant="58" id="iQ6-qp-d1x"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" red="0.58431372550000005" green="0.59607843140000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock_second" translatesAutoresizingMaskIntoConstraints="NO" id="k9y-su-jN6">
+                    <rect key="frame" x="79" y="145" width="217" height="217"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="k9y-su-jN6" secondAttribute="height" multiplier="1:1" id="w2O-B3-COB"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwo-Xc-Mo1">
+                    <rect key="frame" x="84" y="479" width="207" height="39"/>
+                    <color key="backgroundColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="bep-HX-rmI"/>
+                        <constraint firstAttribute="width" constant="207" id="n3d-jc-dlO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                    <state key="normal" title="Finish">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the buttons below to allocate the hand at the right position. Each press represents one second." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9x-a1-Tia">
+                    <rect key="frame" x="29.5" y="64" width="316" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="Wnx-UJ-thd"/>
+                        <constraint firstAttribute="width" constant="316" id="xAy-Ae-VeV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhl-17-PDI" customClass="ClockwiseButton" customModule="Drone" customModuleProvider="target">
+                    <rect key="frame" x="204" y="377" width="58" height="58"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="uhl-17-PDI" secondAttribute="height" multiplier="1:1" id="Uxt-Cb-OhT"/>
+                        <constraint firstAttribute="height" constant="58" id="phD-Hc-QzH"/>
+                        <constraint firstAttribute="width" constant="58" id="w4s-y4-iTK"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" red="0.58431372550000005" green="0.59607843140000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.89411764709999997" green="0.7725490196" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="k9y-su-jN6" firstAttribute="top" secondItem="W9x-a1-Tia" secondAttribute="bottom" constant="47" id="3bp-VX-S7H"/>
+                <constraint firstItem="Cwo-Xc-Mo1" firstAttribute="centerX" secondItem="KD4-ZE-Wm4" secondAttribute="centerX" id="4JH-uk-GoF"/>
+                <constraint firstItem="iev-ki-MtE" firstAttribute="leading" secondItem="KD4-ZE-Wm4" secondAttribute="leading" constant="113" id="5sT-5x-rYS"/>
+                <constraint firstItem="uhl-17-PDI" firstAttribute="leading" secondItem="iev-ki-MtE" secondAttribute="trailing" constant="33" id="7bA-TB-GSb"/>
+                <constraint firstAttribute="trailing" secondItem="uhl-17-PDI" secondAttribute="trailing" constant="113" id="8XP-D9-omR"/>
+                <constraint firstItem="iev-ki-MtE" firstAttribute="top" secondItem="k9y-su-jN6" secondAttribute="bottom" constant="15" id="AEP-ak-HJ2"/>
+                <constraint firstItem="Cwo-Xc-Mo1" firstAttribute="top" secondItem="uhl-17-PDI" secondAttribute="bottom" constant="44" id="B1q-dI-exu"/>
+                <constraint firstItem="R5Y-jH-u2K" firstAttribute="top" secondItem="KD4-ZE-Wm4" secondAttribute="top" constant="35" id="KDU-rY-GbM"/>
+                <constraint firstItem="W9x-a1-Tia" firstAttribute="top" secondItem="R5Y-jH-u2K" secondAttribute="bottom" constant="8" id="RH8-hN-o3A"/>
+                <constraint firstItem="uhl-17-PDI" firstAttribute="top" secondItem="k9y-su-jN6" secondAttribute="bottom" constant="15" id="T9n-go-u7O"/>
+                <constraint firstItem="k9y-su-jN6" firstAttribute="leading" secondItem="KD4-ZE-Wm4" secondAttribute="leading" constant="79" id="Vue-ML-o9Y"/>
+                <constraint firstItem="W9x-a1-Tia" firstAttribute="centerX" secondItem="KD4-ZE-Wm4" secondAttribute="centerX" id="byz-Ue-wE7"/>
+                <constraint firstItem="k9y-su-jN6" firstAttribute="centerX" secondItem="KD4-ZE-Wm4" secondAttribute="centerX" id="dPV-FK-Tsa"/>
+                <constraint firstAttribute="trailing" secondItem="k9y-su-jN6" secondAttribute="trailing" constant="79" id="kmU-7W-qIq"/>
+                <constraint firstItem="R5Y-jH-u2K" firstAttribute="centerX" secondItem="KD4-ZE-Wm4" secondAttribute="centerX" id="lyM-Zh-TEk"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="-143" y="65"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="clock_second" width="360" height="361"/>
+    </resources>
+</document>

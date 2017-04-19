@@ -16,6 +16,7 @@ public class DTUserDefaults: NSObject {
     private static let WORLDCLOCK_KEY = "defaults_worldclock_key"
     private static let WORLDCLOCK_SORT_KEY = "WORLDCLOCK_SORT_KEY"
     private static let COMPASS_KEY = "COMPASS_KEY"
+    private static let PAIR_PRESENT_KEY = "PAIR_PRESENT_KEY"
     
     public static var setupKey:Bool {
         get{
@@ -76,6 +77,16 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: WORLDCLOCK_SORT_KEY)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    public static var presentMenu:Bool {
+        get{
+            return UserDefaults().bool(forKey: PAIR_PRESENT_KEY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: PAIR_PRESENT_KEY)
             UserDefaults.standard.synchronize()
         }
     }

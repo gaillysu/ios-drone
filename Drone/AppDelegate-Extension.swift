@@ -34,6 +34,18 @@ extension AppDelegate {
         }
     }
     
+    func startCalibrateHands(){
+        sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: .startHandsMode))
+    }
+    
+    func stopCalibrateHands(){
+        sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: .exitHandsMode))
+    }
+    
+    func calibrateHands(operation:SettingAnalogMovementOperation){
+        sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: operation))
+    }
+    
     func setRTC() {
         sendRequest(SetRTCRequest())
     }

@@ -146,15 +146,12 @@ class MenuViewController: BaseViewController  {
                 cell.menuItem = menuItem
                 if row == 0 {
                     cell.roundCorners(corners: .topLeft, radius: 10)
-                }
-                if row == 1 {
+                } else if row == 1 {
                     cell.roundCorners(corners: .topRight, radius: 10)
-                }
-                if row == 6 {
-                    cell.roundCorners(corners: [.bottomLeft], radius: 10)
-                }
-                if row == 7 {
-                    cell.roundCorners(corners: [.bottomRight], radius: 10)
+                } else if row == 6 {
+                    cell.roundCorners(corners: .bottomLeft, radius: 10)
+                } else if row == 7 {
+                    cell.roundCorners(corners: .bottomRight, radius: 10)
                 }
             }.addDisposableTo(disposeBag)
         menuCollectionView.delegate = self
@@ -183,6 +180,8 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout{
         let navigationViewController = makeStandardUINavigationController(controller)
         if indexPath.row == 6 && UserProfile.getAll().first == nil {
                 navigationViewController.navigationBar.isHidden = true
+        } else if indexPath.row == 7 {
+            DTUserDefaults.presentMenu = false
         }
         self.present(navigationViewController, animated: true, completion: nil)
     }
