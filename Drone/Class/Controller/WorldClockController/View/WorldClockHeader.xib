@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,17 +14,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="5kl-Om-SZX">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5kl-Om-SZX">
                     <rect key="frame" x="8" y="20" width="360" height="210"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November 12, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="973-CU-x85">
                     <rect key="frame" x="8" y="242" width="360" height="25"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.89411764705882346" green="0.77254901960784317" blue="0.56470588235294117" alpha="0.58999999999999997" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.89411764705882346" green="0.77254901960784317" blue="0.56470588235294117" alpha="0.58999999999999997" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5kl-Om-SZX" firstAttribute="height" secondItem="973-CU-x85" secondAttribute="height" constant="185" id="14L-T6-602"/>
                 <constraint firstItem="973-CU-x85" firstAttribute="top" secondItem="5kl-Om-SZX" secondAttribute="bottom" constant="12" id="8zf-cL-qWz"/>
@@ -37,11 +40,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="dateLabel" destination="973-CU-x85" id="Nyn-z8-qED"/>
+                <outlet property="mapImage" destination="5kl-Om-SZX" id="e7N-k5-35i"/>
             </connections>
             <point key="canvasLocation" x="-414.5" y="201.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="map" width="300" height="187"/>
-    </resources>
 </document>

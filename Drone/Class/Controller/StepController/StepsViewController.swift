@@ -21,12 +21,13 @@ let IS_SEND_0X14_COMMAND_TIMERFRAME:String = "IS_SEND_0X14_COMMAND_TIMERFRAME"
 private let CALENDAR_VIEW_TAG = 1800
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
-    @IBOutlet var mainview: UIView!
+    @IBOutlet weak var mainview: UIView!
     @IBOutlet weak var circleProgressView: CircleProgressView!
     @IBOutlet weak var lastMiles: UILabel!
     @IBOutlet weak var lastCalories: UILabel!
     @IBOutlet weak var lastActiveTime: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     @IBOutlet weak var barChart: StepsBarChartView!
     @IBOutlet weak var percentageLabel: UILabel!
@@ -77,6 +78,12 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let imagePath:String = Bundle.main.path(forResource: "background_steps", ofType: "png")!
+        if let imageValue = UIImage(contentsOfFile: imagePath) {
+            backgroundImage.image = imageValue
+        }
+        
         self.initTitleView()
         
         percentageLabel.text = String(format:"Goal: %d",(goal.goalSteps))

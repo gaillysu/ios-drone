@@ -12,11 +12,17 @@ class WorldClockHeader: UIView{
 
     var actionHandler:((_ result:AnyObject?) -> Void)?
 
+    @IBOutlet weak var mapImage: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
-    class func getWorldClockHeader(_ frame:CGRect)->WorldClockHeader {
-        let nibView:[Any?] = Bundle.main.loadNibNamed("WorldClockHeader", owner: nil, options: nil)!
-        let view:UIView = nibView[0] as! UIView
-        view.frame = frame
-        return nibView[0] as! WorldClockHeader
+    class func getWorldClockHeader()->WorldClockHeader {
+        if let nibView = UIView.loadFromNibNamed("WorldClockHeader") {
+            let worldView:WorldClockHeader = nibView as! WorldClockHeader
+            let imagePath:String = Bundle.main.path(forResource: "mapImage", ofType: "png")!
+            if let imageValue = UIImage(contentsOfFile: imagePath) {
+                worldView.mapImage.image = imageValue
+            }
+            return worldView
+        }
+        return WorldClockHeader()
     }
 }

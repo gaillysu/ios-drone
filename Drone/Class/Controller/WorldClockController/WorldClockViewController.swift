@@ -48,10 +48,8 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             localTimeOffsetToGmt += 0.5
         }
         
-        let calendar = Calendar.current
-        let components = (calendar as NSCalendar).components([ .hour, .minute, .second], from: date)
-        time.hour = components.hour!
-        time.minute = components.minute!
+        time.hour = Calendar.current.component(.hour, from: date)
+        time.minute = Calendar.current.component(.minute, from: date)
         super.init(nibName: "WorldClockViewController", bundle: Bundle.main)
     }
     
@@ -65,7 +63,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         self.navigationController?.navigationBar.tintColor = UIColor.white
         worldClockTableview.register(UINib(nibName: identifier,bundle: Bundle.main), forCellReuseIdentifier: identifier)
         worldClockTableview.reorder.delegate = self
-        let header:WorldClockHeader = UIView.loadFromNibNamed("WorldClockHeader") as! WorldClockHeader;
+        let header:WorldClockHeader = WorldClockHeader.getWorldClockHeader();
         header.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height)
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd, yyyy"
