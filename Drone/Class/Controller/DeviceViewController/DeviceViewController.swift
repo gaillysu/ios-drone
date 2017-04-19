@@ -19,7 +19,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var deviceTableView: UITableView!
     fileprivate final let identifier = "device_table_view_cell"
     fileprivate final let identifier_header = "device_table_view_cell_header"
-    var batteryStatus:[Int] = []
+    var batteryStatus:[PostBatteryStatus] = []
     
     init() {
         super.init(nibName: "DeviceViewController", bundle: Bundle.main)
@@ -37,9 +37,13 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             AppDelegate.getAppDelegate().sendRequest(GetBatteryRequest())
         }
         
-        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED) { (notification) -> Void in
-            self.batteryStatus = notification.object as! [Int]
-            self.deviceTableView.reloadData()
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED) { [weak self](notification) -> Void in
+            
+            self?.batteryStatus.removeAll()
+            
+            let battery:PostBatteryStatus = notification.object as! PostBatteryStatus
+            self?.batteryStatus.append(battery)
+            self?.deviceTableView.reloadData()
         }
     }
     
@@ -109,17 +113,8 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             headerCell.connectionStateLabel.text = "Not Connected"
         }
         if batteryStatus.count>0 {
-            switch batteryStatus[0] {
-            case 0:
-                headerCell.batteryLabel.text = "\(batteryStatus[1])%"
-            case 1:
-                headerCell.batteryLabel.text = "Charging"
-            case 2:
-                headerCell.batteryLabel.text = "Damaged"
-            case 3:
-                headerCell.batteryLabel.text = "Calculating"
-            default: break
-            }
+            let battery:PostBatteryStatus = batteryStatus.first!
+            headerCell.batteryLabel.text = battery.getStateString()
         }
         
             headerCell.showLeftRightButtons(leftRightButtonsNeeded);

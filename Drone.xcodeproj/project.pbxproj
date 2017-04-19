@@ -204,6 +204,9 @@
 		61C28C981EA617070019F574 /* welcome_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61C28C921EA617070019F574 /* welcome_6.jpg */; };
 		61C28C9A1EA6FDBA0019F574 /* background_steps.png in Resources */ = {isa = PBXBuildFile; fileRef = 61C28C991EA6FDBA0019F574 /* background_steps.png */; };
 		61C28C9C1EA706A50019F574 /* mapImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 61C28C9B1EA706A50019F574 /* mapImage.png */; };
+		61C28CA01EA73E920019F574 /* PostActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C9E1EA73E920019F574 /* PostActivityData.swift */; };
+		61C28CA11EA73E920019F574 /* PostBatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */; };
+		61C28CA41EA73F4C0019F574 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA31EA73F4C0019F574 /* DataBaseManager.swift */; };
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
 		61D470B01DE2F18C00620BD0 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470AA1DE2F18C00620BD0 /* Int+Extension.swift */; };
@@ -438,6 +441,9 @@
 		61C28C921EA617070019F574 /* welcome_6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_6.jpg; sourceTree = "<group>"; };
 		61C28C991EA6FDBA0019F574 /* background_steps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_steps.png; sourceTree = "<group>"; };
 		61C28C9B1EA706A50019F574 /* mapImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapImage.png; sourceTree = "<group>"; };
+		61C28C9E1EA73E920019F574 /* PostActivityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostActivityData.swift; sourceTree = "<group>"; };
+		61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBatteryStatus.swift; sourceTree = "<group>"; };
+		61C28CA31EA73F4C0019F574 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
 		61D470AA1DE2F18C00620BD0 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
@@ -652,6 +658,7 @@
 		61C28AF71EA46F800019F574 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				61C28CA21EA73F4C0019F574 /* DataBaseManager */,
 				61C28AF81EA46F800019F574 /* BTManager */,
 				61C28B251EA46F800019F574 /* Controller */,
 				61C28B7B1EA46F810019F574 /* Model */,
@@ -997,6 +1004,7 @@
 		61C28B7B1EA46F810019F574 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				61C28C9D1EA73E920019F574 /* PostObject */,
 				61C28B7C1EA46F810019F574 /* DBModel */,
 				61C28B861EA46F810019F574 /* Goal */,
 				61C28B891EA46F810019F574 /* MenuItem */,
@@ -1179,6 +1187,23 @@
 				61C28C921EA617070019F574 /* welcome_6.jpg */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		61C28C9D1EA73E920019F574 /* PostObject */ = {
+			isa = PBXGroup;
+			children = (
+				61C28C9E1EA73E920019F574 /* PostActivityData.swift */,
+				61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */,
+			);
+			path = PostObject;
+			sourceTree = "<group>";
+		};
+		61C28CA21EA73F4C0019F574 /* DataBaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				61C28CA31EA73F4C0019F574 /* DataBaseManager.swift */,
+			);
+			path = DataBaseManager;
 			sourceTree = "<group>";
 		};
 		61D4709D1DE2E06600620BD0 /* Sandbox */ = {
@@ -1575,6 +1600,7 @@
 				61C28C131EA46F810019F574 /* StepsViewController.swift in Sources */,
 				61C28C4E1EA46F810019F574 /* DTUserDefaults.swift in Sources */,
 				61C28C271EA46F810019F574 /* WorldClock.swift in Sources */,
+				61C28CA11EA73E920019F574 /* PostBatteryStatus.swift in Sources */,
 				61C28C701EA5A03C0019F574 /* WeatherNetworkApiManager.swift in Sources */,
 				61C28C011EA46F810019F574 /* MyDeviceViewController.swift in Sources */,
 				61C28BD81EA46F810019F574 /* SetNotificationRequest.swift in Sources */,
@@ -1585,6 +1611,7 @@
 				61C28BDD1EA46F810019F574 /* SetWeatherLocationsRequest.swift in Sources */,
 				61C28C291EA46F810019F574 /* Goal.swift in Sources */,
 				61C28C6E1EA5A03C0019F574 /* StepsNetworkManager.swift in Sources */,
+				61C28CA41EA73F4C0019F574 /* DataBaseManager.swift in Sources */,
 				61C28C2F1EA46F810019F574 /* LoginMenuItem.swift in Sources */,
 				61C28BD41EA46F810019F574 /* SetAppConfigRequest.swift in Sources */,
 				61C28BDE1EA46F810019F574 /* SetWorldClockRequest.swift in Sources */,
@@ -1607,6 +1634,7 @@
 				61C28C4C1EA46F810019F574 /* AppTheme.swift in Sources */,
 				618323081EA459F00054966D /* AutocompleteField.swift in Sources */,
 				61C28BDF1EA46F810019F574 /* StartSystemSettingRequest.swift in Sources */,
+				61C28CA01EA73E920019F574 /* PostActivityData.swift in Sources */,
 				61C28C381EA46F810019F574 /* Timezone.swift in Sources */,
 				61C28C731EA5A03C0019F574 /* BaseNetworkRequest.swift in Sources */,
 				61C28C881EA5BB330019F574 /* WeatherBaseGetRequest.swift in Sources */,

@@ -94,7 +94,7 @@ class LoginViewController: UIViewController {
     }
 
     func loginRequest() {
-        if AppDelegate.getAppDelegate().network!.isReachable {
+        if NetworkManager.manager.getNetworkState() {
             if(AppTheme.isNull(usernameT!.text!) || !AppTheme.isEmail(usernameT!.text!)) {
                 let banner = Banner(title: NSLocalizedString("Email is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true

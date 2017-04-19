@@ -41,15 +41,12 @@
       fileprivate var masterCockroaches:[UUID:Int] = [:]
       
       fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
-      fileprivate var realm:Realm?
       /**
        Record the current state of the sync
        */
       var syncState:SYNC_STATE = .no_SYNC
       
       var sendIndex:((_ index:Int) -> Void)?
-      
-      let network = NetworkReachabilityManager(host: "https://drone.dayton.med-corp.net")
       
       class func getAppDelegate()->AppDelegate {
          return UIApplication.shared.delegate as! AppDelegate
@@ -58,22 +55,16 @@
       func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
          Fabric.with([Crashlytics.self])
          
-         self.setUpRelam()
+         _ = DataBaseManager.manager
+         _ = NetworkManager.manager
          
          let sanbos:SandboxManager = SandboxManager()
          let _ = sanbos.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
          
-         DispatchQueue.global(qos: .background).async {
-            WorldClockDatabaseHelper().setup()
-         }
          
          mConnectionController = ConnectionControllerImpl()
          mConnectionController?.setDelegate(self)
-         
-         network?.listener = { status in
-            debugPrint("Network Status Changed: \(status)")
-         }
-         network?.startListening()
+
          
          IQKeyboardManager.sharedManager().enable = true
          
@@ -90,17 +81,6 @@
       func applicationDidEnterBackground(_ application: UIApplication) {
          UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
          
-      }
-      
-      func setUpRelam() {
-         var config = Realm.Configuration(
-            schemaVersion: 4,
-            migrationBlock: { migration, oldSchemaVersion in
-               
-         })
-         config.deleteRealmIfMigrationNeeded = true
-         Realm.Configuration.defaultConfiguration = config
-         realm = try! Realm()
       }
       
       // MARK: - ConnectionControllerDelegate
@@ -174,15 +154,17 @@
                _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: [RESET_STATE:false,RESET_STATE_DATE:Date()] as AnyObject)
             }
             if(packet.getHeader() == GetBatteryRequest.HEADER()) {
-               let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
-               let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
-               SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:(batteryStatus as AnyObject))
+                let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
+                let batteryStatus:Int = Int(data[2])
+                let percent:Int = Int(data[3])
+                let postBattery:PostBatteryStatus = PostBatteryStatus(state: batteryStatus, percent: percent)
+                SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:postBattery)
             }
             
             if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
                let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
                syncState = .small_SYNC
-               SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
+               SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket))
             }
             
             if (packet.getHeader() == SetNotificationRequest.HEADER()) {
@@ -206,21 +188,11 @@
             }
             
             if(packet.getHeader() == GetActivityRequest.HEADER()) {
-               //let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
                let syncStatus:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
-               var timerInterval:Int = Int(syncStatus[2])
-               timerInterval =  timerInterval + Int(syncStatus[3])<<8
-               timerInterval =  timerInterval + Int(syncStatus[4])<<16
-               timerInterval =  timerInterval + Int(syncStatus[5])<<24
-               
-               var stepCount:Int = Int(syncStatus[6])
-               stepCount =  stepCount + Int(syncStatus[7])<<8
-               
                let status:Int = Int(syncStatus[8])
-               
-               debugPrint("dailySteps:\(stepCount),dailyStepsDate:\(timerInterval),status:\(status)")
-               let bigData = (time:timerInterval,dailySteps:stepCount)
-               SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:(bigData as AnyObject))
+               let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
+               let postData:PostActivityData = PostActivityData(steps: activityPacket.getStepCount(), date: activityPacket.gettimerInterval(), state: status)
+               SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:postData)
                
                //Download more data
                if(status == ActivityDataStatus.moreData.rawValue) {
@@ -257,7 +229,8 @@
                _ = device.add()
             }else{
                let device:UserDevice = userDevice.first as! UserDevice
-               try! realm!.write {
+               let realm = try! Realm()
+               try! realm.write {
                   device.connectionTimer = Date().timeIntervalSince1970
                }
             }
@@ -330,14 +303,16 @@
       }
       
       func updateNotification() {
-         let notifications = realm?.objects(DroneNotification.self)
-         for notification in notifications!{
+         let realm = try! Realm()
+         let notifications = realm.objects(DroneNotification.self)
+         for notification in notifications {
             let updateRequest = UpdateNotificationRequest(operation: notification.state ? 1 : 2, package: notification.bundleIdentifier)
             AppDelegate.getAppDelegate().sendRequest(updateRequest)
          }
       }
       
       func isSaveWorldClock() {
-         setWorldClock(Array(realm!.objects(City.self).filter("selected = true")))
+         let realm = try! Realm()
+         setWorldClock(Array(realm.objects(City.self).filter("selected = true")))
       }
     }

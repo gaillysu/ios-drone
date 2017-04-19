@@ -111,7 +111,7 @@ class ProfileSetupViewController: BaseViewController {
     }
 
     func registerRequest() {
-        if AppDelegate.getAppDelegate().network!.isReachable {
+        if NetworkManager.manager.getNetworkState() {
             if(AppTheme.isNull(ageTextField!.text!) || AppTheme.isEmail(lengthTextField!.text!) || AppTheme.isEmail(weightTextField!.text!) || AppTheme.isNull(firstNameTextField.text!) || AppTheme.isNull(lastNameTextField.text!)) {
                 let banner = Banner(title: NSLocalizedString("One of the fields are empty.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true
