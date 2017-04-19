@@ -342,7 +342,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                                     mPeripheral?.writeValue(request.getRawData(), for:charac,type:CBCharacteristicWriteType.withoutResponse)
                                 }else{
                                     for data in request.getRawDataEx() {
-                                        // debugPrint("Request raw data Ex:\(data)")
+                                        debugPrint("Request raw data Ex:\(Constants.NSData2Bytes(data))")
                                         mPeripheral?.writeValue(data, for:charac,type:CBCharacteristicWriteType.withoutResponse)
                                     }
                                 }

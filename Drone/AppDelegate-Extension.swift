@@ -20,11 +20,11 @@ extension AppDelegate {
     }
     
     func setSystemConfig() {
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.clockFormat))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.enabled))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.topKeyCustomization))
+        sendRequest(SetSystemConfig(configtype: SystemConfigID.clockFormat, format: .format24h))
+        sendRequest(SetSystemConfig(configtype: SystemConfigID.enabled, isAvailable: .enabled))
+        sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig, mode: .auto))
+        sendRequest(SetSystemConfig(configtype: SystemConfigID.compassAutoOnDuration, autoOnDuration: 1))
+        sendRequest(SetSystemConfig(configtype: SystemConfigID.topKeyCustomization, isAvailable: .enabled))
     }
     
     func setRTC() {
@@ -36,8 +36,6 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.activityTracking, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.weather, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.on))
-        
-        self.startLocation()
     }
     
     func setGoal(_ goal:Goal?) {
@@ -217,7 +215,7 @@ extension AppDelegate {
             let model:WeatherLocationModel = WeatherLocationModel(id: value, titleString: key)
             weatherModel.append(model)
     
-            let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: value, temp: cityTemp[key]!, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: cityCode[key]!))
+            let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: value, temp: Int(cityTemp[key]!), statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: cityCode[key]!))
             updateWeatherModel.append(updateModel)
         }
         

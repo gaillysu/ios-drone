@@ -8,22 +8,22 @@
 
 import UIKit
 
-enum AppConfigApplicationID:Int {
-    case worldClock         = 1
-    case activityTracking   = 2
-    case weather            = 3
-    case compass            = 10
+enum AppConfigApplicationID:UInt8 {
+    case worldClock         = 0x01
+    case activityTracking   = 0x02
+    case weather            = 0x03
+    case compass            = 0x10
 }
 
-enum AppConfigAppState:Int {
-    case on     = 1
-    case off    = 0
+enum AppConfigAppState:UInt8 {
+    case on     = 0x01
+    case off    = 0x00
 }
 
 class SetAppConfigRequest: DroneRequest {
     
-    fileprivate var applicationID:Int = AppConfigApplicationID.activityTracking.rawValue
-    fileprivate var appState:Int = AppConfigAppState.on.rawValue
+    fileprivate var applicationID:UInt8 = AppConfigApplicationID.activityTracking.rawValue
+    fileprivate var appState:UInt8 = AppConfigAppState.on.rawValue
     
     class func HEADER() -> UInt8 {
         return 0x04
@@ -37,9 +37,7 @@ class SetAppConfigRequest: DroneRequest {
 
     override func getRawDataEx() -> [Data] {
 
-        let values1 :[UInt8] = [0x80,SetAppConfigRequest.HEADER(),
-            UInt8(applicationID&0xFF),
-            UInt8(appState&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        let values1 :[UInt8] = [0x80,SetAppConfigRequest.HEADER(), applicationID, appState, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
         return [Data(bytes: UnsafePointer<UInt8>(values1), count: values1.count)]
     }
