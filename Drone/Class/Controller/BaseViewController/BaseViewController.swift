@@ -30,7 +30,7 @@ extension UIViewController {
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
-        if((UIDevice.current.systemVersion as NSString).floatValue>7.0){
+        if(UIDevice.current.systemVersion.toDouble()>7.0){
             self.edgesForExtendedLayout = UIRectEdge();
             self.extendedLayoutIncludesOpaqueBars = false;
             self.modalPresentationCapturesStatusBarAppearance = false;
@@ -40,8 +40,8 @@ class BaseViewController: UIViewController {
     func makeStandardUINavigationController(_ rootViewController:UIViewController) -> UINavigationController{
         let navigationController:UINavigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
-        navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        let titleDict: [String:Any] = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController.navigationBar.titleTextAttributes = titleDict
         navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
         navigationController.navigationBar.tintColor = UIColor.white
 

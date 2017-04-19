@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CoreLocation
 import SwiftEventBus
 import SwiftyJSON
 
@@ -36,6 +36,8 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.activityTracking, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.weather, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.on))
+        
+        self.startLocation()
     }
     
     func setGoal(_ goal:Goal?) {
@@ -164,5 +166,65 @@ extension AppDelegate {
                 self.getMconnectionController()?.sendRequest(r)
             } )
         }
+    }
+    
+    func startLocation() {
+        NSLog("AuthorizationStatus:\(LocationManager.instanceLocation.gpsAuthorizationStatus)")
+        var syncWeatherDate:Date?
+        if LocationManager.instanceLocation.gpsAuthorizationStatus>2 {
+            LocationManager.instanceLocation.startLocation()
+            LocationManager.instanceLocation.didChangeAuthorization = { status in
+                let states:CLAuthorizationStatus = status as CLAuthorizationStatus
+
+            }
+            
+            LocationManager.instanceLocation.didUpdateLocations = { location in
+                let newLocation = location.last! as CLLocation
+                debugPrint("Location didUpdateLocations:\(newLocation)")
+                if let date = syncWeatherDate {
+                    if (Date().timeIntervalSince1970-date.timeIntervalSince1970)>600 {
+                        newLocation.reverseGeocodeLocationInfo(completion: { (gecodeInfo, error) in
+                            syncWeatherDate = Date()
+                        })
+                    }
+                }else{
+                    newLocation.reverseGeocodeLocationInfo(completion: { (gecodeInfo, error) in
+                        syncWeatherDate = Date()
+                        
+                    })
+                }
+            }
+            
+            LocationManager.instanceLocation.didFailWithError = { error in
+                debugPrint("Location didFailWithError:\(error)")
+            }
+        }else{
+            let banner:MEDBanner = MEDBanner(title: NSLocalizedString("Location Error", comment: ""), subtitle: NSLocalizedString("Drone did not authorization", comment: ""), image: nil, backgroundColor: UIColor.getBaseColor(), didTapBlock: {
+                
+            })
+            banner.show()
+        }
+    }
+    
+    func settWeather() {
+        let city:[String:UInt8] = ["Shenzhen":12,"New York":13,"Tokyo":14]
+        let cityTemp:[String:UInt8] = ["Shenzhen":28,"New York":16,"Tokyo":26]
+        let cityCode:[String:Int] = ["Shenzhen":802,"New York":803,"Tokyo":300]
+        
+        var weatherModel:[WeatherLocationModel] = []
+        var updateWeatherModel:[WeatherUpdateModel] = []
+        for (key,value) in city {
+            let model:WeatherLocationModel = WeatherLocationModel(id: value, titleString: key)
+            weatherModel.append(model)
+    
+            let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: value, temp: cityTemp[key]!, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: cityCode[key]!))
+            updateWeatherModel.append(updateModel)
+        }
+        
+        let setWeatherRequest:SetWeatherLocationsRequest = SetWeatherLocationsRequest(entries: weatherModel)
+        sendRequest(setWeatherRequest)
+        
+        let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: updateWeatherModel)
+        sendRequest(updateWeatherRequest)
     }
 }

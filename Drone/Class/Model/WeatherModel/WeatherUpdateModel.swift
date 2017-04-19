@@ -33,7 +33,7 @@ class WeatherUpdateModel: NSObject {
     fileprivate var temperature:UInt8 = 0;
     fileprivate var weatherIcon:WeatherStatusIcon = WeatherStatusIcon.invalidData;
     
-    init(id:Int,temp:UInt8,statusIcon:WeatherStatusIcon) {
+    init(id:UInt8,temp:UInt8,statusIcon:WeatherStatusIcon) {
         super.init()
         identification = UInt8(id)
         temperature = temp
