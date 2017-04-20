@@ -68,7 +68,6 @@ class MenuViewController: BaseViewController  {
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
             if(connectionState){
-                
                 let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
                 DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                     AppDelegate.getAppDelegate().readsystemStatus()
@@ -156,7 +155,6 @@ class MenuViewController: BaseViewController  {
             }.addDisposableTo(disposeBag)
         menuCollectionView.delegate = self
     }
-    
     
     func profileAction(){
         self.navigationController?.pushViewController(ProfileSetupViewController(), animated: true)

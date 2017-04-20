@@ -50,6 +50,18 @@ extension AppDelegate {
         sendRequest(SetRTCRequest())
     }
     
+    func subscribeToSignificantTimeChange(on:Bool){
+        if on{
+            NotificationCenter.default.addObserver(self, selector: #selector(significantTimeChanged), name: NSNotification.Name.NSSystemTimeZoneDidChange, object: nil)
+        }else{
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSSystemTimeZoneDidChange, object: nil)
+        }
+    }
+    
+    func significantTimeChanged(){
+        self.setRTC()
+    }
+    
     func setAppConfig() {
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.worldClock, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.activityTracking, state: AppConfigAppState.on))

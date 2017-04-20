@@ -33,6 +33,7 @@ class ConnectionSetupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Connect"
+        self.navigationItem.setHidesBackButton(true, animated: false)
         AppDelegate.getAppDelegate().connectNew()
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
@@ -58,6 +59,7 @@ class ConnectionSetupViewController: UIViewController {
 //        if AppDelegate.getAppDelegate().isConnected() {
 //            timer.invalidate()
 //        }else{
+//        self.navigationItem.setHidesBackButton(false, animated: true)
 //            self.connectionFailView.isHidden = false
 //            self.connectionView.isHidden = true
 //            self.previousButton.isHidden = false
@@ -74,6 +76,7 @@ class ConnectionSetupViewController: UIViewController {
             self.navigationController?.pushViewController(CalibrateHourViewController(), animated: true)
         }
         if sender.isEqual(retryButton) {
+            self.navigationItem.setHidesBackButton(true, animated: true)
             self.connectionFailView.isHidden = true
             self.connectionView.isHidden = false
             AppDelegate.getAppDelegate().startConnect()

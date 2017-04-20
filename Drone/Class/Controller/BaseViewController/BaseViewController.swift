@@ -25,6 +25,39 @@ extension UIViewController {
             completion()
         }
     }
+    
+    func addPlusButton(_ action:Selector){
+        self.navigationItem.rightBarButtonItem = self.createBarButtonItem(withAction: action, withImage: UIImage(named: "addbutton")!);
+    }
+    
+    func addCloseButton(_ action:Selector){
+        self.navigationItem.leftBarButtonItem = self.createBarButtonItem(withAction: action, withImage: UIImage(named: "closebutton")!);
+    }
+    
+    func getAppDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    fileprivate func createBarButtonItem(withAction action:Selector, withImage image:UIImage) -> UIBarButtonItem{
+        let button: UIButton = UIButton(type: UIButtonType.custom)
+        button.setImage(image, for: UIControlState())
+        button.addTarget(self, action: action, for: UIControlEvents.touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        return UIBarButtonItem(customView: button)
+    }
+    
+    func makeStandardUINavigationController(_ rootViewController:UIViewController) -> UINavigationController{
+        let navigationController:UINavigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
+        navigationController.navigationBar.tintColor = UIColor.white
+        
+        navigationController.navigationBar.isHidden = false
+        navigationController.navigationItem.setHidesBackButton(false, animated: true)
+        return navigationController
+    }
 }
 
 class BaseViewController: UIViewController {
@@ -36,38 +69,7 @@ class BaseViewController: UIViewController {
             self.modalPresentationCapturesStatusBarAppearance = false;
         }
     }
+ 
     
-    func makeStandardUINavigationController(_ rootViewController:UIViewController) -> UINavigationController{
-        let navigationController:UINavigationController = UINavigationController(rootViewController: rootViewController)
-        navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
-        navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
-        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
-        navigationController.navigationBar.tintColor = UIColor.white
-
-        navigationController.navigationBar.isHidden = false
-        navigationController.navigationItem.setHidesBackButton(false, animated: true)
-        return navigationController
-    }
-    
-    func addPlusButton(_ action:Selector){
-        self.navigationItem.rightBarButtonItem = self.createBarButtonItem(withAction: action, withImage: UIImage(named: "addbutton")!);
-    }
-    
-    func addCloseButton(_ action:Selector){
-        self.navigationItem.leftBarButtonItem = self.createBarButtonItem(withAction: action, withImage: UIImage(named: "closebutton")!);
-    }
-    
-    fileprivate func createBarButtonItem(withAction action:Selector, withImage image:UIImage) -> UIBarButtonItem{
-        let button: UIButton = UIButton(type: UIButtonType.custom)
-        button.setImage(image, for: UIControlState())
-        button.addTarget(self, action: action, for: UIControlEvents.touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        return UIBarButtonItem(customView: button)
-    }
-    
-    func getAppDelegate() -> AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
-    }
     
 }

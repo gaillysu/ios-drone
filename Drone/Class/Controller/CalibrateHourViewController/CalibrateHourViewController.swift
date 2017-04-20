@@ -16,10 +16,11 @@ class CalibrateHourViewController: BaseViewController {
     @IBOutlet weak var counterClockwiseButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     let disposeBag = DisposeBag()
-    var i = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Calibrate"
+        self.navigationItem.setHidesBackButton(true, animated: false)
         getAppDelegate().startCalibrateHands()
         nextButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
             self.navigationController?.pushViewController(CalibrateMinuteViewController(), animated: true)

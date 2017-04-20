@@ -209,6 +209,13 @@
 		CB9F65351EA70CDA007982B0 /* CalibrateSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F65331EA70CDA007982B0 /* CalibrateSecondViewController.xib */; };
 		CB9F653B1EA72D37007982B0 /* CounterClockwiseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F653A1EA72D37007982B0 /* CounterClockwiseButton.swift */; };
 		CB9F653D1EA72D4D007982B0 /* ClockwiseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F653C1EA72D4D007982B0 /* ClockwiseButton.swift */; };
+		CB9F65401EA85CB6007982B0 /* TimeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F653F1EA85CB6007982B0 /* TimeTabViewController.swift */; };
+		CB9F65441EA86303007982B0 /* TimeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65421EA86303007982B0 /* TimeSettingsViewController.swift */; };
+		CB9F65451EA86303007982B0 /* TimeSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F65431EA86303007982B0 /* TimeSettingsViewController.xib */; };
+		CB9F65481EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65461EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.swift */; };
+		CB9F65491EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F65471EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib */; };
+		CB9F654F1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F654D1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift */; };
+		CB9F65501EA8AB51007982B0 /* ClockSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -441,6 +448,13 @@
 		CB9F65331EA70CDA007982B0 /* CalibrateSecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalibrateSecondViewController.xib; path = CalibrateSecondViewController/CalibrateSecondViewController.xib; sourceTree = "<group>"; };
 		CB9F653A1EA72D37007982B0 /* CounterClockwiseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CounterClockwiseButton.swift; path = Drone/Class/View/CounterClockwiseButton.swift; sourceTree = SOURCE_ROOT; };
 		CB9F653C1EA72D4D007982B0 /* ClockwiseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockwiseButton.swift; path = Drone/Class/View/ClockwiseButton.swift; sourceTree = SOURCE_ROOT; };
+		CB9F653F1EA85CB6007982B0 /* TimeTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeTabViewController.swift; path = TimeTabViewController/TimeTabViewController.swift; sourceTree = "<group>"; };
+		CB9F65421EA86303007982B0 /* TimeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSettingsViewController.swift; path = ClockSettingsViewController/TimeSettingsViewController.swift; sourceTree = "<group>"; };
+		CB9F65431EA86303007982B0 /* TimeSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TimeSettingsViewController.xib; path = ClockSettingsViewController/TimeSettingsViewController.xib; sourceTree = "<group>"; };
+		CB9F65461EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockSettingsTableViewCellSwitch.swift; path = ClockSettingsTableViewCell/ClockSettingsTableViewCellSwitch.swift; sourceTree = "<group>"; };
+		CB9F65471EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockSettingsTableViewCellSwitch.xib; path = ClockSettingsTableViewCell/ClockSettingsTableViewCellSwitch.xib; sourceTree = "<group>"; };
+		CB9F654D1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockSettingsTableViewCell.swift; path = ClockSettingsTableViewCell/ClockSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockSettingsTableViewCell.xib; path = ClockSettingsTableViewCell/ClockSettingsTableViewCell.xib; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -740,6 +754,8 @@
 				61C28B321EA46F800019F574 /* SearchCityController */,
 				61C28B651EA46F800019F574 /* SplashScreenViewController */,
 				61C28B681EA46F800019F574 /* StepController */,
+				CB9F65411EA862E3007982B0 /* TimeSettingsViewController */,
+				CB9F653E1EA85BCC007982B0 /* TimeTabViewController */,
 				61C28B781EA46F810019F574 /* WhichDeviceViewController */,
 				61C28B6E1EA46F810019F574 /* WorldClockController */,
 			);
@@ -957,9 +973,11 @@
 		61C28B711EA46F810019F574 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB9F654C1EA8AA8A007982B0 /* ClockSettingsTableViewCell */,
+				CB9F654A1EA8A719007982B0 /* ClockSettingsTableViewCellSwitch */,
 				CB9F65391EA72D18007982B0 /* ClockwiseButton */,
-				CB9F65381EA72D0C007982B0 /* CounterClockwiseButton */,
 				CB715FB11EA5F1B9005B5C22 /* CompassTableViewCell */,
+				CB9F65381EA72D0C007982B0 /* CounterClockwiseButton */,
 				61C28B3B1EA46F800019F574 /* DeviceTableViewCell */,
 				CB715FB01EA5E7A8005B5C22 /* DeviceTableViewCellHeader */,
 				61C28B4C1EA46F800019F574 /* MenuViewCell */,
@@ -1227,6 +1245,41 @@
 			name = ClockwiseButton;
 			sourceTree = "<group>";
 		};
+		CB9F653E1EA85BCC007982B0 /* TimeTabViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F653F1EA85CB6007982B0 /* TimeTabViewController.swift */,
+			);
+			name = TimeTabViewController;
+			sourceTree = "<group>";
+		};
+		CB9F65411EA862E3007982B0 /* TimeSettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F65421EA86303007982B0 /* TimeSettingsViewController.swift */,
+				CB9F65431EA86303007982B0 /* TimeSettingsViewController.xib */,
+			);
+			name = TimeSettingsViewController;
+			sourceTree = "<group>";
+		};
+		CB9F654A1EA8A719007982B0 /* ClockSettingsTableViewCellSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F65461EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.swift */,
+				CB9F65471EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib */,
+			);
+			name = ClockSettingsTableViewCellSwitch;
+			sourceTree = "<group>";
+		};
+		CB9F654C1EA8AA8A007982B0 /* ClockSettingsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F654D1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift */,
+				CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */,
+			);
+			name = ClockSettingsTableViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1352,11 +1405,13 @@
 				61C28C1C1EA46F810019F574 /* WorldClockHeader.xib in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
 				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
+				CB9F65451EA86303007982B0 /* TimeSettingsViewController.xib in Resources */,
 				CB9F65311EA70CCB007982B0 /* CalibrateMinuteViewController.xib in Resources */,
 				61C28BEC1EA46F810019F574 /* CheckEmailController.xib in Resources */,
 				61C28C1E1EA46F810019F574 /* WorldClockViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				61C28BF81EA46F810019F574 /* ForgetPasswordController.xib in Resources */,
+				CB9F65491EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib in Resources */,
 				61C28C161EA46F810019F574 /* StepsTitleView.xib in Resources */,
 				61C28C101EA46F810019F574 /* RegisterViewController.xib in Resources */,
 				61C28C0C1EA46F810019F574 /* ProfileTableViewCellHeader.xib in Resources */,
@@ -1373,6 +1428,7 @@
 				61C28C121EA46F810019F574 /* SplashScreenViewController.xib in Resources */,
 				61C28C141EA46F810019F574 /* StepsViewController.xib in Resources */,
 				9E1535841D5C20CA00CB6A01 /* cities.json in Resources */,
+				CB9F65501EA8AB51007982B0 /* ClockSettingsTableViewCell.xib in Resources */,
 				61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */,
 				61C28BEE1EA46F810019F574 /* SearchCityController.xib in Resources */,
 				61C28C021EA46F810019F574 /* MyDeviceViewController.xib in Resources */,
@@ -1474,6 +1530,7 @@
 			files = (
 				61C28BFB1EA46F810019F574 /* LoginViewController.swift in Sources */,
 				61C28C481EA46F810019F574 /* UserCreateRequest.swift in Sources */,
+				CB9F65481EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.swift in Sources */,
 				61C28BBF1EA46F810019F574 /* CockRoachPacket.swift in Sources */,
 				CB9F65261EA6144D007982B0 /* IntExtension.swift in Sources */,
 				61C28BF91EA46F810019F574 /* WelcomeViewController.swift in Sources */,
@@ -1525,11 +1582,13 @@
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				61C28C2D1EA46F810019F574 /* DeviceMenuItem.swift in Sources */,
+				CB9F654F1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift in Sources */,
 				CB9F65301EA70CCB007982B0 /* CalibrateMinuteViewController.swift in Sources */,
 				61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */,
 				61078DC61E48249C00898A0D /* NSDate+Timepiece.swift in Sources */,
 				61C28BE71EA46F810019F574 /* AnalysisStepsChartView.swift in Sources */,
 				61C28BCB1EA46F810019F574 /* GetStepsGoalRequest.swift in Sources */,
+				CB9F65401EA85CB6007982B0 /* TimeTabViewController.swift in Sources */,
 				61C28C191EA46F810019F574 /* WorldClockCell.swift in Sources */,
 				61C28C411EA46F810019F574 /* NetworkManager.swift in Sources */,
 				61C28C4D1EA46F810019F574 /* Color.swift in Sources */,
@@ -1543,6 +1602,7 @@
 				61C28BC91EA46F810019F574 /* GetContactsFilterRequest.swift in Sources */,
 				61C28BCD1EA46F810019F574 /* GetSystemStatus.swift in Sources */,
 				61C28C2C1EA46F810019F574 /* CompassMenuItem.swift in Sources */,
+				CB9F65441EA86303007982B0 /* TimeSettingsViewController.swift in Sources */,
 				61078DC21E48249C00898A0D /* Duration.swift in Sources */,
 				61C28C361EA46F810019F574 /* WeatherUpdateModel.swift in Sources */,
 				61C28BC31EA46F810019F574 /* SystemStatusPacket.swift in Sources */,

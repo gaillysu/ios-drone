@@ -10,7 +10,7 @@ import UIKit
 import SDCycleScrollView
 
 class WelcomeViewController: BaseViewController {
-
+    
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var loginB: UIButton!
@@ -23,11 +23,11 @@ class WelcomeViewController: BaseViewController {
         super.init(nibName: "WelcomeViewController", bundle: Bundle.main)
         self.fromMenu = fromMenu
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         headerImage.contentMode = UIViewContentMode.scaleAspectFit;
@@ -35,20 +35,24 @@ class WelcomeViewController: BaseViewController {
         loginB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).cgColor
         registB.layer.borderWidth = 1
         registB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).cgColor
-
         // Do any additional setup after loading the view.
     }
-
+    
     override func viewDidLayoutSubviews() {
         let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: scrollView.bounds.size.width, height: scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [UIImage(named:"welcome_1")!,UIImage(named:"welcome_2")!,UIImage(named:"welcome_3")!,UIImage(named:"welcome_4")!,UIImage(named:"welcome_5")!, UIImage(named:"welcome_6")!])
+        sdView.backgroundColor = UIColor.white
         scrollView.addSubview(sdView)
     }
- 
+    
     @IBAction func skipLoginAction(_ sender: AnyObject) {
         if fromMenu {
             self.dismiss(animated: true, completion: nil)
         }else{
-            self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+            if UserDevice.getAll().isEmpty {
+                self.present(makeStandardUINavigationController(WhichDeviceViewController(toMenu: false)), animated: true, completion: nil)
+            }else{
+                self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+            }
         }
         
     }
@@ -58,7 +62,7 @@ class WelcomeViewController: BaseViewController {
             self.navigationController?.pushViewController(login, animated: true)
             DTUserDefaults.presentMenu = true
         }
-
+        
         if registB.isEqual(sender) {
             let register:RegisterViewController = RegisterViewController()
             self.navigationController?.pushViewController(register, animated: true)
