@@ -29,19 +29,19 @@ class City: Object {
     dynamic var timezone: Timezone?
     
     class func getCityObject(_ json:JSON) -> City?{
-        if let id = json["id"].string,
+        if let id = json["id"].int,
         let name = json["name"].string,
         let country = json["country"].string,
-        let lat = json["lat"].string,
-        let lng = json["lng"].string,
-        let timezoneId = json["timezone_id"].string {
+        let lat = json["lat"].double,
+        let lng = json["lng"].double,
+        let timezoneId = json["timezone_id"].int {
             let city:City = City()
-            city.id = Int(id)!
+            city.id = id
             city.name = name
             city.country = country
-            city.lat = Double(lat)!
-            city.lng = Double(lng)!
-            city.timezoneId = Int(timezoneId)!
+            city.lat = lat
+            city.lng = lng
+            city.timezoneId = timezoneId
             return city
         } else {
             print("The provided JSON is not according the right keys.")

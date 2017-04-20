@@ -16,9 +16,10 @@ class DataBaseManager: NSObject {
     
     fileprivate override init() {
         super.init()
-        updateRelam()
         
         copyBundleRealmToDocumentFolder()
+        
+        updateRelam()
     }
     
     fileprivate func updateRelam() {
@@ -33,36 +34,36 @@ class DataBaseManager: NSObject {
 
     func copyBundleRealmToDocumentFolder() {
         if !AppTheme.realmISFirstCopy(findKey: .get) {
+            // copy over old data files for migration
+            let defaultURL = Realm.Configuration.defaultConfiguration.fileURL!
+            
+            if let v0URL = URL.bundleURL(name: "default") {
+                do {
+                    if FileManager.default.fileExists(atPath: defaultURL.path) {
+                        try FileManager.default.removeItem(at: defaultURL)
+                    }
+                    try FileManager.default.copyItem(at: v0URL, to: defaultURL)
+                    _ = AppTheme.realmISFirstCopy(findKey: .set)
+                } catch let error {
+                    print("file copy or remove error:\(error)");
+                }
+            }
+            
+            let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
+                if oldSchemaVersion < self.schemaVersion {
+                }
+                print("Migration complete.")
+            }
+            
+            Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: migrationBlock)
+            
+            print("Migrated objects in the default Realm: \(try! Realm().objects(City.self))")
+            
+        }else{
             DispatchQueue.global(qos: .background).async {
                 WorldClockDatabaseHelper().setup()
             }
-            return
         }
-        
-        // copy over old data files for migration
-        let defaultURL = Realm.Configuration.defaultConfiguration.fileURL!
-        
-        if let v0URL = URL.bundleURL(name: "default") {
-            do {
-                if FileManager.default.fileExists(atPath: defaultURL.path) {
-                    try FileManager.default.removeItem(at: defaultURL)
-                }
-                try FileManager.default.copyItem(at: v0URL, to: defaultURL)
-                _ = AppTheme.realmISFirstCopy(findKey: .set)
-            } catch let error {
-                print("file copy or remove error:\(error)");
-            }
-        }
-        
-        let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
-            if oldSchemaVersion < self.schemaVersion {
-            }
-            print("Migration complete.")
-        }
-        
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: migrationBlock)
-        
-        print("Migrated objects in the default Realm: \(try! Realm().objects(City.self))")
     }
     
     func addOrUpdateDevice(fromAddress:String) {
