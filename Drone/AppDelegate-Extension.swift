@@ -203,25 +203,25 @@ extension AppDelegate {
         }
     }
     
-    func settWeather() {
-        let city:[String:UInt8] = ["Shenzhen":12,"New York":13,"Tokyo":14]
-        let cityTemp:[String:UInt8] = ["Shenzhen":28,"New York":16,"Tokyo":26]
-        let cityCode:[String:Int] = ["Shenzhen":802,"New York":803,"Tokyo":300]
-        
-        var weatherModel:[WeatherLocationModel] = []
-        var updateWeatherModel:[WeatherUpdateModel] = []
-        for (key,value) in city {
-            let model:WeatherLocationModel = WeatherLocationModel(id: value, titleString: key)
-            weatherModel.append(model)
-    
-            let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: value, temp: Int(cityTemp[key]!), statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: cityCode[key]!))
-            updateWeatherModel.append(updateModel)
+    func setWeather() {
+        let cityArray:[City] = DataBaseManager.manager.getCitySelected()
+        var weatherArray:[WeatherLocationModel] = []
+        for (index,city) in cityArray.enumerated() {
+            let cityid:UInt8 = UInt8(index+10)
+            let model:WeatherLocationModel = WeatherLocationModel(id: cityid, titleString: city.name)
+            weatherArray.append(model)
         }
         
-        let setWeatherRequest:SetWeatherLocationsRequest = SetWeatherLocationsRequest(entries: weatherModel)
+        let setWeatherRequest:SetWeatherLocationsRequest = SetWeatherLocationsRequest(entries: weatherArray)
         sendRequest(setWeatherRequest)
         
-        let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: updateWeatherModel)
-        sendRequest(updateWeatherRequest)
+        for model in weatherArray {
+            WeatherNetworkApiManager.manager.getWeatherInfo(regionName: model.getWeatherInfo().title, id: Int(model.getWeatherInfo().id)) { (cityid, temp, code, statusText) in
+                let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: code))
+                
+                let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: [updateModel])
+                self.sendRequest(updateWeatherRequest)
+            }
+        }
     }
 }

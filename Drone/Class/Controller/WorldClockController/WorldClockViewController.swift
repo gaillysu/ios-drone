@@ -215,42 +215,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     }
     
     fileprivate func updateWorldClockArrayWithOrder(reload:Bool){
-        worldClockArray = []
-        var selectedCityOrder = DTUserDefaults.selectedCityOrder
-        if selectedCityOrder.isEmpty {
-            realm.objects(City.self).filter("selected = true").sorted(by: {
-                ($0.timezone?.getOffsetFromUTC())! < ($1.timezone?.getOffsetFromUTC())!
-            }).forEach({
-                worldClockArray.append($0)
-            })
-        } else {
-            let selectedCtities = Array(realm.objects(City.self).filter("selected = true"))
-            if selectedCtities.count != selectedCityOrder.count{
-                if selectedCtities.count > selectedCityOrder.count {
-                    selectedCtities.forEach({ city in
-                        if !selectedCityOrder.contains(where: { $0 == city.id }){
-                            selectedCityOrder.append(city.id)
-                            DTUserDefaults.selectedCityOrder = selectedCityOrder
-                        }
-                    })
-                }else{
-                    selectedCtities.forEach({ city in
-                        if !selectedCityOrder.contains(where: { $0 == city.id }){
-                            if let index = selectedCityOrder.index(where: { $0 == city.id }){
-                                selectedCityOrder.remove(at: index)
-                            }
-                        }
-                    })
-                }
-            }
-            selectedCityOrder.forEach({ cityId in
-                if let city = realm.object(ofType: City.self, forPrimaryKey: cityId){
-                    if city.selected{
-                        worldClockArray.append(city)
-                    }
-                }
-            })
-        }
+        worldClockArray = DataBaseManager.manager.getCitySelected()
         if reload {
             self.worldClockTableview.reloadData()
         }

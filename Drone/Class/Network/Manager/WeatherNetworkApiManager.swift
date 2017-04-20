@@ -12,8 +12,10 @@ import SwiftyJSON
 
 class WeatherNetworkApiManager: NSObject {
     
-    fileprivate static let baseURL = "http://api.openweathermap.org/data/2.5/weather"
+    fileprivate static let baseURL = "http://api.openweathermap.org/"
     static let manager:WeatherNetworkApiManager = WeatherNetworkApiManager()
+    
+    fileprivate var cityid:[String:Int] = [:]
     
     fileprivate var tempValue:Int = 0
     fileprivate var weatherStatusText:String = ""
@@ -49,26 +51,37 @@ class WeatherNetworkApiManager: NSObject {
         }
     }
     
-    func getWeatherInfo(regionName:String,responseBlock: @escaping (_ temp:Int, _ code:Int, _ statusText:String?) -> Void) {
-        let weatherRequest:WeatherInfoRequest = WeatherInfoRequest(selectText: "") { (success, json, error) in
+    func getWeatherInfo(regionName:String, id:Int, responseBlock: @escaping (_ id:Int,_ temp:Int, _ code:Int, _ statusText:String?) -> Void) {
+        
+        cityid[regionName] = id
+        
+        let weatherRequest:WeatherInfoRequest = WeatherInfoRequest(selectText: regionName) { (success, json, error) in
             if success {
                 if let weatherJSON = json {
                     let weatherInfo:[String:JSON] = weatherJSON.dictionaryValue
                     let weather:[String:JSON] = weatherInfo["weather"]!.arrayValue.first!.dictionaryValue
                     let main:[String:JSON] = weatherInfo["main"]!.dictionaryValue
                     
+                    let name:String = weatherInfo["name"]!.stringValue
                     let temp:Int = main["temp"]!.intValue
                     let code:Int = weather["id"]!.intValue
                     let text:String = weather["main"]!.stringValue
                     
                     self.tempValue = temp-273
                     self.weatherStatusText = text
-                    responseBlock(self.tempValue , code, self.weatherStatusText)
+                    
+                    for (key,value) in self.cityid {
+                        if key.hasPrefix(name) {
+                            responseBlock(value,self.tempValue , code, self.weatherStatusText)
+                            self.cityid.removeValue(forKey: key)
+                            break;
+                        }
+                    }
                 }else{
-                    responseBlock(0, 0, nil);
+                    responseBlock(0,0, 0, nil);
                 }
             }else{
-                responseBlock(0, 0, nil)
+                responseBlock(0, 0, 0, nil)
             }
         }
         executeMEDRequest(request: weatherRequest)

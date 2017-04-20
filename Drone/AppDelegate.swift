@@ -279,6 +279,8 @@ extension AppDelegate{
       
       debugPrint("setp9 0x30")
       self.setStepsToWatch()
+      
+      setWeather()
    }
    
    func setNotification() {

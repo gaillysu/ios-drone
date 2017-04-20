@@ -29,7 +29,12 @@ class SendStepsToWatchCache: NSObject,NSCoding {
     
     required init(coder aDecoder:NSCoder) {
         super.init()
-        steps = aDecoder.decodeObject(forKey:"steps") as! Int
-        date = aDecoder.decodeObject(forKey:"date") as! TimeInterval
+        if let sSteps = aDecoder.decodeObject(forKey:"steps") {
+            steps = sSteps as! Int
+        }
+        
+        if let sDate = aDecoder.decodeObject(forKey:"date") {
+            date = sDate as! TimeInterval
+        }
     }
 }

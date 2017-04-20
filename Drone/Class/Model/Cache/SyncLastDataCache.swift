@@ -26,8 +26,17 @@ class SyncLastDataCache: NSObject,NSCoding {
     
     required init(coder aDecoder:NSCoder) {
         super.init()
-        steps = aDecoder.decodeObject(forKey:"steps") as! Int
-        goal = aDecoder.decodeObject(forKey:"goal") as! Int
-        date = aDecoder.decodeObject(forKey:"date") as! TimeInterval
+        if let cSteps = aDecoder.decodeObject(forKey:"steps") {
+            steps = cSteps as! Int
+        }
+        
+        if let cGoal = aDecoder.decodeObject(forKey:"goal") {
+            goal = cGoal as! Int
+        }
+        
+        if let cDate = aDecoder.decodeObject(forKey:"date") {
+            date = cDate as! TimeInterval
+        }
+        
     }
 }
