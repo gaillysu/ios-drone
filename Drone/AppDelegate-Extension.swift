@@ -20,8 +20,8 @@ extension AppDelegate {
     }
     
     func setSystemConfig() {
-        sendRequest(SetSystemConfig(configtype: SystemConfigID.clockFormat, format: .format24h))
         sendRequest(SetSystemConfig(configtype: SystemConfigID.enabled, isAvailable: .enabled))
+        sendRequest(SetSystemConfig(configtype: SystemConfigID.clockFormat, format: .format24h))
         sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig, mode: .auto))
         sendRequest(SetSystemConfig(configtype: SystemConfigID.compassAutoOnDuration, autoOnDuration: 1))
         sendRequest(SetSystemConfig(configtype: SystemConfigID.topKeyCustomization, isAvailable: .enabled))
