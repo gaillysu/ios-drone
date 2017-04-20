@@ -207,6 +207,12 @@
 		61C28CA01EA73E920019F574 /* PostActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C9E1EA73E920019F574 /* PostActivityData.swift */; };
 		61C28CA11EA73E920019F574 /* PostBatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */; };
 		61C28CA41EA73F4C0019F574 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA31EA73F4C0019F574 /* DataBaseManager.swift */; };
+		61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA61EA756C70019F574 /* ResetCacheModel.swift */; };
+		61C28CA91EA75A620019F574 /* PostWatchVersionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */; };
+		61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */; };
+		61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */; };
+		61C28CB01EA76C680019F574 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 61C28CAF1EA76C680019F574 /* default.realm */; };
+		61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CB11EA83FFB0019F574 /* URL+Extension.swift */; };
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
 		61D470B01DE2F18C00620BD0 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470AA1DE2F18C00620BD0 /* Int+Extension.swift */; };
@@ -444,6 +450,12 @@
 		61C28C9E1EA73E920019F574 /* PostActivityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostActivityData.swift; sourceTree = "<group>"; };
 		61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBatteryStatus.swift; sourceTree = "<group>"; };
 		61C28CA31EA73F4C0019F574 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		61C28CA61EA756C70019F574 /* ResetCacheModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetCacheModel.swift; sourceTree = "<group>"; };
+		61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostWatchVersionData.swift; sourceTree = "<group>"; };
+		61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendStepsToWatchCache.swift; sourceTree = "<group>"; };
+		61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncLastDataCache.swift; sourceTree = "<group>"; };
+		61C28CAF1EA76C680019F574 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
+		61C28CB11EA83FFB0019F574 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
 		61D470AA1DE2F18C00620BD0 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
@@ -576,6 +588,7 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61C28CAE1EA76C680019F574 /* DefaultRealm */,
 				61C28C8C1EA617070019F574 /* Image */,
 				61D470A01DE2E47E00620BD0 /* NotificationTypeFile */,
 				9E1535801D5C20A500CB6A01 /* Worldclock */,
@@ -1004,6 +1017,7 @@
 		61C28B7B1EA46F810019F574 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				61C28CA51EA756950019F574 /* Cache */,
 				61C28C9D1EA73E920019F574 /* PostObject */,
 				61C28B7C1EA46F810019F574 /* DBModel */,
 				61C28B861EA46F810019F574 /* Goal */,
@@ -1169,6 +1183,7 @@
 		61C28C891EA600CF0019F574 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				61C28CB11EA83FFB0019F574 /* URL+Extension.swift */,
 				61C28C8A1EA600DB0019F574 /* LocationExtension.swift */,
 			);
 			path = Extension;
@@ -1194,6 +1209,7 @@
 			children = (
 				61C28C9E1EA73E920019F574 /* PostActivityData.swift */,
 				61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */,
+				61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */,
 			);
 			path = PostObject;
 			sourceTree = "<group>";
@@ -1204,6 +1220,24 @@
 				61C28CA31EA73F4C0019F574 /* DataBaseManager.swift */,
 			);
 			path = DataBaseManager;
+			sourceTree = "<group>";
+		};
+		61C28CA51EA756950019F574 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				61C28CA61EA756C70019F574 /* ResetCacheModel.swift */,
+				61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */,
+				61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		61C28CAE1EA76C680019F574 /* DefaultRealm */ = {
+			isa = PBXGroup;
+			children = (
+				61C28CAF1EA76C680019F574 /* default.realm */,
+			);
+			path = DefaultRealm;
 			sourceTree = "<group>";
 		};
 		61D4709D1DE2E06600620BD0 /* Sandbox */ = {
@@ -1382,6 +1416,7 @@
 				61C28BEE1EA46F810019F574 /* SearchCityController.xib in Resources */,
 				61C28C9A1EA6FDBA0019F574 /* background_steps.png in Resources */,
 				61C28C021EA46F810019F574 /* MyDeviceViewController.xib in Resources */,
+				61C28CB01EA76C680019F574 /* default.realm in Resources */,
 				61C28C0E1EA46F810019F574 /* ProfileViewController.xib in Resources */,
 				61C28BF01EA46F810019F574 /* ConnectionSetupViewController.xib in Resources */,
 				61C28C1A1EA46F810019F574 /* WorldClockCell.xib in Resources */,
@@ -1502,6 +1537,7 @@
 				61C28C261EA46F810019F574 /* UserSteps.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				61C28C1F1EA46F810019F574 /* WhichDeviceViewController.swift in Sources */,
+				61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */,
 				61C28BBE1EA46F810019F574 /* ActivityPacket.swift in Sources */,
 				61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */,
 				61C28C251EA46F810019F574 /* UserProfile.swift in Sources */,
@@ -1545,6 +1581,8 @@
 				61C28C191EA46F810019F574 /* WorldClockCell.swift in Sources */,
 				61C28C4D1EA46F810019F574 /* Color.swift in Sources */,
 				61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */,
+				61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */,
+				61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */,
 				61C28BDC1EA46F810019F574 /* SetUserProfileRequest.swift in Sources */,
 				61C28BDA1EA46F810019F574 /* SetStepsToWatchReuqest.swift in Sources */,
 				61C28BBB1EA46F810019F574 /* ConnectionController.swift in Sources */,
@@ -1578,6 +1616,7 @@
 				61C28BC51EA46F810019F574 /* DroneRequest.swift in Sources */,
 				61D470B11DE2F18C00620BD0 /* String+Extension.swift in Sources */,
 				61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */,
+				61C28CA91EA75A620019F574 /* PostWatchVersionData.swift in Sources */,
 				61C28C281EA46F810019F574 /* WorldClockDatabaseHelper.swift in Sources */,
 				61C28BE81EA46F810019F574 /* BaseViewController.swift in Sources */,
 				61C28C7C1EA5A03C0019F574 /* StepsUpdateRequest.swift in Sources */,
@@ -1608,6 +1647,7 @@
 				61C28BEF1EA46F810019F574 /* ConnectionSetupViewController.swift in Sources */,
 				61C28C1B1EA46F810019F574 /* WorldClockHeader.swift in Sources */,
 				61C28C1D1EA46F810019F574 /* WorldClockViewController.swift in Sources */,
+				61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */,
 				61C28BDD1EA46F810019F574 /* SetWeatherLocationsRequest.swift in Sources */,
 				61C28C291EA46F810019F574 /* Goal.swift in Sources */,
 				61C28C6E1EA5A03C0019F574 /* StepsNetworkManager.swift in Sources */,

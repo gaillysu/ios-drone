@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostBatteryStatus: NSObject {
+class PostBatteryStatus: NSObject,NSCoding {
     var batteryStatus:Int = 0
     var percentValue:Int = 0
     

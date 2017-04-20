@@ -77,7 +77,7 @@ extension AppDelegate {
     }
     
     func startConnect(){
-        let userDevice = UserDevice.getAll()
+        let userDevice = DataBaseManager.manager.getAllDevice()
         if(userDevice.count>0) {
             var deviceAddres:[String] = []
             for device in userDevice {
@@ -105,21 +105,20 @@ extension AppDelegate {
         
         if daySteps>0 {
             if let unpackedData = AppTheme.LoadKeyedArchiverName(RESET_STATE) {
-                let stateArray = JSON(unpackedData).dictionaryValue
-                if stateArray.count>0 {
-                    let state:Bool = stateArray[RESET_STATE]!.boolValue
-                    print(stateArray)
-                    if  let obj = stateArray[RESET_STATE_DATE] {
-                        let date:Date = Date(timeIntervalSince1970: obj.doubleValue)
-                        if state && (date.beginningOfDay == Date().beginningOfDay){
-                            sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                            _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)","date":Date()])
-                        }
-                    }else{
-                        if state {
-                            sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                            _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)","date":Date()])
-                        }
+                let resetModel = unpackedData as! ResetCacheModel
+                let state:Bool = resetModel.resetState!
+                if  let obj = resetModel.resetDate {
+                    let date:Date = Date(timeIntervalSince1970: obj)
+                    if state && (date.beginningOfDay == Date().beginningOfDay){
+                        sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+                        let cacheSendSteps:SendStepsToWatchCache = SendStepsToWatchCache(sendSteps: daySteps, sendDate: Date().timeIntervalSince1970)
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: cacheSendSteps)
+                    }
+                }else{
+                    if state {
+                        sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+                        let cacheSendSteps:SendStepsToWatchCache = SendStepsToWatchCache(sendSteps: daySteps, sendDate: Date().timeIntervalSince1970)
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: cacheSendSteps)
                     }
                 }
             }

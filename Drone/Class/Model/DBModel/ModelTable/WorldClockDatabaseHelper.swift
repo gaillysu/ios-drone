@@ -13,7 +13,7 @@ class WorldClockDatabaseHelper: NSObject {
     
     fileprivate let WORLDCLOCK_KEY:String = "defaults_worldclock_key";
     
-    fileprivate let WORLDCLOCK_NEWEST_VERSION:Int = 4;
+    fileprivate let WORLDCLOCK_NEWEST_VERSION:Int = 5;
     fileprivate let realm:Realm
     
     override init() {

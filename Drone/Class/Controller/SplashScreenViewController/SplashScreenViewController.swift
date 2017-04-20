@@ -26,7 +26,7 @@ class SplashScreenViewController: BaseViewController {
     }
     
     func nextController(){
-        if(UserProfile.getAll().count > 0 ||  UserDevice.getAll().count > 0) {
+        if(UserProfile.getAll().count > 0 ||  DataBaseManager.manager.getAllDevice().count > 0) {
             self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
         }else{
             let navigationController = UINavigationController(rootViewController:MenuViewController());
