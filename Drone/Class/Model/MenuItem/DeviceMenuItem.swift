@@ -17,7 +17,7 @@ class DeviceMenuItem: MenuItem {
     }
     
     func icon() -> FAType?{
-        return FAType.FAClockO
+        return nil
     }
     
     func image() -> UIImage?{

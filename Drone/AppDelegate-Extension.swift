@@ -158,7 +158,6 @@ extension AppDelegate {
     }
     
     // MARK: -AppDelegate GET Function
-    
     func getActivity(){
         sendRequest(GetActivityRequest())
     }
@@ -166,7 +165,6 @@ extension AppDelegate {
     func getGoal(){
         sendRequest(GetStepsGoalRequest())
     }
-    
     
     func ReadBatteryLevel() {
         sendRequest(GetBatteryRequest())
