@@ -26,6 +26,9 @@
 		61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */; };
 		61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */; };
 		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
+		613928F01EA99DD900450284 /* WeatherCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928EF1EA99DD900450284 /* WeatherCacheModel.swift */; };
+		613928F41EA99F1B00450284 /* EveryHourWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */; };
+		613928F61EA9A1C100450284 /* WeatherCityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F51EA9A1C100450284 /* WeatherCityModel.swift */; };
 		618322FE1EA0A2B90054966D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
 		618323081EA459F00054966D /* AutocompleteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323071EA459F00054966D /* AutocompleteField.swift */; };
 		6183230E1EA4609C0054966D /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230A1EA4609C0054966D /* SMSegment.swift */; };
@@ -269,6 +272,9 @@
 		61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		613928EF1EA99DD900450284 /* WeatherCacheModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCacheModel.swift; sourceTree = "<group>"; };
+		613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryHourWeatherModel.swift; sourceTree = "<group>"; };
+		613928F51EA9A1C100450284 /* WeatherCityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCityModel.swift; sourceTree = "<group>"; };
 		618322FD1EA0A2B90054966D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618323071EA459F00054966D /* AutocompleteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteField.swift; sourceTree = "<group>"; };
 		6183230A1EA4609C0054966D /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
@@ -1228,6 +1234,9 @@
 				61C28CA61EA756C70019F574 /* ResetCacheModel.swift */,
 				61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */,
 				61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */,
+				613928EF1EA99DD900450284 /* WeatherCacheModel.swift */,
+				613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */,
+				613928F51EA9A1C100450284 /* WeatherCityModel.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1528,6 +1537,7 @@
 				61C28C341EA46F810019F574 /* TimeMenuItem.swift in Sources */,
 				61C28BE21EA46F810019F574 /* UpdateNotificationRequest.swift in Sources */,
 				61C28C6F1EA5A03C0019F574 /* UserNetworkManager.swift in Sources */,
+				613928F61EA9A1C100450284 /* WeatherCityModel.swift in Sources */,
 				61C28C861EA5BABB0019F574 /* WeatherInfoRequest.swift in Sources */,
 				61C28C561EA46F810019F574 /* WorldClockUtil.swift in Sources */,
 				61C28C751EA5A03C0019F574 /* BasePutRequest.swift in Sources */,
@@ -1600,6 +1610,7 @@
 				61C28BD31EA46F810019F574 /* ReadWeatherRequest.swift in Sources */,
 				61C28C761EA5A03C0019F574 /* ForgetPasswordRequest.swift in Sources */,
 				61C28C0D1EA46F810019F574 /* ProfileViewController.swift in Sources */,
+				613928F01EA99DD900450284 /* WeatherCacheModel.swift in Sources */,
 				61C28BF31EA46F810019F574 /* DeviceTableViewCell.swift in Sources */,
 				61C28C811EA5B6060019F574 /* LocationManager.swift in Sources */,
 				61C28BD21EA46F810019F574 /* ReadDailyTrackerInfo.swift in Sources */,
@@ -1651,6 +1662,7 @@
 				61C28BDD1EA46F810019F574 /* SetWeatherLocationsRequest.swift in Sources */,
 				61C28C291EA46F810019F574 /* Goal.swift in Sources */,
 				61C28C6E1EA5A03C0019F574 /* StepsNetworkManager.swift in Sources */,
+				613928F41EA99F1B00450284 /* EveryHourWeatherModel.swift in Sources */,
 				61C28CA41EA73F4C0019F574 /* DataBaseManager.swift in Sources */,
 				61C28C2F1EA46F810019F574 /* LoginMenuItem.swift in Sources */,
 				61C28BD41EA46F810019F574 /* SetAppConfigRequest.swift in Sources */,

@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+let SYNC_WEATHER_INFOKEY = "SYNC_WEATHER_INFOKEY"
+
 class WeatherNetworkApiManager: NSObject {
     
     fileprivate static let baseURL = "http://api.openweathermap.org/"
@@ -41,7 +43,7 @@ class WeatherNetworkApiManager: NSObject {
         switch response.result {
         case .success(let data):
             let json = JSON(data)
-            if(json["count"].intValue != 1){
+            if(json["list"].arrayValue.count == 0){
                 return (false,json, nil)
             }else{
                 return (true, json, nil)
@@ -55,19 +57,63 @@ class WeatherNetworkApiManager: NSObject {
         
         cityid[regionName] = id
         
+        if let cache = AppTheme.LoadKeyedArchiverName(SYNC_WEATHER_INFOKEY+regionName) {
+            let weatherModel:WeatherCacheModel = cache as! WeatherCacheModel
+            if Date(timeIntervalSince1970: weatherModel.syncDate) == Date.today()&&weatherModel.city.name.hasPrefix(regionName) {
+                var isCallBack:Bool = false
+                for listModel in weatherModel.list {
+                    let hourDate:Date = Date(timeIntervalSince1970: listModel.dt)
+                    if hourDate.hour > Date().hour {
+                        isCallBack = true
+                        responseBlock(id,Int(listModel.temp-273) , listModel.code, listModel.stateText)
+                        break;
+                    }
+                }
+                
+                if isCallBack {
+                    self.cityid.removeValue(forKey: regionName)
+                    return
+                }
+            }
+        }
+        
         let weatherRequest:WeatherInfoRequest = WeatherInfoRequest(selectText: regionName) { (success, json, error) in
             if success {
                 if let weatherJSON = json {
-                    let weatherInfo:[String:JSON] = weatherJSON.dictionaryValue
-                    let weather:[String:JSON] = weatherInfo["weather"]!.arrayValue.first!.dictionaryValue
-                    let main:[String:JSON] = weatherInfo["main"]!.dictionaryValue
+                    let weatherModel:WeatherCacheModel = WeatherCacheModel()
+                    weatherModel.cod = weatherJSON["cod"].stringValue
+                    weatherModel.message = weatherJSON["message"].floatValue
+                    weatherModel.cnt = weatherJSON["cnt"].intValue
+                    weatherModel.syncDate = Date.today().timeIntervalSince1970
                     
-                    let name:String = weatherInfo["name"]!.stringValue
-                    let temp:Int = main["temp"]!.intValue
-                    let code:Int = weather["id"]!.intValue
-                    let text:String = weather["main"]!.stringValue
+                    let listArray:[JSON] = weatherJSON["list"].arrayValue
+                    var listModel:[EveryHourWeatherModel] = []
+                    for list in listArray {
+                        let model:EveryHourWeatherModel = EveryHourWeatherModel()
+                        model.dt = list["dt"].doubleValue
+                        model.temp = list["main"].dictionaryValue["temp"]!.floatValue
+                        model.code = list["weather"].dictionaryValue["id"]!.intValue
+                        model.stateText = list["weather"].dictionaryValue["main"]!.stringValue
+                        model.dt_txt = list["dt_txt"].stringValue
+                        listModel.append(model)
+                    }
+                    weatherModel.list = listModel
                     
-                    self.tempValue = temp-273
+                    let city:[String:JSON] = weatherJSON["city"].dictionaryValue
+                    let cityModel:WeatherCityModel = WeatherCityModel()
+                    cityModel.id = city["id"]!.intValue
+                    cityModel.name = city["name"]!.stringValue
+                    cityModel.lat = city["coord"]!.dictionaryValue["lat"]!.floatValue
+                    cityModel.lon = city["coord"]!.dictionaryValue["lon"]!.floatValue
+                    cityModel.country = city["country"]!.stringValue
+                    weatherModel.city = cityModel
+                    
+                    let name:String = city["name"]!.stringValue
+                    let temp:Float = listModel.first!.temp
+                    let code:Int = listModel.first!.code
+                    let text:String = listModel.first!.stateText
+                    
+                    self.tempValue = Int(temp-273)
                     self.weatherStatusText = text
                     
                     for (key,value) in self.cityid {
@@ -77,6 +123,7 @@ class WeatherNetworkApiManager: NSObject {
                             break;
                         }
                     }
+                    _ = AppTheme.KeyedArchiverName(SYNC_WEATHER_INFOKEY+regionName, andObject: weatherModel)
                 }else{
                     responseBlock(0,0, 0, nil);
                 }
