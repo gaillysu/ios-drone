@@ -9,10 +9,10 @@
 import UIKit
 
 class WeatherCityModel: NSObject,NSCoding {
-    var id:Int = 0
+    var id:String = ""
     var name:String = ""
-    var lat:Float = 0
-    var lon:Float = 0
+    var lat:String = ""
+    var lon:String = ""
     var country:String = ""
     
     override init() {
@@ -20,6 +20,7 @@ class WeatherCityModel: NSObject,NSCoding {
     }
     
     func encode(with aCoder:NSCoder) {
+        NSLog("id:\(id),name:\(name),lat:\(lat),lon:\(lon),country:\(country)")
         aCoder.encode(id, forKey:"id")
         aCoder.encode(name, forKey:"name")
         aCoder.encode(lat, forKey:"lat")
@@ -30,7 +31,7 @@ class WeatherCityModel: NSObject,NSCoding {
     required init(coder aDecoder:NSCoder) {
         super.init()
         if let cId = aDecoder.decodeObject(forKey:"id") {
-            id = cId as! Int
+            id = cId as! String
         }
         
         if let cName = aDecoder.decodeObject(forKey:"name") {
@@ -38,11 +39,11 @@ class WeatherCityModel: NSObject,NSCoding {
         }
         
         if let cLat = aDecoder.decodeObject(forKey:"lat") {
-            lat = cLat as! Float
+            lat = cLat as! String
         }
         
         if let cLon = aDecoder.decodeObject(forKey:"lon") {
-            lon = cLon as! Float
+            lon = cLon as! String
         }
         
         if let cCountry = aDecoder.decodeObject(forKey:"country") {

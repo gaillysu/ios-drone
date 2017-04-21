@@ -9,9 +9,9 @@
 import UIKit
 
 class EveryHourWeatherModel: NSObject,NSCoding {
-    var dt:TimeInterval =  0
-    var temp:Float = 0
-    var code:Int = 0
+    var dt:String =  ""
+    var temp:String = ""
+    var code:String = ""
     var stateText:String = ""
     var dt_txt:String = ""
     
@@ -30,15 +30,15 @@ class EveryHourWeatherModel: NSObject,NSCoding {
     required init(coder aDecoder:NSCoder) {
         super.init()
         if let cDt = aDecoder.decodeObject(forKey:"dt") {
-            dt = cDt as! TimeInterval
+            dt = cDt as! String
         }
         
         if let ctemp = aDecoder.decodeObject(forKey:"temp") {
-            temp = ctemp as! Float
+            temp = ctemp as! String
         }
         
         if let ccode = aDecoder.decodeObject(forKey:"code") {
-            code = ccode as! Int
+            code = ccode as! String
         }
         
         if let cText = aDecoder.decodeObject(forKey:"stateText") {

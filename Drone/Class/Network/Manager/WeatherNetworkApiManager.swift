@@ -59,13 +59,18 @@ class WeatherNetworkApiManager: NSObject {
         
         if let cache = AppTheme.LoadKeyedArchiverName(SYNC_WEATHER_INFOKEY+regionName) {
             let weatherModel:WeatherCacheModel = cache as! WeatherCacheModel
-            if Date(timeIntervalSince1970: weatherModel.syncDate) == Date.today()&&weatherModel.city.name.hasPrefix(regionName) {
+            let cacheDate:TimeInterval = weatherModel.syncDate.toDouble()
+            let cityName:String = weatherModel.city.name
+            if Date(timeIntervalSince1970: cacheDate) == Date.today()&&cityName.hasPrefix(regionName) {
                 var isCallBack:Bool = false
                 for listModel in weatherModel.list {
-                    let hourDate:Date = Date(timeIntervalSince1970: listModel.dt)
+                    let hourDate:Date = Date(timeIntervalSince1970: listModel.dt.toDouble())
                     if hourDate.hour > Date().hour {
                         isCallBack = true
-                        responseBlock(id,Int(listModel.temp-273) , listModel.code, listModel.stateText)
+                        let temp:Int = Int(listModel.temp.toFloat()-273)
+                        let code:Int = listModel.code.toInt()
+                        let text:String = listModel.stateText
+                        responseBlock(id,temp , code, text)
                         break;
                     }
                 }
@@ -82,18 +87,19 @@ class WeatherNetworkApiManager: NSObject {
                 if let weatherJSON = json {
                     let weatherModel:WeatherCacheModel = WeatherCacheModel()
                     weatherModel.cod = weatherJSON["cod"].stringValue
-                    weatherModel.message = weatherJSON["message"].floatValue
-                    weatherModel.cnt = weatherJSON["cnt"].intValue
-                    weatherModel.syncDate = Date.today().timeIntervalSince1970
+                    weatherModel.message = weatherJSON["message"].stringValue
+                    weatherModel.cnt = weatherJSON["cnt"].stringValue
+                    weatherModel.syncDate = String(format: "%f", Date.today().timeIntervalSince1970)
                     
                     let listArray:[JSON] = weatherJSON["list"].arrayValue
                     var listModel:[EveryHourWeatherModel] = []
                     for list in listArray {
                         let model:EveryHourWeatherModel = EveryHourWeatherModel()
-                        model.dt = list["dt"].doubleValue
-                        model.temp = list["main"].dictionaryValue["temp"]!.floatValue
-                        model.code = list["weather"].dictionaryValue["id"]!.intValue
-                        model.stateText = list["weather"].dictionaryValue["main"]!.stringValue
+                        model.dt = list["dt"].stringValue
+                        model.temp = list["main"].dictionaryValue["temp"]!.stringValue
+                        let weather:[String:JSON] = list["weather"].arrayValue.first!.dictionaryValue
+                        model.code = weather["id"]!.stringValue
+                        model.stateText = weather["main"]!.stringValue
                         model.dt_txt = list["dt_txt"].stringValue
                         listModel.append(model)
                     }
@@ -101,16 +107,17 @@ class WeatherNetworkApiManager: NSObject {
                     
                     let city:[String:JSON] = weatherJSON["city"].dictionaryValue
                     let cityModel:WeatherCityModel = WeatherCityModel()
-                    cityModel.id = city["id"]!.intValue
-                    cityModel.name = city["name"]!.stringValue
-                    cityModel.lat = city["coord"]!.dictionaryValue["lat"]!.floatValue
-                    cityModel.lon = city["coord"]!.dictionaryValue["lon"]!.floatValue
+                    let cityName:String = city["name"]!.stringValue
+                    cityModel.id = city["id"]!.stringValue
+                    cityModel.name = cityName
+                    cityModel.lat = city["coord"]!.dictionaryValue["lat"]!.stringValue
+                    cityModel.lon = city["coord"]!.dictionaryValue["lon"]!.stringValue
                     cityModel.country = city["country"]!.stringValue
                     weatherModel.city = cityModel
                     
-                    let name:String = city["name"]!.stringValue
-                    let temp:Float = listModel.first!.temp
-                    let code:Int = listModel.first!.code
+                    let name:String = cityName
+                    let temp:Float = listModel.first!.temp.toFloat()
+                    let code:Int = listModel.first!.code.toInt()
                     let text:String = listModel.first!.stateText
                     
                     self.tempValue = Int(temp-273)

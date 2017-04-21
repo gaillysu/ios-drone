@@ -17,5 +17,15 @@ extension Int {
             return NSString(format: "0%d", self) as String
         }
     }
+    
+    func toCGFloat() -> CGFloat {
+        let value1:NSString = NSString(format: "%f", self)
+        return CGFloat(value1.floatValue)
+    }
+    
+    func toFloat() -> Float {
+        let value1:NSString = NSString(format: "%f", self)
+        return value1.floatValue
+    }
 }
 

@@ -17,10 +17,13 @@ extension String {
         return NSString(format: "%@", self).doubleValue
     }
     
+    func toFloat() -> Float {
+        return NSString(format: "%@", self).floatValue
+    }
+    
     var length:Int {
         get{
             return NSString(format: "%@", self).length
         }
     }
-    
 }

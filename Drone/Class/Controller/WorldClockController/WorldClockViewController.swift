@@ -162,7 +162,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             return cell
         }
         
-        let city:City = worldClockArray[((indexPath as NSIndexPath).row - 1)]
+        let city:City = worldClockArray[indexPath.row - 1]
         
         cell.cityLabel.text = city.name
         var foreignTimeOffsetToGmt:Float = 0.0
