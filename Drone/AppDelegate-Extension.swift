@@ -23,15 +23,14 @@ extension AppDelegate {
         sendRequest(SetSystemConfig(configtype: SystemConfigID.enabled, isAvailable: .enabled))
         sendRequest(SetSystemConfig(configtype: SystemConfigID.clockFormat, format: .format24h))
         sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig, mode: .auto))
-        sendRequest(SetSystemConfig(configtype: SystemConfigID.compassAutoOnDuration, autoOnDuration: 1))
         sendRequest(SetSystemConfig(configtype: SystemConfigID.topKeyCustomization, isAvailable: .enabled))
     }
     
     func setCompassAutoMinutes(){
         if let obj = Compass.getAll().first, let compass = obj as? Compass{
-            sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:compass.activeTime))
+            sendRequest(SetSystemConfig(configtype: SystemConfigID.compassAutoOnDuration, autoOnDuration: compass.activeTime))
         }else{
-            sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:1))
+            sendRequest(SetSystemConfig(configtype: SystemConfigID.compassAutoOnDuration, autoOnDuration: 1))
         }
     }
     

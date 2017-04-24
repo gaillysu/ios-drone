@@ -53,7 +53,7 @@ class TimeSettingsViewController: BaseViewController {
         
         dataSource.titleForFooterInSection = { dataSource, index in
 
-            
+            return ""
         }
         //        tableView.register(UINib(nibName: identifierSwitch, bundle: Bundle.main), forCellReuseIdentifier: identifierSwitch)
         //        items.asObservable().bindTo(tableView.rx

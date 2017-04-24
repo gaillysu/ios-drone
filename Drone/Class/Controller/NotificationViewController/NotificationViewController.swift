@@ -38,7 +38,10 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
                 let plistApp = apps[app.key] as! [String : Any]?
                 let notification = DroneNotification()
                 notification.appName = app.key
-                notification.bundleIdentifier = plistApp!["bundleId"] as! String
+                if let bundleid = plistApp!["bundleId"] {
+                    notification.bundleIdentifier = bundleid as! String
+                }
+                
                 try! realm!.write ({
                     realm!.add(notification)
                 })
