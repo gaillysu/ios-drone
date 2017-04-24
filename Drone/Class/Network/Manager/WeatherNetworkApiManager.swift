@@ -64,14 +64,15 @@ class WeatherNetworkApiManager: NSObject {
             if Date(timeIntervalSince1970: cacheDate) == Date.today()&&cityName.hasPrefix(regionName) {
                 var isCallBack:Bool = false
                 for listModel in weatherModel.list {
-                    let hourDate:Date = Date(timeIntervalSince1970: listModel.dt.toDouble())
-                    if hourDate.hour > Date().hour {
-                        isCallBack = true
-                        let temp:Int = Int(listModel.temp.toFloat()-273)
-                        let code:Int = listModel.code.toInt()
-                        let text:String = listModel.stateText
-                        responseBlock(id,temp , code, text)
-                        break;
+                    if let hourDate = listModel.dt_txt.dateFromFormat("yyyy-MM-dd HH:mm:ss", locale:  DateFormatter().locale) {
+                        if hourDate.hour > Date().hour {
+                            isCallBack = true
+                            let temp:Int = Int(listModel.temp.toFloat()-273)
+                            let code:Int = listModel.code.toInt()
+                            let text:String = listModel.stateText
+                            responseBlock(id,temp , code, text)
+                            break;
+                        }
                     }
                 }
                 

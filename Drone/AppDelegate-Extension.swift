@@ -204,6 +204,8 @@ extension AppDelegate {
     }
     
     func setWeather() {
+        DTUserDefaults.syncWeatherDate = Date()
+        
         var cityArray:[City] = DataBaseManager.manager.getCitySelected()
         
         let timeZoneNameData = DateFormatter().timeZone.identifier.characters.split{$0 == "/"}.map(String.init)

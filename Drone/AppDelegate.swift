@@ -167,6 +167,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
             syncState = .small_SYNC
             SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket))
+            
+            /**
+             sync every hour weather data
+             */
+            if DTUserDefaults.syncWeatherDate.timeIntervalSince1970-Date().timeIntervalSince1970 > 3600 {
+               setWeather()
+            }
          }
          
          if (packet.getHeader() == SetNotificationRequest.HEADER()) {

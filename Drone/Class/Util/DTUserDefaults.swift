@@ -15,6 +15,7 @@ public class DTUserDefaults: NSObject {
     private static let SEND_LOCAL_MESSAGE_KEY = "IsSendLocalMsg"
     private static let WORLDCLOCK_KEY = "defaults_worldclock_key"
     private static let WORLDCLOCK_SORT_KEY = "WORLDCLOCK_SORT_KEY"
+    private static let SETWEATHER_KEY = "set_weather_key"
     
     public static var setupKey:Bool {
         get{
@@ -68,4 +69,18 @@ public class DTUserDefaults: NSObject {
             UserDefaults.standard.synchronize()
         }
     }
+    
+    static var syncWeatherDate:Date {
+        get{
+            if let sorted = UserDefaults().object(forKey: SETWEATHER_KEY){
+                return sorted as! Date
+            }
+            return Date()
+        }
+        set{
+            UserDefaults().set(newValue, forKey: SETWEATHER_KEY)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
 }
