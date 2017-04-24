@@ -92,6 +92,9 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: SETWEATHER_KEY)
+        }
+    }
+    
     public static var presentMenu:Bool {
         get{
             return UserDefaults().bool(forKey: PAIR_PRESENT_KEY)

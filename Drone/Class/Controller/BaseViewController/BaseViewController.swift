@@ -69,31 +69,4 @@ class BaseViewController: UIViewController {
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         return UIBarButtonItem(customView: button)
     }
-    
-    func makeStandardUINavigationController(_ rootViewController:UIViewController) -> UINavigationController{
-        let navigationController:UINavigationController = UINavigationController(rootViewController: rootViewController)
-        navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
-        navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
-        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
-        navigationController.navigationBar.tintColor = UIColor.white
-        
-        navigationController.navigationBar.isHidden = false
-        navigationController.navigationItem.setHidesBackButton(false, animated: true)
-        return navigationController
-    }
-}
-
-class BaseViewController: UIViewController {
-    override func viewDidLoad() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
-        if((UIDevice.current.systemVersion as NSString).floatValue>7.0){
-            self.edgesForExtendedLayout = UIRectEdge();
-            self.extendedLayoutIncludesOpaqueBars = false;
-            self.modalPresentationCapturesStatusBarAppearance = false;
-        }
-    }
- 
-    
-    
 }

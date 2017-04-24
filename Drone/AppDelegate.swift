@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                
                //Records need to use 0x30
                let cacheModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)
-               _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: cacheModel)
+               _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
                
             }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
                setGoal(nil)
@@ -119,7 +119,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             debugPrint("eventCommandStatus :\(eventCommandStatus)")
             if(eventCommandStatus == SystemEventStatus.goalCompleted.rawValue) {
                SwiftEventBus.post(SWIFTEVENT_BUS_GOAL_COMPLETED, sender:nil)
-
             }
             
             if(eventCommandStatus == SystemEventStatus.lowMemory.rawValue) {
@@ -182,19 +181,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             timerInterval =  timerInterval + Int(syncStatus[3])<<8
             timerInterval =  timerInterval + Int(syncStatus[4])<<16
             timerInterval =  timerInterval + Int(syncStatus[5])<<24
-
-            if(eventCommandStatus == SystemEventStatus.lowMemory.rawValue) {
-               SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_SMALL_SYNCACTIVITY, sender:nil)
-            }
-            
-            if(eventCommandStatus == SystemEventStatus.activityDataAvailable.rawValue) {
-               SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
-               self.getActivity()
-            }
-            
-            if(eventCommandStatus == SystemEventStatus.batteryStatusChanged.rawValue) {
-               sendRequest(GetBatteryRequest())
-            }
          }
          
          if(packet.getHeader() == SetSystemConfig.HEADER()) {
@@ -204,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
             //Set steps to watch response
             let cacheModel:ResetCacheModel = ResetCacheModel(reState: false, date: Date().timeIntervalSince1970)
-            _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: cacheModel)
+            _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
          }
          if(packet.getHeader() == GetBatteryRequest.HEADER()) {
             let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
@@ -216,7 +202,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          
          if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
             let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
-            syncState = .small_SYNC
             SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket))
             
             /**

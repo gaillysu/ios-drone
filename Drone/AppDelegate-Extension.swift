@@ -136,7 +136,7 @@ extension AppDelegate {
         }
         
         if daySteps>0 {
-            if let unpackedData = AppTheme.LoadKeyedArchiverName(RESET_STATE) {
+            if let unpackedData = AppTheme.LoadKeyedArchiverName(AppDelegate.RESET_STATE) {
                 let resetModel = unpackedData as! ResetCacheModel
                 let state:Bool = resetModel.resetState!
                 if  let obj = resetModel.resetDate {
