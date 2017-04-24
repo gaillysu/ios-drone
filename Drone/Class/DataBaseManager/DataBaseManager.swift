@@ -20,6 +20,12 @@ class DataBaseManager: NSObject {
         copyBundleRealmToDocumentFolder()
         
         updateRelam()
+        
+        if Compass.getAll().isEmpty {
+            let compass = Compass()
+            compass.activeTime = 15
+            _ = compass.add()
+        }
     }
     
     fileprivate func updateRelam() {

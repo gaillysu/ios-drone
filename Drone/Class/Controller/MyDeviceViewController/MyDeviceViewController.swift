@@ -66,8 +66,8 @@ class MyDeviceViewController: BaseViewController {
     }
     
     @IBAction func addDeviceAction(_ sender: AnyObject) {
-        let navigationController:UINavigationController = UINavigationController(rootViewController: WhichDeviceViewController(toMenu: false))
-        navigationController.navigationBar.isHidden = true
+        
+        let navigationController = makeStandardUINavigationController(WhichDeviceViewController(toMenu: false))
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
     

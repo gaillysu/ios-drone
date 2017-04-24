@@ -13,7 +13,7 @@ import Font_Awesome_Swift
 class CompassMenuItem: MenuItem {
     
     func viewController() -> UIViewController{
-        return WorldClockViewController()
+        return CompassViewController()
     }
     
     func icon() -> FAType?{

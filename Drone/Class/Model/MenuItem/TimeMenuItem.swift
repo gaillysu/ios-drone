@@ -13,7 +13,7 @@ import Font_Awesome_Swift
 class TimeMenuItem: MenuItem {
     
     func viewController() -> UIViewController{
-        return WorldClockViewController()
+        return TimeTabViewController()
     }
     
     func icon() -> FAType?{

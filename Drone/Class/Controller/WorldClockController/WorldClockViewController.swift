@@ -25,7 +25,6 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var worldClockTableview: UITableView!
     
-    
     init() {
         let date = Date()
         realm = try! Realm()
@@ -59,8 +58,6 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "World Clock"
-        self.navigationController?.navigationBar.tintColor = UIColor.white
         worldClockTableview.register(UINib(nibName: identifier,bundle: Bundle.main), forCellReuseIdentifier: identifier)
         worldClockTableview.reorder.delegate = self
         let header:WorldClockHeader = WorldClockHeader.getWorldClockHeader();
@@ -71,34 +68,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height))
         headerView.addSubview(header)
         worldClockTableview.tableHeaderView = headerView
-        self.addPlusButton(#selector(add))
-        self.addCloseButton(#selector(dismissViewController))
     }
-    
-    func dismissViewController(){
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func add(){
-        //        if worldClockArray.count >= 5 {
-        //            let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        //            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-        //
-        //            }))
-        //            self.present(alert, animated: true, completion: nil)
-        //            return
-        //        }
-        //        if AppDelegate.getAppDelegate().isConnected() {
-        self.present(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
-        //        }else{
-        //            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
-        //            view?.setTintColor(UIColor.getBaseColor())
-        //            Timer.after(0.6.second) {
-        //                view?.dismiss(true)
-        //            }
-        //        }
-    }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

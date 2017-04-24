@@ -27,15 +27,47 @@ extension AppDelegate {
         sendRequest(SetSystemConfig(configtype: SystemConfigID.topKeyCustomization, isAvailable: .enabled))
     }
     
+    func setCompassAutoMinutes(){
+        if let obj = Compass.getAll().first, let compass = obj as? Compass{
+            sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:compass.activeTime))
+        }else{
+            sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:1))
+        }
+    }
+    
+    func startCalibrateHands(){
+        sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: .startHandsMode))
+    }
+    
+    func stopCalibrateHands(){
+        sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: .exitHandsMode))
+    }
+    
+    func calibrateHands(operation:SettingAnalogMovementOperation){
+        sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: operation))
+    }
+    
     func setRTC() {
         sendRequest(SetRTCRequest())
+    }
+    
+    func subscribeToSignificantTimeChange(on:Bool){
+        if on{
+            NotificationCenter.default.addObserver(self, selector: #selector(significantTimeChanged), name: NSNotification.Name.NSSystemTimeZoneDidChange, object: nil)
+        }else{
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSSystemTimeZoneDidChange, object: nil)
+        }
+    }
+    
+    func significantTimeChanged(){
+        self.setRTC()
     }
     
     func setAppConfig() {
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.worldClock, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.activityTracking, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.weather, state: AppConfigAppState.on))
-        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.on))
+        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, enabled: DTUserDefaults.compassState))
     }
     
     func setGoal(_ goal:Goal?) {
@@ -126,7 +158,6 @@ extension AppDelegate {
     }
     
     // MARK: -AppDelegate GET Function
-    
     func getActivity(){
         sendRequest(GetActivityRequest())
     }
@@ -134,7 +165,6 @@ extension AppDelegate {
     func getGoal(){
         sendRequest(GetStepsGoalRequest())
     }
-    
     
     func ReadBatteryLevel() {
         sendRequest(GetBatteryRequest())

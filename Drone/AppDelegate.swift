@@ -16,20 +16,10 @@ import Crashlytics
 import IQKeyboardManagerSwift
 import RealmSwift
 import SwiftyJSON
-let RESET_STATE:String = "RESET_STATE"
-let RESET_STATE_DATE:String = "RESET_STATE_DATE"
 
-let SETUP_KEY = "SETUP_KEY"
-
-enum SYNC_STATE{
-   case no_SYNC
-   case big_SYNC
-   case small_SYNC
-}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
-   
    
    var window: UIWindow?
    //Let's sync every days
@@ -41,12 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    fileprivate var masterCockroaches:[UUID:Int] = [:]
    
    fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
-   /**
-    Record the current state of the sync
-    */
-   var syncState:SYNC_STATE = .no_SYNC
-   
-   var sendIndex:((_ index:Int) -> Void)?
+
+   static let RESET_STATE = "RESET_STATE"
+   static let RESET_STATE_DATE = "RESET_STATE_DATE"
+   let SETUP_KEY = "SETUP_KEY"
+
    
    class func getAppDelegate()->AppDelegate {
       return UIApplication.shared.delegate as! AppDelegate
@@ -57,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       
       _ = DataBaseManager.manager
       _ = NetworkManager.manager
-      
+    
       let sanbos:SandboxManager = SandboxManager()
       let _ = sanbos.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
       
@@ -80,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    func applicationDidEnterBackground(_ application: UIApplication) {
       UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
-      
+
    }
    
    // MARK: - ConnectionControllerDelegate
@@ -130,8 +119,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             debugPrint("eventCommandStatus :\(eventCommandStatus)")
             if(eventCommandStatus == SystemEventStatus.goalCompleted.rawValue) {
                SwiftEventBus.post(SWIFTEVENT_BUS_GOAL_COMPLETED, sender:nil)
+
             }
             
+            if(eventCommandStatus == SystemEventStatus.lowMemory.rawValue) {
+               SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_SMALL_SYNCACTIVITY, sender:nil)
+            }
+            
+            if(eventCommandStatus == SystemEventStatus.activityDataAvailable.rawValue) {
+               SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
+               self.getActivity()
+            }
+            
+            if(eventCommandStatus == SystemEventStatus.batteryStatusChanged.rawValue) {
+               sendRequest(GetBatteryRequest())
+            }
+         }
+         
+         if(packet.getHeader() == SetSystemConfig.HEADER()) {
+            self.watchConfig()
+         }
+         
+         if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
+            //Set steps to watch response
+            _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: [AppDelegate.RESET_STATE:false, AppDelegate.RESET_STATE_DATE:Date()] as AnyObject)
+         }
+         if(packet.getHeader() == GetBatteryRequest.HEADER()) {
+            let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
+            let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
+            SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:(batteryStatus as AnyObject))
+         }
+         
+         if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
+            let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
+            SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
+         }
+         
+         if (packet.getHeader() == SetNotificationRequest.HEADER()) {
+            debugPrint("Set Notification response")
+         }
+         
+         if (packet.getHeader() == UpdateNotificationRequest.HEADER()) {
+            debugPrint("Update notification response")
+         }
+         
+         if(packet.getHeader() == UpdateContactsFilterRequest.HEADER()) {
+            debugPrint("Update contacts filter response")
+         }
+         
+         if(packet.getHeader() == UpdateContactsApplicationsRequest.HEADER()) {
+            debugPrint("Update contacts applications response")
+         }
+         
+         if(packet.getHeader() == SetContactsFilterRequest.HEADER()) {
+            debugPrint("Set contacts filter response")
+         }
+         
+         if(packet.getHeader() == GetActivityRequest.HEADER()) {
+            //let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
+            let syncStatus:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
+            var timerInterval:Int = Int(syncStatus[2])
+            timerInterval =  timerInterval + Int(syncStatus[3])<<8
+            timerInterval =  timerInterval + Int(syncStatus[4])<<16
+            timerInterval =  timerInterval + Int(syncStatus[5])<<24
+
             if(eventCommandStatus == SystemEventStatus.lowMemory.rawValue) {
                SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_SMALL_SYNCACTIVITY, sender:nil)
             }
@@ -205,16 +256,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             
             //Download more data
             if(status == ActivityDataStatus.moreData.rawValue) {
-               syncState = .big_SYNC
                self.getActivity()
             }else{
-               syncState = .no_SYNC
                SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
+
             }
          }
          
       }else{
-         syncState = .no_SYNC
          SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
       }
    }
@@ -244,7 +293,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          let versionData:PostWatchVersionData = PostWatchVersionData(version: version as String, type: "BLE")
          SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:versionData)
       }
-     
    }
    
    /**

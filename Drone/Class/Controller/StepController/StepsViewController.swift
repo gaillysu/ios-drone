@@ -12,7 +12,7 @@ import UIColor_Hex_Swift
 import CVCalendar
 import SwiftEventBus
 import MRProgress
-
+import RealmSwift
 
 let SMALL_SYNC_LASTDATA:String = "SMALL_SYNC_LASTDATA"
 let IS_SEND_0X30_COMMAND:String = "IS_SEND_0X30_COMMAND"
@@ -57,11 +57,11 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         }
         let userGoal:UserGoal = UserGoal()
         userGoal.goalSteps = 10000
-        userGoal.label = " "
-        userGoal.status = false
         _ = userGoal.add()
         return userGoal
     }()
+    
+    var lastSyncedSteps:Int = 0
     
     fileprivate var didSelectedDate:Date = Date()
     fileprivate var queryTimer:Timer?
@@ -98,27 +98,51 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     func setGoal(){
         let alertController = UIAlertController(title: "Select your goal", message: "", preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "7000", style: .default) { _ in
-            
+            self.updateGoal(steps: 7000)
         })
         alertController.addAction(UIAlertAction(title: "10000", style: .default) { _ in
-            
+            self.updateGoal(steps: 10000)
         })
         alertController.addAction(UIAlertAction(title: "20000", style: .default) { _ in
-            
+            self.updateGoal(steps: 20000)
         })
         alertController.addAction(UIAlertAction(title: "Custom...", style: .default) { _ in
-            
+            let customGoalAlertController = UIAlertController(title: "Goal", message: "Set your custom goal.", preferredStyle: .alert)
+            customGoalAlertController.addTextField(configurationHandler: { textfield in
+                textfield.keyboardType = .numberPad
+            })
+            customGoalAlertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                guard let text = (customGoalAlertController.textFields?.first?.text) else {
+                    return
+                }
+                if let goalSteps = Int(text), goalSteps > 1000 {
+                    self.updateGoal(steps: goalSteps)
+                }else{
+                    print("Could not update steps")
+                }
+            }))
+            customGoalAlertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+            self.present(customGoalAlertController, animated: true, completion: nil)
         })
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            
-        })
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func updateGoal(steps:Int){
+        if let obj = UserGoal.getAll().first, let goal = obj as? UserGoal{
+            let realm = try! Realm()
+            try! realm.write {
+                goal.goalSteps = steps                
+            }
+            getAppDelegate().setGoal(NumberOfStepsGoal(steps: steps))
+            percentageLabel.text = String(format:"Goal: %d",(steps))
+            self.setCircleProgress(lastSyncedSteps, goalValue: steps)
+        }
     }
     
     func dismissViewController(){
         self.dismiss(animated: true, completion: nil)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
@@ -180,9 +204,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     }
     
     func queryStepsGoalAction(_ timer:Timer) {
-        if AppDelegate.getAppDelegate().syncState != SYNC_STATE.big_SYNC {
-            AppDelegate.getAppDelegate().getGoal()
-        }
+        AppDelegate.getAppDelegate().getGoal()
         
         if let lastData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X14_COMMAND_TIMERFRAME) as? NSArray{
             if lastData.count > 0 {

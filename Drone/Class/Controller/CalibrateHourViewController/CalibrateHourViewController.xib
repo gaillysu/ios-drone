@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalibrateHourViewController" customModule="Drone" customModuleProvider="target">
+            <connections>
+                <outlet property="clockwiseButton" destination="qbo-TJ-bUF" id="r4M-l9-PSb"/>
+                <outlet property="counterClockwiseButton" destination="npr-sf-w1d" id="igM-hZ-8gV"/>
+                <outlet property="nextButton" destination="uXa-zf-dxg" id="OQk-fA-xU4"/>
+                <outlet property="view" destination="b2Y-QU-GUz" id="cnH-fa-8bt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="b2Y-QU-GUz">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Align the hour-hand at 12 o’clock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xX-Eu-how">
+                    <rect key="frame" x="66" y="35" width="243.5" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="fd3-Kp-lst"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npr-sf-w1d" customClass="CounterClockwiseButton" customModule="Drone" customModuleProvider="target">
+                    <rect key="frame" x="113" y="377" width="58" height="58"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="58" id="2PU-N2-xdP"/>
+                        <constraint firstAttribute="width" secondItem="npr-sf-w1d" secondAttribute="height" multiplier="1:1" id="Wol-3m-51t"/>
+                        <constraint firstAttribute="height" constant="58" id="oFI-y2-JVd"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" red="0.58431372550000005" green="0.59607843140000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock_hour" translatesAutoresizingMaskIntoConstraints="NO" id="0Qn-Em-V23">
+                    <rect key="frame" x="79" y="145" width="217" height="217"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="0Qn-Em-V23" secondAttribute="height" multiplier="1:1" id="GGI-hv-5lo"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXa-zf-dxg">
+                    <rect key="frame" x="84" y="479" width="207" height="39"/>
+                    <color key="backgroundColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="207" id="7p3-6c-PAA"/>
+                        <constraint firstAttribute="height" constant="39" id="ndj-cx-wgv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                    <state key="normal" title=" Next">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the buttons below to allocate the hand at the right position. Each press represents one hour." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OF0-tl-mHE">
+                    <rect key="frame" x="29.5" y="64" width="316" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="316" id="EKO-k7-dTx"/>
+                        <constraint firstAttribute="height" constant="34" id="xfP-KD-daf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbo-TJ-bUF" customClass="ClockwiseButton" customModule="Drone" customModuleProvider="target">
+                    <rect key="frame" x="204" y="377" width="58" height="58"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="qbo-TJ-bUF" secondAttribute="height" multiplier="1:1" id="5W4-Qr-6wc"/>
+                        <constraint firstAttribute="height" constant="58" id="5vG-1x-xRT"/>
+                        <constraint firstAttribute="width" constant="58" id="lDh-HS-P6e"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" red="0.58431372550000005" green="0.59607843140000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.89411764709999997" green="0.7725490196" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="1xX-Eu-how" firstAttribute="centerX" secondItem="b2Y-QU-GUz" secondAttribute="centerX" id="19I-TM-FNe"/>
+                <constraint firstItem="0Qn-Em-V23" firstAttribute="top" secondItem="OF0-tl-mHE" secondAttribute="bottom" constant="47" id="4cM-pt-Csw"/>
+                <constraint firstItem="0Qn-Em-V23" firstAttribute="leading" secondItem="b2Y-QU-GUz" secondAttribute="leading" constant="79" id="7Lh-8d-X4a"/>
+                <constraint firstItem="qbo-TJ-bUF" firstAttribute="top" secondItem="0Qn-Em-V23" secondAttribute="bottom" constant="15" id="A0S-h1-w2X"/>
+                <constraint firstItem="uXa-zf-dxg" firstAttribute="centerX" secondItem="b2Y-QU-GUz" secondAttribute="centerX" id="Ez0-av-xkY"/>
+                <constraint firstItem="OF0-tl-mHE" firstAttribute="top" secondItem="1xX-Eu-how" secondAttribute="bottom" constant="8" id="K7b-93-d7g"/>
+                <constraint firstItem="npr-sf-w1d" firstAttribute="top" secondItem="0Qn-Em-V23" secondAttribute="bottom" constant="15" id="Lyt-MT-a1x"/>
+                <constraint firstItem="qbo-TJ-bUF" firstAttribute="leading" secondItem="npr-sf-w1d" secondAttribute="trailing" constant="33" id="Mne-Zf-Nfx"/>
+                <constraint firstAttribute="trailing" secondItem="0Qn-Em-V23" secondAttribute="trailing" constant="79" id="QwQ-Nq-IKG"/>
+                <constraint firstAttribute="trailing" secondItem="qbo-TJ-bUF" secondAttribute="trailing" constant="113" id="XSe-XE-boC"/>
+                <constraint firstItem="1xX-Eu-how" firstAttribute="top" secondItem="b2Y-QU-GUz" secondAttribute="top" constant="35" id="aur-gy-fvw"/>
+                <constraint firstItem="uXa-zf-dxg" firstAttribute="top" secondItem="qbo-TJ-bUF" secondAttribute="bottom" constant="44" id="dmx-xC-kIH"/>
+                <constraint firstItem="npr-sf-w1d" firstAttribute="leading" secondItem="b2Y-QU-GUz" secondAttribute="leading" constant="113" id="gDx-9g-6hl"/>
+                <constraint firstItem="OF0-tl-mHE" firstAttribute="centerX" secondItem="b2Y-QU-GUz" secondAttribute="centerX" id="n1C-aB-jmL"/>
+                <constraint firstItem="0Qn-Em-V23" firstAttribute="centerX" secondItem="b2Y-QU-GUz" secondAttribute="centerX" id="oUv-BE-jDc"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="-417" y="69"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="clock_hour" width="360" height="361"/>
+    </resources>
+</document>

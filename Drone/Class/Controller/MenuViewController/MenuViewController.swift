@@ -38,8 +38,6 @@ class MenuViewController: BaseViewController  {
         if(UserGoal.getAll().count == 0){
             let goalModel:UserGoal = UserGoal()
             goalModel.goalSteps = 10000
-            goalModel.label = " "
-            goalModel.status = true
             _ = goalModel.add()
         }
     }
@@ -70,7 +68,6 @@ class MenuViewController: BaseViewController  {
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
             if(connectionState){
-                
                 let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
                 DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                     AppDelegate.getAppDelegate().readsystemStatus()
@@ -148,20 +145,16 @@ class MenuViewController: BaseViewController  {
                 cell.menuItem = menuItem
                 if row == 0 {
                     cell.roundCorners(corners: .topLeft, radius: 10)
-                }
-                if row == 1 {
+                } else if row == 1 {
                     cell.roundCorners(corners: .topRight, radius: 10)
-                }
-                if row == 6 {
-                    cell.roundCorners(corners: [.bottomLeft], radius: 10)
-                }
-                if row == 7 {
-                    cell.roundCorners(corners: [.bottomRight], radius: 10)
+                } else if row == 6 {
+                    cell.roundCorners(corners: .bottomLeft, radius: 10)
+                } else if row == 7 {
+                    cell.roundCorners(corners: .bottomRight, radius: 10)
                 }
             }.addDisposableTo(disposeBag)
         menuCollectionView.delegate = self
     }
-    
     
     func profileAction(){
         self.navigationController?.pushViewController(ProfileSetupViewController(), animated: true)
@@ -180,12 +173,14 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item:MenuItem = self.menuItems.value[indexPath.row]
-        
-        let navigationViewController = makeStandardUINavigationController(item.viewController())
+        let controller = item.viewController()
+        controller.navigationItem.title = item.title()
+        let navigationViewController = makeStandardUINavigationController(controller)
         if indexPath.row == 6 && UserProfile.getAll().first == nil {
                 navigationViewController.navigationBar.isHidden = true
+        } else if indexPath.row == 7 {
+            DTUserDefaults.presentMenu = false
         }
-        navigationViewController.title = item.title()
         self.present(navigationViewController, animated: true, completion: nil)
     }
     

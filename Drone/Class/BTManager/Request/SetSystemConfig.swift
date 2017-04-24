@@ -73,6 +73,14 @@ class SetSystemConfig: DroneRequest {
         systemConfig = configtype
     }
 
+    init(autoStart:TimeInterval,autoEnd:TimeInterval,configtype:SystemConfigID,autoMode:Int) {
+        super.init()
+        sleepAutoStartTime = autoStart
+        sleepAutoEndTime = autoEnd
+        systemConfig = configtype
+        mode = autoMode
+    }
+
     override func getRawDataEx() -> [Data] {
         switch systemConfig {
         case SystemConfigID.dndConfig:

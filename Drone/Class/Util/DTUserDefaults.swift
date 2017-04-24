@@ -16,6 +16,9 @@ public class DTUserDefaults: NSObject {
     private static let WORLDCLOCK_KEY = "defaults_worldclock_key"
     private static let WORLDCLOCK_SORT_KEY = "WORLDCLOCK_SORT_KEY"
     private static let SETWEATHER_KEY = "set_weather_key"
+    private static let COMPASS_KEY = "COMPASS_KEY"
+    private static let PAIR_PRESENT_KEY = "PAIR_PRESENT_KEY"
+    private static let SYNC_LOCAL_TIME_KEY = "SYNC_LOCAL_TIME_KEY"
     
     public static var setupKey:Bool {
         get{
@@ -57,6 +60,16 @@ public class DTUserDefaults: NSObject {
         }
     }
     
+    public static var compassState:Bool {
+        get{
+            return UserDefaults().bool(forKey: COMPASS_KEY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: COMPASS_KEY)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     public static var selectedCityOrder:[Int]{
         get{
             if let sorted = UserDefaults().array(forKey: WORLDCLOCK_SORT_KEY) as? [Int]{
@@ -79,8 +92,23 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: SETWEATHER_KEY)
+    public static var presentMenu:Bool {
+        get{
+            return UserDefaults().bool(forKey: PAIR_PRESENT_KEY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: PAIR_PRESENT_KEY)
             UserDefaults.standard.synchronize()
         }
     }
     
+    public static var syncLocalTime:Bool {
+        get{
+            return UserDefaults().bool(forKey: SYNC_LOCAL_TIME_KEY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: SYNC_LOCAL_TIME_KEY)
+            UserDefaults.standard.synchronize()
+        }
+    }
 }

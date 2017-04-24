@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WhichDeviceViewController" customModule="Drone" customModuleProvider="target">
             <connections>
-                <outlet property="backB" destination="LZd-6q-Zy2" id="dJT-48-U4a"/>
                 <outlet property="collectionView" destination="JcL-Pa-iUn" id="v0q-u8-n0c"/>
                 <outlet property="view" destination="iN0-l3-epB" id="iIL-IH-aLR"/>
             </connections>
@@ -20,19 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZd-6q-Zy2">
-                    <rect key="frame" x="13" y="28" width="28" height="28"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="28" id="74v-DO-eeu"/>
-                        <constraint firstAttribute="height" constant="28" id="cod-7J-OQ8"/>
-                    </constraints>
-                    <state key="normal" image="left_back_BT"/>
-                    <connections>
-                        <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="71h-3C-MvA"/>
-                    </connections>
-                </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="JcL-Pa-iUn">
-                    <rect key="frame" x="59" y="169" width="272" height="433"/>
+                    <rect key="frame" x="59" y="125" width="272" height="477"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A7p-CR-fuc">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -45,16 +34,16 @@
                     </connections>
                 </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting up your device." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="que-eS-QIk">
-                    <rect key="frame" x="81" y="83" width="224" height="33"/>
+                    <rect key="frame" x="81" y="39" width="224" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" id="M1a-x8-eDd"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
+                    <color key="textColor" red="0.44313725490196076" green="0.44313725490196076" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0L-xc-v6v">
-                    <rect key="frame" x="83" y="138" width="224" height="24"/>
+                    <rect key="frame" x="83" y="94" width="224" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="gOq-6C-hUQ"/>
                     </constraints>
@@ -63,12 +52,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have a device yet?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dz-QM-pFH">
-                    <rect key="frame" x="83" y="114" width="224" height="24"/>
+                    <rect key="frame" x="83" y="70" width="224" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="05r-d0-bTr"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0r4-Bu-kE0">
@@ -78,25 +67,22 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                     <state key="normal" title="Pair later">
-                        <color key="titleColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="pairLaterAction:" destination="-1" eventType="touchUpInside" id="oeQ-JP-feq"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.89411764705882346" green="0.77254901960784317" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="X0L-xc-v6v" firstAttribute="top" secondItem="que-eS-QIk" secondAttribute="bottom" constant="22" id="5qb-K2-gV4"/>
-                <constraint firstItem="LZd-6q-Zy2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="28" id="9Br-3h-PXg"/>
-                <constraint firstItem="5Dz-QM-pFH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="114" id="HeB-kp-4cc"/>
                 <constraint firstItem="que-eS-QIk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="81" id="N32-cW-AhW"/>
                 <constraint firstItem="JcL-Pa-iUn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="59" id="UZB-68-dNR"/>
                 <constraint firstAttribute="trailing" secondItem="X0L-xc-v6v" secondAttribute="trailing" constant="68" id="WdJ-FT-2kd"/>
                 <constraint firstItem="X0L-xc-v6v" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="83" id="bCi-Za-rlx"/>
-                <constraint firstItem="LZd-6q-Zy2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="bCl-CC-3q3"/>
                 <constraint firstItem="0r4-Bu-kE0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bcD-Bg-q4L"/>
-                <constraint firstItem="que-eS-QIk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="83" id="dYu-Xc-vzY"/>
+                <constraint firstItem="que-eS-QIk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="dYu-Xc-vzY"/>
                 <constraint firstAttribute="trailing" secondItem="que-eS-QIk" secondAttribute="trailing" constant="70" id="g6D-DO-UkH"/>
                 <constraint firstItem="JcL-Pa-iUn" firstAttribute="top" secondItem="X0L-xc-v6v" secondAttribute="bottom" constant="7" id="kRz-zU-TtG"/>
                 <constraint firstItem="X0L-xc-v6v" firstAttribute="top" secondItem="5Dz-QM-pFH" secondAttribute="bottom" id="l0N-JQ-7ZY"/>
@@ -109,7 +95,4 @@
             <point key="canvasLocation" x="373.5" y="395.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="left_back_BT" width="35" height="35"/>
-    </resources>
 </document>

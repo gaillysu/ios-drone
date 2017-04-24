@@ -1,0 +1,76 @@
+//
+//  TimeTabViewController.swift
+//  Drone
+//
+//  Created by Karl-John Chow on 20/4/2017.
+//  Copyright © 2017 Cloud. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import Font_Awesome_Swift
+import RealmSwift
+import MRProgress
+
+class TimeTabViewController: UITabBarController {
+    
+    var worldClockViewController = WorldClockViewController()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBar.backgroundColor = UIColor.white
+        tabBar.tintColor = UIColor.getBaseColor()
+        // Create Tab two
+        let worldClockTab = worldClockViewController
+        let worldClockTabItem = UITabBarItem(title: "World Clock", image: UIImage(named: "icon_world_clock_tab")!, selectedImage: UIImage(named: "icon_world_clock_tab")!)
+        worldClockTab.tabBarItem = worldClockTabItem
+        
+        let clockSettings = TimeSettingsViewController()
+        let clockSettingsTab = UITabBarItem(title: "Settings", image: UIImage(named: "icon_settings")!, selectedImage: UIImage(named: "icon_settings")!)
+        clockSettings.tabBarItem = clockSettingsTab
+        self.viewControllers = [worldClockTab, clockSettings]
+        self.navigationItem.title = "World Clock"
+        self.addCloseButton(#selector(dismissTabViewController))
+        self.addPlusButton(#selector(add))
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if selectedIndex == 1 {
+            self.addPlusButton(#selector(add))
+            self.navigationItem.title = "World Clock"
+        }else{
+            self.navigationItem.title = "Time Settings"
+            self.navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    func dismissTabViewController(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func add(){
+        var worldClockArray:[City] = []
+        try! Realm().objects(City.self).filter("selected = true").sorted(by: {
+            ($0.timezone?.getOffsetFromUTC())! < ($1.timezone?.getOffsetFromUTC())!
+        }).forEach({
+            worldClockArray.append($0)
+        })
+        
+        if worldClockArray.count >= 5 {
+            let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+//        if AppDelegate.getAppDelegate().isConnected() {
+            self.present(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
+//        }else{
+//            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
+//            view?.setTintColor(UIColor.getBaseColor())
+//            Timer.after(0.6.second) {
+//                view?.dismiss(true)
+//            }
+//        }
+        
+    }
+}

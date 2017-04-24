@@ -53,11 +53,11 @@ class WelcomeViewController: BaseViewController {
     }
 
     override func viewDidLayoutSubviews() {
-        let imageName:[String] = ["welcome_1","welcome_2","welcome_3","welcome_4","welcome_5"]
+        let imageName:[String] = ["welcome_1","welcome_2","welcome_3","welcome_4","welcome_5","welcome_6"]
         
         var imageResources:[UIImage] = []
         for name in imageName {
-            let imagePath:String = Bundle.main.path(forResource: name, ofType: "jpg")!
+            let imagePath:String = Bundle.main.path(forResource: name, ofType: "png")!
             if let imageValue = UIImage(contentsOfFile: imagePath) {
                 imageResources.append(imageValue)
             }
@@ -92,16 +92,21 @@ class WelcomeViewController: BaseViewController {
         if fromMenu {
             self.dismiss(animated: true, completion: nil)
         }else{
-            self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+            if UserDevice.getAll().isEmpty {
+                self.present(makeStandardUINavigationController(WhichDeviceViewController(toMenu: false)), animated: true, completion: nil)
+            }else{
+                self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+            }
         }
         
     }
     @IBAction func buttonActionManager(_ sender: AnyObject) {
         if loginB.isEqual(sender) {
-            let logoin:LoginViewController = LoginViewController()
-            self.navigationController?.pushViewController(logoin, animated: true)
+            let login:LoginViewController = LoginViewController()
+            self.navigationController?.pushViewController(login, animated: true)
+            DTUserDefaults.presentMenu = true
         }
-
+        
         if registB.isEqual(sender) {
             let register:RegisterViewController = RegisterViewController()
             self.navigationController?.pushViewController(register, animated: true)

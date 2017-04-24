@@ -78,7 +78,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
                  AppDelegate.getAppDelegate().disconnect()
                 //Records need to use 0x30
                 let resetModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)
-                _ = AppTheme.KeyedArchiverName(RESET_STATE, andObject: resetModel)
+                _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: resetModel)
                 
                 if self.navigationController == nil {
                     self.dismiss(animated: true, completion: nil)

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalibrateMinuteViewController" customModule="Drone" customModuleProvider="target">
+            <connections>
+                <outlet property="clockwiseButton" destination="g3y-uZ-G2g" id="SkZ-CW-DI9"/>
+                <outlet property="counterClockwiseButton" destination="rqZ-6b-pB9" id="Quv-Qe-Cao"/>
+                <outlet property="nextButton" destination="V9W-Ll-TAF" id="wGA-cj-ZUf"/>
+                <outlet property="view" destination="gTt-mS-pHs" id="2FU-qB-y6k"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="gTt-mS-pHs">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Align the minutes-hand at 12 o’clock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QD-ZP-DKf">
+                    <rect key="frame" x="53" y="35" width="269" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="qOI-2Z-5nC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqZ-6b-pB9" customClass="CounterClockwiseButton" customModule="Drone" customModuleProvider="target">
+                    <rect key="frame" x="113" y="377" width="58" height="58"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="rqZ-6b-pB9" secondAttribute="height" multiplier="1:1" id="306-8D-XyE"/>
+                        <constraint firstAttribute="height" constant="58" id="Fc9-aK-u1f"/>
+                        <constraint firstAttribute="width" constant="58" id="W05-Dw-PsW"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" red="0.58431372549019611" green="0.59607843137254901" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock_minute" translatesAutoresizingMaskIntoConstraints="NO" id="Brv-X2-0Ro">
+                    <rect key="frame" x="79" y="145" width="217" height="217"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Brv-X2-0Ro" secondAttribute="height" multiplier="1:1" id="O8R-Sm-M8A"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9W-Ll-TAF">
+                    <rect key="frame" x="84" y="479" width="207" height="39"/>
+                    <color key="backgroundColor" red="0.75294117647058822" green="0.56862745098039214" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="KrU-uj-wTq"/>
+                        <constraint firstAttribute="width" constant="207" id="lz0-SR-cKr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                    <state key="normal" title="Next">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the buttons below to allocate the hand at the right position. Each press represents one minute." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcO-gn-Euc">
+                    <rect key="frame" x="29.5" y="64" width="316" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="Eb4-GI-tHN"/>
+                        <constraint firstAttribute="width" constant="316" id="vaf-cJ-XSK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3y-uZ-G2g" customClass="ClockwiseButton" customModule="Drone" customModuleProvider="target">
+                    <rect key="frame" x="204" y="377" width="58" height="58"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="58" id="ha6-IZ-uj4"/>
+                        <constraint firstAttribute="height" constant="58" id="iGu-Z0-4M3"/>
+                        <constraint firstAttribute="width" secondItem="g3y-uZ-G2g" secondAttribute="height" multiplier="1:1" id="sFY-wa-dgF"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" red="0.58431372549019611" green="0.59607843137254901" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.89411764709999997" green="0.7725490196" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mcO-gn-Euc" firstAttribute="top" secondItem="1QD-ZP-DKf" secondAttribute="bottom" constant="8" id="2d0-MF-7nT"/>
+                <constraint firstItem="1QD-ZP-DKf" firstAttribute="top" secondItem="gTt-mS-pHs" secondAttribute="top" constant="35" id="34J-Bs-VMb"/>
+                <constraint firstItem="rqZ-6b-pB9" firstAttribute="top" secondItem="Brv-X2-0Ro" secondAttribute="bottom" constant="15" id="49V-cf-rrU"/>
+                <constraint firstAttribute="trailing" secondItem="g3y-uZ-G2g" secondAttribute="trailing" constant="113" id="60t-KX-2IF"/>
+                <constraint firstItem="Brv-X2-0Ro" firstAttribute="centerX" secondItem="gTt-mS-pHs" secondAttribute="centerX" id="75j-A7-XfP"/>
+                <constraint firstItem="V9W-Ll-TAF" firstAttribute="top" secondItem="g3y-uZ-G2g" secondAttribute="bottom" constant="44" id="Fa2-qo-9Rw"/>
+                <constraint firstItem="g3y-uZ-G2g" firstAttribute="leading" secondItem="rqZ-6b-pB9" secondAttribute="trailing" constant="33" id="Pfk-qk-Myq"/>
+                <constraint firstItem="g3y-uZ-G2g" firstAttribute="top" secondItem="Brv-X2-0Ro" secondAttribute="bottom" constant="15" id="Uhr-MN-dzq"/>
+                <constraint firstItem="Brv-X2-0Ro" firstAttribute="top" secondItem="mcO-gn-Euc" secondAttribute="bottom" constant="47" id="YUc-dd-WLe"/>
+                <constraint firstItem="V9W-Ll-TAF" firstAttribute="centerX" secondItem="gTt-mS-pHs" secondAttribute="centerX" id="ZGV-rK-6El"/>
+                <constraint firstItem="mcO-gn-Euc" firstAttribute="centerX" secondItem="gTt-mS-pHs" secondAttribute="centerX" id="iYR-H3-axb"/>
+                <constraint firstItem="1QD-ZP-DKf" firstAttribute="centerX" secondItem="gTt-mS-pHs" secondAttribute="centerX" id="olE-aC-QuR"/>
+                <constraint firstAttribute="trailing" secondItem="Brv-X2-0Ro" secondAttribute="trailing" constant="79" id="tAD-a8-PPB"/>
+                <constraint firstItem="Brv-X2-0Ro" firstAttribute="leading" secondItem="gTt-mS-pHs" secondAttribute="leading" constant="79" id="weF-TV-GOm"/>
+                <constraint firstItem="rqZ-6b-pB9" firstAttribute="leading" secondItem="gTt-mS-pHs" secondAttribute="leading" constant="113" id="whk-NL-wGC"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="-143" y="65"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="clock_minute" width="360" height="361"/>
+    </resources>
+</document>

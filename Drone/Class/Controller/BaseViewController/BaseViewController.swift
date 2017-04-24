@@ -58,6 +58,10 @@ class BaseViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = self.createBarButtonItem(withAction: action, withImage: UIImage(named: "closebutton")!);
     }
     
+    func getAppDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
     fileprivate func createBarButtonItem(withAction action:Selector, withImage image:UIImage) -> UIBarButtonItem{
         let button: UIButton = UIButton(type: UIButtonType.custom)
         button.setImage(image, for: UIControlState())
@@ -66,8 +70,30 @@ class BaseViewController: UIViewController {
         return UIBarButtonItem(customView: button)
     }
     
-    func getAppDelegate() -> AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
+    func makeStandardUINavigationController(_ rootViewController:UIViewController) -> UINavigationController{
+        let navigationController:UINavigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
+        navigationController.navigationBar.tintColor = UIColor.white
+        
+        navigationController.navigationBar.isHidden = false
+        navigationController.navigationItem.setHidesBackButton(false, animated: true)
+        return navigationController
     }
+}
+
+class BaseViewController: UIViewController {
+    override func viewDidLoad() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+        if((UIDevice.current.systemVersion as NSString).floatValue>7.0){
+            self.edgesForExtendedLayout = UIRectEdge();
+            self.extendedLayoutIncludesOpaqueBars = false;
+            self.modalPresentationCapturesStatusBarAppearance = false;
+        }
+    }
+ 
+    
     
 }
