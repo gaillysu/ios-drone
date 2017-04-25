@@ -17,10 +17,10 @@ class DataBaseManager: NSObject {
     fileprivate override init() {
         super.init()
         
-        copyBundleRealmToDocumentFolder()
-        
         updateRelam()
         
+        copyBundleRealmToDocumentFolder()
+
         if Compass.getAll().isEmpty {
             let compass = Compass()
             compass.activeTime = 15
@@ -66,8 +66,8 @@ class DataBaseManager: NSObject {
             print("Migrated objects in the default Realm: \(try! Realm().objects(City.self))")
             
         }else{
-            DispatchQueue.global(qos: .background).async {
-                //WorldClockDatabaseHelper().setup()
+            DispatchQueue.global(qos: .default).async {
+                WorldClockDatabaseHelper().setup()
             }
         }
     }

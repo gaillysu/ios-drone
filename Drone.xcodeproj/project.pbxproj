@@ -40,6 +40,7 @@
 		6139290B1EADABEB00450284 /* welcome_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929051EADABEB00450284 /* welcome_5.png */; };
 		6139290C1EADABEB00450284 /* welcome_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929061EADABEB00450284 /* welcome_6.png */; };
 		6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6139290D1EADDD3900450284 /* BaseViewController.swift */; };
+		613929121EAEE92600450284 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 613929111EAEE92600450284 /* default.realm */; };
 		618322FE1EA0A2B90054966D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
 		618323081EA459F00054966D /* AutocompleteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323071EA459F00054966D /* AutocompleteField.swift */; };
 		6183230E1EA4609C0054966D /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230A1EA4609C0054966D /* SMSegment.swift */; };
@@ -213,7 +214,6 @@
 		61C28CA91EA75A620019F574 /* PostWatchVersionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */; };
 		61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */; };
 		61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */; };
-		61C28CB01EA76C680019F574 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 61C28CAF1EA76C680019F574 /* default.realm */; };
 		61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CB11EA83FFB0019F574 /* URL+Extension.swift */; };
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
@@ -307,6 +307,7 @@
 		613929051EADABEB00450284 /* welcome_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_5.png; sourceTree = "<group>"; };
 		613929061EADABEB00450284 /* welcome_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_6.png; sourceTree = "<group>"; };
 		6139290D1EADDD3900450284 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		613929111EAEE92600450284 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		618322FD1EA0A2B90054966D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618323071EA459F00054966D /* AutocompleteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteField.swift; sourceTree = "<group>"; };
 		6183230A1EA4609C0054966D /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
@@ -480,7 +481,6 @@
 		61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostWatchVersionData.swift; sourceTree = "<group>"; };
 		61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendStepsToWatchCache.swift; sourceTree = "<group>"; };
 		61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncLastDataCache.swift; sourceTree = "<group>"; };
-		61C28CAF1EA76C680019F574 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		61C28CB11EA83FFB0019F574 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
@@ -1278,7 +1278,7 @@
 		61C28CAE1EA76C680019F574 /* DefaultRealm */ = {
 			isa = PBXGroup;
 			children = (
-				61C28CAF1EA76C680019F574 /* default.realm */,
+				613929111EAEE92600450284 /* default.realm */,
 			);
 			path = DefaultRealm;
 			sourceTree = "<group>";
@@ -1615,9 +1615,9 @@
 				61C28BEE1EA46F810019F574 /* SearchCityController.xib in Resources */,
 				61C28C9A1EA6FDBA0019F574 /* background_steps.png in Resources */,
 				61C28C021EA46F810019F574 /* MyDeviceViewController.xib in Resources */,
-				61C28CB01EA76C680019F574 /* default.realm in Resources */,
 				61C28C0E1EA46F810019F574 /* ProfileViewController.xib in Resources */,
 				61C28BF01EA46F810019F574 /* ConnectionSetupViewController.xib in Resources */,
+				613929121EAEE92600450284 /* default.realm in Resources */,
 				61C28C1A1EA46F810019F574 /* WorldClockCell.xib in Resources */,
 				CB9F652D1EA70CA9007982B0 /* CalibrateHourViewController.xib in Resources */,
 				6139290C1EADABEB00450284 /* welcome_6.png in Resources */,
