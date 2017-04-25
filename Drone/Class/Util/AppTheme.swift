@@ -9,10 +9,11 @@
 import Foundation
 import AudioToolbox
 
-/**
-This class holds all app-wide constants.
-Colors, fonts etc...
-*/
+enum ActionType {
+    case get
+    case set
+}
+
 class AppTheme {
 
     /**
@@ -184,4 +185,20 @@ class AppTheme {
         }
     }
 
+    class func realmISFirstCopy(findKey:ActionType)->Bool {
+        if findKey == .get {
+            if let value = UserDefaults.standard.object(forKey: "ISFirstCopy") {
+                let index:Bool = value as! Bool
+                return index
+            }else{
+                return false
+            }
+        }
+        
+        if findKey == .set {
+            UserDefaults.standard.set(true, forKey: "ISFirstCopy")
+            return true
+        }
+        return false
+    }
 }

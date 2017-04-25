@@ -44,7 +44,7 @@ class MyDeviceViewController: BaseViewController {
         }
         viewControllers.removeAll()
         
-        let deviceArray = UserDevice.getAll()
+        let deviceArray = DataBaseManager.manager.getAllDevice()
         for _ in deviceArray {
             let viewController = DeviceViewController()
             viewController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.devicesView.frame.size.height)

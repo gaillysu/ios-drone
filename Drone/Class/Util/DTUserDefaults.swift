@@ -12,10 +12,12 @@ public class DTUserDefaults: NSObject {
     
     private static let SETUP_KEY = "SETUP_KEY"
     private static let SET_RTC_DATE = "SET_RTC"
-    private static let SEND_LOCAL_MESSAGE_KEY = "IsSendLocalMsg"
-    private static let WORLDCLOCK_KEY = "defaults_worldclock_key"
+    private static let SEND_LOCAL_MESSAGE_KEY = "ISSENDLOCALMSG"
+    private static let WORLDCLOCK_KEY = "DEFAULTS_WORLDCLOCK_KEY"
     private static let WORLDCLOCK_SORT_KEY = "WORLDCLOCK_SORT_KEY"
     private static let HOME_CITY_ID_KEY = "HOME_CITY_ID_KEY"
+    private static let SETWEATHER_KEY = "SET_WEATHER_KEY"
+    
     private static let COMPASS_KEY = "COMPASS_KEY"
     private static let PAIR_PRESENT_KEY = "PAIR_PRESENT_KEY"
     private static let SYNC_LOCAL_TIME_KEY = "SYNC_LOCAL_TIME_KEY"
@@ -86,7 +88,6 @@ public class DTUserDefaults: NSObject {
         }
     }
     
-    
     public static var syncLocalTime:Bool {
         get{
             return UserDefaults().bool(forKey: SYNC_LOCAL_TIME_KEY)
@@ -94,6 +95,18 @@ public class DTUserDefaults: NSObject {
         set{
             UserDefaults().set(newValue, forKey: SYNC_LOCAL_TIME_KEY)
             UserDefaults.standard.synchronize()
+        }
+    }
+    
+    public static var syncWeatherDate:Date {
+        get{
+            if let sorted = UserDefaults().object(forKey: SETWEATHER_KEY){
+                return sorted as! Date
+            }
+            return Date()
+        }
+        set{
+            UserDefaults().set(newValue, forKey: SETWEATHER_KEY)
         }
     }
     

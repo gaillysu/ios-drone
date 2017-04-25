@@ -48,7 +48,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
     }
 
     func save(){
-        if AppDelegate.getAppDelegate().network!.isReachable {
+        if NetworkManager.manager.getNetworkState() {
             if !AppDelegate.getAppDelegate().isConnected() {
                 let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
                 view?.setTintColor(UIColor.getBaseColor())

@@ -53,6 +53,8 @@
 	<string>The health share usage is used to add the data into health and share it. This data is collected by the smart product.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>The heatl update usage is to update the stored health data which is collected by the smart product.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Drone needs your location to set the weather. </string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

@@ -21,12 +21,13 @@ let IS_SEND_0X14_COMMAND_TIMERFRAME:String = "IS_SEND_0X14_COMMAND_TIMERFRAME"
 private let CALENDAR_VIEW_TAG = 1800
 class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
-    @IBOutlet var mainview: UIView!
+    @IBOutlet weak var mainview: UIView!
     @IBOutlet weak var circleProgressView: CircleProgressView!
     @IBOutlet weak var lastMiles: UILabel!
     @IBOutlet weak var lastCalories: UILabel!
     @IBOutlet weak var lastActiveTime: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     @IBOutlet weak var barChart: StepsBarChartView!
     @IBOutlet weak var percentageLabel: UILabel!
@@ -77,6 +78,12 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let imagePath:String = Bundle.main.path(forResource: "background_steps", ofType: "png")!
+        if let imageValue = UIImage(contentsOfFile: imagePath) {
+            backgroundImage.image = imageValue
+        }
+        
         self.initTitleView()
         
         percentageLabel.text = String(format:"Goal: %d",(goal.goalSteps))
@@ -141,9 +148,12 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate.beginningOfDay == Date().beginningOfDay {
                 let rawGoalPacket:StepsGoalPacket = notification.object as! StepsGoalPacket
-                let saveData:[String:Any] = ["dailySteps":rawGoalPacket.getDailySteps(),"goal":rawGoalPacket.getGoal(),"date":Date()]
-                _ = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: saveData)
-                self.getLoclSmallSyncData(saveData)
+                let lastCache:SyncLastDataCache = SyncLastDataCache()
+                lastCache.steps = rawGoalPacket.getDailySteps()
+                lastCache.date = Date().timeIntervalSince1970
+                lastCache.goal = rawGoalPacket.getGoal()
+                _ = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: lastCache)
+                self.getLoclSmallSyncData(lastCache)
             }
         }
         
@@ -162,11 +172,14 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         }
         
         if let unwrappedData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND){
-            let lastData:[String:Any] = unwrappedData as! [String:Any]
-            let date:Date = lastData["date"] as! Date
-            if date == Date().beginningOfDay {
-                AppDelegate.getAppDelegate().setStepsToWatch()
+            if unwrappedData is SendStepsToWatchCache {
+                let cacheSendSteps:SendStepsToWatchCache = unwrappedData as! SendStepsToWatchCache
+                let date:Date = Date(timeIntervalSince1970: cacheSendSteps.date)
+                if date == Date().beginningOfDay {
+                    AppDelegate.getAppDelegate().setStepsToWatch()
+                }
             }
+            
         }
         
         self.fireSmallSyncTimer()
@@ -209,32 +222,36 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         }
     }
     
-    func getLoclSmallSyncData(_ data:[String:Any]?){
+    func getLoclSmallSyncData(_ data:SyncLastDataCache?){
         if let unpackeddata  = AppTheme.LoadKeyedArchiverName(SMALL_SYNC_LASTDATA){
-            let stepsDict:[String:Any] = unpackeddata as! [String:Any]
-            let smallDate = stepsDict["date"] as! Date
-            let dailySteps:String = String(format: "%d", stepsDict["dailySteps"] as! Int)
-            let stepsGoal:String = String(format: "%d", stepsDict["goal"] as! Int)
-            lastSyncedSteps = dailySteps.toInt()
-            if smallDate.beginningOfDay == Date().beginningOfDay {
-                if let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) {
-                    let data:[String:Any] = last0X30Data as! [String:Any]
-                    let date:Date = data["date"] as! Date
-                    if date.beginningOfDay == Date().beginningOfDay {
-                        DispatchQueue.main.async(execute: {
-                            // do something
-                            let steps:String =  String(format: "%@", data["steps"] as! Int)
-                            let daySteps:Int = steps.toInt() + dailySteps.toInt()
-                            self.setCircleProgress(daySteps, goalValue: stepsGoal.toInt())
-                        })
-                        
+            if unpackeddata is SyncLastDataCache {
+                let lastData:SyncLastDataCache = unpackeddata as! SyncLastDataCache
+                let smallDate = Date(timeIntervalSince1970: lastData.date)
+                let dailySteps:Int = lastData.steps
+                let stepsGoal:Int = lastData.goal
+                
+                if smallDate.beginningOfDay == Date().beginningOfDay {
+                    if let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) {
+                        if last0X30Data is SendStepsToWatchCache {
+                            let cacheSendSteps:SendStepsToWatchCache = last0X30Data as! SendStepsToWatchCache
+                            let date:Date = Date(timeIntervalSince1970: cacheSendSteps.date)
+                            if date.beginningOfDay == Date().beginningOfDay {
+                                DispatchQueue.main.async(execute: {
+                                    // do something
+                                    let daySteps:Int = cacheSendSteps.steps + dailySteps
+                                    self.setCircleProgress(daySteps, goalValue: stepsGoal)
+                                })
+                                
+                            }else{
+                                self.setCircleProgress(dailySteps , goalValue: stepsGoal)
+                            }
+                        }
                     }else{
-                        self.setCircleProgress(dailySteps.toInt() , goalValue: stepsGoal.toInt())
+                        self.setCircleProgress(dailySteps, goalValue: stepsGoal)
                     }
-                }else{
-                    self.setCircleProgress(dailySteps.toInt(), goalValue: stepsGoal.toInt())
                 }
             }
+            
         }
     }
 }

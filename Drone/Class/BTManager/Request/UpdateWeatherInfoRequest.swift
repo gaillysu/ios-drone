@@ -28,11 +28,12 @@ class UpdateWeatherInfoRequest: DroneRequest {
             
             let weatherModel:WeatherUpdateModel = weather
             let id:UInt8 = weatherModel.getWeatherUpdateInfo().id
-            let temperature:UInt8 = weatherModel.getWeatherUpdateInfo().temperature
+            let temperature:Int = weatherModel.getWeatherUpdateInfo().temperature
             let statusIcon:UInt8 = weatherModel.getWeatherUpdateInfo().icon.rawValue
             
             values.append(id)
-            values.append(temperature)
+            values.append(UInt8(temperature&0xFF))
+            values.append(UInt8(temperature>>8&0xFF))
             values.append(statusIcon)
         }
         return Constants.splitPacketConverter(data: values)

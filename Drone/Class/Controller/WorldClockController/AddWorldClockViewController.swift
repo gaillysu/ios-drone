@@ -104,7 +104,7 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true);
-        addCity(cities[self.indexes[(indexPath as NSIndexPath).section]]![(indexPath as NSIndexPath).row])
+        addCity(cities[self.indexes[indexPath.section]]![indexPath.row])
     }
     
     // MARK: - UITableViewDataSource
@@ -175,6 +175,7 @@ extension AddWorldClockViewController:DidSelectedDelegate {
                 }
             })
             AppDelegate.getAppDelegate().setWorldClock(Array(selectedCities))
+            AppDelegate.getAppDelegate().setWeather()
             self.searchController?.isActive = false
             dismiss(animated: true, completion: nil)
         } else{

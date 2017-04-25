@@ -56,7 +56,7 @@ class MenuViewController: BaseViewController  {
         menuCollectionView.register(UINib(nibName: "MenuViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: identifier)
         menuCollectionView.clipsToBounds = true
         AppDelegate.getAppDelegate().startConnect()
-        if AppDelegate.getAppDelegate().network!.isReachable {
+        if NetworkManager.manager.getNetworkState() {
             StepsManager.sharedInstance.syncLastSevenDaysData()
         }
         
@@ -86,15 +86,15 @@ class MenuViewController: BaseViewController  {
                 dayDateArray.append(date)
             }
             
-            if AppDelegate.getAppDelegate().network!.isReachable {
+            if NetworkManager.manager.getNetworkState() {
                 StepsManager.sharedInstance.syncServiceDayData(dayDateArray)
             }
         }
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
-            let data = notification.object as! (timerInterval:Int,dailySteps:Int)
-            let steps:Int = data.dailySteps
-            let timerInterval:Int = data.timerInterval
+            let data:PostActivityData = notification.object as! PostActivityData
+            let steps:Int = data.step
+            let timerInterval:Int = data.stepsDate
             if (steps != 0) {
                 let stepsArray = UserSteps.getFilter("date == \(timerInterval)")
                 if(stepsArray.count>0) {

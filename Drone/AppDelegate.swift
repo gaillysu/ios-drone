@@ -17,6 +17,7 @@ import IQKeyboardManagerSwift
 import RealmSwift
 import SwiftyJSON
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
    
@@ -30,12 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    fileprivate var masterCockroaches:[UUID:Int] = [:]
    
    fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
-   fileprivate var realm:Realm?
-   
-   let network = NetworkReachabilityManager(host: "https://drone.dayton.med-corp.net")
+
    static let RESET_STATE = "RESET_STATE"
    static let RESET_STATE_DATE = "RESET_STATE_DATE"
-   
    let SETUP_KEY = "SETUP_KEY"
 
    
@@ -46,22 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       Fabric.with([Crashlytics.self])
       
-      self.setUpRealm()
-      
+      _ = DataBaseManager.manager
+      _ = NetworkManager.manager
+    
       let sanbos:SandboxManager = SandboxManager()
       let _ = sanbos.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
       
-      DispatchQueue.global(qos: .background).async {
-         WorldClockDatabaseHelper().setup()
-      }
       
       mConnectionController = ConnectionControllerImpl()
       mConnectionController?.setDelegate(self)
       
-      network?.listener = { status in
-         debugPrint("Network Status Changed: \(status)")
-      }
-      network?.startListening()
       
       IQKeyboardManager.sharedManager().enable = true
       
@@ -77,23 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    func applicationDidEnterBackground(_ application: UIApplication) {
       UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
-      
-   }
-   
-   func setUpRealm() {
-      var config = Realm.Configuration(
-         schemaVersion: 4,
-         migrationBlock: { migration, oldSchemaVersion in
-            
-      })
-      config.deleteRealmIfMigrationNeeded = true
-      Realm.Configuration.defaultConfiguration = config
-      realm = try! Realm()
-      if Compass.getAll().isEmpty {
-         let compass = Compass()
-         compass.activeTime = 15
-         _ = compass.add()
-      }
+
    }
    
    // MARK: - ConnectionControllerDelegate
@@ -117,10 +93,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                self.setSystemConfig()
                
                //Records need to use 0x30
-               _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: [AppDelegate.RESET_STATE:true, AppDelegate.RESET_STATE_DATE:Date().timeIntervalSince1970])
+               let cacheModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)
+               _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
                
-            }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
-               setGoal(nil)
             }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                self.getActivity()
             }else if(systemStatus != SystemStatus.lowMemory.rawValue && systemStatus != SystemStatus.subscribedToNotifications.rawValue) {
@@ -129,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                      DTUserDefaults.rtcDate = Date()
                      self.watchConfig()
                   }
-               } else {
+               }else{
                   DTUserDefaults.rtcDate = Date()
                   self.watchConfig()
                }
@@ -158,67 +133,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
          }
          
+         if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
+            let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
+            SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
+         }
+         
          if(packet.getHeader() == SetSystemConfig.HEADER()) {
             self.watchConfig()
          }
          
          if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
             //Set steps to watch response
-            _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: [AppDelegate.RESET_STATE:false, AppDelegate.RESET_STATE_DATE:Date()] as AnyObject)
+            let cacheModel:ResetCacheModel = ResetCacheModel(reState: false, date: Date().timeIntervalSince1970)
+            _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
          }
          if(packet.getHeader() == GetBatteryRequest.HEADER()) {
             let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
-            let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
-            SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:(batteryStatus as AnyObject))
+            let batteryStatus:Int = Int(data[2])
+            let percent:Int = Int(data[3])
+            let postBattery:PostBatteryStatus = PostBatteryStatus(state: batteryStatus, percent: percent)
+            SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:postBattery)
          }
          
          if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
             let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
-            SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
-         }
-         
-         if (packet.getHeader() == SetNotificationRequest.HEADER()) {
-            debugPrint("Set Notification response")
-         }
-         
-         if (packet.getHeader() == UpdateNotificationRequest.HEADER()) {
-            debugPrint("Update notification response")
-         }
-         
-         if(packet.getHeader() == UpdateContactsFilterRequest.HEADER()) {
-            debugPrint("Update contacts filter response")
-         }
-         
-         if(packet.getHeader() == UpdateContactsApplicationsRequest.HEADER()) {
-            debugPrint("Update contacts applications response")
-         }
-         
-         if(packet.getHeader() == SetContactsFilterRequest.HEADER()) {
-            debugPrint("Set contacts filter response")
+            SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket))
+            
+            /**
+             sync every hour weather data
+             */
+            if DTUserDefaults.syncWeatherDate.timeIntervalSince1970-Date().timeIntervalSince1970 > 3600 {
+               setWeather()
+            }
          }
          
          if(packet.getHeader() == GetActivityRequest.HEADER()) {
-            //let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
             let syncStatus:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
-            var timerInterval:Int = Int(syncStatus[2])
-            timerInterval =  timerInterval + Int(syncStatus[3])<<8
-            timerInterval =  timerInterval + Int(syncStatus[4])<<16
-            timerInterval =  timerInterval + Int(syncStatus[5])<<24
-            
-            var stepCount:Int = Int(syncStatus[6])
-            stepCount =  stepCount + Int(syncStatus[7])<<8
-            
             let status:Int = Int(syncStatus[8])
-            
-            debugPrint("dailySteps:\(stepCount),dailyStepsDate:\(timerInterval),status:\(status)")
-            let bigData = (time:timerInterval,dailySteps:stepCount)
-            SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:(bigData as AnyObject))
+            let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
+            let postData:PostActivityData = PostActivityData(steps: activityPacket.getStepCount(), date: activityPacket.gettimerInterval(), state: status)
+            SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:postData)
             
             //Download more data
             if(status == ActivityDataStatus.moreData.rawValue) {
                self.getActivity()
             }else{
                SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
+
             }
          }
          
@@ -236,20 +197,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             self.readsystemStatus()
          })
          
-         let userDevice = UserDevice.getFilter(String(format: "identifiers = '%@'", fromAddress))
-         if userDevice.count == 0 {
-            let device:UserDevice = UserDevice()
-            device.id = Int(Date().timeIntervalSince1970)
-            device.device_name = "Drone"
-            device.identifiers = fromAddress
-            device.connectionTimer = Date().timeIntervalSince1970
-            _ = device.add()
-         }else{
-            let device:UserDevice = userDevice.first as! UserDevice
-            try! realm!.write {
-               device.connectionTimer = Date().timeIntervalSince1970
-            }
-         }
+         DataBaseManager.manager.addOrUpdateDevice(fromAddress: fromAddress)
          
       }else{
          SyncQueue.sharedInstance.clear()
@@ -259,13 +207,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString) {
       let mcuver = AppTheme.GET_SOFTWARE_VERSION()
       let blever = AppTheme.GET_FIRMWARE_VERSION()
-      
+
       NSLog("Build in software version: \(mcuver), firmware version: \(blever)")
-      var versionData = ["MCU":version]
       if whichfirmware == DfuFirmwareTypes.application {
-         versionData = ["BLE":version]
+         let versionData:PostWatchVersionData = PostWatchVersionData(version: version as String, type: "BLE")
+         SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:versionData)
       }
-      SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:versionData as AnyObject)
    }
    
    /**
@@ -283,30 +230,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
 extension AppDelegate{
    func watchConfig() {
-      debugPrint("setp2 0x03")
       //setp2:start set RTC
       self.setRTC(force: true)
       //setp3:start set AppConfig
-      debugPrint("setp3 0x04")
       self.setAppConfig()
       //step4: start set user profile
-      debugPrint("setp4 0x31")
       self.setUserProfile()
       //step5: start set user default goal
-      debugPrint("setp5 0x12")
       self.setGoal(nil)
-      
-      debugPrint("setp6 0x06")
+
       self.isSaveWorldClock()
-      
-      debugPrint("setp7 0x0A")
+
       self.setNotification()
-      
-      debugPrint("setp8 0x0B")
+
       self.updateNotification()
-      
-      debugPrint("setp9 0x30")
+
       self.setStepsToWatch()
+      
+      setWeather()
    }
    
    func setNotification() {
@@ -319,14 +260,16 @@ extension AppDelegate{
    }
    
    func updateNotification() {
-      let notifications = realm?.objects(DroneNotification.self)
-      for notification in notifications!{
+      let realm = try! Realm()
+      let notifications = realm.objects(DroneNotification.self)
+      for notification in notifications {
          let updateRequest = UpdateNotificationRequest(operation: notification.state ? 1 : 2, package: notification.bundleIdentifier)
          AppDelegate.getAppDelegate().sendRequest(updateRequest)
       }
    }
    
    func isSaveWorldClock() {
-      setWorldClock(Array(realm!.objects(City.self).filter("selected = true")))
+      let realm = try! Realm()
+      setWorldClock(Array(realm.objects(City.self).filter("selected = true")))
    }
 }

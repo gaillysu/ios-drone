@@ -47,10 +47,8 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         if offsetMinutes! > 0 {
             localTimeOffsetToGmt += 0.5
         }
-        let calendar = Calendar.current
-        let components = (calendar as NSCalendar).components([ .hour, .minute, .second], from: date)
-        time.hour = components.hour!
-        time.minute = components.minute!
+        time.hour = Calendar.current.component(.hour, from: date)
+        time.minute = Calendar.current.component(.minute, from: date)
         super.init(nibName: "WorldClockViewController", bundle: Bundle.main)
     }
     
@@ -137,9 +135,9 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         cell.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: cell.frame.height)
         if (indexPath.row == 0 && indexPath.section == 0){
             let now = Date()
-            let timeZoneNameData = DateFormatter().timeZone.identifier.characters.split{$0 == "/"}.map(String.init)
-            if timeZoneNameData.count >= 2 {
-                cell.cityLabel.text = timeZoneNameData[1].replacingOccurrences(of: "_", with: " ")
+            let timeZoneNameData = DateFormatter.localCityName()
+            if timeZoneNameData.isEmpty {
+                cell.cityLabel.text = timeZoneNameData
             }
             cell.timeDescription.text = "Now"
             var minuteString:String = String(now.minute)
@@ -255,6 +253,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
                 }
             })
         }
+
         if reload {
             self.tableView.reloadData()
         }

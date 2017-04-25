@@ -30,17 +30,17 @@ class WeatherUpdateModel: NSObject {
     static let MAXENTRY:Int = 6;
     
     fileprivate var identification :UInt8 = 0
-    fileprivate var temperature:UInt8 = 0;
+    fileprivate var temperature:Int = 0;
     fileprivate var weatherIcon:WeatherStatusIcon = WeatherStatusIcon.invalidData;
     
-    init(id:Int,temp:UInt8,statusIcon:WeatherStatusIcon) {
+    init(id:UInt8,temp:Int,statusIcon:WeatherStatusIcon) {
         super.init()
         identification = UInt8(id)
         temperature = temp
         weatherIcon = statusIcon
     }
     
-    func getWeatherUpdateInfo() -> (id:UInt8,temperature:UInt8,icon:WeatherStatusIcon) {
+    func getWeatherUpdateInfo() -> (id:UInt8,temperature:Int,icon:WeatherStatusIcon) {
         return (identification,temperature,weatherIcon)
     }
 }

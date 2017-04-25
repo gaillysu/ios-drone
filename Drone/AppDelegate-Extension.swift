@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CoreLocation
 import SwiftEventBus
 import SwiftyJSON
 
@@ -20,18 +20,18 @@ extension AppDelegate {
     }
     
     func setSystemConfig() {
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .clockFormat))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .enabled))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .sleepConfig))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .topKeyCustomization))
+        sendRequest(SetSystemConfig(configtype: SystemConfigID.enabled, isAvailable: .enabled))
+        sendRequest(SetSystemConfig(configtype: SystemConfigID.clockFormat, format: .format24h))
+        sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig, mode: .auto))
+        sendRequest(SetSystemConfig(configtype: SystemConfigID.topKeyCustomization, isAvailable: .enabled))
         setAnalogTime()
     }
     
     func setCompassAutoMinutes(){
         if let obj = Compass.getAll().first, let compass = obj as? Compass{
-            sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:compass.activeTime))
+            sendRequest(SetSystemConfig(configtype: SystemConfigID.compassAutoOnDuration, autoOnDuration: compass.activeTime))
         }else{
-            sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:1))
+            sendRequest(SetSystemConfig(configtype: SystemConfigID.compassAutoOnDuration, autoOnDuration: 1))
         }
     }
     
@@ -123,7 +123,7 @@ extension AppDelegate {
     }
     
     func startConnect(){
-        let userDevice = UserDevice.getAll()
+        let userDevice = DataBaseManager.manager.getAllDevice()
         if(userDevice.count>0) {
             var deviceAddres:[String] = []
             for device in userDevice {
@@ -151,21 +151,20 @@ extension AppDelegate {
         
         if daySteps>0 {
             if let unpackedData = AppTheme.LoadKeyedArchiverName(AppDelegate.RESET_STATE) {
-                let stateArray = JSON(unpackedData).dictionaryValue
-                if stateArray.count>0 {
-                    let state:Bool = stateArray[AppDelegate.RESET_STATE]!.boolValue
-                    print(stateArray)
-                    if  let obj = stateArray[AppDelegate.RESET_STATE_DATE] {
-                        let date:Date = Date(timeIntervalSince1970: obj.doubleValue)
-                        if state && (date.beginningOfDay == Date().beginningOfDay){
-                            sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                            _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)","date":Date()])
-                        }
-                    }else{
-                        if state {
-                            sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                            _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: [IS_SEND_0X30_COMMAND:true,"steps":"\(daySteps)","date":Date()])
-                        }
+                let resetModel = unpackedData as! ResetCacheModel
+                let state:Bool = resetModel.resetState!
+                if  let obj = resetModel.resetDate {
+                    let date:Date = Date(timeIntervalSince1970: obj)
+                    if state && (date.beginningOfDay == Date().beginningOfDay){
+                        sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+                        let cacheSendSteps:SendStepsToWatchCache = SendStepsToWatchCache(sendSteps: daySteps, sendDate: Date().timeIntervalSince1970)
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: cacheSendSteps)
+                    }
+                }else{
+                    if state {
+                        sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+                        let cacheSendSteps:SendStepsToWatchCache = SendStepsToWatchCache(sendSteps: daySteps, sendDate: Date().timeIntervalSince1970)
+                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: cacheSendSteps)
                     }
                 }
             }
@@ -207,6 +206,38 @@ extension AppDelegate {
             SyncQueue.sharedInstance.post( { (Void) -> (Void) in
                 self.getMconnectionController()?.sendRequest(r)
             } )
+        }
+    }
+    
+    func setWeather() {
+        DTUserDefaults.syncWeatherDate = Date()
+        
+        var cityArray:[City] = DataBaseManager.manager.getCitySelected()
+        
+        let timeZoneNameData = DateFormatter.localCityName()
+        if timeZoneNameData.isEmpty {
+            let city:City = City()
+            city.name = timeZoneNameData
+            cityArray.append(city)
+        }
+        
+        var weatherArray:[WeatherLocationModel] = []
+        for (index,city) in cityArray.enumerated() {
+            let cityid:UInt8 = UInt8(index+10)
+            let model:WeatherLocationModel = WeatherLocationModel(id: cityid, titleString: city.name)
+            weatherArray.append(model)
+        }
+        
+        let setWeatherRequest:SetWeatherLocationsRequest = SetWeatherLocationsRequest(entries: weatherArray)
+        sendRequest(setWeatherRequest)
+        
+        for model in weatherArray {
+            WeatherNetworkApiManager.manager.getWeatherInfo(regionName: model.getWeatherInfo().title, id: Int(model.getWeatherInfo().id)) { (cityid, temp, code, statusText) in
+                let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: code))
+                
+                let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: [updateModel])
+                self.sendRequest(updateWeatherRequest)
+            }
         }
     }
 }

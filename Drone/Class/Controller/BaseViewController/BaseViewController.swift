@@ -63,13 +63,10 @@ extension UIViewController {
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
-        if((UIDevice.current.systemVersion as NSString).floatValue>7.0){
+        if(UIDevice.current.systemVersion.toDouble()>7.0){
             self.edgesForExtendedLayout = UIRectEdge();
             self.extendedLayoutIncludesOpaqueBars = false;
             self.modalPresentationCapturesStatusBarAppearance = false;
         }
     }
- 
-    
-    
 }

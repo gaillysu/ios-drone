@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import SDCycleScrollView
+import SnapKit
 
 class WelcomeViewController: BaseViewController {
-    
+
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var loginB: UIButton!
@@ -23,11 +23,11 @@ class WelcomeViewController: BaseViewController {
         super.init(nibName: "WelcomeViewController", bundle: Bundle.main)
         self.fromMenu = fromMenu
     }
-    
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         headerImage.contentMode = UIViewContentMode.scaleAspectFit;
@@ -35,15 +35,59 @@ class WelcomeViewController: BaseViewController {
         loginB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).cgColor
         registB.layer.borderWidth = 1
         registB.layer.borderColor = UIColor(red: 111.0/225.0, green: 113.0/255.0, blue: 121.0/255.0, alpha: 1).cgColor
-        // Do any additional setup after loading the view.
+
+        
+        let imageHeight:CGFloat = scrollView.frame.size.height
+        let imageWidth:CGFloat = scrollView.bounds.size.width
+        let scrollImage:UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
+        scrollImage.isPagingEnabled = true;
+        scrollView.addSubview(scrollImage)
+        scrollImage.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(scrollView.snp.left)
+            make.right.equalTo(scrollView.snp.right)
+            make.top.equalTo(scrollView.snp.top)
+            make.bottom.equalTo(scrollView.snp.bottom)
+        }
+        
+        
     }
-    
+
     override func viewDidLayoutSubviews() {
-        let sdView:SDCycleScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: scrollView.bounds.size.width, height: scrollView.frame.size.height), shouldInfiniteLoop: true, imageNamesGroup: [UIImage(named:"welcome_1")!,UIImage(named:"welcome_2")!,UIImage(named:"welcome_3")!,UIImage(named:"welcome_4")!,UIImage(named:"welcome_5")!, UIImage(named:"welcome_6")!])
-        sdView.backgroundColor = UIColor.white
-        scrollView.addSubview(sdView)
+        let imageName:[String] = ["welcome_1","welcome_2","welcome_3","welcome_4","welcome_5","welcome_6"]
+        
+        var imageResources:[UIImage] = []
+        for name in imageName {
+            let imagePath:String = Bundle.main.path(forResource: name, ofType: "png")!
+            if let imageValue = UIImage(contentsOfFile: imagePath) {
+                imageResources.append(imageValue)
+            }
+        }
+        
+        let imageHeight:CGFloat = scrollView.frame.size.height
+        let imageWidth:CGFloat = scrollView.bounds.size.width
+        
+        var scrollImage:UIScrollView?
+        for view in scrollView.subviews {
+            if view is UIScrollView {
+                scrollImage = view as? UIScrollView
+                for imageView in view.subviews {
+                    if imageView is UIImageView {
+                        (imageView as! UIImageView).image = nil
+                        imageView.removeFromSuperview()
+                    }
+                }
+            }
+        }
+        
+        scrollImage?.contentSize = CGSize(width: imageWidth*CGFloat(imageResources.count), height: imageHeight)
+        for (index,image) in imageResources.enumerated() {
+            let imageView:UIImageView = UIImageView(image: image)
+            imageView.frame = CGRect(x: scrollView.bounds.size.width*CGFloat(index), y: 0, width: imageWidth, height: imageHeight)
+            imageView.contentMode = UIViewContentMode.scaleAspectFit
+            scrollImage?.addSubview(imageView)
+        }
     }
-    
+ 
     @IBAction func skipLoginAction(_ sender: AnyObject) {
         if fromMenu {
             self.dismiss(animated: true, completion: nil)
