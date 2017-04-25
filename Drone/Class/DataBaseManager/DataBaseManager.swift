@@ -43,7 +43,7 @@ class DataBaseManager: NSObject {
             // copy over old data files for migration
             let defaultURL = Realm.Configuration.defaultConfiguration.fileURL!
             
-            if let v0URL = URL.bundleURL(name: "default") {
+            if let v0URL = URL.getRealmFilebundleURL(name: "default") {
                 do {
                     if FileManager.default.fileExists(atPath: defaultURL.path) {
                         try FileManager.default.removeItem(at: defaultURL)
