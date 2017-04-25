@@ -135,14 +135,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
          }
          
-         if(packet.getHeader() == SetSystemConfig.HEADER()) {
-            self.watchConfig()
-         }
-         
-         if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
-            //Set steps to watch response
-            _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: [AppDelegate.RESET_STATE:false, AppDelegate.RESET_STATE_DATE:Date()] as AnyObject)
-         }
          if(packet.getHeader() == GetBatteryRequest.HEADER()) {
             let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
             let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
@@ -152,35 +144,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
             let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
             SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
-         }
-         
-         if (packet.getHeader() == SetNotificationRequest.HEADER()) {
-            debugPrint("Set Notification response")
-         }
-         
-         if (packet.getHeader() == UpdateNotificationRequest.HEADER()) {
-            debugPrint("Update notification response")
-         }
-         
-         if(packet.getHeader() == UpdateContactsFilterRequest.HEADER()) {
-            debugPrint("Update contacts filter response")
-         }
-         
-         if(packet.getHeader() == UpdateContactsApplicationsRequest.HEADER()) {
-            debugPrint("Update contacts applications response")
-         }
-         
-         if(packet.getHeader() == SetContactsFilterRequest.HEADER()) {
-            debugPrint("Set contacts filter response")
-         }
-         
-         if(packet.getHeader() == GetActivityRequest.HEADER()) {
-            //let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
-            let syncStatus:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
-            var timerInterval:Int = Int(syncStatus[2])
-            timerInterval =  timerInterval + Int(syncStatus[3])<<8
-            timerInterval =  timerInterval + Int(syncStatus[4])<<16
-            timerInterval =  timerInterval + Int(syncStatus[5])<<24
          }
          
          if(packet.getHeader() == SetSystemConfig.HEADER()) {
@@ -210,26 +173,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             if DTUserDefaults.syncWeatherDate.timeIntervalSince1970-Date().timeIntervalSince1970 > 3600 {
                setWeather()
             }
-         }
-         
-         if (packet.getHeader() == SetNotificationRequest.HEADER()) {
-            debugPrint("Set Notification response")
-         }
-         
-         if (packet.getHeader() == UpdateNotificationRequest.HEADER()) {
-            debugPrint("Update notification response")
-         }
-         
-         if(packet.getHeader() == UpdateContactsFilterRequest.HEADER()) {
-            debugPrint("Update contacts filter response")
-         }
-         
-         if(packet.getHeader() == UpdateContactsApplicationsRequest.HEADER()) {
-            debugPrint("Update contacts applications response")
-         }
-         
-         if(packet.getHeader() == SetContactsFilterRequest.HEADER()) {
-            debugPrint("Set contacts filter response")
          }
          
          if(packet.getHeader() == GetActivityRequest.HEADER()) {
@@ -295,29 +238,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
 extension AppDelegate{
    func watchConfig() {
-      debugPrint("setp2 0x03")
       //setp2:start set RTC
       self.setRTC()
       //setp3:start set AppConfig
-      debugPrint("setp3 0x04")
       self.setAppConfig()
       //step4: start set user profile
-      debugPrint("setp4 0x31")
       self.setUserProfile()
       //step5: start set user default goal
-      debugPrint("setp5 0x12")
       self.setGoal(nil)
-      
-      debugPrint("setp6 0x06")
+
       self.isSaveWorldClock()
-      
-      debugPrint("setp7 0x0A")
+
       self.setNotification()
-      
-      debugPrint("setp8 0x0B")
+
       self.updateNotification()
-      
-      debugPrint("setp9 0x30")
+
       self.setStepsToWatch()
       
       setWeather()
