@@ -96,8 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                let cacheModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)
                _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
                
-            }else if(systemStatus == SystemStatus.goalCompleted.rawValue) {
-               setGoal(nil)
             }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                self.getActivity()
             }else if(systemStatus != SystemStatus.lowMemory.rawValue && systemStatus != SystemStatus.subscribedToNotifications.rawValue) {
@@ -133,12 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             if(eventCommandStatus == SystemEventStatus.batteryStatusChanged.rawValue) {
                sendRequest(GetBatteryRequest())
             }
-         }
-         
-         if(packet.getHeader() == GetBatteryRequest.HEADER()) {
-            let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
-            let batteryStatus:[Int] = [Int(data[2]),Int(data[3])]
-            SwiftEventBus.post(SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED, sender:(batteryStatus as AnyObject))
          }
          
          if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {

@@ -199,10 +199,10 @@ extension AppDelegate {
         
         var cityArray:[City] = DataBaseManager.manager.getCitySelected()
         
-        let timeZoneNameData = DateFormatter().timeZone.identifier.characters.split{$0 == "/"}.map(String.init)
-        if timeZoneNameData.count >= 2 {
+        let timeZoneNameData = DateFormatter.localCityName()
+        if timeZoneNameData.isEmpty {
             let city:City = City()
-            city.name = timeZoneNameData[1].replacingOccurrences(of: "_", with: " ")
+            city.name = timeZoneNameData
             cityArray.append(city)
         }
         

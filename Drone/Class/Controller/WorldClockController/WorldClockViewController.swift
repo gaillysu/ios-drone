@@ -119,9 +119,9 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         if (indexPath.row == 0){
             let now = Date()
             
-            let timeZoneNameData = DateFormatter().timeZone.identifier.characters.split{$0 == "/"}.map(String.init)
-            if timeZoneNameData.count >= 2 {
-                cell.cityLabel.text = timeZoneNameData[1].replacingOccurrences(of: "_", with: " ")
+            let timeZoneNameData = DateFormatter.localCityName()
+            if timeZoneNameData.isEmpty {
+                cell.cityLabel.text = timeZoneNameData
             }
             cell.timeDescription.text = "Now"
             var minuteString:String = String(now.minute)

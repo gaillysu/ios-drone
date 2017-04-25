@@ -41,6 +41,7 @@
 		6139290C1EADABEB00450284 /* welcome_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929061EADABEB00450284 /* welcome_6.png */; };
 		6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6139290D1EADDD3900450284 /* BaseViewController.swift */; };
 		613929121EAEE92600450284 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 613929111EAEE92600450284 /* default.realm */; };
+		613929141EAEF3BD00450284 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */; };
 		618322FE1EA0A2B90054966D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
 		618323081EA459F00054966D /* AutocompleteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323071EA459F00054966D /* AutocompleteField.swift */; };
 		6183230E1EA4609C0054966D /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230A1EA4609C0054966D /* SMSegment.swift */; };
@@ -308,6 +309,7 @@
 		613929061EADABEB00450284 /* welcome_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_6.png; sourceTree = "<group>"; };
 		6139290D1EADDD3900450284 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		613929111EAEE92600450284 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
+		613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		618322FD1EA0A2B90054966D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618323071EA459F00054966D /* AutocompleteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteField.swift; sourceTree = "<group>"; };
 		6183230A1EA4609C0054966D /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
@@ -1225,6 +1227,7 @@
 				613928FB1EAA026B00450284 /* String+Extension.swift */,
 				61C28CB11EA83FFB0019F574 /* URL+Extension.swift */,
 				61C28C8A1EA600DB0019F574 /* LocationExtension.swift */,
+				613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1813,6 +1816,7 @@
 				613928F01EA99DD900450284 /* WeatherCacheModel.swift in Sources */,
 				61C28BF31EA46F810019F574 /* DeviceTableViewCell.swift in Sources */,
 				61C28BD21EA46F810019F574 /* ReadDailyTrackerInfo.swift in Sources */,
+				613929141EAEF3BD00450284 /* DateFormatter+Extension.swift in Sources */,
 				61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */,
 				61C28C7A1EA5A03C0019F574 /* StepsCreateRequest.swift in Sources */,
 				61C28BF11EA46F810019F574 /* DeviceViewController.swift in Sources */,

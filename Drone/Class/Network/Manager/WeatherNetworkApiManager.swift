@@ -117,9 +117,18 @@ class WeatherNetworkApiManager: NSObject {
                     weatherModel.city = cityModel
                     
                     let name:String = cityName
-                    let temp:Float = listModel.first!.temp.toFloat()
+                    var temp:Float = 0
                     let code:Int = listModel.first!.code.toInt()
                     let text:String = listModel.first!.stateText
+                    
+                    for model in listModel{
+                        if let hourDate = model.dt_txt.dateFromFormat("yyyy-MM-dd HH:mm:ss", locale:  DateFormatter().locale) {
+                            if hourDate.hour > Date().hour {
+                                temp = model.temp.toFloat()
+                                break
+                            }
+                        }
+                    }
                     
                     self.tempValue = Int(temp-273)
                     self.weatherStatusText = text
