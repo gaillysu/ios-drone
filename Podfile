@@ -24,6 +24,7 @@ target 'Drone' do
     pod 'RxSwift',    '~> 3.0'
     pod 'RxCocoa',    '~> 3.0'
     pod 'RxDataSources', '~> 1.0'
+    pod 'SwiftyTimer'
 
     pod 'Font-Awesome-Swift'
 end

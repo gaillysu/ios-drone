@@ -18,37 +18,15 @@ protocol DidSelectedDelegate:NSObjectProtocol {
 class WorldClockViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var dateLabel: UILabel!
-    fileprivate var time:(hour:Int,minute:Int)
+    @IBOutlet weak var tableView: UITableView!
+    
     fileprivate let identifier:String = "WorldClockCell"
     fileprivate var worldClockArray: [City] = []
     fileprivate var homeCity: [City] = []
-    fileprivate var localTimeOffsetToGmt: Float
     fileprivate let realm:Realm
-    @IBOutlet weak var tableView: UITableView!
     
     init() {
-        let date = Date()
         realm = try! Realm()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "ZZZ"
-        var timeZoneString = dateFormatter.string(from: date)
-        if timeZoneString.contains("+"){
-            timeZoneString = String(timeZoneString.characters.dropFirst())
-        }
-        let idx0 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 0)
-        let idx1 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 2)
-        let idx2 = timeZoneString.index(timeZoneString.startIndex, offsetBy: 4)
-        
-        let hours:String = timeZoneString[idx0..<idx1]
-        let minutes:String = timeZoneString[idx1..<idx2]
-        let offsetHours = Float(hours)
-        let offsetMinutes = Int(minutes)
-        localTimeOffsetToGmt = offsetHours!
-        if offsetMinutes! > 0 {
-            localTimeOffsetToGmt += 0.5
-        }
-        time.hour = Calendar.current.component(.hour, from: date)
-        time.minute = Calendar.current.component(.minute, from: date)
         super.init(nibName: "WorldClockViewController", bundle: Bundle.main)
     }
     
@@ -117,7 +95,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let city:City = worldClockArray[(indexPath as NSIndexPath).row - 1]
+            let city:City = worldClockArray[indexPath.row - 1]
             try! realm.write({
                 city.selected = false
                 realm.add(city, update: true)
@@ -131,12 +109,11 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         if let spacer = tableView.reorder.spacerCell(for: indexPath) {
             return spacer
         }
-        let cell:WorldClockCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! WorldClockCell
-        cell.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: cell.frame.height)
+        let cell:WorldClockCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! WorldClockCell
         if (indexPath.row == 0 && indexPath.section == 0){
             let now = Date()
             let timeZoneNameData = DateFormatter.localCityName()
-            if timeZoneNameData.isEmpty {
+            if !timeZoneNameData.isEmpty {
                 cell.cityLabel.text = timeZoneNameData
             }
             cell.timeDescription.text = "Now"
@@ -154,54 +131,8 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         }else if indexPath.section == 2{
             city = worldClockArray[indexPath.row]
         }
-        
-        cell.cityLabel.text = city?.name
-        var foreignTimeOffsetToGmt:Float = 0.0
-        if let timezone:Timezone = city?.timezone{
-            foreignTimeOffsetToGmt = Float(timezone.getOffsetFromUTC())/60
-        }
-        
-        var text:String = ""
-        if foreignTimeOffsetToGmt == localTimeOffsetToGmt  {
-            text+="Today"
-            cell.time.text = "\(time.hour):\(time.minute < 10 ? "0":"")\(time.minute)"
-        }else if foreignTimeOffsetToGmt > localTimeOffsetToGmt{
-            let timeAhead = foreignTimeOffsetToGmt - localTimeOffsetToGmt
-            let halfAheadHour = timeAhead.truncatingRemainder(dividingBy: 1.0)
-            
-            var foreignTime:(hour:Int,minute:Int) = (hour:self.time.hour+Int(timeAhead), minute: (halfAheadHour == 0.5 ? self.time.minute + 30 :self.time.minute))
-            if foreignTime.minute > 59 {
-                foreignTime.minute-=59
-                foreignTime.hour+=1
-            }
-            let hour:String = Int(timeAhead) == 1 ? "hour" : "hours"
-            let halfHour :String = timeAhead.truncatingRemainder(dividingBy: 1.0) > 0.0 ? " and 30 minutes " : " "
-            if foreignTime.hour > 23 {
-                foreignTime.hour-=23
-                text+="Tomorrow, \(Int(timeAhead)) \(hour)\(halfHour)ahead"
-            }else{
-                text+="Today, \(Int(timeAhead)) \(hour)\(halfHour)ahead"
-            }
-            cell.time.text = "\(foreignTime.hour):\(foreignTime.minute < 10 ? "0":"")\(foreignTime.minute)"
-        }else if foreignTimeOffsetToGmt < localTimeOffsetToGmt{
-            let timeBehind = foreignTimeOffsetToGmt - localTimeOffsetToGmt
-            let halfHourBehind = timeBehind.truncatingRemainder(dividingBy: 1.0)
-            var foreignTime:(hour:Int,minute:Int) = (hour:self.time.hour+Int(timeBehind), minute: (abs(halfHourBehind) == 0.5 ? self.time.minute - 30 :self.time.minute))
-            if foreignTime.minute < 0 {
-                foreignTime.minute+=59
-                foreignTime.hour-=1
-            }
-            let hour:String = Int(timeBehind) == 1 ? "hour" : "hours"
-            let halfHour :String = abs(timeBehind).truncatingRemainder(dividingBy: 1.0) > 0.0 ? " and 30 minutes " : " "
-            if foreignTime.hour < 0 {
-                foreignTime.hour+=24
-                text+="Yesterday, \(Int(timeBehind)) \(hour)\(halfHour)behind"
-            }else{
-                text+="Today, \(Int(timeBehind)) \(hour)\(halfHour)behind"
-            }
-            cell.time.text = "\(foreignTime.hour):\(foreignTime.minute < 10 ? "0":"")\(foreignTime.minute)"
-        }
-        cell.timeDescription.text = text
+        cell.cityModel = city
+
         return cell;
     }
     
