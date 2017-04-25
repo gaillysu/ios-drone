@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 extension URL {
-    static func bundleURL(name: String) -> URL? {
+    static func getRealmFilebundleURL(name: String) -> URL? {
         let url = Bundle.main.url(forResource: name, withExtension: "realm")
         return url
     }

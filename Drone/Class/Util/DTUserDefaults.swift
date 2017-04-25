@@ -12,10 +12,10 @@ public class DTUserDefaults: NSObject {
     
     private static let SETUP_KEY = "SETUP_KEY"
     private static let SET_RTC_DATE = "SET_RTC"
-    private static let SEND_LOCAL_MESSAGE_KEY = "IsSendLocalMsg"
-    private static let WORLDCLOCK_KEY = "defaults_worldclock_key"
+    private static let SEND_LOCAL_MESSAGE_KEY = "ISSENDLOCALMSG"
+    private static let WORLDCLOCK_KEY = "DEFAULTS_WORLDCLOCK_KEY"
     private static let WORLDCLOCK_SORT_KEY = "WORLDCLOCK_SORT_KEY"
-    private static let SETWEATHER_KEY = "set_weather_key"
+    private static let SETWEATHER_KEY = "SET_WEATHER_KEY"
     private static let COMPASS_KEY = "COMPASS_KEY"
     private static let PAIR_PRESENT_KEY = "PAIR_PRESENT_KEY"
     private static let SYNC_LOCAL_TIME_KEY = "SYNC_LOCAL_TIME_KEY"

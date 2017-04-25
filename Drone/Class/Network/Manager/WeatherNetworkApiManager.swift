@@ -92,39 +92,24 @@ class WeatherNetworkApiManager: NSObject {
                     weatherModel.cnt = weatherJSON["cnt"].stringValue
                     weatherModel.syncDate = String(format: "%f", Date.today().timeIntervalSince1970)
                     
-                    let listArray:[JSON] = weatherJSON["list"].arrayValue
-                    var listModel:[EveryHourWeatherModel] = []
-                    for list in listArray {
-                        let model:EveryHourWeatherModel = EveryHourWeatherModel()
-                        model.dt = list["dt"].stringValue
-                        model.temp = list["main"].dictionaryValue["temp"]!.stringValue
-                        let weather:[String:JSON] = list["weather"].arrayValue.first!.dictionaryValue
-                        model.code = weather["id"]!.stringValue
-                        model.stateText = weather["main"]!.stringValue
-                        model.dt_txt = list["dt_txt"].stringValue
-                        listModel.append(model)
-                    }
+                    let listModel:[EveryHourWeatherModel] = self.getEveryHourWeatherModel(json: weatherJSON)
                     weatherModel.list = listModel
                     
-                    let city:[String:JSON] = weatherJSON["city"].dictionaryValue
-                    let cityModel:WeatherCityModel = WeatherCityModel()
-                    let cityName:String = city["name"]!.stringValue
-                    cityModel.id = city["id"]!.stringValue
-                    cityModel.name = cityName
-                    cityModel.lat = city["coord"]!.dictionaryValue["lat"]!.stringValue
-                    cityModel.lon = city["coord"]!.dictionaryValue["lon"]!.stringValue
-                    cityModel.country = city["country"]!.stringValue
+                    let cityModel:WeatherCityModel = self.getWeatherCityModel(json: weatherJSON)
+                    let cityName:String = cityModel.name
                     weatherModel.city = cityModel
                     
                     let name:String = cityName
                     var temp:Float = 0
-                    let code:Int = listModel.first!.code.toInt()
-                    let text:String = listModel.first!.stateText
+                    var code:Int = 0
+                    var text:String = listModel.first!.stateText
                     
                     for model in listModel{
                         if let hourDate = model.dt_txt.dateFromFormat("yyyy-MM-dd HH:mm:ss", locale:  DateFormatter().locale) {
                             if hourDate.hour > Date().hour {
                                 temp = model.temp.toFloat()
+                                code = model.code.toInt()
+                                text = model.stateText;
                                 break
                             }
                         }
@@ -149,6 +134,34 @@ class WeatherNetworkApiManager: NSObject {
             }
         }
         executeMEDRequest(request: weatherRequest)
+    }
+    
+    fileprivate func getWeatherCityModel(json:JSON) -> WeatherCityModel {
+        let city:[String:JSON] = json["city"].dictionaryValue
+        let cityModel:WeatherCityModel = WeatherCityModel()
+        let cityName:String = city["name"]!.stringValue
+        cityModel.id = city["id"]!.stringValue
+        cityModel.name = cityName
+        cityModel.lat = city["coord"]!.dictionaryValue["lat"]!.stringValue
+        cityModel.lon = city["coord"]!.dictionaryValue["lon"]!.stringValue
+        cityModel.country = city["country"]!.stringValue
+        return cityModel
+    }
+    
+    fileprivate func getEveryHourWeatherModel(json:JSON) -> [EveryHourWeatherModel] {
+        let listArray:[JSON] = json["list"].arrayValue
+        var listModel:[EveryHourWeatherModel] = []
+        for list in listArray {
+            let model:EveryHourWeatherModel = EveryHourWeatherModel()
+            model.dt = list["dt"].stringValue
+            model.temp = list["main"].dictionaryValue["temp"]!.stringValue
+            let weather:[String:JSON] = list["weather"].arrayValue.first!.dictionaryValue
+            model.code = weather["id"]!.stringValue
+            model.stateText = weather["main"]!.stringValue
+            model.dt_txt = list["dt_txt"].stringValue
+            listModel.append(model)
+        }
+        return listModel
     }
     
     func getWeatherStatusCode(code:Int) -> WeatherStatusIcon {
