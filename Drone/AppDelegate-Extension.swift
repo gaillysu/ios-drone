@@ -194,44 +194,6 @@ extension AppDelegate {
         }
     }
     
-    func startLocation() {
-        NSLog("AuthorizationStatus:\(LocationManager.instanceLocation.gpsAuthorizationStatus)")
-        var syncWeatherDate:Date?
-        if LocationManager.instanceLocation.gpsAuthorizationStatus>2 {
-            LocationManager.instanceLocation.startLocation()
-            LocationManager.instanceLocation.didChangeAuthorization = { status in
-                let states:CLAuthorizationStatus = status as CLAuthorizationStatus
-
-            }
-            
-            LocationManager.instanceLocation.didUpdateLocations = { location in
-                let newLocation = location.last! as CLLocation
-                debugPrint("Location didUpdateLocations:\(newLocation)")
-                if let date = syncWeatherDate {
-                    if (Date().timeIntervalSince1970-date.timeIntervalSince1970)>600 {
-                        newLocation.reverseGeocodeLocationInfo(completion: { (gecodeInfo, error) in
-                            syncWeatherDate = Date()
-                        })
-                    }
-                }else{
-                    newLocation.reverseGeocodeLocationInfo(completion: { (gecodeInfo, error) in
-                        syncWeatherDate = Date()
-                        
-                    })
-                }
-            }
-            
-            LocationManager.instanceLocation.didFailWithError = { error in
-                debugPrint("Location didFailWithError:\(error)")
-            }
-        }else{
-            let banner:MEDBanner = MEDBanner(title: NSLocalizedString("Location Error", comment: ""), subtitle: NSLocalizedString("Drone did not authorization", comment: ""), image: nil, backgroundColor: UIColor.getBaseColor(), didTapBlock: {
-                
-            })
-            banner.show()
-        }
-    }
-    
     func setWeather() {
         DTUserDefaults.syncWeatherDate = Date()
         
