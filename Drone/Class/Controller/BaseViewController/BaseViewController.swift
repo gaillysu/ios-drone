@@ -53,7 +53,7 @@ extension UIViewController {
         navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
         navigationController.navigationBar.tintColor = UIColor.white
-        
+        navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.isHidden = false
         navigationController.navigationItem.setHidesBackButton(false, animated: true)
         return navigationController

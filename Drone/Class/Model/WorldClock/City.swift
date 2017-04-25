@@ -25,7 +25,7 @@ class City: Object {
     dynamic var timezoneId = 0
     
     dynamic var selected = false
-    
+        
     dynamic var timezone: Timezone?
     
     class func getCityObject(_ json:JSON) -> City?{

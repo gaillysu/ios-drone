@@ -10,6 +10,9 @@ import UIKit
 
 class ClockSettingsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var settingsTextField: UITextField!
+    @IBOutlet weak var settingsLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

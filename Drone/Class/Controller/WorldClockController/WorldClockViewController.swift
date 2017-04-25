@@ -17,13 +17,14 @@ protocol DidSelectedDelegate:NSObjectProtocol {
 
 class WorldClockViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var dateLabel: UILabel!
     fileprivate var time:(hour:Int,minute:Int)
     fileprivate let identifier:String = "WorldClockCell"
     fileprivate var worldClockArray: [City] = []
+    fileprivate var homeCity: [City] = []
     fileprivate var localTimeOffsetToGmt: Float
     fileprivate let realm:Realm
-    
-    @IBOutlet weak var worldClockTableview: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     init() {
         let date = Date()
@@ -46,7 +47,6 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         if offsetMinutes! > 0 {
             localTimeOffsetToGmt += 0.5
         }
-        
         let calendar = Calendar.current
         let components = (calendar as NSCalendar).components([ .hour, .minute, .second], from: date)
         time.hour = components.hour!
@@ -60,16 +60,11 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        worldClockTableview.register(UINib(nibName: identifier,bundle: Bundle.main), forCellReuseIdentifier: identifier)
-        worldClockTableview.reorder.delegate = self
-        let header:WorldClockHeader = UIView.loadFromNibNamed("WorldClockHeader") as! WorldClockHeader;
-        header.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height)
+        tableView.register(UINib(nibName: identifier,bundle: Bundle.main), forCellReuseIdentifier: identifier)
+        tableView.reorder.delegate = self
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd, yyyy"
-        header.dateLabel.text = "\(formatter.string(from: Date()))"
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: header.frame.height))
-        headerView.addSubview(header)
-        worldClockTableview.tableHeaderView = headerView
+        self.dateLabel.text = "\(formatter.string(from: Date()))"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,16 +80,38 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         return [deleteButton]
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0{
+            return "Local Time"
+        } else if section == 1{
+            return "Home Time"
+        }else if section == 2{
+            return "World Time"
+        }
+        return "Unknown Section"
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return worldClockArray.count + 1
+        if section == 0{
+            return 1
+        } else if section == 1 {
+            return homeCity.count
+        }else if section == 2 {
+            return worldClockArray.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if (indexPath as NSIndexPath).row == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             return false
         }
         return true
@@ -118,9 +135,8 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         }
         let cell:WorldClockCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! WorldClockCell
         cell.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: cell.frame.height)
-        if (indexPath.row == 0){
+        if (indexPath.row == 0 && indexPath.section == 0){
             let now = Date()
-            
             let timeZoneNameData = DateFormatter().timeZone.identifier.characters.split{$0 == "/"}.map(String.init)
             if timeZoneNameData.count >= 2 {
                 cell.cityLabel.text = timeZoneNameData[1].replacingOccurrences(of: "_", with: " ")
@@ -134,11 +150,16 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             return cell
         }
         
-        let city:City = worldClockArray[((indexPath as NSIndexPath).row - 1)]
+        var city:City?
+        if indexPath.section == 1{
+            city = homeCity[indexPath.row]
+        }else if indexPath.section == 2{
+            city = worldClockArray[indexPath.row]
+        }
         
-        cell.cityLabel.text = city.name
+        cell.cityLabel.text = city?.name
         var foreignTimeOffsetToGmt:Float = 0.0
-        if let timezone:Timezone = city.timezone{
+        if let timezone:Timezone = city?.timezone{
             foreignTimeOffsetToGmt = Float(timezone.getOffsetFromUTC())/60
         }
         
@@ -188,14 +209,21 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     
     fileprivate func updateWorldClockArrayWithOrder(reload:Bool){
         worldClockArray = []
+        homeCity = []
         var selectedCityOrder = DTUserDefaults.selectedCityOrder
         if selectedCityOrder.isEmpty {
+            print("We have selected order is empty")
             realm.objects(City.self).filter("selected = true").sorted(by: {
                 ($0.timezone?.getOffsetFromUTC())! < ($1.timezone?.getOffsetFromUTC())!
             }).forEach({
-                worldClockArray.append($0)
+                if $0.id == DTUserDefaults.homeTimeId{
+                    homeCity.append($0)
+                } else {
+                    worldClockArray.append($0)
+                }
             })
         } else {
+            print("We have a selected order")
             let selectedCtities = Array(realm.objects(City.self).filter("selected = true"))
             if selectedCtities.count != selectedCityOrder.count{
                 if selectedCtities.count > selectedCityOrder.count {
@@ -218,32 +246,53 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             selectedCityOrder.forEach({ cityId in
                 if let city = realm.object(ofType: City.self, forPrimaryKey: cityId){
                     if city.selected{
-                        worldClockArray.append(city)
+                        if city.id == DTUserDefaults.homeTimeId {
+                            homeCity.append(city)
+                        }else{
+                            worldClockArray.append(city)
+                        }
                     }
                 }
             })
         }
         if reload {
-            self.worldClockTableview.reloadData()
+            self.tableView.reloadData()
         }
         AppDelegate.getAppDelegate().setWorldClock(Array(worldClockArray))
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.0
     }
 }
 
 extension WorldClockViewController:TableViewReorderDelegate{
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             return false
         }
         return true
     }
     
     func tableView(_ tableView: UITableView, reorderRowAt s: IndexPath, to d: IndexPath) {
-        let destination = d.row - 1
-        let source = s.row - 1
-        (worldClockArray[source], worldClockArray[destination]) = (worldClockArray[destination], worldClockArray[source])
-        DTUserDefaults.selectedCityOrder = worldClockArray.map({ $0.id })
-        self.updateWorldClockArrayWithOrder(reload: true)
+        if s.section > d.section {
+            let city = worldClockArray[s.row]
+            homeCity.insert(city, at: d.row)
+            worldClockArray.remove(at: s.row)
+            DTUserDefaults.homeTimeId = city.id
+        } else if d.section > s.section {
+            let city = homeCity[s.row]
+            worldClockArray.insert(city, at: d.row)
+            homeCity.remove(at: s.row)
+            DTUserDefaults.homeTimeId = -1
+        } else {
+            let destination =  s.row
+            let source =   d.row
+            (worldClockArray[source], worldClockArray[destination]) = (worldClockArray[destination], worldClockArray[source])
+            DTUserDefaults.selectedCityOrder = worldClockArray.map({ $0.id })
+            self.updateWorldClockArrayWithOrder(reload: true)
+        }
+        print("\(homeCity.count)")
+        print("\(worldClockArray.count)")
     }
     
 }

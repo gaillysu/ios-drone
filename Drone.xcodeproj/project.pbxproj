@@ -129,8 +129,6 @@
 		61C28C181EA46F810019F574 /* AddWorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B701EA46F810019F574 /* AddWorldClockViewController.xib */; };
 		61C28C191EA46F810019F574 /* WorldClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B721EA46F810019F574 /* WorldClockCell.swift */; };
 		61C28C1A1EA46F810019F574 /* WorldClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B731EA46F810019F574 /* WorldClockCell.xib */; };
-		61C28C1B1EA46F810019F574 /* WorldClockHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B741EA46F810019F574 /* WorldClockHeader.swift */; };
-		61C28C1C1EA46F810019F574 /* WorldClockHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B751EA46F810019F574 /* WorldClockHeader.xib */; };
 		61C28C1D1EA46F810019F574 /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B761EA46F810019F574 /* WorldClockViewController.swift */; };
 		61C28C1E1EA46F810019F574 /* WorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B771EA46F810019F574 /* WorldClockViewController.xib */; };
 		61C28C1F1EA46F810019F574 /* WhichDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B791EA46F810019F574 /* WhichDeviceViewController.swift */; };
@@ -219,6 +217,8 @@
 		CB9F65551EA9F364007982B0 /* TimeSettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65541EA9F364007982B0 /* TimeSettingsSectionModel.swift */; };
 		CB9F65571EA9F3C4007982B0 /* TimeSettingsSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65561EA9F3C4007982B0 /* TimeSettingsSectionItem.swift */; };
 		CB9F65591EA9FC19007982B0 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65581EA9FC19007982B0 /* UITableViewExtension.swift */; };
+		CBB892311EADB5B6006F7031 /* UITalbleViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892301EADB5B6006F7031 /* UITalbleViewCellExtension.swift */; };
+		CBB892331EADECDA006F7031 /* UICollectionViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892321EADECDA006F7031 /* UICollectionViewCellExtension.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -369,8 +369,6 @@
 		61C28B701EA46F810019F574 /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWorldClockViewController.xib; path = WorldClockController/AddWorldClockViewController.xib; sourceTree = "<group>"; };
 		61C28B721EA46F810019F574 /* WorldClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockCell.swift; sourceTree = "<group>"; };
 		61C28B731EA46F810019F574 /* WorldClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockCell.xib; sourceTree = "<group>"; };
-		61C28B741EA46F810019F574 /* WorldClockHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockHeader.swift; sourceTree = "<group>"; };
-		61C28B751EA46F810019F574 /* WorldClockHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockHeader.xib; sourceTree = "<group>"; };
 		61C28B761EA46F810019F574 /* WorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
 		61C28B771EA46F810019F574 /* WorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockViewController.xib; sourceTree = "<group>"; };
 		61C28B791EA46F810019F574 /* WhichDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichDeviceViewController.swift; sourceTree = "<group>"; };
@@ -461,6 +459,8 @@
 		CB9F65541EA9F364007982B0 /* TimeSettingsSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSettingsSectionModel.swift; path = "untitled folder/TimeSettingsSectionModel.swift"; sourceTree = "<group>"; };
 		CB9F65561EA9F3C4007982B0 /* TimeSettingsSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSettingsSectionItem.swift; sourceTree = "<group>"; };
 		CB9F65581EA9FC19007982B0 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		CBB892301EADB5B6006F7031 /* UITalbleViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITalbleViewCellExtension.swift; sourceTree = "<group>"; };
+		CBB892321EADECDA006F7031 /* UICollectionViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtension.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -991,7 +991,6 @@
 				61C28B551EA46F800019F574 /* NotificationsViewCell */,
 				61C28B6B1EA46F810019F574 /* StepsTitleView */,
 				CB715FAD1EA5E6E8005B5C22 /* WorldClockCell */,
-				CB715FAE1EA5E6F7005B5C22 /* WorldClockHeader */,
 			);
 			name = View;
 			path = Controller/WorldClockController/View;
@@ -1125,6 +1124,8 @@
 				61C28BBA1EA46F810019F574 /* WorldClockUtil.swift */,
 				CB9F65251EA6144D007982B0 /* IntExtension.swift */,
 				CB9F65581EA9FC19007982B0 /* UITableViewExtension.swift */,
+				CBB892301EADB5B6006F7031 /* UITalbleViewCellExtension.swift */,
+				CBB892321EADECDA006F7031 /* UICollectionViewCellExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1180,15 +1181,6 @@
 				61C28B731EA46F810019F574 /* WorldClockCell.xib */,
 			);
 			name = WorldClockCell;
-			sourceTree = "<group>";
-		};
-		CB715FAE1EA5E6F7005B5C22 /* WorldClockHeader */ = {
-			isa = PBXGroup;
-			children = (
-				61C28B741EA46F810019F574 /* WorldClockHeader.swift */,
-				61C28B751EA46F810019F574 /* WorldClockHeader.xib */,
-			);
-			name = WorldClockHeader;
 			sourceTree = "<group>";
 		};
 		CB715FB01EA5E7A8005B5C22 /* DeviceTableViewCellHeader */ = {
@@ -1435,7 +1427,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				61C28BF21EA46F810019F574 /* DeviceViewController.xib in Resources */,
-				61C28C1C1EA46F810019F574 /* WorldClockHeader.xib in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
 				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
 				CB9F65451EA86303007982B0 /* TimeSettingsViewController.xib in Resources */,
@@ -1578,6 +1569,7 @@
 				61C28BD61EA46F810019F574 /* SetContactsFilterRequest.swift in Sources */,
 				61C28C261EA46F810019F574 /* UserSteps.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
+				CBB892331EADECDA006F7031 /* UICollectionViewCellExtension.swift in Sources */,
 				61C28C1F1EA46F810019F574 /* WhichDeviceViewController.swift in Sources */,
 				61C28BBE1EA46F810019F574 /* ActivityPacket.swift in Sources */,
 				61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */,
@@ -1685,7 +1677,6 @@
 				61C28C431EA46F810019F574 /* RequestPasswordRequest.swift in Sources */,
 				61C28C241EA46F810019F574 /* UserGoal.swift in Sources */,
 				61C28BEF1EA46F810019F574 /* ConnectionSetupViewController.swift in Sources */,
-				61C28C1B1EA46F810019F574 /* WorldClockHeader.swift in Sources */,
 				61C28C3B1EA46F810019F574 /* BaseGetRequest.swift in Sources */,
 				CB9F65591EA9FC19007982B0 /* UITableViewExtension.swift in Sources */,
 				61C28C1D1EA46F810019F574 /* WorldClockViewController.swift in Sources */,
@@ -1717,6 +1708,7 @@
 				6183230F1EA4609C0054966D /* SMSegmentAppearance.swift in Sources */,
 				61C28C031EA46F810019F574 /* NotificationViewController.swift in Sources */,
 				61C28C4C1EA46F810019F574 /* AppTheme.swift in Sources */,
+				CBB892311EADB5B6006F7031 /* UITalbleViewCellExtension.swift in Sources */,
 				618323081EA459F00054966D /* AutocompleteField.swift in Sources */,
 				61C28BDF1EA46F810019F574 /* StartSystemSettingRequest.swift in Sources */,
 				61C28C3D1EA46F810019F574 /* BasePostRequest.swift in Sources */,

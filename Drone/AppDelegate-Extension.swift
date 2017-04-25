@@ -20,10 +20,11 @@ extension AppDelegate {
     }
     
     func setSystemConfig() {
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.clockFormat))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.enabled))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig))
-        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.topKeyCustomization))
+        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .clockFormat))
+        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .enabled))
+        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .sleepConfig))
+        sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .topKeyCustomization))
+        setAnalogTime()
     }
     
     func setCompassAutoMinutes(){
@@ -31,6 +32,16 @@ extension AppDelegate {
             sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:compass.activeTime))
         }else{
             sendRequest(SetSystemConfig(autoStart:  Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.compassAutoOnDuration,autoMode:1))
+        }
+    }
+    
+    func setAnalogTime(){
+        if DTUserDefaults.syncAnalogTime {
+            if DTUserDefaults.syncLocalTime {
+                sendRequest(SetSystemConfig(analogHandsConfig: .CurrentTime))
+            } else{
+                sendRequest(SetSystemConfig(analogHandsConfig: .WorldTimeFirst))
+            }
         }
     }
     
@@ -46,20 +57,24 @@ extension AppDelegate {
         sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: operation))
     }
     
-    func setRTC() {
-        sendRequest(SetRTCRequest())
+    func setRTC(force:Bool) {
+        if DTUserDefaults.syncAnalogTime || force {
+            sendRequest(SetRTCRequest())
+        }
     }
     
     func subscribeToSignificantTimeChange(on:Bool){
         if on{
+            // Get local time and sync home time
             NotificationCenter.default.addObserver(self, selector: #selector(significantTimeChanged), name: NSNotification.Name.NSSystemTimeZoneDidChange, object: nil)
         }else{
+            // Get Home time and sync home time
             NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSSystemTimeZoneDidChange, object: nil)
         }
     }
     
     func significantTimeChanged(){
-        self.setRTC()
+        self.setRTC(force: false)
     }
     
     func setAppConfig() {

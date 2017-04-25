@@ -5,13 +5,15 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorldClockViewController" customModule="Drone" customModuleProvider="target">
             <connections>
+                <outlet property="dateLabel" destination="bZY-Dj-81I" id="JeO-3s-D5V"/>
+                <outlet property="tableView" destination="rFk-jO-xBb" id="WAB-fA-LNv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="worldClockTableview" destination="rFk-jO-xBb" id="qmY-5s-KNM"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,8 +21,39 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6x-e9-GdE" customClass="WorldClockHeader" customModule="Drone" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="226"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="YNQ-0P-dEj">
+                            <rect key="frame" x="42" y="23" width="291" height="170"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="YNQ-0P-dEj" secondAttribute="height" multiplier="291:170" id="xdA-RN-6T6"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZY-Dj-81I">
+                            <rect key="frame" x="8" y="201" width="360" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="5Sl-P3-kir"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.7725490196" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="bZY-Dj-81I" secondAttribute="bottom" id="3NU-7w-Akk"/>
+                        <constraint firstItem="bZY-Dj-81I" firstAttribute="top" secondItem="YNQ-0P-dEj" secondAttribute="bottom" constant="8" id="BUA-kp-C7E"/>
+                        <constraint firstAttribute="trailing" secondItem="YNQ-0P-dEj" secondAttribute="trailing" constant="42" id="Kec-Mm-pHj"/>
+                        <constraint firstItem="YNQ-0P-dEj" firstAttribute="leading" secondItem="N6x-e9-GdE" secondAttribute="leading" constant="42" id="Kt0-E9-ZsU"/>
+                        <constraint firstAttribute="height" constant="226" id="XIT-4e-gue"/>
+                        <constraint firstItem="bZY-Dj-81I" firstAttribute="leading" secondItem="N6x-e9-GdE" secondAttribute="leading" constant="8" id="ZO7-LU-van"/>
+                        <constraint firstAttribute="trailing" secondItem="bZY-Dj-81I" secondAttribute="trailing" constant="7" id="cM3-Fl-Kvr"/>
+                        <constraint firstItem="YNQ-0P-dEj" firstAttribute="top" secondItem="N6x-e9-GdE" secondAttribute="top" constant="23" id="zmj-bJ-4uk"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" allowsSelectionDuringEditing="YES" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rFk-jO-xBb">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="226" width="375" height="441"/>
                     <color key="backgroundColor" red="0.89411764705882346" green="0.77254901960784317" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
@@ -31,14 +64,20 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="rFk-jO-xBb" secondAttribute="bottom" id="2o5-jD-3ck"/>
-                <constraint firstItem="rFk-jO-xBb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gMP-Cn-w6m"/>
-                <constraint firstAttribute="trailing" secondItem="rFk-jO-xBb" secondAttribute="trailing" id="grX-46-dEf"/>
-                <constraint firstItem="rFk-jO-xBb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lGW-V1-5a2"/>
+                <constraint firstItem="N6x-e9-GdE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="12j-x9-Ygc"/>
+                <constraint firstItem="rFk-jO-xBb" firstAttribute="top" secondItem="N6x-e9-GdE" secondAttribute="bottom" id="218-vh-KV4"/>
+                <constraint firstItem="rFk-jO-xBb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Yxj-6k-Vib"/>
+                <constraint firstAttribute="trailing" secondItem="N6x-e9-GdE" secondAttribute="trailing" id="cxf-gJ-nbh"/>
+                <constraint firstAttribute="trailing" secondItem="rFk-jO-xBb" secondAttribute="trailing" id="gC4-7b-JFI"/>
+                <constraint firstItem="N6x-e9-GdE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gfB-m6-nqN"/>
+                <constraint firstAttribute="bottom" secondItem="rFk-jO-xBb" secondAttribute="bottom" id="qtY-iY-IxN"/>
             </constraints>
-            <point key="canvasLocation" x="-6" y="-8"/>
+            <point key="canvasLocation" x="-6.5" y="-8.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="map" width="300" height="187"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

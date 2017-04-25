@@ -10,18 +10,17 @@ import UIKit
 import RxDataSources
 
 struct TimeSettingsSectionModel {
-
     var header:String
-    var items: [item]
-    
+    var footer:String
+    var items: [Item]
 }
 
 extension TimeSettingsSectionModel: SectionModelType{
-    
-    typealias item = TimeSettingsSectionItem
-    
-    init(original: TimeSettingsSectionModel, items: [item]) {
-        self.items = items
+    init(original: TimeSettingsSectionModel, items: [TimeSettingsSectionItem]) {
         self = original
+        self.items = items
     }
+
+    typealias Item = TimeSettingsSectionItem
+    
 }

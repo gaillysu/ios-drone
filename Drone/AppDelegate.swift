@@ -285,7 +285,7 @@ extension AppDelegate{
    func watchConfig() {
       debugPrint("setp2 0x03")
       //setp2:start set RTC
-      self.setRTC()
+      self.setRTC(force: true)
       //setp3:start set AppConfig
       debugPrint("setp3 0x04")
       self.setAppConfig()

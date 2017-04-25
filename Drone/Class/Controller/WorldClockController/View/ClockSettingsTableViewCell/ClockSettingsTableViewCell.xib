@@ -5,35 +5,52 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ClockSettingsTableViewCell" customModule="Drone" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="ClockSettingsTableViewCell" customModule="Drone" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eat-Fm-Vys">
-                        <rect key="frame" x="215" y="6" width="97" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0K-5t-ph8">
-                        <rect key="frame" x="8" y="11" width="199" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0K-5t-ph8">
+                        <rect key="frame" x="16" y="3" width="191" height="37.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eat-Fm-Vys">
+                        <rect key="frame" x="215" y="10.5" width="97" height="21"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="97" id="s9s-OX-GZY"/>
+                        </constraints>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="i0K-5t-ph8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AVy-qB-Xbf"/>
+                    <constraint firstAttribute="trailing" secondItem="eat-Fm-Vys" secondAttribute="trailing" constant="8" id="BNN-KD-2bc"/>
+                    <constraint firstItem="i0K-5t-ph8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="Faf-4s-sTD"/>
+                    <constraint firstItem="i0K-5t-ph8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="OW8-w1-8N8"/>
+                    <constraint firstItem="eat-Fm-Vys" firstAttribute="leading" secondItem="i0K-5t-ph8" secondAttribute="trailing" constant="8" id="UQJ-vC-uPN"/>
+                    <constraint firstItem="eat-Fm-Vys" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uji-Tf-tak"/>
+                    <constraint firstAttribute="bottom" secondItem="i0K-5t-ph8" secondAttribute="bottom" constant="3" id="wof-g2-HtY"/>
+                </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="settingsLabel" destination="i0K-5t-ph8" id="TOf-t3-xig"/>
+                <outlet property="settingsTextField" destination="eat-Fm-Vys" id="VoD-sH-k9u"/>
+            </connections>
+            <point key="canvasLocation" x="-120" y="-200"/>
         </tableViewCell>
     </objects>
 </document>

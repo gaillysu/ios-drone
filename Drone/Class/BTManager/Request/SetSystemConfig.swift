@@ -82,7 +82,7 @@ class SetSystemConfig: DroneRequest {
             let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,0x01,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
         case .analogHandsConfig:
-            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,analogHandsConfig.rawValue,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,analogHandsConfig.rawValue,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
         }
     }

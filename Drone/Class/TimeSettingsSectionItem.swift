@@ -8,12 +8,10 @@
 
 import UIKit
 
-class TimeSettingsSectionItem {
+struct TimeSettingsSectionItem {
     var label: String
-    var status:Bool
     
-    init(label:String, status:Bool) {
+    init(label:String) {
         self.label = label
-        self.status = status
     }
 }
