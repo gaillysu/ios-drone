@@ -23,7 +23,14 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     fileprivate let identifier:String = "WorldClockCell"
     fileprivate var worldClockArray: [City] = []
     fileprivate var homeCity: [City] = []
+    fileprivate var localCity: City?
     fileprivate let realm:Realm
+    
+    fileprivate lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, yyyy"
+        return formatter
+    }()
     
     init() {
         realm = try! Realm()
@@ -38,9 +45,12 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         tableView.register(UINib(nibName: identifier,bundle: Bundle.main), forCellReuseIdentifier: identifier)
         tableView.reorder.delegate = self
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd, yyyy"
-        self.dateLabel.text = "\(formatter.string(from: Date()))"
+        
+        self.dateLabel.text = "\(dateFormatter.string(from: Date()))"
+        
+        let timeZoneNameData = DateFormatter.localCityName()
+        let results:Results<City> = realm.objects(City.self).filter("name CONTAINS[c] '\(timeZoneNameData)'")
+        localCity = results.first
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +105,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let city:City = worldClockArray[indexPath.row - 1]
+            let city:City = worldClockArray[indexPath.row]
             try! realm.write({
                 city.selected = false
                 realm.add(city, update: true)
@@ -110,22 +120,8 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             return spacer
         }
         let cell:WorldClockCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! WorldClockCell
-        if (indexPath.row == 0 && indexPath.section == 0){
-            let now = Date()
-            let timeZoneNameData = DateFormatter.localCityName()
-            if !timeZoneNameData.isEmpty {
-                cell.cityLabel.text = timeZoneNameData
-            }
-            cell.timeDescription.text = "Now"
-            var minuteString:String = String(now.minute)
-            if (now.minute < 10){
-                minuteString = "0\(now.minute)"
-            }
-            cell.time.text = "\(now.hour):\(minuteString)"
-            return cell
-        }
         
-        var city:City?
+        var city:City? = localCity
         if indexPath.section == 1{
             city = homeCity[indexPath.row]
         }else if indexPath.section == 2{
