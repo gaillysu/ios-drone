@@ -23,7 +23,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     fileprivate let identifier:String = "WorldClockCell"
     fileprivate var worldClockArray: [City] = []
     fileprivate var homeCity: [City] = []
-    fileprivate var localCity: City?
+    fileprivate var localCity: [City] = []
     fileprivate let realm:Realm
     
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -50,7 +50,9 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         
         let timeZoneNameData = DateFormatter.localCityName()
         let results:Results<City> = realm.objects(City.self).filter("name CONTAINS[c] '\(timeZoneNameData)'")
-        localCity = results.first
+        for city in results {
+            localCity.append(city)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,7 +89,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return 1
+            return localCity.count
         } else if section == 1 {
             return homeCity.count
         }else if section == 2 {
@@ -121,10 +123,12 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
         }
         let cell:WorldClockCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! WorldClockCell
         
-        var city:City? = localCity
-        if indexPath.section == 1{
+        var city:City?
+        if indexPath.section == 0 {
+            city = localCity.first
+        }else if indexPath.section == 1 {
             city = homeCity[indexPath.row]
-        }else if indexPath.section == 2{
+        }else if indexPath.section == 2 {
             city = worldClockArray[indexPath.row]
         }
         cell.cityModel = city
