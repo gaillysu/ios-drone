@@ -42,6 +42,7 @@
 		6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6139290D1EADDD3900450284 /* BaseViewController.swift */; };
 		613929121EAEE92600450284 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 613929111EAEE92600450284 /* default.realm */; };
 		613929141EAEF3BD00450284 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */; };
+		613929211EB0640D00450284 /* OTARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929201EB0640D00450284 /* OTARequest.swift */; };
 		618322FE1EA0A2B90054966D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
 		618323081EA459F00054966D /* AutocompleteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323071EA459F00054966D /* AutocompleteField.swift */; };
 		6183230E1EA4609C0054966D /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230A1EA4609C0054966D /* SMSegment.swift */; };
@@ -309,6 +310,7 @@
 		6139290D1EADDD3900450284 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		613929111EAEE92600450284 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		613929201EB0640D00450284 /* OTARequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTARequest.swift; sourceTree = "<group>"; };
 		618322FD1EA0A2B90054966D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618323071EA459F00054966D /* AutocompleteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteField.swift; sourceTree = "<group>"; };
 		6183230A1EA4609C0054966D /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
@@ -791,6 +793,7 @@
 				61C28B221EA46F800019F574 /* UpdateNotificationRequest.swift */,
 				61C28B231EA46F800019F574 /* UpdateWeatherInfoRequest.swift */,
 				61C28B241EA46F800019F574 /* WriteSettingRequest.swift */,
+				613929201EB0640D00450284 /* OTARequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1754,6 +1757,7 @@
 				61C28C771EA5A03C0019F574 /* LoginRequest.swift in Sources */,
 				61C28BFF1EA46F810019F574 /* MenuViewCell.swift in Sources */,
 				61C28C071EA46F810019F574 /* ProfileSetupViewController.swift in Sources */,
+				613929211EB0640D00450284 /* OTARequest.swift in Sources */,
 				61C28C0F1EA46F810019F574 /* RegisterViewController.swift in Sources */,
 				61C28BC81EA46F810019F574 /* GetConfigRequest.swift in Sources */,
 				61C28C231EA46F810019F574 /* UserDevice.swift in Sources */,
@@ -1850,7 +1854,6 @@
 				61C28C241EA46F810019F574 /* UserGoal.swift in Sources */,
 				6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */,
 				61C28BEF1EA46F810019F574 /* ConnectionSetupViewController.swift in Sources */,
-				61C28C3B1EA46F810019F574 /* BaseGetRequest.swift in Sources */,
 				CB9F65591EA9FC19007982B0 /* UITableViewExtension.swift in Sources */,
 				61C28C1D1EA46F810019F574 /* WorldClockViewController.swift in Sources */,
 				61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */,
