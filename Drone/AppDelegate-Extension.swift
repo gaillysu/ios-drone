@@ -215,7 +215,7 @@ extension AppDelegate {
         var cityArray:[City] = DataBaseManager.manager.getCitySelected()
         
         let timeZoneNameData = DateFormatter.localCityName()
-        if timeZoneNameData.isEmpty {
+        if !timeZoneNameData.isEmpty {
             let city:City = City()
             city.name = timeZoneNameData
             cityArray.append(city)
