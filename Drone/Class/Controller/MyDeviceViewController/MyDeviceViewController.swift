@@ -24,13 +24,16 @@ class MyDeviceViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "Watches"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Watches"
+        
         addCloseButton(#selector(dismissViewController))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reloadDeviceControllers()
     }
     
     func dismissViewController(){
@@ -39,6 +42,10 @@ class MyDeviceViewController: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+    }
+    
+    func reloadDeviceControllers() {
         for cont in viewControllers {
             cont.removeFromParentViewController()
         }

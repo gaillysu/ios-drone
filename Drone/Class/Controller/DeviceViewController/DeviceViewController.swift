@@ -48,10 +48,12 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
         }
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         deviceTableView.isScrollEnabled = false
         deviceTableView.reloadData()
     }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         SwiftEventBus.unregister(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED)
@@ -125,10 +127,8 @@ extension DeviceViewController{
             let resetModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)
             _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: resetModel)
             
-            if self.navigationController == nil {
+            if self.navigationController?.popViewController(animated: true)==nil {
                 self.dismiss(animated: true, completion: nil)
-            }else{
-                _ = self.navigationController?.popViewController(animated: true)
             }
         }))
         
