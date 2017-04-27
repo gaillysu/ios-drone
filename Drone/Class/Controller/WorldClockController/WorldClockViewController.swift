@@ -189,6 +189,7 @@ class WorldClockViewController: BaseViewController, UITableViewDelegate, UITable
             self.tableView.reloadData()
         }
         AppDelegate.getAppDelegate().setWorldClock(Array(worldClockArray))
+        AppDelegate.getAppDelegate().setWeather()
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.0

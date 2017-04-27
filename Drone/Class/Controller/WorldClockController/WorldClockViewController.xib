@@ -24,7 +24,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6x-e9-GdE" customClass="WorldClockHeader" customModule="Drone" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="226"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="YNQ-0P-dEj">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="YNQ-0P-dEj">
                             <rect key="frame" x="42" y="23" width="291" height="170"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="YNQ-0P-dEj" secondAttribute="height" multiplier="291:170" id="xdA-RN-6T6"/>
@@ -76,7 +76,7 @@
         </view>
     </objects>
     <resources>
-        <image name="map" width="300" height="187"/>
+        <image name="mapImage.png" width="800" height="515"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
