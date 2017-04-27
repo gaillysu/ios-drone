@@ -43,6 +43,7 @@
 		613929121EAEE92600450284 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 613929111EAEE92600450284 /* default.realm */; };
 		613929141EAEF3BD00450284 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */; };
 		613929211EB0640D00450284 /* OTARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929201EB0640D00450284 /* OTARequest.swift */; };
+		613929241EB18C9200450284 /* WatchInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929231EB18C9200450284 /* WatchInfoModel.swift */; };
 		618322FE1EA0A2B90054966D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
 		618323081EA459F00054966D /* AutocompleteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323071EA459F00054966D /* AutocompleteField.swift */; };
 		6183230E1EA4609C0054966D /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230A1EA4609C0054966D /* SMSegment.swift */; };
@@ -311,6 +312,7 @@
 		613929111EAEE92600450284 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		613929201EB0640D00450284 /* OTARequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTARequest.swift; sourceTree = "<group>"; };
+		613929231EB18C9200450284 /* WatchInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchInfoModel.swift; sourceTree = "<group>"; };
 		618322FD1EA0A2B90054966D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618323071EA459F00054966D /* AutocompleteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteField.swift; sourceTree = "<group>"; };
 		6183230A1EA4609C0054966D /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
@@ -686,6 +688,14 @@
 				61078DC11E48249C00898A0D /* String+Timepiece.swift */,
 			);
 			path = OldTimepiece;
+			sourceTree = "<group>";
+		};
+		613929221EB18C8800450284 /* WatchInfoModel */ = {
+			isa = PBXGroup;
+			children = (
+				613929231EB18C9200450284 /* WatchInfoModel.swift */,
+			);
+			path = WatchInfoModel;
 			sourceTree = "<group>";
 		};
 		618323061EA459F00054966D /* AutocompleteField */ = {
@@ -1070,6 +1080,7 @@
 		61C28B7B1EA46F810019F574 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				613929221EB18C8800450284 /* WatchInfoModel */,
 				61C28CA51EA756950019F574 /* Cache */,
 				61C28C9D1EA73E920019F574 /* PostObject */,
 				61C28B7C1EA46F810019F574 /* DBModel */,
@@ -1890,6 +1901,7 @@
 				61C28C731EA5A03C0019F574 /* BaseNetworkRequest.swift in Sources */,
 				61C28C881EA5BB330019F574 /* WeatherBaseGetRequest.swift in Sources */,
 				61078DC51E48249C00898A0D /* NSCalendarUnit+Timepiece.swift in Sources */,
+				613929241EB18C9200450284 /* WatchInfoModel.swift in Sources */,
 				61C28C2A1EA46F810019F574 /* NumberOfStepsGoal.swift in Sources */,
 				61C28C721EA5A03C0019F574 /* BaseGetRequest.swift in Sources */,
 				613929001EAA026B00450284 /* String+Extension.swift in Sources */,

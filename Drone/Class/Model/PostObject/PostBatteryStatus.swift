@@ -32,8 +32,8 @@ class PostBatteryStatus: NSObject,NSCoding {
             return "Damaged"
         case 3:
             return "Calculating"
-        default: break
-            
+        default:
+            return "null"
         }
         return ""
     }
