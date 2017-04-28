@@ -826,7 +826,6 @@
 				61C28B351EA46F800019F574 /* ConnectionViewController */,
 				61C28B381EA46F800019F574 /* DeviceViewController */,
 				61C28B401EA46F800019F574 /* ForgetPasswordController */,
-				61C28B431EA46F800019F574 /* HomeViewController */,
 				61C28B461EA46F800019F574 /* LoginController */,
 				61C28B491EA46F800019F574 /* MenuViewController */,
 				61C28B4F1EA46F800019F574 /* MyDeviceViewController */,
@@ -838,6 +837,7 @@
 				61C28B681EA46F800019F574 /* StepController */,
 				CB9F65411EA862E3007982B0 /* TimeSettingsViewController */,
 				CB9F653E1EA85BCC007982B0 /* TimeTabViewController */,
+				61C28B431EA46F800019F574 /* WelcomeViewController */,
 				61C28B781EA46F810019F574 /* WhichDeviceViewController */,
 				61C28B6E1EA46F810019F574 /* WorldClockController */,
 			);
@@ -918,12 +918,13 @@
 			path = ForgetPasswordController;
 			sourceTree = "<group>";
 		};
-		61C28B431EA46F800019F574 /* HomeViewController */ = {
+		61C28B431EA46F800019F574 /* WelcomeViewController */ = {
 			isa = PBXGroup;
 			children = (
 				61C28B441EA46F800019F574 /* WelcomeViewController.swift */,
 				61C28B451EA46F800019F574 /* WelcomeViewController.xib */,
 			);
+			name = WelcomeViewController;
 			path = HomeViewController;
 			sourceTree = "<group>";
 		};
