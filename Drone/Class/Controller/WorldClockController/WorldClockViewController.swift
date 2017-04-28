@@ -188,8 +188,7 @@ extension WorldClockViewController: UITableViewDelegate, UITableViewDataSource{
         cell.cityModel = city
         return cell;
     }
-   
-}
+ }
 
 extension WorldClockViewController:TableViewReorderDelegate{
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {

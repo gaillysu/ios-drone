@@ -55,7 +55,9 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
     }
     
     func dismissViewController(){
-        self.dismiss(animated: true, completion: nil)
+        if self.navigationController?.popViewController(animated: true) == nil {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

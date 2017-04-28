@@ -219,7 +219,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         {
             
             if error == nil && characteristic.value != nil {
-                // debugPrint("Received : \(characteristic.uuid.uuidString) \(self.hexString(characteristic.value!))")
+                debugPrint("Received : \(characteristic.uuid.uuidString) \(self.hexString(characteristic.value!))")
                 
                 /* It is valid data, let's return it to our delegate */
                 mDelegate?.packetReceived( RawPacketImpl(data: characteristic.value! , profile: mProfile!) ,  fromAddress : aPeripheral.identifier )

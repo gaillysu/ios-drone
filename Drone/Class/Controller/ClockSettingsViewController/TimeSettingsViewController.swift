@@ -70,11 +70,15 @@ class TimeSettingsViewController: BaseViewController {
             let section = dataSource[index]
             return section.header
         }
-        
+
         dataSource.titleForFooterInSection = { dataSource, index in
             let section = dataSource[index]
             return section.footer
         }
+
+        section.asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .addDisposableTo(disposeBag)
         
         section.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))

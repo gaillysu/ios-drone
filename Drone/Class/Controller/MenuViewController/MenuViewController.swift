@@ -24,17 +24,10 @@ class MenuViewController: BaseViewController  {
     
     let identifier = "menu_cell_identifier"
     var disposeBag = DisposeBag()
-    var menuItems: Variable<[MenuItem]> = Variable([StepsMenuItem(), TimeMenuItem(),CityNavigationMenuItem(), CompassMenuItem(), HotKeyMenuItem(), NotificationsMenuItem()])
+    var menuItems: Variable<[MenuItem]> = Variable([StepsMenuItem(), TimeMenuItem(),CityMenuItem(), CompassMenuItem(), HotKeyMenuItem(), NotificationsMenuItem(),DeviceMenuItem()])
     
     init() {
         super.init(nibName: "MenuViewController", bundle: Bundle.main)
-        if let _ = UserProfile.getAll().first as? UserProfile{
-            self.menuItems.value.append(ProfileMenuItem())
-        }else{
-            self.menuItems.value.append(LoginMenuItem())
-        }
-        self.menuItems.value.append(DeviceMenuItem())
-        
         if(UserGoal.getAll().count == 0){
             let goalModel:UserGoal = UserGoal()
             goalModel.goalSteps = 10000
@@ -48,6 +41,7 @@ class MenuViewController: BaseViewController  {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        reloadMenuItems()
     }
     
     override func viewDidLoad() {
@@ -118,6 +112,22 @@ class MenuViewController: BaseViewController  {
             }
         }
         setupRx()
+    }
+    
+    func reloadMenuItems() {
+        if UserProfile.getAll().count>0 {
+            if self.menuItems.value.count>7 {
+                self.menuItems.value.replaceSubrange(6..<7, with: [ProfileMenuItem()])
+            }else{
+                self.menuItems.value.insert(ProfileMenuItem(), at: 6)
+            }
+        }else{
+            if self.menuItems.value.count>7 {
+                self.menuItems.value.replaceSubrange(6..<7, with: [LoginMenuItem()])
+            }else{
+                self.menuItems.value.insert(LoginMenuItem(), at: 6)
+            }
+        }
     }
     
     func leftAction(_ item:UIBarButtonItem) {
