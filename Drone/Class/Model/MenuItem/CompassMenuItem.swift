@@ -29,6 +29,6 @@ class CompassMenuItem: MenuItem {
     }
     
     func comingSoon() -> Bool{
-        return true
+        return false
     }
 }

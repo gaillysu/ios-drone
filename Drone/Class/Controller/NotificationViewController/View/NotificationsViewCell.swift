@@ -12,7 +12,7 @@ import SwiftyJSON
 class NotificationsViewCell: UITableViewCell {
     @IBOutlet weak var notificationSwicth: UISwitch!
     var switchCallback: ((Bool, String) -> Void)?
-    var app:DroneNotification? {
+    var app:Notification? {
         didSet{
             self.setSwicth(on: app!.state)
         }

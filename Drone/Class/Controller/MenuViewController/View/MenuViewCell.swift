@@ -23,6 +23,7 @@ class MenuViewCell: UICollectionViewCell{
             }else if let image = menuItem?.image(){
                 menuItemImage.image = image
             }
+            enable(on: (!(menuItem?.comingSoon())!))
         }
     }
 }

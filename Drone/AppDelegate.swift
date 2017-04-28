@@ -69,7 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    func applicationDidEnterBackground(_ application: UIApplication) {
       UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
-
    }
    
    // MARK: - ConnectionControllerDelegate
@@ -261,7 +260,7 @@ extension AppDelegate{
    
    func updateNotification() {
       let realm = try! Realm()
-      let notifications = realm.objects(DroneNotification.self)
+      let notifications = realm.objects(Notification.self)
       for notification in notifications {
          let updateRequest = UpdateNotificationRequest(operation: notification.state ? 1 : 2, package: notification.bundleIdentifier)
          AppDelegate.getAppDelegate().sendRequest(updateRequest)

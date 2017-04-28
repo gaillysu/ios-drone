@@ -56,18 +56,13 @@ class ConnectionSetupViewController: UIViewController {
     
     //Search device until find
     func reSearchTimerAction(_ timer:Timer) {
-//        if AppDelegate.getAppDelegate().isConnected() {
-//            timer.invalidate()
-//        }else{
-//        self.navigationItem.setHidesBackButton(false, animated: true)
-//            self.connectionFailView.isHidden = false
-//            self.connectionView.isHidden = true
-//            self.previousButton.isHidden = false
-//        }
-        
-        self.connectedView.isHidden = false
-        self.connectionView.isHidden = true
-
+        if AppDelegate.getAppDelegate().isConnected() {
+            timer.invalidate()
+        }else{
+            self.navigationItem.setHidesBackButton(false, animated: true)
+            self.connectionFailView.isHidden = false
+            self.connectionView.isHidden = true
+        }
     }
     
     @IBAction func buttonActionManager(_ sender: AnyObject) {

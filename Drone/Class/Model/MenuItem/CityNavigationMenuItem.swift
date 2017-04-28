@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Font_Awesome_Swift
 
-class CityMenuItem: MenuItem {
+class CityNavigationMenuItem: MenuItem {
     
     func viewController() -> UIViewController{
         return WorldClockViewController()

@@ -37,7 +37,7 @@ class CompassViewController: BaseViewController {
             }.addDisposableTo(disposeBag)
         
         self.addCloseButton(#selector(dismissViewController))
-        items.asObservable().bindTo(compassTableView.rx
+        items.asObservable().bind(to: compassTableView.rx
             .items(cellIdentifier: identifier, cellType: CompassTableViewCell.self)){
                 row, item, cell in
                 cell.descriptionLabel.text = item

@@ -63,7 +63,7 @@ class AnalysisStepsChartView: LineChartView {
     func invalidateChart() {
         let formatter:ChartFormatter = ChartFormatter(xVals)
         let xaxis:XAxis = XAxis()
-        for (index,vlaue) in xVals.enumerated() {
+        for (index,_) in xVals.enumerated() {
             _ = formatter.stringForValue(Double(index), axis: nil)
         }
         xaxis.valueFormatter = formatter

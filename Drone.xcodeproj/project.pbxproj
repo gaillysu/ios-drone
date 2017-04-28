@@ -141,8 +141,6 @@
 		61C28C141EA46F810019F574 /* StepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B6A1EA46F810019F574 /* StepsViewController.xib */; };
 		61C28C151EA46F810019F574 /* StepsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B6C1EA46F810019F574 /* StepsTitleView.swift */; };
 		61C28C161EA46F810019F574 /* StepsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B6D1EA46F810019F574 /* StepsTitleView.xib */; };
-		61C28C171EA46F810019F574 /* AddWorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B6F1EA46F810019F574 /* AddWorldClockViewController.swift */; };
-		61C28C181EA46F810019F574 /* AddWorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B701EA46F810019F574 /* AddWorldClockViewController.xib */; };
 		61C28C191EA46F810019F574 /* WorldClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B721EA46F810019F574 /* WorldClockCell.swift */; };
 		61C28C1A1EA46F810019F574 /* WorldClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B731EA46F810019F574 /* WorldClockCell.xib */; };
 		61C28C1D1EA46F810019F574 /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B761EA46F810019F574 /* WorldClockViewController.swift */; };
@@ -159,7 +157,7 @@
 		61C28C281EA46F810019F574 /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */; };
 		61C28C291EA46F810019F574 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B871EA46F810019F574 /* Goal.swift */; };
 		61C28C2A1EA46F810019F574 /* NumberOfStepsGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B881EA46F810019F574 /* NumberOfStepsGoal.swift */; };
-		61C28C2B1EA46F810019F574 /* CityMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8A1EA46F810019F574 /* CityMenuItem.swift */; };
+		61C28C2B1EA46F810019F574 /* CityNavigationMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8A1EA46F810019F574 /* CityNavigationMenuItem.swift */; };
 		61C28C2C1EA46F810019F574 /* CompassMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8B1EA46F810019F574 /* CompassMenuItem.swift */; };
 		61C28C2D1EA46F810019F574 /* DeviceMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8C1EA46F810019F574 /* DeviceMenuItem.swift */; };
 		61C28C2E1EA46F810019F574 /* HotKeyMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8D1EA46F810019F574 /* HotKeyMenuItem.swift */; };
@@ -175,10 +173,9 @@
 		61C28C381EA46F810019F574 /* Timezone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B991EA46F810019F574 /* Timezone.swift */; };
 		61C28C4B1EA46F810019F574 /* StepsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BAE1EA46F810019F574 /* StepsManager.swift */; };
 		61C28C4C1EA46F810019F574 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB01EA46F810019F574 /* AppTheme.swift */; };
-		61C28C4D1EA46F810019F574 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB11EA46F810019F574 /* Color.swift */; };
+		61C28C4D1EA46F810019F574 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB11EA46F810019F574 /* UIColor+Extension.swift */; };
 		61C28C4E1EA46F810019F574 /* DTUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB21EA46F810019F574 /* DTUserDefaults.swift */; };
 		61C28C4F1EA46F810019F574 /* EventBusKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB31EA46F810019F574 /* EventBusKeys.swift */; };
-		61C28C511EA46F810019F574 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB51EA46F810019F574 /* StringExtension.swift */; };
 		61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB61EA46F810019F574 /* SyncQueue.swift */; };
 		61C28C531EA46F810019F574 /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB71EA46F810019F574 /* TimeUtil.swift */; };
 		61C28C541EA46F810019F574 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB81EA46F810019F574 /* UIView+Extension.swift */; };
@@ -226,7 +223,6 @@
 		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
 		CB715FB51EA5F20E005B5C22 /* CompassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */; };
 		CB9F65241EA610C5007982B0 /* Compass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65231EA610C5007982B0 /* Compass.swift */; };
-		CB9F65261EA6144D007982B0 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65251EA6144D007982B0 /* IntExtension.swift */; };
 		CB9F652C1EA70CA9007982B0 /* CalibrateHourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F652A1EA70CA9007982B0 /* CalibrateHourViewController.swift */; };
 		CB9F652D1EA70CA9007982B0 /* CalibrateHourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F652B1EA70CA9007982B0 /* CalibrateHourViewController.xib */; };
 		CB9F65301EA70CCB007982B0 /* CalibrateMinuteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F652E1EA70CCB007982B0 /* CalibrateMinuteViewController.swift */; };
@@ -244,9 +240,13 @@
 		CB9F65501EA8AB51007982B0 /* ClockSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */; };
 		CB9F65551EA9F364007982B0 /* TimeSettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65541EA9F364007982B0 /* TimeSettingsSectionModel.swift */; };
 		CB9F65571EA9F3C4007982B0 /* TimeSettingsSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65561EA9F3C4007982B0 /* TimeSettingsSectionItem.swift */; };
-		CB9F65591EA9FC19007982B0 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65581EA9FC19007982B0 /* UITableViewExtension.swift */; };
-		CBB892311EADB5B6006F7031 /* UITalbleViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892301EADB5B6006F7031 /* UITalbleViewCellExtension.swift */; };
-		CBB892331EADECDA006F7031 /* UICollectionViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892321EADECDA006F7031 /* UICollectionViewCellExtension.swift */; };
+		CB9F65591EA9FC19007982B0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */; };
+		CBB892311EADB5B6006F7031 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */; };
+		CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */; };
+		CBB892371EB30491006F7031 /* AddWorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892361EB30491006F7031 /* AddWorldClockViewController.swift */; };
+		CBB892391EB3049A006F7031 /* AddWorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBB892381EB3049A006F7031 /* AddWorldClockViewController.xib */; };
+		CBB8923B1EB304BE006F7031 /* DidSelectedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8923A1EB304BE006F7031 /* DidSelectedDelegate.swift */; };
+		CBB892421EB32717006F7031 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892411EB32717006F7031 /* Notification.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -409,8 +409,6 @@
 		61C28B6A1EA46F810019F574 /* StepsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsViewController.xib; sourceTree = "<group>"; };
 		61C28B6C1EA46F810019F574 /* StepsTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTitleView.swift; sourceTree = "<group>"; };
 		61C28B6D1EA46F810019F574 /* StepsTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTitleView.xib; sourceTree = "<group>"; };
-		61C28B6F1EA46F810019F574 /* AddWorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockViewController.swift; path = WorldClockController/AddWorldClockViewController.swift; sourceTree = "<group>"; };
-		61C28B701EA46F810019F574 /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWorldClockViewController.xib; path = WorldClockController/AddWorldClockViewController.xib; sourceTree = "<group>"; };
 		61C28B721EA46F810019F574 /* WorldClockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockCell.swift; sourceTree = "<group>"; };
 		61C28B731EA46F810019F574 /* WorldClockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldClockCell.xib; sourceTree = "<group>"; };
 		61C28B761EA46F810019F574 /* WorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
@@ -427,7 +425,7 @@
 		61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldClockDatabaseHelper.swift; path = ModelTable/WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
 		61C28B871EA46F810019F574 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		61C28B881EA46F810019F574 /* NumberOfStepsGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfStepsGoal.swift; sourceTree = "<group>"; };
-		61C28B8A1EA46F810019F574 /* CityMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityMenuItem.swift; sourceTree = "<group>"; };
+		61C28B8A1EA46F810019F574 /* CityNavigationMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityNavigationMenuItem.swift; sourceTree = "<group>"; };
 		61C28B8B1EA46F810019F574 /* CompassMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassMenuItem.swift; sourceTree = "<group>"; };
 		61C28B8C1EA46F810019F574 /* DeviceMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceMenuItem.swift; sourceTree = "<group>"; };
 		61C28B8D1EA46F810019F574 /* HotKeyMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyMenuItem.swift; sourceTree = "<group>"; };
@@ -443,10 +441,9 @@
 		61C28B991EA46F810019F574 /* Timezone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timezone.swift; sourceTree = "<group>"; };
 		61C28BAE1EA46F810019F574 /* StepsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsManager.swift; sourceTree = "<group>"; };
 		61C28BB01EA46F810019F574 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
-		61C28BB11EA46F810019F574 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		61C28BB11EA46F810019F574 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		61C28BB21EA46F810019F574 /* DTUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTUserDefaults.swift; sourceTree = "<group>"; };
 		61C28BB31EA46F810019F574 /* EventBusKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusKeys.swift; sourceTree = "<group>"; };
-		61C28BB51EA46F810019F574 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		61C28BB61EA46F810019F574 /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
 		61C28BB71EA46F810019F574 /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
 		61C28BB81EA46F810019F574 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -496,7 +493,6 @@
 		CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassTableViewCell.swift; sourceTree = "<group>"; };
 		CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompassTableViewCell.xib; sourceTree = "<group>"; };
 		CB9F65231EA610C5007982B0 /* Compass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compass.swift; sourceTree = "<group>"; };
-		CB9F65251EA6144D007982B0 /* IntExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		CB9F652A1EA70CA9007982B0 /* CalibrateHourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalibrateHourViewController.swift; path = CalibrateHourViewController/CalibrateHourViewController.swift; sourceTree = "<group>"; };
 		CB9F652B1EA70CA9007982B0 /* CalibrateHourViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalibrateHourViewController.xib; path = CalibrateHourViewController/CalibrateHourViewController.xib; sourceTree = "<group>"; };
 		CB9F652E1EA70CCB007982B0 /* CalibrateMinuteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalibrateMinuteViewController.swift; path = CalibrateMinuteViewController/CalibrateMinuteViewController.swift; sourceTree = "<group>"; };
@@ -514,9 +510,13 @@
 		CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockSettingsTableViewCell.xib; path = ClockSettingsTableViewCell/ClockSettingsTableViewCell.xib; sourceTree = "<group>"; };
 		CB9F65541EA9F364007982B0 /* TimeSettingsSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSettingsSectionModel.swift; path = "untitled folder/TimeSettingsSectionModel.swift"; sourceTree = "<group>"; };
 		CB9F65561EA9F3C4007982B0 /* TimeSettingsSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSettingsSectionItem.swift; sourceTree = "<group>"; };
-		CB9F65581EA9FC19007982B0 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		CBB892301EADB5B6006F7031 /* UITalbleViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITalbleViewCellExtension.swift; sourceTree = "<group>"; };
-		CBB892321EADECDA006F7031 /* UICollectionViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtension.swift; sourceTree = "<group>"; };
+		CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		CBB892361EB30491006F7031 /* AddWorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockViewController.swift; path = AddWorldClockViewController/AddWorldClockViewController.swift; sourceTree = "<group>"; };
+		CBB892381EB3049A006F7031 /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWorldClockViewController.xib; path = AddWorldClockViewController/AddWorldClockViewController.xib; sourceTree = "<group>"; };
+		CBB8923A1EB304BE006F7031 /* DidSelectedDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DidSelectedDelegate.swift; path = AddWorldClockViewController/DidSelectedDelegate.swift; sourceTree = "<group>"; };
+		CBB892411EB32717006F7031 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Notification/Notification.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -719,15 +719,15 @@
 		61C28AF71EA46F800019F574 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				61C28CA21EA73F4C0019F574 /* DataBaseManager */,
-				CB9F65511EA9F327007982B0 /* ViewModel */,
 				61C28AF81EA46F800019F574 /* BTManager */,
 				61C28B251EA46F800019F574 /* Controller */,
+				61C28CA21EA73F4C0019F574 /* DataBaseManager */,
 				61C28B7B1EA46F810019F574 /* Model */,
 				61C28B9B1EA46F810019F574 /* Network */,
 				61C28BAD1EA46F810019F574 /* StepsManager */,
 				61C28BAF1EA46F810019F574 /* Util */,
 				61C28B711EA46F810019F574 /* View */,
+				CB9F65511EA9F327007982B0 /* ViewModel */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -1071,10 +1071,11 @@
 			isa = PBXGroup;
 			children = (
 				61C28CA51EA756950019F574 /* Cache */,
-				61C28C9D1EA73E920019F574 /* PostObject */,
 				61C28B7C1EA46F810019F574 /* DBModel */,
 				61C28B861EA46F810019F574 /* Goal */,
 				61C28B891EA46F810019F574 /* MenuItem */,
+				CBB8923E1EB32692006F7031 /* Notification */,
+				61C28C9D1EA73E920019F574 /* PostObject */,
 				61C28B941EA46F810019F574 /* WeatherModel */,
 				61C28B971EA46F810019F574 /* WorldClock */,
 			);
@@ -1109,7 +1110,7 @@
 		61C28B891EA46F810019F574 /* MenuItem */ = {
 			isa = PBXGroup;
 			children = (
-				61C28B8A1EA46F810019F574 /* CityMenuItem.swift */,
+				61C28B8A1EA46F810019F574 /* CityNavigationMenuItem.swift */,
 				61C28B8B1EA46F810019F574 /* CompassMenuItem.swift */,
 				61C28B8C1EA46F810019F574 /* DeviceMenuItem.swift */,
 				61C28B8D1EA46F810019F574 /* HotKeyMenuItem.swift */,
@@ -1162,18 +1163,16 @@
 			isa = PBXGroup;
 			children = (
 				61C28BB01EA46F810019F574 /* AppTheme.swift */,
-				61C28BB11EA46F810019F574 /* Color.swift */,
+				61C28BB11EA46F810019F574 /* UIColor+Extension.swift */,
 				61C28BB21EA46F810019F574 /* DTUserDefaults.swift */,
 				61C28BB31EA46F810019F574 /* EventBusKeys.swift */,
-				61C28BB51EA46F810019F574 /* StringExtension.swift */,
 				61C28BB61EA46F810019F574 /* SyncQueue.swift */,
 				61C28BB71EA46F810019F574 /* TimeUtil.swift */,
 				61C28BB81EA46F810019F574 /* UIView+Extension.swift */,
 				61C28BBA1EA46F810019F574 /* WorldClockUtil.swift */,
-				CB9F65251EA6144D007982B0 /* IntExtension.swift */,
-				CB9F65581EA9FC19007982B0 /* UITableViewExtension.swift */,
-				CBB892301EADB5B6006F7031 /* UITalbleViewCellExtension.swift */,
-				CBB892321EADECDA006F7031 /* UICollectionViewCellExtension.swift */,
+				CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */,
+				CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */,
+				CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1316,8 +1315,9 @@
 		CB715FAC1EA5E6BF005B5C22 /* AddWorldClockViewController */ = {
 			isa = PBXGroup;
 			children = (
-				61C28B6F1EA46F810019F574 /* AddWorldClockViewController.swift */,
-				61C28B701EA46F810019F574 /* AddWorldClockViewController.xib */,
+				CBB892381EB3049A006F7031 /* AddWorldClockViewController.xib */,
+				CBB892361EB30491006F7031 /* AddWorldClockViewController.swift */,
+				CBB8923A1EB304BE006F7031 /* DidSelectedDelegate.swift */,
 			);
 			name = AddWorldClockViewController;
 			sourceTree = "<group>";
@@ -1453,6 +1453,14 @@
 			name = TimeSettingsSectionModel;
 			sourceTree = "<group>";
 		};
+		CBB8923E1EB32692006F7031 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				CBB892411EB32717006F7031 /* Notification.swift */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1582,6 +1590,7 @@
 				CB9F65311EA70CCB007982B0 /* CalibrateMinuteViewController.xib in Resources */,
 				61C28BEC1EA46F810019F574 /* CheckEmailController.xib in Resources */,
 				61C28C1E1EA46F810019F574 /* WorldClockViewController.xib in Resources */,
+				CBB892391EB3049A006F7031 /* AddWorldClockViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				61C28BF81EA46F810019F574 /* ForgetPasswordController.xib in Resources */,
 				6139290A1EADABEB00450284 /* welcome_4.png in Resources */,
@@ -1595,7 +1604,6 @@
 				61C28C041EA46F810019F574 /* NotificationViewController.xib in Resources */,
 				61C28C201EA46F810019F574 /* WhichDeviceViewController.xib in Resources */,
 				9E1535831D5C20CA00CB6A01 /* timezones.json in Resources */,
-				61C28C181EA46F810019F574 /* AddWorldClockViewController.xib in Resources */,
 				00982A741C868B15003DA5E2 /* LaunchScreen.storyboard in Resources */,
 				CB715FB51EA5F20E005B5C22 /* CompassTableViewCell.xib in Resources */,
 				CB9F65351EA70CDA007982B0 /* CalibrateSecondViewController.xib in Resources */,
@@ -1712,7 +1720,7 @@
 				61C28BFB1EA46F810019F574 /* LoginViewController.swift in Sources */,
 				CB9F65481EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.swift in Sources */,
 				61C28BBF1EA46F810019F574 /* CockRoachPacket.swift in Sources */,
-				CB9F65261EA6144D007982B0 /* IntExtension.swift in Sources */,
+				CBB8923B1EB304BE006F7031 /* DidSelectedDelegate.swift in Sources */,
 				61C28BF91EA46F810019F574 /* WelcomeViewController.swift in Sources */,
 				61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */,
 				61C28BE41EA46F810019F574 /* WriteSettingRequest.swift in Sources */,
@@ -1733,7 +1741,7 @@
 				61C28C7B1EA5A03C0019F574 /* StepsGetRequest.swift in Sources */,
 				61C28C261EA46F810019F574 /* UserSteps.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
-				CBB892331EADECDA006F7031 /* UICollectionViewCellExtension.swift in Sources */,
+				CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */,
 				61C28C1F1EA46F810019F574 /* WhichDeviceViewController.swift in Sources */,
 				61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */,
 				61C28BBE1EA46F810019F574 /* ActivityPacket.swift in Sources */,
@@ -1760,13 +1768,13 @@
 				613929211EB0640D00450284 /* OTARequest.swift in Sources */,
 				61C28C0F1EA46F810019F574 /* RegisterViewController.swift in Sources */,
 				61C28BC81EA46F810019F574 /* GetConfigRequest.swift in Sources */,
+				CBB892421EB32717006F7031 /* Notification.swift in Sources */,
 				61C28C231EA46F810019F574 /* UserDevice.swift in Sources */,
 				61C28C151EA46F810019F574 /* StepsTitleView.swift in Sources */,
 				61C28C7E1EA5A03C0019F574 /* UserUpdateRequest.swift in Sources */,
 				61C28C351EA46F810019F574 /* WeatherLocationModel.swift in Sources */,
 				61C28C371EA46F810019F574 /* City.swift in Sources */,
 				61C28BF71EA46F810019F574 /* ForgetPasswordController.swift in Sources */,
-				61C28C511EA46F810019F574 /* StringExtension.swift in Sources */,
 				61C28C541EA46F810019F574 /* UIView+Extension.swift in Sources */,
 				61C28C321EA46F810019F574 /* ProfileMenuItem.swift in Sources */,
 				61C28C111EA46F810019F574 /* SplashScreenViewController.swift in Sources */,
@@ -1783,7 +1791,7 @@
 				61C28BCB1EA46F810019F574 /* GetStepsGoalRequest.swift in Sources */,
 				CB9F65401EA85CB6007982B0 /* TimeTabViewController.swift in Sources */,
 				61C28C191EA46F810019F574 /* WorldClockCell.swift in Sources */,
-				61C28C4D1EA46F810019F574 /* Color.swift in Sources */,
+				61C28C4D1EA46F810019F574 /* UIColor+Extension.swift in Sources */,
 				61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */,
 				61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */,
 				61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */,
@@ -1842,7 +1850,6 @@
 				61C28C211EA46F810019F574 /* MEDBaseModel.swift in Sources */,
 				61C28C0B1EA46F810019F574 /* ProfileTableViewCellHeader.swift in Sources */,
 				61C28BC61EA46F810019F574 /* GetActivityRequest.swift in Sources */,
-				61C28C171EA46F810019F574 /* AddWorldClockViewController.swift in Sources */,
 				61C28C131EA46F810019F574 /* StepsViewController.swift in Sources */,
 				CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */,
 				61C28C4E1EA46F810019F574 /* DTUserDefaults.swift in Sources */,
@@ -1854,7 +1861,7 @@
 				61C28C241EA46F810019F574 /* UserGoal.swift in Sources */,
 				6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */,
 				61C28BEF1EA46F810019F574 /* ConnectionSetupViewController.swift in Sources */,
-				CB9F65591EA9FC19007982B0 /* UITableViewExtension.swift in Sources */,
+				CB9F65591EA9FC19007982B0 /* UITableView+Extension.swift in Sources */,
 				61C28C1D1EA46F810019F574 /* WorldClockViewController.swift in Sources */,
 				61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */,
 				61C28BDD1EA46F810019F574 /* SetWeatherLocationsRequest.swift in Sources */,
@@ -1868,7 +1875,7 @@
 				618322FE1EA0A2B90054966D /* Constants.swift in Sources */,
 				61C28BE01EA46F810019F574 /* UpdateContactsApplicationsRequest.swift in Sources */,
 				618323111EA4609C0054966D /* SMSegmentViewConstants.swift in Sources */,
-				61C28C2B1EA46F810019F574 /* CityMenuItem.swift in Sources */,
+				61C28C2B1EA46F810019F574 /* CityNavigationMenuItem.swift in Sources */,
 				CB9F65341EA70CDA007982B0 /* CalibrateSecondViewController.swift in Sources */,
 				61C28BE31EA46F810019F574 /* UpdateWeatherInfoRequest.swift in Sources */,
 				6183230E1EA4609C0054966D /* SMSegment.swift in Sources */,
@@ -1879,10 +1886,11 @@
 				61C28C221EA46F810019F574 /* MEDDataBaseRequest.swift in Sources */,
 				61C28BC01EA46F810019F574 /* DronePacket.swift in Sources */,
 				CB9F65551EA9F364007982B0 /* TimeSettingsSectionModel.swift in Sources */,
+				CBB892371EB30491006F7031 /* AddWorldClockViewController.swift in Sources */,
 				6183230F1EA4609C0054966D /* SMSegmentAppearance.swift in Sources */,
 				61C28C031EA46F810019F574 /* NotificationViewController.swift in Sources */,
 				61C28C4C1EA46F810019F574 /* AppTheme.swift in Sources */,
-				CBB892311EADB5B6006F7031 /* UITalbleViewCellExtension.swift in Sources */,
+				CBB892311EADB5B6006F7031 /* UITableViewCell+Extension.swift in Sources */,
 				618323081EA459F00054966D /* AutocompleteField.swift in Sources */,
 				61C28BDF1EA46F810019F574 /* StartSystemSettingRequest.swift in Sources */,
 				61C28CA01EA73E920019F574 /* PostActivityData.swift in Sources */,

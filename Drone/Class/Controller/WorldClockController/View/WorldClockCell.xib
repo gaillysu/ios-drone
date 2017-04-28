@@ -57,7 +57,7 @@
                     <constraint firstItem="Zle-bX-sdO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="l82-MM-mLb"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="cityLabel" destination="Zle-bX-sdO" id="AB8-3H-lks"/>
                 <outlet property="time" destination="cnB-yU-yi2" id="MUn-UY-1Hz"/>

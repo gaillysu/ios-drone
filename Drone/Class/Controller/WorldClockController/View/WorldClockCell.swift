@@ -47,7 +47,7 @@ class WorldClockCell: UITableViewCell {
     }
     
     fileprivate func setCityValue(model:City) {
-        let timeZoneNameData = DateFormatter.localCityName()
+        let timeZoneNameData = DateFormatter().localCityName()
         if timeZoneNameData.hasPrefix(model.name)  {
             let now = Date()
             if !timeZoneNameData.isEmpty {

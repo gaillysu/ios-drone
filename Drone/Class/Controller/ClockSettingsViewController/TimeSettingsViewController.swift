@@ -33,7 +33,6 @@ class TimeSettingsViewController: BaseViewController {
         
         let dataSource = RxTableViewSectionedReloadDataSource<TimeSettingsSectionModel>()
         
-        
         dataSource.configureCell = { (dataSource, table, indexPath, _) in
             let item = dataSource[indexPath]
             if indexPath.row == 0 && indexPath.section == 0 {
@@ -66,9 +65,6 @@ class TimeSettingsViewController: BaseViewController {
             return UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: nil)
         }
         
-        section.asObservable()
-            .bindTo(tableView.rx.items(dataSource: dataSource))
-            .addDisposableTo(disposeBag)
         
         dataSource.titleForHeaderInSection = { dataSource, index in
             let section = dataSource[index]
@@ -79,6 +75,10 @@ class TimeSettingsViewController: BaseViewController {
             let section = dataSource[index]
             return section.footer
         }
+        
+        section.asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .addDisposableTo(disposeBag)
         
         self.tableView.rx.modelSelected(TimeSettingsSectionItem.self).subscribe { _ in
             if let indexPath = self.tableView.indexPathForSelectedRow{

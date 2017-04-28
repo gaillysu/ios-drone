@@ -24,7 +24,7 @@ class MenuViewController: BaseViewController  {
     
     let identifier = "menu_cell_identifier"
     var disposeBag = DisposeBag()
-    var menuItems: Variable<[MenuItem]> = Variable([StepsMenuItem(), TimeMenuItem(),CityMenuItem(), CompassMenuItem(), HotKeyMenuItem(), NotificationsMenuItem()])
+    var menuItems: Variable<[MenuItem]> = Variable([StepsMenuItem(), TimeMenuItem(),CityNavigationMenuItem(), CompassMenuItem(), HotKeyMenuItem(), NotificationsMenuItem()])
     
     init() {
         super.init(nibName: "MenuViewController", bundle: Bundle.main)
@@ -138,7 +138,7 @@ class MenuViewController: BaseViewController  {
     }
     
     func setupRx(){
-        menuItems.asObservable().bindTo(menuCollectionView
+        menuItems.asObservable().bind(to: menuCollectionView
             .rx
             .items(cellIdentifier: identifier, cellType: MenuViewCell.self)){
                 row, menuItem, cell in

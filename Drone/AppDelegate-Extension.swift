@@ -211,15 +211,14 @@ extension AppDelegate {
     
     func setWeather() {
         DTUserDefaults.syncWeatherDate = Date()
-        
         var cityArray:[City] = DataBaseManager.manager.getCitySelected()
-        
-        let timeZoneNameData = DateFormatter.localCityName()
+        let timeZoneNameData = DateFormatter().localCityName()
         if timeZoneNameData.isEmpty {
             let city:City = City()
             city.name = timeZoneNameData
             cityArray.append(city)
         }
+        
         
         var weatherArray:[WeatherLocationModel] = []
         for (index,city) in cityArray.enumerated() {
@@ -234,7 +233,6 @@ extension AppDelegate {
         for model in weatherArray {
             WeatherNetworkApiManager.manager.getWeatherInfo(regionName: model.getWeatherInfo().title, id: Int(model.getWeatherInfo().id)) { (cityid, temp, code, statusText) in
                 let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: code))
-                
                 let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: [updateModel])
                 self.sendRequest(updateWeatherRequest)
             }

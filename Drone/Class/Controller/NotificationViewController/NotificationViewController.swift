@@ -21,7 +21,7 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
     @IBOutlet var tableView: UITableView!
     let reuseIdentifier = "Notifications_Identifier"
     var realm:Realm?
-    fileprivate var realmApps:[DroneNotification] = []
+    fileprivate var realmApps:[Notification] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +33,10 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
         let plist:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
         let apps = plist["NotificationType"] as! [String:Any]
         
-        if  realm!.objects(DroneNotification.self).isEmpty{
+        if  realm!.objects(Notification.self).isEmpty{
             for app in apps{
                 let plistApp = apps[app.key] as! [String : Any]?
-                let notification = DroneNotification()
+                let notification = Notification()
                 notification.appName = app.key
                 if let bundleid = plistApp!["bundleId"] {
                     notification.bundleIdentifier = bundleid as! String
@@ -48,7 +48,7 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
                 
             }
         }
-        realm!.objects(DroneNotification.self).forEach { notification in
+        realm!.objects(Notification.self).forEach { notification in
             realmApps.insert(notification, at: 0)
         }
         addCloseButton(#selector(dismissViewController))
@@ -63,7 +63,6 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
     }
     
     func callback(isOn:Bool, bundleIdentifier:String){
-        print("Turned \(bundleIdentifier) \(isOn)")
         for realmApp in realmApps{
             if realmApp.bundleIdentifier == bundleIdentifier {
                 try! realm?.write ({
@@ -96,13 +95,3 @@ extension NotificationViewController{
     }
 }
 
-class DroneNotification: Object{
-    
-    dynamic var bundleIdentifier = ""
-    dynamic var appName = ""
-    dynamic var state = false
-    
-    override static func primaryKey() -> String? {
-        return "bundleIdentifier"
-    }
-}
