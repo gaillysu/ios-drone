@@ -24,7 +24,7 @@ class MenuViewController: BaseViewController  {
     
     let identifier = "menu_cell_identifier"
     var disposeBag = DisposeBag()
-    var menuItems: Variable<[MenuItem]> = Variable([StepsMenuItem(), TimeMenuItem(),CityMenuItem(), CompassMenuItem(), HotKeyMenuItem(), NotificationsMenuItem(),DeviceMenuItem()])
+    var menuItems: Variable<[MenuItem]> = Variable([StepsMenuItem(), TimeMenuItem(),CityNavigationMenuItem(), CompassMenuItem(), HotKeyMenuItem(), NotificationsMenuItem(),DeviceMenuItem()])
     
     init() {
         super.init(nibName: "MenuViewController", bundle: Bundle.main)
