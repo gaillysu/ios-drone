@@ -14,6 +14,9 @@ class MyDeviceViewController: BaseViewController {
     @IBOutlet weak var devicesView: UIView!
     @IBOutlet weak var noDeviceView: UIView!
     @IBOutlet weak var myDevicePagesView: UIView!
+    @IBOutlet weak var addButton: UIButton!
+    
+    
     var viewControllers:[DeviceViewController] = []
     
     init() {
@@ -65,6 +68,14 @@ class MyDeviceViewController: BaseViewController {
             pagingMenuController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.noDeviceView.frame.size.height)
             addChildViewController(pagingMenuController)
             view.addSubview(pagingMenuController.view)
+            
+            pagingMenuController.view.snp.makeConstraints { (make) -> Void in
+                make.top.equalTo(self.view.snp.top)
+                make.bottom.equalTo(addButton.snp.top)
+                make.left.equalTo(self.view.snp.left)
+                make.right.equalTo(self.view.snp.right)
+            }
+            
             pagingMenuController.didMove(toParentViewController: self)
             self.noDeviceView.isHidden = true
         }else{
