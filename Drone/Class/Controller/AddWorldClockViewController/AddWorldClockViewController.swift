@@ -175,7 +175,6 @@ extension AddWorldClockViewController:DidSelectedDelegate {
                 }
             })
             AppDelegate.getAppDelegate().setWorldClock(Array(selectedCities))
-            AppDelegate.getAppDelegate().setWeather()
             self.searchController?.isActive = false
             dismiss(animated: true, completion: nil)
         } else{

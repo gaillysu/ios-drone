@@ -24,7 +24,7 @@ extension AppDelegate {
         sendRequest(SetSystemConfig(configtype: SystemConfigID.clockFormat, format: .format24h))
         sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig, mode: .auto))
         sendRequest(SetSystemConfig(configtype: SystemConfigID.topKeyCustomization, isAvailable: .enabled))
-        setAnalogTime()
+        setAnalogTime(forceCurrentTime: false)
     }
     
     func setCompassAutoMinutes(){
@@ -35,9 +35,9 @@ extension AppDelegate {
         }
     }
     
-    func setAnalogTime(){
+    func setAnalogTime(forceCurrentTime:Bool){
         if DTUserDefaults.syncAnalogTime {
-            if DTUserDefaults.syncLocalTime {
+            if DTUserDefaults.syncLocalTime || forceCurrentTime{
                 sendRequest(SetSystemConfig(analogHandsConfig: .CurrentTime))
             } else{
                 sendRequest(SetSystemConfig(analogHandsConfig: .WorldTimeFirst))
@@ -120,6 +120,7 @@ extension AppDelegate {
             }
         }
         sendRequest(SetWorldClockRequest(worldClockArray: convertedWorldClockArray))
+        AppDelegate.getAppDelegate().setWeather()
     }
     
     func startConnect(){

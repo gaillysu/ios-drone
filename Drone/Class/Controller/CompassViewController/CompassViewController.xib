@@ -41,13 +41,12 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VOg-xE-k3F">
-                    <rect key="frame" x="0.0" y="401" width="375" height="44"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="VOg-xE-k3F">
+                    <rect key="frame" x="0.0" y="379" width="375" height="150"/>
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.7725490196" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="1MB-RK-eem"/>
+                        <constraint firstAttribute="height" constant="150" id="1MB-RK-eem"/>
                     </constraints>
-                    <color key="separatorColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="0.89411764709999997" green="0.7725490196" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -61,7 +60,7 @@
                 <constraint firstItem="iLp-Sb-8mi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="GLr-Ag-rkj"/>
                 <constraint firstItem="aUe-ez-QJa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="70" id="PPf-ZO-uuk"/>
                 <constraint firstAttribute="trailing" secondItem="aUe-ez-QJa" secondAttribute="trailing" constant="70" id="r4j-6d-1H7"/>
-                <constraint firstItem="VOg-xE-k3F" firstAttribute="top" secondItem="iLp-Sb-8mi" secondAttribute="bottom" constant="22" id="rML-Sf-DTc"/>
+                <constraint firstItem="VOg-xE-k3F" firstAttribute="top" secondItem="iLp-Sb-8mi" secondAttribute="bottom" id="rML-Sf-DTc"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

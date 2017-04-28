@@ -239,8 +239,6 @@
 		CB9F65491EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F65471EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib */; };
 		CB9F654F1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F654D1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift */; };
 		CB9F65501EA8AB51007982B0 /* ClockSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */; };
-		CB9F65551EA9F364007982B0 /* TimeSettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65541EA9F364007982B0 /* TimeSettingsSectionModel.swift */; };
-		CB9F65571EA9F3C4007982B0 /* TimeSettingsSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65561EA9F3C4007982B0 /* TimeSettingsSectionItem.swift */; };
 		CB9F65591EA9FC19007982B0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */; };
 		CBB892311EADB5B6006F7031 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */; };
 		CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */; };
@@ -248,6 +246,10 @@
 		CBB892391EB3049A006F7031 /* AddWorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBB892381EB3049A006F7031 /* AddWorldClockViewController.xib */; };
 		CBB8923B1EB304BE006F7031 /* DidSelectedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8923A1EB304BE006F7031 /* DidSelectedDelegate.swift */; };
 		CBB892421EB32717006F7031 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892411EB32717006F7031 /* Notification.swift */; };
+		CBB892501EB33BAB006F7031 /* CompassSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8924E1EB33BAB006F7031 /* CompassSectionModel.swift */; };
+		CBB892511EB33BAB006F7031 /* CompassSectionModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8924F1EB33BAB006F7031 /* CompassSectionModelItem.swift */; };
+		CBB892541EB33BB2006F7031 /* TimeSettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892521EB33BB2006F7031 /* TimeSettingsSectionModel.swift */; };
+		CBB892551EB33BB2006F7031 /* TimeSettingsSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892531EB33BB2006F7031 /* TimeSettingsSectionItem.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -510,8 +512,6 @@
 		CB9F65471EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockSettingsTableViewCellSwitch.xib; path = ClockSettingsTableViewCell/ClockSettingsTableViewCellSwitch.xib; sourceTree = "<group>"; };
 		CB9F654D1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockSettingsTableViewCell.swift; path = ClockSettingsTableViewCell/ClockSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockSettingsTableViewCell.xib; path = ClockSettingsTableViewCell/ClockSettingsTableViewCell.xib; sourceTree = "<group>"; };
-		CB9F65541EA9F364007982B0 /* TimeSettingsSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSettingsSectionModel.swift; path = "untitled folder/TimeSettingsSectionModel.swift"; sourceTree = "<group>"; };
-		CB9F65561EA9F3C4007982B0 /* TimeSettingsSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSettingsSectionItem.swift; sourceTree = "<group>"; };
 		CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
@@ -519,6 +519,10 @@
 		CBB892381EB3049A006F7031 /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWorldClockViewController.xib; path = AddWorldClockViewController/AddWorldClockViewController.xib; sourceTree = "<group>"; };
 		CBB8923A1EB304BE006F7031 /* DidSelectedDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DidSelectedDelegate.swift; path = AddWorldClockViewController/DidSelectedDelegate.swift; sourceTree = "<group>"; };
 		CBB892411EB32717006F7031 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Notification/Notification.swift; sourceTree = "<group>"; };
+		CBB8924E1EB33BAB006F7031 /* CompassSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassSectionModel.swift; path = Drone/Class/ViewModel/CompassSectionModel/CompassSectionModel.swift; sourceTree = SOURCE_ROOT; };
+		CBB8924F1EB33BAB006F7031 /* CompassSectionModelItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassSectionModelItem.swift; path = Drone/Class/ViewModel/CompassSectionModel/CompassSectionModelItem.swift; sourceTree = SOURCE_ROOT; };
+		CBB892521EB33BB2006F7031 /* TimeSettingsSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSettingsSectionModel.swift; path = Drone/Class/ViewModel/TimeSettingsSectionModel/TimeSettingsSectionModel.swift; sourceTree = SOURCE_ROOT; };
+		CBB892531EB33BB2006F7031 /* TimeSettingsSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSettingsSectionItem.swift; path = Drone/Class/ViewModel/TimeSettingsSectionModel/TimeSettingsSectionItem.swift; sourceTree = SOURCE_ROOT; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1442,26 +1446,10 @@
 		CB9F65511EA9F327007982B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CB9F65521EA9F330007982B0 /* TimeSettingsViewController */,
+				CBB892441EB33B3D006F7031 /* CompassSectionModel */,
+				CBB892471EB33B3D006F7031 /* TimeSettingsSectionModel */,
 			);
 			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		CB9F65521EA9F330007982B0 /* TimeSettingsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CB9F65531EA9F338007982B0 /* TimeSettingsSectionModel */,
-			);
-			name = TimeSettingsViewController;
-			sourceTree = "<group>";
-		};
-		CB9F65531EA9F338007982B0 /* TimeSettingsSectionModel */ = {
-			isa = PBXGroup;
-			children = (
-				CB9F65541EA9F364007982B0 /* TimeSettingsSectionModel.swift */,
-				CB9F65561EA9F3C4007982B0 /* TimeSettingsSectionItem.swift */,
-			);
-			name = TimeSettingsSectionModel;
 			sourceTree = "<group>";
 		};
 		CBB8923E1EB32692006F7031 /* Notification */ = {
@@ -1470,6 +1458,26 @@
 				CBB892411EB32717006F7031 /* Notification.swift */,
 			);
 			name = Notification;
+			sourceTree = "<group>";
+		};
+		CBB892441EB33B3D006F7031 /* CompassSectionModel */ = {
+			isa = PBXGroup;
+			children = (
+				CBB8924E1EB33BAB006F7031 /* CompassSectionModel.swift */,
+				CBB8924F1EB33BAB006F7031 /* CompassSectionModelItem.swift */,
+			);
+			name = CompassSectionModel;
+			path = "untitled folder/CompassSectionModel";
+			sourceTree = "<group>";
+		};
+		CBB892471EB33B3D006F7031 /* TimeSettingsSectionModel */ = {
+			isa = PBXGroup;
+			children = (
+				CBB892521EB33BB2006F7031 /* TimeSettingsSectionModel.swift */,
+				CBB892531EB33BB2006F7031 /* TimeSettingsSectionItem.swift */,
+			);
+			name = TimeSettingsSectionModel;
+			path = "untitled folder/TimeSettingsSectionModel";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1748,7 +1756,9 @@
 				61C28C861EA5BABB0019F574 /* WeatherInfoRequest.swift in Sources */,
 				61C28C561EA46F810019F574 /* WorldClockUtil.swift in Sources */,
 				61C28C751EA5A03C0019F574 /* BasePutRequest.swift in Sources */,
+				CBB892551EB33BB2006F7031 /* TimeSettingsSectionItem.swift in Sources */,
 				61C28BD61EA46F810019F574 /* SetContactsFilterRequest.swift in Sources */,
+				CBB892501EB33BAB006F7031 /* CompassSectionModel.swift in Sources */,
 				61C28C7B1EA5A03C0019F574 /* StepsGetRequest.swift in Sources */,
 				61C28C261EA46F810019F574 /* UserSteps.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
@@ -1760,6 +1770,7 @@
 				613928FF1EAA026B00450284 /* Int+Extension.swift in Sources */,
 				61C28C251EA46F810019F574 /* UserProfile.swift in Sources */,
 				618323101EA4609C0054966D /* SMSegmentView.swift in Sources */,
+				CBB892541EB33BB2006F7031 /* TimeSettingsSectionModel.swift in Sources */,
 				61C28BED1EA46F810019F574 /* SearchCityController.swift in Sources */,
 				61C28BFD1EA46F810019F574 /* MenuViewController.swift in Sources */,
 				61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */,
@@ -1839,7 +1850,6 @@
 				61C28BD71EA46F810019F574 /* SetGoalRequest.swift in Sources */,
 				61C28C4F1EA46F810019F574 /* EventBusKeys.swift in Sources */,
 				61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */,
-				CB9F65571EA9F3C4007982B0 /* TimeSettingsSectionItem.swift in Sources */,
 				61C28BC51EA46F810019F574 /* DroneRequest.swift in Sources */,
 				61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */,
 				61C28CA91EA75A620019F574 /* PostWatchVersionData.swift in Sources */,
@@ -1857,6 +1867,7 @@
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
 				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
 				61C28BBC1EA46F810019F574 /* ConnectionControllerImpl.swift in Sources */,
+				CBB892511EB33BAB006F7031 /* CompassSectionModelItem.swift in Sources */,
 				61C28BCA1EA46F810019F574 /* GetNotificationRequest.swift in Sources */,
 				61C28C211EA46F810019F574 /* MEDBaseModel.swift in Sources */,
 				61C28C0B1EA46F810019F574 /* ProfileTableViewCellHeader.swift in Sources */,
@@ -1896,7 +1907,6 @@
 				61C28C051EA46F810019F574 /* NotificationsViewCell.swift in Sources */,
 				61C28C221EA46F810019F574 /* MEDDataBaseRequest.swift in Sources */,
 				61C28BC01EA46F810019F574 /* DronePacket.swift in Sources */,
-				CB9F65551EA9F364007982B0 /* TimeSettingsSectionModel.swift in Sources */,
 				CBB892371EB30491006F7031 /* AddWorldClockViewController.swift in Sources */,
 				6183230F1EA4609C0054966D /* SMSegmentAppearance.swift in Sources */,
 				61C28C031EA46F810019F574 /* NotificationViewController.swift in Sources */,

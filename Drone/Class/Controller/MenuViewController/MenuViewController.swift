@@ -153,6 +153,7 @@ class MenuViewController: BaseViewController  {
             .items(cellIdentifier: identifier, cellType: MenuViewCell.self)){
                 row, menuItem, cell in
                 cell.menuItem = menuItem
+                cell.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 0)
                 if row == 0 {
                     cell.roundCorners(corners: .topLeft, radius: 10)
                 } else if row == 1 {

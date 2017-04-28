@@ -206,11 +206,15 @@ extension WorldClockViewController:TableViewReorderDelegate{
             homeCityArray.insert(city, at: d.row)
             worldClockArray.remove(at: s.row)
             DTUserDefaults.homeTimeId = city.id
+            if !DTUserDefaults.syncLocalTime {
+                getAppDelegate().setAnalogTime(forceCurrentTime: false)
+            }
         } else if d.section > s.section {
             let city = homeCityArray[s.row]
             worldClockArray.insert(city, at: d.row)
             homeCityArray.remove(at: s.row)
             DTUserDefaults.homeTimeId = -1
+            getAppDelegate().setAnalogTime(forceCurrentTime: true)
         } else {
             let destination = s.row
             let source = d.row

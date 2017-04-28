@@ -48,7 +48,7 @@ class TimeSettingsViewController: BaseViewController {
                         }
                         if isOn {
                             self.getAppDelegate().setRTC(force: false)
-                            self.getAppDelegate().setAnalogTime()
+                            self.getAppDelegate().setAnalogTime(forceCurrentTime: false)
                         }
                     }).addDisposableTo(self.disposeBag)
                     return cell
@@ -80,10 +80,6 @@ class TimeSettingsViewController: BaseViewController {
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
         
-        section.asObservable()
-            .bind(to: tableView.rx.items(dataSource: dataSource))
-            .addDisposableTo(disposeBag)
-        
         self.tableView.rx.modelSelected(TimeSettingsSectionItem.self).subscribe { _ in
             if let indexPath = self.tableView.indexPathForSelectedRow{
                 self.tableView.deselectRow(at: indexPath, animated: true)
@@ -98,7 +94,7 @@ extension TimeSettingsViewController: UIPickerViewDataSource, UIPickerViewDelega
         if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? ClockSettingsTableViewCell{
             DTUserDefaults.syncLocalTime = row == 0 ? true:false
             cell.settingsTextField.text = self.syncTimeItems[row]
-            getAppDelegate().setAnalogTime()
+            getAppDelegate().setAnalogTime(forceCurrentTime: false)
         }
     }
     

@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
 import RealmSwift
 
 class CompassViewController: BaseViewController {
@@ -21,7 +22,6 @@ class CompassViewController: BaseViewController {
     let realm = try! Realm()
     
     var disposeBag = DisposeBag()
-    var items:Variable<[String]> = Variable(["Auto turn off motion detection"])
     var autoOnValues:[Int] = [15, 30, 45, 60, 90, 120, 150, 180, 210, 240]
     
     override func viewDidLoad() {
@@ -30,30 +30,38 @@ class CompassViewController: BaseViewController {
         pickerView.dataSource = self
         compassTableView.register(UINib(nibName: "CompassTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: identifier)
         compassTableView.separatorStyle = .none
-        self.compassSwitch.isOn = DTUserDefaults.compassState
-        self.compassSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe { event in
-            DTUserDefaults.compassState = self.compassSwitch.isOn
-            self.getAppDelegate().setAppConfig()
-            }.addDisposableTo(disposeBag)
         
-        self.addCloseButton(#selector(dismissViewController))
-        items.asObservable().bind(to: compassTableView.rx
-            .items(cellIdentifier: identifier, cellType: CompassTableViewCell.self)){
-                row, item, cell in
-                cell.descriptionLabel.text = item
-                if row == 0{
+        let section = Variable([CompassSectionModel(header:"Compass Settings",footer:"",items:[CompassSectionModelItem(label: "Turn off auto motion detection")])])
+        
+        let dataSource = RxTableViewSectionedReloadDataSource<CompassSectionModel>()
+        dataSource.configureCell = { (dataSource, table, indexPath, _) in
+            if let cell = table.dequeueReusableCell(withIdentifier: self.identifier, for: indexPath) as? CompassTableViewCell{
+                let item = dataSource[indexPath]
+                cell.descriptionLabel.text = item.label
+                if indexPath.row == 0 {
                     if let obj = Compass.getAll().first, let compass = obj as? Compass{
                         cell.valueTextField.text = compass.activeTime.timeRepresentable()
                         cell.valueTextField.inputView = self.pickerView
                     }
                 }
-                
-                if (self.items.value.count - 1) == row{
+                if (section.value.count - 1) == indexPath.row{
                     cell.seperatorview.isHidden = true
                 }
-            }.addDisposableTo(disposeBag)
+                return cell
+            }
+            return UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: nil)
+        }
         
-        compassTableView.rx.modelSelected(String.self).subscribe { _ in
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            let section = dataSource[index]
+            return section.header
+        }
+        
+        section.asObservable()
+            .bind(to: compassTableView.rx.items(dataSource: dataSource))
+            .addDisposableTo(disposeBag)
+        
+        compassTableView.rx.modelSelected(Drone.CompassSectionModelItem.self).subscribe { _ in
             if let indexPath = self.compassTableView.indexPathForSelectedRow{
                 if indexPath.row == 0 {
                     if let cell = self.compassTableView.cellForRow(at: indexPath) as? CompassTableViewCell{
@@ -63,6 +71,14 @@ class CompassViewController: BaseViewController {
                 self.compassTableView.deselectRow(at: indexPath, animated: true)
             }
             }.addDisposableTo(disposeBag)
+        
+        self.compassSwitch.isOn = DTUserDefaults.compassState
+        self.compassSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe { event in
+            DTUserDefaults.compassState = self.compassSwitch.isOn
+            self.getAppDelegate().setAppConfig()
+            }.addDisposableTo(disposeBag)
+        
+        self.addCloseButton(#selector(dismissViewController))
     }
     
     func dismissViewController(){
