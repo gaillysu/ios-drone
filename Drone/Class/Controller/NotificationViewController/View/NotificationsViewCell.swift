@@ -44,6 +44,6 @@ class NotificationsViewCell: UITableViewCell {
     }
     
     func setSwicth(on:Bool) {
-        notificationSwicth.setOn(on, animated: true)
+        notificationSwicth.setOn(on, animated: false)
     }
 }

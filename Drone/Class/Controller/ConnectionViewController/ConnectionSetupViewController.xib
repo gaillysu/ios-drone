@@ -25,13 +25,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_1" translatesAutoresizingMaskIntoConstraints="NO" id="owU-NB-0hd">
-                    <rect key="frame" x="71" y="154" width="233" height="233"/>
+                    <rect key="frame" x="-187.5" y="117" width="750" height="233"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="233" id="mRg-3f-nha"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nZ-yR-qdN">
-                    <rect key="frame" x="31" y="388" width="312" height="157"/>
+                    <rect key="frame" x="31" y="351" width="312" height="157"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting···" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2P-Hv-zhn">
                             <rect key="frame" x="0.0" y="20" width="312" height="45"/>
@@ -52,7 +52,7 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGf-9t-aCb">
-                    <rect key="frame" x="31" y="388" width="312" height="157"/>
+                    <rect key="frame" x="31" y="351" width="312" height="157"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Failed to connect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FL-2D-6Am">
                             <rect key="frame" x="0.0" y="20" width="312" height="45"/>
@@ -95,7 +95,7 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pwv-Q2-2pc">
-                    <rect key="frame" x="31" y="388" width="312" height="179"/>
+                    <rect key="frame" x="31" y="351" width="312" height="179"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKg-qc-K99">
                             <rect key="frame" x="51" y="132" width="209" height="39"/>
@@ -169,14 +169,12 @@
                 <constraint firstAttribute="trailing" secondItem="8nZ-yR-qdN" secondAttribute="trailing" constant="32" id="4t2-Be-I1Z"/>
                 <constraint firstItem="Pwv-Q2-2pc" firstAttribute="top" secondItem="owU-NB-0hd" secondAttribute="bottom" constant="1" id="63E-Kp-wpt"/>
                 <constraint firstItem="Pwv-Q2-2pc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="31" id="8nw-GP-03q"/>
-                <constraint firstItem="owU-NB-0hd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="154" id="HCy-2D-MMd"/>
+                <constraint firstItem="owU-NB-0hd" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-100" id="Dfg-cI-a8C"/>
                 <constraint firstItem="lGf-9t-aCb" firstAttribute="top" secondItem="owU-NB-0hd" secondAttribute="bottom" constant="1" id="HKt-rs-cxt"/>
                 <constraint firstItem="8nZ-yR-qdN" firstAttribute="top" secondItem="owU-NB-0hd" secondAttribute="bottom" constant="1" id="P0a-wi-wha"/>
                 <constraint firstAttribute="trailing" secondItem="lGf-9t-aCb" secondAttribute="trailing" constant="32" id="gZt-zh-8Oc"/>
                 <constraint firstAttribute="trailing" secondItem="Pwv-Q2-2pc" secondAttribute="trailing" constant="32" id="hwm-jL-flp"/>
                 <constraint firstItem="lGf-9t-aCb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="31" id="jGF-W0-3zJ"/>
-                <constraint firstAttribute="trailing" secondItem="owU-NB-0hd" secondAttribute="trailing" constant="71" id="s4t-gf-hvE"/>
-                <constraint firstItem="owU-NB-0hd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="71" id="z4O-wh-dkC"/>
             </constraints>
             <point key="canvasLocation" x="13" y="172"/>
         </view>

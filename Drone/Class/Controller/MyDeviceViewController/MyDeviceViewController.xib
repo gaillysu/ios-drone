@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyDeviceViewController" customModule="Drone" customModuleProvider="target">
             <connections>
+                <outlet property="addButton" destination="OYK-Ym-jgn" id="7hf-oJ-tdw"/>
                 <outlet property="devicesView" destination="7Tz-vS-0Fv" id="01f-l0-mKn"/>
                 <outlet property="myDevicePagesView" destination="7Tz-vS-0Fv" id="pZ1-R1-TtI"/>
                 <outlet property="noDeviceView" destination="PpF-zA-7RX" id="cSw-fx-Xh9"/>
