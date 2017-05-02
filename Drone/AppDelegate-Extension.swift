@@ -84,18 +84,14 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, enabled: DTUserDefaults.compassState))
     }
     
-    func setGoal(_ goal:Goal?) {
-        if goal == nil {
+    func setGoal() {
             let goalArray = UserGoal.getAll()
             if goalArray.count>0 {
                 let goal:UserGoal = goalArray.first as! UserGoal
-                self.setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
+                sendRequest(SetGoalRequest(goal: goal))
             }else{
-                self.setGoal(NumberOfStepsGoal(intensity: GoalIntensity.low))
+                sendRequest(SetGoalRequest(steps: 10000))
             }
-        }else{
-            sendRequest(SetGoalRequest(goal: goal!))
-        }
     }
     
     func setUserProfile() {

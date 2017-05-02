@@ -1,10 +1,7 @@
 import Foundation
 import CoreBluetooth
 
-/**
-This is the regular Nevo Profile
-It is used to send most common commands to Nevo
-🚧🚧🚧Backbone Class : Modify with care🚧🚧🚧
+/** 
 */
 class DroneProfile : Profile {
 
@@ -20,5 +17,3 @@ class DroneProfile : Profile {
         return CBUUID(string: "F0BA3121-6CAC-4C99-9089-4B0A1DF45002");
     }
 }
-
-//This is a tiger -----> 🐯

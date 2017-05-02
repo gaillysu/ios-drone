@@ -12,21 +12,19 @@ import BRYXBanner
 import UIColor_Hex_Swift
 import SwiftyJSON
 import MRProgress
-
+import RxSwift
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var textfiledBG: UIView!
-    @IBOutlet weak var googleButton: UIButton!
-    @IBOutlet weak var facebookButton: UIButton!
-    @IBOutlet weak var twitterButton: UIButton!
+    
     var usernameT: AutocompleteField?
     var passwordT: AutocompleteField?
     var fromMenu:Bool = false;
+    var disposeBag = DisposeBag()
     
     init(fromMenu: Bool = false) {
         self.fromMenu = fromMenu
@@ -44,6 +42,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupRx()
     }
 
     override func viewDidLayoutSubviews() {
@@ -66,26 +65,14 @@ class LoginViewController: UIViewController {
         }
     }
 
-    @IBAction func buttonActionManager(_ sender: AnyObject) {
-        if backButton.isEqual(sender) {
+    func setupRx() {
+        backButton.rx.tap.subscribe({ _ in
             _ = self.navigationController?.popViewController(animated: true)
-        }
-
-        if loginButton.isEqual(sender) {
-            loginRequest()
-        }
-
-        if googleButton.isEqual(sender) {
-
-        }
-
-        if facebookButton.isEqual(sender) {
-
-        }
-
-        if twitterButton.isEqual(sender) {
-
-        }
+        }).addDisposableTo(disposeBag)
+        
+        loginButton.rx.tap.subscribe({ _ in
+            self.loginRequest()
+        }).addDisposableTo(disposeBag)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -142,12 +129,7 @@ class LoginViewController: UIViewController {
                     
                 }
             })
-            
-            if(UserGoal.getAll().count == 0){
-                let goal:UserGoal = UserGoal()
-                goal.goalSteps = 10000
-                _ = goal.add()
-            }
+           
         }else{
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())

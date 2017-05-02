@@ -134,7 +134,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             try! realm.write {
                 goal.goalSteps = steps                
             }
-            getAppDelegate().setGoal(NumberOfStepsGoal(steps: steps))
+            getAppDelegate().setGoal()
             percentageLabel.text = String(format:"Goal: %d",(steps))
             self.setCircleProgress(lastSyncedSteps, goalValue: steps)
         }

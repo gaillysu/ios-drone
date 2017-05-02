@@ -62,6 +62,7 @@ class CheckEmailController: UIViewController {
                     forgetPasswordController.password_token = result.token
                     forgetPasswordController.user_id = "\(result.id)"
                     forgetPasswordController.email = email
+                    view?.dismiss(true)
                     self.navigationController?.pushViewController(forgetPasswordController, animated: true)
                 }else{
                     MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)

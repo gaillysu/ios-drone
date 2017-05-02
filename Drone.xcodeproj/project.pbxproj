@@ -156,8 +156,6 @@
 		61C28C261EA46F810019F574 /* UserSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B831EA46F810019F574 /* UserSteps.swift */; };
 		61C28C271EA46F810019F574 /* WorldClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B841EA46F810019F574 /* WorldClock.swift */; };
 		61C28C281EA46F810019F574 /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */; };
-		61C28C291EA46F810019F574 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B871EA46F810019F574 /* Goal.swift */; };
-		61C28C2A1EA46F810019F574 /* NumberOfStepsGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B881EA46F810019F574 /* NumberOfStepsGoal.swift */; };
 		61C28C2B1EA46F810019F574 /* CityNavigationMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8A1EA46F810019F574 /* CityNavigationMenuItem.swift */; };
 		61C28C2C1EA46F810019F574 /* CompassMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8B1EA46F810019F574 /* CompassMenuItem.swift */; };
 		61C28C2D1EA46F810019F574 /* DeviceMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8C1EA46F810019F574 /* DeviceMenuItem.swift */; };
@@ -427,8 +425,6 @@
 		61C28B831EA46F810019F574 /* UserSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSteps.swift; path = ModelTable/UserSteps.swift; sourceTree = "<group>"; };
 		61C28B841EA46F810019F574 /* WorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldClock.swift; path = ModelTable/WorldClock.swift; sourceTree = "<group>"; };
 		61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldClockDatabaseHelper.swift; path = ModelTable/WorldClockDatabaseHelper.swift; sourceTree = "<group>"; };
-		61C28B871EA46F810019F574 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
-		61C28B881EA46F810019F574 /* NumberOfStepsGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfStepsGoal.swift; sourceTree = "<group>"; };
 		61C28B8A1EA46F810019F574 /* CityNavigationMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityNavigationMenuItem.swift; sourceTree = "<group>"; };
 		61C28B8B1EA46F810019F574 /* CompassMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassMenuItem.swift; sourceTree = "<group>"; };
 		61C28B8C1EA46F810019F574 /* DeviceMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceMenuItem.swift; sourceTree = "<group>"; };
@@ -1085,13 +1081,12 @@
 		61C28B7B1EA46F810019F574 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				613929221EB18C8800450284 /* WatchInfoModel */,
 				61C28CA51EA756950019F574 /* Cache */,
 				61C28B7C1EA46F810019F574 /* DBModel */,
-				61C28B861EA46F810019F574 /* Goal */,
 				61C28B891EA46F810019F574 /* MenuItem */,
 				CBB8923E1EB32692006F7031 /* Notification */,
 				61C28C9D1EA73E920019F574 /* PostObject */,
+				613929221EB18C8800450284 /* WatchInfoModel */,
 				61C28B941EA46F810019F574 /* WeatherModel */,
 				61C28B971EA46F810019F574 /* WorldClock */,
 			);
@@ -1112,15 +1107,6 @@
 				CB9F65231EA610C5007982B0 /* Compass.swift */,
 			);
 			path = DBModel;
-			sourceTree = "<group>";
-		};
-		61C28B861EA46F810019F574 /* Goal */ = {
-			isa = PBXGroup;
-			children = (
-				61C28B871EA46F810019F574 /* Goal.swift */,
-				61C28B881EA46F810019F574 /* NumberOfStepsGoal.swift */,
-			);
-			path = Goal;
 			sourceTree = "<group>";
 		};
 		61C28B891EA46F810019F574 /* MenuItem */ = {
@@ -1888,7 +1874,6 @@
 				61C28C1D1EA46F810019F574 /* WorldClockViewController.swift in Sources */,
 				61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */,
 				61C28BDD1EA46F810019F574 /* SetWeatherLocationsRequest.swift in Sources */,
-				61C28C291EA46F810019F574 /* Goal.swift in Sources */,
 				61C28C6E1EA5A03C0019F574 /* StepsNetworkManager.swift in Sources */,
 				613928F41EA99F1B00450284 /* EveryHourWeatherModel.swift in Sources */,
 				61C28CA41EA73F4C0019F574 /* DataBaseManager.swift in Sources */,
@@ -1921,7 +1906,6 @@
 				61C28C881EA5BB330019F574 /* WeatherBaseGetRequest.swift in Sources */,
 				61078DC51E48249C00898A0D /* NSCalendarUnit+Timepiece.swift in Sources */,
 				613929241EB18C9200450284 /* WatchInfoModel.swift in Sources */,
-				61C28C2A1EA46F810019F574 /* NumberOfStepsGoal.swift in Sources */,
 				61C28C721EA5A03C0019F574 /* BaseGetRequest.swift in Sources */,
 				613929001EAA026B00450284 /* String+Extension.swift in Sources */,
 				61C28BC71EA46F810019F574 /* GetBatteryRequest.swift in Sources */,

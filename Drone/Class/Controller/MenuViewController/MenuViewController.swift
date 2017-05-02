@@ -28,11 +28,6 @@ class MenuViewController: BaseViewController  {
     
     init() {
         super.init(nibName: "MenuViewController", bundle: Bundle.main)
-        if(UserGoal.getAll().count == 0){
-            let goalModel:UserGoal = UserGoal()
-            goalModel.goalSteps = 10000
-            _ = goalModel.add()
-        }
     }
     
     required init(coder aDecoder: NSCoder) {

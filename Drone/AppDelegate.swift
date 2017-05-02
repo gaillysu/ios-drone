@@ -47,9 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       _ = DataBaseManager.manager
       _ = NetworkManager.manager
     
-      let sanbos:SandboxManager = SandboxManager()
-      let _ = sanbos.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
+      let sandbox:SandboxManager = SandboxManager()
+      let _ = sandbox.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
       
+      if(UserGoal.getAll().count == 0){
+         let goalModel:UserGoal = UserGoal()
+         goalModel.goalSteps = 10000
+         _ = goalModel.add()
+      }
       
       mConnectionController = ConnectionControllerImpl()
       mConnectionController?.setDelegate(self)
@@ -236,7 +241,7 @@ extension AppDelegate{
       //step4: start set user profile
       self.setUserProfile()
       //step5: start set user default goal
-      self.setGoal(nil)
+      self.setGoal()
 
       self.isSaveWorldClock()
 

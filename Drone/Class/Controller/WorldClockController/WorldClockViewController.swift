@@ -45,6 +45,7 @@ class WorldClockViewController: BaseViewController{
         let results:Results<City> = realm.objects(City.self).filter("name CONTAINS[c] '\(DateFormatter().localCityName())'")
         results.forEach({ localCityArray.append($0) })
         updateWorldClockArrayWithOrder(reload: true)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -157,6 +158,7 @@ extension WorldClockViewController: UITableViewDelegate, UITableViewDataSource{
         return 0
     }
     
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section == 0  || indexPath.section == 1 ? false : true
     }
@@ -229,3 +231,18 @@ extension WorldClockViewController:TableViewReorderDelegate{
     }
     
 }
+
+
+extension Reactive where Base: UITableView {
+    
+    var didHighlightRowAt: ControlEvent<IndexPath> {
+        let selector = #selector(UITableViewDelegate.tableView(_:didHighlightRowAt:))
+        let events = delegate
+            .methodInvoked(selector)
+            .filter({ ($0.last as? IndexPath) != nil })
+            .map({ $0.last as! IndexPath })
+        return ControlEvent(events: events)
+    }
+}
+
+

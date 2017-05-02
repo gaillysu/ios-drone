@@ -8,7 +8,6 @@
 
 import Foundation
 import PagingMenuController
-import SnapKit
 
 class MyDeviceViewController: BaseViewController {
     @IBOutlet weak var devicesView: UIView!
@@ -30,7 +29,6 @@ class MyDeviceViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Watches"
-        
         addCloseButton(#selector(dismissViewController))
     }
     
@@ -43,17 +41,11 @@ class MyDeviceViewController: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
-    
     func reloadDeviceControllers() {
         for cont in viewControllers {
             cont.removeFromParentViewController()
         }
         viewControllers.removeAll()
-        
         let deviceArray = DataBaseManager.manager.getAllDevice()
         for _ in deviceArray {
             let viewController = DeviceViewController()
@@ -68,14 +60,10 @@ class MyDeviceViewController: BaseViewController {
             pagingMenuController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.noDeviceView.frame.size.height)
             addChildViewController(pagingMenuController)
             view.addSubview(pagingMenuController.view)
-            
-            pagingMenuController.view.snp.makeConstraints { (make) -> Void in
-                make.top.equalTo(self.view.snp.top)
-                make.bottom.equalTo(addButton.snp.top)
-                make.left.equalTo(self.view.snp.left)
-                make.right.equalTo(self.view.snp.right)
-            }
-            
+            pagingMenuController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+            pagingMenuController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+            pagingMenuController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+            pagingMenuController.view.bottomAnchor.constraint(equalTo: addButton.topAnchor).isActive = true
             pagingMenuController.didMove(toParentViewController: self)
             self.noDeviceView.isHidden = true
         }else{
@@ -84,7 +72,6 @@ class MyDeviceViewController: BaseViewController {
     }
     
     @IBAction func addDeviceAction(_ sender: AnyObject) {
-        
         let navigationController = makeStandardUINavigationController(WhichDeviceViewController(toMenu: false))
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }

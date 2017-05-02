@@ -61,7 +61,7 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
             _ = dismissKeyboard()
             
             // sync goal to watch
-            AppDelegate.getAppDelegate().setGoal(NumberOfStepsGoal(steps: goal.goalSteps))
+            AppDelegate.getAppDelegate().setGoal()
             
             /**
              *  change profile to database sync profile with watch
