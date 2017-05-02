@@ -2,7 +2,7 @@
 //  AppTheme.swift
 //  Nevo
 //
-//  Created by Hugo Garcia-Cotte on 18/2/15.
+//  Created by Karl on Now.
 //  Copyright (c) 2015 Nevo. All rights reserved.
 //
 

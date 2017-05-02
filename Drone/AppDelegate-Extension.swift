@@ -20,27 +20,27 @@ extension AppDelegate {
     }
     
     func setSystemConfig() {
-        sendRequest(SetSystemConfig(configtype: SystemConfigID.enabled, isAvailable: .enabled))
-        sendRequest(SetSystemConfig(configtype: SystemConfigID.clockFormat, format: .format24h))
-        sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: SystemConfigID.sleepConfig, mode: .auto))
-        sendRequest(SetSystemConfig(configtype: SystemConfigID.topKeyCustomization, isAvailable: .enabled))
+        sendRequest(SetSystemConfig(configtype: .enabled, isAvailable: .enabled))
+        sendRequest(SetSystemConfig(configtype: .clockFormat, format: .format24h))
+        sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .sleepConfig, mode: .auto))
+        sendRequest(SetSystemConfig(configtype: .topKeyCustomization, isAvailable: .enabled))
         setAnalogTime(forceCurrentTime: false)
     }
     
     func setCompassAutoMinutes(){
         if let obj = Compass.getAll().first, let compass = obj as? Compass{
-            sendRequest(SetSystemConfig(configtype: SystemConfigID.compassAutoOnDuration, autoOnDuration: compass.activeTime))
+            sendRequest(SetSystemConfig(configtype: .compassAutoOnDuration, autoOnDuration: compass.activeTime))
         }else{
-            sendRequest(SetSystemConfig(configtype: SystemConfigID.compassAutoOnDuration, autoOnDuration: 1))
+            sendRequest(SetSystemConfig(configtype: .compassAutoOnDuration, autoOnDuration: 1))
         }
     }
     
     func setAnalogTime(forceCurrentTime:Bool){
         if DTUserDefaults.syncAnalogTime {
             if DTUserDefaults.syncLocalTime || forceCurrentTime{
-                sendRequest(SetSystemConfig(analogHandsConfig: .CurrentTime))
+                sendRequest(SetSystemConfig(analogHandsConfig: .currentTime))
             } else{
-                sendRequest(SetSystemConfig(analogHandsConfig: .WorldTimeFirst))
+                sendRequest(SetSystemConfig(analogHandsConfig: .worldTimeFirst))
             }
         }
     }

@@ -57,7 +57,6 @@
 		61C28BBC1EA46F810019F574 /* ConnectionControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFA1EA46F800019F574 /* ConnectionControllerImpl.swift */; };
 		61C28BBD1EA46F810019F574 /* DroneProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFB1EA46F800019F574 /* DroneProfile.swift */; };
 		61C28BBE1EA46F810019F574 /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFD1EA46F800019F574 /* ActivityPacket.swift */; };
-		61C28BBF1EA46F810019F574 /* CockRoachPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFE1EA46F800019F574 /* CockRoachPacket.swift */; };
 		61C28BC01EA46F810019F574 /* DronePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFF1EA46F800019F574 /* DronePacket.swift */; };
 		61C28BC11EA46F810019F574 /* StepsGoalPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B001EA46F800019F574 /* StepsGoalPacket.swift */; };
 		61C28BC21EA46F810019F574 /* SystemEventPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B011EA46F800019F574 /* SystemEventPacket.swift */; };
@@ -326,7 +325,6 @@
 		61C28AFA1EA46F800019F574 /* ConnectionControllerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionControllerImpl.swift; sourceTree = "<group>"; };
 		61C28AFB1EA46F800019F574 /* DroneProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneProfile.swift; sourceTree = "<group>"; };
 		61C28AFD1EA46F800019F574 /* ActivityPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPacket.swift; sourceTree = "<group>"; };
-		61C28AFE1EA46F800019F574 /* CockRoachPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CockRoachPacket.swift; sourceTree = "<group>"; };
 		61C28AFF1EA46F800019F574 /* DronePacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DronePacket.swift; sourceTree = "<group>"; };
 		61C28B001EA46F800019F574 /* StepsGoalPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsGoalPacket.swift; sourceTree = "<group>"; };
 		61C28B011EA46F800019F574 /* SystemEventPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemEventPacket.swift; sourceTree = "<group>"; };
@@ -401,8 +399,8 @@
 		61C28B5D1EA46F800019F574 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		61C28B5E1EA46F800019F574 /* ProfileTableViewCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellHeader.swift; sourceTree = "<group>"; };
 		61C28B5F1EA46F800019F574 /* ProfileTableViewCellHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCellHeader.xib; sourceTree = "<group>"; };
-		61C28B601EA46F800019F574 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		61C28B611EA46F800019F574 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		61C28B601EA46F800019F574 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ProfileController/View/ProfileViewController.swift; sourceTree = "<group>"; };
+		61C28B611EA46F800019F574 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = ProfileController/View/ProfileViewController.xib; sourceTree = "<group>"; };
 		61C28B631EA46F800019F574 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		61C28B641EA46F800019F574 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		61C28B661EA46F800019F574 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
@@ -758,7 +756,6 @@
 			isa = PBXGroup;
 			children = (
 				61C28AFD1EA46F800019F574 /* ActivityPacket.swift */,
-				61C28AFE1EA46F800019F574 /* CockRoachPacket.swift */,
 				61C28AFF1EA46F800019F574 /* DronePacket.swift */,
 				61C28B001EA46F800019F574 /* StepsGoalPacket.swift */,
 				61C28B011EA46F800019F574 /* SystemEventPacket.swift */,
@@ -826,7 +823,8 @@
 				61C28B491EA46F800019F574 /* MenuViewController */,
 				61C28B4F1EA46F800019F574 /* MyDeviceViewController */,
 				61C28B521EA46F800019F574 /* NotificationViewController */,
-				61C28B581EA46F800019F574 /* ProfileController */,
+				61C28B581EA46F800019F574 /* ProfileSetupViewController */,
+				CB65CBE11EB8576A00D40EDD /* ProfileViewController */,
 				61C28B621EA46F800019F574 /* RegisterController */,
 				61C28B321EA46F800019F574 /* SearchCityController */,
 				61C28B651EA46F800019F574 /* SplashScreenViewController */,
@@ -980,27 +978,14 @@
 			path = ../../NotificationViewController/View;
 			sourceTree = "<group>";
 		};
-		61C28B581EA46F800019F574 /* ProfileController */ = {
+		61C28B581EA46F800019F574 /* ProfileSetupViewController */ = {
 			isa = PBXGroup;
 			children = (
 				61C28B591EA46F800019F574 /* ProfileSetupViewController.swift */,
 				61C28B5A1EA46F800019F574 /* ProfileSetupViewController.xib */,
-				61C28B5B1EA46F800019F574 /* View */,
 			);
+			name = ProfileSetupViewController;
 			path = ProfileController;
-			sourceTree = "<group>";
-		};
-		61C28B5B1EA46F800019F574 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				61C28B5C1EA46F800019F574 /* ProfileTableViewCell.swift */,
-				61C28B5D1EA46F800019F574 /* ProfileTableViewCell.xib */,
-				61C28B5E1EA46F800019F574 /* ProfileTableViewCellHeader.swift */,
-				61C28B5F1EA46F800019F574 /* ProfileTableViewCellHeader.xib */,
-				61C28B601EA46F800019F574 /* ProfileViewController.swift */,
-				61C28B611EA46F800019F574 /* ProfileViewController.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		61C28B621EA46F800019F574 /* RegisterController */ = {
@@ -1061,6 +1046,8 @@
 				CB715FB01EA5E7A8005B5C22 /* DeviceTableViewCellHeader */,
 				61C28B4C1EA46F800019F574 /* MenuViewCell */,
 				61C28B551EA46F800019F574 /* NotificationsViewCell */,
+				CB65CBDE1EB8573400D40EDD /* ProfileTableViewCell */,
+				CB65CBDF1EB8573C00D40EDD /* ProfileTableViewCellHeader */,
 				61C28B6B1EA46F810019F574 /* StepsTitleView */,
 				CB715FAD1EA5E6E8005B5C22 /* WorldClockCell */,
 			);
@@ -1303,6 +1290,35 @@
 				9E1535821D5C20CA00CB6A01 /* cities.json */,
 			);
 			name = Worldclock;
+			sourceTree = "<group>";
+		};
+		CB65CBDE1EB8573400D40EDD /* ProfileTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				61C28B5C1EA46F800019F574 /* ProfileTableViewCell.swift */,
+				61C28B5D1EA46F800019F574 /* ProfileTableViewCell.xib */,
+			);
+			name = ProfileTableViewCell;
+			path = ../../ProfileController/View;
+			sourceTree = "<group>";
+		};
+		CB65CBDF1EB8573C00D40EDD /* ProfileTableViewCellHeader */ = {
+			isa = PBXGroup;
+			children = (
+				61C28B5E1EA46F800019F574 /* ProfileTableViewCellHeader.swift */,
+				61C28B5F1EA46F800019F574 /* ProfileTableViewCellHeader.xib */,
+			);
+			name = ProfileTableViewCellHeader;
+			path = ../../ProfileController/View;
+			sourceTree = "<group>";
+		};
+		CB65CBE11EB8576A00D40EDD /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				61C28B601EA46F800019F574 /* ProfileViewController.swift */,
+				61C28B611EA46F800019F574 /* ProfileViewController.xib */,
+			);
+			name = ProfileViewController;
 			sourceTree = "<group>";
 		};
 		CB715FA71EA5CDD3005B5C22 /* CompassViewController */ = {
@@ -1725,7 +1741,6 @@
 			files = (
 				61C28BFB1EA46F810019F574 /* LoginViewController.swift in Sources */,
 				CB9F65481EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.swift in Sources */,
-				61C28BBF1EA46F810019F574 /* CockRoachPacket.swift in Sources */,
 				CBB8923B1EB304BE006F7031 /* DidSelectedDelegate.swift in Sources */,
 				61C28BF91EA46F810019F574 /* WelcomeViewController.swift in Sources */,
 				61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */,

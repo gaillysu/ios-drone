@@ -128,7 +128,6 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
      :param: number, Signal strength value
      */
     func receivedRSSIValue(_ number:NSNumber) {
-        //AppTheme.DLog("Red RSSI Value:\(number)")
         mDelegate?.receivedRSSIValue(number)
     }
     
