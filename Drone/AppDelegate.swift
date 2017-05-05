@@ -44,21 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       Fabric.with([Crashlytics.self])
       
+      LocationManager.instanceLocation.startLocation()
+      
       _ = DataBaseManager.manager
       _ = NetworkManager.manager
     
       let sandbox:SandboxManager = SandboxManager()
       let _ = sandbox.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
       
-      if(UserGoal.getAll().count == 0){
-         let goalModel:UserGoal = UserGoal()
-         goalModel.goalSteps = 10000
-         _ = goalModel.add()
-      }
-      
       mConnectionController = ConnectionControllerImpl()
       mConnectionController?.setDelegate(self)
-      
       
       IQKeyboardManager.sharedManager().enable = true
       

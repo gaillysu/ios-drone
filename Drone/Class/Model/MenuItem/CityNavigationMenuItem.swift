@@ -9,11 +9,19 @@
 import Foundation
 import UIKit
 import Font_Awesome_Swift
+import Pulley
+import IQKeyboardManagerSwift
 
 class CityNavigationMenuItem: MenuItem {
     
     func viewController() -> UIViewController{
-        return WorldClockViewController()
+        UIApplication.shared.statusBarStyle = .lightContent
+        let mapTableViewController = MapTableViewController()
+        let mapNavigationViewController = MapNavigationViewController(rootViewController: mapTableViewController)
+        let pulleyViewController = PulleyViewController(contentViewController: NavigationController(), drawerViewController: mapNavigationViewController)
+        pulleyViewController.topInset = 100.0
+        mapNavigationViewController.pulleyViewController = pulleyViewController
+        return pulleyViewController
     }
     
     func icon() -> FAType?{
@@ -29,6 +37,6 @@ class CityNavigationMenuItem: MenuItem {
     }
     
     func comingSoon() -> Bool{
-        return true
+        return false
     }
 }

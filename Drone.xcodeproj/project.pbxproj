@@ -211,11 +211,20 @@
 		61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CB11EA83FFB0019F574 /* URL+Extension.swift */; };
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
+		61FAB9AA1EBC177000513E97 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9A81EBC177000513E97 /* NavigationController.swift */; };
+		61FAB9AB1EBC177000513E97 /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FAB9A91EBC177000513E97 /* NavigationController.xib */; };
+		61FAB9AC1EBC18CE00513E97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB464B6E1DED347B00480C08 /* MapKit.framework */; };
+		61FAB9B01EBC203300513E97 /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9AE1EBC203300513E97 /* MapTableViewController.swift */; };
+		61FAB9B51EBC241D00513E97 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9B31EBC241D00513E97 /* MapViewCell.swift */; };
+		61FAB9B61EBC241D00513E97 /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FAB9B41EBC241D00513E97 /* MapViewCell.xib */; };
+		61FAB9B81EBC2C5600513E97 /* PulleyViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */; };
+		61FAB9BB1EBC4E2D00513E97 /* MapNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9BA1EBC4E2D00513E97 /* MapNavigationViewController.swift */; };
+		61FAB9C01EBC5EA800513E97 /* MapTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FAB9BF1EBC5EA800513E97 /* MapTableViewController.xib */; };
+		61FAB9C31EBC670800513E97 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9C21EBC670800513E97 /* LocationManager.swift */; };
 		9E1535831D5C20CA00CB6A01 /* timezones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535811D5C20CA00CB6A01 /* timezones.json */; };
 		9E1535841D5C20CA00CB6A01 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535821D5C20CA00CB6A01 /* cities.json */; };
 		CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46981CCF223500411997 /* Fabric.framework */; };
 		CB0B469B1CCF223500411997 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46991CCF223500411997 /* Crashlytics.framework */; };
-		CB464B6F1DED347B00480C08 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB464B6E1DED347B00480C08 /* MapKit.framework */; };
 		CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */; };
 		CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
 		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
@@ -479,6 +488,15 @@
 		61C28CB11EA83FFB0019F574 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
+		61FAB9A81EBC177000513E97 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		61FAB9A91EBC177000513E97 /* NavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationController.xib; sourceTree = "<group>"; };
+		61FAB9AE1EBC203300513E97 /* MapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewController.swift; sourceTree = "<group>"; };
+		61FAB9B31EBC241D00513E97 /* MapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCell.swift; sourceTree = "<group>"; };
+		61FAB9B41EBC241D00513E97 /* MapViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewCell.xib; sourceTree = "<group>"; };
+		61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PulleyViewController+Extension.swift"; sourceTree = "<group>"; };
+		61FAB9BA1EBC4E2D00513E97 /* MapNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNavigationViewController.swift; sourceTree = "<group>"; };
+		61FAB9BF1EBC5EA800513E97 /* MapTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewController.xib; sourceTree = "<group>"; };
+		61FAB9C21EBC670800513E97 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9E1535811D5C20CA00CB6A01 /* timezones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timezones.json; sourceTree = "<group>"; };
 		9E1535821D5C20CA00CB6A01 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		BDE2361127B9E9E04C9E2D15 /* Pods-Drone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.release.xcconfig"; sourceTree = "<group>"; };
@@ -525,9 +543,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB464B6F1DED347B00480C08 /* MapKit.framework in Frameworks */,
 				CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */,
 				CB0B469B1CCF223500411997 /* Crashlytics.framework in Frameworks */,
+				61FAB9AC1EBC18CE00513E97 /* MapKit.framework in Frameworks */,
 				E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,6 +745,7 @@
 		61C28AF71EA46F800019F574 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				61FAB9C11EBC670800513E97 /* LocationManager */,
 				61C28AF81EA46F800019F574 /* BTManager */,
 				61C28B251EA46F800019F574 /* Controller */,
 				61C28CA21EA73F4C0019F574 /* DataBaseManager */,
@@ -808,6 +827,9 @@
 		61C28B251EA46F800019F574 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				61FAB9B91EBC4E0A00513E97 /* MapNavigationViewController */,
+				61FAB9AD1EBC202300513E97 /* MapTableViewController */,
+				61FAB9A71EBC174A00513E97 /* NavigationController */,
 				61C28B261EA46F800019F574 /* ActivityViewController */,
 				CB715FAC1EA5E6BF005B5C22 /* AddWorldClockViewController */,
 				61C28B291EA46F800019F574 /* BaseViewController */,
@@ -1037,6 +1059,7 @@
 		61C28B711EA46F810019F574 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				61FAB9B21EBC240900513E97 /* MapCell */,
 				CB9F654C1EA8AA8A007982B0 /* ClockSettingsTableViewCell */,
 				CB9F654A1EA8A719007982B0 /* ClockSettingsTableViewCellSwitch */,
 				CB9F65391EA72D18007982B0 /* ClockwiseButton */,
@@ -1162,6 +1185,7 @@
 				CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */,
 				CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */,
 				CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */,
+				61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1281,6 +1305,50 @@
 				61D4709E1DE2E07700620BD0 /* SandboxManager.swift */,
 			);
 			path = Sandbox;
+			sourceTree = "<group>";
+		};
+		61FAB9A71EBC174A00513E97 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				61FAB9A81EBC177000513E97 /* NavigationController.swift */,
+				61FAB9A91EBC177000513E97 /* NavigationController.xib */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		61FAB9AD1EBC202300513E97 /* MapTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				61FAB9AE1EBC203300513E97 /* MapTableViewController.swift */,
+				61FAB9BF1EBC5EA800513E97 /* MapTableViewController.xib */,
+			);
+			path = MapTableViewController;
+			sourceTree = "<group>";
+		};
+		61FAB9B21EBC240900513E97 /* MapCell */ = {
+			isa = PBXGroup;
+			children = (
+				61FAB9B31EBC241D00513E97 /* MapViewCell.swift */,
+				61FAB9B41EBC241D00513E97 /* MapViewCell.xib */,
+			);
+			name = MapCell;
+			path = Drone/Class/Controller/MapTableViewController/MapCell;
+			sourceTree = SOURCE_ROOT;
+		};
+		61FAB9B91EBC4E0A00513E97 /* MapNavigationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				61FAB9BA1EBC4E2D00513E97 /* MapNavigationViewController.swift */,
+			);
+			path = MapNavigationViewController;
+			sourceTree = "<group>";
+		};
+		61FAB9C11EBC670800513E97 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				61FAB9C21EBC670800513E97 /* LocationManager.swift */,
+			);
+			path = LocationManager;
 			sourceTree = "<group>";
 		};
 		9E1535801D5C20A500CB6A01 /* Worldclock */ = {
@@ -1559,7 +1627,7 @@
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1610,6 +1678,7 @@
 				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
 				CB9F65451EA86303007982B0 /* TimeSettingsViewController.xib in Resources */,
 				CB9F65311EA70CCB007982B0 /* CalibrateMinuteViewController.xib in Resources */,
+				61FAB9AB1EBC177000513E97 /* NavigationController.xib in Resources */,
 				61C28BEC1EA46F810019F574 /* CheckEmailController.xib in Resources */,
 				61C28C1E1EA46F810019F574 /* WorldClockViewController.xib in Resources */,
 				CBB892391EB3049A006F7031 /* AddWorldClockViewController.xib in Resources */,
@@ -1631,6 +1700,7 @@
 				CB9F65351EA70CDA007982B0 /* CalibrateSecondViewController.xib in Resources */,
 				61C28BFC1EA46F810019F574 /* LoginViewController.xib in Resources */,
 				61C28C121EA46F810019F574 /* SplashScreenViewController.xib in Resources */,
+				61FAB9B61EBC241D00513E97 /* MapViewCell.xib in Resources */,
 				61C28C141EA46F810019F574 /* StepsViewController.xib in Resources */,
 				613929081EADABEB00450284 /* welcome_2.png in Resources */,
 				9E1535841D5C20CA00CB6A01 /* cities.json in Resources */,
@@ -1653,6 +1723,7 @@
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				61C28BF61EA46F810019F574 /* DeviceTableViewCellHeader.xib in Resources */,
 				613929071EADABEB00450284 /* welcome_1.png in Resources */,
+				61FAB9C01EBC5EA800513E97 /* MapTableViewController.xib in Resources */,
 				61C28C061EA46F810019F574 /* NotificationsViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1756,6 +1827,7 @@
 				61C28C6F1EA5A03C0019F574 /* UserNetworkManager.swift in Sources */,
 				613928F61EA9A1C100450284 /* WeatherCityModel.swift in Sources */,
 				61C28C861EA5BABB0019F574 /* WeatherInfoRequest.swift in Sources */,
+				61FAB9B51EBC241D00513E97 /* MapViewCell.swift in Sources */,
 				61C28C561EA46F810019F574 /* WorldClockUtil.swift in Sources */,
 				61C28C751EA5A03C0019F574 /* BasePutRequest.swift in Sources */,
 				CBB892551EB33BB2006F7031 /* TimeSettingsSectionItem.swift in Sources */,
@@ -1807,6 +1879,7 @@
 				61C28C6D1EA5A03C0019F574 /* NetworkManager.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				61C28C2D1EA46F810019F574 /* DeviceMenuItem.swift in Sources */,
+				61FAB9C31EBC670800513E97 /* LocationManager.swift in Sources */,
 				CB9F654F1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift in Sources */,
 				CB9F65301EA70CCB007982B0 /* CalibrateMinuteViewController.swift in Sources */,
 				61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */,
@@ -1835,6 +1908,8 @@
 				61C28BC31EA46F810019F574 /* SystemStatusPacket.swift in Sources */,
 				61C28C781EA5A03C0019F574 /* NetworkRequest.swift in Sources */,
 				61C28BC21EA46F810019F574 /* SystemEventPacket.swift in Sources */,
+				61FAB9B01EBC203300513E97 /* MapTableViewController.swift in Sources */,
+				61FAB9B81EBC2C5600513E97 /* PulleyViewController+Extension.swift in Sources */,
 				61C28BD31EA46F810019F574 /* ReadWeatherRequest.swift in Sources */,
 				61C28C761EA5A03C0019F574 /* ForgetPasswordRequest.swift in Sources */,
 				61C28C0D1EA46F810019F574 /* ProfileViewController.swift in Sources */,
@@ -1854,6 +1929,7 @@
 				61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */,
 				61C28BC51EA46F810019F574 /* DroneRequest.swift in Sources */,
 				61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */,
+				61FAB9AA1EBC177000513E97 /* NavigationController.swift in Sources */,
 				61C28CA91EA75A620019F574 /* PostWatchVersionData.swift in Sources */,
 				61C28C281EA46F810019F574 /* WorldClockDatabaseHelper.swift in Sources */,
 				61C28C7C1EA5A03C0019F574 /* StepsUpdateRequest.swift in Sources */,
@@ -1866,6 +1942,7 @@
 				CB9F652C1EA70CA9007982B0 /* CalibrateHourViewController.swift in Sources */,
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
 				61C28C7D1EA5A03C0019F574 /* UserCreateRequest.swift in Sources */,
+				61FAB9BB1EBC4E2D00513E97 /* MapNavigationViewController.swift in Sources */,
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
 				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
 				61C28BBC1EA46F810019F574 /* ConnectionControllerImpl.swift in Sources */,
@@ -2089,7 +2166,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Drone/Drone-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -2113,7 +2189,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Drone/Drone-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
