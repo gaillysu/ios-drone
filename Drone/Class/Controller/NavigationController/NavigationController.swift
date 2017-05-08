@@ -14,9 +14,13 @@ import SwiftEventBus
 class NavigationController: UIViewController {
     @IBOutlet weak var navigationMapView: MKMapView!
     var thePlacemark:CLPlacemark?
+    var routeDetails:MKRoute?
+    var currentPoint:MKPointAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationMapView.delegate = self
         navigationMapView.showsUserLocation = true
         
         registerEventBusMessage()
@@ -41,8 +45,8 @@ extension NavigationController {
 
     func registerEventBusMessage() {
         SwiftEventBus.onMainThread(self, name: SEARCH_ACTION_CLICK) { (notification) in
-            let searchText:String = notification.object as! String
-            self.searchGeocodeAddress(object: searchText)
+            let searchPlacemark:CLPlacemark = notification.object as! CLPlacemark
+            self.searchGeocodeAddress(object: searchPlacemark)
         }
     }
     
@@ -51,32 +55,64 @@ extension NavigationController {
     }
     
     
-    func searchGeocodeAddress(object:String) {
-        let geocoder:CLGeocoder = CLGeocoder()
-        geocoder.geocodeAddressString(object) { (placemarks, error) in
-            if error != nil {
-                NSLog("%@", error!.localizedDescription);
-            } else {
-                self.thePlacemark = placemarks?.last;
-                let spanX:Double = 1.00725;
-                let spanY:Double = 1.00725;
-                var region:MKCoordinateRegion = MKCoordinateRegion();
-                region.center.latitude = self.thePlacemark!.location!.coordinate.latitude;
-                region.center.longitude = self.thePlacemark!.location!.coordinate.longitude;
-                region.span = MKCoordinateSpanMake(spanX, spanY);
-                self.navigationMapView.setRegion(region, animated: true)
-                self.addAnnotation(placemark:self.thePlacemark!)
+    func searchGeocodeAddress(object:CLPlacemark) {
+        clearRoute()
+        
+        self.thePlacemark = object;
+        
+        let center = CLLocationCoordinate2D(latitude: self.thePlacemark!.location!.coordinate.latitude, longitude: self.thePlacemark!.location!.coordinate.longitude)
+        let regionRadius: CLLocationDistance = 100
+        let region = MKCoordinateRegionMakeWithDistance(center,regionRadius * 2.0, regionRadius * 2.0)
+
+        self.navigationMapView.setRegion(region, animated: true)
+        self.addAnnotation(placemark:self.thePlacemark!)
+        
+        calculateRoute()
+    }
+    
+    func calculateRoute() {
+        let placemark:MKPlacemark = MKPlacemark(placemark: thePlacemark!)
+        placemark.calculateRoute { (route, error) in
+            if error == nil {
+                self.routeDetails = route;
+                self.navigationMapView.add(self.routeDetails!.polyline)
             }
         }
     }
     
     func addAnnotation(placemark:CLPlacemark) {
-        let point:MKPointAnnotation = MKPointAnnotation();
-        point.coordinate = CLLocationCoordinate2DMake(placemark.location!.coordinate.latitude, placemark.location!.coordinate.longitude)
-        point.title = placemark.addressDictionary!["Street"].debugDescription
-            //[placemark.addressDictionary objectForKey:@];
-        point.subtitle = placemark.addressDictionary!["City"].debugDescription
-        //[placemark.addressDictionary objectForKey:@"City"];
-        self.navigationMapView.addAnnotation(point)
+        currentPoint = MKPointAnnotation();
+        currentPoint?.coordinate = CLLocationCoordinate2DMake(placemark.location!.coordinate.latitude, placemark.location!.coordinate.longitude)
+        currentPoint?.title = placemark.locality
+        currentPoint?.subtitle = placemark.name
+        self.navigationMapView.addAnnotation(currentPoint!)
+    }
+    
+    func clearRoute() {
+        if let route = self.routeDetails,let point = currentPoint {
+            self.navigationMapView.remove(route.polyline)
+            self.navigationMapView.removeAnnotation(point)
+        }
+    }
+}
+
+extension NavigationController: MKMapViewDelegate{
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        if mapView.userTrackingMode == .none {
+            mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
+        }
+        
+        let center = CLLocationCoordinate2D(latitude: userLocation.location!.coordinate.latitude, longitude: userLocation.location!.coordinate.longitude)
+        let regionRadius: CLLocationDistance = 250
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(center,regionRadius * 2.0, regionRadius * 2.0)
+        self.navigationMapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let routeLineRenderer:MKPolylineRenderer = MKPolylineRenderer(polyline: routeDetails!.polyline)
+        routeLineRenderer.strokeColor = UIColor.getBaseColor();
+        routeLineRenderer.lineWidth = 8;
+        return routeLineRenderer
     }
 }
