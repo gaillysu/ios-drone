@@ -11,7 +11,7 @@ import Pulley
 
 class MapNavigationViewController: UINavigationController,UINavigationControllerDelegate {
     var drawerPositions:[PulleyPosition] = PulleyPosition.all
-    var collapsedHeight:CGFloat = 80.0
+    var collapsedHeight:CGFloat = 100.0
     weak var pulleyViewController:PulleyViewController?
     
     override func viewDidLoad() {
@@ -28,9 +28,9 @@ class MapNavigationViewController: UINavigationController,UINavigationController
 
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if let pulley = self.pulleyViewController {
-            var opacity:CGFloat = 0.5
+            let opacity:CGFloat = 0.5
             self.drawerPositions = PulleyPosition.all
-            self.collapsedHeight = 80.0
+            self.collapsedHeight = 100.0
             pulley.setNeedsSupportedDrawerPositionsUpdate()
             pulley.backgroundDimmingOpacity = opacity
         }
@@ -44,11 +44,25 @@ extension MapNavigationViewController: PulleyDrawerViewControllerDelegate{
     }
     
     func partialRevealDrawerHeight() -> CGFloat{
-        return 250.0
+        return 270.0
     }
     
     func supportedDrawerPositions() -> [PulleyPosition]{
         return self.drawerPositions
+    }
+    
+    func drawerPositionDidChange(drawer: PulleyViewController) {
+        if drawer.drawerPosition != .open {
+            for controller in self.viewControllers {
+                if controller is MapTableViewController {
+                    let mapController:MapTableViewController = controller as! MapTableViewController
+                    if let searchBar = mapController.searchBar {
+                        searchBar.resignFirstResponder()
+                    }
+                    break;
+                }
+            }
+        }
     }
 }
 

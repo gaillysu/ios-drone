@@ -50,6 +50,8 @@
 		6183230F1EA4609C0054966D /* SMSegmentAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230B1EA4609C0054966D /* SMSegmentAppearance.swift */; };
 		618323101EA4609C0054966D /* SMSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230C1EA4609C0054966D /* SMSegmentView.swift */; };
 		618323111EA4609C0054966D /* SMSegmentViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230D1EA4609C0054966D /* SMSegmentViewConstants.swift */; };
+		619A9F131EC1B9CE006D65C4 /* MapTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619A9F121EC1B9CE006D65C4 /* MapTableViewController.xib */; };
+		619A9F151EC1B9D8006D65C4 /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619A9F141EC1B9D8006D65C4 /* NavigationController.xib */; };
 		61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
 		61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
 		61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */; };
@@ -212,16 +214,15 @@
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
 		61FAB9AA1EBC177000513E97 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9A81EBC177000513E97 /* NavigationController.swift */; };
-		61FAB9AB1EBC177000513E97 /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FAB9A91EBC177000513E97 /* NavigationController.xib */; };
 		61FAB9AC1EBC18CE00513E97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB464B6E1DED347B00480C08 /* MapKit.framework */; };
 		61FAB9B01EBC203300513E97 /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9AE1EBC203300513E97 /* MapTableViewController.swift */; };
 		61FAB9B51EBC241D00513E97 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9B31EBC241D00513E97 /* MapViewCell.swift */; };
 		61FAB9B61EBC241D00513E97 /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FAB9B41EBC241D00513E97 /* MapViewCell.xib */; };
 		61FAB9B81EBC2C5600513E97 /* PulleyViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */; };
 		61FAB9BB1EBC4E2D00513E97 /* MapNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9BA1EBC4E2D00513E97 /* MapNavigationViewController.swift */; };
-		61FAB9C01EBC5EA800513E97 /* MapTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FAB9BF1EBC5EA800513E97 /* MapTableViewController.xib */; };
 		61FAB9C31EBC670800513E97 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9C21EBC670800513E97 /* LocationManager.swift */; };
 		61FAB9C51EC064EA00513E97 /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9C41EC064EA00513E97 /* MKPlacemark+Extension.swift */; };
+		61FAB9C71EC15E9B00513E97 /* CLGeocoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9C61EC15E9B00513E97 /* CLGeocoder+Extension.swift */; };
 		9E1535831D5C20CA00CB6A01 /* timezones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535811D5C20CA00CB6A01 /* timezones.json */; };
 		9E1535841D5C20CA00CB6A01 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535821D5C20CA00CB6A01 /* cities.json */; };
 		CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46981CCF223500411997 /* Fabric.framework */; };
@@ -328,6 +329,8 @@
 		6183230B1EA4609C0054966D /* SMSegmentAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentAppearance.swift; sourceTree = "<group>"; };
 		6183230C1EA4609C0054966D /* SMSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentView.swift; sourceTree = "<group>"; };
 		6183230D1EA4609C0054966D /* SMSegmentViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentViewConstants.swift; sourceTree = "<group>"; };
+		619A9F121EC1B9CE006D65C4 /* MapTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewController.xib; sourceTree = "<group>"; };
+		619A9F141EC1B9D8006D65C4 /* NavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationController.xib; sourceTree = "<group>"; };
 		61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFormatter.swift; sourceTree = "<group>"; };
 		61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate-Extension.swift"; sourceTree = "<group>"; };
@@ -490,15 +493,14 @@
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
 		61FAB9A81EBC177000513E97 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		61FAB9A91EBC177000513E97 /* NavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationController.xib; sourceTree = "<group>"; };
 		61FAB9AE1EBC203300513E97 /* MapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewController.swift; sourceTree = "<group>"; };
 		61FAB9B31EBC241D00513E97 /* MapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCell.swift; sourceTree = "<group>"; };
 		61FAB9B41EBC241D00513E97 /* MapViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewCell.xib; sourceTree = "<group>"; };
 		61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PulleyViewController+Extension.swift"; sourceTree = "<group>"; };
 		61FAB9BA1EBC4E2D00513E97 /* MapNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNavigationViewController.swift; sourceTree = "<group>"; };
-		61FAB9BF1EBC5EA800513E97 /* MapTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewController.xib; sourceTree = "<group>"; };
 		61FAB9C21EBC670800513E97 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		61FAB9C41EC064EA00513E97 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
+		61FAB9C61EC15E9B00513E97 /* CLGeocoder+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLGeocoder+Extension.swift"; sourceTree = "<group>"; };
 		9E1535811D5C20CA00CB6A01 /* timezones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timezones.json; sourceTree = "<group>"; };
 		9E1535821D5C20CA00CB6A01 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		BDE2361127B9E9E04C9E2D15 /* Pods-Drone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.release.xcconfig"; sourceTree = "<group>"; };
@@ -1244,6 +1246,7 @@
 				61C28CB11EA83FFB0019F574 /* URL+Extension.swift */,
 				613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */,
 				61FAB9C41EC064EA00513E97 /* MKPlacemark+Extension.swift */,
+				61FAB9C61EC15E9B00513E97 /* CLGeocoder+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1314,7 +1317,7 @@
 			isa = PBXGroup;
 			children = (
 				61FAB9A81EBC177000513E97 /* NavigationController.swift */,
-				61FAB9A91EBC177000513E97 /* NavigationController.xib */,
+				619A9F141EC1B9D8006D65C4 /* NavigationController.xib */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -1323,7 +1326,7 @@
 			isa = PBXGroup;
 			children = (
 				61FAB9AE1EBC203300513E97 /* MapTableViewController.swift */,
-				61FAB9BF1EBC5EA800513E97 /* MapTableViewController.xib */,
+				619A9F121EC1B9CE006D65C4 /* MapTableViewController.xib */,
 			);
 			path = MapTableViewController;
 			sourceTree = "<group>";
@@ -1675,13 +1678,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				619A9F131EC1B9CE006D65C4 /* MapTableViewController.xib in Resources */,
 				61C28BF21EA46F810019F574 /* DeviceViewController.xib in Resources */,
 				61C28C9C1EA706A50019F574 /* mapImage.png in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
 				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
+				619A9F151EC1B9D8006D65C4 /* NavigationController.xib in Resources */,
 				CB9F65451EA86303007982B0 /* TimeSettingsViewController.xib in Resources */,
 				CB9F65311EA70CCB007982B0 /* CalibrateMinuteViewController.xib in Resources */,
-				61FAB9AB1EBC177000513E97 /* NavigationController.xib in Resources */,
 				61C28BEC1EA46F810019F574 /* CheckEmailController.xib in Resources */,
 				61C28C1E1EA46F810019F574 /* WorldClockViewController.xib in Resources */,
 				CBB892391EB3049A006F7031 /* AddWorldClockViewController.xib in Resources */,
@@ -1726,7 +1730,6 @@
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				61C28BF61EA46F810019F574 /* DeviceTableViewCellHeader.xib in Resources */,
 				613929071EADABEB00450284 /* welcome_1.png in Resources */,
-				61FAB9C01EBC5EA800513E97 /* MapTableViewController.xib in Resources */,
 				61C28C061EA46F810019F574 /* NotificationsViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1852,6 +1855,7 @@
 				61C28BED1EA46F810019F574 /* SearchCityController.swift in Sources */,
 				61C28BFD1EA46F810019F574 /* MenuViewController.swift in Sources */,
 				61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */,
+				61FAB9C71EC15E9B00513E97 /* CLGeocoder+Extension.swift in Sources */,
 				61C28BF51EA46F810019F574 /* DeviceTableViewCellHeader.swift in Sources */,
 				61C28BCC1EA46F810019F574 /* GetSystemConfig.swift in Sources */,
 				61078DC31E48249C00898A0D /* Int+Timepiece.swift in Sources */,

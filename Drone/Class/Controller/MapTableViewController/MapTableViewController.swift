@@ -11,13 +11,14 @@ import SnapKit
 import SwiftEventBus
 import MapKit
 import CoreLocation
+import Pulley
 
 class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     @IBOutlet weak var addresTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var gripperView: UIView!
-    var pointArray:[CLPlacemark] = []
+    fileprivate var pointArray:[CLPlacemark] = []
     
     
     
@@ -64,11 +65,7 @@ class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
 }
 
-extension MapTableViewController:UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        
-    }
-    
+extension MapTableViewController:UISearchBarDelegate {    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchGeocodeAddress(object: searchBar.text!)
         

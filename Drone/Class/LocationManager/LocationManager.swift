@@ -11,7 +11,7 @@ import CoreLocation
 import BRYXBanner
 
 class LocationManager: NSObject {
-    static let instanceLocation:LocationManager = LocationManager()
+    static let manager:LocationManager = LocationManager()
     
     fileprivate var _locationManager : CLLocationManager?
     

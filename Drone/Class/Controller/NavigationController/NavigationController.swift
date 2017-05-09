@@ -15,13 +15,22 @@ class NavigationController: UIViewController {
     @IBOutlet weak var navigationMapView: MKMapView!
     var thePlacemark:CLPlacemark?
     var routeDetails:MKRoute?
-    var currentPoint:MKPointAnnotation?
+    @IBOutlet weak var zoomOut: UIButton!
+    @IBOutlet weak var zoomAdd: UIButton!
+    
+    lazy var currentPoint: MKPointAnnotation = {
+        var point:MKPointAnnotation = MKPointAnnotation();
+        return point
+    }()
+    
+    fileprivate var isSetRegion:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationMapView.delegate = self
         navigationMapView.showsUserLocation = true
+        navigationMapView.userTrackingMode = MKUserTrackingMode.follow
         
         registerEventBusMessage()
     }
@@ -36,6 +45,21 @@ class NavigationController: UIViewController {
         deinitEventBus()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        applyMapViewMemoryHotFix()
+    }
+    
+    @IBAction func zoomAction(_ sender: Any) {
+        if zoomOut.isEqual(sender) {
+            
+        }
+        
+        if zoomAdd.isEqual(sender) {
+            
+        }
+    }
+    
     deinit {
         deinitEventBus()
     }
@@ -46,7 +70,7 @@ extension NavigationController {
     func registerEventBusMessage() {
         SwiftEventBus.onMainThread(self, name: SEARCH_ACTION_CLICK) { (notification) in
             let searchPlacemark:CLPlacemark = notification.object as! CLPlacemark
-            self.searchGeocodeAddress(object: searchPlacemark)
+            self.selectedSearchGeocodeAddress(object: searchPlacemark)
         }
     }
     
@@ -55,7 +79,7 @@ extension NavigationController {
     }
     
     
-    func searchGeocodeAddress(object:CLPlacemark) {
+    func selectedSearchGeocodeAddress(object:CLPlacemark) {
         clearRoute()
         
         self.thePlacemark = object;
@@ -81,32 +105,66 @@ extension NavigationController {
     }
     
     func addAnnotation(placemark:CLPlacemark) {
-        currentPoint = MKPointAnnotation();
-        currentPoint?.coordinate = CLLocationCoordinate2DMake(placemark.location!.coordinate.latitude, placemark.location!.coordinate.longitude)
-        currentPoint?.title = placemark.locality
-        currentPoint?.subtitle = placemark.name
-        self.navigationMapView.addAnnotation(currentPoint!)
+        if let location = placemark.location {
+            currentPoint.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+            
+            CLGeocoder().reverseGeocodeLocationInfo(location: location) { [weak self](locationInfo, error) in
+                if error == nil {
+                    self?.currentPoint.title = locationInfo.name
+                    self?.currentPoint.subtitle = locationInfo.locationLong
+                    self?.navigationMapView.addAnnotation(self!.currentPoint)
+                }
+            }
+        }
     }
     
     func clearRoute() {
-        if let route = self.routeDetails,let point = currentPoint {
+        if let route = self.routeDetails {
             self.navigationMapView.remove(route.polyline)
-            self.navigationMapView.removeAnnotation(point)
+            self.navigationMapView.removeAnnotation(currentPoint)
         }
+    }
+    
+    func applyMapViewMemoryHotFix() {
+        switch self.navigationMapView.mapType {
+        case MKMapType.hybrid:
+            self.navigationMapView.mapType = MKMapType.standard
+        case MKMapType.standard:
+            self.navigationMapView.mapType = MKMapType.hybrid
+        default:break
+            
+        }
+        self.navigationMapView.mapType = MKMapType.standard
+        self.navigationMapView.showsUserLocation = false
+        
+        navigationMapView.removeAnnotations(navigationMapView.annotations)
+        
+        for overlay in navigationMapView.overlays {
+            navigationMapView.remove(overlay)
+        }
+        
+        self.navigationMapView.delegate = nil
+        self.navigationMapView = nil
     }
 }
 
 extension NavigationController: MKMapViewDelegate{
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        if mapView.userTrackingMode == .none {
-            mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
+        if !isSetRegion {
+            if let location = userLocation.location {
+                isSetRegion = true
+                let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                let regionRadius: CLLocationDistance = 250
+                let coordinateRegion = MKCoordinateRegionMakeWithDistance(center,regionRadius * 2.0, regionRadius * 2.0)
+                self.navigationMapView.setRegion(coordinateRegion, animated: true)
+                
+                CLGeocoder().reverseGeocodeLocationInfo(location: location, completion: { (locationInfo, error) in
+                    userLocation.title = locationInfo.name
+                    userLocation.subtitle = locationInfo.locationLong
+                })
+            }
         }
-        
-        let center = CLLocationCoordinate2D(latitude: userLocation.location!.coordinate.latitude, longitude: userLocation.location!.coordinate.longitude)
-        let regionRadius: CLLocationDistance = 250
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(center,regionRadius * 2.0, regionRadius * 2.0)
-        self.navigationMapView.setRegion(coordinateRegion, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

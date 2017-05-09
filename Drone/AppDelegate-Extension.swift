@@ -235,4 +235,12 @@ extension AppDelegate {
             }
         }
     }
+    
+    func startLocation() {
+        LocationManager.manager.startLocation()
+        
+        LocationManager.manager.didUpdateLocations = { location in
+            let locationArray = location as [CLLocation]
+        }
+    }
 }

@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       Fabric.with([Crashlytics.self])
       
-      LocationManager.instanceLocation.startLocation()
+      self.startLocation()
       
       _ = DataBaseManager.manager
       _ = NetworkManager.manager

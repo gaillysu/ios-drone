@@ -40,8 +40,9 @@ class MapViewCell: UITableViewCell {
 
             let distancePlacemark:MKPlacemark = MKPlacemark(placemark: placeMark)
             distancePlacemark.calculateRoute { (route, error) in
-                
-                self.distanceLabel.text = String(format: "%0.1f km", route!.distance/1000)
+                if error == nil {
+                    self.distanceLabel.text = String(format: "%0.1f km", route!.distance/1000)
+                }
             }
             
             titleLabel.text = locationLong
