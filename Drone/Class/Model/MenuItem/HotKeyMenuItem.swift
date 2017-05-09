@@ -13,7 +13,7 @@ import Font_Awesome_Swift
 class HotKeyMenuItem: MenuItem {
     
     func viewController() -> UIViewController{
-        return WorldClockViewController()
+        return HotKeysViewController()
     }
     
     func icon() -> FAType?{
@@ -29,6 +29,6 @@ class HotKeyMenuItem: MenuItem {
     }
     
     func comingSoon() -> Bool{
-        return true
+        return false
     }
 }

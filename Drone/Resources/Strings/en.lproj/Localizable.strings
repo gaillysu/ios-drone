@@ -16,3 +16,4 @@
 "logged_in"="Logged in.";
 "add_city"="City has already been added.";
 "created_account"="Account has been created.";
+"bluetooth_not_on"="Bluetooth is turned off";

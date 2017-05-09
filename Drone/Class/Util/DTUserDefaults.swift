@@ -18,10 +18,13 @@ public class DTUserDefaults: NSObject {
     private static let HOME_CITY_ID_KEY = "HOME_CITY_ID_KEY"
     private static let SETWEATHER_KEY = "SET_WEATHER_KEY"
     
+    private static let TOP_KEY_KEY = "TOP_KEY_KEY"
     private static let COMPASS_KEY = "COMPASS_KEY"
     private static let PAIR_PRESENT_KEY = "PAIR_PRESENT_KEY"
     private static let SYNC_LOCAL_TIME_KEY = "SYNC_LOCAL_TIME_KEY"
     private static let SYNC_ANALOG_TIME_KEY = "SYNC_ANALOG_TIME_KEY"
+    
+    
     
     // MARK: Setup
     public static var setupKey:Bool {
@@ -138,6 +141,17 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: PAIR_PRESENT_KEY)
+            UserDefaults.standard.synchronize()
+        }
+    }
+ 
+    // MARK: Menu
+    public static var topKeySelection:Int {
+        get{
+            return UserDefaults().integer(forKey: TOP_KEY_KEY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: TOP_KEY_KEY)
             UserDefaults.standard.synchronize()
         }
     }

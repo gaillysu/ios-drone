@@ -22,6 +22,7 @@ extension UIView {
             bundle: bundle
             ).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
+    
 }
  
 @IBDesignable extension UIView {

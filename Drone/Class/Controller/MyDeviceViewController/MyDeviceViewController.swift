@@ -8,6 +8,7 @@
 
 import Foundation
 import PagingMenuController
+import BRYXBanner
 
 class MyDeviceViewController: BaseViewController {
     @IBOutlet weak var devicesView: UIView!
@@ -72,6 +73,12 @@ class MyDeviceViewController: BaseViewController {
     }
     
     @IBAction func addDeviceAction(_ sender: AnyObject) {
+        if !(getAppDelegate().getMconnectionController()?.isBluetoothEnabled())! {
+            let banner = Banner(title: NSLocalizedString(NSLocalizedString("bluetooth_not_on", comment: ""), comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+            banner.dismissesOnTap = true
+            banner.show(duration: 1.2)
+            return
+        }
         let navigationController = makeStandardUINavigationController(WhichDeviceViewController(toMenu: false))
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }

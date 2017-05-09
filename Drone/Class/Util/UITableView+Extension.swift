@@ -6,9 +6,11 @@
 //  Copyright © 2017 Cloud. All rights reserved.
 //
 
-import class UIKit.UITableViewCell
-import class UIKit.UITableView
+import UIKit
 import struct Foundation.IndexPath
+import RxSwift
+import RxCocoa
+
 
 protocol ReusableView: class {
     static var reuseIdentifier: String {get}
@@ -30,5 +32,17 @@ extension UITableView {
             fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
         }
         return cell
+    }
+}
+
+extension Reactive where Base: UITableView {
+    
+    var didHighlightRowAt: ControlEvent<IndexPath> {
+        let selector = #selector(UITableViewDelegate.tableView(_:didHighlightRowAt:))
+        let events = delegate
+            .methodInvoked(selector)
+            .filter({ ($0.last as? IndexPath) != nil })
+            .map({ $0.last as! IndexPath })
+        return ControlEvent(events: events)
     }
 }

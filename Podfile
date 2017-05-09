@@ -19,7 +19,6 @@ target 'Drone' do
     pod 'MSCellAccessory'
     pod 'IQKeyboardManagerSwift'
     pod 'RealmSwift'
-    pod 'SnapKit'
     pod 'SwiftReorder', '~> 2.0'
     pod 'RxSwift',    '~> 3.0'
     pod 'RxCocoa',    '~> 3.0'

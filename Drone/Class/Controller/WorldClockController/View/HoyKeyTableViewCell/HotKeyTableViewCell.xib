@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HotKeyTableViewCell" customModule="Drone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="133.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4em-6m-tUS" customClass="HotKeyTableViewCellButton" customModule="Drone" customModuleProvider="target">
+                        <rect key="frame" x="8" y="21" width="90" height="90"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <inset key="titleEdgeInsets" minX="0.0" minY="30" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Find Your Phone">
+                            <color key="titleColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3r-47-m1c" customClass="HotKeyTableViewCellButton" customModule="Drone" customModuleProvider="target">
+                        <rect key="frame" x="115" y="21.5" width="90" height="90"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="G3r-47-m1c" secondAttribute="height" multiplier="1:1" id="WLB-pO-OmR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <inset key="titleEdgeInsets" minX="0.0" minY="30" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Remote Camera">
+                            <color key="titleColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZF-1A-hSv" customClass="HotKeyTableViewCellButton" customModule="Drone" customModuleProvider="target">
+                        <rect key="frame" x="222" y="21" width="90" height="90"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <inset key="titleEdgeInsets" minX="0.0" minY="30" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Control Music">
+                            <color key="titleColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tiw-FF-kLK">
+                        <rect key="frame" x="148" y="39.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="OQO-xN-JKq"/>
+                            <constraint firstAttribute="width" constant="25" id="Rux-Bm-rag"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wI6-i1-i4m">
+                        <rect key="frame" x="41" y="40" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="KkD-vp-uRN"/>
+                            <constraint firstAttribute="height" constant="25" id="QKC-KE-AwO"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bUc-Hy-yRi">
+                        <rect key="frame" x="255" y="39.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="7hJ-dN-hlz"/>
+                            <constraint firstAttribute="width" constant="25" id="Ul4-hA-ksE"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="G3r-47-m1c" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="013-eK-3Q9"/>
+                    <constraint firstItem="dZF-1A-hSv" firstAttribute="leading" secondItem="G3r-47-m1c" secondAttribute="trailing" constant="17" id="1bZ-vY-fpE"/>
+                    <constraint firstItem="Tiw-FF-kLK" firstAttribute="centerY" secondItem="wI6-i1-i4m" secondAttribute="centerY" id="1qo-x4-wsH"/>
+                    <constraint firstItem="G3r-47-m1c" firstAttribute="height" secondItem="4em-6m-tUS" secondAttribute="height" id="3Xv-ur-39c"/>
+                    <constraint firstItem="4em-6m-tUS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Gu9-Om-bIx"/>
+                    <constraint firstItem="4em-6m-tUS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Izm-Nv-fwi"/>
+                    <constraint firstItem="dZF-1A-hSv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LF1-kD-OSJ"/>
+                    <constraint firstItem="Tiw-FF-kLK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="VBD-Gd-Aay"/>
+                    <constraint firstItem="Tiw-FF-kLK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-15" id="aap-dk-SCU"/>
+                    <constraint firstItem="dZF-1A-hSv" firstAttribute="width" secondItem="G3r-47-m1c" secondAttribute="width" id="acB-5u-auS"/>
+                    <constraint firstItem="G3r-47-m1c" firstAttribute="width" secondItem="4em-6m-tUS" secondAttribute="width" id="c0M-80-Sv2"/>
+                    <constraint firstItem="wI6-i1-i4m" firstAttribute="centerX" secondItem="4em-6m-tUS" secondAttribute="centerX" id="dgK-ds-0uU"/>
+                    <constraint firstItem="bUc-Hy-yRi" firstAttribute="centerX" secondItem="dZF-1A-hSv" secondAttribute="centerX" id="hwj-5h-WMs"/>
+                    <constraint firstItem="dZF-1A-hSv" firstAttribute="height" secondItem="G3r-47-m1c" secondAttribute="height" id="jPZ-HW-j9y"/>
+                    <constraint firstItem="G3r-47-m1c" firstAttribute="leading" secondItem="4em-6m-tUS" secondAttribute="trailing" constant="17" id="jSL-sd-vHH"/>
+                    <constraint firstItem="G3r-47-m1c" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="rOH-Co-Kkd"/>
+                    <constraint firstItem="bUc-Hy-yRi" firstAttribute="centerY" secondItem="Tiw-FF-kLK" secondAttribute="centerY" id="tgS-bG-ERH"/>
+                    <constraint firstItem="dZF-1A-hSv" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="uai-Su-Vz8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="cameraImageView" destination="Tiw-FF-kLK" id="YQZ-mY-ogp"/>
+                <outlet property="controlMusicButton" destination="dZF-1A-hSv" id="1iX-gG-zAI"/>
+                <outlet property="crosshairImageView" destination="wI6-i1-i4m" id="sUr-le-cwh"/>
+                <outlet property="findYourPhoneButton" destination="4em-6m-tUS" id="8WU-tw-Ar5"/>
+                <outlet property="headphonesImageView" destination="bUc-Hy-yRi" id="vVo-fo-K1M"/>
+                <outlet property="remoteCameraButton" destination="G3r-47-m1c" id="H4z-Kh-uzi"/>
+            </connections>
+            <point key="canvasLocation" x="110" y="-15"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -13,11 +13,7 @@ class RegisterViewController: BaseViewController {
     @IBOutlet weak var backB: UIButton!
     @IBOutlet weak var nextB: UIButton!
     @IBOutlet weak var textfiledBG: UIView!
-    @IBOutlet weak var registerL: UILabel!
-    @IBOutlet weak var googleB: UIButton!
-    @IBOutlet weak var facebookB: UIButton!
-    @IBOutlet weak var twitterB: UIButton!
-    
+   
     var fromMenu: Bool = false;
     var emailT: AutocompleteField!
     var passwordT: AutocompleteField!
@@ -90,15 +86,7 @@ class RegisterViewController: BaseViewController {
             profile.account = ["email":emailT.text! as AnyObject,"password":passwordT.text! as AnyObject]
             self.navigationController?.pushViewController(profile, animated: true)
         }
-
-        if googleB.isEqual(sender) {
-        }
-
-        if facebookB.isEqual(sender) {
-        }
-
-        if twitterB.isEqual(sender) {
-        }
+ 
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

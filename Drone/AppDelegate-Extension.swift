@@ -23,7 +23,7 @@ extension AppDelegate {
         sendRequest(SetSystemConfig(configtype: .enabled, isAvailable: .enabled))
         sendRequest(SetSystemConfig(configtype: .clockFormat, format: .format24h))
         sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .sleepConfig, mode: .auto))
-        sendRequest(SetSystemConfig(configtype: .topKeyCustomization, isAvailable: .enabled))
+        setTopKeyCustomization()
         setAnalogTime(forceCurrentTime: false)
     }
     
@@ -33,6 +33,15 @@ extension AppDelegate {
         }else{
             sendRequest(SetSystemConfig(configtype: .compassAutoOnDuration, autoOnDuration: 1))
         }
+    }
+    
+    func setTopKeyCustomization(){
+        if DTUserDefaults.topKeySelection < 0{
+            sendRequest(SetSystemConfig(topKeyConfig: .defaultCase))
+        }else{
+            sendRequest(SetSystemConfig(topKeyConfig: SetSystemConfig.TopKeyConfiguration(rawValue: UInt8(DTUserDefaults.topKeySelection))!))
+        }
+        
     }
     
     func setAnalogTime(forceCurrentTime:Bool){

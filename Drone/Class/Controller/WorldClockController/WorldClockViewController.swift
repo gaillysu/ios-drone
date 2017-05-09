@@ -233,16 +233,5 @@ extension WorldClockViewController:TableViewReorderDelegate{
 }
 
 
-extension Reactive where Base: UITableView {
-    
-    var didHighlightRowAt: ControlEvent<IndexPath> {
-        let selector = #selector(UITableViewDelegate.tableView(_:didHighlightRowAt:))
-        let events = delegate
-            .methodInvoked(selector)
-            .filter({ ($0.last as? IndexPath) != nil })
-            .map({ $0.last as! IndexPath })
-        return ControlEvent(events: events)
-    }
-}
 
 

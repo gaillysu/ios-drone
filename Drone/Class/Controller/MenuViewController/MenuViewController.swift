@@ -125,23 +125,6 @@ class MenuViewController: BaseViewController  {
         }
     }
     
-    func leftAction(_ item:UIBarButtonItem) {
-        if (UserProfile.getAll().count == 0){
-            let navigationController = UINavigationController(rootViewController:WelcomeViewController());
-            navigationController.isNavigationBarHidden = true
-            self.present(navigationController, animated: true, completion: nil);
-        }else{
-            let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
-            profileNavigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
-            self.present(profileNavigationController, animated: true) {}
-        }
-    }
-    
-    func rightAction(_ item:UIBarButtonItem) {
-        self.navigationController?.title = "WATCH SETTINGS"
-        self.navigationController?.pushViewController(MyDeviceViewController(), animated: true);
-    }
-    
     func setupRx(){
         menuItems.asObservable().bind(to: menuCollectionView
             .rx
@@ -161,10 +144,6 @@ class MenuViewController: BaseViewController  {
             }.addDisposableTo(disposeBag)
         menuCollectionView.delegate = self
     }
-    
-    func profileAction(){
-        self.navigationController?.pushViewController(ProfileSetupViewController(), animated: true)
-    }
 }
 
 extension MenuViewController: UICollectionViewDelegateFlowLayout{
@@ -178,18 +157,25 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let item:MenuItem = self.menuItems.value[indexPath.row]
         let controller = item.viewController()
         controller.navigationItem.title = item.title()
         let navigationViewController = makeStandardUINavigationController(controller)
         if indexPath.row == 6 && UserProfile.getAll().first == nil {
-                navigationViewController.navigationBar.isHidden = true
+            navigationViewController.navigationBar.isHidden = true
         } else if indexPath.row == 7 {
             DTUserDefaults.presentMenu = false
         }
         self.present(navigationViewController, animated: true, completion: nil)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.backgroundColor = UIColor("#EBEBEB")
+    }
     
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.backgroundColor = UIColor.white
+    }
 }
 
