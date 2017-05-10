@@ -11,7 +11,7 @@ import Pulley
 
 class MapNavigationViewController: UINavigationController,UINavigationControllerDelegate {
     var drawerPositions:[PulleyPosition] = PulleyPosition.all
-    var collapsedHeight:CGFloat = 100.0
+    var collapsedHeight:CGFloat = 150.0
     weak var pulleyViewController:PulleyViewController?
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class MapNavigationViewController: UINavigationController,UINavigationController
         if let pulley = self.pulleyViewController {
             let opacity:CGFloat = 0.5
             self.drawerPositions = PulleyPosition.all
-            self.collapsedHeight = 100.0
+            self.collapsedHeight = 150.0
             pulley.setNeedsSupportedDrawerPositionsUpdate()
             pulley.backgroundDimmingOpacity = opacity
         }

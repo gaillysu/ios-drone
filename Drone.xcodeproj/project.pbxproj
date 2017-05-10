@@ -52,6 +52,9 @@
 		618323111EA4609C0054966D /* SMSegmentViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230D1EA4609C0054966D /* SMSegmentViewConstants.swift */; };
 		619A9F131EC1B9CE006D65C4 /* MapTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619A9F121EC1B9CE006D65C4 /* MapTableViewController.xib */; };
 		619A9F151EC1B9D8006D65C4 /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619A9F141EC1B9D8006D65C4 /* NavigationController.xib */; };
+		619A9F191EC2AF6F006D65C4 /* RoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A9F171EC2AF6F006D65C4 /* RoutesController.swift */; };
+		619A9F1A1EC2AF6F006D65C4 /* RoutesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619A9F181EC2AF6F006D65C4 /* RoutesController.xib */; };
+		619A9F1C1EC2B7B7006D65C4 /* PostRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A9F1B1EC2B7B7006D65C4 /* PostRoutes.swift */; };
 		61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
 		61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
 		61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */; };
@@ -331,6 +334,9 @@
 		6183230D1EA4609C0054966D /* SMSegmentViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegmentViewConstants.swift; sourceTree = "<group>"; };
 		619A9F121EC1B9CE006D65C4 /* MapTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewController.xib; sourceTree = "<group>"; };
 		619A9F141EC1B9D8006D65C4 /* NavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationController.xib; sourceTree = "<group>"; };
+		619A9F171EC2AF6F006D65C4 /* RoutesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesController.swift; sourceTree = "<group>"; };
+		619A9F181EC2AF6F006D65C4 /* RoutesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutesController.xib; sourceTree = "<group>"; };
+		619A9F1B1EC2B7B7006D65C4 /* PostRoutes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRoutes.swift; sourceTree = "<group>"; };
 		61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFormatter.swift; sourceTree = "<group>"; };
 		61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate-Extension.swift"; sourceTree = "<group>"; };
@@ -737,6 +743,15 @@
 			path = SMSegmentView;
 			sourceTree = "<group>";
 		};
+		619A9F161EC2AF60006D65C4 /* RoutesController */ = {
+			isa = PBXGroup;
+			children = (
+				619A9F171EC2AF6F006D65C4 /* RoutesController.swift */,
+				619A9F181EC2AF6F006D65C4 /* RoutesController.xib */,
+			);
+			path = RoutesController;
+			sourceTree = "<group>";
+		};
 		61AE4B521E7F838300B4AD7C /* ValueFormatter */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +846,7 @@
 		61C28B251EA46F800019F574 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				619A9F161EC2AF60006D65C4 /* RoutesController */,
 				61FAB9B91EBC4E0A00513E97 /* MapNavigationViewController */,
 				61FAB9AD1EBC202300513E97 /* MapTableViewController */,
 				61FAB9A71EBC174A00513E97 /* NavigationController */,
@@ -1272,6 +1288,7 @@
 				61C28C9E1EA73E920019F574 /* PostActivityData.swift */,
 				61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */,
 				61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */,
+				619A9F1B1EC2B7B7006D65C4 /* PostRoutes.swift */,
 			);
 			path = PostObject;
 			sourceTree = "<group>";
@@ -1691,6 +1708,7 @@
 				CBB892391EB3049A006F7031 /* AddWorldClockViewController.xib in Resources */,
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				61C28BF81EA46F810019F574 /* ForgetPasswordController.xib in Resources */,
+				619A9F1A1EC2AF6F006D65C4 /* RoutesController.xib in Resources */,
 				6139290A1EADABEB00450284 /* welcome_4.png in Resources */,
 				CB9F65491EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib in Resources */,
 				61C28C161EA46F810019F574 /* StepsTitleView.xib in Resources */,
@@ -1837,6 +1855,7 @@
 				61FAB9B51EBC241D00513E97 /* MapViewCell.swift in Sources */,
 				61C28C561EA46F810019F574 /* WorldClockUtil.swift in Sources */,
 				61C28C751EA5A03C0019F574 /* BasePutRequest.swift in Sources */,
+				619A9F191EC2AF6F006D65C4 /* RoutesController.swift in Sources */,
 				CBB892551EB33BB2006F7031 /* TimeSettingsSectionItem.swift in Sources */,
 				61C28BD61EA46F810019F574 /* SetContactsFilterRequest.swift in Sources */,
 				CBB892501EB33BAB006F7031 /* CompassSectionModel.swift in Sources */,
@@ -1969,6 +1988,7 @@
 				61C28BD81EA46F810019F574 /* SetNotificationRequest.swift in Sources */,
 				61C28C241EA46F810019F574 /* UserGoal.swift in Sources */,
 				6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */,
+				619A9F1C1EC2B7B7006D65C4 /* PostRoutes.swift in Sources */,
 				61C28BEF1EA46F810019F574 /* ConnectionSetupViewController.swift in Sources */,
 				CB9F65591EA9FC19007982B0 /* UITableView+Extension.swift in Sources */,
 				61C28C1D1EA46F810019F574 /* WorldClockViewController.swift in Sources */,

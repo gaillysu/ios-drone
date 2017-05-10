@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 extension MKPlacemark {
-    func calculateRoute(completion: @escaping (_ route:MKRoute?, _ error:Error?) -> Void) {
+    func calculateRoute(completion: @escaping (_ route:[MKRoute]?, _ error:Error?) -> Void) {
         let directionsRequest:MKDirectionsRequest = MKDirectionsRequest()
         let placemark:MKPlacemark = MKPlacemark(placemark: self)
         directionsRequest.source = MKMapItem.forCurrentLocation()
@@ -19,7 +19,7 @@ extension MKPlacemark {
         let directions:MKDirections = MKDirections(request: directionsRequest)
         directions.calculate { (response, error) in
             if error == nil {
-                completion(response?.routes.last, nil)
+                completion(response?.routes, nil)
             }else{
                 completion(nil, NSError(domain: "calculate route error", code: -30, userInfo: nil))
             }

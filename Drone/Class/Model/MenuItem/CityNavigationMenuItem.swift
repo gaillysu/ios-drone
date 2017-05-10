@@ -19,7 +19,7 @@ class CityNavigationMenuItem: MenuItem {
         let mapTableViewController = MapTableViewController()
         let mapNavigationViewController = MapNavigationViewController(rootViewController: mapTableViewController)
         let pulleyViewController = PulleyViewController(contentViewController: NavigationController(), drawerViewController: mapNavigationViewController)
-        pulleyViewController.topInset = 100.0
+        pulleyViewController.topInset = 50.0
         mapNavigationViewController.pulleyViewController = pulleyViewController
         return pulleyViewController
     }

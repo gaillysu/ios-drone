@@ -61,7 +61,10 @@ class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let placemarks:CLPlacemark = pointArray[indexPath.row]
-        SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: placemarks)
+        
+        let routesController:RoutesController = RoutesController(nibName: "RoutesController", bundle: nil)
+        routesController.placemarks = placemarks
+        self.navigationController?.pushViewController(routesController, animated: true)
     }
 }
 

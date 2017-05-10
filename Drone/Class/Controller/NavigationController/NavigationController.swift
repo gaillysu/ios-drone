@@ -13,10 +13,11 @@ import SwiftEventBus
 
 class NavigationController: UIViewController {
     @IBOutlet weak var navigationMapView: MKMapView!
-    var thePlacemark:CLPlacemark?
-    var routeDetails:MKRoute?
     @IBOutlet weak var zoomOut: UIButton!
     @IBOutlet weak var zoomAdd: UIButton!
+    
+    fileprivate var thePlacemark:CLPlacemark?
+    fileprivate var routeDetails:MKRoute?
     
     lazy var currentPoint: MKPointAnnotation = {
         var point:MKPointAnnotation = MKPointAnnotation();
@@ -66,11 +67,10 @@ class NavigationController: UIViewController {
 }
 
 extension NavigationController {
-
     func registerEventBusMessage() {
         SwiftEventBus.onMainThread(self, name: SEARCH_ACTION_CLICK) { (notification) in
-            let searchPlacemark:CLPlacemark = notification.object as! CLPlacemark
-            self.selectedSearchGeocodeAddress(object: searchPlacemark)
+            let postRoute:PostRoutes = notification.object as! PostRoutes
+            self.calculateRoute(object: postRoute)
         }
     }
     
@@ -78,30 +78,21 @@ extension NavigationController {
         SwiftEventBus.unregister(self, name: SEARCH_ACTION_CLICK)
     }
     
-    
-    func selectedSearchGeocodeAddress(object:CLPlacemark) {
+    func calculateRoute(object:PostRoutes) {
         clearRoute()
         
-        self.thePlacemark = object;
+        self.thePlacemark = object.placemarks!;
         
-        let center = CLLocationCoordinate2D(latitude: self.thePlacemark!.location!.coordinate.latitude, longitude: self.thePlacemark!.location!.coordinate.longitude)
-        let regionRadius: CLLocationDistance = 100
-        let region = MKCoordinateRegionMakeWithDistance(center,regionRadius * 2.0, regionRadius * 2.0)
-
-        self.navigationMapView.setRegion(region, animated: true)
         self.addAnnotation(placemark:self.thePlacemark!)
         
-        calculateRoute()
-    }
-    
-    func calculateRoute() {
-        let placemark:MKPlacemark = MKPlacemark(placemark: thePlacemark!)
-        placemark.calculateRoute { (route, error) in
-            if error == nil {
-                self.routeDetails = route;
-                self.navigationMapView.add(self.routeDetails!.polyline)
-            }
-        }
+        self.routeDetails = object.route!;
+        self.navigationMapView.add(self.routeDetails!.polyline)
+        
+        let point:CGPoint = CGPoint(x: self.navigationMapView.frame.size.width/2.0, y: self.navigationMapView.frame.size.height/2.0)
+        let center:CLLocationCoordinate2D = navigationMapView.convert(point, toCoordinateFrom: navigationMapView)
+        let regionRadius: CLLocationDistance = object.route!.distance
+        let region = MKCoordinateRegionMakeWithDistance(center,regionRadius * 2.0, regionRadius * 2.0)
+        self.navigationMapView.setRegion(region, animated: true)
     }
     
     func addAnnotation(placemark:CLPlacemark) {
@@ -172,5 +163,9 @@ extension NavigationController: MKMapViewDelegate{
         routeLineRenderer.strokeColor = UIColor.getBaseColor();
         routeLineRenderer.lineWidth = 8;
         return routeLineRenderer
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        NSLog("didSelect:\(view)");
     }
 }

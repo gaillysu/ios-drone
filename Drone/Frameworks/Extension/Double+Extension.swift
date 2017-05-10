@@ -20,4 +20,24 @@ extension Double {
     func toInt() -> Int {
         return Int(self)
     }
+    
+    func timeConvertString() -> String {
+        if self>3600{
+            return String(format: "%.2f hour", self/3600)
+        }
+        
+        if self > 60 {
+            return String(format: "%.2f minute", self/60.0)
+        }
+        
+        return "\(self) second"
+    }
+    
+    func distanceConvertMetricString() -> String {
+        if self>1000 {
+            return String(format: "%.2f km", self/1000)
+        }
+        
+        return String(format: "%.2f m", self)
+    }
 }
