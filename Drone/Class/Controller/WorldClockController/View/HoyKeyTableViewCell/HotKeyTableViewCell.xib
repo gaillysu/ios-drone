@@ -40,7 +40,7 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3r-47-m1c" customClass="HotKeyTableViewCellButton" customModule="Drone" customModuleProvider="target">
-                        <rect key="frame" x="115" y="21.5" width="90" height="90"/>
+                        <rect key="frame" x="115" y="21" width="90" height="90"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="G3r-47-m1c" secondAttribute="height" multiplier="1:1" id="WLB-pO-OmR"/>
@@ -83,24 +83,24 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tiw-FF-kLK">
-                        <rect key="frame" x="148" y="39.5" width="25" height="25"/>
+                        <rect key="frame" x="145" y="37" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="OQO-xN-JKq"/>
-                            <constraint firstAttribute="width" constant="25" id="Rux-Bm-rag"/>
+                            <constraint firstAttribute="height" constant="30" id="OQO-xN-JKq"/>
+                            <constraint firstAttribute="width" constant="30" id="Rux-Bm-rag"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wI6-i1-i4m">
-                        <rect key="frame" x="41" y="40" width="25" height="25"/>
+                        <rect key="frame" x="38" y="37" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="KkD-vp-uRN"/>
-                            <constraint firstAttribute="height" constant="25" id="QKC-KE-AwO"/>
+                            <constraint firstAttribute="width" constant="30" id="KkD-vp-uRN"/>
+                            <constraint firstAttribute="height" constant="30" id="QKC-KE-AwO"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bUc-Hy-yRi">
-                        <rect key="frame" x="255" y="39.5" width="25" height="25"/>
+                        <rect key="frame" x="252" y="37" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="7hJ-dN-hlz"/>
-                            <constraint firstAttribute="width" constant="25" id="Ul4-hA-ksE"/>
+                            <constraint firstAttribute="height" constant="30" id="7hJ-dN-hlz"/>
+                            <constraint firstAttribute="width" constant="30" id="Ul4-hA-ksE"/>
                         </constraints>
                     </imageView>
                 </subviews>

@@ -47,7 +47,7 @@ class ConnectionSetupViewController: UIViewController {
         }
         
         //Search device cycle timer ,13s again
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(reSearchTimerAction(_:)), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(reSearchTimerAction(_:)), userInfo: nil, repeats: true)
     }
     
     override func viewDidLayoutSubviews() {

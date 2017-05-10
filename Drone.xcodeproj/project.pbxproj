@@ -1056,7 +1056,6 @@
 		61C28B711EA46F810019F574 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CBBC3AC91EC174D4009282E8 /* HoyKeyTableViewCellButton */,
 				CB9F654C1EA8AA8A007982B0 /* ClockSettingsTableViewCell */,
 				CB9F654A1EA8A719007982B0 /* ClockSettingsTableViewCellSwitch */,
 				CB9F65391EA72D18007982B0 /* ClockwiseButton */,
@@ -1065,6 +1064,7 @@
 				61C28B3B1EA46F800019F574 /* DeviceTableViewCell */,
 				CB715FB01EA5E7A8005B5C22 /* DeviceTableViewCellHeader */,
 				CB15497E1EC0298F00090242 /* HoyKeyTableViewCell */,
+				CBBC3AC91EC174D4009282E8 /* HoyKeyTableViewCellButton */,
 				61C28B4C1EA46F800019F574 /* MenuViewCell */,
 				61C28B551EA46F800019F574 /* NotificationsViewCell */,
 				CB65CBDE1EB8573400D40EDD /* ProfileTableViewCell */,

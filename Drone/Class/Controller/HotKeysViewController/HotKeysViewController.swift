@@ -21,7 +21,7 @@ class HotKeysViewController: UIViewController {
     var selectedFeature = Variable(HotKey.Feature.disabled)
     
     var disposeBag = DisposeBag()
-    let section = Variable([HotKeySectionModel(header: "", footer: "", items: [HotKeySectionModelItem(label: "Enable", imageName: "icon_star")])])
+    let section = Variable([HotKeySectionModel(header: "", footer: "Hot Keys makes your watch even more useful! Enable the Hot Keys and select your favorite function below.", items: [HotKeySectionModelItem(label: "Enable", imageName: "icon_star")])])
     let functionSectionModel = HotKeySectionModel(header: "Select Function", footer: "If your Dayton watch is not connected, it will sync as soon as it gets connected.", items: [HotKeySectionModelItem(label: "", imageName: nil)])
     
     override func viewDidLoad() {
