@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
 
+   fileprivate var isNavigation:Bool = false
+   
    static let RESET_STATE = "RESET_STATE"
    static let RESET_STATE_DATE = "RESET_STATE_DATE"
    let SETUP_KEY = "SETUP_KEY"
@@ -270,5 +272,13 @@ extension AppDelegate{
    func isSaveWorldClock() {
       let realm = try! Realm()
       setWorldClock(Array(realm.objects(City.self).filter("selected = true")))
+   }
+   
+   func setNavigation(state:Bool) {
+      isNavigation = state
+   }
+   
+   func getNavigationState() -> Bool {
+      return isNavigation
    }
 }

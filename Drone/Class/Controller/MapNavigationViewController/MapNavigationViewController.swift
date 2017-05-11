@@ -19,7 +19,7 @@ class MapNavigationViewController: UINavigationController,UINavigationController
         self.delegate = self
         self.navigationBar.isHidden = true
         self.interactivePopGestureRecognizer?.delegate = self
-        self.interactivePopGestureRecognizer?.isEnabled = true
+        self.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +69,6 @@ extension MapNavigationViewController: PulleyDrawerViewControllerDelegate{
 extension MapNavigationViewController: UIGestureRecognizerDelegate{
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+        return false
     }
 }

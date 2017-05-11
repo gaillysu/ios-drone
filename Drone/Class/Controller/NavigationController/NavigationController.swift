@@ -32,13 +32,13 @@ class NavigationController: UIViewController {
         navigationMapView.delegate = self
         navigationMapView.showsUserLocation = true
         navigationMapView.userTrackingMode = MKUserTrackingMode.follow
-        
+        navigationMapView.isPitchEnabled = true
         registerEventBusMessage()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
+        applyMapViewMemoryHotFix()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -48,7 +48,7 @@ class NavigationController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        applyMapViewMemoryHotFix()
+        cleanMapViewMemory()
     }
     
     @IBAction func zoomAction(_ sender: Any) {
@@ -126,6 +126,12 @@ extension NavigationController {
             
         }
         self.navigationMapView.mapType = MKMapType.standard
+    }
+    
+    func cleanMapViewMemory() {
+        
+        applyMapViewMemoryHotFix()
+        
         self.navigationMapView.showsUserLocation = false
         
         navigationMapView.removeAnnotations(navigationMapView.annotations)
@@ -149,13 +155,16 @@ extension NavigationController: MKMapViewDelegate{
                 let regionRadius: CLLocationDistance = 250
                 let coordinateRegion = MKCoordinateRegionMakeWithDistance(center,regionRadius * 2.0, regionRadius * 2.0)
                 self.navigationMapView.setRegion(coordinateRegion, animated: true)
-                
-                CLGeocoder().reverseGeocodeLocationInfo(location: location, completion: { (locationInfo, error) in
-                    userLocation.title = locationInfo.name
-                    userLocation.subtitle = locationInfo.locationLong
-                })
             }
         }
+        
+        if let location = userLocation.location {
+            CLGeocoder().reverseGeocodeLocationInfo(location: location, completion: { (locationInfo, error) in
+                userLocation.title = locationInfo.name
+                userLocation.subtitle = locationInfo.locationLong
+            })
+        }
+        
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
