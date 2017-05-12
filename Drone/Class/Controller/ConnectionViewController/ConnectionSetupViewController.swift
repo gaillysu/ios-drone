@@ -74,7 +74,7 @@ class ConnectionSetupViewController: UIViewController {
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.connectionFailView.isHidden = true
             self.connectionView.isHidden = false
-            AppDelegate.getAppDelegate().startConnect()
+            AppDelegate.getAppDelegate().connectNew()
         }
     }
 }

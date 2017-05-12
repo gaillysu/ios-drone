@@ -87,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          SyncQueue.sharedInstance.next()
          
          SwiftEventBus.post(SWIFTEVENT_BUS_RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
+         debugPrint("RawPacketImpl :\(Constants.NSData2Bytes(packet.getRawData()))")
          if(packet.getHeader() == GetSystemStatus.HEADER()) {
             let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
             debugPrint("SystemStatus :\(systemStatus)")
@@ -95,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                DTUserDefaults.setupKey = true
                
                self.setSystemConfig()
-               
+               print("SetupKey = (\(DTUserDefaults.setupKey))")
                //Records need to use 0x30
                let cacheModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)
                _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
@@ -234,24 +235,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
 extension AppDelegate{
    func watchConfig() {
-      //setp2:start set RTC
+      //setp2:start set RTCs
       self.setRTC(force: true)
+      print("setRTC")
       //setp3:start set AppConfig
       self.setAppConfig()
+      print("setAppConfig")
       //step4: start set user profile
       self.setUserProfile()
+      print("setUserProfile")
       //step5: start set user default goal
       self.setGoal()
+      print("setGoal")
 
       self.isSaveWorldClock()
-
-      self.setNotification()
-
-      self.updateNotification()
-
-      self.setStepsToWatch()
+      print("isSaveWorldClock")
       
-      setWeather()
+      self.setNotification()
+      print("setNotification")
+      
+      self.updateNotification()
+      print("updateNotification")
+      
+      self.setStepsToWatch()
+      print("setStepsToWatch")
+      
+//      setWeather()
+//      print("setWeather")
    }
    
    func setNotification() {

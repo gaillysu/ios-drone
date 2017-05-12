@@ -23,9 +23,7 @@ extension AppDelegate {
         sendRequest(SetSystemConfig(configtype: .enabled, isAvailable: .enabled))
         sendRequest(SetSystemConfig(configtype: .clockFormat, format: .format24h))
         sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .sleepConfig, mode: .auto))
-        setTopKeyCustomization()
-        setAnalogTime(forceCurrentTime: false)
-    }
+     }
     
     func setCompassAutoMinutes(){
         if let obj = Compass.getAll().first, let compass = obj as? Compass{
@@ -68,6 +66,7 @@ extension AppDelegate {
     
     func setRTC(force:Bool) {
         if DTUserDefaults.syncAnalogTime || force {
+            print("setting RTC")
             sendRequest(SetRTCRequest())
         }
     }
@@ -90,7 +89,10 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.worldClock, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.activityTracking, state: AppConfigAppState.on))
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.weather, state: AppConfigAppState.on))
-        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, enabled: DTUserDefaults.compassState))
+        if DTUserDefaults.compassState {
+            sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.on))
+        }
+        
     }
     
     func setGoal() {

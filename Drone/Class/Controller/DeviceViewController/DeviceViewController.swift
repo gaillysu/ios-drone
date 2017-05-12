@@ -121,7 +121,7 @@ extension DeviceViewController{
         
         alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
             AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
-            AppDelegate.getAppDelegate().disconnect()
+//            AppDelegate.getAppDelegate().disconnect()
             _ = UserDevice.removeAll()
             //Records need to use 0x30
             let resetModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)

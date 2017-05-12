@@ -8,7 +8,7 @@ It will receive different Closures and will run them when appropriate
 */
 class SyncQueue : NSObject {
     /** The max lock time before timeout. */
-    fileprivate let MAX_LOCK_TIME = 5
+    fileprivate let MAX_LOCK_TIME = 2
     
     /** The stored commands, that are waiting to be executed. */
     fileprivate var mQueue:[ (Void) -> (Void) ]=[]
