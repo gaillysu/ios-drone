@@ -19,14 +19,13 @@ class RoutesController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var alternativeLabel: UILabel!
-    
     @IBOutlet weak var timerConstraint: NSLayoutConstraint!
+    
     var placemarks:CLPlacemark?
     
     fileprivate var routeArray:[MKRoute] = []
     fileprivate var statrtTimer:Timer?
     fileprivate var startDate:Date?
-    
     fileprivate lazy var dateFormat: DateFormatter = {
         let formatter:DateFormatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
@@ -38,6 +37,7 @@ class RoutesController: UIViewController {
         
         self.routesSegmented.removeAllSegments();
         calculateRoute()
+
     }
     
     func calculateRoute() {
@@ -72,7 +72,7 @@ class RoutesController: UIViewController {
         
         if backButton.isEqual(sender) {
             if statrtTimer != nil {
-                let alertControl:UIAlertController = UIAlertController(title: "Warning", message: "Stop the navigation to go back.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertControl:UIAlertController = UIAlertController(title: NSLocalizedString("Warning", comment: ""), message: NSLocalizedString("stop_navigation_warning_message", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 let alertAction:UIAlertAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.cancel, handler: { (action) in
                     
                 })
@@ -150,11 +150,7 @@ extension RoutesController {
         let timeZoneString = dateFormat.string(from: Date(timeIntervalSince1970: elapsedDate))
         timerLabel.text = timeZoneString
         
-        let seconds:Int = Int(difference)
-        if seconds%5 == 0 {
-            AppDelegate.getAppDelegate().updateNavigation(distance: 10)
-        }
-        
+        sendUpdateNavigation(elapsedValue: difference)
     }
     
     func displayTimer() {
@@ -187,5 +183,13 @@ extension RoutesController {
         alternativeLabel.isHidden = false
     }
     
-    
+    func sendUpdateNavigation(elapsedValue:TimeInterval) {
+        let seconds:Int = Int(elapsedValue)
+        if seconds%5 == 0 {
+            let current:CLLocation = LocationManager.manager.getCurrentLocation()
+            let before:CLLocation = placemarks!.location!
+            let meters = current.distance(from: before)
+            AppDelegate.getAppDelegate().updateNavigation(distance: Int(meters))
+        }
+    }
 }

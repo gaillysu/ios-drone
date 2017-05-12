@@ -33,12 +33,19 @@ class NavigationController: UIViewController {
         navigationMapView.isPitchEnabled = true
         registerEventBusMessage()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        applyMapViewMemoryHotFix()
-    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !LocationManager.manager.gpsAuthorizationStatus && !LocationManager.manager.locationEnabled {
+            let alertControl:UIAlertController = UIAlertController(title: NSLocalizedString("Warning", comment: ""), message: NSLocalizedString("turn_on_GPS_message", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            let alertAction:UIAlertAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: UIAlertActionStyle.cancel, handler: { (action) in
+                self.dismiss(animated: true, completion: nil)
+            })
+            alertControl.addAction(alertAction)
+            self.present(alertControl, animated: true, completion: nil)
+        }
+    }
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         deinitEventBus()
@@ -47,6 +54,11 @@ class NavigationController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         cleanMapViewMemory()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        applyMapViewMemoryHotFix()
     }
     
     deinit {
@@ -155,7 +167,6 @@ extension NavigationController: MKMapViewDelegate{
         
         if let location = userLocation.location {
             LocationManager.manager.setCurrentLocation(locations: location)
-            NSLog("latitude:%f, longitude:%f",location.coordinate.latitude,location.coordinate.longitude)
         }
     
     }
@@ -165,9 +176,5 @@ extension NavigationController: MKMapViewDelegate{
         routeLineRenderer.strokeColor = UIColor.getBaseColor();
         routeLineRenderer.lineWidth = 8;
         return routeLineRenderer
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        NSLog("didSelect:\(view)");
     }
 }

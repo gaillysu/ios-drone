@@ -24,32 +24,34 @@ class LocationManager: NSObject {
     var didUpdateLocations:didUpdateLocationsCallBack?
     var didFailWithError:didFailWithErrorCallBack?
     var didChangeAuthorization:didChangeAuthorizationCallBack?
-    var gpsAuthorizationStatus:Int {
+    var gpsAuthorizationStatus:Bool {
         let state:CLAuthorizationStatus = CLLocationManager.authorizationStatus()
         switch state {
         case CLAuthorizationStatus.notDetermined:
-            return Int(CLAuthorizationStatus.notDetermined.rawValue)
+            return false
         case CLAuthorizationStatus.restricted:
-            return Int(CLAuthorizationStatus.restricted.rawValue)
+            return false
         case CLAuthorizationStatus.denied:
-            return Int(CLAuthorizationStatus.denied.rawValue)
+            return false
         case CLAuthorizationStatus.authorizedAlways:
-            return Int(CLAuthorizationStatus.authorizedAlways.rawValue)
+            return true
         case CLAuthorizationStatus.authorizedWhenInUse:
-            return Int(CLAuthorizationStatus.authorizedWhenInUse.rawValue)
-        default:
-            return -1
+            return true
         }
     }
     
+    var locationEnabled:Bool {
+        return CLLocationManager.locationServicesEnabled()
+    }
+    
+    
     fileprivate override init() {
         super.init()
-        if CLLocationManager.headingAvailable() {
+        if CLLocationManager.headingAvailable() && locationEnabled {
             _locationManager = CLLocationManager()
             _locationManager?.delegate = self
             _locationManager?.desiredAccuracy = kCLLocationAccuracyBest
             _locationManager?.distanceFilter = kCLLocationAccuracyKilometer
-            _locationManager?.requestAlwaysAuthorization()
             _locationManager?.requestWhenInUseAuthorization()
         }else{
             let banner = Banner(title: NSLocalizedString("GPS use of infor", comment: ""), subtitle: "GPS devices do not available", image: nil, backgroundColor:UIColor.getBaseColor())
@@ -59,7 +61,7 @@ class LocationManager: NSObject {
     }
     
     func startLocation() {
-        if CLLocationManager.locationServicesEnabled() {
+        if locationEnabled {
             _locationManager?.startUpdatingLocation()
         }else{
             let banner = Banner(title: "Location services is not open", subtitle: nil , image: nil, backgroundColor:UIColor.getBaseColor())
@@ -69,7 +71,9 @@ class LocationManager: NSObject {
     }
     
     func stopLocation() {
-        _locationManager?.stopUpdatingLocation()
+        if locationEnabled {
+            _locationManager?.stopUpdatingLocation()
+        }
     }
     
     func setCurrentLocation(locations:CLLocation) {
