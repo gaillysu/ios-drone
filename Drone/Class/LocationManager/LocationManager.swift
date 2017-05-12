@@ -13,6 +13,8 @@ import BRYXBanner
 class LocationManager: NSObject {
     static let manager:LocationManager = LocationManager()
     
+    fileprivate var currentLocation:CLLocation?
+    
     fileprivate var _locationManager : CLLocationManager?
     
     typealias  didUpdateLocationsCallBack=(_ locationArray :[CLLocation])->Void
@@ -69,6 +71,14 @@ class LocationManager: NSObject {
     func stopLocation() {
         _locationManager?.stopUpdatingLocation()
     }
+    
+    func setCurrentLocation(locations:CLLocation) {
+        currentLocation = locations
+    }
+    
+    func getCurrentLocation() ->CLLocation {
+         return currentLocation!
+    }
 }
 
 extension LocationManager:CLLocationManagerDelegate{
@@ -78,6 +88,9 @@ extension LocationManager:CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         didUpdateLocations?(locations);
+        if currentLocation == nil {
+            currentLocation = locations.last
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

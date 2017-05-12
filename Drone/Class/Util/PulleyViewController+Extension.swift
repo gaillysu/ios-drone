@@ -18,7 +18,7 @@ extension PulleyViewController {
     func dismissViewController(){
         let appdelegate:AppDelegate = AppDelegate.getAppDelegate()
         if appdelegate.getNavigationState() {
-            let alertControl:UIAlertController = UIAlertController(title: "exit error", message: "is can not exit in navigation", preferredStyle: UIAlertControllerStyle.alert)
+            let alertControl:UIAlertController = UIAlertController(title: "Warning", message: "Stop the navigation to go back.", preferredStyle: UIAlertControllerStyle.alert)
             let alertAction:UIAlertAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.cancel, handler: { (action) in
                 
             })

@@ -12,8 +12,6 @@
             <connections>
                 <outlet property="navigationMapView" destination="DVf-qu-Us4" id="Ekz-ZR-BzX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="zoomAdd" destination="ny9-XL-JNt" id="gmX-30-rdn"/>
-                <outlet property="zoomOut" destination="QT9-ds-Vhx" id="gcz-Ja-Owl"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,62 +22,12 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DVf-qu-Us4">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </mapView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJA-J0-PkR">
-                    <rect key="frame" x="316" y="50" width="44" height="74"/>
-                    <subviews>
-                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTr-Nv-5Yp">
-                            <rect key="frame" x="0.0" y="0.0" width="44" height="74"/>
-                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SvA-aV-BpQ">
-                                <rect key="frame" x="0.0" y="0.0" width="44" height="74"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                            <blurEffect style="light"/>
-                        </visualEffectView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QT9-ds-Vhx">
-                            <rect key="frame" x="11" y="10" width="22" height="22"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="22" id="DOo-pS-DFz"/>
-                                <constraint firstAttribute="width" constant="22" id="QYa-mn-edQ"/>
-                            </constraints>
-                            <color key="tintColor" red="0.65490196079999996" green="0.4941176471" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="zoomAction:" destination="-1" eventType="touchUpInside" id="eTO-DG-Li4"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ny9-XL-JNt">
-                            <rect key="frame" x="11" y="42" width="22" height="22"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="22" id="MIS-3z-Oo2"/>
-                                <constraint firstAttribute="height" constant="22" id="ayl-cc-O7l"/>
-                            </constraints>
-                            <color key="tintColor" red="0.65490196079999996" green="0.4941176471" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="zoomAction:" destination="-1" eventType="touchUpInside" id="RA2-DZ-vNd"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="NTr-Nv-5Yp" firstAttribute="leading" secondItem="GJA-J0-PkR" secondAttribute="leading" id="A9V-xp-LC7"/>
-                        <constraint firstItem="NTr-Nv-5Yp" firstAttribute="top" secondItem="GJA-J0-PkR" secondAttribute="top" id="ETf-pt-Kvb"/>
-                        <constraint firstItem="QT9-ds-Vhx" firstAttribute="centerX" secondItem="GJA-J0-PkR" secondAttribute="centerX" id="Lcr-XZ-DeP"/>
-                        <constraint firstItem="QT9-ds-Vhx" firstAttribute="top" secondItem="GJA-J0-PkR" secondAttribute="top" constant="10" id="UxX-ZM-8eS"/>
-                        <constraint firstAttribute="width" constant="44" id="ZMK-TI-U61"/>
-                        <constraint firstAttribute="bottom" secondItem="NTr-Nv-5Yp" secondAttribute="bottom" id="Zxw-5y-FoM"/>
-                        <constraint firstItem="ny9-XL-JNt" firstAttribute="top" secondItem="QT9-ds-Vhx" secondAttribute="bottom" constant="10" id="aaY-Vo-KRM"/>
-                        <constraint firstAttribute="bottom" secondItem="ny9-XL-JNt" secondAttribute="bottom" constant="10" id="bja-CX-9wx"/>
-                        <constraint firstItem="ny9-XL-JNt" firstAttribute="centerX" secondItem="GJA-J0-PkR" secondAttribute="centerX" id="i99-En-HYS"/>
-                        <constraint firstAttribute="trailing" secondItem="NTr-Nv-5Yp" secondAttribute="trailing" id="i9M-UE-Fa0"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="DVf-qu-Us4" secondAttribute="bottom" id="Bxj-TU-bRD"/>
                 <constraint firstItem="DVf-qu-Us4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="G6J-hV-qAl"/>
-                <constraint firstAttribute="trailing" secondItem="GJA-J0-PkR" secondAttribute="trailing" constant="15" id="Iw7-NI-tuZ"/>
                 <constraint firstItem="DVf-qu-Us4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j5X-LM-fhX"/>
-                <constraint firstItem="GJA-J0-PkR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="kEk-rw-sPM"/>
                 <constraint firstAttribute="trailing" secondItem="DVf-qu-Us4" secondAttribute="trailing" id="oli-ce-pRp"/>
             </constraints>
             <point key="canvasLocation" x="25.5" y="52.5"/>

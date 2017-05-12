@@ -18,6 +18,7 @@ class RoutesController: UIViewController {
     @IBOutlet weak var takeTimeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var alternativeLabel: UILabel!
     
     @IBOutlet weak var timerConstraint: NSLayoutConstraint!
     var placemarks:CLPlacemark?
@@ -43,26 +44,35 @@ class RoutesController: UIViewController {
         let placemark:MKPlacemark = MKPlacemark(placemark: placemarks!)
         placemark.calculateRoute { (route, error) in
             if error == nil {
-                for (index,value) in route!.enumerated(){
+                for value in route! {
                     self.routeArray.append(value)
+                }
+                
+                self.routeArray.sort{
+                    switch ($0, $1) {
+                    case let (aCode, bCode):
+                        return aCode.distance < bCode.distance
+                    }
+                }
+                
+                for (index,_) in self.routeArray.enumerated() {
                     self.routesSegmented.insertSegment(withTitle: "Route \(index+1)", at: index, animated: false)
                 }
+                
+                self.routesSegmented.selectedSegmentIndex = 0
+                self.selectedRoutes(index: 0)
             }
         }
     }
 
     @IBAction func routesSelectedAction(_ sender: Any) {
         if routesSegmented.isEqual(sender) {
-            let route = self.routeArray[routesSegmented.selectedSegmentIndex]
-            setLabelValue(route: route)
-            
-            let postRoute:PostRoutes = PostRoutes(mPlacemarks: placemarks!, mRoute: route)
-            SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
+            selectedRoutes(index: routesSegmented.selectedSegmentIndex)
         }
         
         if backButton.isEqual(sender) {
             if statrtTimer != nil {
-                let alertControl:UIAlertController = UIAlertController(title: "exit error", message: "is can not exit in navigation", preferredStyle: UIAlertControllerStyle.alert)
+                let alertControl:UIAlertController = UIAlertController(title: "Warning", message: "Stop the navigation to go back.", preferredStyle: UIAlertControllerStyle.alert)
                 let alertAction:UIAlertAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.cancel, handler: { (action) in
                     
                 })
@@ -94,16 +104,33 @@ class RoutesController: UIViewController {
 }
 
 extension RoutesController {
-    func setLabelValue(route:MKRoute) {
+    func selectedRoutes(index:Int) {
+        let route = self.routeArray[index]
+        var routeString = ""
+        if index == 0 {
+            routeString = "Shortest distance"
+        }else{
+            routeString = "Alternative";
+        }
+        setLabelValue(route: route,routeText: routeString)
+        
+        let postRoute:PostRoutes = PostRoutes(mPlacemarks: placemarks!, mRoute: route)
+        SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
+    }
+    
+    func setLabelValue(route:MKRoute,routeText:String) {
         takeTimeLabel.text = route.expectedTravelTime.timeConvertString()
         distanceLabel.text = route.distance.distanceConvertMetricString()
+        alternativeLabel.text = routeText
     }
     
     func startTimer() {
         startDate = Date()
         statrtTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction(_:)), userInfo: nil, repeats: true)
+        
         displayTimer()
-        timerLabelAnimate()
+        
+        AppDelegate.getAppDelegate().startNavigation(name: placemarks!.name!)
     }
     
     func stopTimer() {
@@ -111,9 +138,10 @@ extension RoutesController {
             timer.invalidate()
             statrtTimer = nil
         }
+        
         hiddenTimer()
         
-        timerLabelAnimate()
+        AppDelegate.getAppDelegate().stopNavigation()
      }
     
     func timerAction(_ timer:Timer) {
@@ -121,31 +149,43 @@ extension RoutesController {
         let elapsedDate:TimeInterval = Date().beginningOfDay.timeIntervalSince1970+difference
         let timeZoneString = dateFormat.string(from: Date(timeIntervalSince1970: elapsedDate))
         timerLabel.text = timeZoneString
+        
+        let seconds:Int = Int(difference)
+        if seconds%5 == 0 {
+            AppDelegate.getAppDelegate().updateNavigation(distance: 10)
+        }
+        
     }
     
     func displayTimer() {
         timerLabel.isHidden = false
         timerLabel.text = "00:00:00"
+        self.timerConstraint.constant = 30
+        self.timerLabel.layoutIfNeeded()
+        
         startButton.setTitle("Stop", for: .normal)
         startButton.setTitle("Stop", for: .selected)
         startButton.setTitle("Stop", for: .highlighted)
+        
+        takeTimeLabel.isHidden = true
+        distanceLabel.isHidden = true
+        alternativeLabel.isHidden = true
     }
     
     func hiddenTimer() {
         timerLabel.isHidden = true
         timerLabel.text = "00:00:00"
+        self.timerConstraint.constant = 85
+        self.timerLabel.layoutIfNeeded()
         
         startButton.setTitle("Start", for: .normal)
         startButton.setTitle("Start", for: .selected)
         startButton.setTitle("Start", for: .highlighted)
+        
+        takeTimeLabel.isHidden = false
+        distanceLabel.isHidden = false
+        alternativeLabel.isHidden = false
     }
     
-    func timerLabelAnimate() {
-        if self.timerConstraint.constant > 30 {
-            self.timerConstraint.constant = 30
-        }else{
-            self.timerConstraint.constant = 85
-        }
-        self.timerLabel.layoutIfNeeded()
-    }
+    
 }

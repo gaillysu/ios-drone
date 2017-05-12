@@ -13,8 +13,6 @@ import SwiftEventBus
 
 class NavigationController: UIViewController {
     @IBOutlet weak var navigationMapView: MKMapView!
-    @IBOutlet weak var zoomOut: UIButton!
-    @IBOutlet weak var zoomAdd: UIButton!
     
     fileprivate var thePlacemark:CLPlacemark?
     fileprivate var routeDetails:MKRoute?
@@ -49,16 +47,6 @@ class NavigationController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         cleanMapViewMemory()
-    }
-    
-    @IBAction func zoomAction(_ sender: Any) {
-        if zoomOut.isEqual(sender) {
-            
-        }
-        
-        if zoomAdd.isEqual(sender) {
-            
-        }
     }
     
     deinit {
@@ -165,6 +153,11 @@ extension NavigationController: MKMapViewDelegate{
             })
         }
         
+        if let location = userLocation.location {
+            LocationManager.manager.setCurrentLocation(locations: location)
+            NSLog("latitude:%f, longitude:%f",location.coordinate.latitude,location.coordinate.longitude)
+        }
+    
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

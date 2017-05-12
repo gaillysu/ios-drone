@@ -168,6 +168,25 @@ extension AppDelegate {
         }
     }
     
+    func stopNavigation() {
+        let navigation = UrbanNavigationRequest()
+        self.sendRequest(navigation)
+    }
+    
+    func startNavigation(name:String) {
+        let latitude:Int = Int(-LocationManager.manager.getCurrentLocation().coordinate.latitude*1000000)
+        let longitude:Int = Int(LocationManager.manager.getCurrentLocation().coordinate.longitude*1000000)
+        let navigation = UrbanNavigationRequest(latitude: latitude, longitude: longitude, mName: name)
+        self.sendRequest(navigation)
+    }
+    
+    func updateNavigation(distance:Int) {
+        let latitude:Int = Int(LocationManager.manager.getCurrentLocation().coordinate.latitude*1000000)
+        let longitude:Int = Int(LocationManager.manager.getCurrentLocation().coordinate.longitude*1000000)
+        let navigation = UrbanNavigationRequest(latitude: latitude, longitude: longitude, mDistance: distance)
+        self.sendRequest(navigation)
+    }
+    
     // MARK: -AppDelegate GET Function
     func getActivity(){
         sendRequest(GetActivityRequest())
@@ -243,4 +262,5 @@ extension AppDelegate {
             let locationArray = location as [CLLocation]
         }
     }
+    
 }
