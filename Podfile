@@ -26,6 +26,8 @@ target 'Drone' do
     pod 'SwiftyTimer'
 
     pod 'Font-Awesome-Swift'
+    
+    pod 'Pulley'
 end
 
 post_install do |installer|

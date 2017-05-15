@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
 
+   fileprivate var isNavigation:Bool = false
+   
    static let RESET_STATE = "RESET_STATE"
    static let RESET_STATE_DATE = "RESET_STATE_DATE"
    let SETUP_KEY = "SETUP_KEY"
@@ -44,21 +46,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       Fabric.with([Crashlytics.self])
       
+      self.startLocation()
+      
       _ = DataBaseManager.manager
       _ = NetworkManager.manager
     
       let sandbox:SandboxManager = SandboxManager()
       let _ = sandbox.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
       
-      if(UserGoal.getAll().count == 0){
-         let goalModel:UserGoal = UserGoal()
-         goalModel.goalSteps = 10000
-         _ = goalModel.add()
-      }
-      
       mConnectionController = ConnectionControllerImpl()
       mConnectionController?.setDelegate(self)
-      
       
       IQKeyboardManager.sharedManager().enable = true
       
@@ -285,5 +282,13 @@ extension AppDelegate{
    func isSaveWorldClock() {
       let realm = try! Realm()
       setWorldClock(Array(realm.objects(City.self).filter("selected = true")))
+   }
+   
+   func setNavigation(state:Bool) {
+      isNavigation = state
+   }
+   
+   func getNavigationState() -> Bool {
+      return isNavigation
    }
 }

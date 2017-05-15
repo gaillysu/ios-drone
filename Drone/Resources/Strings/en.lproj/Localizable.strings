@@ -17,3 +17,6 @@
 "add_city"="City has already been added.";
 "created_account"="Account has been created.";
 "bluetooth_not_on"="Bluetooth is turned off";
+"stop_navigation_warning_message"="Stop the navigation to go back.";
+"Warning"="Warning";
+"turn_on_GPS_message" = "Please turn on GPS first and then start navigation";

@@ -26,6 +26,12 @@ class DataBaseManager: NSObject {
             compass.activeTime = 15
             _ = compass.add()
         }
+        
+        if(UserGoal.getAll().count == 0){
+            let goalModel:UserGoal = UserGoal()
+            goalModel.goalSteps = 10000
+            _ = goalModel.add()
+        }
     }
     
     fileprivate func updateRelam() {
