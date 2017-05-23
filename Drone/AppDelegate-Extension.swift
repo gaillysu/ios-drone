@@ -25,12 +25,27 @@ extension AppDelegate {
         sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .sleepConfig, mode: .auto))
      }
     
-    func setCompassAutoMinutes(){
+    func setCompassAutoMotionDetection(){
         if let obj = Compass.getAll().first, let compass = obj as? Compass{
-            sendRequest(SetSystemConfig(configtype: .compassAutoOnDuration, autoOnDuration: compass.activeTime))
+            sendRequest(SetSystemConfig(configtype: .compassAutoMotionDetection, autoOnDuration: compass.autoMotionDetection))
         }else{
-            sendRequest(SetSystemConfig(configtype: .compassAutoOnDuration, autoOnDuration: 1))
+            sendRequest(SetSystemConfig(configtype: .compassAutoMotionDetection, autoOnDuration: 1))
         }
+    }
+    
+    func setCompassTimeout(){
+        if let obj = Compass.getAll().first, let compass = obj as? Compass{
+            sendRequest(SetSystemConfig(configtype: .compassTimeout, autoOnDuration: compass.screenTimeout))
+        }else{
+            sendRequest(SetSystemConfig(configtype: .compassTimeout, autoOnDuration: 20))
+        }
+    }
+    
+    func startCompassCalibration(){
+        sendRequest(StartSystemSettingRequest(compass: .startCompassCalibration))
+    }
+    func stopCompassCalibration(){
+        sendRequest(StartSystemSettingRequest(compass: .stopCompassCalibration))
     }
     
     func setTopKeyCustomization(){
@@ -53,15 +68,15 @@ extension AppDelegate {
     }
     
     func startCalibrateHands(){
-        sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: .startHandsMode))
+        sendRequest(StartSystemSettingRequest(analogMovement: .startHandsMode))
     }
     
     func stopCalibrateHands(){
-        sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: .exitHandsMode))
+        sendRequest(StartSystemSettingRequest(analogMovement: .exitHandsMode))
     }
     
     func calibrateHands(operation:SettingAnalogMovementOperation){
-        sendRequest(StartSystemSettingRequest(id: .analogMovement, operation: operation))
+        sendRequest(StartSystemSettingRequest(analogMovement: operation))
     }
     
     func setRTC(force:Bool) {
@@ -91,6 +106,8 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.weather, state: AppConfigAppState.on))
         if DTUserDefaults.compassState {
             sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.on))
+        }else{
+            sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.off))
         }
         
     }
@@ -127,7 +144,7 @@ extension AppDelegate {
             }
         }
         sendRequest(SetWorldClockRequest(worldClockArray: convertedWorldClockArray))
-        AppDelegate.getAppDelegate().setWeather()
+//        AppDelegate.getAppDelegate().setWeather()
     }
     
     func startConnect(){

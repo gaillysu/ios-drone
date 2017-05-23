@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Align the second-hand at 12 o’clock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5Y-jH-u2K">
-                    <rect key="frame" x="55" y="35" width="265.5" height="21"/>
+                    <rect key="frame" x="54.5" y="35" width="266" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="IUW-Q7-AKS"/>
                     </constraints>
@@ -32,10 +32,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iev-ki-MtE" customClass="CounterClockwiseButton" customModule="Drone" customModuleProvider="target">
-                    <rect key="frame" x="113" y="377" width="58" height="58"/>
+                    <rect key="frame" x="104" y="377" width="58" height="58"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="iev-ki-MtE" secondAttribute="height" multiplier="1:1" id="aHZ-9Y-2R4"/>
                         <constraint firstAttribute="width" constant="58" id="c5m-XH-X7Q"/>
                         <constraint firstAttribute="height" constant="58" id="iQ6-qp-d1x"/>
                     </constraints>
@@ -78,10 +77,9 @@
                     <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhl-17-PDI" customClass="ClockwiseButton" customModule="Drone" customModuleProvider="target">
-                    <rect key="frame" x="204" y="377" width="58" height="58"/>
+                    <rect key="frame" x="213" y="377" width="58" height="58"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="uhl-17-PDI" secondAttribute="height" multiplier="1:1" id="Uxt-Cb-OhT"/>
                         <constraint firstAttribute="height" constant="58" id="phD-Hc-QzH"/>
                         <constraint firstAttribute="width" constant="58" id="w4s-y4-iTK"/>
                     </constraints>
@@ -94,14 +92,13 @@
             <constraints>
                 <constraint firstItem="k9y-su-jN6" firstAttribute="top" secondItem="W9x-a1-Tia" secondAttribute="bottom" constant="47" id="3bp-VX-S7H"/>
                 <constraint firstItem="Cwo-Xc-Mo1" firstAttribute="centerX" secondItem="KD4-ZE-Wm4" secondAttribute="centerX" id="4JH-uk-GoF"/>
-                <constraint firstItem="iev-ki-MtE" firstAttribute="leading" secondItem="KD4-ZE-Wm4" secondAttribute="leading" constant="113" id="5sT-5x-rYS"/>
-                <constraint firstItem="uhl-17-PDI" firstAttribute="leading" secondItem="iev-ki-MtE" secondAttribute="trailing" constant="33" id="7bA-TB-GSb"/>
-                <constraint firstAttribute="trailing" secondItem="uhl-17-PDI" secondAttribute="trailing" constant="113" id="8XP-D9-omR"/>
                 <constraint firstItem="iev-ki-MtE" firstAttribute="top" secondItem="k9y-su-jN6" secondAttribute="bottom" constant="15" id="AEP-ak-HJ2"/>
                 <constraint firstItem="Cwo-Xc-Mo1" firstAttribute="top" secondItem="uhl-17-PDI" secondAttribute="bottom" constant="44" id="B1q-dI-exu"/>
+                <constraint firstItem="uhl-17-PDI" firstAttribute="trailing" secondItem="k9y-su-jN6" secondAttribute="trailing" constant="-25" id="ItY-DG-mXX"/>
                 <constraint firstItem="R5Y-jH-u2K" firstAttribute="top" secondItem="KD4-ZE-Wm4" secondAttribute="top" constant="35" id="KDU-rY-GbM"/>
                 <constraint firstItem="W9x-a1-Tia" firstAttribute="top" secondItem="R5Y-jH-u2K" secondAttribute="bottom" constant="8" id="RH8-hN-o3A"/>
                 <constraint firstItem="uhl-17-PDI" firstAttribute="top" secondItem="k9y-su-jN6" secondAttribute="bottom" constant="15" id="T9n-go-u7O"/>
+                <constraint firstItem="iev-ki-MtE" firstAttribute="leading" secondItem="k9y-su-jN6" secondAttribute="leading" constant="25" id="UCa-5r-sih"/>
                 <constraint firstItem="k9y-su-jN6" firstAttribute="leading" secondItem="KD4-ZE-Wm4" secondAttribute="leading" constant="79" id="Vue-ML-o9Y"/>
                 <constraint firstItem="W9x-a1-Tia" firstAttribute="centerX" secondItem="KD4-ZE-Wm4" secondAttribute="centerX" id="byz-Ue-wE7"/>
                 <constraint firstItem="k9y-su-jN6" firstAttribute="centerX" secondItem="KD4-ZE-Wm4" secondAttribute="centerX" id="dPV-FK-Tsa"/>

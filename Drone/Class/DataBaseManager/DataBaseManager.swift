@@ -23,7 +23,8 @@ class DataBaseManager: NSObject {
 
         if Compass.getAll().isEmpty {
             let compass = Compass()
-            compass.activeTime = 15
+            compass.autoMotionDetection = 15
+            compass.screenTimeout = 20
             _ = compass.add()
         }
         

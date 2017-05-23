@@ -28,15 +28,37 @@ extension Int {
         return value1.floatValue
     }
     
+    
+    func secondsRepresentable() -> String{
+        var string = ""
+        let seconds = self % 60
+        let min = self / 60
+        if min == 1 {
+            string.append("\(min)min ")
+        } else if min > 1 {
+            string.append("\(min)mins ")
+        }
+        if seconds == 1  {
+            string.append("\(seconds)sec")
+        }else if seconds > 1 {
+            string.append("\(seconds)secs")
+        }
+        return string
+    }
+    
     func timeRepresentable() -> String{
         var string = ""
         let min = self % 60
         let hour = self / 60
-        if hour > 0 {
-            string.append("\(hour)h ")
+        if hour == 1  {
+            string.append("\(hour)hr ")
+        }else if hour > 1 {
+            string.append("\(hour)hrs ")
         }
-        if min > 0 {
-            string.append("\(min)m")
+        if min == 1 {
+            string.append("\(min)min")
+        } else if min > 1 {
+            string.append("\(min)mins")
         }
         return string
     }

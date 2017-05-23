@@ -60,7 +60,7 @@ class SetSystemConfig: DroneRequest {
     
     init(topKeyConfig:TopKeyConfiguration) {
         super.init()
-        self.systemConfig = .analogHandsConfig
+        self.systemConfig = .topKeyCustomization
         self.topKeyConfig = topKeyConfig
     }
     
@@ -90,14 +90,17 @@ class SetSystemConfig: DroneRequest {
                                     UInt8(Int(sleepAutoEndTime)&0xFF),
                                     UInt8((Int(sleepAutoEndTime)>>8)&0xFF),0,0,0,0,0,0,0,0,0,0,0]
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
-        case .compassAutoOnDuration:
+        case .compassAutoMotionDetection:
             let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x02,UInt8(duration&0xFF),UInt8(duration>>8&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
         case .topKeyCustomization:
             let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,topKeyConfig.rawValue,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
         case .analogHandsConfig:
-            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,analogHandsConfig.rawValue,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,analogHandsConfig.rawValue]
+            return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
+        case .compassTimeout:
+            let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,UInt8(duration&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
         }
     }
@@ -113,14 +116,15 @@ class SetSystemConfig: DroneRequest {
     }
     
     enum SystemConfigID:UInt8 {
-        case dndConfig              = 0x01
-        case airplaneMode           = 0x02
-        case enabled                = 0x04
-        case clockFormat            = 0x08
-        case sleepConfig            = 0x09
-        case compassAutoOnDuration  = 0x10
-        case topKeyCustomization    = 0x11
-        case analogHandsConfig      = 0x12
+        case dndConfig                   = 0x01
+        case airplaneMode                = 0x02
+        case enabled                     = 0x04
+        case clockFormat                 = 0x08
+        case sleepConfig                 = 0x09
+        case compassAutoMotionDetection  = 0x10
+        case topKeyCustomization         = 0x11
+        case analogHandsConfig           = 0x12
+        case compassTimeout              = 0x13
     }
     
     enum ClockFormat:UInt8 {

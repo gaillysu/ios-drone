@@ -24,11 +24,13 @@ class CalibrateMinuteViewController: BaseViewController {
         nextButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
             self.navigationController?.pushViewController(CalibrateSecondViewController(), animated: true)
             }.addDisposableTo(disposeBag)
+        
         counterClockwiseButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
-            self.getAppDelegate().calibrateHands(operation: .minuteAdvanceOneStep)
-            }.addDisposableTo(disposeBag)
-        clockwiseButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
             self.getAppDelegate().calibrateHands(operation: .minuteReverseOneStep)
+            }.addDisposableTo(disposeBag)
+        
+        clockwiseButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
+            self.getAppDelegate().calibrateHands(operation: .minuteAdvanceOneStep)
             }.addDisposableTo(disposeBag)
         clockwiseButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressClockwise)))
         counterClockwiseButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressCounterClockwise)))

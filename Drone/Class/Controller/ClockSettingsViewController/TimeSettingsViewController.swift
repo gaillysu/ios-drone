@@ -10,13 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import BRYXBanner
 
 class TimeSettingsViewController: BaseViewController {
     
     var disposeBag = DisposeBag()
     let identifier = "ClockSettingsTableViewCell"
     let identifierSwitch = "ClockSettingsTableViewCellSwitch"
-    let items:Variable<[String]> = Variable(["Sync local time automatically"])
     let syncTimeItems = ["Local Time","Home Time"]
     
     
@@ -29,40 +29,48 @@ class TimeSettingsViewController: BaseViewController {
         pickerView.dataSource = self
         self.tableView.register(UINib(nibName: identifierSwitch, bundle: Bundle.main), forCellReuseIdentifier: identifierSwitch)
         self.tableView.register(UINib(nibName: identifier, bundle: Bundle.main), forCellReuseIdentifier: identifier)
-        let section = Variable([TimeSettingsSectionModel(header: "Analog Time Display", footer: "Sync the time of your watch with local or home time If you don't turn on Analog Time Syncing, the time on your watch will never change.", items: [TimeSettingsSectionItem(label: "Analog Time Syncing"),TimeSettingsSectionItem(label: "Sync Time")])])
+        let section = Variable(
+            [TimeSettingsSectionModel(header: "Analog Time Display", footer: "Sync the time of your watch with local or home time If you don't turn on Analog Time Syncing, the time on your watch will never change.", items: [
+                TimeSettingsSectionItem(label: "Analog Time Syncing"),
+                TimeSettingsSectionItem(label: "Sync Time")]),
+             TimeSettingsSectionModel(header: "Calibration", footer: "", items: [
+                TimeSettingsSectionItem(label: "Recalibrate hands")])])
         
         let dataSource = RxTableViewSectionedReloadDataSource<TimeSettingsSectionModel>()
         
         dataSource.configureCell = { (dataSource, table, indexPath, _) in
             let item = dataSource[indexPath]
             if indexPath.row == 0 && indexPath.section == 0 {
-                if let cell = table.dequeueReusableCell(withIdentifier: self.identifierSwitch, for: indexPath) as? ClockSettingsTableViewCellSwitch{
-                    let item = dataSource[indexPath]
-                    cell.settingLabel.text = item.label
-                    cell.settingSwitch.setOn(DTUserDefaults.syncAnalogTime, animated: true)
-                    cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
-                        let isOn = cell.settingSwitch.isOn
-                        DTUserDefaults.syncAnalogTime = isOn
-                        if let localTimeCell = self.tableView.cellForRow(at: IndexPath(item: 1, section: 0)){
-                            localTimeCell.enable(on: isOn)
-                        }
-                        if isOn {
-                            self.getAppDelegate().setRTC(force: false)
-                            self.getAppDelegate().setAnalogTime(forceCurrentTime: false)
-                        }
-                    }).addDisposableTo(self.disposeBag)
-                    return cell
-                }
+                let cell:ClockSettingsTableViewCellSwitch  = table.dequeueReusableCell(forIndexPath: indexPath)
+                let item = dataSource[indexPath]
+                cell.settingLabel.text = item.label
+                cell.settingSwitch.setOn(DTUserDefaults.syncAnalogTime, animated: true)
+                cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
+                    let isOn = cell.settingSwitch.isOn
+                    DTUserDefaults.syncAnalogTime = isOn
+                    if let localTimeCell = self.tableView.cellForRow(at: IndexPath(item: 1, section: 0)){
+                        localTimeCell.enable(on: isOn)
+                    }
+                    if isOn {
+                        self.getAppDelegate().setRTC(force: false)
+                        self.getAppDelegate().setAnalogTime(forceCurrentTime: false)
+                    }
+                }).addDisposableTo(self.disposeBag)
+                return cell
             } else if indexPath.row == 1 && indexPath.section == 0 {
-                if let cell = table.dequeueReusableCell(withIdentifier: self.identifier, for: indexPath) as? ClockSettingsTableViewCell{
-                    cell.settingsLabel.text = item.label
-                    cell.settingsTextField.inputView = self.pickerView
-                    cell.settingsTextField.text = DTUserDefaults.syncLocalTime ? self.syncTimeItems[0] : self.syncTimeItems[1]
-                    cell.enable(on: DTUserDefaults.syncAnalogTime)
-                    return cell
-                }
+                let cell:ClockSettingsTableViewCell = table.dequeueReusableCell(forIndexPath: indexPath)
+                cell.settingsLabel.text = item.label
+                cell.settingsTextField.inputView = self.pickerView
+                cell.settingsTextField.text = DTUserDefaults.syncLocalTime ? self.syncTimeItems[0] : self.syncTimeItems[1]
+                cell.enable(on: DTUserDefaults.syncAnalogTime)
+                cell.selectionStyle = .none
+                return cell
             }
-            return UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: nil)
+            let cell:ClockSettingsTableViewCell = table.dequeueReusableCell(forIndexPath: indexPath)
+            cell.settingsLabel.text = item.label
+            cell.settingsTextField.isEnabled = false
+            cell.accessoryType = .disclosureIndicator
+            return cell
         }
         
         
@@ -70,12 +78,12 @@ class TimeSettingsViewController: BaseViewController {
             let section = dataSource[index]
             return section.header
         }
-
+        
         dataSource.titleForFooterInSection = { dataSource, index in
             let section = dataSource[index]
             return section.footer
-        }        
-
+        }
+        
         section.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
@@ -83,8 +91,18 @@ class TimeSettingsViewController: BaseViewController {
         self.tableView.rx.modelSelected(TimeSettingsSectionItem.self).subscribe { _ in
             if let indexPath = self.tableView.indexPathForSelectedRow{
                 self.tableView.deselectRow(at: indexPath, animated: true)
+                if indexPath.section == 1 && indexPath.row == 0 {
+                    if !(self.getAppDelegate().getMconnectionController()?.isConnected())!{
+                        let banner = Banner(title: "Watch is disconnected, connect to calibrate.", subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                        banner.dismissesOnTap = true
+                        banner.show(duration: 1.2)
+                    }else{
+                        self.present(self.makeStandardUINavigationController(CalibrateHourViewController()), animated: true)
+                    }
+                }
             }
-        }.addDisposableTo(self.disposeBag)
+            
+            }.addDisposableTo(self.disposeBag)
     }
 }
 

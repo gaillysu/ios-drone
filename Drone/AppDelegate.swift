@@ -31,13 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    fileprivate var masterCockroaches:[UUID:Int] = [:]
    
    fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
-
+   
    fileprivate var isNavigation:Bool = false
    
    static let RESET_STATE = "RESET_STATE"
    static let RESET_STATE_DATE = "RESET_STATE_DATE"
    let SETUP_KEY = "SETUP_KEY"
-
+   
    
    class func getAppDelegate()->AppDelegate {
       return UIApplication.shared.delegate as! AppDelegate
@@ -48,9 +48,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       
       self.startLocation()
       
+      let config = Realm.Configuration(schemaVersion: 5, migrationBlock: { migration, oldSchemaVersion in
+         migration.enumerateObjects(ofType: Compass.className()) { oldObject, newObject in
+            // combine name fields into a single field
+            let activeTime = oldObject!["activeTime"] as! Int
+            newObject!["autoMotionDetection"] = activeTime
+         }
+         
+      })
+      Realm.Configuration.defaultConfiguration = config
+
       _ = DataBaseManager.manager
       _ = NetworkManager.manager
-    
+      
       let sandbox:SandboxManager = SandboxManager()
       let _ = sandbox.copyDictFileToSandBox(folderName: "NotificationTypeFile", fileName: "NotificationTypeFile.plist")
       
@@ -181,7 +191,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                self.getActivity()
             }else{
                SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
-
+               
             }
          }
          
@@ -209,7 +219,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString) {
       let mcuver = AppTheme.GET_SOFTWARE_VERSION()
       let blever = AppTheme.GET_FIRMWARE_VERSION()
-
+      
       NSLog("Build in software version: \(mcuver), firmware version: \(blever)")
       if whichfirmware == DfuFirmwareTypes.application {
          let versionData:PostWatchVersionData = PostWatchVersionData(version: version as String, type: "BLE")
@@ -244,7 +254,7 @@ extension AppDelegate{
       //step5: start set user default goal
       self.setGoal()
       print("setGoal")
-
+      
       self.isSaveWorldClock()
       print("isSaveWorldClock")
       
@@ -257,8 +267,8 @@ extension AppDelegate{
       self.setStepsToWatch()
       print("setStepsToWatch")
       
-//      setWeather()
-//      print("setWeather")
+      //      setWeather()
+      //      print("setWeather")
    }
    
    func setNotification() {

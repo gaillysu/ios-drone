@@ -235,7 +235,6 @@
 		CB15497C1EC01E5700090242 /* HotKeySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497B1EC01E5700090242 /* HotKeySectionModel.swift */; };
 		CB1549811EC029A700090242 /* HotKeyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497F1EC029A700090242 /* HotKeyTableViewCell.swift */; };
 		CB1549821EC029A700090242 /* HotKeyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1549801EC029A700090242 /* HotKeyTableViewCell.xib */; };
-		CB464B6F1DED347B00480C08 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB464B6E1DED347B00480C08 /* MapKit.framework */; };
 		CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */; };
 		CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
 		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
@@ -271,6 +270,8 @@
 		CBB892551EB33BB2006F7031 /* TimeSettingsSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892531EB33BB2006F7031 /* TimeSettingsSectionItem.swift */; };
 		CBBC3ACB1EC174EC009282E8 /* HotKeyTableViewCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC3ACA1EC174EC009282E8 /* HotKeyTableViewCellButton.swift */; };
 		CBBC3ACD1EC1BB96009282E8 /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */; };
+		CBCD36661ED3E2BA0041EABA /* CompassCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */; };
+		CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
 		CBF2E13D1EC04E4D00CBD61C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
@@ -565,6 +566,8 @@
 		CBB892531EB33BB2006F7031 /* TimeSettingsSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSettingsSectionItem.swift; path = Drone/Class/ViewModel/TimeSettingsSectionModel/TimeSettingsSectionItem.swift; sourceTree = SOURCE_ROOT; };
 		CBBC3ACA1EC174EC009282E8 /* HotKeyTableViewCellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTableViewCellButton.swift; path = HoyKeyTableViewCellButton/HotKeyTableViewCellButton.swift; sourceTree = "<group>"; };
 		CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
+		CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassCalibrationViewController.swift; path = CompassCalibrationViewController/CompassCalibrationViewController.swift; sourceTree = "<group>"; };
+		CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassCalibrationViewController.xib; path = CompassCalibrationViewController/CompassCalibrationViewController.xib; sourceTree = "<group>"; };
 		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -868,6 +871,7 @@
 		61C28B251EA46F800019F574 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CBCD36631ED3E29C0041EABA /* CompassCalibrationViewController */,
 				619A9F161EC2AF60006D65C4 /* RoutesController */,
 				61FAB9B91EBC4E0A00513E97 /* MapNavigationViewController */,
 				61FAB9AD1EBC202300513E97 /* MapTableViewController */,
@@ -1224,7 +1228,6 @@
 				61C28BB31EA46F810019F574 /* EventBusKeys.swift */,
 				61C28BB61EA46F810019F574 /* SyncQueue.swift */,
 				61C28BB71EA46F810019F574 /* TimeUtil.swift */,
-				CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */,
 				61C28BB11EA46F810019F574 /* UIColor+Extension.swift */,
 				CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */,
 				CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */,
@@ -1234,7 +1237,6 @@
 				CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */,
 				CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */,
 				61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */,
-
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1640,6 +1642,15 @@
 			name = HoyKeyTableViewCellButton;
 			sourceTree = "<group>";
 		};
+		CBCD36631ED3E29C0041EABA /* CompassCalibrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */,
+				CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */,
+			);
+			name = CompassCalibrationViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1816,6 +1827,7 @@
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				61C28BF61EA46F810019F574 /* DeviceTableViewCellHeader.xib in Resources */,
 				613929071EADABEB00450284 /* welcome_1.png in Resources */,
+				CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */,
 				61C28C061EA46F810019F574 /* NotificationsViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1960,6 +1972,7 @@
 				61C28BFF1EA46F810019F574 /* MenuViewCell.swift in Sources */,
 				61C28C071EA46F810019F574 /* ProfileSetupViewController.swift in Sources */,
 				613929211EB0640D00450284 /* OTARequest.swift in Sources */,
+				CBCD36661ED3E2BA0041EABA /* CompassCalibrationViewController.swift in Sources */,
 				61C28C0F1EA46F810019F574 /* RegisterViewController.swift in Sources */,
 				61C28BC81EA46F810019F574 /* GetConfigRequest.swift in Sources */,
 				CBB892421EB32717006F7031 /* Notification.swift in Sources */,

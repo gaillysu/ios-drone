@@ -87,6 +87,7 @@ class HotKeysViewController: UIViewController {
         selectedFeature.asObservable()
             .debounce(0.3, scheduler: MainScheduler.instance)
             .subscribe { event in
+                print(self.selectedFeature.value.rawValue)
                 DTUserDefaults.topKeySelection = self.selectedFeature.value.rawValue
                 self.getAppDelegate().setTopKeyCustomization()
         }.addDisposableTo(self.disposeBag)

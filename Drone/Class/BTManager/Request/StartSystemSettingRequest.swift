@@ -44,9 +44,15 @@ class StartSystemSettingRequest: DroneRequest {
         return 0x34
     }
     
-    init(id:SystemSettingApplicationID,operation:SettingAnalogMovementOperation) {
+    init(analogMovement operation:SettingAnalogMovementOperation) {
         super.init()
-        appid = id.rawValue
+        appid = SystemSettingApplicationID.analogMovement.rawValue
+        appOperation = operation.rawValue
+    }
+    
+    init(compass operation:SettingCompassOperation) {
+        super.init()
+        appid = SystemSettingApplicationID.compass.rawValue
         appOperation = operation.rawValue
     }
     

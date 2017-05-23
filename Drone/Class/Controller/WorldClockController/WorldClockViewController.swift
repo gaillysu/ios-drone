@@ -104,7 +104,7 @@ class WorldClockViewController: BaseViewController{
         if reload {
             self.tableView.reloadData()
         }
-        AppDelegate.getAppDelegate().setWorldClock(Array(worldClockArray))
+        AppDelegate.getAppDelegate().setWorldClock(Array(homeCityArray + worldClockArray))
     }
 }
 
@@ -210,12 +210,15 @@ extension WorldClockViewController:TableViewReorderDelegate{
             DTUserDefaults.homeTimeId = city.id
             if !DTUserDefaults.syncLocalTime {
                 getAppDelegate().setAnalogTime(forceCurrentTime: false)
+                print("Not forcing current time")
             }
+            
         } else if d.section > s.section {
             let city = homeCityArray[s.row]
             worldClockArray.insert(city, at: d.row)
             homeCityArray.remove(at: s.row)
             DTUserDefaults.homeTimeId = -1
+            print("Forcing current time")
             getAppDelegate().setAnalogTime(forceCurrentTime: true)
         } else {
             let destination = s.row
@@ -225,11 +228,14 @@ extension WorldClockViewController:TableViewReorderDelegate{
             } else if(s.section == 2) {
                 (worldClockArray[source], worldClockArray[destination]) = (worldClockArray[destination], worldClockArray[source])
             }
-            DTUserDefaults.selectedCityOrder = worldClockArray.map({ $0.id })
-            AppDelegate.getAppDelegate().setWorldClock(Array(worldClockArray))
+            DTUserDefaults.selectedCityOrder = homeCityArray.map({ $0.id }) + worldClockArray.map({ $0.id })
         }
     }
     
+    func tableViewDidFinishReordering(_ tableView: UITableView) {
+        Array(homeCityArray + worldClockArray).forEach { print("\($0.name)") }
+        updateWorldClockArrayWithOrder(reload: true)
+    }
 }
 
 

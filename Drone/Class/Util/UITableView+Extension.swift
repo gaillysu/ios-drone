@@ -33,6 +33,13 @@ extension UITableView {
         }
         return cell
     }
+    
+    func cellForRowAt<T: UITableViewCell>(forIndexPath indexPath: IndexPath) -> T where T: ReusableView {
+        guard let cell = cellForRow(at: indexPath) as? T else {
+            fatalError("Could not get cell cell for indexPath: \(indexPath))")
+        }
+        return cell
+    }
 }
 
 extension Reactive where Base: UITableView {

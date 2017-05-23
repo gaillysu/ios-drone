@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Align the hour-hand at 12 o’clock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xX-Eu-how">
-                    <rect key="frame" x="66" y="35" width="243.5" height="21"/>
+                    <rect key="frame" x="65.5" y="35" width="244" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="fd3-Kp-lst"/>
                     </constraints>
@@ -32,11 +32,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npr-sf-w1d" customClass="CounterClockwiseButton" customModule="Drone" customModuleProvider="target">
-                    <rect key="frame" x="113" y="377" width="58" height="58"/>
+                    <rect key="frame" x="104" y="377" width="58" height="58"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="58" id="2PU-N2-xdP"/>
-                        <constraint firstAttribute="width" secondItem="npr-sf-w1d" secondAttribute="height" multiplier="1:1" id="Wol-3m-51t"/>
                         <constraint firstAttribute="height" constant="58" id="oFI-y2-JVd"/>
                     </constraints>
                     <state key="normal">
@@ -78,10 +77,9 @@
                     <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbo-TJ-bUF" customClass="ClockwiseButton" customModule="Drone" customModuleProvider="target">
-                    <rect key="frame" x="204" y="377" width="58" height="58"/>
+                    <rect key="frame" x="213" y="377" width="58" height="58"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="qbo-TJ-bUF" secondAttribute="height" multiplier="1:1" id="5W4-Qr-6wc"/>
                         <constraint firstAttribute="height" constant="58" id="5vG-1x-xRT"/>
                         <constraint firstAttribute="width" constant="58" id="lDh-HS-P6e"/>
                     </constraints>
@@ -97,16 +95,15 @@
                 <constraint firstItem="0Qn-Em-V23" firstAttribute="leading" secondItem="b2Y-QU-GUz" secondAttribute="leading" constant="79" id="7Lh-8d-X4a"/>
                 <constraint firstItem="qbo-TJ-bUF" firstAttribute="top" secondItem="0Qn-Em-V23" secondAttribute="bottom" constant="15" id="A0S-h1-w2X"/>
                 <constraint firstItem="uXa-zf-dxg" firstAttribute="centerX" secondItem="b2Y-QU-GUz" secondAttribute="centerX" id="Ez0-av-xkY"/>
+                <constraint firstItem="qbo-TJ-bUF" firstAttribute="trailing" secondItem="0Qn-Em-V23" secondAttribute="trailing" constant="-25" id="Gt1-uE-OSV"/>
                 <constraint firstItem="OF0-tl-mHE" firstAttribute="top" secondItem="1xX-Eu-how" secondAttribute="bottom" constant="8" id="K7b-93-d7g"/>
                 <constraint firstItem="npr-sf-w1d" firstAttribute="top" secondItem="0Qn-Em-V23" secondAttribute="bottom" constant="15" id="Lyt-MT-a1x"/>
-                <constraint firstItem="qbo-TJ-bUF" firstAttribute="leading" secondItem="npr-sf-w1d" secondAttribute="trailing" constant="33" id="Mne-Zf-Nfx"/>
                 <constraint firstAttribute="trailing" secondItem="0Qn-Em-V23" secondAttribute="trailing" constant="79" id="QwQ-Nq-IKG"/>
-                <constraint firstAttribute="trailing" secondItem="qbo-TJ-bUF" secondAttribute="trailing" constant="113" id="XSe-XE-boC"/>
                 <constraint firstItem="1xX-Eu-how" firstAttribute="top" secondItem="b2Y-QU-GUz" secondAttribute="top" constant="35" id="aur-gy-fvw"/>
                 <constraint firstItem="uXa-zf-dxg" firstAttribute="top" secondItem="qbo-TJ-bUF" secondAttribute="bottom" constant="44" id="dmx-xC-kIH"/>
-                <constraint firstItem="npr-sf-w1d" firstAttribute="leading" secondItem="b2Y-QU-GUz" secondAttribute="leading" constant="113" id="gDx-9g-6hl"/>
                 <constraint firstItem="OF0-tl-mHE" firstAttribute="centerX" secondItem="b2Y-QU-GUz" secondAttribute="centerX" id="n1C-aB-jmL"/>
                 <constraint firstItem="0Qn-Em-V23" firstAttribute="centerX" secondItem="b2Y-QU-GUz" secondAttribute="centerX" id="oUv-BE-jDc"/>
+                <constraint firstItem="npr-sf-w1d" firstAttribute="leading" secondItem="0Qn-Em-V23" secondAttribute="leading" constant="25" id="pqI-Gr-CV6"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

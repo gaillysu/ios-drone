@@ -11,7 +11,8 @@ import UIKit
 class Compass: MEDBaseModel {
     
     dynamic var id:Int = 0
-    dynamic var activeTime:Int = 0
+    dynamic var autoMotionDetection:Int = 0
+    dynamic var screenTimeout:Int = 0
     
     override static func primaryKey() -> String? {
         return "id"
