@@ -63,12 +63,12 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
      Ble firmware version
      */
-    fileprivate var mFirmwareVersion:NSString = ""
+    fileprivate var mFirmwareVersion:String = ""
     
     /**
      MCU Software version
      */
-    fileprivate var mSoftwareVersion:NSString = ""
+    fileprivate var mSoftwareVersion:String = ""
     
     fileprivate var redRssiTimer:Timer = Timer()
     
@@ -224,17 +224,20 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 /* It is valid data, let's return it to our delegate */
                 mDelegate?.packetReceived( RawPacketImpl(data: characteristic.value! , profile: mProfile!) ,  fromAddress : aPeripheral.identifier )
             }
-        } else if(characteristic.uuid==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) {
-            mFirmwareVersion = NSString(data: characteristic.value!, encoding: String.Encoding.utf8.rawValue)!
-            // debugPrint("get firmware version char : \(characteristic.uuid.uuidString), version : \(self.mFirmwareVersion)")
-            //tell OTA new version
-            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.application, version: mFirmwareVersion)
-        } else if(characteristic.uuid==CBUUID(string: "00002a28-0000-1000-8000-00805f9b34fb")) {
-            if(characteristic.value != nil){
-                mSoftwareVersion = NSString(data: characteristic.value!, encoding: String.Encoding.utf8.rawValue)!
+        } else if(characteristic.uuid==CBUUID(string: "00002a26-0000-1000-8000-00805f9b34fb")) && characteristic.value != nil {
+            if let version = String(bytes: characteristic.value!, encoding: .utf8){
+                mFirmwareVersion = version
+                print("Version: \(version)")
+                mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.application, version: version)
             }
-            // debugPrint("get software version char : \(characteristic.uuid.uuidString), version : \(self.mSoftwareVersion)")
-            mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.softdevice, version: mSoftwareVersion)
+            
+        } else if(characteristic.uuid==CBUUID(string: "00002a28-0000-1000-8000-00805f9b34fb")) && characteristic.value != nil{
+            if let version = String(bytes: characteristic.value!, encoding: .utf8){
+                mSoftwareVersion = version
+                print("Version: \(version)")
+                mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.softdevice, version: version)
+                
+            }
         }
     }
     
@@ -262,7 +265,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
      See NevoBT protocol
      */
     private func scanAndConnectForAddreses(uuid:[CBUUID]) {
-        
+        print("Scan and Connect for address \(mTryingToConnectPeripherals.count)")
         //We can't be sure if the Manager is ready, so let's try
         if(self.isBluetoothEnabled()) {
             let services:[CBUUID] = uuid
@@ -294,7 +297,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
      See NevoBT protocol
      */
     func connectToAddress(_ peripheralAddress : [UUID]) {
-        
         //We can't be sure if the Manager is ready, so let's try
         if(self.isBluetoothEnabled()) {
             // debugPrint("Connecting to : \(peripheralAddress)")
@@ -395,14 +397,14 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     /**
      See NevoBT protocol
      */
-    func getFirmwareVersion() -> NSString {
+    func getFirmwareVersion() -> String {
         return mFirmwareVersion
     }
     
     /**
      See NevoBT protocol
      */
-    func getSoftwareVersion() -> NSString {
+    func getSoftwareVersion() -> String {
         return mSoftwareVersion
     }
     
@@ -430,9 +432,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             if let manager = mManager {
                 manager.connect(aPeripheral,options:nil)
                 setPeripheral(aPeripheral)
-//                print("Trying to connect")
-            }else{
-//                print("Couldn't connect since mManager = nil")
             }
         }
         
@@ -465,7 +464,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     func stopScan() {
         mManager?.stopScan()
          // debugPrint("Scan stopped.")
-        
     }
     
     /**

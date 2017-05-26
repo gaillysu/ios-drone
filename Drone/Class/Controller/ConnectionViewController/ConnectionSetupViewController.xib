@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectionSetupViewController" customModule="Drone" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="JgG-3Q-kcq" id="wNg-UJ-UuL"/>
+                <outlet property="connectedStatusLabel" destination="Baw-5Q-ySJ" id="XMh-8Y-ZkD"/>
                 <outlet property="connectedView" destination="Pwv-Q2-2pc" id="wpb-N5-Umz"/>
                 <outlet property="connectionFailView" destination="lGf-9t-aCb" id="qT5-nv-VFK"/>
                 <outlet property="connectionView" destination="8nZ-yR-qdN" id="7zQ-3l-1dE"/>
                 <outlet property="nextButton" destination="tKg-qc-K99" id="mjL-fy-BnP"/>
                 <outlet property="retryButton" destination="E0P-Ti-0bi" id="v8k-aF-HWb"/>
+                <outlet property="versionLabel" destination="niu-vc-FuO" id="Hs3-er-ZdA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="watchImage" destination="owU-NB-0hd" id="gfG-Ve-Zig"/>
             </connections>
@@ -97,7 +100,7 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pwv-Q2-2pc">
                     <rect key="frame" x="31" y="351" width="312" height="179"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKg-qc-K99">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKg-qc-K99">
                             <rect key="frame" x="51" y="132" width="209" height="39"/>
                             <color key="backgroundColor" red="0.81960784310000001" green="0.61568627450000002" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -117,7 +120,7 @@
                                 <action selector="buttonActionManager:" destination="-1" eventType="touchUpInside" id="dMI-Fc-qc7"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Baw-5Q-ySJ">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initiating..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Baw-5Q-ySJ">
                             <rect key="frame" x="0.0" y="20" width="312" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="dOo-WC-F10"/>
@@ -135,7 +138,7 @@
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version： 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niu-vc-FuO">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niu-vc-FuO">
                             <rect key="frame" x="0.0" y="100" width="312" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="FjP-Hl-ZUs"/>
@@ -144,6 +147,13 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JgG-3Q-kcq">
+                            <rect key="frame" x="146" y="141" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="NZi-aN-RdP"/>
+                                <constraint firstAttribute="height" constant="20" id="wuv-IJ-TIt"/>
+                            </constraints>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" red="0.89411764709999997" green="0.7725490196" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -152,8 +162,10 @@
                         <constraint firstItem="Zqm-Ys-Dfg" firstAttribute="top" secondItem="Baw-5Q-ySJ" secondAttribute="bottom" constant="10" id="ORl-pJ-mGS"/>
                         <constraint firstAttribute="trailing" secondItem="Baw-5Q-ySJ" secondAttribute="trailing" id="S7c-xV-jsm"/>
                         <constraint firstAttribute="height" constant="179" id="UAv-SB-qZR"/>
+                        <constraint firstItem="JgG-3Q-kcq" firstAttribute="centerX" secondItem="Pwv-Q2-2pc" secondAttribute="centerX" id="X8a-pb-96D"/>
                         <constraint firstItem="tKg-qc-K99" firstAttribute="centerX" secondItem="Pwv-Q2-2pc" secondAttribute="centerX" id="b1R-wT-11F"/>
                         <constraint firstItem="niu-vc-FuO" firstAttribute="leading" secondItem="Pwv-Q2-2pc" secondAttribute="leading" id="d9Z-69-WBg"/>
+                        <constraint firstAttribute="bottom" secondItem="JgG-3Q-kcq" secondAttribute="bottom" constant="18" id="gW2-xo-jTL"/>
                         <constraint firstAttribute="trailing" secondItem="Zqm-Ys-Dfg" secondAttribute="trailing" id="oFC-dG-zHa"/>
                         <constraint firstItem="Baw-5Q-ySJ" firstAttribute="top" secondItem="Pwv-Q2-2pc" secondAttribute="top" constant="20" id="q1C-Jw-35X"/>
                         <constraint firstItem="Baw-5Q-ySJ" firstAttribute="leading" secondItem="Pwv-Q2-2pc" secondAttribute="leading" id="qkX-Of-lUC"/>

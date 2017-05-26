@@ -229,12 +229,12 @@ extension AppDelegate {
     }
     
     // MARK: - ConnectionController protocol
-    func  getFirmwareVersion() -> NSString{
-        return isConnected() ? self.getMconnectionController()!.getFirmwareVersion() : NSString()
+    func  getFirmwareVersion() -> String{
+        return isConnected() ? self.getMconnectionController()!.getFirmwareVersion() : "0"
     }
     
-    func  getSoftwareVersion() -> NSString{
-        return isConnected() ? self.getMconnectionController()!.getSoftwareVersion() : NSString()
+    func  getSoftwareVersion() -> String{
+        return isConnected() ? self.getMconnectionController()!.getSoftwareVersion() : "0"
     }
     
     func disconnect() {

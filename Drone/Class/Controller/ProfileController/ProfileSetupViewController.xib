@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileSetupViewController" customModule="Drone" customModuleProvider="target">
             <connections>
-                <outlet property="ageTextField" destination="98S-al-o4l" id="DuK-Nr-izg"/>
                 <outlet property="backB" destination="Ry5-Aa-cai" id="Bg9-5j-9CT"/>
+                <outlet property="birthdayTextField" destination="98S-al-o4l" id="YtK-b2-gbl"/>
                 <outlet property="firstNameTextField" destination="Gaa-7s-BJh" id="lEM-Jd-KfG"/>
+                <outlet property="genderSegmentView" destination="JpZ-m4-AWK" id="WkU-IP-hRo"/>
+                <outlet property="heightTextField" destination="Goa-Bq-FHb" id="KrQ-Hp-J5d"/>
                 <outlet property="lastNameTextField" destination="Lfz-FT-0BM" id="Wef-fJ-NKC"/>
-                <outlet property="lengthTextField" destination="Goa-Bq-FHb" id="I6T-X8-WLF"/>
                 <outlet property="metricsSegment" destination="ggg-Sd-Oku" id="3Yg-t9-oAH"/>
                 <outlet property="nextB" destination="SoK-Cw-H4g" id="0Ph-F3-SdD"/>
                 <outlet property="textfiledBG" destination="b1s-Eu-J5f" id="gOu-ZH-PT7"/>
@@ -72,53 +73,47 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rb8-33-61L">
                     <rect key="frame" x="50" y="187" width="275" height="122"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfz-FT-0BM" customClass="AutocompleteField">
-                            <rect key="frame" x="0.0" y="62" width="275" height="60"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfz-FT-0BM" customClass="AutocompleteField" customModule="Drone" customModuleProvider="target">
+                            <rect key="frame" x="8" y="62" width="275" height="60"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="FHB-ap-mKr"/>
                             </constraints>
-                            <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="padding">
-                                    <real key="value" value="26"/>
+                                    <real key="value" value="8"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="GGM-RE-ags"/>
-                            </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-7s-BJh" customClass="AutocompleteField">
-                            <rect key="frame" x="0.0" y="0.0" width="275" height="61"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-7s-BJh" customClass="AutocompleteField" customModule="Drone" customModuleProvider="target">
+                            <rect key="frame" x="8" y="0.0" width="275" height="61"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="61" id="6YH-a3-BM5"/>
                             </constraints>
-                            <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="padding">
-                                    <real key="value" value="26"/>
+                                    <real key="value" value="8"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="pN3-Ku-K3g"/>
-                            </connections>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Lfz-FT-0BM" secondAttribute="trailing" id="8vI-qW-vEE"/>
+                        <constraint firstAttribute="trailing" secondItem="Lfz-FT-0BM" secondAttribute="trailing" constant="-8" id="8vI-qW-vEE"/>
                         <constraint firstItem="Gaa-7s-BJh" firstAttribute="top" secondItem="Rb8-33-61L" secondAttribute="top" id="ASL-yd-49k"/>
-                        <constraint firstItem="Gaa-7s-BJh" firstAttribute="leading" secondItem="Rb8-33-61L" secondAttribute="leading" id="Bs5-0C-JO8"/>
-                        <constraint firstItem="Lfz-FT-0BM" firstAttribute="leading" secondItem="Rb8-33-61L" secondAttribute="leading" id="LK7-hS-4TG"/>
+                        <constraint firstItem="Gaa-7s-BJh" firstAttribute="leading" secondItem="Rb8-33-61L" secondAttribute="leading" constant="8" id="Bs5-0C-JO8"/>
+                        <constraint firstItem="Lfz-FT-0BM" firstAttribute="leading" secondItem="Rb8-33-61L" secondAttribute="leading" constant="8" id="LK7-hS-4TG"/>
                         <constraint firstItem="Lfz-FT-0BM" firstAttribute="top" secondItem="Gaa-7s-BJh" secondAttribute="bottom" constant="1" id="Mww-ea-PXf"/>
                         <constraint firstAttribute="bottom" secondItem="Lfz-FT-0BM" secondAttribute="bottom" id="blv-9a-sC5"/>
                         <constraint firstAttribute="height" constant="122" id="m7V-Dd-ypX"/>
-                        <constraint firstAttribute="trailing" secondItem="Gaa-7s-BJh" secondAttribute="trailing" id="uPS-Br-Cw1"/>
+                        <constraint firstAttribute="trailing" secondItem="Gaa-7s-BJh" secondAttribute="trailing" constant="-8" id="uPS-Br-Cw1"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -128,81 +123,97 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggg-Sd-Oku">
                     <rect key="frame" x="50" y="317" width="275" height="57"/>
+                    <subviews>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JpZ-m4-AWK">
+                            <rect key="frame" x="0.0" y="0.0" width="275" height="58"/>
+                            <segments>
+                                <segment title="Male"/>
+                                <segment title="Female"/>
+                            </segments>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </segmentedControl>
+                    </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="57" id="DDe-8s-k9i"/>
+                        <constraint firstAttribute="trailing" secondItem="JpZ-m4-AWK" secondAttribute="trailing" id="TRr-84-jiI"/>
+                        <constraint firstItem="JpZ-m4-AWK" firstAttribute="top" secondItem="ggg-Sd-Oku" secondAttribute="top" id="Vxi-bD-EbV"/>
+                        <constraint firstAttribute="bottom" secondItem="JpZ-m4-AWK" secondAttribute="bottom" id="dGV-C1-VYn"/>
+                        <constraint firstItem="JpZ-m4-AWK" firstAttribute="leading" secondItem="ggg-Sd-Oku" secondAttribute="leading" id="hF0-Xt-Snw"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1s-Eu-J5f">
                     <rect key="frame" x="50" y="382" width="275" height="184"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Height" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Goa-Bq-FHb" customClass="AutocompleteField">
-                            <rect key="frame" x="0.0" y="61" width="275" height="61"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Height" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Goa-Bq-FHb" userLabel="Height Text Field" customClass="AutocompleteField" customModule="Drone" customModuleProvider="target">
+                            <rect key="frame" x="8" y="61" width="275" height="61"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="61" id="iPq-WQ-4D8"/>
                             </constraints>
-                            <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="padding">
-                                    <real key="value" value="26"/>
+                                    <real key="value" value="8"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="IGo-HH-8su"/>
-                            </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Weight" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6l-WV-9Jl" customClass="AutocompleteField">
-                            <rect key="frame" x="0.0" y="123" width="275" height="61"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Weight" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6l-WV-9Jl" customClass="AutocompleteField" customModule="Drone" customModuleProvider="target">
+                            <rect key="frame" x="8" y="123" width="275" height="61"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="61" id="Fgv-V4-Jlq"/>
                             </constraints>
-                            <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="padding">
-                                    <real key="value" value="26"/>
+                                    <real key="value" value="8"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="re7-ij-Zfd"/>
-                            </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date of birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98S-al-o4l" customClass="AutocompleteField">
-                            <rect key="frame" x="0.0" y="0.0" width="275" height="60"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date of birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98S-al-o4l" userLabel="Birthday Text Field" customClass="AutocompleteField" customModule="Drone" customModuleProvider="target">
+                            <rect key="frame" x="8" y="0.0" width="275" height="60"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="Mja-oM-Gce"/>
                             </constraints>
-                            <color key="textColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="padding">
-                                    <real key="value" value="26"/>
+                                    <real key="value" value="8"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="tWE-bD-TvG"/>
-                            </connections>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="184" id="606-6Z-aeV"/>
-                        <constraint firstItem="98S-al-o4l" firstAttribute="leading" secondItem="b1s-Eu-J5f" secondAttribute="leading" id="6Ql-dg-fQE"/>
-                        <constraint firstItem="M6l-WV-9Jl" firstAttribute="leading" secondItem="b1s-Eu-J5f" secondAttribute="leading" id="8Pq-zj-150"/>
-                        <constraint firstAttribute="trailing" secondItem="98S-al-o4l" secondAttribute="trailing" id="ATY-WZ-A4X"/>
-                        <constraint firstAttribute="trailing" secondItem="M6l-WV-9Jl" secondAttribute="trailing" id="DW9-x4-py3"/>
+                        <constraint firstItem="98S-al-o4l" firstAttribute="leading" secondItem="b1s-Eu-J5f" secondAttribute="leading" constant="8" id="6Ql-dg-fQE"/>
+                        <constraint firstItem="M6l-WV-9Jl" firstAttribute="leading" secondItem="b1s-Eu-J5f" secondAttribute="leading" constant="8" id="8Pq-zj-150"/>
+                        <constraint firstAttribute="trailing" secondItem="98S-al-o4l" secondAttribute="trailing" constant="-8" id="ATY-WZ-A4X"/>
+                        <constraint firstAttribute="trailing" secondItem="M6l-WV-9Jl" secondAttribute="trailing" constant="-8" id="DW9-x4-py3"/>
                         <constraint firstItem="M6l-WV-9Jl" firstAttribute="top" secondItem="Goa-Bq-FHb" secondAttribute="bottom" constant="1" id="Ioc-1A-t4C"/>
                         <constraint firstItem="98S-al-o4l" firstAttribute="top" secondItem="b1s-Eu-J5f" secondAttribute="top" id="bsN-K0-mHc"/>
-                        <constraint firstAttribute="trailing" secondItem="Goa-Bq-FHb" secondAttribute="trailing" id="dpJ-GI-3P8"/>
+                        <constraint firstAttribute="trailing" secondItem="Goa-Bq-FHb" secondAttribute="trailing" constant="-8" id="dpJ-GI-3P8"/>
                         <constraint firstItem="Goa-Bq-FHb" firstAttribute="top" secondItem="98S-al-o4l" secondAttribute="bottom" constant="1" id="iI8-2N-O0m"/>
-                        <constraint firstItem="Goa-Bq-FHb" firstAttribute="centerX" secondItem="b1s-Eu-J5f" secondAttribute="centerX" id="s3k-O6-cDy"/>
-                        <constraint firstItem="Goa-Bq-FHb" firstAttribute="leading" secondItem="b1s-Eu-J5f" secondAttribute="leading" id="tmM-cB-2Ap"/>
+                        <constraint firstItem="Goa-Bq-FHb" firstAttribute="centerX" secondItem="b1s-Eu-J5f" secondAttribute="centerX" constant="8" id="s3k-O6-cDy"/>
+                        <constraint firstItem="Goa-Bq-FHb" firstAttribute="leading" secondItem="b1s-Eu-J5f" secondAttribute="leading" constant="8" id="tmM-cB-2Ap"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">

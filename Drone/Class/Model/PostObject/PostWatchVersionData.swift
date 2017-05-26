@@ -9,11 +9,10 @@
 import UIKit
 
 class PostWatchVersionData: NSObject {
-    var watchVersion:String?
-    var versionType:String?
+    var watchVersion:String
+    var versionType:String
     
     init(version:String,type:String) {
-        super.init()
         watchVersion = version
         versionType = type
     }

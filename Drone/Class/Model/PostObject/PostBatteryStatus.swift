@@ -33,9 +33,8 @@ class PostBatteryStatus: NSObject,NSCoding {
         case 3:
             return "Calculating"
         default:
-            return "null"
+            return "Retrieving..."
         }
-        return ""
     }
     
     func encode(with aCoder:NSCoder) {

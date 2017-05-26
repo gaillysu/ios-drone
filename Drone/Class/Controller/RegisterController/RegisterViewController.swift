@@ -28,21 +28,18 @@ class RegisterViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
     override func viewDidLayoutSubviews() {
         if (emailT == nil) {
-            emailT = AutocompleteField(frame: CGRect(x: 0, y: 0, width: textfiledBG.frame.size.width, height: textfiledBG.frame.size.height/2.0-0.5))
+            emailT = AutocompleteField(frame: CGRect(x: 8, y: 0, width: textfiledBG.frame.size.width, height: textfiledBG.frame.size.height/2.0-0.5))
             emailT!.padding = 5.0
             emailT!.placeholder = "E-mail"
             emailT?.backgroundColor = UIColor.white
+            emailT.keyboardType = .emailAddress
+            emailT.autocapitalizationType = .words
             emailT.delegate = self
             textfiledBG.addSubview(emailT!)
 
-            passwordT = AutocompleteField(frame: CGRect(x: 0, y: textfiledBG.frame.size.height/2.0, width: textfiledBG.frame.size.width, height: textfiledBG.frame.size.height/2.0-0.5))
+            passwordT = AutocompleteField(frame: CGRect(x: 8, y: textfiledBG.frame.size.height/2.0, width: textfiledBG.frame.size.width, height: textfiledBG.frame.size.height/2.0-0.5))
             passwordT!.padding = 5.0
             passwordT!.isSecureTextEntry = true
             passwordT!.placeholder = "Password"
@@ -51,7 +48,7 @@ class RegisterViewController: BaseViewController {
             textfiledBG.addSubview(passwordT!)
 
             let displaypassword:UIButton = UIButton(type: UIButtonType.custom)
-            displaypassword.frame = CGRect(x: 0, y: 0, width: 40, height: 30)
+            displaypassword.frame = CGRect(x: -10, y: 0, width: 40, height: 30)
             displaypassword.setImage(UIImage(named: "check"), for: UIControlState())
             displaypassword.imageEdgeInsets.right = 10
             displaypassword.addTarget(self, action: #selector(RegisterViewController.displayPasswordAction(_:)), for: UIControlEvents.touchUpInside)
@@ -78,7 +75,7 @@ class RegisterViewController: BaseViewController {
         if nextB.isEqual(sender) {
             let profile:ProfileSetupViewController = ProfileSetupViewController()
             if(AppTheme.isNull(passwordT.text!) || AppTheme.isNull(emailT.text!)) {
-                let banner = Banner(title: NSLocalizedString("email or password is null", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                let banner = Banner(title: "Email or password is empty", subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true
                 banner.show(duration: 0.7)
                 return
@@ -86,7 +83,6 @@ class RegisterViewController: BaseViewController {
             profile.account = ["email":emailT.text! as AnyObject,"password":passwordT.text! as AnyObject]
             self.navigationController?.pushViewController(profile, animated: true)
         }
- 
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

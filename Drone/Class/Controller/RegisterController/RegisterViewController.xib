@@ -55,7 +55,7 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaA-Pa-aZT">
                     <rect key="frame" x="38" y="263" width="300" height="95"/>
-                    <color key="backgroundColor" red="0.84463787078857422" green="0.84461265802383423" blue="0.84462690353393555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="95" id="IUP-fK-piP"/>
                     </constraints>

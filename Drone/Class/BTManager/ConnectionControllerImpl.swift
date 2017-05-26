@@ -1,4 +1,4 @@
-//
+    //
 //  ConnectionControllerImpl.swift
 //  Nevo
 //
@@ -43,12 +43,6 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
      This time handles the retry procedure
      */
     fileprivate var mRetryTimer:Timer?
-    
-    /**
-     this parameter saved old BLE 's  address, when doing BLE OTA, the address has been changed to another one
-     so, after finisned BLE ota, must restore it to normal 's address
-     */
-    fileprivate var savedAddress:String?
     
     /**
      No initialisation outside of this class, this is a singleton
@@ -118,7 +112,8 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
      See NevoBTDelegate
      */
-    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString) {
+    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:String) {
+        print("Version 2 : \(version)")
         mDelegate?.firmwareVersionReceived(whichfirmware, version: version)
     }
     
@@ -160,7 +155,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
      See ConnectionController protocol
      */
-    func  getFirmwareVersion() -> NSString
+    func  getFirmwareVersion() -> String
     {
         return mNevoBT!.getFirmwareVersion()
     }
@@ -168,7 +163,7 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     /**
      See ConnectionController protocol
      */
-    func  getSoftwareVersion() -> NSString
+    func  getSoftwareVersion() -> String
     {
         return mNevoBT!.getSoftwareVersion()
     }

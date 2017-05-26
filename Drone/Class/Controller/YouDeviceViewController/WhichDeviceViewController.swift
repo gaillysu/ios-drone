@@ -86,6 +86,7 @@ class WhichDeviceViewController: BaseViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         let connection:ConnectionSetupViewController = ConnectionSetupViewController(toMenu: toMenu)
         connection.watchName = String(format: "welcome_%d",(indexPath as NSIndexPath).row+1)
+        _ = UserDevice.removeAll()
         self.navigationController?.pushViewController(connection, animated: true)
     }
 }

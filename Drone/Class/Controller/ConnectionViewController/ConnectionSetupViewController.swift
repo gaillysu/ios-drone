@@ -19,6 +19,12 @@ class ConnectionSetupViewController: UIViewController {
     @IBOutlet weak var watchImage: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
     
+    @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var connectedStatusLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var initializationTimer:Timer?
+    
     var watchName:String = ""
     fileprivate var toMenu:Bool = true;
     init(toMenu:Bool) {
@@ -37,12 +43,27 @@ class ConnectionSetupViewController: UIViewController {
         AppDelegate.getAppDelegate().connectNew()
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
+            
             if(connectionState){
                 self.connectedView.isHidden = false
+                self.activityIndicator.startAnimating()
                 self.connectionView.isHidden = true
+                self.initializationTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.showInitializingError(_:)), userInfo: nil, repeats: false)
             }else{
                 self.connectionFailView.isHidden = false
                 self.connectionView.isHidden = true
+            }
+        }
+        
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_INITIALIZATION_COMPLETED) { (notification) -> Void in
+            self.initializationTimer?.invalidate()
+            self.activityIndicator.isHidden = true
+            self.nextButton.isHidden = false
+            self.connectedStatusLabel.text = "Connected"
+        }
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY) { (notification) -> Void in
+            if let version = notification.object as? PostWatchVersionData{
+                self.versionLabel.text = "version: \(version.watchVersion)"
             }
         }
         
@@ -76,5 +97,17 @@ class ConnectionSetupViewController: UIViewController {
             self.connectionView.isHidden = false
             AppDelegate.getAppDelegate().connectNew()
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        SwiftEventBus.unregister(self)
+    }
+    
+    
+    func showInitializingError(_ timer:Timer) {
+        timer.invalidate()
+        self.connectionFailView.isHidden = false
+        self.connectedView.isHidden = true
     }
 }

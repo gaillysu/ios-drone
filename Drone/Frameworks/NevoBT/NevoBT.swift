@@ -62,12 +62,12 @@ protocol NevoBT {
     /**
     get Nevo 's ble firmware version
     */
-    func  getFirmwareVersion() -> NSString
+    func  getFirmwareVersion() -> String
     
     /**
     get Nevo 's MCU software version
     */
-    func  getSoftwareVersion() -> NSString
+    func  getSoftwareVersion() -> String
 
     /**
     Get the current connection device of RSSI values
@@ -95,7 +95,7 @@ protocol NevoBTDelegate {
      @parameter whichfirmware, firmware type
      @parameter version, return the version
      */
-    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString)
+    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:String)
 
     
     /**

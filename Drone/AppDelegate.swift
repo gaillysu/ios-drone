@@ -155,7 +155,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          }
          
          if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
-            //Set steps to watch response
             let cacheModel:ResetCacheModel = ResetCacheModel(reState: false, date: Date().timeIntervalSince1970)
             _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
          }
@@ -177,6 +176,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             if DTUserDefaults.syncWeatherDate.timeIntervalSince1970-Date().timeIntervalSince1970 > 3600 {
                setWeather()
             }
+         }
+         
+         if(packet.getHeader() == SetGoalRequest.HEADER()){
+            // Just callback for initialization.
+            SwiftEventBus.post(SWIFTEVENT_BUS_INITIALIZATION_COMPLETED, sender:nil)
          }
          
          if(packet.getHeader() == GetActivityRequest.HEADER()) {
@@ -216,13 +220,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       }
    }
    
-   func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString) {
+   func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:String) {
       let mcuver = AppTheme.GET_SOFTWARE_VERSION()
       let blever = AppTheme.GET_FIRMWARE_VERSION()
       
       NSLog("Build in software version: \(mcuver), firmware version: \(blever)")
       if whichfirmware == DfuFirmwareTypes.application {
-         let versionData:PostWatchVersionData = PostWatchVersionData(version: version as String, type: "BLE")
+         let versionData:PostWatchVersionData = PostWatchVersionData(version: version, type: "BLE")
          SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:versionData)
       }
    }

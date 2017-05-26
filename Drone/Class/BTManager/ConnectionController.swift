@@ -48,12 +48,12 @@ protocol ConnectionController {
     /**
     get Nevo 's ble firmware version
     */
-    func  getFirmwareVersion() -> NSString
+    func  getFirmwareVersion() -> String
     
     /**
     get Nevo 's MCU software version
     */
-    func  getSoftwareVersion() -> NSString
+    func  getSoftwareVersion() -> String
     
 }
 
@@ -70,7 +70,7 @@ protocol ConnectionControllerDelegate {
     func connectionStateChanged(_ isConnected : Bool, fromAddress : String)
     
     
-    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:NSString)
+    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:String)
 
     /**
     *  Receiving the current device signal strength value
