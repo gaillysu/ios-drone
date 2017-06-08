@@ -35,10 +35,6 @@
 		613929001EAA026B00450284 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928FB1EAA026B00450284 /* String+Extension.swift */; };
 		613929071EADABEB00450284 /* welcome_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929011EADABEB00450284 /* welcome_1.png */; };
 		613929081EADABEB00450284 /* welcome_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929021EADABEB00450284 /* welcome_2.png */; };
-		613929091EADABEB00450284 /* welcome_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929031EADABEB00450284 /* welcome_3.png */; };
-		6139290A1EADABEB00450284 /* welcome_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929041EADABEB00450284 /* welcome_4.png */; };
-		6139290B1EADABEB00450284 /* welcome_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929051EADABEB00450284 /* welcome_5.png */; };
-		6139290C1EADABEB00450284 /* welcome_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929061EADABEB00450284 /* welcome_6.png */; };
 		6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6139290D1EADDD3900450284 /* BaseViewController.swift */; };
 		613929121EAEE92600450284 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 613929111EAEE92600450284 /* default.realm */; };
 		613929141EAEF3BD00450284 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */; };
@@ -329,10 +325,6 @@
 		613928FB1EAA026B00450284 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		613929011EADABEB00450284 /* welcome_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_1.png; sourceTree = "<group>"; };
 		613929021EADABEB00450284 /* welcome_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_2.png; sourceTree = "<group>"; };
-		613929031EADABEB00450284 /* welcome_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_3.png; sourceTree = "<group>"; };
-		613929041EADABEB00450284 /* welcome_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_4.png; sourceTree = "<group>"; };
-		613929051EADABEB00450284 /* welcome_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_5.png; sourceTree = "<group>"; };
-		613929061EADABEB00450284 /* welcome_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_6.png; sourceTree = "<group>"; };
 		6139290D1EADDD3900450284 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		613929111EAEE92600450284 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
@@ -1303,10 +1295,6 @@
 			children = (
 				613929011EADABEB00450284 /* welcome_1.png */,
 				613929021EADABEB00450284 /* welcome_2.png */,
-				613929031EADABEB00450284 /* welcome_3.png */,
-				613929041EADABEB00450284 /* welcome_4.png */,
-				613929051EADABEB00450284 /* welcome_5.png */,
-				613929061EADABEB00450284 /* welcome_6.png */,
 				61C28C9B1EA706A50019F574 /* mapImage.png */,
 				61C28C991EA6FDBA0019F574 /* background_steps.png */,
 			);
@@ -1786,11 +1774,9 @@
 				00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */,
 				61C28BF81EA46F810019F574 /* ForgetPasswordController.xib in Resources */,
 				619A9F1A1EC2AF6F006D65C4 /* RoutesController.xib in Resources */,
-				6139290A1EADABEB00450284 /* welcome_4.png in Resources */,
 				CB9F65491EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib in Resources */,
 				61C28C161EA46F810019F574 /* StepsTitleView.xib in Resources */,
 				61C28C101EA46F810019F574 /* RegisterViewController.xib in Resources */,
-				613929091EADABEB00450284 /* welcome_3.png in Resources */,
 				61C28C0C1EA46F810019F574 /* ProfileTableViewCellHeader.xib in Resources */,
 				61C28C0A1EA46F810019F574 /* ProfileTableViewCell.xib in Resources */,
 				61C28BFA1EA46F810019F574 /* WelcomeViewController.xib in Resources */,
@@ -1818,9 +1804,7 @@
 				CB9192701EBC7DC300BA14E6 /* HotKeysViewController.xib in Resources */,
 				61C28C1A1EA46F810019F574 /* WorldClockCell.xib in Resources */,
 				CB9F652D1EA70CA9007982B0 /* CalibrateHourViewController.xib in Resources */,
-				6139290C1EADABEB00450284 /* welcome_6.png in Resources */,
 				61C28BFE1EA46F810019F574 /* MenuViewController.xib in Resources */,
-				6139290B1EADABEB00450284 /* welcome_5.png in Resources */,
 				61C28C001EA46F810019F574 /* MenuViewCell.xib in Resources */,
 				61C28C081EA46F810019F574 /* ProfileSetupViewController.xib in Resources */,
 				61C28BE61EA46F810019F574 /* AnalysisViewController.xib in Resources */,

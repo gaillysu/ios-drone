@@ -27,7 +27,6 @@ class WhichDeviceViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Device"
-        self.collectionView!.register(UINib(nibName: "MenuViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         addCloseButton(#selector(backButton))
     }
@@ -75,6 +74,7 @@ class WhichDeviceViewController: BaseViewController {
         if view == nil {
             let watchView:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height))
             watchView.tag = 1700
+            watchView.contentMode = .scaleAspectFit
             watchView.image = UIImage(named: String(format: "welcome_%d",(indexPath as NSIndexPath).row+1))
             cell.contentView.addSubview(watchView)
         }else{

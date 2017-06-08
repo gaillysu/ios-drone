@@ -41,12 +41,11 @@ class WelcomeViewController: BaseViewController {
         scrollImage.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         scrollImage.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
         scrollImage.bottomAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        
         setupRxSwift()
     }
     
     override func viewDidLayoutSubviews() {
-        let imageName:[String] = ["welcome_1","welcome_2","welcome_3","welcome_4","welcome_5","welcome_6"]
+        let imageName:[String] = ["welcome_1","welcome_2"]
         
         var imageResources:[UIImage] = []
         imageName.forEach { name in
@@ -75,7 +74,7 @@ class WelcomeViewController: BaseViewController {
         scrollImage?.contentSize = CGSize(width: imageWidth*CGFloat(imageResources.count), height: imageHeight)
         imageResources.enumerated().forEach { (index, image) in
             let imageView:UIImageView = UIImageView(image: image)
-            imageView.frame = CGRect(x: scrollView.bounds.size.width*CGFloat(index), y: 0, width: imageWidth, height: imageHeight)
+            imageView.frame = CGRect(x: scrollView.bounds.size.width*CGFloat(index) + 60, y: 0, width: imageWidth - 120, height: imageHeight)
             imageView.contentMode = UIViewContentMode.scaleAspectFit
             scrollImage?.addSubview(imageView)
         }

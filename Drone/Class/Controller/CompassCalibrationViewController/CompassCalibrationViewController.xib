@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock_minute" translatesAutoresizingMaskIntoConstraints="NO" id="zZV-za-Jgf">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="zZV-za-Jgf">
                     <rect key="frame" x="79" y="185" width="217" height="217"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="zZV-za-Jgf" secondAttribute="height" multiplier="1:1" id="fDi-UQ-QCT"/>
@@ -36,8 +36,8 @@
                     <color key="textColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate the watch slowely and follow the instructions on the  watch" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZs-x4-euL">
-                    <rect key="frame" x="30" y="72" width="316" height="34"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate the watch slowely and follow the instructions on the watch." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZs-x4-euL">
+                    <rect key="frame" x="29.5" y="72" width="316" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="316" id="1i6-gQ-hER"/>
                         <constraint firstAttribute="height" constant="34" id="sHf-mY-poC"/>
@@ -80,6 +80,6 @@
         </view>
     </objects>
     <resources>
-        <image name="clock_minute" width="360" height="361"/>
+        <image name="welcome_1.png" width="650" height="705"/>
     </resources>
 </document>
