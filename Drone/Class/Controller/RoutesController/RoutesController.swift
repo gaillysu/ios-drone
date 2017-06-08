@@ -186,10 +186,12 @@ extension RoutesController {
     func sendUpdateNavigation(elapsedValue:TimeInterval) {
         let seconds:Int = Int(elapsedValue)
         if seconds%5 == 0 {
-            let current:CLLocation = LocationManager.manager.getCurrentLocation()
-            let before:CLLocation = placemarks!.location!
-            let meters = current.distance(from: before)
-            AppDelegate.getAppDelegate().updateNavigation(distance: Int(meters))
+            if let location = LocationManager.manager.getCurrentLocation() {
+                let current:CLLocation = location
+                let before:CLLocation = placemarks!.location!
+                let meters = current.distance(from: before)
+                AppDelegate.getAppDelegate().updateNavigation(distance: Int(meters))
+            }
         }
     }
 }

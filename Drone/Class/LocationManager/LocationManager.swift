@@ -80,8 +80,8 @@ class LocationManager: NSObject {
         currentLocation = locations
     }
     
-    func getCurrentLocation() ->CLLocation {
-         return currentLocation!
+    func getCurrentLocation() ->CLLocation? {
+         return currentLocation
     }
 }
 

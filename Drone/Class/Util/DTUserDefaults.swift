@@ -8,6 +8,7 @@
 
 import Foundation
 
+let syncWeatherInterval:Double = 3600 //seconds
 public class DTUserDefaults: NSObject {
     
     private static let SETUP_KEY = "SETUP_KEY"
@@ -100,7 +101,7 @@ public class DTUserDefaults: NSObject {
             UserDefaults.standard.synchronize()
         }
     }
-    
+
     public static var syncWeatherDate:Date {
         get{
             if let sorted = UserDefaults().object(forKey: SETWEATHER_KEY){
