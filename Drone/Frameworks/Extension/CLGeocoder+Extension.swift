@@ -10,9 +10,11 @@ import UIKit
 import CoreLocation
 
 extension CLGeocoder {
-    func reverseGeocodeLocationInfo(location:CLLocation,completion: @escaping ((locationLong:String?,locationShort:String?,name:String?), _ error:Error?) -> Void) {
+     func reverseGeocodeLocationInfo(location:CLLocation,completion: @escaping ((locationLong:String?,locationShort:String?,name:String?,cityName:String?), _ error:Error?) -> Void) {
         var locationLong:String?
         var locationShort:String?
+        var cityName:String?
+        
         self.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
             if error != nil {
                 return
@@ -32,13 +34,14 @@ extension CLGeocoder {
             if let area = placeMark.locality, let _ = locationLong, let _ = locationShort {
                 locationShort = locationShort! + ", \(area)"
                 locationLong = locationLong! + ", \(area)"
+                cityName = area
             }
             
             if let _ = locationLong, let _ = locationShort {
-                completion((locationLong,locationShort,placeMark.name),nil)
+                completion((locationLong,locationShort,placeMark.name,cityName),nil)
             }else{
                 let error = NSError(domain: "geocode error", code: -1, userInfo: nil) as Error
-                completion((nil,nil,nil),error)
+                completion((nil,nil,nil,nil),error)
             }
         }
     }

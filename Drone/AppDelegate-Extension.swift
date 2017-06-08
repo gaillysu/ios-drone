@@ -86,7 +86,6 @@ extension AppDelegate {
     
     func setRTC(force:Bool) {
         if DTUserDefaults.syncAnalogTime || force {
-            print("setting RTC")
             sendRequest(SetRTCRequest())
         }
     }
@@ -149,7 +148,7 @@ extension AppDelegate {
             }
         }
         sendRequest(SetWorldClockRequest(worldClockArray: convertedWorldClockArray))
-        AppDelegate.getAppDelegate().setWeather()
+        self.setWeather(cityname: DTUserDefaults.lastSyncedWeatherCity)
     }
     
     func startConnect(){
@@ -207,15 +206,21 @@ extension AppDelegate {
     }
     
     func startNavigation(name:String) {
-        let latitude:Int = Int(-LocationManager.manager.getCurrentLocation().coordinate.latitude*1000000)
-        let longitude:Int = Int(LocationManager.manager.getCurrentLocation().coordinate.longitude*1000000)
+        guard LocationManager.manager.getCurrentLocation() != nil else {
+            return
+        }
+        let latitude:Int = Int(-LocationManager.manager.getCurrentLocation()!.coordinate.latitude*1000000)
+        let longitude:Int = Int(LocationManager.manager.getCurrentLocation()!.coordinate.longitude*1000000)
         let navigation = UrbanNavigationRequest(latitude: latitude, longitude: longitude, mName: name)
         self.sendRequest(navigation)
     }
     
     func updateNavigation(distance:Int) {
-        let latitude:Int = Int(LocationManager.manager.getCurrentLocation().coordinate.latitude*1000000)
-        let longitude:Int = Int(LocationManager.manager.getCurrentLocation().coordinate.longitude*1000000)
+        guard LocationManager.manager.getCurrentLocation() != nil else {
+            return
+        }
+        let latitude:Int = Int(LocationManager.manager.getCurrentLocation()!.coordinate.latitude*1000000)
+        let longitude:Int = Int(LocationManager.manager.getCurrentLocation()!.coordinate.longitude*1000000)
         let navigation = UrbanNavigationRequest(latitude: latitude, longitude: longitude, mDistance: distance)
         self.sendRequest(navigation)
     }
@@ -258,33 +263,42 @@ extension AppDelegate {
         }
     }
     
-    func setWeather() {
-        DTUserDefaults.syncWeatherDate = Date()
+    func setWeather(cityname:String?) {
         var cityArray:[City] = DataBaseManager.manager.getCitySelected()
-        let timeZoneNameData = DateFormatter().localCityName()
-        if timeZoneNameData.isEmpty {
+        if let name = cityname {
+            DTUserDefaults.lastSyncedWeatherDate = Date()
             let city:City = City()
-            city.name = timeZoneNameData
+            city.name = name
             cityArray.append(city)
         }
         
-        
         var weatherArray:[WeatherLocationModel] = []
-        for (index,city) in cityArray.enumerated() {
+        for (index,city) in cityArray.reversed().enumerated() {
             let cityid:UInt8 = UInt8(index+10)
             let model:WeatherLocationModel = WeatherLocationModel(id: cityid, titleString: city.name)
             weatherArray.append(model)
         }
         
-        let setWeatherRequest:SetWeatherLocationsRequest = SetWeatherLocationsRequest(entries: weatherArray)
-        sendRequest(setWeatherRequest)
-        
-        for model in weatherArray {
-            WeatherNetworkApiManager.manager.getWeatherInfo(regionName: model.getWeatherInfo().title, id: Int(model.getWeatherInfo().id)) { (cityid, temp, code, statusText) in
-                let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: code))
-                let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: [updateModel])
-                self.sendRequest(updateWeatherRequest)
+        if weatherArray.count>0 {
+            let setWeatherRequest:SetWeatherLocationsRequest = SetWeatherLocationsRequest(entries: weatherArray)
+            sendRequest(setWeatherRequest)
+            
+            for model in weatherArray {
+                WeatherNetworkApiManager.manager.getWeatherInfo(regionName: model.getWeatherInfo().title, id: Int(model.getWeatherInfo().id)) { (cityid, temp, code, statusText) in
+                    let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: code))
+                    let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: [updateModel])
+                    self.sendRequest(updateWeatherRequest)
+                }
             }
+        }
+    }
+    
+    func setGPSLocalWeather(location:CLLocation) {
+        CLGeocoder().reverseGeocodeLocationInfo(location: location) {(locationInfo, error) in
+            if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+                DTUserDefaults.lastSyncedWeatherCity = locationInfo.cityName
+                self.setWeather(cityname: locationInfo.cityName)
+            } 
         }
     }
     
@@ -293,6 +307,14 @@ extension AppDelegate {
         
         LocationManager.manager.didUpdateLocations = { location in
             let locationArray = location as [CLLocation]
+            /**
+             sync every 30 min weather data
+             */
+            if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+                if let location = locationArray.last {
+                    self.setGPSLocalWeather(location: location)
+                }
+            }
         }
     }
     

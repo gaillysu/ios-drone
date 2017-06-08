@@ -8,6 +8,7 @@
 
 import Foundation
 
+let syncWeatherInterval:Double = 1800 //seconds
 public class DTUserDefaults: NSObject {
     
     private static let SETUP_KEY = "SETUP_KEY"
@@ -16,7 +17,8 @@ public class DTUserDefaults: NSObject {
     private static let WORLDCLOCK_KEY = "DEFAULTS_WORLDCLOCK_KEY"
     private static let WORLDCLOCK_SORT_KEY = "WORLDCLOCK_SORT_KEY"
     private static let HOME_CITY_ID_KEY = "HOME_CITY_ID_KEY"
-    private static let SETWEATHER_KEY = "SET_WEATHER_KEY"
+    private static let LAST_SYNC_WEATHER_DATE = "LAST_SYNC_WEATHER_DATE"
+    private static let LAST_SYNC_WEATHER_CITY = "LAST_SYNC_WEATHER_CITY"
     
     private static let TOP_KEY_KEY = "TOP_KEY_KEY"
     private static let COMPASS_KEY = "COMPASS_KEY"
@@ -102,16 +104,27 @@ public class DTUserDefaults: NSObject {
             UserDefaults.standard.synchronize()
         }
     }
+
     
-    public static var syncWeatherDate:Date {
+    // MARK: Weather
+    public static var lastSyncedWeatherDate:Date {
         get{
-            if let sorted = UserDefaults().object(forKey: SETWEATHER_KEY){
-                return sorted as! Date
+            if let object = UserDefaults().object(forKey: LAST_SYNC_WEATHER_DATE), let date = object as? Date{
+                return date
             }
             return Date()
         }
         set{
-            UserDefaults().set(newValue, forKey: SETWEATHER_KEY)
+            UserDefaults().set(newValue, forKey: LAST_SYNC_WEATHER_DATE)
+        }
+    }
+
+    public static var lastSyncedWeatherCity:String? {
+        get{
+            return UserDefaults().string(forKey: LAST_SYNC_WEATHER_CITY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: LAST_SYNC_WEATHER_CITY)
         }
     }
     
