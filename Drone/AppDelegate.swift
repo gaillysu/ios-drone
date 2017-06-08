@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       
       self.startLocation()
       
-      let config = Realm.Configuration(schemaVersion: 5, migrationBlock: { migration, oldSchemaVersion in
+      let config = Realm.Configuration(schemaVersion: 6, migrationBlock: { migration, oldSchemaVersion in
          migration.enumerateObjects(ofType: Compass.className()) { oldObject, newObject in
             // combine name fields into a single field
             let activeTime = oldObject!["activeTime"] as! Int

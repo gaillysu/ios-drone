@@ -65,13 +65,9 @@ class DataBaseManager: NSObject {
             let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
                 if oldSchemaVersion < self.schemaVersion {
                 }
-                print("Migration complete.")
             }
             
             Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: migrationBlock)
-//            
-//            print("Migrated objects in the default Realm: \(try! Realm().objects(City.self))")
-//            
         }else{
             DispatchQueue.global(qos: .default).async {
                 WorldClockDatabaseHelper().setup()
