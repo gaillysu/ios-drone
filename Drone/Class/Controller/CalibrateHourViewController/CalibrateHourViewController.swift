@@ -27,20 +27,38 @@ class CalibrateHourViewController: BaseViewController {
         }.addDisposableTo(disposeBag)
         counterClockwiseButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
             self.getAppDelegate().calibrateHands(operation: .hourReverseOneStep)
+            print("Karl touch up inside")
         }.addDisposableTo(disposeBag)
         
         clockwiseButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
             self.getAppDelegate().calibrateHands(operation: .hourAdvanceOneStep)
+            print("Karl touch up inside")
         }.addDisposableTo(disposeBag)
         clockwiseButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressClockwise)))
         counterClockwiseButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressCounterClockwise)))
     }
     
-    func longPressClockwise(){
-        self.getAppDelegate().calibrateHands(operation: .hourAdvanceOneStep)
+    func longPressClockwise(gesture:UILongPressGestureRecognizer){
+        switch gesture.state {
+        case .began:
+            self.getAppDelegate().calibrateHands(operation: .hourStartAC)
+        case .cancelled:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        case .ended:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        default: break
+        }
     }
     
-    func longPressCounterClockwise(){
-        self.getAppDelegate().calibrateHands(operation: .hourReverseOneStep)
+    func longPressCounterClockwise(gesture:UILongPressGestureRecognizer){
+        switch gesture.state {
+        case .began:
+            self.getAppDelegate().calibrateHands(operation: .hourStartRC)
+        case .cancelled:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        case .ended:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        default: break
+        }
     }
 }

@@ -37,12 +37,28 @@ class CalibrateSecondViewController: BaseViewController {
         clockwiseButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressClockwise)))
         counterClockwiseButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressCounterClockwise)))
     }
-    
-    func longPressClockwise(){
-        self.getAppDelegate().calibrateHands(operation: .secondAdvanceOneStep)
+
+    func longPressClockwise(gesture:UILongPressGestureRecognizer){
+        switch gesture.state {
+        case .began:
+            self.getAppDelegate().calibrateHands(operation: .secondStartAC)
+        case .cancelled:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        case .ended:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        default: break
+        }
     }
     
-    func longPressCounterClockwise(){
-        self.getAppDelegate().calibrateHands(operation: .secondReverseOneStep)
+    func longPressCounterClockwise(gesture:UILongPressGestureRecognizer){
+        switch gesture.state {
+        case .began:
+            self.getAppDelegate().calibrateHands(operation: .secondStartRC)
+        case .cancelled:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        case .ended:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        default: break
+        }
     }
 }

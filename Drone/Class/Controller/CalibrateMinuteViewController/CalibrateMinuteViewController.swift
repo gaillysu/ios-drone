@@ -36,12 +36,28 @@ class CalibrateMinuteViewController: BaseViewController {
         counterClockwiseButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressCounterClockwise)))
     }
     
-    func longPressClockwise(){
-        self.getAppDelegate().calibrateHands(operation: .minuteAdvanceOneStep)
+    func longPressClockwise(gesture:UILongPressGestureRecognizer){
+        switch gesture.state {
+        case .began:
+            self.getAppDelegate().calibrateHands(operation: .minuteStartAC)
+        case .cancelled:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        case .ended:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        default: break
+        }
     }
     
-    func longPressCounterClockwise(){
-        self.getAppDelegate().calibrateHands(operation: .minuteReverseOneStep)
+    func longPressCounterClockwise(gesture:UILongPressGestureRecognizer){
+        switch gesture.state {
+        case .began:
+            self.getAppDelegate().calibrateHands(operation: .minuteStartRC)
+        case .cancelled:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        case .ended:
+            self.getAppDelegate().calibrateHands(operation: .stopHandsMovement)
+        default: break
+        }
     }
     
 }
