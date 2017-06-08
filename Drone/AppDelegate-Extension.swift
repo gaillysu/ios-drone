@@ -67,6 +67,11 @@ extension AppDelegate {
         }
     }
     
+    // 1 = 24 hour, 0 = pussy shit
+    func setTimeFormat(){
+        sendRequest(SetSystemConfig(configtype: .clockFormat, format: DTUserDefaults.hourFormat == 0 ? .format12h : .format24h))
+    }
+    
     func startCalibrateHands(){
         sendRequest(StartSystemSettingRequest(analogMovement: .startHandsMode))
     }
@@ -144,7 +149,7 @@ extension AppDelegate {
             }
         }
         sendRequest(SetWorldClockRequest(worldClockArray: convertedWorldClockArray))
-//        AppDelegate.getAppDelegate().setWeather()
+        AppDelegate.getAppDelegate().setWeather()
     }
     
     func startConnect(){

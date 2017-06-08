@@ -24,6 +24,8 @@ public class DTUserDefaults: NSObject {
     private static let SYNC_LOCAL_TIME_KEY = "SYNC_LOCAL_TIME_KEY"
     private static let SYNC_ANALOG_TIME_KEY = "SYNC_ANALOG_TIME_KEY"
     
+    private static let HOUR_FORMAT_KEY = "HOUR_FORMAT_KEY"
+    
     
     
     // MARK: Setup
@@ -123,6 +125,16 @@ public class DTUserDefaults: NSObject {
         }
     }
     
+    public static var hourFormat:Int {
+        get{
+            return UserDefaults().integer(forKey: HOUR_FORMAT_KEY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: HOUR_FORMAT_KEY)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     // MARK: Compass
     public static var compassState:Bool {
         get{
@@ -155,5 +167,6 @@ public class DTUserDefaults: NSObject {
             UserDefaults.standard.synchronize()
         }
     }
+    
     
 }

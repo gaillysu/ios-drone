@@ -18,6 +18,7 @@ class TimeSettingsViewController: BaseViewController {
     let identifier = "ClockSettingsTableViewCell"
     let identifierSwitch = "ClockSettingsTableViewCellSwitch"
     let syncTimeItems = ["Local Time","Home Time"]
+    let hourFormat = ["12 Hour Format","24 Hour Format"]
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,7 +33,8 @@ class TimeSettingsViewController: BaseViewController {
         let section = Variable(
             [TimeSettingsSectionModel(header: "Analog Time Display", footer: "Sync the time of your watch with local or home time If you don't turn on Analog Time Syncing, the time on your watch will never change.", items: [
                 TimeSettingsSectionItem(label: "Analog Time Syncing"),
-                TimeSettingsSectionItem(label: "Sync Time")]),
+                TimeSettingsSectionItem(label: "Sync Time"),
+                TimeSettingsSectionItem(label: "24 Hour Format")]),
              TimeSettingsSectionModel(header: "Calibration", footer: "", items: [
                 TimeSettingsSectionItem(label: "Recalibrate hands")])])
         
@@ -65,7 +67,19 @@ class TimeSettingsViewController: BaseViewController {
                 cell.enable(on: DTUserDefaults.syncAnalogTime)
                 cell.selectionStyle = .none
                 return cell
+            } else if indexPath.row == 2 && indexPath.section == 0 {
+                let cell:ClockSettingsTableViewCellSwitch  = table.dequeueReusableCell(forIndexPath: indexPath)
+                let item = dataSource[indexPath]
+                cell.settingLabel.text = item.label
+                cell.settingSwitch.setOn(DTUserDefaults.hourFormat == 1 ? true : false, animated: true)
+                cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
+                    let isOn = cell.settingSwitch.isOn
+                    DTUserDefaults.hourFormat = isOn ? 1 : 0
+                    self.getAppDelegate().setTimeFormat()
+                }).addDisposableTo(self.disposeBag)
+                return cell
             }
+            
             let cell:ClockSettingsTableViewCell = table.dequeueReusableCell(forIndexPath: indexPath)
             cell.settingsLabel.text = item.label
             cell.settingsTextField.isEnabled = false
@@ -101,7 +115,6 @@ class TimeSettingsViewController: BaseViewController {
                     }
                 }
             }
-            
             }.addDisposableTo(self.disposeBag)
     }
 }

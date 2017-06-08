@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          
       })
       Realm.Configuration.defaultConfiguration = config
-
+      
       _ = DataBaseManager.manager
       _ = NetworkManager.manager
       
@@ -75,7 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       nav.isNavigationBarHidden = true
       self.window?.rootViewController = nav
       self.window?.makeKeyAndVisible()
-      
       return true
    }
    
@@ -101,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             if(systemStatus == SystemStatus.systemReset.rawValue) {
                //step1 : Set systemconfig next 1
                DTUserDefaults.setupKey = true
-               
+               DTUserDefaults.hourFormat = 1
                self.setSystemConfig()
                print("SetupKey = (\(DTUserDefaults.setupKey))")
                //Records need to use 0x30
@@ -212,9 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             //setp1: cmd:0x01 read system status
             self.readsystemStatus()
          })
-         
          DataBaseManager.manager.addOrUpdateDevice(fromAddress: fromAddress)
-         
       }else{
          SyncQueue.sharedInstance.clear()
       }
@@ -271,8 +268,8 @@ extension AppDelegate{
       self.setStepsToWatch()
       print("setStepsToWatch")
       
-      //      setWeather()
-      //      print("setWeather")
+      setWeather()
+      print("setWeather")
    }
    
    func setNotification() {
