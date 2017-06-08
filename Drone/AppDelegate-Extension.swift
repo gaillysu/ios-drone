@@ -81,7 +81,6 @@ extension AppDelegate {
     
     func setRTC(force:Bool) {
         if DTUserDefaults.syncAnalogTime || force {
-            print("setting RTC")
             sendRequest(SetRTCRequest())
         }
     }
@@ -259,16 +258,16 @@ extension AppDelegate {
     }
     
     func setWeather(cityname:String?) {
-        DTUserDefaults.syncWeatherDate = Date()
         var cityArray:[City] = DataBaseManager.manager.getCitySelected()
         if let name = cityname {
+            DTUserDefaults.lastSyncedWeatherDate = Date()
             let city:City = City()
             city.name = name
             cityArray.append(city)
         }
         
         var weatherArray:[WeatherLocationModel] = []
-        for (index,city) in cityArray.enumerated() {
+        for (index,city) in cityArray.reversed().enumerated() {
             let cityid:UInt8 = UInt8(index+10)
             let model:WeatherLocationModel = WeatherLocationModel(id: cityid, titleString: city.name)
             weatherArray.append(model)
@@ -290,9 +289,10 @@ extension AppDelegate {
     
     func setGPSLocalWeather(location:CLLocation) {
         CLGeocoder().reverseGeocodeLocationInfo(location: location) {(locationInfo, error) in
-            if Date().timeIntervalSince1970-DTUserDefaults.syncWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+            if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+                DTUserDefaults.lastSyncedWeatherCity = locationInfo.cityName
                 self.setWeather(cityname: locationInfo.cityName)
-            }
+            } 
         }
     }
     
@@ -302,10 +302,12 @@ extension AppDelegate {
         LocationManager.manager.didUpdateLocations = { location in
             let locationArray = location as [CLLocation]
             /**
-             sync every hour weather data
+             sync every 30 min weather data
              */
-            if Date().timeIntervalSince1970-DTUserDefaults.syncWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
-                self.setGPSLocalWeather(location: locationArray.last!)
+            if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+                if let location = locationArray.last {
+                    self.setGPSLocalWeather(location: location)
+                }
             }
         }
     }

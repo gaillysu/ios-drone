@@ -173,7 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             /**
              sync every hour weather data
              */
-            if Date().timeIntervalSince1970-DTUserDefaults.syncWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+            if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
                if let location = LocationManager.manager.getCurrentLocation() {
                   self.setGPSLocalWeather(location: location)
                }
@@ -225,8 +225,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:String) {
       let mcuver = AppTheme.GET_SOFTWARE_VERSION()
       let blever = AppTheme.GET_FIRMWARE_VERSION()
-      
-      NSLog("Build in software version: \(mcuver), firmware version: \(blever)")
       if whichfirmware == DfuFirmwareTypes.application {
          let versionData:PostWatchVersionData = PostWatchVersionData(version: version, type: "BLE")
          SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:versionData)
@@ -273,8 +271,8 @@ extension AppDelegate{
       self.setStepsToWatch()
       print("setStepsToWatch")
       
-      //      setWeather()
-      //      print("setWeather")
+      self.setWeather(cityname: DTUserDefaults.lastSyncedWeatherCity)
+      
    }
    
    func setNotification() {
