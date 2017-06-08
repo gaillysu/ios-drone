@@ -161,7 +161,6 @@ open class BalloonMarker:NSUIView, IMarker
         }
         
         _drawAttributes.removeAll()
-        _drawAttributes[NSFontAttributeName] = UIFont(name: "Raleway", size: 10)!
         _drawAttributes[NSParagraphStyleAttributeName] = _paragraphStyle
         _drawAttributes[NSForegroundColorAttributeName] = UIColor.white
         
