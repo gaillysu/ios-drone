@@ -104,9 +104,11 @@ class WeatherNetworkApiManager: NSObject {
                     var code:Int = 0
                     var text:String = listModel.first!.stateText
                     
+                    let localTimeSeconds = TimeZone.current.secondsFromGMT()
+                    let localDate = Date(timeIntervalSince1970: (Date().timeIntervalSince1970-Double(localTimeSeconds)))
                     for model in listModel{
                         if let hourDate = model.dt_txt.dateFromFormat("yyyy-MM-dd HH:mm:ss", locale:  DateFormatter().locale) {
-                            if hourDate.hour > Date().hour {
+                            if hourDate.hour > localDate.hour {
                                 temp = model.temp.toFloat()
                                 code = model.code.toInt()
                                 text = model.stateText;
