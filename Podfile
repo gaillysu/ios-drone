@@ -24,9 +24,9 @@ target 'Drone' do
     pod 'RxCocoa',    '~> 3.0'
     pod 'RxDataSources', '~> 1.0'
     pod 'SwiftyTimer'
-
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
     pod 'Font-Awesome-Swift'
-    
     pod 'Pulley'
 end
 

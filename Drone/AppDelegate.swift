@@ -10,13 +10,13 @@ import UIKit
 import CoreData
 import Alamofire
 import SwiftEventBus
-
 import Fabric
 import Crashlytics
 import IQKeyboardManagerSwift
 import RealmSwift
 import SwiftyJSON
-
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
@@ -45,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       Fabric.with([Crashlytics.self])
+      
+      configGooleMap()
       
       self.startLocation()
       
@@ -80,6 +82,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    func applicationDidEnterBackground(_ application: UIApplication) {
       UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
+   }
+   
+   func configGooleMap() {
+      let googleMapAppKey = "AIzaSyBwjik9HS2CLT5n8yDxwRHjtT2num_G0eI"
+      GMSServices.provideAPIKey(googleMapAppKey)
+      GMSPlacesClient.provideAPIKey(googleMapAppKey)
    }
    
    // MARK: - ConnectionControllerDelegate
