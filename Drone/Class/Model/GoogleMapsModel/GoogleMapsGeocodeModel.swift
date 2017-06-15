@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoogleMapsModel: NSObject {
+class GoogleMapsGeocodeModel: NSObject {
 
     var countryLong_name:String = ""
     var countryShort_name:String = ""

@@ -21,7 +21,7 @@ class RoutesController: UIViewController {
     @IBOutlet weak var alternativeLabel: UILabel!
     @IBOutlet weak var timerConstraint: NSLayoutConstraint!
     
-    var placemarks:CLPlacemark?
+    var geocodeModel:GoogleMapsGeocodeModel?
     
     fileprivate var routeArray:[MKRoute] = []
     fileprivate var statrtTimer:Timer?
@@ -41,28 +41,28 @@ class RoutesController: UIViewController {
     }
     
     func calculateRoute() {
-        let placemark:MKPlacemark = MKPlacemark(placemark: placemarks!)
-        placemark.calculateRoute { (route, error) in
-            if error == nil {
-                for value in route! {
-                    self.routeArray.append(value)
-                }
-                
-                self.routeArray.sort{
-                    switch ($0, $1) {
-                    case let (aCode, bCode):
-                        return aCode.distance < bCode.distance
-                    }
-                }
-                
-                for (index,_) in self.routeArray.enumerated() {
-                    self.routesSegmented.insertSegment(withTitle: "Route \(index+1)", at: index, animated: false)
-                }
-                
-                self.routesSegmented.selectedSegmentIndex = 0
-                self.selectedRoutes(index: 0)
-            }
-        }
+//        let placemark:MKPlacemark = MKPlacemark(placemark: placemarks!)
+//        placemark.calculateRoute { (route, error) in
+//            if error == nil {
+//                for value in route! {
+//                    self.routeArray.append(value)
+//                }
+//                
+//                self.routeArray.sort{
+//                    switch ($0, $1) {
+//                    case let (aCode, bCode):
+//                        return aCode.distance < bCode.distance
+//                    }
+//                }
+//                
+//                for (index,_) in self.routeArray.enumerated() {
+//                    self.routesSegmented.insertSegment(withTitle: "Route \(index+1)", at: index, animated: false)
+//                }
+//                
+//                self.routesSegmented.selectedSegmentIndex = 0
+//                self.selectedRoutes(index: 0)
+//            }
+//        }
     }
 
     @IBAction func routesSelectedAction(_ sender: Any) {
@@ -114,8 +114,8 @@ extension RoutesController {
         }
         setLabelValue(route: route,routeText: routeString)
         
-        let postRoute:PostRoutes = PostRoutes(mPlacemarks: placemarks!, mRoute: route)
-        SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
+//        let postRoute:PostRoutes = PostRoutes(mPlacemarks: placemarks!, mRoute: route)
+//        SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
     }
     
     func setLabelValue(route:MKRoute,routeText:String) {
@@ -130,7 +130,7 @@ extension RoutesController {
         
         displayTimer()
         
-        AppDelegate.getAppDelegate().startNavigation(name: placemarks!.name!)
+        //AppDelegate.getAppDelegate().startNavigation(name: placemarks!.name!)
     }
     
     func stopTimer() {
@@ -188,9 +188,9 @@ extension RoutesController {
         if seconds%5 == 0 {
             if let location = LocationManager.manager.getCurrentLocation() {
                 let current:CLLocation = location
-                let before:CLLocation = placemarks!.location!
-                let meters = current.distance(from: before)
-                AppDelegate.getAppDelegate().updateNavigation(distance: Int(meters))
+//                let before:CLLocation = placemarks!.location!
+//                let meters = current.distance(from: before)
+//                AppDelegate.getAppDelegate().updateNavigation(distance: Int(meters))
             }
         }
     }

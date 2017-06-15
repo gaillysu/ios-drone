@@ -14,6 +14,12 @@ enum ActionType {
     case set
 }
 
+var countryCode:String?{
+    let currentLocale:Locale = Locale.current
+    let countryCode = currentLocale.regionCode
+    return countryCode
+}
+
 class AppTheme {
 
     /**

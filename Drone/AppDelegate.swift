@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       Fabric.with([Crashlytics.self])
       
       configGooleMap()
-      
+
       self.startLocation()
       
       let config = Realm.Configuration(schemaVersion: 6, migrationBlock: { migration, oldSchemaVersion in

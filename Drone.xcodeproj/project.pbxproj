@@ -27,7 +27,7 @@
 		61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */; };
 		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
 		61352C951EF108D700F82907 /* GoogleMapNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */; };
-		61352C981EF121EE00F82907 /* GoogleMapsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C971EF121EE00F82907 /* GoogleMapsModel.swift */; };
+		61352C981EF121EE00F82907 /* GoogleMapsGeocodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C971EF121EE00F82907 /* GoogleMapsGeocodeModel.swift */; };
 		613928F01EA99DD900450284 /* WeatherCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928EF1EA99DD900450284 /* WeatherCacheModel.swift */; };
 		613928F41EA99F1B00450284 /* EveryHourWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */; };
 		613928F61EA9A1C100450284 /* WeatherCityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F51EA9A1C100450284 /* WeatherCityModel.swift */; };
@@ -213,6 +213,11 @@
 		61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */; };
 		61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */; };
 		61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CB11EA83FFB0019F574 /* URL+Extension.swift */; };
+		61C48FAD1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FAC1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift */; };
+		61C48FAF1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FAE1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift */; };
+		61C48FB11EF22DAE007A0709 /* GoogleWaypointsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB01EF22DAE007A0709 /* GoogleWaypointsModel.swift */; };
+		61C48FB31EF22E27007A0709 /* GoogleMapsRoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */; };
+		61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */; };
 		61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
 		61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
 		61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
@@ -322,7 +327,7 @@
 		61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
 		61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapNetworkManager.swift; sourceTree = "<group>"; };
-		61352C971EF121EE00F82907 /* GoogleMapsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsModel.swift; sourceTree = "<group>"; };
+		61352C971EF121EE00F82907 /* GoogleMapsGeocodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsGeocodeModel.swift; sourceTree = "<group>"; };
 		613928EF1EA99DD900450284 /* WeatherCacheModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCacheModel.swift; sourceTree = "<group>"; };
 		613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryHourWeatherModel.swift; sourceTree = "<group>"; };
 		613928F51EA9A1C100450284 /* WeatherCityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCityModel.swift; sourceTree = "<group>"; };
@@ -508,6 +513,11 @@
 		61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendStepsToWatchCache.swift; sourceTree = "<group>"; };
 		61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncLastDataCache.swift; sourceTree = "<group>"; };
 		61C28CB11EA83FFB0019F574 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		61C48FAC1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsDirectionsRequest.swift; sourceTree = "<group>"; };
+		61C48FAE1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsDirectionsModel.swift; sourceTree = "<group>"; };
+		61C48FB01EF22DAE007A0709 /* GoogleWaypointsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWaypointsModel.swift; sourceTree = "<group>"; };
+		61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsRoutesModel.swift; sourceTree = "<group>"; };
+		61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesStepsModel.swift; sourceTree = "<group>"; };
 		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
 		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
 		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -745,7 +755,11 @@
 		61352C961EF121E100F82907 /* GoogleMapsModel */ = {
 			isa = PBXGroup;
 			children = (
-				61352C971EF121EE00F82907 /* GoogleMapsModel.swift */,
+				61352C971EF121EE00F82907 /* GoogleMapsGeocodeModel.swift */,
+				61C48FAE1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift */,
+				61C48FB01EF22DAE007A0709 /* GoogleWaypointsModel.swift */,
+				61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */,
+				61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */,
 			);
 			path = GoogleMapsModel;
 			sourceTree = "<group>";
@@ -1284,8 +1298,9 @@
 				61C28C6B1EA5A03C0019F574 /* UserCreateRequest.swift */,
 				61C28C6C1EA5A03C0019F574 /* UserUpdateRequest.swift */,
 				61C28C851EA5BABB0019F574 /* WeatherInfoRequest.swift */,
-				61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */,
 				61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */,
+				61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */,
+				61C48FAC1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1944,6 +1959,7 @@
 				61C28C751EA5A03C0019F574 /* BasePutRequest.swift in Sources */,
 				619A9F191EC2AF6F006D65C4 /* RoutesController.swift in Sources */,
 				CBB892551EB33BB2006F7031 /* TimeSettingsSectionItem.swift in Sources */,
+				61C48FAD1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift in Sources */,
 				61C28BD61EA46F810019F574 /* SetContactsFilterRequest.swift in Sources */,
 				CBB892501EB33BAB006F7031 /* CompassSectionModel.swift in Sources */,
 				CB91926F1EBC7DC300BA14E6 /* HotKeysViewController.swift in Sources */,
@@ -1953,6 +1969,7 @@
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				CB15497A1EC01E0900090242 /* HotKeySectionModelItem.swift in Sources */,
 				CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */,
+				61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */,
 				61C28C1F1EA46F810019F574 /* WhichDeviceViewController.swift in Sources */,
 				61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */,
 				61C28BBE1EA46F810019F574 /* ActivityPacket.swift in Sources */,
@@ -1977,6 +1994,7 @@
 				61C28C711EA5A03C0019F574 /* BaseDeleteRequest.swift in Sources */,
 				61C28BE11EA46F810019F574 /* UpdateContactsFilterRequest.swift in Sources */,
 				61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */,
+				61C48FB11EF22DAE007A0709 /* GoogleWaypointsModel.swift in Sources */,
 				61C28C771EA5A03C0019F574 /* LoginRequest.swift in Sources */,
 				61C28BFF1EA46F810019F574 /* MenuViewCell.swift in Sources */,
 				61C28C071EA46F810019F574 /* ProfileSetupViewController.swift in Sources */,
@@ -2017,6 +2035,7 @@
 				61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */,
 				61C28BDC1EA46F810019F574 /* SetUserProfileRequest.swift in Sources */,
 				61C28BDA1EA46F810019F574 /* SetStepsToWatchReuqest.swift in Sources */,
+				61C48FAF1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift in Sources */,
 				CB9F653B1EA72D37007982B0 /* CounterClockwiseButton.swift in Sources */,
 				61C28BBB1EA46F810019F574 /* ConnectionController.swift in Sources */,
 				61C28C331EA46F810019F574 /* StepsMenuItem.swift in Sources */,
@@ -2027,6 +2046,7 @@
 				CB9F65441EA86303007982B0 /* TimeSettingsViewController.swift in Sources */,
 				61078DC21E48249C00898A0D /* Duration.swift in Sources */,
 				613928FE1EAA026B00450284 /* Float+Extension.swift in Sources */,
+				61C48FB31EF22E27007A0709 /* GoogleMapsRoutesModel.swift in Sources */,
 				61C28C361EA46F810019F574 /* WeatherUpdateModel.swift in Sources */,
 				61C28BC31EA46F810019F574 /* SystemStatusPacket.swift in Sources */,
 				61C28C781EA5A03C0019F574 /* NetworkRequest.swift in Sources */,
@@ -2068,7 +2088,7 @@
 				61C28C7D1EA5A03C0019F574 /* UserCreateRequest.swift in Sources */,
 				61FAB9BB1EBC4E2D00513E97 /* MapNavigationViewController.swift in Sources */,
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
-				61352C981EF121EE00F82907 /* GoogleMapsModel.swift in Sources */,
+				61352C981EF121EE00F82907 /* GoogleMapsGeocodeModel.swift in Sources */,
 				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
 				61C28BBC1EA46F810019F574 /* ConnectionControllerImpl.swift in Sources */,
 				CBB892511EB33BAB006F7031 /* CompassSectionModelItem.swift in Sources */,
