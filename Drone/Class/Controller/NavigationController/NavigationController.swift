@@ -65,7 +65,7 @@ extension NavigationController {
     func registerEventBusMessage() {
         SwiftEventBus.onMainThread(self, name: SEARCH_ACTION_CLICK) { (notification) in
             let postRoute:PostRoutes = notification.object as! PostRoutes
-            
+            postRoute.rectangle?.map = self.navigationMapView
         }
     }
     
@@ -79,6 +79,12 @@ extension NavigationController {
         navigationMapView.settings.myLocationButton = true;
         navigationMapView.isMyLocationEnabled = true
         //geocoding api, directions api
+        
+        let Location = LocationManager.manager.currentLocation ?? CLLocation(latitude: 0, longitude: 0)
+        let locationLatitude:Double = Location.coordinate.latitude
+        let locationLongitude:Double = Location.coordinate.longitude
+        let camera:GMSCameraPosition = GMSCameraPosition.camera(withLatitude: locationLatitude, longitude: locationLongitude, zoom: 14)
+        navigationMapView.camera = camera
         navigationMapView.addObserver(self, forKeyPath: myLocation, options: NSKeyValueObservingOptions.new, context: nil)
     }
     

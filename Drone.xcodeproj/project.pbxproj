@@ -218,6 +218,7 @@
 		61C48FB11EF22DAE007A0709 /* GoogleWaypointsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB01EF22DAE007A0709 /* GoogleWaypointsModel.swift */; };
 		61C48FB31EF22E27007A0709 /* GoogleMapsRoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */; };
 		61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */; };
+		61C48FB81EF26F1F007A0709 /* DRHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB71EF26F1F007A0709 /* DRHUD.swift */; };
 		61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
 		61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
 		61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
@@ -518,6 +519,7 @@
 		61C48FB01EF22DAE007A0709 /* GoogleWaypointsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleWaypointsModel.swift; sourceTree = "<group>"; };
 		61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsRoutesModel.swift; sourceTree = "<group>"; };
 		61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesStepsModel.swift; sourceTree = "<group>"; };
+		61C48FB71EF26F1F007A0709 /* DRHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRHUD.swift; sourceTree = "<group>"; };
 		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
 		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
 		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -1130,6 +1132,7 @@
 		61C28B711EA46F810019F574 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				61C48FB61EF26F1F007A0709 /* DRHUD */,
 				61FAB9B21EBC240900513E97 /* MapCell */,
 				CB9F654C1EA8AA8A007982B0 /* ClockSettingsTableViewCell */,
 				CB9F654A1EA8A719007982B0 /* ClockSettingsTableViewCellSwitch */,
@@ -1378,6 +1381,15 @@
 			);
 			path = DefaultRealm;
 			sourceTree = "<group>";
+		};
+		61C48FB61EF26F1F007A0709 /* DRHUD */ = {
+			isa = PBXGroup;
+			children = (
+				61C48FB71EF26F1F007A0709 /* DRHUD.swift */,
+			);
+			name = DRHUD;
+			path = Drone/Class/View/DRHUD;
+			sourceTree = SOURCE_ROOT;
 		};
 		61D4709D1DE2E06600620BD0 /* Sandbox */ = {
 			isa = PBXGroup;
@@ -1960,6 +1972,7 @@
 				619A9F191EC2AF6F006D65C4 /* RoutesController.swift in Sources */,
 				CBB892551EB33BB2006F7031 /* TimeSettingsSectionItem.swift in Sources */,
 				61C48FAD1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift in Sources */,
+				61C48FB81EF26F1F007A0709 /* DRHUD.swift in Sources */,
 				61C28BD61EA46F810019F574 /* SetContactsFilterRequest.swift in Sources */,
 				CBB892501EB33BAB006F7031 /* CompassSectionModel.swift in Sources */,
 				CB91926F1EBC7DC300BA14E6 /* HotKeysViewController.swift in Sources */,

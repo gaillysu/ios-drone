@@ -28,6 +28,7 @@ target 'Drone' do
     pod 'GooglePlaces'
     pod 'Font-Awesome-Swift'
     pod 'Pulley'
+    pod 'PKHUD', '~> 4.0'
 end
 
 post_install do |installer|

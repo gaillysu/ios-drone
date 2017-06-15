@@ -15,13 +15,11 @@ class MapViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
     
     var googleModel:GoogleMapsGeocodeModel? {
         didSet{
             titleLabel.text = googleModel?.localityLong_name
             detailLabel.text =  googleModel?.formatted_address
-            //self.distanceLabel.text = route!.first!.distance.distanceConvertMetricString()
         }
     }
         

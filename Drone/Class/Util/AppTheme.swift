@@ -20,6 +20,12 @@ var countryCode:String?{
     return countryCode
 }
 
+var localLanguage:String? {
+    let currentLocale:Locale = Locale.current
+    let language = currentLocale.languageCode
+    return language
+}
+
 class AppTheme {
 
     /**

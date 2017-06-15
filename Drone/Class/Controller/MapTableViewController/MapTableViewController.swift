@@ -38,7 +38,7 @@ class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDa
 
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 60
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -74,8 +74,9 @@ extension MapTableViewController:UISearchBarDelegate {
     }
     
     func searchGeocodeAddress(object:String) {
+        DRHUD.startLoading(title: nil, subtitle: nil, hide: nil)
         GoogleMapNetworkManager.manager.geocodeAddressString(address: object) { (googleModel) in
-            print("search json\(googleModel?.description)")
+            DRHUD.hide(hideAfter: 0.1, completion: nil)
             self.pointArray.removeAll()
             googleModel?.forEach({ (theGoogleModel) in
                 self.pointArray.append(theGoogleModel)

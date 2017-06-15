@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import SwiftEventBus
 import SwiftyTimer
+import GoogleMaps
 
 class RoutesController: UIViewController {
     @IBOutlet weak var routesSegmented: UISegmentedControl!
@@ -20,6 +21,10 @@ class RoutesController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var alternativeLabel: UILabel!
     @IBOutlet weak var timerConstraint: NSLayoutConstraint!
+    
+    fileprivate let routeMode:[String] = ["Driving","Walking","Transit"]
+    
+    var googleMapView:GMSMapView?
     
     var geocodeModel:GoogleMapsGeocodeModel?
     
@@ -35,34 +40,12 @@ class RoutesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.routesSegmented.removeAllSegments();
-        calculateRoute()
+        self.routesSegmented.removeAllSegments()
+        
+        for (index,value) in routeMode.enumerated() {
+            self.routesSegmented.insertSegment(withTitle: value, at: index, animated: false)
+        }
 
-    }
-    
-    func calculateRoute() {
-//        let placemark:MKPlacemark = MKPlacemark(placemark: placemarks!)
-//        placemark.calculateRoute { (route, error) in
-//            if error == nil {
-//                for value in route! {
-//                    self.routeArray.append(value)
-//                }
-//                
-//                self.routeArray.sort{
-//                    switch ($0, $1) {
-//                    case let (aCode, bCode):
-//                        return aCode.distance < bCode.distance
-//                    }
-//                }
-//                
-//                for (index,_) in self.routeArray.enumerated() {
-//                    self.routesSegmented.insertSegment(withTitle: "Route \(index+1)", at: index, animated: false)
-//                }
-//                
-//                self.routesSegmented.selectedSegmentIndex = 0
-//                self.selectedRoutes(index: 0)
-//            }
-//        }
     }
 
     @IBAction func routesSelectedAction(_ sender: Any) {
@@ -105,22 +88,48 @@ class RoutesController: UIViewController {
 
 extension RoutesController {
     func selectedRoutes(index:Int) {
-        let route = self.routeArray[index]
-        var routeString = ""
-        if index == 0 {
-            routeString = "Shortest distance"
-        }else{
-            routeString = "Alternative";
+        guard geocodeModel?.geometry_location_lat != nil || geocodeModel?.geometry_location_lng != nil || LocationManager.manager.currentLocation != nil else {
+            DRHUD.showHudAndDissmiss(title: "not destination location", subtitle: nil, duration: 1.2, type: DRHUD.DRHudType.error, completion: nil)
+            return
         }
-        setLabelValue(route: route,routeText: routeString)
         
-//        let postRoute:PostRoutes = PostRoutes(mPlacemarks: placemarks!, mRoute: route)
-//        SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
+        let mode = routeMode[index]
+        
+        let startLocation_lat:String = "\(LocationManager.manager.currentLocation!.coordinate.latitude)"
+        let startLocation_lng:String = "\(LocationManager.manager.currentLocation!.coordinate.longitude)"
+        let startAddres:String = startLocation_lat+","+startLocation_lng
+        
+        let endLocation_lat:String = geocodeModel!.geometry_location_lat
+        let endLocation_lng:String = geocodeModel!.geometry_location_lng
+        let endAddres:String = endLocation_lat+","+endLocation_lng
+        
+        GoogleMapNetworkManager.manager.getGoogleMapsDirections(startAddres: startAddres, endAddres: endAddres, mode: mode) { (directionsModel) in
+            if directionsModel != nil {
+                let path = GMSMutablePath()
+                var isStart:Bool = true
+                directionsModel?.routes.forEach({ (routesModel) in
+                    self.setLabelValue(takeTime: routesModel.duration_text, distance: routesModel.distance_text, routeText: "")
+                    routesModel.routesSteps.forEach({ (routesStepsModel) in
+                        path.add(CLLocationCoordinate2D(latitude:routesStepsModel.start_location_lat, longitude: routesStepsModel.start_location_lng))
+                        path.add(CLLocationCoordinate2D(latitude:routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
+                    })
+                })
+                
+                let rectangle = GMSPolyline(path: path)
+                rectangle.strokeWidth = 2.3
+                rectangle.strokeColor = .getBaseColor()
+                rectangle.geodesic = true
+                
+                let postRoute:PostRoutes = PostRoutes(rectangle: rectangle)
+                SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
+            }
+        }
+        
     }
     
-    func setLabelValue(route:MKRoute,routeText:String) {
-        takeTimeLabel.text = route.expectedTravelTime.timeConvertString()
-        distanceLabel.text = route.distance.distanceConvertMetricString()
+    func setLabelValue(takeTime:String, distance:String ,routeText:String) {
+        takeTimeLabel.text = takeTime
+        distanceLabel.text = distance
         alternativeLabel.text = routeText
     }
     
@@ -186,7 +195,7 @@ extension RoutesController {
     func sendUpdateNavigation(elapsedValue:TimeInterval) {
         let seconds:Int = Int(elapsedValue)
         if seconds%5 == 0 {
-            if let location = LocationManager.manager.getCurrentLocation() {
+            if let location = LocationManager.manager.currentLocation {
                 let current:CLLocation = location
 //                let before:CLLocation = placemarks!.location!
 //                let meters = current.distance(from: before)

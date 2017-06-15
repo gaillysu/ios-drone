@@ -182,7 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
              sync every hour weather data
              */
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
-               if let location = LocationManager.manager.getCurrentLocation() {
+               if let location = LocationManager.manager.currentLocation {
                   self.setGPSLocalWeather(location: location)
                }
             }
