@@ -94,5 +94,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>GoogleMapKey</key>
+	<string>AIzaSyBwjik9HS2CLT5n8yDxwRHjtT2num_G0eI</string>
 </dict>
 </plist>

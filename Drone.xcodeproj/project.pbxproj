@@ -26,6 +26,8 @@
 		61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */; };
 		61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */; };
 		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
+		61352C951EF108D700F82907 /* GoogleMapNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */; };
+		61352C981EF121EE00F82907 /* GoogleMapsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C971EF121EE00F82907 /* GoogleMapsModel.swift */; };
 		613928F01EA99DD900450284 /* WeatherCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928EF1EA99DD900450284 /* WeatherCacheModel.swift */; };
 		613928F41EA99F1B00450284 /* EveryHourWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */; };
 		613928F61EA9A1C100450284 /* WeatherCityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F51EA9A1C100450284 /* WeatherCityModel.swift */; };
@@ -211,6 +213,9 @@
 		61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */; };
 		61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */; };
 		61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CB11EA83FFB0019F574 /* URL+Extension.swift */; };
+		61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
+		61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
+		61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
 		61FAB9AA1EBC177000513E97 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9A81EBC177000513E97 /* NavigationController.swift */; };
@@ -316,6 +321,8 @@
 		61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapNetworkManager.swift; sourceTree = "<group>"; };
+		61352C971EF121EE00F82907 /* GoogleMapsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsModel.swift; sourceTree = "<group>"; };
 		613928EF1EA99DD900450284 /* WeatherCacheModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCacheModel.swift; sourceTree = "<group>"; };
 		613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryHourWeatherModel.swift; sourceTree = "<group>"; };
 		613928F51EA9A1C100450284 /* WeatherCityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCityModel.swift; sourceTree = "<group>"; };
@@ -501,6 +508,9 @@
 		61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendStepsToWatchCache.swift; sourceTree = "<group>"; };
 		61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncLastDataCache.swift; sourceTree = "<group>"; };
 		61C28CB11EA83FFB0019F574 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
+		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
+		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
 		61FAB9A81EBC177000513E97 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -730,6 +740,14 @@
 				61078DC11E48249C00898A0D /* String+Timepiece.swift */,
 			);
 			path = OldTimepiece;
+			sourceTree = "<group>";
+		};
+		61352C961EF121E100F82907 /* GoogleMapsModel */ = {
+			isa = PBXGroup;
+			children = (
+				61352C971EF121EE00F82907 /* GoogleMapsModel.swift */,
+			);
+			path = GoogleMapsModel;
 			sourceTree = "<group>";
 		};
 		613929221EB18C8800450284 /* WatchInfoModel */ = {
@@ -1132,6 +1150,7 @@
 		61C28B7B1EA46F810019F574 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				61352C961EF121E100F82907 /* GoogleMapsModel */,
 				61C28CA51EA756950019F574 /* Cache */,
 				61C28B7C1EA46F810019F574 /* DBModel */,
 				61C28B891EA46F810019F574 /* MenuItem */,
@@ -1229,6 +1248,7 @@
 				CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */,
 				CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */,
 				61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */,
+				61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1240,6 +1260,7 @@
 				61C28C5B1EA5A03C0019F574 /* StepsNetworkManager.swift */,
 				61C28C5C1EA5A03C0019F574 /* UserNetworkManager.swift */,
 				61C28C5D1EA5A03C0019F574 /* WeatherNetworkApiManager.swift */,
+				61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1263,6 +1284,8 @@
 				61C28C6B1EA5A03C0019F574 /* UserCreateRequest.swift */,
 				61C28C6C1EA5A03C0019F574 /* UserUpdateRequest.swift */,
 				61C28C851EA5BABB0019F574 /* WeatherInfoRequest.swift */,
+				61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */,
+				61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1935,6 +1958,7 @@
 				61C28BBE1EA46F810019F574 /* ActivityPacket.swift in Sources */,
 				61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */,
 				613928FF1EAA026B00450284 /* Int+Extension.swift in Sources */,
+				61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */,
 				61C28C251EA46F810019F574 /* UserProfile.swift in Sources */,
 				618323101EA4609C0054966D /* SMSegmentView.swift in Sources */,
 				CBB892541EB33BB2006F7031 /* TimeSettingsSectionModel.swift in Sources */,
@@ -1952,6 +1976,7 @@
 				61C28C841EA5B78A0019F574 /* MEDBanner.swift in Sources */,
 				61C28C711EA5A03C0019F574 /* BaseDeleteRequest.swift in Sources */,
 				61C28BE11EA46F810019F574 /* UpdateContactsFilterRequest.swift in Sources */,
+				61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */,
 				61C28C771EA5A03C0019F574 /* LoginRequest.swift in Sources */,
 				61C28BFF1EA46F810019F574 /* MenuViewCell.swift in Sources */,
 				61C28C071EA46F810019F574 /* ProfileSetupViewController.swift in Sources */,
@@ -1973,6 +1998,7 @@
 				61C28C091EA46F810019F574 /* ProfileTableViewCell.swift in Sources */,
 				00982CC81C868C8A003DA5E2 /* NevoBTimpl.swift in Sources */,
 				61C28C6D1EA5A03C0019F574 /* NetworkManager.swift in Sources */,
+				61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */,
 				00982CC91C868C8A003DA5E2 /* Profile.swift in Sources */,
 				61C28C2D1EA46F810019F574 /* DeviceMenuItem.swift in Sources */,
 				61FAB9C31EBC670800513E97 /* LocationManager.swift in Sources */,
@@ -2042,6 +2068,7 @@
 				61C28C7D1EA5A03C0019F574 /* UserCreateRequest.swift in Sources */,
 				61FAB9BB1EBC4E2D00513E97 /* MapNavigationViewController.swift in Sources */,
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
+				61352C981EF121EE00F82907 /* GoogleMapsModel.swift in Sources */,
 				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
 				61C28BBC1EA46F810019F574 /* ConnectionControllerImpl.swift in Sources */,
 				CBB892511EB33BAB006F7031 /* CompassSectionModelItem.swift in Sources */,
@@ -2095,6 +2122,7 @@
 				61C28CA01EA73E920019F574 /* PostActivityData.swift in Sources */,
 				61C28C381EA46F810019F574 /* Timezone.swift in Sources */,
 				CB1549811EC029A700090242 /* HotKeyTableViewCell.swift in Sources */,
+				61352C951EF108D700F82907 /* GoogleMapNetworkManager.swift in Sources */,
 				61C28C731EA5A03C0019F574 /* BaseNetworkRequest.swift in Sources */,
 				61C28C881EA5BB330019F574 /* WeatherBaseGetRequest.swift in Sources */,
 				61078DC51E48249C00898A0D /* NSCalendarUnit+Timepiece.swift in Sources */,

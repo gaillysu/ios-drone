@@ -85,9 +85,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    }
    
    func configGooleMap() {
-      let googleMapAppKey = "AIzaSyBwjik9HS2CLT5n8yDxwRHjtT2num_G0eI"
-      GMSServices.provideAPIKey(googleMapAppKey)
-      GMSPlacesClient.provideAPIKey(googleMapAppKey)
+      if let googleMapAppKey = Bundle.googleMapKey {
+         GMSServices.provideAPIKey(googleMapAppKey)
+         GMSPlacesClient.provideAPIKey(googleMapAppKey)
+      }
    }
    
    // MARK: - ConnectionControllerDelegate

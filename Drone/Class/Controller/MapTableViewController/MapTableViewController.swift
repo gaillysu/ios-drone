@@ -75,6 +75,10 @@ extension MapTableViewController:UISearchBarDelegate {
     }
     
     func searchGeocodeAddress(object:String) {
+        GoogleMapNetworkManager.manager.geocodeAddressString(address: object) { (json) in
+            print("search json\(json)")
+        }
+        
         let geocoder:CLGeocoder = CLGeocoder()
         geocoder.geocodeAddressString(object) { (placemarks, error) in
             if error != nil {
