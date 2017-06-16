@@ -106,7 +106,6 @@ extension RoutesController {
         GoogleMapNetworkManager.manager.getGoogleMapsDirections(startAddres: startAddres, endAddres: endAddres, mode: mode) { (directionsModel) in
             if directionsModel != nil {
                 let path = GMSMutablePath()
-                var isStart:Bool = true
                 directionsModel?.routes.forEach({ (routesModel) in
                     self.setLabelValue(takeTime: routesModel.duration_text, distance: routesModel.distance_text, routeText: "")
                     routesModel.routesSteps.forEach({ (routesStepsModel) in

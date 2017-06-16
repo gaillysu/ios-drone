@@ -71,16 +71,16 @@ class GoogleMapNetworkManager: NSObject {
         if resultsJson.count>0 {
             resultsJson.forEach({ (jsonValue) in
                 let addressComponents:[JSON] = jsonValue["address_components"].arrayValue
-                let geometry:[String:JSON] = jsonValue["geometry"].dictionaryValue
+                let geometry:JSON = jsonValue["geometry"]
                 let googleModel:GoogleMapsGeocodeModel = GoogleMapsGeocodeModel()
                 googleModel.formatted_address = jsonValue["formatted_address"].stringValue
-                googleModel.geometry_location_lat = geometry["location"]!.dictionaryValue["lat"]!.stringValue
-                googleModel.geometry_location_lng = geometry["location"]!.dictionaryValue["lng"]!.stringValue
-                googleModel.viewport_northeast_lat = geometry["viewport"]!.dictionaryValue["northeast"]!.dictionaryValue["lat"]!.stringValue
-                googleModel.viewport_northeast_lng = geometry["viewport"]!.dictionaryValue["northeast"]!.dictionaryValue["lng"]!.stringValue
-                googleModel.viewport_southwest_lat = geometry["viewport"]!.dictionaryValue["southwest"]!.dictionaryValue["lat"]!.stringValue
-                googleModel.viewport_southwest_lng = geometry["viewport"]!.dictionaryValue["southwest"]!.dictionaryValue["lng"]!.stringValue
-                googleModel.location_type = geometry["location_type"]!.stringValue
+                googleModel.geometry_location_lat = geometry["location"]["lat"].stringValue
+                googleModel.geometry_location_lng = geometry["location"]["lng"].stringValue
+                googleModel.viewport_northeast_lat = geometry["viewport"]["northeast"]["lat"].stringValue
+                googleModel.viewport_northeast_lng = geometry["viewport"]["northeast"]["lng"].stringValue
+                googleModel.viewport_southwest_lat = geometry["viewport"]["southwest"]["lat"].stringValue
+                googleModel.viewport_southwest_lng = geometry["viewport"]["southwest"]["lng"].stringValue
+                googleModel.location_type = geometry["location_type"].stringValue
                 
                 googleModel.place_id = jsonValue["place_id"].stringValue
                 jsonValue["types"].arrayValue.forEach({ (typesJSON) in
