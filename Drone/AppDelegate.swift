@@ -179,6 +179,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
          }
          
+         if packet.getHeader() == FindMyPhonePacket.HEADER() {
+            let findPhonePacket = FindMyPhonePacket(data: packet.getRawData())
+            if findPhonePacket.getFindMyPhoneState() == FindMyPhoneState.enable {
+               NotificationAlertSoundController.manager.playSound()
+            }
+         }
+         
          if(packet.getHeader() == SetGoalRequest.HEADER()){
             // Just callback for initialization.
             SwiftEventBus.post(SWIFTEVENT_BUS_INITIALIZATION_COMPLETED, sender:nil)
