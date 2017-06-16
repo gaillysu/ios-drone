@@ -72,14 +72,18 @@ class GoogleMapNetworkManager: NSObject {
             resultsJson.forEach({ (jsonValue) in
                 let addressComponents:[JSON] = jsonValue["address_components"].arrayValue
                 let geometry:JSON = jsonValue["geometry"]
+                let location:JSON = geometry["location"]
+                let northeast:JSON = geometry["viewport"]["northeast"]
+                let southwest:JSON = geometry["viewport"]["southwest"]
+                
                 let googleModel:GoogleMapsGeocodeModel = GoogleMapsGeocodeModel()
                 googleModel.formatted_address = jsonValue["formatted_address"].stringValue
-                googleModel.geometry_location_lat = geometry["location"]["lat"].stringValue
-                googleModel.geometry_location_lng = geometry["location"]["lng"].stringValue
-                googleModel.viewport_northeast_lat = geometry["viewport"]["northeast"]["lat"].stringValue
-                googleModel.viewport_northeast_lng = geometry["viewport"]["northeast"]["lng"].stringValue
-                googleModel.viewport_southwest_lat = geometry["viewport"]["southwest"]["lat"].stringValue
-                googleModel.viewport_southwest_lng = geometry["viewport"]["southwest"]["lng"].stringValue
+                googleModel.geometry_location_lat = location["lat"].stringValue
+                googleModel.geometry_location_lng = location["lng"].stringValue
+                googleModel.viewport_northeast_lat = northeast["lat"].stringValue
+                googleModel.viewport_northeast_lng = northeast["lng"].stringValue
+                googleModel.viewport_southwest_lat = southwest["lat"].stringValue
+                googleModel.viewport_southwest_lng = southwest["lng"].stringValue
                 googleModel.location_type = geometry["location_type"].stringValue
                 
                 googleModel.place_id = jsonValue["place_id"].stringValue

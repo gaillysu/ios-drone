@@ -79,7 +79,7 @@ extension NavigationController {
         let Location = LocationManager.manager.currentLocation ?? CLLocation(latitude: 0, longitude: 0)
         let locationLatitude:Double = Location.coordinate.latitude
         let locationLongitude:Double = Location.coordinate.longitude
-        let camera:GMSCameraPosition = GMSCameraPosition.camera(withLatitude: locationLatitude, longitude: locationLongitude, zoom: 14)
+        let camera:GMSCameraPosition = GMSCameraPosition.camera(withLatitude: locationLatitude, longitude: locationLongitude, zoom: 13.5)
         return camera
     }
     
@@ -88,7 +88,6 @@ extension NavigationController {
         navigationMapView.settings.compassButton = true;
         navigationMapView.settings.myLocationButton = true;
         navigationMapView.isMyLocationEnabled = true
-        //geocoding api, directions api
         navigationMapView.camera = getCamera()
         navigationMapView.addObserver(self, forKeyPath: myLocation, options: NSKeyValueObservingOptions.new, context: nil)
     }
@@ -99,7 +98,7 @@ extension NavigationController {
                 firstLocationUpdate = true;
                 if let changeObject = change {
                     let location:CLLocation = changeObject[NSKeyValueChangeKey.newKey] as! CLLocation
-                    let camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 14)
+                    let camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 13.5)
                     navigationMapView.camera = camera
                 }
             }
@@ -110,6 +109,6 @@ extension NavigationController {
 // MARK: - GMSMapViewDelegate
 extension NavigationController: GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-    
+
     }
 }

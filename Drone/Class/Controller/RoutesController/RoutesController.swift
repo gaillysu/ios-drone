@@ -115,7 +115,7 @@ extension RoutesController {
                 })
                 
                 let rectangle = GMSPolyline(path: path)
-                rectangle.strokeWidth = 2.3
+                rectangle.strokeWidth = 6
                 rectangle.strokeColor = .getBaseColor()
                 rectangle.geodesic = true
                 
