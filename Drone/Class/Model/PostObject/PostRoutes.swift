@@ -7,20 +7,18 @@
 //
 
 import UIKit
-import MapKit
+import GoogleMaps
 
 class PostRoutes: NSObject {
 
-    var placemarks:CLPlacemark?
-    var route:MKRoute?
+    var rectangle:GMSPolyline?
     
     fileprivate override init() {
         super.init()
     }
     
-    init(mPlacemarks:CLPlacemark,mRoute:MKRoute) {
+    init(rectangle:GMSPolyline) {
         super.init()
-        placemarks = mPlacemarks
-        route = mRoute
+        self.rectangle = rectangle
     }
 }

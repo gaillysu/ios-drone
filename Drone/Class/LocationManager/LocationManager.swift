@@ -13,7 +13,7 @@ import BRYXBanner
 class LocationManager: NSObject {
     static let manager:LocationManager = LocationManager()
     
-    fileprivate var currentLocation:CLLocation?
+    var currentLocation:CLLocation?
     
     fileprivate var _locationManager : CLLocationManager?
     
@@ -74,14 +74,6 @@ class LocationManager: NSObject {
         if locationEnabled {
             _locationManager?.stopUpdatingLocation()
         }
-    }
-    
-    func setCurrentLocation(locations:CLLocation) {
-        currentLocation = locations
-    }
-    
-    func getCurrentLocation() ->CLLocation? {
-         return currentLocation
     }
 }
 

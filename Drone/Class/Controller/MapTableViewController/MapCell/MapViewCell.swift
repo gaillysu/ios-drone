@@ -15,42 +15,14 @@ class MapViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
     
-    var placemarks:CLPlacemark? {
+    var googleModel:GoogleMapsGeocodeModel? {
         didSet{
-            var locationLong:String?
-            var locationShort:String?
-            
-            let placeMark: CLPlacemark = placemarks!
-            
-            if let street = placeMark.administrativeArea {
-                locationShort = "\(street)"
-                locationLong = "\(street)"
-            }
-            
-            if let area = placeMark.locality, let _ = locationLong, let _ = locationShort {
-                locationShort = locationShort! + ", \(area)"
-                locationLong = locationLong! + ", \(area)"
-            }
-            
-            if let district = placeMark.subLocality, let _ = locationLong, let _ = locationShort {
-                locationLong = locationLong! + ", \(district)"
-            }
-
-            let distancePlacemark:MKPlacemark = MKPlacemark(placemark: placeMark)
-            distancePlacemark.calculateRoute { (route, error) in
-                if error == nil {
-                    self.distanceLabel.text = route!.first!.distance.distanceConvertMetricString()
-                }
-            }
-            
-            titleLabel.text = locationLong
-            detailLabel.text =  placeMark.name
-            
+            titleLabel.text = googleModel?.localityLong_name
+            detailLabel.text =  googleModel?.formatted_address
         }
     }
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
     }

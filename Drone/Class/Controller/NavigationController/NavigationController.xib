@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationController" customModule="Drone" customModuleProvider="target">
             <connections>
-                <outlet property="navigationMapView" destination="DVf-qu-Us4" id="Ekz-ZR-BzX"/>
+                <outlet property="navigationMapView" destination="7f5-i8-HSZ" id="zQM-YV-Vyf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,16 +19,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DVf-qu-Us4">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7f5-i8-HSZ" customClass="GMSMapView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                </mapView>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="DVf-qu-Us4" secondAttribute="bottom" id="Bxj-TU-bRD"/>
-                <constraint firstItem="DVf-qu-Us4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="G6J-hV-qAl"/>
-                <constraint firstItem="DVf-qu-Us4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j5X-LM-fhX"/>
-                <constraint firstAttribute="trailing" secondItem="DVf-qu-Us4" secondAttribute="trailing" id="oli-ce-pRp"/>
+                <constraint firstAttribute="bottom" secondItem="7f5-i8-HSZ" secondAttribute="bottom" id="TaK-G3-Zyq"/>
+                <constraint firstItem="7f5-i8-HSZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jGK-nh-Egt"/>
+                <constraint firstAttribute="trailing" secondItem="7f5-i8-HSZ" secondAttribute="trailing" id="lnS-Pw-m2m"/>
+                <constraint firstItem="7f5-i8-HSZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tam-xE-J9r"/>
             </constraints>
             <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>

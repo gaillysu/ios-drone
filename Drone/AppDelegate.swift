@@ -10,13 +10,13 @@ import UIKit
 import CoreData
 import Alamofire
 import SwiftEventBus
-
 import Fabric
 import Crashlytics
 import IQKeyboardManagerSwift
 import RealmSwift
 import SwiftyJSON
-
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelegate {
@@ -46,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       Fabric.with([Crashlytics.self])
       
+      configGooleMap()
+
       self.startLocation()
       
       let config = Realm.Configuration(schemaVersion: 6, migrationBlock: { migration, oldSchemaVersion in
@@ -80,6 +82,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    func applicationDidEnterBackground(_ application: UIApplication) {
       UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
+   }
+   
+   func configGooleMap() {
+      if let googleMapAppKey = Bundle.googleMapKey {
+         GMSServices.provideAPIKey(googleMapAppKey)
+         GMSPlacesClient.provideAPIKey(googleMapAppKey)
+      }
    }
    
    // MARK: - ConnectionControllerDelegate
@@ -173,7 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
              sync every hour weather data
              */
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
-               if let location = LocationManager.manager.getCurrentLocation() {
+               if let location = LocationManager.manager.currentLocation {
                   self.setGPSLocalWeather(location: location)
                }
             }

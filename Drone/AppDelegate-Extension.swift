@@ -206,21 +206,21 @@ extension AppDelegate {
     }
     
     func startNavigation(name:String) {
-        guard LocationManager.manager.getCurrentLocation() != nil else {
+        guard LocationManager.manager.currentLocation != nil else {
             return
         }
-        let latitude:Int = Int(-LocationManager.manager.getCurrentLocation()!.coordinate.latitude*1000000)
-        let longitude:Int = Int(LocationManager.manager.getCurrentLocation()!.coordinate.longitude*1000000)
+        let latitude:Int = Int(-LocationManager.manager.currentLocation!.coordinate.latitude*1000000)
+        let longitude:Int = Int(LocationManager.manager.currentLocation!.coordinate.longitude*1000000)
         let navigation = UrbanNavigationRequest(latitude: latitude, longitude: longitude, mName: name)
         self.sendRequest(navigation)
     }
     
     func updateNavigation(distance:Int) {
-        guard LocationManager.manager.getCurrentLocation() != nil else {
+        guard LocationManager.manager.currentLocation != nil else {
             return
         }
-        let latitude:Int = Int(LocationManager.manager.getCurrentLocation()!.coordinate.latitude*1000000)
-        let longitude:Int = Int(LocationManager.manager.getCurrentLocation()!.coordinate.longitude*1000000)
+        let latitude:Int = Int(LocationManager.manager.currentLocation!.coordinate.latitude*1000000)
+        let longitude:Int = Int(LocationManager.manager.currentLocation!.coordinate.longitude*1000000)
         let navigation = UrbanNavigationRequest(latitude: latitude, longitude: longitude, mDistance: distance)
         self.sendRequest(navigation)
     }

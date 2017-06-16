@@ -17,7 +17,7 @@ class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var addresTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var gripperView: UIView!
-    fileprivate var pointArray:[CLPlacemark] = []
+    fileprivate var pointArray:[GoogleMapsGeocodeModel] = []
     
     
     
@@ -38,7 +38,7 @@ class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDa
 
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 60
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,18 +51,17 @@ class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDa
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:MapViewCell = tableView.dequeueReusableCell(withIdentifier: "MapViewCell_Identifier", for: indexPath) as! MapViewCell
-        let placemarks:CLPlacemark = pointArray[indexPath.row]
-        cell.placemarks = placemarks
+        let geocodeModel:GoogleMapsGeocodeModel = pointArray[indexPath.row]
+        cell.googleModel = geocodeModel
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let placemarks:CLPlacemark = pointArray[indexPath.row]
-        
+        let geocodeModel:GoogleMapsGeocodeModel = pointArray[indexPath.row]
         let routesController:RoutesController = RoutesController(nibName: "RoutesController", bundle: nil)
-        routesController.placemarks = placemarks
+        routesController.geocodeModel = geocodeModel
         self.navigationController?.pushViewController(routesController, animated: true)
     }
 }
@@ -75,22 +74,15 @@ extension MapTableViewController:UISearchBarDelegate {
     }
     
     func searchGeocodeAddress(object:String) {
-        let geocoder:CLGeocoder = CLGeocoder()
-        geocoder.geocodeAddressString(object) { (placemarks, error) in
-            if error != nil {
-                NSLog("%@", error!.localizedDescription);
-            } else {
-                if let mPlacemarks = placemarks {
-                    self.pointArray.removeAll()
-                    
-                    for thePlacemark in mPlacemarks{
-                        self.pointArray.append(thePlacemark)
-                    }
-                    
-                    self.addresTableView.reloadData()
-                }
-                
-            }
+        DRHUD.startLoading(title: nil, subtitle: nil, hide: nil)
+        GoogleMapNetworkManager.manager.geocodeAddressString(address: object) { (googleModel) in
+            DRHUD.hide(hideAfter: 0.1, completion: nil)
+            self.pointArray.removeAll()
+            googleModel?.forEach({ (theGoogleModel) in
+                self.pointArray.append(theGoogleModel)
+            })
+            
+            self.addresTableView.reloadData()
         }
     }
 }
