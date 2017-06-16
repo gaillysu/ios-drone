@@ -222,10 +222,12 @@
 		61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
 		61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
 		61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
+		61C48FBD1EF38100007A0709 /* NotificationAlertSoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */; };
+		61C48FC61EF3BCCE007A0709 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61C48FC51EF3BCCE007A0709 /* bell.wav */; };
+		61C48FC81EF3BE65007A0709 /* FindMyPhonePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */; };
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
 		61FAB9AA1EBC177000513E97 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9A81EBC177000513E97 /* NavigationController.swift */; };
-		61FAB9AC1EBC18CE00513E97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB464B6E1DED347B00480C08 /* MapKit.framework */; };
 		61FAB9B01EBC203300513E97 /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9AE1EBC203300513E97 /* MapTableViewController.swift */; };
 		61FAB9B51EBC241D00513E97 /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9B31EBC241D00513E97 /* MapViewCell.swift */; };
 		61FAB9B61EBC241D00513E97 /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FAB9B41EBC241D00513E97 /* MapViewCell.xib */; };
@@ -523,6 +525,9 @@
 		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
 		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
 		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertSoundController.swift; sourceTree = "<group>"; };
+		61C48FC51EF3BCCE007A0709 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
+		61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMyPhonePacket.swift; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
 		61FAB9A81EBC177000513E97 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -544,7 +549,6 @@
 		CB15497B1EC01E5700090242 /* HotKeySectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeySectionModel.swift; path = Drone/Class/ViewModel/HotKeyModel/HotKeySectionModel.swift; sourceTree = SOURCE_ROOT; };
 		CB15497F1EC029A700090242 /* HotKeyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTableViewCell.swift; path = HoyKeyTableViewCell/HotKeyTableViewCell.swift; sourceTree = "<group>"; };
 		CB1549801EC029A700090242 /* HotKeyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotKeyTableViewCell.xib; path = HoyKeyTableViewCell/HotKeyTableViewCell.xib; sourceTree = "<group>"; };
-		CB464B6E1DED347B00480C08 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassViewController.swift; path = CompassViewController/CompassViewController.swift; sourceTree = "<group>"; };
 		CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassViewController.xib; path = CompassViewController/CompassViewController.xib; sourceTree = "<group>"; };
 		CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassTableViewCell.swift; sourceTree = "<group>"; };
@@ -593,7 +597,6 @@
 			files = (
 				CB0B469A1CCF223500411997 /* Fabric.framework in Frameworks */,
 				CB0B469B1CCF223500411997 /* Crashlytics.framework in Frameworks */,
-				61FAB9AC1EBC18CE00513E97 /* MapKit.framework in Frameworks */,
 				E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,6 +705,7 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				61C48FC41EF3BCCE007A0709 /* Sounds */,
 				61C28CAE1EA76C680019F574 /* DefaultRealm */,
 				61C28C8C1EA617070019F574 /* Image */,
 				61D470A01DE2E47E00620BD0 /* NotificationTypeFile */,
@@ -731,7 +735,6 @@
 		5966A0E8BCB857808AB23D19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CB464B6E1DED347B00480C08 /* MapKit.framework */,
 				CB0B46981CCF223500411997 /* Fabric.framework */,
 				CB0B46991CCF223500411997 /* Crashlytics.framework */,
 				C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */,
@@ -848,6 +851,7 @@
 				61C28B001EA46F800019F574 /* StepsGoalPacket.swift */,
 				61C28B011EA46F800019F574 /* SystemEventPacket.swift */,
 				61C28B021EA46F800019F574 /* SystemStatusPacket.swift */,
+				61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */,
 			);
 			path = Packet;
 			sourceTree = "<group>";
@@ -1251,6 +1255,7 @@
 		61C28BAF1EA46F810019F574 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */,
 				61C28BB01EA46F810019F574 /* AppTheme.swift */,
 				61C28BB21EA46F810019F574 /* DTUserDefaults.swift */,
 				61C28BB31EA46F810019F574 /* EventBusKeys.swift */,
@@ -1390,6 +1395,14 @@
 			name = DRHUD;
 			path = Drone/Class/View/DRHUD;
 			sourceTree = SOURCE_ROOT;
+		};
+		61C48FC41EF3BCCE007A0709 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				61C48FC51EF3BCCE007A0709 /* bell.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
 		};
 		61D4709D1DE2E06600620BD0 /* Sandbox */ = {
 			isa = PBXGroup;
@@ -1765,7 +1778,7 @@
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1861,6 +1874,7 @@
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				61C28BF61EA46F810019F574 /* DeviceTableViewCellHeader.xib in Resources */,
 				613929071EADABEB00450284 /* welcome_1.png in Resources */,
+				61C48FC61EF3BCCE007A0709 /* bell.wav in Resources */,
 				CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */,
 				61C28C061EA46F810019F574 /* NotificationsViewCell.xib in Resources */,
 			);
@@ -2061,6 +2075,7 @@
 				613928FE1EAA026B00450284 /* Float+Extension.swift in Sources */,
 				61C48FB31EF22E27007A0709 /* GoogleMapsRoutesModel.swift in Sources */,
 				61C28C361EA46F810019F574 /* WeatherUpdateModel.swift in Sources */,
+				61C48FBD1EF38100007A0709 /* NotificationAlertSoundController.swift in Sources */,
 				61C28BC31EA46F810019F574 /* SystemStatusPacket.swift in Sources */,
 				61C28C781EA5A03C0019F574 /* NetworkRequest.swift in Sources */,
 				61C28BC21EA46F810019F574 /* SystemEventPacket.swift in Sources */,
@@ -2159,6 +2174,7 @@
 				61C28C731EA5A03C0019F574 /* BaseNetworkRequest.swift in Sources */,
 				61C28C881EA5BB330019F574 /* WeatherBaseGetRequest.swift in Sources */,
 				61078DC51E48249C00898A0D /* NSCalendarUnit+Timepiece.swift in Sources */,
+				61C48FC81EF3BE65007A0709 /* FindMyPhonePacket.swift in Sources */,
 				613929241EB18C9200450284 /* WatchInfoModel.swift in Sources */,
 				61C28C721EA5A03C0019F574 /* BaseGetRequest.swift in Sources */,
 				613929001EAA026B00450284 /* String+Extension.swift in Sources */,
