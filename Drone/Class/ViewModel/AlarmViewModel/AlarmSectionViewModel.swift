@@ -13,6 +13,11 @@ import RxDataSources
 struct AlarmSectionViewModel {
     var header:String
     var items: [Item]
+    
+    init (header:String, items:[Item]){
+        self.header = header
+        self.items = items
+    }
 }
 
 extension AlarmSectionViewModel: AnimatableSectionModelType{

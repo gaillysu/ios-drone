@@ -252,6 +252,8 @@
 		CB4ADFE41EF767E700EFA956 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE31EF767E700EFA956 /* AlarmViewModel.swift */; };
 		CB4ADFE61EF767F900EFA956 /* AlarmSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE51EF767F900EFA956 /* AlarmSectionViewModel.swift */; };
 		CB4ADFE81EF7680800EFA956 /* AlarmSectionViewModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE71EF7680800EFA956 /* AlarmSectionViewModelItem.swift */; };
+		CB4ADFEC1EF7D1A400EFA956 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFEA1EF7D1A400EFA956 /* AddAlarmViewController.swift */; };
+		CB4ADFED1EF7D1A400EFA956 /* AddAlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */; };
 		CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */; };
 		CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
 		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
@@ -567,6 +569,8 @@
 		CB4ADFE31EF767E700EFA956 /* AlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmViewModel.swift; path = ViewModel/AlarmViewModel/AlarmViewModel.swift; sourceTree = "<group>"; };
 		CB4ADFE51EF767F900EFA956 /* AlarmSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmSectionViewModel.swift; path = ViewModel/AlarmViewModel/AlarmSectionViewModel.swift; sourceTree = "<group>"; };
 		CB4ADFE71EF7680800EFA956 /* AlarmSectionViewModelItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmSectionViewModelItem.swift; path = ViewModel/AlarmViewModel/AlarmSectionViewModelItem.swift; sourceTree = "<group>"; };
+		CB4ADFEA1EF7D1A400EFA956 /* AddAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmViewController.swift; path = AddAlarmViewController/AddAlarmViewController.swift; sourceTree = "<group>"; };
+		CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddAlarmViewController.xib; path = AddAlarmViewController/AddAlarmViewController.xib; sourceTree = "<group>"; };
 		CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassViewController.swift; path = CompassViewController/CompassViewController.swift; sourceTree = "<group>"; };
 		CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassViewController.xib; path = CompassViewController/CompassViewController.xib; sourceTree = "<group>"; };
 		CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassTableViewCell.swift; sourceTree = "<group>"; };
@@ -921,6 +925,7 @@
 		61C28B251EA46F800019F574 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CB4ADFE91EF7D17D00EFA956 /* AddAlarmViewController */,
 				CBF6D2181EF3D4CC0080375E /* AlarmViewController */,
 				CBF6D2131EF3D4570080375E /* TimerViewController */,
 				CBCD36631ED3E29C0041EABA /* CompassCalibrationViewController */,
@@ -1538,6 +1543,15 @@
 			name = AlarmViewModel;
 			sourceTree = "<group>";
 		};
+		CB4ADFE91EF7D17D00EFA956 /* AddAlarmViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB4ADFEA1EF7D1A400EFA956 /* AddAlarmViewController.swift */,
+				CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */,
+			);
+			name = AddAlarmViewController;
+			sourceTree = "<group>";
+		};
 		CB65CBDE1EB8573400D40EDD /* ProfileTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1917,6 +1931,7 @@
 				61FAB9B61EBC241D00513E97 /* MapViewCell.xib in Resources */,
 				61C28C141EA46F810019F574 /* StepsViewController.xib in Resources */,
 				613929081EADABEB00450284 /* welcome_2.png in Resources */,
+				CB4ADFED1EF7D1A400EFA956 /* AddAlarmViewController.xib in Resources */,
 				9E1535841D5C20CA00CB6A01 /* cities.json in Resources */,
 				CB9F65501EA8AB51007982B0 /* ClockSettingsTableViewCell.xib in Resources */,
 				61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */,
@@ -2189,6 +2204,7 @@
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
 				61352C981EF121EE00F82907 /* GoogleMapsGeocodeModel.swift in Sources */,
 				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
+				CB4ADFEC1EF7D1A400EFA956 /* AddAlarmViewController.swift in Sources */,
 				61C28BBC1EA46F810019F574 /* ConnectionControllerImpl.swift in Sources */,
 				CBB892511EB33BAB006F7031 /* CompassSectionModelItem.swift in Sources */,
 				61C28BCA1EA46F810019F574 /* GetNotificationRequest.swift in Sources */,

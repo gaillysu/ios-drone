@@ -23,29 +23,32 @@ class AlarmTableViewCell: UITableViewCell {
             timeLabel.text = (alarm?.hour.to2String())! + ":" + (alarm?.minute.to2String())!
             nameLabel.text = alarm?.label
             enabledSwitch.setOn((alarm?.enabled)!, animated: true)
+            self.swap(bool: (alarm?.enabled)!)
+            
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("Karl: awakeFromNib!)")
+        print("Karl: awakeFromNib!")
+        
         enabledSwitch.rx.isOn.subscribe {
             if let enabled = $0.element{
                 self.alarm?.update(operation: {
                     print("Karl: woelala \(enabled)")
                     $0.enabled = enabled })
-                if enabled{
-                    self.timeLabel.textColor = .white
-                    self.nameLabel.textColor = .white
-                }else{
-                    self.timeLabel.textColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
-                    self.nameLabel.textColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
-                }
+                self.swap(bool: enabled)
             }
             }.addDisposableTo(disposeBag)
-        if let myAlarm = alarm{
-            print("Karl: set switch on awakeFromNib!)")
-            enabledSwitch.setOn(myAlarm.enabled, animated: true)
+    }
+    
+    private func swap(bool:Bool){
+        if bool {
+            self.timeLabel.textColor = .white
+            self.nameLabel.textColor = .white
+        }else{
+            self.timeLabel.textColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+            self.nameLabel.textColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
         }
     }
 }

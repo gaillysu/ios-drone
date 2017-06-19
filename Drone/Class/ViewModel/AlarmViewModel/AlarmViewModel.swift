@@ -16,7 +16,15 @@ class AlarmViewModel{
     let data:Variable<[AlarmSectionViewModel]>
     
     init() {
-        data = Variable([])
-
+        data = Variable([AlarmSectionViewModel(header: "My Alarms", items: [AlarmSectionViewModelItem(alarm: MEDAlarm()),
+                                                                            AlarmSectionViewModelItem(alarm: MEDAlarm()),
+                                                                            AlarmSectionViewModelItem(alarm: MEDAlarm()),
+                                                                            AlarmSectionViewModelItem(alarm: MEDAlarm()),
+                                                                            AlarmSectionViewModelItem(alarm: MEDAlarm()),
+                                                                            AlarmSectionViewModelItem(alarm: MEDAlarm()),
+                                                                            AlarmSectionViewModelItem(alarm: MEDAlarm()),
+                                                                            AlarmSectionViewModelItem(alarm: MEDAlarm()),
+                                                                            AlarmSectionViewModelItem(alarm: MEDAlarm()),
+                                                                            AlarmSectionViewModelItem(alarm: MEDAlarm())])])
     }
 }

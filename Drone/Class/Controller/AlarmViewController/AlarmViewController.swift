@@ -11,8 +11,7 @@ import UIKit
 import RealmSwift
 import RxSwift
 import RxCocoa
-import RxRealm
-import RxRealmDataSources
+import RxDataSources
 
 class AlarmViewController: UITableViewController {
     
@@ -20,31 +19,40 @@ class AlarmViewController: UITableViewController {
     
     let identifier = "AlarmTableViewCell"
     
+    let alarmViewModel = AlarmViewModel()
+    
     override func viewDidLoad() {
+        
         self.tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
         self.tableView.backgroundColor = UIColor("#E4C590")
         self.tableView.separatorColor = .white
+        self.tableView.rowHeight = 88.0
+        self.tableView.sectionHeaderHeight = 0.0
+        
         navigationController?.navigationItem.rightBarButtonItem = self.editButtonItem
-        print("Karl: Init")
-        let dataSource = RxTableViewRealmDataSource<MEDAlarm>(cellIdentifier: identifier, cellType: AlarmTableViewCell.self){cell, ip, alarm in
-            print("Karl: Oei")
-            cell.alarm = alarm
+        let dataSource = RxTableViewSectionedAnimatedDataSource<AlarmSectionViewModel>()
+        dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .fade, deleteAnimation: .fade)
+        dataSource.configureCell = { (dataSource, tableView, indexPath, item) in
+            let cell:AlarmTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.alarm = item.alarm
+            return cell
         }
-        dataSource.rowAnimations.update = .none
-        dataSource.rowAnimations.delete = .none
-        dataSource.rowAnimations.insert = .none
-        let realm = try! Realm()
-        let alarms = Observable.changeset(from: realm.objects(MEDAlarm.self))
-            .share()
-        alarms.bind(to: tableView.rx.realmChanges(dataSource)).addDisposableTo(disposeBag)
+        tableView.dataSource = nil
+        tableView.delegate = nil
+        
+        dataSource.titleForHeaderInSection = { $0[$1].header }
+        
+        alarmViewModel.data.asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .addDisposableTo(disposeBag)
+        if let tabBarController = tabBarController {
+            self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: tabBarController.tabBar.frame.height, right: 0.0)
+
+        }
     }
 }
 // Delegates
 extension AlarmViewController{
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88.0
-    }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
         return [UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
