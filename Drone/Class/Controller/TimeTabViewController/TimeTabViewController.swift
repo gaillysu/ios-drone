@@ -25,22 +25,34 @@ class TimeTabViewController: UITabBarController {
         let worldClockTabItem = UITabBarItem(title: "World Clock", image: UIImage(named: "icon_world_clock_tab")!, selectedImage: UIImage(named: "icon_world_clock_tab")!)
         worldClockTab.tabBarItem = worldClockTabItem
         
-        let clockSettings = TimeSettingsViewController()
-        let clockSettingsTab = UITabBarItem(title: "Settings", image: UIImage(named: "icon_settings")!, selectedImage: UIImage(named: "icon_settings")!)
-        clockSettings.tabBarItem = clockSettingsTab
-        self.viewControllers = [worldClockTab, clockSettings]
+        let alarmViewController = AlarmViewController()
+        let alarmTab = UITabBarItem(title: "Alarm", image: UIImage(named: "icon_timer")!, selectedImage: UIImage(named: "icon_timer")!)
+        alarmViewController.tabBarItem = alarmTab
+        
+        let timerViewController = TimerViewController()
+        let timerTab = UITabBarItem(title: "Timer", image: UIImage(named: "icon_timer")!, selectedImage: UIImage(named: "icon_timer")!)
+        timerViewController.tabBarItem = timerTab
+        
+        let timeSettingsViewController = TimeSettingsViewController()
+        let timeSettingsTab = UITabBarItem(title: "Settings", image: UIImage(named: "icon_settings")!, selectedImage: UIImage(named: "icon_settings")!)
+        timeSettingsViewController.tabBarItem = timeSettingsTab
+        self.viewControllers = [worldClockTab, alarmViewController, timerViewController, timeSettingsViewController]
         self.navigationItem.title = "World Clock"
         self.addCloseButton(#selector(dismissTabViewController))
         self.addPlusButton(#selector(add))
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if selectedIndex == 1 {
-            self.addPlusButton(#selector(add))
-            self.navigationItem.title = "World Clock"
-        }else{
-            self.navigationItem.title = "Time Settings"
-            self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.title = item.title
+        
+        if let index = self.tabBar.items?.index(of: item){
+            switch index {
+            case 0:
+                self.addPlusButton(#selector(add))
+            default:
+                self.navigationItem.rightBarButtonItem = nil
+                break
+            }
         }
     }
     
@@ -50,27 +62,17 @@ class TimeTabViewController: UITabBarController {
     
     func add(){
         var worldClockArray:[City] = []
-        try! Realm().objects(City.self).filter("selected = true").sorted(by: {
-            ($0.timezone?.getOffsetFromUTC())! < ($1.timezone?.getOffsetFromUTC())!
-        }).forEach({
-            worldClockArray.append($0)
-        })
+        try! Realm().objects(City.self)
+            .filter("selected = true")
+            .sorted(by: { ($0.timezone?.getOffsetFromUTC())! < ($1.timezone?.getOffsetFromUTC())! })
+            .forEach({ worldClockArray.append($0) })
         
         if worldClockArray.count >= 5 {
             let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            return
+             return
         }
-//        if AppDelegate.getAppDelegate().isConnected() {
-            self.present(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
-//        }else{
-//            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
-//            view?.setTintColor(UIColor.getBaseColor())
-//            Timer.after(0.6.second) {
-//                view?.dismiss(true)
-//            }
-//        }
-        
+        self.present(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
     }
 }

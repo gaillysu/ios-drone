@@ -29,6 +29,8 @@ target 'Drone' do
     pod 'Font-Awesome-Swift'
     pod 'Pulley'
     pod 'PKHUD', '~> 4.0'
+    pod 'RxRealm'
+
 end
 
 post_install do |installer|

@@ -219,12 +219,12 @@
 		61C48FB31EF22E27007A0709 /* GoogleMapsRoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */; };
 		61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */; };
 		61C48FB81EF26F1F007A0709 /* DRHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB71EF26F1F007A0709 /* DRHUD.swift */; };
-		61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
-		61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
-		61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
 		61C48FBD1EF38100007A0709 /* NotificationAlertSoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */; };
 		61C48FC61EF3BCCE007A0709 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61C48FC51EF3BCCE007A0709 /* bell.wav */; };
 		61C48FC81EF3BE65007A0709 /* FindMyPhonePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */; };
+		61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
+		61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
+		61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
 		61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
 		61FAB9AA1EBC177000513E97 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9A81EBC177000513E97 /* NavigationController.swift */; };
@@ -244,6 +244,14 @@
 		CB15497C1EC01E5700090242 /* HotKeySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497B1EC01E5700090242 /* HotKeySectionModel.swift */; };
 		CB1549811EC029A700090242 /* HotKeyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497F1EC029A700090242 /* HotKeyTableViewCell.swift */; };
 		CB1549821EC029A700090242 /* HotKeyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1549801EC029A700090242 /* HotKeyTableViewCell.xib */; };
+		CB4ADFDA1EF7626200EFA956 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */; };
+		CB4ADFDB1EF7626200EFA956 /* AlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4ADFD91EF7626200EFA956 /* AlarmTableViewCell.xib */; };
+		CB4ADFDD1EF7665500EFA956 /* MEDAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFDC1EF7665500EFA956 /* MEDAlarm.swift */; };
+		CB4ADFDF1EF7669C00EFA956 /* MEDWeekDayNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFDE1EF7669C00EFA956 /* MEDWeekDayNumber.swift */; };
+		CB4ADFE11EF7673800EFA956 /* MEDBaseModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE01EF7673800EFA956 /* MEDBaseModel+Extension.swift */; };
+		CB4ADFE41EF767E700EFA956 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE31EF767E700EFA956 /* AlarmViewModel.swift */; };
+		CB4ADFE61EF767F900EFA956 /* AlarmSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE51EF767F900EFA956 /* AlarmSectionViewModel.swift */; };
+		CB4ADFE81EF7680800EFA956 /* AlarmSectionViewModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE71EF7680800EFA956 /* AlarmSectionViewModelItem.swift */; };
 		CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */; };
 		CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
 		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
@@ -282,6 +290,8 @@
 		CBCD36661ED3E2BA0041EABA /* CompassCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */; };
 		CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
 		CBF2E13D1EC04E4D00CBD61C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */; };
+		CBF6D2151EF3D48B0080375E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6D2141EF3D48B0080375E /* TimerViewController.swift */; };
+		CBF6D2171EF3D4C70080375E /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -522,12 +532,12 @@
 		61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsRoutesModel.swift; sourceTree = "<group>"; };
 		61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesStepsModel.swift; sourceTree = "<group>"; };
 		61C48FB71EF26F1F007A0709 /* DRHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRHUD.swift; sourceTree = "<group>"; };
-		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
-		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
-		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertSoundController.swift; sourceTree = "<group>"; };
 		61C48FC51EF3BCCE007A0709 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
 		61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMyPhonePacket.swift; sourceTree = "<group>"; };
+		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
+		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
+		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
 		61FAB9A81EBC177000513E97 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -549,6 +559,14 @@
 		CB15497B1EC01E5700090242 /* HotKeySectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeySectionModel.swift; path = Drone/Class/ViewModel/HotKeyModel/HotKeySectionModel.swift; sourceTree = SOURCE_ROOT; };
 		CB15497F1EC029A700090242 /* HotKeyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTableViewCell.swift; path = HoyKeyTableViewCell/HotKeyTableViewCell.swift; sourceTree = "<group>"; };
 		CB1549801EC029A700090242 /* HotKeyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotKeyTableViewCell.xib; path = HoyKeyTableViewCell/HotKeyTableViewCell.xib; sourceTree = "<group>"; };
+		CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmTableViewCell.swift; path = AlarmTableViewCell/AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		CB4ADFD91EF7626200EFA956 /* AlarmTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlarmTableViewCell.xib; path = AlarmTableViewCell/AlarmTableViewCell.xib; sourceTree = "<group>"; };
+		CB4ADFDC1EF7665500EFA956 /* MEDAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MEDAlarm.swift; path = ModelTable/MEDAlarm.swift; sourceTree = "<group>"; };
+		CB4ADFDE1EF7669C00EFA956 /* MEDWeekDayNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MEDWeekDayNumber.swift; path = ModelTable/MEDWeekDayNumber.swift; sourceTree = "<group>"; };
+		CB4ADFE01EF7673800EFA956 /* MEDBaseModel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MEDBaseModel+Extension.swift"; sourceTree = "<group>"; };
+		CB4ADFE31EF767E700EFA956 /* AlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmViewModel.swift; path = ViewModel/AlarmViewModel/AlarmViewModel.swift; sourceTree = "<group>"; };
+		CB4ADFE51EF767F900EFA956 /* AlarmSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmSectionViewModel.swift; path = ViewModel/AlarmViewModel/AlarmSectionViewModel.swift; sourceTree = "<group>"; };
+		CB4ADFE71EF7680800EFA956 /* AlarmSectionViewModelItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmSectionViewModelItem.swift; path = ViewModel/AlarmViewModel/AlarmSectionViewModelItem.swift; sourceTree = "<group>"; };
 		CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassViewController.swift; path = CompassViewController/CompassViewController.swift; sourceTree = "<group>"; };
 		CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassViewController.xib; path = CompassViewController/CompassViewController.xib; sourceTree = "<group>"; };
 		CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassTableViewCell.swift; sourceTree = "<group>"; };
@@ -587,6 +605,8 @@
 		CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassCalibrationViewController.swift; path = CompassCalibrationViewController/CompassCalibrationViewController.swift; sourceTree = "<group>"; };
 		CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassCalibrationViewController.xib; path = CompassCalibrationViewController/CompassCalibrationViewController.xib; sourceTree = "<group>"; };
 		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		CBF6D2141EF3D48B0080375E /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimerViewController.swift; path = TimerViewController/TimerViewController.swift; sourceTree = "<group>"; };
+		CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmViewController.swift; path = AlarmViewController/AlarmViewController.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -901,6 +921,8 @@
 		61C28B251EA46F800019F574 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CBF6D2181EF3D4CC0080375E /* AlarmViewController */,
+				CBF6D2131EF3D4570080375E /* TimerViewController */,
 				CBCD36631ED3E29C0041EABA /* CompassCalibrationViewController */,
 				619A9F161EC2AF60006D65C4 /* RoutesController */,
 				61FAB9B91EBC4E0A00513E97 /* MapNavigationViewController */,
@@ -1136,6 +1158,7 @@
 		61C28B711EA46F810019F574 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB4ADFD71EF7624800EFA956 /* AlarmTableViewCell */,
 				61C48FB61EF26F1F007A0709 /* DRHUD */,
 				61FAB9B21EBC240900513E97 /* MapCell */,
 				CB9F654C1EA8AA8A007982B0 /* ClockSettingsTableViewCell */,
@@ -1196,6 +1219,9 @@
 				61C28B841EA46F810019F574 /* WorldClock.swift */,
 				61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */,
 				CB9F65231EA610C5007982B0 /* Compass.swift */,
+				CB4ADFDC1EF7665500EFA956 /* MEDAlarm.swift */,
+				CB4ADFDE1EF7669C00EFA956 /* MEDWeekDayNumber.swift */,
+				CB4ADFE01EF7673800EFA956 /* MEDBaseModel+Extension.swift */,
 			);
 			path = DBModel;
 			sourceTree = "<group>";
@@ -1493,6 +1519,25 @@
 			name = HoyKeyTableViewCell;
 			sourceTree = "<group>";
 		};
+		CB4ADFD71EF7624800EFA956 /* AlarmTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */,
+				CB4ADFD91EF7626200EFA956 /* AlarmTableViewCell.xib */,
+			);
+			name = AlarmTableViewCell;
+			sourceTree = "<group>";
+		};
+		CB4ADFE21EF767C600EFA956 /* AlarmViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB4ADFE31EF767E700EFA956 /* AlarmViewModel.swift */,
+				CB4ADFE51EF767F900EFA956 /* AlarmSectionViewModel.swift */,
+				CB4ADFE71EF7680800EFA956 /* AlarmSectionViewModelItem.swift */,
+			);
+			name = AlarmViewModel;
+			sourceTree = "<group>";
+		};
 		CB65CBDE1EB8573400D40EDD /* ProfileTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1650,6 +1695,7 @@
 		CB9F65511EA9F327007982B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CB4ADFE21EF767C600EFA956 /* AlarmViewModel */,
 				CB1549781EC0186A00090242 /* HotKeyModel */,
 				CBB892441EB33B3D006F7031 /* CompassSectionModel */,
 				CBB892471EB33B3D006F7031 /* TimeSettingsSectionModel */,
@@ -1700,6 +1746,22 @@
 				CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */,
 			);
 			name = CompassCalibrationViewController;
+			sourceTree = "<group>";
+		};
+		CBF6D2131EF3D4570080375E /* TimerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBF6D2141EF3D48B0080375E /* TimerViewController.swift */,
+			);
+			name = TimerViewController;
+			sourceTree = "<group>";
+		};
+		CBF6D2181EF3D4CC0080375E /* AlarmViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */,
+			);
+			name = AlarmViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1828,6 +1890,7 @@
 				61C28C9C1EA706A50019F574 /* mapImage.png in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
 				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
+				CB4ADFDB1EF7626200EFA956 /* AlarmTableViewCell.xib in Resources */,
 				619A9F151EC1B9D8006D65C4 /* NavigationController.xib in Resources */,
 				CB9F65451EA86303007982B0 /* TimeSettingsViewController.xib in Resources */,
 				CB9F65311EA70CCB007982B0 /* CalibrateMinuteViewController.xib in Resources */,
@@ -1970,13 +2033,16 @@
 				61C28BE41EA46F810019F574 /* WriteSettingRequest.swift in Sources */,
 				61FAB9C51EC064EA00513E97 /* MKPlacemark+Extension.swift in Sources */,
 				CB9F65241EA610C5007982B0 /* Compass.swift in Sources */,
+				CB4ADFE41EF767E700EFA956 /* AlarmViewModel.swift in Sources */,
 				61C28BD01EA46F810019F574 /* GetWorldClockRequest.swift in Sources */,
 				61C28C741EA5A03C0019F574 /* BasePostRequest.swift in Sources */,
 				61C28C531EA46F810019F574 /* TimeUtil.swift in Sources */,
 				61C28C791EA5A03C0019F574 /* RequestPasswordRequest.swift in Sources */,
+				CB4ADFDF1EF7669C00EFA956 /* MEDWeekDayNumber.swift in Sources */,
 				61C28C341EA46F810019F574 /* TimeMenuItem.swift in Sources */,
 				61C28BE21EA46F810019F574 /* UpdateNotificationRequest.swift in Sources */,
 				613928FD1EAA026B00450284 /* Double+Extension.swift in Sources */,
+				CB4ADFDD1EF7665500EFA956 /* MEDAlarm.swift in Sources */,
 				61C28C6F1EA5A03C0019F574 /* UserNetworkManager.swift in Sources */,
 				613928F61EA9A1C100450284 /* WeatherCityModel.swift in Sources */,
 				61C28C861EA5BABB0019F574 /* WeatherInfoRequest.swift in Sources */,
@@ -1994,6 +2060,7 @@
 				61C28C7B1EA5A03C0019F574 /* StepsGetRequest.swift in Sources */,
 				61C28C261EA46F810019F574 /* UserSteps.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
+				CB4ADFE61EF767F900EFA956 /* AlarmSectionViewModel.swift in Sources */,
 				CB15497A1EC01E0900090242 /* HotKeySectionModelItem.swift in Sources */,
 				CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */,
 				61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */,
@@ -2057,6 +2124,7 @@
 				CB9F65401EA85CB6007982B0 /* TimeTabViewController.swift in Sources */,
 				61C28C191EA46F810019F574 /* WorldClockCell.swift in Sources */,
 				61C28C4D1EA46F810019F574 /* UIColor+Extension.swift in Sources */,
+				CB4ADFDA1EF7626200EFA956 /* AlarmTableViewCell.swift in Sources */,
 				61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */,
 				61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */,
 				61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */,
@@ -2070,6 +2138,7 @@
 				61C28BC91EA46F810019F574 /* GetContactsFilterRequest.swift in Sources */,
 				61C28BCD1EA46F810019F574 /* GetSystemStatus.swift in Sources */,
 				61C28C2C1EA46F810019F574 /* CompassMenuItem.swift in Sources */,
+				CBF6D2151EF3D48B0080375E /* TimerViewController.swift in Sources */,
 				CB9F65441EA86303007982B0 /* TimeSettingsViewController.swift in Sources */,
 				61078DC21E48249C00898A0D /* Duration.swift in Sources */,
 				613928FE1EAA026B00450284 /* Float+Extension.swift in Sources */,
@@ -2099,6 +2168,7 @@
 				61C28BD71EA46F810019F574 /* SetGoalRequest.swift in Sources */,
 				61C28C4F1EA46F810019F574 /* EventBusKeys.swift in Sources */,
 				61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */,
+				CB4ADFE81EF7680800EFA956 /* AlarmSectionViewModelItem.swift in Sources */,
 				61C28BC51EA46F810019F574 /* DroneRequest.swift in Sources */,
 				61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */,
 				61FAB9AA1EBC177000513E97 /* NavigationController.swift in Sources */,
@@ -2107,6 +2177,7 @@
 				61C28C7C1EA5A03C0019F574 /* StepsUpdateRequest.swift in Sources */,
 				61C28BC41EA46F810019F574 /* ClearConnectionRequest.swift in Sources */,
 				61C28C301EA46F810019F574 /* MenuItem.swift in Sources */,
+				CBF6D2171EF3D4C70080375E /* AlarmViewController.swift in Sources */,
 				61C28BEB1EA46F810019F574 /* CheckEmailController.swift in Sources */,
 				CB9F653D1EA72D4D007982B0 /* ClockwiseButton.swift in Sources */,
 				61C28BDB1EA46F810019F574 /* SetSystemConfig.swift in Sources */,
@@ -2146,6 +2217,7 @@
 				61C28C2F1EA46F810019F574 /* LoginMenuItem.swift in Sources */,
 				6143C01D1EC45DEB00420647 /* UrbanNavigationRequest.swift in Sources */,
 				61C28BD41EA46F810019F574 /* SetAppConfigRequest.swift in Sources */,
+				CB4ADFE11EF7673800EFA956 /* MEDBaseModel+Extension.swift in Sources */,
 				61C28BDE1EA46F810019F574 /* SetWorldClockRequest.swift in Sources */,
 				618322FE1EA0A2B90054966D /* Constants.swift in Sources */,
 				61C28BE01EA46F810019F574 /* UpdateContactsApplicationsRequest.swift in Sources */,

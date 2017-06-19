@@ -29,8 +29,7 @@ class SplashScreenViewController: BaseViewController {
         if(UserProfile.getAll().count > 0 ||  DataBaseManager.manager.getAllDevice().count > 0) {
             self.present(makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
         }else{
-            let navigationController = makeStandardUINavigationController(WelcomeViewController())
-            navigationController.isNavigationBarHidden = true
+            let navigationController = makeStandardUINavigationController(TimeTabViewController())
             self.present(navigationController, animated: true, completion: nil);
         }
         timer?.invalidate()
