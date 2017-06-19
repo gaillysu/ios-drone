@@ -105,22 +105,50 @@ extension RoutesController {
         
         GoogleMapNetworkManager.manager.getGoogleMapsDirections(startAddres: startAddres, endAddres: endAddres, mode: mode) { (directionsModel) in
             if directionsModel != nil {
-                let path = GMSMutablePath()
+                var pathArray:[CLLocationCoordinate2D] = []
                 directionsModel?.routes.forEach({ (routesModel) in
                     self.setLabelValue(takeTime: routesModel.duration_text, distance: routesModel.distance_text, routeText: "")
-                    routesModel.routesSteps.forEach({ (routesStepsModel) in
-                        path.add(CLLocationCoordinate2D(latitude:routesStepsModel.start_location_lat, longitude: routesStepsModel.start_location_lng))
-                        path.add(CLLocationCoordinate2D(latitude:routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
-                    })
+                    for (index,routesStepsModel) in routesModel.routesSteps.enumerated() {
+                        let latDiff = routesStepsModel.end_location_lat - routesStepsModel.start_location_lat
+                        let lngDiff = routesStepsModel.end_location_lng - routesStepsModel.start_location_lng
+                        let location1:CLLocation = CLLocation(latitude: routesStepsModel.start_location_lat, longitude: routesStepsModel.start_location_lng)
+                        let location2:CLLocation = CLLocation(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng)
+                        let meters:CLLocationDistance = location1.distance(from: location2)
+                        
+                        if meters > 300 {
+                            let insertCount = Int(meters/300)
+                            let insertLat:Double = latDiff/Double(insertCount)
+                            let insertLng:Double = lngDiff/Double(insertCount)
+                            for index in 0..<insertCount {
+                                let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:routesStepsModel.start_location_lat+(insertLat*Double(index)), longitude: routesStepsModel.start_location_lng+(insertLng*Double(index)))
+                                pathArray.append(coordinate)
+                            }
+                        }
+
+                    }
                 })
                 
-                let rectangle = GMSPolyline(path: path)
-                rectangle.strokeWidth = 6
-                rectangle.strokeColor = .getBaseColor()
-                rectangle.geodesic = true
-                
-                let postRoute:PostRoutes = PostRoutes(rectangle: rectangle)
-                SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
+                let pathFormat = self.pathFormat(coordinate: pathArray)
+                GoogleMapRoadsNetworkManager.manager.snaptoRoadsRequest(path: pathFormat, responseBlock: { (roadsArray) in
+                    if roadsArray != nil {
+                        let path = GMSMutablePath()
+                        var lastLocation:CLLocationCoordinate2D?
+                        roadsArray?.forEach({ (roadsModel) in
+                            let coordinate = CLLocationCoordinate2D(latitude:roadsModel.location_latitude, longitude: roadsModel.location_longitude)
+                            path.add(coordinate)
+                            lastLocation = coordinate
+                        })
+                        
+                        let line = GMSPolyline(path: path)
+                        line.strokeWidth = 6
+                        line.strokeColor = .getBaseColor()
+                        line.geodesic = true
+                        
+                        let postRoute:PostRoutes = PostRoutes(line: line)
+                        postRoute.endLocation = lastLocation
+                        SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
+                    }
+                })
             }
         }
         
@@ -201,5 +229,16 @@ extension RoutesController {
 //                AppDelegate.getAppDelegate().updateNavigation(distance: Int(meters))
             }
         }
+    }
+    
+    fileprivate func pathFormat(coordinate:[CLLocationCoordinate2D]) -> String {
+        var locationPath:String = ""
+        coordinate.forEach { (location) in
+            locationPath.append("|\(location.latitude),\(location.longitude)")
+        }
+        if locationPath.characters.count>0 {
+            locationPath.remove(at: locationPath.startIndex)
+        }
+        return locationPath
     }
 }

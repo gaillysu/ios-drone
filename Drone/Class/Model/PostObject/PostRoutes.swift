@@ -11,14 +11,15 @@ import GoogleMaps
 
 class PostRoutes: NSObject {
 
-    var rectangle:GMSPolyline?
+    var endLocation:CLLocationCoordinate2D?
+    var roadsLine:GMSPolyline?
     
     fileprivate override init() {
         super.init()
     }
     
-    init(rectangle:GMSPolyline) {
+    init(line:GMSPolyline) {
         super.init()
-        self.rectangle = rectangle
+        self.roadsLine = line
     }
 }

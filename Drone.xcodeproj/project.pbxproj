@@ -219,6 +219,10 @@
 		61C48FB31EF22E27007A0709 /* GoogleMapsRoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */; };
 		61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */; };
 		61C48FB81EF26F1F007A0709 /* DRHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB71EF26F1F007A0709 /* DRHUD.swift */; };
+		61C826BB1EF7770400B25A6A /* GoogleMapSnaptoRoadsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826BA1EF7770400B25A6A /* GoogleMapSnaptoRoadsRequest.swift */; };
+		61C826BD1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826BC1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift */; };
+		61C826BF1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826BE1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift */; };
+		61C826C11EF779EC00B25A6A /* GoogleSnapRoadsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826C01EF779EC00B25A6A /* GoogleSnapRoadsModel.swift */; };
 		61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
 		61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
 		61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
@@ -520,6 +524,10 @@
 		61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsRoutesModel.swift; sourceTree = "<group>"; };
 		61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesStepsModel.swift; sourceTree = "<group>"; };
 		61C48FB71EF26F1F007A0709 /* DRHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRHUD.swift; sourceTree = "<group>"; };
+		61C826BA1EF7770400B25A6A /* GoogleMapSnaptoRoadsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapSnaptoRoadsRequest.swift; sourceTree = "<group>"; };
+		61C826BC1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleRoadsAPIBaseRequest.swift; sourceTree = "<group>"; };
+		61C826BE1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapRoadsNetworkManager.swift; sourceTree = "<group>"; };
+		61C826C01EF779EC00B25A6A /* GoogleSnapRoadsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSnapRoadsModel.swift; sourceTree = "<group>"; };
 		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
 		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
 		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -762,6 +770,7 @@
 				61C48FB01EF22DAE007A0709 /* GoogleWaypointsModel.swift */,
 				61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */,
 				61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */,
+				61C826C01EF779EC00B25A6A /* GoogleSnapRoadsModel.swift */,
 			);
 			path = GoogleMapsModel;
 			sourceTree = "<group>";
@@ -1278,6 +1287,7 @@
 				61C28C5C1EA5A03C0019F574 /* UserNetworkManager.swift */,
 				61C28C5D1EA5A03C0019F574 /* WeatherNetworkApiManager.swift */,
 				61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */,
+				61C826BE1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1304,6 +1314,8 @@
 				61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */,
 				61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */,
 				61C48FAC1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift */,
+				61C826BC1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift */,
+				61C826BA1EF7770400B25A6A /* GoogleMapSnaptoRoadsRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2019,6 +2031,7 @@
 				61C28C231EA46F810019F574 /* UserDevice.swift in Sources */,
 				61C28C151EA46F810019F574 /* StepsTitleView.swift in Sources */,
 				CBBC3ACD1EC1BB96009282E8 /* HotKey.swift in Sources */,
+				61C826C11EF779EC00B25A6A /* GoogleSnapRoadsModel.swift in Sources */,
 				61C28C7E1EA5A03C0019F574 /* UserUpdateRequest.swift in Sources */,
 				61C28C351EA46F810019F574 /* WeatherLocationModel.swift in Sources */,
 				61C28C371EA46F810019F574 /* City.swift in Sources */,
@@ -2120,12 +2133,15 @@
 				61C28C241EA46F810019F574 /* UserGoal.swift in Sources */,
 				6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */,
 				619A9F1C1EC2B7B7006D65C4 /* PostRoutes.swift in Sources */,
+				61C826BD1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift in Sources */,
 				61C28BEF1EA46F810019F574 /* ConnectionSetupViewController.swift in Sources */,
+				61C826BF1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift in Sources */,
 				CB9F65591EA9FC19007982B0 /* UITableView+Extension.swift in Sources */,
 				61C28C1D1EA46F810019F574 /* WorldClockViewController.swift in Sources */,
 				61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */,
 				61C28BDD1EA46F810019F574 /* SetWeatherLocationsRequest.swift in Sources */,
 				61C28C6E1EA5A03C0019F574 /* StepsNetworkManager.swift in Sources */,
+				61C826BB1EF7770400B25A6A /* GoogleMapSnaptoRoadsRequest.swift in Sources */,
 				613928F41EA99F1B00450284 /* EveryHourWeatherModel.swift in Sources */,
 				61C28CA41EA73F4C0019F574 /* DataBaseManager.swift in Sources */,
 				61C28C2F1EA46F810019F574 /* LoginMenuItem.swift in Sources */,
