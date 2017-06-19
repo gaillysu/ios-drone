@@ -13,10 +13,8 @@ import RealmSwift
 
 class MEDAlarm: MEDBaseModel {
     
-    dynamic var wakeUpHour = 8
-    dynamic var wakeUpMinute = 0
-    dynamic var sleepHour = 0
-    dynamic var sleepMinute = 0
+    dynamic var hour = 8
+    dynamic var minute = 0
     
     dynamic var label:String = "Alarm"
     dynamic var enabled:Bool = false

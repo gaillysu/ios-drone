@@ -17,8 +17,6 @@ class AlarmViewModel{
     
     init() {
         data = Variable([])
-        MEDAlarm.findAll().forEach {
-            data.value.append(AlarmSectionViewModelItem(alarm: $0))
-        }
+
     }
 }
