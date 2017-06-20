@@ -118,8 +118,6 @@ extension RoutesController {
                             })
                             path.add(CLLocationCoordinate2D(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
                         }
-                        
-                        
                     }
                 })
                 
@@ -214,16 +212,5 @@ extension RoutesController {
                 beforeLocation = current
             }
         }
-    }
-    
-    fileprivate func pathFormat(coordinate:[CLLocationCoordinate2D]) -> String {
-        var locationPath:String = ""
-        coordinate.forEach { (location) in
-            locationPath.append("|\(location.latitude),\(location.longitude)")
-        }
-        if locationPath.characters.count>0 {
-            locationPath.remove(at: locationPath.startIndex)
-        }
-        return locationPath
     }
 }
