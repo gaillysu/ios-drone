@@ -11,6 +11,7 @@ import MapKit
 import SwiftEventBus
 import SwiftyTimer
 import GoogleMaps
+import Polyline
 
 class RoutesController: UIViewController {
     @IBOutlet weak var routesSegmented: UISegmentedControl!
@@ -22,9 +23,9 @@ class RoutesController: UIViewController {
     @IBOutlet weak var alternativeLabel: UILabel!
     @IBOutlet weak var timerConstraint: NSLayoutConstraint!
     
-    fileprivate let routeMode:[String] = ["Driving","Walking","Transit"]
-    
     var geocodeModel:GoogleMapsGeocodeModel?
+    
+    fileprivate let routeMode:[String] = ["Driving","Walking","Transit"]
     fileprivate var beforeLocation:CLLocation?
     fileprivate var statrtTimer:Timer?
     fileprivate var startDate:Date?
@@ -100,40 +101,35 @@ extension RoutesController {
         
         GoogleMapNetworkManager.manager.getGoogleMapsDirections(startAddres: startAddres, endAddres: endAddres, mode: mode) { (directionsModel) in
             if directionsModel != nil {
-                var pathArray:[CLLocationCoordinate2D] = []
+                let path = GMSMutablePath()
                 directionsModel?.routes.forEach({ (routesModel) in
                     self.setLabelValue(takeTime: routesModel.duration_text, distance: routesModel.distance_text, routeText: "")
                     for (index,routesStepsModel) in routesModel.routesSteps.enumerated() {
+                        let coordinate = Polyline(encodedPolyline: routesStepsModel.polyline_points)
                         if index == 0{
-                            pathArray.append(CLLocationCoordinate2D(latitude: routesStepsModel.start_location_lat, longitude: routesStepsModel.start_location_lng))
-                            pathArray.append(CLLocationCoordinate2D(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
+                            path.add(CLLocationCoordinate2D(latitude: routesStepsModel.start_location_lat, longitude: routesStepsModel.start_location_lng))
+                            coordinate.coordinates?.forEach({ (locationCoordinate) in
+                                path.add(locationCoordinate)
+                            })
+                            path.add(CLLocationCoordinate2D(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
                         }else{
-                            pathArray.append(CLLocationCoordinate2D(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
+                            coordinate.coordinates?.forEach({ (locationCoordinate) in
+                                path.add(locationCoordinate)
+                            })
+                            path.add(CLLocationCoordinate2D(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
                         }
+                        
+                        
                     }
                 })
                 
-                let pathFormat = self.pathFormat(coordinate: pathArray)
-                GoogleMapRoadsNetworkManager.manager.snaptoRoadsRequest(path: pathFormat, responseBlock: { (roadsArray) in
-                    if roadsArray != nil {
-                        let path = GMSMutablePath()
-                        var lastLocation:CLLocationCoordinate2D?
-                        roadsArray?.forEach({ (roadsModel) in
-                            let coordinate = CLLocationCoordinate2D(latitude:roadsModel.location_latitude, longitude: roadsModel.location_longitude)
-                            path.add(coordinate)
-                            lastLocation = coordinate
-                        })
-                        
-                        let line = GMSPolyline(path: path)
-                        line.strokeWidth = 6
-                        line.strokeColor = .getBaseColor()
-                        line.geodesic = true
-                        
-                        let postRoute:PostRoutes = PostRoutes(line: line)
-                        postRoute.endLocation = lastLocation
-                        SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
-                    }
-                })
+                let line = GMSPolyline(path: path)
+                line.strokeWidth = 6
+                line.strokeColor = .getBaseColor()
+                line.geodesic = true
+                
+                let postRoute:PostRoutes = PostRoutes(line: line)
+                SwiftEventBus.post(SEARCH_ACTION_CLICK, sender: postRoute)
             }
         }
         

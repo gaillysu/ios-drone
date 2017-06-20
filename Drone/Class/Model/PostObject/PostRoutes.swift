@@ -10,8 +10,6 @@ import UIKit
 import GoogleMaps
 
 class PostRoutes: NSObject {
-
-    var endLocation:CLLocationCoordinate2D?
     var roadsLine:GMSPolyline?
     
     fileprivate override init() {

@@ -21,7 +21,6 @@ class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDa
     fileprivate var tableDataSource:GMSAutocompleteTableDataSource?
     fileprivate var pointArray:[GoogleMapsGeocodeModel] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +28,8 @@ class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         tableDataSource = GMSAutocompleteTableDataSource()
         tableDataSource?.delegate = self;
-
+        tableDataSource?.tableCellBackgroundColor = .white
+        
         addresTableView.register(UINib(nibName: "MapViewCell", bundle: nil), forCellReuseIdentifier: "MapViewCell_Identifier")
         addresTableView.separatorInset = UIEdgeInsets.zero
         addresTableView.tableFooterView = UIView()

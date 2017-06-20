@@ -72,7 +72,6 @@ extension NavigationController {
                 postRoute.roadsLine?.map = self.navigationMapView
                 self.beforeLine = postRoute.roadsLine
             }
-            
         }
         
         SwiftEventBus.onMainThread(self, name: SELECTED_LOCATION_ADDRES) { (notification) in
