@@ -54,7 +54,7 @@ class GoogleMapNetworkManager: NSObject {
     }
     
     func getGoogleMapsDirections(startAddres:String, endAddres:String, mode:String?, responseBlock: @escaping (_ results:GoogleMapsDirectionsModel?) -> Void) {
-        let request:GoogleMapsDirectionsRequest = GoogleMapsDirectionsRequest(startLocation: startAddres, endLocation: endAddres, mode: mode) { (success, json, error) in
+        let request:GoogleMapsDirectionsRequest = GoogleMapsDirectionsRequest(startLocation: startAddres, endLocation: endAddres, mode: mode?.lowercased()) { (success, json, error) in
             if success {
                 let googleDirectionsModel:GoogleMapsDirectionsModel  = self.directionsJSONParsing(json: json!)
                 responseBlock(googleDirectionsModel)

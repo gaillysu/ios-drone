@@ -24,11 +24,8 @@ class RoutesController: UIViewController {
     
     fileprivate let routeMode:[String] = ["Driving","Walking","Transit"]
     
-    var googleMapView:GMSMapView?
-    
     var geocodeModel:GoogleMapsGeocodeModel?
-    
-    fileprivate var routeArray:[MKRoute] = []
+    fileprivate var beforeLocation:CLLocation?
     fileprivate var statrtTimer:Timer?
     fileprivate var startDate:Date?
     fileprivate lazy var dateFormat: DateFormatter = {
@@ -45,7 +42,6 @@ class RoutesController: UIViewController {
         for (index,value) in routeMode.enumerated() {
             self.routesSegmented.insertSegment(withTitle: value, at: index, animated: false)
         }
-
     }
 
     @IBAction func routesSelectedAction(_ sender: Any) {
@@ -82,7 +78,6 @@ class RoutesController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
     }
 }
 
@@ -109,22 +104,12 @@ extension RoutesController {
                 directionsModel?.routes.forEach({ (routesModel) in
                     self.setLabelValue(takeTime: routesModel.duration_text, distance: routesModel.distance_text, routeText: "")
                     for (index,routesStepsModel) in routesModel.routesSteps.enumerated() {
-                        let latDiff = routesStepsModel.end_location_lat - routesStepsModel.start_location_lat
-                        let lngDiff = routesStepsModel.end_location_lng - routesStepsModel.start_location_lng
-                        let location1:CLLocation = CLLocation(latitude: routesStepsModel.start_location_lat, longitude: routesStepsModel.start_location_lng)
-                        let location2:CLLocation = CLLocation(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng)
-                        let meters:CLLocationDistance = location1.distance(from: location2)
-                        
-                        if meters > 300 {
-                            let insertCount = Int(meters/300)
-                            let insertLat:Double = latDiff/Double(insertCount)
-                            let insertLng:Double = lngDiff/Double(insertCount)
-                            for index in 0..<insertCount {
-                                let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:routesStepsModel.start_location_lat+(insertLat*Double(index)), longitude: routesStepsModel.start_location_lng+(insertLng*Double(index)))
-                                pathArray.append(coordinate)
-                            }
+                        if index == 0{
+                            pathArray.append(CLLocationCoordinate2D(latitude: routesStepsModel.start_location_lat, longitude: routesStepsModel.start_location_lng))
+                            pathArray.append(CLLocationCoordinate2D(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
+                        }else{
+                            pathArray.append(CLLocationCoordinate2D(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
                         }
-
                     }
                 })
                 
@@ -166,7 +151,10 @@ extension RoutesController {
         
         displayTimer()
         
-        //AppDelegate.getAppDelegate().startNavigation(name: placemarks!.name!)
+        guard geocodeModel != nil else {
+            return
+        }
+        AppDelegate.getAppDelegate().startNavigation(name: geocodeModel!.formatted_address)
     }
     
     func stopTimer() {
@@ -224,9 +212,10 @@ extension RoutesController {
         if seconds%5 == 0 {
             if let location = LocationManager.manager.currentLocation {
                 let current:CLLocation = location
-//                let before:CLLocation = placemarks!.location!
-//                let meters = current.distance(from: before)
-//                AppDelegate.getAppDelegate().updateNavigation(distance: Int(meters))
+                let before = beforeLocation ?? location
+                let meters = current.distance(from: before)
+                AppDelegate.getAppDelegate().updateNavigation(distance: Int(meters))
+                beforeLocation = current
             }
         }
     }
