@@ -17,10 +17,6 @@ class NavigationController: UIViewController {
     
     fileprivate let myLocation:String = "MyLocation_Identifier"
     fileprivate var firstLocationUpdate:Bool = false
-    fileprivate var thePlacemark:CLPlacemark?
-    fileprivate var routeDetails:MKRoute?
-    
-    fileprivate var isSetRegion:Bool = false
     fileprivate var beforeLine:GMSPolyline?
     fileprivate var beforeMarker:GMSMarker?
     
@@ -105,7 +101,6 @@ extension NavigationController {
     }
     
     func configMapView() {
-        navigationMapView.delegate = self
         navigationMapView.settings.compassButton = true;
         navigationMapView.settings.myLocationButton = true;
         navigationMapView.isMyLocationEnabled = true
@@ -124,12 +119,5 @@ extension NavigationController {
                 }
             }
         }
-    }
-}
-
-// MARK: - GMSMapViewDelegate
-extension NavigationController: GMSMapViewDelegate{
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-
     }
 }

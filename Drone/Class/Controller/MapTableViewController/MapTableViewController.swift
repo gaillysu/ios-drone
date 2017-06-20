@@ -13,13 +13,12 @@ import CoreLocation
 import Pulley
 import GooglePlaces
 
-class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class MapTableViewController: UIViewController {
         
     @IBOutlet weak var addresTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var gripperView: UIView!
     fileprivate var tableDataSource:GMSAutocompleteTableDataSource?
-    fileprivate var pointArray:[GoogleMapsGeocodeModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,40 +41,10 @@ class MapTableViewController: UIViewController,UITableViewDelegate,UITableViewDa
         super.didReceiveMemoryWarning()
 
     }
-
-    // MARK: - Table view data source
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pointArray.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:MapViewCell = tableView.dequeueReusableCell(withIdentifier: "MapViewCell_Identifier", for: indexPath) as! MapViewCell
-        let geocodeModel:GoogleMapsGeocodeModel = pointArray[indexPath.row]
-        cell.googleModel = geocodeModel
-
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let geocodeModel:GoogleMapsGeocodeModel = pointArray[indexPath.row]
-        let routesController:RoutesController = RoutesController(nibName: "RoutesController", bundle: nil)
-        routesController.geocodeModel = geocodeModel
-        self.navigationController?.pushViewController(routesController, animated: true)
-    }
 }
 
 extension MapTableViewController:UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //searchGeocodeAddress(object: searchBar.text!)
         searchBar.resignFirstResponder()
     }
     
@@ -110,7 +79,6 @@ extension MapTableViewController:GMSAutocompleteTableDataSourceDelegate {
     }
     
     func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didSelect prediction: GMSAutocompletePrediction) -> Bool {
-        print("didSelect prediction:\(prediction.attributedFullText.string)")
         searchGeocodeAddress(object: prediction.attributedFullText.string)
         return false
     }
