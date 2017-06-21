@@ -31,7 +31,6 @@ class MapTableViewController: UIViewController {
         
         addresTableView.register(UINib(nibName: "MapViewCell", bundle: nil), forCellReuseIdentifier: "MapViewCell_Identifier")
         addresTableView.separatorInset = UIEdgeInsets.zero
-        addresTableView.tableFooterView = UIView()
         
         addresTableView.delegate = tableDataSource
         addresTableView.dataSource = tableDataSource

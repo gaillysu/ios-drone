@@ -25,7 +25,7 @@ class RoutesController: UIViewController {
     
     var geocodeModel:GoogleMapsGeocodeModel?
     
-    fileprivate let routeMode:[String] = ["Driving","Walking","Transit"]
+    fileprivate let routeMode:[String] = ["Driving","Walking"]
     fileprivate var beforeLocation:CLLocation?
     fileprivate var statrtTimer:Timer?
     fileprivate var startDate:Date?
@@ -107,16 +107,13 @@ extension RoutesController {
                     for (index,routesStepsModel) in routesModel.routesSteps.enumerated() {
                         let coordinate = Polyline(encodedPolyline: routesStepsModel.polyline_points)
                         if index == 0{
-                            path.add(CLLocationCoordinate2D(latitude: routesStepsModel.start_location_lat, longitude: routesStepsModel.start_location_lng))
                             coordinate.coordinates?.forEach({ (locationCoordinate) in
                                 path.add(locationCoordinate)
                             })
-                            path.add(CLLocationCoordinate2D(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
                         }else{
                             coordinate.coordinates?.forEach({ (locationCoordinate) in
                                 path.add(locationCoordinate)
                             })
-                            path.add(CLLocationCoordinate2D(latitude: routesStepsModel.end_location_lat, longitude: routesStepsModel.end_location_lng))
                         }
                     }
                 })
