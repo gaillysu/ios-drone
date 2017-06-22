@@ -13,6 +13,8 @@ enum AppConfigApplicationID:UInt8 {
     case activityTracking   = 0x02
     case weather            = 0x03
     case compass            = 0x10
+    case timer              = 0x11
+    case stopwatch          = 0x12
 }
 
 enum AppConfigAppState:UInt8 {

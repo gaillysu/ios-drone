@@ -62,4 +62,12 @@ extension String {
         
         return data
     }
+    
+    func binary2dec() -> Int {
+        var sum = 0
+        for c in self.characters {
+            sum = sum * 2 + Int("\(c)")!
+        }
+        return sum
+    }
 }
