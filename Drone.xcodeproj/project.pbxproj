@@ -43,6 +43,10 @@
 		613929211EB0640D00450284 /* OTARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929201EB0640D00450284 /* OTARequest.swift */; };
 		613929241EB18C9200450284 /* WatchInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929231EB18C9200450284 /* WatchInfoModel.swift */; };
 		6143C01D1EC45DEB00420647 /* UrbanNavigationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6143C01C1EC45DEB00420647 /* UrbanNavigationRequest.swift */; };
+		6152085A1EFBA1D700F3F551 /* SetDailyAlarmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615208591EFBA1D700F3F551 /* SetDailyAlarmRequest.swift */; };
+		6152085C1EFBA1F000F3F551 /* ReadDailyAlarmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152085B1EFBA1F000F3F551 /* ReadDailyAlarmRequest.swift */; };
+		6152085E1EFBA41B00F3F551 /* SetCountdownTimerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152085D1EFBA41B00F3F551 /* SetCountdownTimerRequest.swift */; };
+		615208601EFBA5B000F3F551 /* ReadCountdownTimerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152085F1EFBA5B000F3F551 /* ReadCountdownTimerRequest.swift */; };
 		618322FE1EA0A2B90054966D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
 		618323081EA459F00054966D /* AutocompleteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323071EA459F00054966D /* AutocompleteField.swift */; };
 		6183230E1EA4609C0054966D /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6183230A1EA4609C0054966D /* SMSegment.swift */; };
@@ -219,13 +223,13 @@
 		61C48FB31EF22E27007A0709 /* GoogleMapsRoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */; };
 		61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */; };
 		61C48FB81EF26F1F007A0709 /* DRHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB71EF26F1F007A0709 /* DRHUD.swift */; };
+		61C48FBD1EF38100007A0709 /* NotificationAlertSoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */; };
+		61C48FC61EF3BCCE007A0709 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61C48FC51EF3BCCE007A0709 /* bell.wav */; };
+		61C48FC81EF3BE65007A0709 /* FindMyPhonePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */; };
 		61C826BB1EF7770400B25A6A /* GoogleMapSnaptoRoadsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826BA1EF7770400B25A6A /* GoogleMapSnaptoRoadsRequest.swift */; };
 		61C826BD1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826BC1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift */; };
 		61C826BF1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826BE1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift */; };
 		61C826C11EF779EC00B25A6A /* GoogleSnapRoadsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826C01EF779EC00B25A6A /* GoogleSnapRoadsModel.swift */; };
-		61C48FBD1EF38100007A0709 /* NotificationAlertSoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */; };
-		61C48FC61EF3BCCE007A0709 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61C48FC51EF3BCCE007A0709 /* bell.wav */; };
-		61C48FC81EF3BE65007A0709 /* FindMyPhonePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */; };
 		61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
 		61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
 		61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
@@ -350,6 +354,10 @@
 		613929201EB0640D00450284 /* OTARequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTARequest.swift; sourceTree = "<group>"; };
 		613929231EB18C9200450284 /* WatchInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchInfoModel.swift; sourceTree = "<group>"; };
 		6143C01C1EC45DEB00420647 /* UrbanNavigationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrbanNavigationRequest.swift; sourceTree = "<group>"; };
+		615208591EFBA1D700F3F551 /* SetDailyAlarmRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDailyAlarmRequest.swift; sourceTree = "<group>"; };
+		6152085B1EFBA1F000F3F551 /* ReadDailyAlarmRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDailyAlarmRequest.swift; sourceTree = "<group>"; };
+		6152085D1EFBA41B00F3F551 /* SetCountdownTimerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCountdownTimerRequest.swift; sourceTree = "<group>"; };
+		6152085F1EFBA5B000F3F551 /* ReadCountdownTimerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadCountdownTimerRequest.swift; sourceTree = "<group>"; };
 		618322FD1EA0A2B90054966D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		618323071EA459F00054966D /* AutocompleteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteField.swift; sourceTree = "<group>"; };
 		6183230A1EA4609C0054966D /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
@@ -526,13 +534,13 @@
 		61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsRoutesModel.swift; sourceTree = "<group>"; };
 		61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesStepsModel.swift; sourceTree = "<group>"; };
 		61C48FB71EF26F1F007A0709 /* DRHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRHUD.swift; sourceTree = "<group>"; };
+		61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertSoundController.swift; sourceTree = "<group>"; };
+		61C48FC51EF3BCCE007A0709 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
+		61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMyPhonePacket.swift; sourceTree = "<group>"; };
 		61C826BA1EF7770400B25A6A /* GoogleMapSnaptoRoadsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapSnaptoRoadsRequest.swift; sourceTree = "<group>"; };
 		61C826BC1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleRoadsAPIBaseRequest.swift; sourceTree = "<group>"; };
 		61C826BE1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapRoadsNetworkManager.swift; sourceTree = "<group>"; };
 		61C826C01EF779EC00B25A6A /* GoogleSnapRoadsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSnapRoadsModel.swift; sourceTree = "<group>"; };
-		61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlertSoundController.swift; sourceTree = "<group>"; };
-		61C48FC51EF3BCCE007A0709 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
-		61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMyPhonePacket.swift; sourceTree = "<group>"; };
 		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
 		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
 		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -868,6 +876,7 @@
 		61C28B031EA46F800019F574 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				615208591EFBA1D700F3F551 /* SetDailyAlarmRequest.swift */,
 				61C28B041EA46F800019F574 /* ClearConnectionRequest.swift */,
 				61C28B051EA46F800019F574 /* DroneRequest.swift */,
 				61C28B061EA46F800019F574 /* GetActivityRequest.swift */,
@@ -903,6 +912,9 @@
 				61C28B241EA46F800019F574 /* WriteSettingRequest.swift */,
 				613929201EB0640D00450284 /* OTARequest.swift */,
 				6143C01C1EC45DEB00420647 /* UrbanNavigationRequest.swift */,
+				6152085B1EFBA1F000F3F551 /* ReadDailyAlarmRequest.swift */,
+				6152085D1EFBA41B00F3F551 /* SetCountdownTimerRequest.swift */,
+				6152085F1EFBA5B000F3F551 /* ReadCountdownTimerRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2007,6 +2019,7 @@
 				61C28C261EA46F810019F574 /* UserSteps.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				CB15497A1EC01E0900090242 /* HotKeySectionModelItem.swift in Sources */,
+				615208601EFBA5B000F3F551 /* ReadCountdownTimerRequest.swift in Sources */,
 				CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */,
 				61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */,
 				61C28C1F1EA46F810019F574 /* WhichDeviceViewController.swift in Sources */,
@@ -2077,6 +2090,7 @@
 				61C28BDA1EA46F810019F574 /* SetStepsToWatchReuqest.swift in Sources */,
 				61C48FAF1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift in Sources */,
 				CB9F653B1EA72D37007982B0 /* CounterClockwiseButton.swift in Sources */,
+				6152085C1EFBA1F000F3F551 /* ReadDailyAlarmRequest.swift in Sources */,
 				61C28BBB1EA46F810019F574 /* ConnectionController.swift in Sources */,
 				61C28C331EA46F810019F574 /* StepsMenuItem.swift in Sources */,
 				61C28BBD1EA46F810019F574 /* DroneProfile.swift in Sources */,
@@ -2128,6 +2142,7 @@
 				00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */,
 				61C28C7D1EA5A03C0019F574 /* UserCreateRequest.swift in Sources */,
 				61FAB9BB1EBC4E2D00513E97 /* MapNavigationViewController.swift in Sources */,
+				6152085A1EFBA1D700F3F551 /* SetDailyAlarmRequest.swift in Sources */,
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
 				61352C981EF121EE00F82907 /* GoogleMapsGeocodeModel.swift in Sources */,
 				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
@@ -2180,6 +2195,7 @@
 				6183230F1EA4609C0054966D /* SMSegmentAppearance.swift in Sources */,
 				61C28C031EA46F810019F574 /* NotificationViewController.swift in Sources */,
 				61C28C4C1EA46F810019F574 /* AppTheme.swift in Sources */,
+				6152085E1EFBA41B00F3F551 /* SetCountdownTimerRequest.swift in Sources */,
 				CBB892311EADB5B6006F7031 /* UITableViewCell+Extension.swift in Sources */,
 				618323081EA459F00054966D /* AutocompleteField.swift in Sources */,
 				61C28BDF1EA46F810019F574 /* StartSystemSettingRequest.swift in Sources */,
