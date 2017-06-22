@@ -21,6 +21,12 @@ class WeatherNetworkApiManager: NSObject {
     
     fileprivate var tempValue:Int = 0
     fileprivate var weatherStatusText:String = ""
+    
+    fileprivate lazy var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
 
     fileprivate override init() {
         super.init()
@@ -56,6 +62,7 @@ class WeatherNetworkApiManager: NSObject {
     func getWeatherInfo(regionName:String, id:Int, responseBlock: @escaping (_ id:Int,_ temp:Int, _ code:Int, _ statusText:String?) -> Void) {
         
         cityid[regionName] = id
+        let cityArray:[City] = DataBaseManager.manager.getCitySelected()
         
         if let cache = AppTheme.LoadKeyedArchiverName(SYNC_WEATHER_INFOKEY+regionName) {
             let weatherModel:WeatherCacheModel = cache as! WeatherCacheModel
@@ -63,19 +70,32 @@ class WeatherNetworkApiManager: NSObject {
             let cityName:String = weatherModel.city.name
             if Date(timeIntervalSince1970: cacheDate) == Date.today()&&cityName.hasPrefix(regionName) {
                 var isCallBack:Bool = false
+                
+                let city = cityArray.filter({$0.name.hasPrefix(cityName)}).last
+                let localTimeSeconds = TimeZone.current.secondsFromGMT()
+                
+                var cityTime = 0.0
+                if let offset = city?.timezone?.gmtTimeOffset {
+                    cityTime = Date().timeIntervalSince1970-Double(localTimeSeconds)+Double(offset*60);
+                }
+                
+                let cityDate = Date(timeIntervalSince1970: cityTime==0 ? (Date().timeIntervalSince1970-Double(localTimeSeconds)):cityTime)
                 for listModel in weatherModel.list {
-                    if let hourDate = listModel.dt_txt.dateFromFormat("yyyy-MM-dd HH:mm:ss", locale:  DateFormatter().locale) {
-                        if hourDate.hour > Date().hour {
+                    let offset = city?.timezone?.gmtTimeOffset
+                    self.formatter.timeZone = TimeZone(secondsFromGMT: Int(offset!*60))
+                    let dateString = self.formatter.string(from: Date(timeIntervalSince1970: listModel.dt.toDouble()))
+                    print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
+                    if let hourDate = self.formatter.date(from: dateString) {
+                        if hourDate.hour > cityDate.hour {
                             isCallBack = true
-                            let temp:Int = Int(listModel.temp.toFloat()-273)
+                            let temp:Int = Int(listModel.temp.toFloat())
                             let code:Int = listModel.code.toInt()
                             let text:String = listModel.stateText
                             responseBlock(id,temp , code, text)
-                            break;
+                            break
                         }
                     }
                 }
-                
                 if isCallBack {
                     self.cityid.removeValue(forKey: regionName)
                     return
@@ -103,12 +123,22 @@ class WeatherNetworkApiManager: NSObject {
                     var temp:Float = 0
                     var code:Int = 0
                     var text:String = listModel.first!.stateText
-                    
+                    let city = cityArray.filter({$0.name.hasPrefix(cityName)}).last
                     let localTimeSeconds = TimeZone.current.secondsFromGMT()
-                    let localDate = Date(timeIntervalSince1970: (Date().timeIntervalSince1970-Double(localTimeSeconds)))
+                    
+                    var cityTime = 0.0
+                    if let offset = city?.timezone?.gmtTimeOffset {
+                        cityTime = Date().timeIntervalSince1970-Double(localTimeSeconds)+Double(offset*60);
+                    }
+                    
+                    let cityDate = Date(timeIntervalSince1970: cityTime==0 ? (Date().timeIntervalSince1970-Double(localTimeSeconds)):cityTime)
                     for model in listModel{
-                        if let hourDate = model.dt_txt.dateFromFormat("yyyy-MM-dd HH:mm:ss", locale:  DateFormatter().locale) {
-                            if hourDate.hour > localDate.hour {
+                        let offset = city?.timezone?.gmtTimeOffset
+                        self.formatter.timeZone = TimeZone(secondsFromGMT: Int(offset!*60))
+                        let dateString = self.formatter.string(from: Date(timeIntervalSince1970: model.dt.toDouble()))
+                        print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
+                        if let hourDate = self.formatter.date(from: dateString) {
+                            if hourDate.hour > cityDate.hour {
                                 temp = model.temp.toFloat()
                                 code = model.code.toInt()
                                 text = model.stateText;
@@ -117,7 +147,7 @@ class WeatherNetworkApiManager: NSObject {
                         }
                     }
                     
-                    self.tempValue = Int(temp-273)
+                    self.tempValue = Int(temp)
                     self.weatherStatusText = text
                     
                     for (key,value) in self.cityid {
@@ -127,7 +157,7 @@ class WeatherNetworkApiManager: NSObject {
                             break;
                         }
                     }
-                    _ = AppTheme.KeyedArchiverName(SYNC_WEATHER_INFOKEY+regionName, andObject: weatherModel)
+                    _ = AppTheme.KeyedArchiverName(SYNC_WEATHER_INFOKEY+cityModel.id, andObject: weatherModel)
                 }else{
                     responseBlock(0,0, 0, nil);
                 }
