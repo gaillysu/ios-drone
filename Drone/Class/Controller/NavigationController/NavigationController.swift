@@ -17,10 +17,8 @@ class NavigationController: UIViewController {
     
     fileprivate let myLocation:String = "MyLocation_Identifier"
     fileprivate var firstLocationUpdate:Bool = false
-    fileprivate var thePlacemark:CLPlacemark?
-    fileprivate var routeDetails:MKRoute?
-    
-    fileprivate var isSetRegion:Bool = false
+    fileprivate var beforeLine:GMSPolyline?
+    fileprivate var beforeMarker:GMSMarker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,15 +62,34 @@ class NavigationController: UIViewController {
 extension NavigationController {
     func registerEventBusMessage() {
         SwiftEventBus.onMainThread(self, name: SEARCH_ACTION_CLICK) { (notification) in
-            self.navigationMapView.clear()
-            
-            let postRoute:PostRoutes = notification.object as! PostRoutes
-            postRoute.rectangle?.map = self.navigationMapView
+            if notification.object is PostRoutes {
+                self.beforeLine?.map = nil
+                let postRoute:PostRoutes = notification.object as! PostRoutes
+                postRoute.roadsLine?.map = self.navigationMapView
+                self.beforeLine = postRoute.roadsLine
+            }
+        }
+        
+        SwiftEventBus.onMainThread(self, name: SELECTED_LOCATION_ADDRES) { (notification) in
+            if notification.object is GoogleMapsGeocodeModel {
+                self.beforeMarker?.map = nil
+                let geocodeModel = notification.object as! GoogleMapsGeocodeModel
+                let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: geocodeModel.geometry_location_lat.toDouble(), longitude: geocodeModel.geometry_location_lng.toDouble())
+                let marker:GMSMarker = GMSMarker(position: coordinate)
+                marker.snippet = geocodeModel.formatted_address
+                marker.appearAnimation = .pop
+                marker.map = self.navigationMapView
+                
+                self.beforeMarker = marker
+                let camera = GMSCameraPosition.camera(withTarget: coordinate, zoom: 12)
+                self.navigationMapView.camera = camera
+            }
         }
     }
     
     func deinitEventBus() {
         SwiftEventBus.unregister(self, name: SEARCH_ACTION_CLICK)
+        SwiftEventBus.unregister(self, name: SELECTED_LOCATION_ADDRES)
     }
     
     func getCamera() -> GMSCameraPosition {
@@ -84,7 +101,6 @@ extension NavigationController {
     }
     
     func configMapView() {
-        navigationMapView.delegate = self
         navigationMapView.settings.compassButton = true;
         navigationMapView.settings.myLocationButton = true;
         navigationMapView.isMyLocationEnabled = true
@@ -103,12 +119,5 @@ extension NavigationController {
                 }
             }
         }
-    }
-}
-
-// MARK: - GMSMapViewDelegate
-extension NavigationController: GMSMapViewDelegate{
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-
     }
 }

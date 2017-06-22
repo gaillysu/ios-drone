@@ -17,7 +17,7 @@ class GoogleMapsDirectionsRequest: GoogleMapsBaseRequest {
     /// - Parameters:
     ///   - startLocation: Route calculation start location addres、latitude/longitude text value or place id
     ///   - endLocation: Route calculation end location addres、latitude/longitude text value or place id
-    ///   - mode: （default: driving）– 指定在计算路线时使用的交通模式: "driving,walking,bicycling,transit"
+    ///   - mode: （default: driving）– 指定在计算路线时使用的交通模式: "driving,walking,bicycling,transit"(lowercase)
     ///   - responseBlock: response block
     init(startLocation:String, endLocation:String, mode:String?, responseBlock: @escaping (_ bool:Bool, _ json:JSON?, _ error:Error?) -> Void) {
         super.init(response: responseBlock)
