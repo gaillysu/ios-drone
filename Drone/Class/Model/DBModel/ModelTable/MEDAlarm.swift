@@ -18,11 +18,26 @@ class MEDAlarm: MEDBaseModel {
     
     dynamic var label:String = "Alarm"
     dynamic var enabled:Bool = false
+    dynamic var snoozable:Bool = false
     
     let daysInWeek = List<MEDWeekDayNumber>()
     dynamic var key:String = Date().stringFromFormat("yyyyMMddHHmmss", locale: DateFormatter().locale)
     
     override static func primaryKey() -> String? {
         return "key"
+    }
+    
+    func repeatLabel() -> String{
+        if daysInWeek.isEmpty{
+            return "Never"
+        }
+        var weekDayString = ""
+        daysInWeek.forEach { number in
+            if weekDayString != ""{
+                weekDayString += " "
+            }
+            weekDayString += number.weekDay.shortDay()
+        }
+        return weekDayString
     }
 }

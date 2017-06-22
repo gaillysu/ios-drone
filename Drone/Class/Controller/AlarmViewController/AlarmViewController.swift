@@ -45,9 +45,17 @@ class AlarmViewController: UITableViewController {
         alarmViewModel.data.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
+        
+        tableView.rx.itemSelected.subscribe{ event in
+            if let indexPath = event.element{
+                if let alarm = self.alarmViewModel.getAlarmFor(index: indexPath.row) {
+                    let viewModel = AddAlarmViewModel(alarm: alarm)
+                    self.navigationController?.pushViewController(AddAlarmViewController(viewModel: viewModel), animated: true)
+                }
+            }
+        }.addDisposableTo(disposeBag)
         if let tabBarController = tabBarController {
             self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: tabBarController.tabBar.frame.height, right: 0.0)
-
         }
     }
 }

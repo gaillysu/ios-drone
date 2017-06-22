@@ -21,10 +21,13 @@ class AlarmTableViewCell: UITableViewCell {
         didSet {
             print("Did set Alarm")
             timeLabel.text = (alarm?.hour.to2String())! + ":" + (alarm?.minute.to2String())!
-            nameLabel.text = alarm?.label
+            if (alarm?.daysInWeek.isEmpty)!{
+                nameLabel.text = alarm?.label
+            }else{
+                nameLabel.text = (alarm?.label)! + ", " + (alarm?.repeatLabel())!
+            }
             enabledSwitch.setOn((alarm?.enabled)!, animated: true)
             self.swap(bool: (alarm?.enabled)!)
-            
         }
     }
     
