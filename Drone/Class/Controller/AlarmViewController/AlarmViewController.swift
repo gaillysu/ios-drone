@@ -23,14 +23,6 @@ class AlarmViewController: UITableViewController {
     
     override func viewDidLoad() {
         
-        if MEDAlarm.findAll().count == 0 {
-            for _ in 0..<5 {
-               let alarm =  MEDAlarm()
-                alarm.update(operation: { _ in
-                })
-            }
-        }
-        
         self.tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
         self.tableView.backgroundColor = UIColor("#E4C590")
         self.tableView.separatorColor = .white
@@ -48,12 +40,12 @@ class AlarmViewController: UITableViewController {
         tableView.dataSource = nil
         tableView.delegate = nil
         
-        dataSource.titleForHeaderInSection = { $0[$1].header }
+        dataSource.canEditRowAtIndexPath = { _ in false }
         
         alarmViewModel.data.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
-        
+
         tableView.rx.itemSelected.subscribe{ event in
             if let indexPath = event.element{
                 if let alarm = self.alarmViewModel.getAlarmFor(index: indexPath.row) {
@@ -62,12 +54,16 @@ class AlarmViewController: UITableViewController {
                 }
             }
         }.addDisposableTo(disposeBag)
+        
+        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
+        
         if let tabBarController = tabBarController {
             self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: tabBarController.tabBar.frame.height, right: 0.0)
         }
+        
     }
 }
-// Delegates
+// Delegates This section does not work actually but I want to make it work :@
 extension AlarmViewController{
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
@@ -77,11 +73,7 @@ extension AlarmViewController{
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        print("Yoo")
+        self.alarmViewModel.delete(index: indexPath.row)
     }
-
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
+ 
 }

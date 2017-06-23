@@ -17,20 +17,20 @@ struct AlarmSectionViewModelItem: Hashable{
     
     init(alarm:MEDAlarm) {
         self.alarm = alarm
-        hashValue = alarm.label.hashValue
+        hashValue = alarm.key.hashValue
     }
 }
 
 extension AlarmSectionViewModelItem:IdentifiableType, Equatable{
     
     static func ==(lhs: AlarmSectionViewModelItem, rhs: AlarmSectionViewModelItem) -> Bool {
-        return lhs.alarm.label == rhs.alarm.label
+        return lhs.alarm.key == rhs.alarm.key
     }
     
-    typealias Identity = AlarmSectionViewModelItem
+    typealias Identity = String
     
-    var identity : Identity { get{
-        return self
+    var identity : String { get{
+        return self.alarm.key
         }
     }
     

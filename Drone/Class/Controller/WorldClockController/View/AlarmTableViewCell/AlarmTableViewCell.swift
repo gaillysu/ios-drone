@@ -32,10 +32,10 @@ class AlarmTableViewCell: UITableViewCell {
         enabledSwitch.onTintColor = .getTintColor()
         enabledSwitch.rx.isOn
             .subscribe {
-            if let enabled = $0.element{
-                self.alarm?.update(operation: { $0.enabled = enabled })
-                self.swap(bool: enabled)
-            }
+                if let enabled = $0.element{
+                    self.alarm?.update(operation: { $0.enabled = enabled })
+                    self.swap(bool: enabled)
+                }
             }.addDisposableTo(disposeBag)
     }
     
