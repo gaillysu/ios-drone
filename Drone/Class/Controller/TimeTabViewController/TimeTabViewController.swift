@@ -16,6 +16,8 @@ class TimeTabViewController: UITabBarController {
     
     var worldClockViewController = WorldClockViewController()
     
+    var firstTimeInitialize = true
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBar.backgroundColor = UIColor.white
@@ -26,7 +28,7 @@ class TimeTabViewController: UITabBarController {
         worldClockTab.tabBarItem = worldClockTabItem
         
         let alarmViewController = AlarmViewController()
-        let alarmTab = UITabBarItem(title: "Alarm", image: UIImage(named: "icon_timer")!, selectedImage: UIImage(named: "icon_timer")!)
+        let alarmTab = UITabBarItem(title: "Alarm", image: UIImage(named: "icon_alarm")!, selectedImage: UIImage(named: "icon_alarm")!)
         alarmViewController.tabBarItem = alarmTab
         
         let timerViewController = TimerViewController()
@@ -37,18 +39,21 @@ class TimeTabViewController: UITabBarController {
         let timeSettingsTab = UITabBarItem(title: "Settings", image: UIImage(named: "icon_settings")!, selectedImage: UIImage(named: "icon_settings")!)
         timeSettingsViewController.tabBarItem = timeSettingsTab
         self.viewControllers = [worldClockTab, alarmViewController, timerViewController, timeSettingsViewController]
-        self.navigationItem.title = "World Clock"
         self.addCloseButton(#selector(dismissTabViewController))
-        self.addPlusButton(#selector(add))
+        if firstTimeInitialize {
+            firstTimeInitialize = false
+            self.tabBar(self.tabBar, didSelect: (self.viewControllers?[0].tabBarItem)!)
+        }
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.navigationItem.title = item.title
-        
         if let index = self.tabBar.items?.index(of: item){
             switch index {
             case 0:
-                self.addPlusButton(#selector(add))
+                self.addPlusButton(#selector(addWorldClock))
+            case 1:
+                self.addPlusButton(#selector(addAlarm))
             default:
                 self.navigationItem.rightBarButtonItem = nil
                 break
@@ -60,7 +65,7 @@ class TimeTabViewController: UITabBarController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func add(){
+    func addWorldClock(){
         var worldClockArray:[City] = []
         try! Realm().objects(City.self)
             .filter("selected = true")
@@ -75,4 +80,10 @@ class TimeTabViewController: UITabBarController {
         }
         self.present(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
     }
+    
+    func addAlarm(){
+        self.navigationController?.pushViewController(AddAlarmViewController(viewModel: AddAlarmViewModel()), animated: true)
+    }
+    
+    
 }

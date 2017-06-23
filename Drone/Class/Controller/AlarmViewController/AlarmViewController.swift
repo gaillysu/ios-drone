@@ -23,6 +23,14 @@ class AlarmViewController: UITableViewController {
     
     override func viewDidLoad() {
         
+        if MEDAlarm.findAll().count == 0 {
+            for _ in 0..<5 {
+               let alarm =  MEDAlarm()
+                alarm.update(operation: { _ in
+                })
+            }
+        }
+        
         self.tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
         self.tableView.backgroundColor = UIColor("#E4C590")
         self.tableView.separatorColor = .white
@@ -49,7 +57,7 @@ class AlarmViewController: UITableViewController {
         tableView.rx.itemSelected.subscribe{ event in
             if let indexPath = event.element{
                 if let alarm = self.alarmViewModel.getAlarmFor(index: indexPath.row) {
-                    let viewModel = AddAlarmViewModel(alarm: alarm)
+                    let viewModel = AddAlarmViewModel(alarm: alarm, inEditMode: true)
                     self.navigationController?.pushViewController(AddAlarmViewController(viewModel: viewModel), animated: true)
                 }
             }
@@ -66,8 +74,12 @@ extension AlarmViewController{
         return [UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
             self.tableView(tableView, commit: .delete, forRowAt: indexPath)
         })]
-        
     }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print("Yoo")
+    }
+
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

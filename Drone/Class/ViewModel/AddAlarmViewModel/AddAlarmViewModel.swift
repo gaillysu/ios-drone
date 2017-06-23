@@ -9,24 +9,31 @@
 import Foundation
 import RxDataSources
 import RxSwift
+import RealmSwift
 
 class AddAlarmViewModel{
     
     private let alarm:MEDAlarm
     
+    let inEditMode:Bool
+    
     let data:Variable<[SectionModel<String, (title:String,detail:String)>]>
+    var notificationToken:NotificationToken?
     
     var snoozable: Bool {
-        set { self.alarm.snoozable = newValue }
+        set { self.alarm.update(operation: { $0.snoozable = newValue }) }
         get { return alarm.snoozable }
     }
     
     var alarmLabel:String {
-        set{ self.alarm.label = newValue}
+        set{
+            self.alarm.update(operation: { $0.label = newValue })
+            data.value[0].items[1].detail = newValue
+        }
         get{ return self.alarm.label }
     }
     
-    var time:(hour:Int, minute:Int){
+    var time:(hour:Int, minute:Int) {
         set {
             let hour  = newValue.hour
             let minute  = newValue.minute
@@ -38,13 +45,30 @@ class AddAlarmViewModel{
         }
     }
     
-    init(alarm:MEDAlarm = MEDAlarm()) {
+    init(alarm:MEDAlarm = MEDAlarm(), inEditMode:Bool = false) {
         self.alarm = alarm
+        _ = self.alarm.add()
+        self.inEditMode = inEditMode
         data = Variable([SectionModel(model: "", items: [("Repeat",""),
                                                          ("Label",alarm.label),
-                                                         ("Snooze","")]),
-                SectionModel(model: "", items: [("","")])])
-        data.value[0].items[0].detail = alarm.repeatLabel()
+                                                         ("Snooze","")])])
+        notificationToken = self.alarm.addNotificationBlock { object in
+            self.data.value[0].items[0].detail = alarm.repeatLabel()
+        }
+        if inEditMode{
+            data.value.append(SectionModel(model: "", items: [("","")]))
+        }
+    }
+    
+    func deleteAlarm(){
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(alarm)
+        }
+    }
+    
+    func repeatViewModel() -> RepeatAlarmViewModel{
+        return RepeatAlarmViewModel(alarm: alarm)
     }
     
 }

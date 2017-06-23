@@ -25,8 +25,8 @@ class AddAlarmViewController: UIViewController {
     let deleteIdentifier = "AddAlarmDeleteTableViewCell"
     
     let snoozeSwitch = UISwitch()
+    
     init(viewModel:AddAlarmViewModel) {
-        
         self.viewModel = viewModel
         self.snoozeSwitch.setOn(viewModel.snoozable, animated: true)
         super.init(nibName: nil, bundle: nil)
@@ -38,18 +38,18 @@ class AddAlarmViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Alarm"
+        if viewModel.inEditMode {
+            title = "Edit Alarm"
+        } else {
+            title = "Add Alarm"
+        }
         let now = Date()
         self.datePicker.setDate(now.change(year: nil, month: nil, day: nil, hour: viewModel.time.hour, minute: viewModel.time.minute, second: nil), animated: true)
-        snoozeSwitch.rx.isOn.subscribe {
-            if let enabled = $0.element{
-                self.viewModel.snoozable = enabled
-            }
-            }.addDisposableTo(disposeBag)
+        snoozeSwitch.onTintColor = .getTintColor()
+        
         datePicker.rx.date.subscribe { event in
             if let date = event.element{
                 self.viewModel.time = (hour: date.hour, minute: date.minute)
-                print("\(date.hour), \(date.minute)")
             }
             }.addDisposableTo(disposeBag)
         
@@ -87,23 +87,41 @@ class AddAlarmViewController: UIViewController {
                 self.tableView.deselectRow(at: indexPath, animated: true)
                 switch (indexPath.section, indexPath.row){
                 case (0,0):
-                    break
+                    self.navigationController?.pushViewController(RepeatAlarmViewController(viewModel: self.viewModel.repeatViewModel()), animated: true)
                 case (0,1):
                     let labelAlertController = UIAlertController(title: "Label", message: nil, preferredStyle: .alert)
                     labelAlertController.addTextField(configurationHandler: { textField in
-                        
+                        textField.text = self.viewModel.alarmLabel
+                        textField.clearButtonMode = .whileEditing
                     })
                     labelAlertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { item in
-                        
+                        if let textfields = labelAlertController.textFields, let newAlarmLabel = textfields[0].text {
+                            self.viewModel.alarmLabel = newAlarmLabel
+                        }
                     }))
                     labelAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    self.present(labelAlertController, animated: true, completion: nil)
                     
-                    break
                 case (1,0):
-                    break
+                    let deleteAlarmAlertController = UIAlertController(title: "Delete", message: "Do you really want to delete this alarm?", preferredStyle: .alert)
+                    deleteAlarmAlertController.addAction(UIAlertAction(title: "Delete", style: .default, handler: { item in
+                        self.viewModel.deleteAlarm()
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    deleteAlarmAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    self.present(deleteAlarmAlertController, animated: true, completion: nil)
+                    
                 default: break
                 }
             }
+            }.addDisposableTo(disposeBag)
+        
+        snoozeSwitch.rx.isOn
+            .debounce(0.1, scheduler: MainScheduler.instance)
+            .subscribe {
+                if let enabled = $0.element{
+                    self.viewModel.snoozable = enabled
+                }
             }.addDisposableTo(disposeBag)
     }
 }

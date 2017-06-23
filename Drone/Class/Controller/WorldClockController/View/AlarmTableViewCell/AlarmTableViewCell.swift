@@ -1,3 +1,4 @@
+
 //
 //  AlarmTableViewCell.swift
 //  Drone
@@ -19,13 +20,8 @@ class AlarmTableViewCell: UITableViewCell {
     
     var alarm:MEDAlarm? {
         didSet {
-            print("Did set Alarm")
             timeLabel.text = (alarm?.hour.to2String())! + ":" + (alarm?.minute.to2String())!
-            if (alarm?.daysInWeek.isEmpty)!{
-                nameLabel.text = alarm?.label
-            }else{
-                nameLabel.text = (alarm?.label)! + ", " + (alarm?.repeatLabel())!
-            }
+            nameLabel.text = (alarm?.label)! + ", " + (alarm?.repeatLabel())!
             enabledSwitch.setOn((alarm?.enabled)!, animated: true)
             self.swap(bool: (alarm?.enabled)!)
         }
@@ -33,13 +29,11 @@ class AlarmTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("Karl: awakeFromNib!")
-        
-        enabledSwitch.rx.isOn.subscribe {
+        enabledSwitch.onTintColor = .getTintColor()
+        enabledSwitch.rx.isOn
+            .subscribe {
             if let enabled = $0.element{
-                self.alarm?.update(operation: {
-                    print("Karl: woelala \(enabled)")
-                    $0.enabled = enabled })
+                self.alarm?.update(operation: { $0.enabled = enabled })
                 self.swap(bool: enabled)
             }
             }.addDisposableTo(disposeBag)

@@ -14,7 +14,6 @@ import AddressBookUI
 import MRProgress
 import SwiftyTimer
 import BRYXBanner
-import MSCellAccessory
 
 
 class NotificationViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {

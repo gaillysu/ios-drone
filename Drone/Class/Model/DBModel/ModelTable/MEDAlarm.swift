@@ -28,11 +28,13 @@ class MEDAlarm: MEDBaseModel {
     }
     
     func repeatLabel() -> String{
-        if daysInWeek.isEmpty{
-            return "Never"
+        if daysInWeek.isEmpty || daysInWeek.count == 7{
+            return "Every Day"
         }
         var weekDayString = ""
-        daysInWeek.forEach { number in
+        daysInWeek
+            .sorted(by: { $0.weekDay <= $1.weekDay })
+            .forEach { number in
             if weekDayString != ""{
                 weekDayString += " "
             }

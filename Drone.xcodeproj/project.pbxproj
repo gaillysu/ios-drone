@@ -294,6 +294,8 @@
 		CBC093141EFA1746001213F4 /* AddAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC093121EFA1746001213F4 /* AddAlarmTableViewCell.xib */; };
 		CBC093181EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC093161EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift */; };
 		CBC093191EFA5215001213F4 /* AddAlarmDeleteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC093171EFA5215001213F4 /* AddAlarmDeleteTableViewCell.xib */; };
+		CBC0931C1EFBB96F001213F4 /* RepeatAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0931B1EFBB96F001213F4 /* RepeatAlarmViewController.swift */; };
+		CBC0931F1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */; };
 		CBCD36661ED3E2BA0041EABA /* CompassCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */; };
 		CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
 		CBF2E13D1EC04E4D00CBD61C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */; };
@@ -616,6 +618,8 @@
 		CBC093121EFA1746001213F4 /* AddAlarmTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddAlarmTableViewCell.xib; path = AddAlarmTableViewCell/AddAlarmTableViewCell.xib; sourceTree = "<group>"; };
 		CBC093161EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmDeleteTableViewCell.swift; path = AddAlarmDeleteTableViewCell/AddAlarmDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		CBC093171EFA5215001213F4 /* AddAlarmDeleteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddAlarmDeleteTableViewCell.xib; path = AddAlarmDeleteTableViewCell/AddAlarmDeleteTableViewCell.xib; sourceTree = "<group>"; };
+		CBC0931B1EFBB96F001213F4 /* RepeatAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatAlarmViewController.swift; path = RepeatAlarmViewController/RepeatAlarmViewController.swift; sourceTree = "<group>"; };
+		CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatAlarmViewModel.swift; path = ViewModel/RepeatAlarmViewModel/RepeatAlarmViewModel.swift; sourceTree = "<group>"; };
 		CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassCalibrationViewController.swift; path = CompassCalibrationViewController/CompassCalibrationViewController.swift; sourceTree = "<group>"; };
 		CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassCalibrationViewController.xib; path = CompassCalibrationViewController/CompassCalibrationViewController.xib; sourceTree = "<group>"; };
 		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -935,7 +939,7 @@
 		61C28B251EA46F800019F574 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CBC0931A1EFA5A37001213F4 /* New Group */,
+				CBC0931A1EFA5A37001213F4 /* RepeatAlarmViewController */,
 				CB4ADFE91EF7D17D00EFA956 /* AddAlarmViewController */,
 				CBF6D2181EF3D4CC0080375E /* AlarmViewController */,
 				CBF6D2131EF3D4570080375E /* TimerViewController */,
@@ -1730,6 +1734,7 @@
 		CB9F65511EA9F327007982B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CBC0931D1EFBBB0B001213F4 /* RepeatAlarmViewModel */,
 				CB4ADFF01EF9142300EFA956 /* AddAlarmViewModel */,
 				CB4ADFE21EF767C600EFA956 /* AlarmViewModel */,
 				CB1549781EC0186A00090242 /* HotKeyModel */,
@@ -1793,11 +1798,20 @@
 			name = AddAlarmDeleteTableViewCell;
 			sourceTree = "<group>";
 		};
-		CBC0931A1EFA5A37001213F4 /* New Group */ = {
+		CBC0931A1EFA5A37001213F4 /* RepeatAlarmViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CBC0931B1EFBB96F001213F4 /* RepeatAlarmViewController.swift */,
 			);
-			name = "New Group";
+			name = RepeatAlarmViewController;
+			sourceTree = "<group>";
+		};
+		CBC0931D1EFBBB0B001213F4 /* RepeatAlarmViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */,
+			);
+			name = RepeatAlarmViewModel;
 			sourceTree = "<group>";
 		};
 		CBCD36631ED3E29C0041EABA /* CompassCalibrationViewController */ = {
@@ -2136,6 +2150,7 @@
 				613928FF1EAA026B00450284 /* Int+Extension.swift in Sources */,
 				61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */,
 				61C28C251EA46F810019F574 /* UserProfile.swift in Sources */,
+				CBC0931F1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift in Sources */,
 				618323101EA4609C0054966D /* SMSegmentView.swift in Sources */,
 				CBB892541EB33BB2006F7031 /* TimeSettingsSectionModel.swift in Sources */,
 				61C28BED1EA46F810019F574 /* SearchCityController.swift in Sources */,
@@ -2304,6 +2319,7 @@
 				6183230F1EA4609C0054966D /* SMSegmentAppearance.swift in Sources */,
 				61C28C031EA46F810019F574 /* NotificationViewController.swift in Sources */,
 				61C28C4C1EA46F810019F574 /* AppTheme.swift in Sources */,
+				CBC0931C1EFBB96F001213F4 /* RepeatAlarmViewController.swift in Sources */,
 				CBB892311EADB5B6006F7031 /* UITableViewCell+Extension.swift in Sources */,
 				618323081EA459F00054966D /* AutocompleteField.swift in Sources */,
 				61C28BDF1EA46F810019F574 /* StartSystemSettingRequest.swift in Sources */,
