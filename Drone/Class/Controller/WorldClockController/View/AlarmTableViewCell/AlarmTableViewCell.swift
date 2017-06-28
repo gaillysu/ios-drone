@@ -20,10 +20,15 @@ class AlarmTableViewCell: UITableViewCell {
     
     var alarm:MEDAlarm? {
         didSet {
-            timeLabel.text = (alarm?.hour.to2String())! + ":" + (alarm?.minute.to2String())!
-            nameLabel.text = (alarm?.label)! + ", " + (alarm?.repeatLabel())!
-            enabledSwitch.setOn((alarm?.enabled)!, animated: true)
-            self.swap(bool: (alarm?.enabled)!)
+            if let unpackedAlarm = alarm {
+                if !unpackedAlarm.isInvalidated{
+                    timeLabel.text = unpackedAlarm.hour.to2String() + ":" + unpackedAlarm.minute.to2String()
+                    nameLabel.text = unpackedAlarm.label + ", " + unpackedAlarm.repeatLabel()
+                    enabledSwitch.setOn((unpackedAlarm.enabled), animated: true)
+                    self.swap(bool: unpackedAlarm.enabled)
+                }
+            }
+            
         }
     }
     
@@ -32,8 +37,10 @@ class AlarmTableViewCell: UITableViewCell {
         enabledSwitch.onTintColor = .getTintColor()
         enabledSwitch.rx.isOn
             .subscribe {
-                if let enabled = $0.element{
-                    self.alarm?.update(operation: { $0.enabled = enabled })
+                if let enabled = $0.element,let unpackedAlarm = self.alarm {
+                    if !unpackedAlarm.isInvalidated{
+                        self.alarm?.update(operation: { $0.enabled = enabled })
+                    }
                     self.swap(bool: enabled)
                 }
             }.addDisposableTo(disposeBag)

@@ -12,25 +12,25 @@ import RxDataSources
 
 struct AlarmSectionViewModelItem: Hashable{
     
-    var alarm:MEDAlarm
+    var key:String
     var hashValue:Int
     
-    init(alarm:MEDAlarm) {
-        self.alarm = alarm
-        hashValue = alarm.key.hashValue
+    init(key:String) {
+        self.key = key
+        hashValue = key.hashValue
     }
 }
 
 extension AlarmSectionViewModelItem:IdentifiableType, Equatable{
     
     static func ==(lhs: AlarmSectionViewModelItem, rhs: AlarmSectionViewModelItem) -> Bool {
-        return lhs.alarm.key == rhs.alarm.key
+        return lhs.key == rhs.key
     }
     
     typealias Identity = String
     
     var identity : String { get{
-        return self.alarm.key
+        return self.key
         }
     }
     

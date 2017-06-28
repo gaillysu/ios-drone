@@ -34,13 +34,13 @@ class AlarmViewController: UITableViewController {
         dataSource.animationConfiguration = AnimationConfiguration(insertAnimation: .fade, reloadAnimation: .fade, deleteAnimation: .fade)
         dataSource.configureCell = { (dataSource, tableView, indexPath, item) in
             let cell:AlarmTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.alarm = item.alarm
+            cell.alarm = self.alarmViewModel.getAlarmFor(key: item.key)
             return cell
         }
         tableView.dataSource = nil
         tableView.delegate = nil
         
-        dataSource.canEditRowAtIndexPath = { _ in false }
+        dataSource.canEditRowAtIndexPath = { _ in true }
         
         alarmViewModel.data.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))

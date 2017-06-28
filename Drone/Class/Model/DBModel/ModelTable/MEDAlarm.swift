@@ -28,18 +28,21 @@ class MEDAlarm: MEDBaseModel {
     }
     
     func repeatLabel() -> String{
-        if daysInWeek.isEmpty || daysInWeek.count == 7{
-            return "Every Day"
-        }
-        var weekDayString = ""
-        daysInWeek
-            .sorted(by: { $0.weekDay <= $1.weekDay })
-            .forEach { number in
-            if weekDayString != ""{
-                weekDayString += " "
+        if !self.isInvalidated{
+            if daysInWeek.isEmpty || daysInWeek.count == 7{
+                return "Every Day"
             }
-            weekDayString += number.weekDay.shortDay()
+            var weekDayString = ""
+            daysInWeek
+                .sorted(by: { $0.weekDay <= $1.weekDay })
+                .forEach { number in
+                    if weekDayString != ""{
+                        weekDayString += " "
+                    }
+                    weekDayString += number.weekDay.shortDay()
+            }
+            return weekDayString
         }
-        return weekDayString
+        return ""
     }
 }

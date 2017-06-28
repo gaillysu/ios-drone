@@ -47,16 +47,18 @@ class AddAlarmViewModel{
     
     init(alarm:MEDAlarm = MEDAlarm(), inEditMode:Bool = false) {
         self.alarm = alarm
-        _ = self.alarm.add()
+        
         self.inEditMode = inEditMode
         data = Variable([SectionModel(model: "", items: [("Repeat",""),
                                                          ("Label",alarm.label),
                                                          ("Snooze","")])])
+        self.alarm.update(operation: { _ in })
         notificationToken = self.alarm.addNotificationBlock { object in
             self.data.value[0].items[0].detail = alarm.repeatLabel()
         }
         if inEditMode{
             data.value.append(SectionModel(model: "", items: [("","")]))
+            
         }
     }
     

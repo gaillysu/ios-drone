@@ -20,27 +20,23 @@ class AlarmViewModel{
         let realm = try! Realm()
         let alarm = realm.objects(MEDAlarm.self)
         data = Variable([AlarmSectionViewModel(header: "My Alarms", items: [])])
-        alarm.forEach { self.data.value[0].items.append(AlarmSectionViewModelItem(alarm: $0)) }
+        alarm.forEach { self.data.value[0].items.append(AlarmSectionViewModelItem(key: $0.key)) }
     }
     
     func getAlarmFor(index:Int) -> MEDAlarm?{
-        if (self.data.value[0].items.count - 1) >= index{
-            return self.data.value[0].items[index].alarm
-        }
-        return nil
+        return MEDAlarm.byFilter("key == '\(self.data.value[0].items[index].key)'").first ?? nil
+    }
+    
+    func getAlarmFor(key:String) -> MEDAlarm?{
+        return MEDAlarm.byFilter("key == '\(key)'").first ?? nil
     }
     
     // This function does not work properly.
     func delete(index:Int){
-        let realm = try! Realm()
-        let alarms = realm.objects(MEDAlarm.self)
-        if alarms.count > index {
-            do {
-                try realm.write {
-                    realm.delete(alarms[index])
-                }
-            }catch let error{
-                debugPrint("write database error:\(error)")
+        let alarmKey = self.data.value[0].items[index].key
+        if let alarm = getAlarmFor(key: alarmKey){
+            if !alarm.isInvalidated{
+                _ = alarm.remove()
             }
         }
         self.data.value[0].items.remove(at: index)
