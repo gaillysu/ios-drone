@@ -33,7 +33,7 @@ extension UIColor{
     }
     
     public class func getLightBaseColor() -> UIColor {
-        return UIColor(red: 209/255.0 , green: 157/255.0, blue: 66/255.0, alpha: 0.6)
+        return UIColor(red: 228/255.0 , green: 197/255.0, blue: 144/255.0, alpha: 1.0)
     }
 
     public class func transparent() -> UIColor {

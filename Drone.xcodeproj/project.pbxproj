@@ -252,10 +252,24 @@
 		CB15497C1EC01E5700090242 /* HotKeySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497B1EC01E5700090242 /* HotKeySectionModel.swift */; };
 		CB1549811EC029A700090242 /* HotKeyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497F1EC029A700090242 /* HotKeyTableViewCell.swift */; };
 		CB1549821EC029A700090242 /* HotKeyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1549801EC029A700090242 /* HotKeyTableViewCell.xib */; };
+		CB4ADFDA1EF7626200EFA956 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */; };
+		CB4ADFDB1EF7626200EFA956 /* AlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4ADFD91EF7626200EFA956 /* AlarmTableViewCell.xib */; };
+		CB4ADFDD1EF7665500EFA956 /* MEDAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFDC1EF7665500EFA956 /* MEDAlarm.swift */; };
+		CB4ADFDF1EF7669C00EFA956 /* MEDWeekDayNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFDE1EF7669C00EFA956 /* MEDWeekDayNumber.swift */; };
+		CB4ADFE11EF7673800EFA956 /* MEDBaseModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE01EF7673800EFA956 /* MEDBaseModel+Extension.swift */; };
+		CB4ADFE41EF767E700EFA956 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE31EF767E700EFA956 /* AlarmViewModel.swift */; };
+		CB4ADFE61EF767F900EFA956 /* AlarmSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE51EF767F900EFA956 /* AlarmSectionViewModel.swift */; };
+		CB4ADFE81EF7680800EFA956 /* AlarmSectionViewModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE71EF7680800EFA956 /* AlarmSectionViewModelItem.swift */; };
+		CB4ADFEC1EF7D1A400EFA956 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFEA1EF7D1A400EFA956 /* AddAlarmViewController.swift */; };
+		CB4ADFED1EF7D1A400EFA956 /* AddAlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */; };
+		CB4ADFF21EF9143A00EFA956 /* AddAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFF11EF9143A00EFA956 /* AddAlarmViewModel.swift */; };
 		CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */; };
 		CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
 		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
 		CB715FB51EA5F20E005B5C22 /* CompassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */; };
+		CB8AD9F61F04E797001C8D86 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8AD9F41F04E797001C8D86 /* TimerViewController.swift */; };
+		CB8AD9F71F04E797001C8D86 /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8AD9F51F04E797001C8D86 /* TimerViewController.xib */; };
+		CB8AD9FD1F04EBE8001C8D86 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8AD9FC1F04EBE8001C8D86 /* TimerViewModel.swift */; };
 		CB91926F1EBC7DC300BA14E6 /* HotKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91926D1EBC7DC300BA14E6 /* HotKeysViewController.swift */; };
 		CB9192701EBC7DC300BA14E6 /* HotKeysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB91926E1EBC7DC300BA14E6 /* HotKeysViewController.xib */; };
 		CB9F65241EA610C5007982B0 /* Compass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65231EA610C5007982B0 /* Compass.swift */; };
@@ -287,9 +301,16 @@
 		CBB892551EB33BB2006F7031 /* TimeSettingsSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892531EB33BB2006F7031 /* TimeSettingsSectionItem.swift */; };
 		CBBC3ACB1EC174EC009282E8 /* HotKeyTableViewCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC3ACA1EC174EC009282E8 /* HotKeyTableViewCellButton.swift */; };
 		CBBC3ACD1EC1BB96009282E8 /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */; };
+		CBC093131EFA1746001213F4 /* AddAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC093111EFA1746001213F4 /* AddAlarmTableViewCell.swift */; };
+		CBC093141EFA1746001213F4 /* AddAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC093121EFA1746001213F4 /* AddAlarmTableViewCell.xib */; };
+		CBC093181EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC093161EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift */; };
+		CBC093191EFA5215001213F4 /* AddAlarmDeleteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC093171EFA5215001213F4 /* AddAlarmDeleteTableViewCell.xib */; };
+		CBC0931C1EFBB96F001213F4 /* RepeatAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0931B1EFBB96F001213F4 /* RepeatAlarmViewController.swift */; };
+		CBC0931F1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */; };
 		CBCD36661ED3E2BA0041EABA /* CompassCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */; };
 		CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
 		CBF2E13D1EC04E4D00CBD61C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */; };
+		CBF6D2171EF3D4C70080375E /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
 
@@ -565,10 +586,24 @@
 		CB15497B1EC01E5700090242 /* HotKeySectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeySectionModel.swift; path = Drone/Class/ViewModel/HotKeyModel/HotKeySectionModel.swift; sourceTree = SOURCE_ROOT; };
 		CB15497F1EC029A700090242 /* HotKeyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTableViewCell.swift; path = HoyKeyTableViewCell/HotKeyTableViewCell.swift; sourceTree = "<group>"; };
 		CB1549801EC029A700090242 /* HotKeyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotKeyTableViewCell.xib; path = HoyKeyTableViewCell/HotKeyTableViewCell.xib; sourceTree = "<group>"; };
+		CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmTableViewCell.swift; path = AlarmTableViewCell/AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		CB4ADFD91EF7626200EFA956 /* AlarmTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlarmTableViewCell.xib; path = AlarmTableViewCell/AlarmTableViewCell.xib; sourceTree = "<group>"; };
+		CB4ADFDC1EF7665500EFA956 /* MEDAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MEDAlarm.swift; path = ModelTable/MEDAlarm.swift; sourceTree = "<group>"; };
+		CB4ADFDE1EF7669C00EFA956 /* MEDWeekDayNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MEDWeekDayNumber.swift; path = ModelTable/MEDWeekDayNumber.swift; sourceTree = "<group>"; };
+		CB4ADFE01EF7673800EFA956 /* MEDBaseModel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MEDBaseModel+Extension.swift"; sourceTree = "<group>"; };
+		CB4ADFE31EF767E700EFA956 /* AlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmViewModel.swift; path = ViewModel/AlarmViewModel/AlarmViewModel.swift; sourceTree = "<group>"; };
+		CB4ADFE51EF767F900EFA956 /* AlarmSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmSectionViewModel.swift; path = ViewModel/AlarmViewModel/AlarmSectionViewModel.swift; sourceTree = "<group>"; };
+		CB4ADFE71EF7680800EFA956 /* AlarmSectionViewModelItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmSectionViewModelItem.swift; path = ViewModel/AlarmViewModel/AlarmSectionViewModelItem.swift; sourceTree = "<group>"; };
+		CB4ADFEA1EF7D1A400EFA956 /* AddAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmViewController.swift; path = AddAlarmViewController/AddAlarmViewController.swift; sourceTree = "<group>"; };
+		CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddAlarmViewController.xib; path = AddAlarmViewController/AddAlarmViewController.xib; sourceTree = "<group>"; };
+		CB4ADFF11EF9143A00EFA956 /* AddAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmViewModel.swift; path = ViewModel/AddAlarmViewModel/AddAlarmViewModel.swift; sourceTree = "<group>"; };
 		CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassViewController.swift; path = CompassViewController/CompassViewController.swift; sourceTree = "<group>"; };
 		CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassViewController.xib; path = CompassViewController/CompassViewController.xib; sourceTree = "<group>"; };
 		CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassTableViewCell.swift; sourceTree = "<group>"; };
 		CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompassTableViewCell.xib; sourceTree = "<group>"; };
+		CB8AD9F41F04E797001C8D86 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimerViewController.swift; path = TimerViewController/TimerViewController.swift; sourceTree = "<group>"; };
+		CB8AD9F51F04E797001C8D86 /* TimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TimerViewController.xib; path = TimerViewController/TimerViewController.xib; sourceTree = "<group>"; };
+		CB8AD9FC1F04EBE8001C8D86 /* TimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		CB91926D1EBC7DC300BA14E6 /* HotKeysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeysViewController.swift; path = HotKeysViewController/HotKeysViewController.swift; sourceTree = "<group>"; };
 		CB91926E1EBC7DC300BA14E6 /* HotKeysViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotKeysViewController.xib; path = HotKeysViewController/HotKeysViewController.xib; sourceTree = "<group>"; };
 		CB9F65231EA610C5007982B0 /* Compass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compass.swift; sourceTree = "<group>"; };
@@ -600,9 +635,16 @@
 		CBB892531EB33BB2006F7031 /* TimeSettingsSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSettingsSectionItem.swift; path = Drone/Class/ViewModel/TimeSettingsSectionModel/TimeSettingsSectionItem.swift; sourceTree = SOURCE_ROOT; };
 		CBBC3ACA1EC174EC009282E8 /* HotKeyTableViewCellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTableViewCellButton.swift; path = HoyKeyTableViewCellButton/HotKeyTableViewCellButton.swift; sourceTree = "<group>"; };
 		CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
+		CBC093111EFA1746001213F4 /* AddAlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmTableViewCell.swift; path = AddAlarmTableViewCell/AddAlarmTableViewCell.swift; sourceTree = "<group>"; };
+		CBC093121EFA1746001213F4 /* AddAlarmTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddAlarmTableViewCell.xib; path = AddAlarmTableViewCell/AddAlarmTableViewCell.xib; sourceTree = "<group>"; };
+		CBC093161EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmDeleteTableViewCell.swift; path = AddAlarmDeleteTableViewCell/AddAlarmDeleteTableViewCell.swift; sourceTree = "<group>"; };
+		CBC093171EFA5215001213F4 /* AddAlarmDeleteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddAlarmDeleteTableViewCell.xib; path = AddAlarmDeleteTableViewCell/AddAlarmDeleteTableViewCell.xib; sourceTree = "<group>"; };
+		CBC0931B1EFBB96F001213F4 /* RepeatAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatAlarmViewController.swift; path = RepeatAlarmViewController/RepeatAlarmViewController.swift; sourceTree = "<group>"; };
+		CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatAlarmViewModel.swift; path = ViewModel/RepeatAlarmViewModel/RepeatAlarmViewModel.swift; sourceTree = "<group>"; };
 		CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassCalibrationViewController.swift; path = CompassCalibrationViewController/CompassCalibrationViewController.swift; sourceTree = "<group>"; };
 		CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassCalibrationViewController.xib; path = CompassCalibrationViewController/CompassCalibrationViewController.xib; sourceTree = "<group>"; };
 		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmViewController.swift; path = AlarmViewController/AlarmViewController.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -922,6 +964,10 @@
 		61C28B251EA46F800019F574 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CBC0931A1EFA5A37001213F4 /* RepeatAlarmViewController */,
+				CB4ADFE91EF7D17D00EFA956 /* AddAlarmViewController */,
+				CBF6D2181EF3D4CC0080375E /* AlarmViewController */,
+				CBF6D2131EF3D4570080375E /* TimerViewController */,
 				CBCD36631ED3E29C0041EABA /* CompassCalibrationViewController */,
 				619A9F161EC2AF60006D65C4 /* RoutesController */,
 				61FAB9B91EBC4E0A00513E97 /* MapNavigationViewController */,
@@ -1157,8 +1203,9 @@
 		61C28B711EA46F810019F574 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				61C48FB61EF26F1F007A0709 /* DRHUD */,
-				61FAB9B21EBC240900513E97 /* MapCell */,
+				CBC093151EFA51FE001213F4 /* AddAlarmDeleteTableViewCell */,
+				CBC093101EFA1729001213F4 /* AddAlarmTableViewCell */,
+				CB4ADFD71EF7624800EFA956 /* AlarmTableViewCell */,
 				CB9F654C1EA8AA8A007982B0 /* ClockSettingsTableViewCell */,
 				CB9F654A1EA8A719007982B0 /* ClockSettingsTableViewCellSwitch */,
 				CB9F65391EA72D18007982B0 /* ClockwiseButton */,
@@ -1166,8 +1213,10 @@
 				CB9F65381EA72D0C007982B0 /* CounterClockwiseButton */,
 				61C28B3B1EA46F800019F574 /* DeviceTableViewCell */,
 				CB715FB01EA5E7A8005B5C22 /* DeviceTableViewCellHeader */,
+				61C48FB61EF26F1F007A0709 /* DRHUD */,
 				CB15497E1EC0298F00090242 /* HoyKeyTableViewCell */,
 				CBBC3AC91EC174D4009282E8 /* HoyKeyTableViewCellButton */,
+				61FAB9B21EBC240900513E97 /* MapCell */,
 				61C28B4C1EA46F800019F574 /* MenuViewCell */,
 				61C28B551EA46F800019F574 /* NotificationsViewCell */,
 				CB65CBDE1EB8573400D40EDD /* ProfileTableViewCell */,
@@ -1217,6 +1266,9 @@
 				61C28B841EA46F810019F574 /* WorldClock.swift */,
 				61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */,
 				CB9F65231EA610C5007982B0 /* Compass.swift */,
+				CB4ADFDC1EF7665500EFA956 /* MEDAlarm.swift */,
+				CB4ADFDE1EF7669C00EFA956 /* MEDWeekDayNumber.swift */,
+				CB4ADFE01EF7673800EFA956 /* MEDBaseModel+Extension.swift */,
 			);
 			path = DBModel;
 			sourceTree = "<group>";
@@ -1517,6 +1569,42 @@
 			name = HoyKeyTableViewCell;
 			sourceTree = "<group>";
 		};
+		CB4ADFD71EF7624800EFA956 /* AlarmTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */,
+				CB4ADFD91EF7626200EFA956 /* AlarmTableViewCell.xib */,
+			);
+			name = AlarmTableViewCell;
+			sourceTree = "<group>";
+		};
+		CB4ADFE21EF767C600EFA956 /* AlarmViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB4ADFE31EF767E700EFA956 /* AlarmViewModel.swift */,
+				CB4ADFE51EF767F900EFA956 /* AlarmSectionViewModel.swift */,
+				CB4ADFE71EF7680800EFA956 /* AlarmSectionViewModelItem.swift */,
+			);
+			name = AlarmViewModel;
+			sourceTree = "<group>";
+		};
+		CB4ADFE91EF7D17D00EFA956 /* AddAlarmViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB4ADFEA1EF7D1A400EFA956 /* AddAlarmViewController.swift */,
+				CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */,
+			);
+			name = AddAlarmViewController;
+			sourceTree = "<group>";
+		};
+		CB4ADFF01EF9142300EFA956 /* AddAlarmViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB4ADFF11EF9143A00EFA956 /* AddAlarmViewModel.swift */,
+			);
+			name = AddAlarmViewModel;
+			sourceTree = "<group>";
+		};
 		CB65CBDE1EB8573400D40EDD /* ProfileTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1591,6 +1679,15 @@
 				CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */,
 			);
 			name = CompassTableViewCell;
+			sourceTree = "<group>";
+		};
+		CB8AD9FB1F04EBE8001C8D86 /* TimerViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB8AD9FC1F04EBE8001C8D86 /* TimerViewModel.swift */,
+			);
+			name = TimerViewModel;
+			path = ViewModel/TimerViewModel;
 			sourceTree = "<group>";
 		};
 		CB9F65271EA70BB4007982B0 /* CalibrateHourViewController */ = {
@@ -1674,8 +1771,12 @@
 		CB9F65511EA9F327007982B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CB1549781EC0186A00090242 /* HotKeyModel */,
+				CB4ADFF01EF9142300EFA956 /* AddAlarmViewModel */,
+				CB4ADFE21EF767C600EFA956 /* AlarmViewModel */,
 				CBB892441EB33B3D006F7031 /* CompassSectionModel */,
+				CB1549781EC0186A00090242 /* HotKeyModel */,
+				CBC0931D1EFBBB0B001213F4 /* RepeatAlarmViewModel */,
+				CB8AD9FB1F04EBE8001C8D86 /* TimerViewModel */,
 				CBB892471EB33B3D006F7031 /* TimeSettingsSectionModel */,
 			);
 			name = ViewModel;
@@ -1717,6 +1818,40 @@
 			name = HoyKeyTableViewCellButton;
 			sourceTree = "<group>";
 		};
+		CBC093101EFA1729001213F4 /* AddAlarmTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBC093111EFA1746001213F4 /* AddAlarmTableViewCell.swift */,
+				CBC093121EFA1746001213F4 /* AddAlarmTableViewCell.xib */,
+			);
+			name = AddAlarmTableViewCell;
+			sourceTree = "<group>";
+		};
+		CBC093151EFA51FE001213F4 /* AddAlarmDeleteTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBC093161EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift */,
+				CBC093171EFA5215001213F4 /* AddAlarmDeleteTableViewCell.xib */,
+			);
+			name = AddAlarmDeleteTableViewCell;
+			sourceTree = "<group>";
+		};
+		CBC0931A1EFA5A37001213F4 /* RepeatAlarmViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBC0931B1EFBB96F001213F4 /* RepeatAlarmViewController.swift */,
+			);
+			name = RepeatAlarmViewController;
+			sourceTree = "<group>";
+		};
+		CBC0931D1EFBBB0B001213F4 /* RepeatAlarmViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */,
+			);
+			name = RepeatAlarmViewModel;
+			sourceTree = "<group>";
+		};
 		CBCD36631ED3E29C0041EABA /* CompassCalibrationViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1724,6 +1859,23 @@
 				CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */,
 			);
 			name = CompassCalibrationViewController;
+			sourceTree = "<group>";
+		};
+		CBF6D2131EF3D4570080375E /* TimerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB8AD9F41F04E797001C8D86 /* TimerViewController.swift */,
+				CB8AD9F51F04E797001C8D86 /* TimerViewController.xib */,
+			);
+			name = TimerViewController;
+			sourceTree = "<group>";
+		};
+		CBF6D2181EF3D4CC0080375E /* AlarmViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */,
+			);
+			name = AlarmViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1851,7 +2003,9 @@
 				61C28BF21EA46F810019F574 /* DeviceViewController.xib in Resources */,
 				61C28C9C1EA706A50019F574 /* mapImage.png in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
+				CBC093141EFA1746001213F4 /* AddAlarmTableViewCell.xib in Resources */,
 				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
+				CB4ADFDB1EF7626200EFA956 /* AlarmTableViewCell.xib in Resources */,
 				619A9F151EC1B9D8006D65C4 /* NavigationController.xib in Resources */,
 				CB9F65451EA86303007982B0 /* TimeSettingsViewController.xib in Resources */,
 				CB9F65311EA70CCB007982B0 /* CalibrateMinuteViewController.xib in Resources */,
@@ -1875,9 +2029,11 @@
 				CB9F65351EA70CDA007982B0 /* CalibrateSecondViewController.xib in Resources */,
 				61C28BFC1EA46F810019F574 /* LoginViewController.xib in Resources */,
 				61C28C121EA46F810019F574 /* SplashScreenViewController.xib in Resources */,
+				CBC093191EFA5215001213F4 /* AddAlarmDeleteTableViewCell.xib in Resources */,
 				61FAB9B61EBC241D00513E97 /* MapViewCell.xib in Resources */,
 				61C28C141EA46F810019F574 /* StepsViewController.xib in Resources */,
 				613929081EADABEB00450284 /* welcome_2.png in Resources */,
+				CB4ADFED1EF7D1A400EFA956 /* AddAlarmViewController.xib in Resources */,
 				9E1535841D5C20CA00CB6A01 /* cities.json in Resources */,
 				CB9F65501EA8AB51007982B0 /* ClockSettingsTableViewCell.xib in Resources */,
 				61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */,
@@ -1897,6 +2053,7 @@
 				61C28BE61EA46F810019F574 /* AnalysisViewController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				61C28BF61EA46F810019F574 /* DeviceTableViewCellHeader.xib in Resources */,
+				CB8AD9F71F04E797001C8D86 /* TimerViewController.xib in Resources */,
 				613929071EADABEB00450284 /* welcome_1.png in Resources */,
 				61C48FC61EF3BCCE007A0709 /* bell.wav in Resources */,
 				CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */,
@@ -1994,13 +2151,16 @@
 				61C28BE41EA46F810019F574 /* WriteSettingRequest.swift in Sources */,
 				61FAB9C51EC064EA00513E97 /* MKPlacemark+Extension.swift in Sources */,
 				CB9F65241EA610C5007982B0 /* Compass.swift in Sources */,
+				CB4ADFE41EF767E700EFA956 /* AlarmViewModel.swift in Sources */,
 				61C28BD01EA46F810019F574 /* GetWorldClockRequest.swift in Sources */,
 				61C28C741EA5A03C0019F574 /* BasePostRequest.swift in Sources */,
 				61C28C531EA46F810019F574 /* TimeUtil.swift in Sources */,
 				61C28C791EA5A03C0019F574 /* RequestPasswordRequest.swift in Sources */,
+				CB4ADFDF1EF7669C00EFA956 /* MEDWeekDayNumber.swift in Sources */,
 				61C28C341EA46F810019F574 /* TimeMenuItem.swift in Sources */,
 				61C28BE21EA46F810019F574 /* UpdateNotificationRequest.swift in Sources */,
 				613928FD1EAA026B00450284 /* Double+Extension.swift in Sources */,
+				CB4ADFDD1EF7665500EFA956 /* MEDAlarm.swift in Sources */,
 				61C28C6F1EA5A03C0019F574 /* UserNetworkManager.swift in Sources */,
 				613928F61EA9A1C100450284 /* WeatherCityModel.swift in Sources */,
 				61C28C861EA5BABB0019F574 /* WeatherInfoRequest.swift in Sources */,
@@ -2018,17 +2178,20 @@
 				61C28C7B1EA5A03C0019F574 /* StepsGetRequest.swift in Sources */,
 				61C28C261EA46F810019F574 /* UserSteps.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
+				CB4ADFE61EF767F900EFA956 /* AlarmSectionViewModel.swift in Sources */,
 				CB15497A1EC01E0900090242 /* HotKeySectionModelItem.swift in Sources */,
 				615208601EFBA5B000F3F551 /* ReadCountdownTimerRequest.swift in Sources */,
 				CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */,
 				61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */,
 				61C28C1F1EA46F810019F574 /* WhichDeviceViewController.swift in Sources */,
+				CBC093181EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift in Sources */,
 				61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */,
 				61C28BBE1EA46F810019F574 /* ActivityPacket.swift in Sources */,
 				61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */,
 				613928FF1EAA026B00450284 /* Int+Extension.swift in Sources */,
 				61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */,
 				61C28C251EA46F810019F574 /* UserProfile.swift in Sources */,
+				CBC0931F1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift in Sources */,
 				618323101EA4609C0054966D /* SMSegmentView.swift in Sources */,
 				CBB892541EB33BB2006F7031 /* TimeSettingsSectionModel.swift in Sources */,
 				61C28BED1EA46F810019F574 /* SearchCityController.swift in Sources */,
@@ -2083,6 +2246,7 @@
 				CB9F65401EA85CB6007982B0 /* TimeTabViewController.swift in Sources */,
 				61C28C191EA46F810019F574 /* WorldClockCell.swift in Sources */,
 				61C28C4D1EA46F810019F574 /* UIColor+Extension.swift in Sources */,
+				CB4ADFDA1EF7626200EFA956 /* AlarmTableViewCell.swift in Sources */,
 				61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */,
 				61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */,
 				61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */,
@@ -2107,12 +2271,14 @@
 				61C28C781EA5A03C0019F574 /* NetworkRequest.swift in Sources */,
 				61C28BC21EA46F810019F574 /* SystemEventPacket.swift in Sources */,
 				61FAB9B01EBC203300513E97 /* MapTableViewController.swift in Sources */,
+				CBC093131EFA1746001213F4 /* AddAlarmTableViewCell.swift in Sources */,
 				61FAB9B81EBC2C5600513E97 /* PulleyViewController+Extension.swift in Sources */,
 				61C28BD31EA46F810019F574 /* ReadWeatherRequest.swift in Sources */,
 				61C28C761EA5A03C0019F574 /* ForgetPasswordRequest.swift in Sources */,
 				61C28C0D1EA46F810019F574 /* ProfileViewController.swift in Sources */,
 				613928F01EA99DD900450284 /* WeatherCacheModel.swift in Sources */,
 				61C28BF31EA46F810019F574 /* DeviceTableViewCell.swift in Sources */,
+				CB8AD9F61F04E797001C8D86 /* TimerViewController.swift in Sources */,
 				CBBC3ACB1EC174EC009282E8 /* HotKeyTableViewCellButton.swift in Sources */,
 				61C28BD21EA46F810019F574 /* ReadDailyTrackerInfo.swift in Sources */,
 				613929141EAEF3BD00450284 /* DateFormatter+Extension.swift in Sources */,
@@ -2125,7 +2291,9 @@
 				61C28BCF1EA46F810019F574 /* GetUserProfileRequest.swift in Sources */,
 				61C28BD71EA46F810019F574 /* SetGoalRequest.swift in Sources */,
 				61C28C4F1EA46F810019F574 /* EventBusKeys.swift in Sources */,
+				CB8AD9FD1F04EBE8001C8D86 /* TimerViewModel.swift in Sources */,
 				61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */,
+				CB4ADFE81EF7680800EFA956 /* AlarmSectionViewModelItem.swift in Sources */,
 				61C28BC51EA46F810019F574 /* DroneRequest.swift in Sources */,
 				61AE4B5C1E7F851C00B4AD7C /* BalloonMarker.swift in Sources */,
 				61FAB9AA1EBC177000513E97 /* NavigationController.swift in Sources */,
@@ -2134,6 +2302,7 @@
 				61C28C7C1EA5A03C0019F574 /* StepsUpdateRequest.swift in Sources */,
 				61C28BC41EA46F810019F574 /* ClearConnectionRequest.swift in Sources */,
 				61C28C301EA46F810019F574 /* MenuItem.swift in Sources */,
+				CBF6D2171EF3D4C70080375E /* AlarmViewController.swift in Sources */,
 				61C28BEB1EA46F810019F574 /* CheckEmailController.swift in Sources */,
 				CB9F653D1EA72D4D007982B0 /* ClockwiseButton.swift in Sources */,
 				61C28BDB1EA46F810019F574 /* SetSystemConfig.swift in Sources */,
@@ -2146,6 +2315,7 @@
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
 				61352C981EF121EE00F82907 /* GoogleMapsGeocodeModel.swift in Sources */,
 				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
+				CB4ADFEC1EF7D1A400EFA956 /* AddAlarmViewController.swift in Sources */,
 				61C28BBC1EA46F810019F574 /* ConnectionControllerImpl.swift in Sources */,
 				CBB892511EB33BAB006F7031 /* CompassSectionModelItem.swift in Sources */,
 				61C28BCA1EA46F810019F574 /* GetNotificationRequest.swift in Sources */,
@@ -2161,6 +2331,7 @@
 				61C28C011EA46F810019F574 /* MyDeviceViewController.swift in Sources */,
 				61C28BD81EA46F810019F574 /* SetNotificationRequest.swift in Sources */,
 				61C28C241EA46F810019F574 /* UserGoal.swift in Sources */,
+				CB4ADFF21EF9143A00EFA956 /* AddAlarmViewModel.swift in Sources */,
 				6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */,
 				619A9F1C1EC2B7B7006D65C4 /* PostRoutes.swift in Sources */,
 				61C826BD1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift in Sources */,
@@ -2177,6 +2348,7 @@
 				61C28C2F1EA46F810019F574 /* LoginMenuItem.swift in Sources */,
 				6143C01D1EC45DEB00420647 /* UrbanNavigationRequest.swift in Sources */,
 				61C28BD41EA46F810019F574 /* SetAppConfigRequest.swift in Sources */,
+				CB4ADFE11EF7673800EFA956 /* MEDBaseModel+Extension.swift in Sources */,
 				61C28BDE1EA46F810019F574 /* SetWorldClockRequest.swift in Sources */,
 				618322FE1EA0A2B90054966D /* Constants.swift in Sources */,
 				61C28BE01EA46F810019F574 /* UpdateContactsApplicationsRequest.swift in Sources */,
@@ -2196,6 +2368,7 @@
 				61C28C031EA46F810019F574 /* NotificationViewController.swift in Sources */,
 				61C28C4C1EA46F810019F574 /* AppTheme.swift in Sources */,
 				6152085E1EFBA41B00F3F551 /* SetCountdownTimerRequest.swift in Sources */,
+				CBC0931C1EFBB96F001213F4 /* RepeatAlarmViewController.swift in Sources */,
 				CBB892311EADB5B6006F7031 /* UITableViewCell+Extension.swift in Sources */,
 				618323081EA459F00054966D /* AutocompleteField.swift in Sources */,
 				61C28BDF1EA46F810019F574 /* StartSystemSettingRequest.swift in Sources */,

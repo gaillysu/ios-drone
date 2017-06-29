@@ -20,9 +20,6 @@ target 'Drone' do
     pod 'IQKeyboardManagerSwift'
     pod 'RealmSwift'
     pod 'SwiftReorder', '~> 2.0'
-    pod 'RxSwift',    '~> 3.0'
-    pod 'RxCocoa',    '~> 3.0'
-    pod 'RxDataSources', '~> 1.0'
     pod 'SwiftyTimer'
     pod 'GoogleMaps'
     pod 'GooglePlaces'
@@ -30,6 +27,13 @@ target 'Drone' do
     pod 'Pulley'
     pod 'PKHUD', '~> 4.0'
     pod 'Polyline', '~> 4.0'
+
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'RxDataSources'
+    pod 'RxRealm'
+    pod 'RxRealmDataSources'
+
 end
 
 post_install do |installer|

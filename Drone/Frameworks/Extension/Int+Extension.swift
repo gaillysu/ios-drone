@@ -83,6 +83,27 @@ extension Int {
         }
         return string
     }
-
+    
+    func shortDay(offest:Int = 0) -> String{
+        let index = self+offest
+        switch index {
+        case 0:
+            return "Sun"
+        case 1:
+            return "Mon"
+        case 2:
+            return "Tue"
+        case 3:
+            return "Wed"
+        case 4:
+            return "Thu"
+        case 5:
+            return "Fr"
+        case 6:
+            return "Sat"
+        default:
+            return "Never"
+        }
+    }
 }
 
