@@ -259,6 +259,9 @@
 		CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
 		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
 		CB715FB51EA5F20E005B5C22 /* CompassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */; };
+		CB8AD9F61F04E797001C8D86 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8AD9F41F04E797001C8D86 /* TimerViewController.swift */; };
+		CB8AD9F71F04E797001C8D86 /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8AD9F51F04E797001C8D86 /* TimerViewController.xib */; };
+		CB8AD9FD1F04EBE8001C8D86 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8AD9FC1F04EBE8001C8D86 /* TimerViewModel.swift */; };
 		CB91926F1EBC7DC300BA14E6 /* HotKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91926D1EBC7DC300BA14E6 /* HotKeysViewController.swift */; };
 		CB9192701EBC7DC300BA14E6 /* HotKeysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB91926E1EBC7DC300BA14E6 /* HotKeysViewController.xib */; };
 		CB9F65241EA610C5007982B0 /* Compass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65231EA610C5007982B0 /* Compass.swift */; };
@@ -299,7 +302,6 @@
 		CBCD36661ED3E2BA0041EABA /* CompassCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */; };
 		CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
 		CBF2E13D1EC04E4D00CBD61C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */; };
-		CBF6D2151EF3D48B0080375E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6D2141EF3D48B0080375E /* TimerViewController.swift */; };
 		CBF6D2171EF3D4C70080375E /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
 /* End PBXBuildFile section */
@@ -583,6 +585,9 @@
 		CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassViewController.xib; path = CompassViewController/CompassViewController.xib; sourceTree = "<group>"; };
 		CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassTableViewCell.swift; sourceTree = "<group>"; };
 		CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompassTableViewCell.xib; sourceTree = "<group>"; };
+		CB8AD9F41F04E797001C8D86 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimerViewController.swift; path = TimerViewController/TimerViewController.swift; sourceTree = "<group>"; };
+		CB8AD9F51F04E797001C8D86 /* TimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TimerViewController.xib; path = TimerViewController/TimerViewController.xib; sourceTree = "<group>"; };
+		CB8AD9FC1F04EBE8001C8D86 /* TimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		CB91926D1EBC7DC300BA14E6 /* HotKeysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeysViewController.swift; path = HotKeysViewController/HotKeysViewController.swift; sourceTree = "<group>"; };
 		CB91926E1EBC7DC300BA14E6 /* HotKeysViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotKeysViewController.xib; path = HotKeysViewController/HotKeysViewController.xib; sourceTree = "<group>"; };
 		CB9F65231EA610C5007982B0 /* Compass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compass.swift; sourceTree = "<group>"; };
@@ -623,7 +628,6 @@
 		CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassCalibrationViewController.swift; path = CompassCalibrationViewController/CompassCalibrationViewController.swift; sourceTree = "<group>"; };
 		CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassCalibrationViewController.xib; path = CompassCalibrationViewController/CompassCalibrationViewController.xib; sourceTree = "<group>"; };
 		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		CBF6D2141EF3D48B0080375E /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimerViewController.swift; path = TimerViewController/TimerViewController.swift; sourceTree = "<group>"; };
 		CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmViewController.swift; path = AlarmViewController/AlarmViewController.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1653,6 +1657,15 @@
 			name = CompassTableViewCell;
 			sourceTree = "<group>";
 		};
+		CB8AD9FB1F04EBE8001C8D86 /* TimerViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB8AD9FC1F04EBE8001C8D86 /* TimerViewModel.swift */,
+			);
+			name = TimerViewModel;
+			path = ViewModel/TimerViewModel;
+			sourceTree = "<group>";
+		};
 		CB9F65271EA70BB4007982B0 /* CalibrateHourViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1734,11 +1747,12 @@
 		CB9F65511EA9F327007982B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CBC0931D1EFBBB0B001213F4 /* RepeatAlarmViewModel */,
 				CB4ADFF01EF9142300EFA956 /* AddAlarmViewModel */,
 				CB4ADFE21EF767C600EFA956 /* AlarmViewModel */,
-				CB1549781EC0186A00090242 /* HotKeyModel */,
 				CBB892441EB33B3D006F7031 /* CompassSectionModel */,
+				CB1549781EC0186A00090242 /* HotKeyModel */,
+				CBC0931D1EFBBB0B001213F4 /* RepeatAlarmViewModel */,
+				CB8AD9FB1F04EBE8001C8D86 /* TimerViewModel */,
 				CBB892471EB33B3D006F7031 /* TimeSettingsSectionModel */,
 			);
 			name = ViewModel;
@@ -1826,7 +1840,8 @@
 		CBF6D2131EF3D4570080375E /* TimerViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CBF6D2141EF3D48B0080375E /* TimerViewController.swift */,
+				CB8AD9F41F04E797001C8D86 /* TimerViewController.swift */,
+				CB8AD9F51F04E797001C8D86 /* TimerViewController.xib */,
 			);
 			name = TimerViewController;
 			sourceTree = "<group>";
@@ -2014,6 +2029,7 @@
 				61C28BE61EA46F810019F574 /* AnalysisViewController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				61C28BF61EA46F810019F574 /* DeviceTableViewCellHeader.xib in Resources */,
+				CB8AD9F71F04E797001C8D86 /* TimerViewController.xib in Resources */,
 				613929071EADABEB00450284 /* welcome_1.png in Resources */,
 				61C48FC61EF3BCCE007A0709 /* bell.wav in Resources */,
 				CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */,
@@ -2218,7 +2234,6 @@
 				61C28BC91EA46F810019F574 /* GetContactsFilterRequest.swift in Sources */,
 				61C28BCD1EA46F810019F574 /* GetSystemStatus.swift in Sources */,
 				61C28C2C1EA46F810019F574 /* CompassMenuItem.swift in Sources */,
-				CBF6D2151EF3D48B0080375E /* TimerViewController.swift in Sources */,
 				CB9F65441EA86303007982B0 /* TimeSettingsViewController.swift in Sources */,
 				61078DC21E48249C00898A0D /* Duration.swift in Sources */,
 				613928FE1EAA026B00450284 /* Float+Extension.swift in Sources */,
@@ -2236,6 +2251,7 @@
 				61C28C0D1EA46F810019F574 /* ProfileViewController.swift in Sources */,
 				613928F01EA99DD900450284 /* WeatherCacheModel.swift in Sources */,
 				61C28BF31EA46F810019F574 /* DeviceTableViewCell.swift in Sources */,
+				CB8AD9F61F04E797001C8D86 /* TimerViewController.swift in Sources */,
 				CBBC3ACB1EC174EC009282E8 /* HotKeyTableViewCellButton.swift in Sources */,
 				61C28BD21EA46F810019F574 /* ReadDailyTrackerInfo.swift in Sources */,
 				613929141EAEF3BD00450284 /* DateFormatter+Extension.swift in Sources */,
@@ -2248,6 +2264,7 @@
 				61C28BCF1EA46F810019F574 /* GetUserProfileRequest.swift in Sources */,
 				61C28BD71EA46F810019F574 /* SetGoalRequest.swift in Sources */,
 				61C28C4F1EA46F810019F574 /* EventBusKeys.swift in Sources */,
+				CB8AD9FD1F04EBE8001C8D86 /* TimerViewModel.swift in Sources */,
 				61AE4B581E7F838300B4AD7C /* ChartFormatter.swift in Sources */,
 				CB4ADFE81EF7680800EFA956 /* AlarmSectionViewModelItem.swift in Sources */,
 				61C28BC51EA46F810019F574 /* DroneRequest.swift in Sources */,

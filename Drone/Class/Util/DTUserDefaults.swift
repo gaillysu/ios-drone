@@ -13,6 +13,7 @@ public class DTUserDefaults: NSObject {
     
     private static let SETUP_KEY = "SETUP_KEY"
     private static let SET_RTC_DATE = "SET_RTC"
+    private static let COUNT_DOWN_TIME = "COUNT_DOWN_TIME"
     private static let SEND_LOCAL_MESSAGE_KEY = "ISSENDLOCALMSG"
     private static let WORLDCLOCK_KEY = "DEFAULTS_WORLDCLOCK_KEY"
     private static let WORLDCLOCK_SORT_KEY = "WORLDCLOCK_SORT_KEY"
@@ -37,7 +38,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: SETUP_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -47,7 +47,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: SET_RTC_DATE)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -57,7 +56,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: SEND_LOCAL_MESSAGE_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -68,7 +66,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: WORLDCLOCK_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -78,7 +75,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: HOME_CITY_ID_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -91,7 +87,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: WORLDCLOCK_SORT_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -101,10 +96,19 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: SYNC_LOCAL_TIME_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
-
+    
+    
+    public static var countdownTime:Int {
+        get{
+            let val = UserDefaults().integer(forKey: COUNT_DOWN_TIME)
+            return val == 0 ? 1 : val
+        }
+        set{
+            UserDefaults().set(newValue, forKey: COUNT_DOWN_TIME)
+        }
+    }
     
     // MARK: Weather
     public static var lastSyncedWeatherDate:Date {
@@ -118,7 +122,7 @@ public class DTUserDefaults: NSObject {
             UserDefaults().set(newValue, forKey: LAST_SYNC_WEATHER_DATE)
         }
     }
-
+    
     public static var lastSyncedWeatherCity:String? {
         get{
             return UserDefaults().string(forKey: LAST_SYNC_WEATHER_CITY)
@@ -134,7 +138,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: SYNC_ANALOG_TIME_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -144,7 +147,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: HOUR_FORMAT_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -155,7 +157,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: COMPASS_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -166,10 +167,9 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: PAIR_PRESENT_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
- 
+    
     // MARK: Menu
     public static var topKeySelection:Int {
         get{
@@ -177,7 +177,6 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: TOP_KEY_KEY)
-            UserDefaults.standard.synchronize()
         }
     }
     
