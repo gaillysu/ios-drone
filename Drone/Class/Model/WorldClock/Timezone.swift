@@ -87,11 +87,11 @@ class Timezone: Object {
     }
 
     func getOffsetFromUTC() -> Int{
-        if dstTimeOffset > 0 {
+        if dstTimeOffset < 0 {
             let startDate = WorldClockUtil.getStartDateForDST(self)
             let stopDate = WorldClockUtil.getStopDateForDST(self)
             if startDate.timeIntervalSince1970 < Date().timeIntervalSince1970 && stopDate.timeIntervalSince1970 > Date().timeIntervalSince1970 {
-                return gmtTimeOffset + dstTimeOffset
+                return gmtTimeOffset - dstTimeOffset
             }
         }
         return gmtTimeOffset

@@ -10,7 +10,7 @@ import RealmSwift
 import UIKit
 
 class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource,UISearchControllerDelegate,UISearchResultsUpdating {
-
+    
     fileprivate let indexes:[String]
     fileprivate var cities:[String:[City]] = [:]
     fileprivate var searchController:UISearchController?
@@ -18,9 +18,12 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     fileprivate var searchCityController:SearchCityController = SearchCityController()
     @IBOutlet weak var cityTableView: UITableView!
     fileprivate let realm:Realm
+    var forHomeTime:Bool
     
-    init() {
+    init(forHomeTime:Bool = false) {
+        
         realm = try! Realm()
+        self.forHomeTime = forHomeTime
         for city:City in Array(realm.objects(City.self)) {
             let character:String = String(city.name[city.name.startIndex]).uppercased()
             if var list = cities[character] {
@@ -40,7 +43,11 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     override func viewDidLoad() {
-        self.navigationItem.title = "Choose a city"
+        if forHomeTime {
+            self.navigationItem.title = "Select your Home City"
+        }else{
+            self.navigationItem.title = "Choose a city"
+        }
         definesPresentationContext = true
         cityTableView.separatorColor = UIColor.white
         cityTableView.sectionIndexColor = UIColor.white
@@ -89,11 +96,10 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
             }
             if searchList.count>0{
                 searchCityController.setSearchList(searchList)
-                searchCityController.tableView.reloadData()
             }else{
                 searchCityController.setSearchList([:])
-                searchCityController.tableView.reloadData()
             }
+            searchCityController.tableView.reloadData()
         }
     }
     
@@ -142,25 +148,24 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.0;
+        return 0.0
     }
 }
 
-// MARK: DidSelectedDelegate
 extension AddWorldClockViewController:DidSelectedDelegate {
-
+    
     func didSelectedLocalTimeZone(_ cityId:Int) {
-        let city = realm.objects(City.self).filter("id = \(cityId)")
-        if(city.count != 1){
+        let cities = City.byFilter("id = \(cityId)")
+        if(cities.count != 1){
             return
         }
-        addCity(city[0])
+        addCity(cities[0])
     }
     
     fileprivate func addCity(_ city:City){
-        let selectedCities = realm.objects(City.self).filter("selected = true")
+        let selectedCities = City.byFilter("selected = true")
         if selectedCities.count < 5 {
-            if selectedCities.contains(where: { $0.id == city.id }){
+            if selectedCities.contains(where: { $0.id == city.id }) && !forHomeTime {
                 let alert:UIAlertController = UIAlertController(title: "Add City", message: NSLocalizedString("add_city", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
                 }))
@@ -168,16 +173,20 @@ extension AddWorldClockViewController:DidSelectedDelegate {
                 self.present(alert, animated: true, completion:nil)
                 return
             }
-            try! realm.write({
-                city.selected = true
-                if !DTUserDefaults.selectedCityOrder.isEmpty{
-                    DTUserDefaults.selectedCityOrder.append(city.id)
-                }
-            })
-            AppDelegate.getAppDelegate().setWorldClock(Array(selectedCities))
+            if forHomeTime {
+                DTUserDefaults.homeTimeId = city.id
+            } else {
+                try! realm.write({
+                    city.selected = true
+                    if !DTUserDefaults.selectedCityOrder.isEmpty{
+                        DTUserDefaults.selectedCityOrder.append(city.id)
+                    }
+                })
+            }
+            AppDelegate.getAppDelegate().setWorldClock()
             self.searchController?.isActive = false
             dismiss(animated: true, completion: nil)
-        } else{
+        } else {
             let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { alert in }))
             self.present(alert, animated: true, completion: nil)

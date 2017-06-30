@@ -41,4 +41,8 @@ class AlarmViewModel{
         }
         self.data.value[0].items.remove(at: index)
     }
+    
+    func syncAlarms(){
+        AppDelegate.getAppDelegate().sendRequest(SetDailyAlarmRequest(alarmWeekDay: MEDAlarm.byFilter("enabled = \(true)")))
+    }
 }

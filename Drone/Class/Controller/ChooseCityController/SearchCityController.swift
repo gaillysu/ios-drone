@@ -14,6 +14,7 @@ class SearchCityController: UITableViewController {
     fileprivate var index:[String] = []
     init() {
         super.init(nibName: "SearchCityController", bundle: Bundle.main)
+        tableView.separatorColor = .white
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -57,6 +58,8 @@ class SearchCityController: UITableViewController {
         if let cities:[(name:String, id:Int)] = searchList[index[(indexPath as NSIndexPath).section]]{
             cell?.textLabel?.text = cities[(indexPath as NSIndexPath).row].name
         }
+        cell?.backgroundColor = .getLightBaseColor()
+        cell?.textLabel?.textColor = .white
         cell?.textLabel?.font = UIFont(name: "Helvetica-Light", size: 15.0)
         return cell!
     }

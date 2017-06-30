@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import SwiftyJSON
 
-class City: Object {
+class City: MEDBaseModel {
     
     dynamic var id = 0
     
@@ -52,5 +52,46 @@ class City: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    static var homeTime:City?{
+        if let homeTime = City.byFilter("id == \(DTUserDefaults.homeTimeId)").first{
+            return homeTime
+        }
+        return nil
+    }
+    
+    static var worldClockCities:[City]{
+        let cities = City.findAll()
+        var worldClocks = cities
+            .filter({ $0.selected })
+            .sorted(by: { ($0.timezone?.getOffsetFromUTC())! < ($1.timezone?.getOffsetFromUTC())!})
+        var order = DTUserDefaults.selectedCityOrder
+        if !order.isEmpty{
+            if worldClocks.count > order.count{
+                worldClocks.forEach({ worldClock in
+                    if !order.contains(worldClock.id){
+                        order.append(worldClock.id)
+                        DTUserDefaults.selectedCityOrder = order
+                    }
+                })
+            }else{
+                order.forEach({ id in
+                    if !worldClocks.contains(where: {  $0.id == id
+                    }){
+                        if let index = order.index(where: {$0 == id}){
+                            order.remove(at: index)
+                        }
+                    }
+                })
+            }
+            worldClocks = order.map({ id -> City in
+                guard let index = worldClocks.index(where: { $0.id == id}) else{
+                    fatalError("Wow index is wrong")
+                }
+                return worldClocks[index]
+            })
+        }
+        return worldClocks
+    } 
     
 }

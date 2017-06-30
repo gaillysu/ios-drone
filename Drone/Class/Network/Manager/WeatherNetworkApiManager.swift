@@ -27,7 +27,7 @@ class WeatherNetworkApiManager: NSObject {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter
     }()
-
+    
     fileprivate override init() {
         super.init()
     }
@@ -82,17 +82,19 @@ class WeatherNetworkApiManager: NSObject {
                 let cityDate = Date(timeIntervalSince1970: cityTime==0 ? (Date().timeIntervalSince1970-Double(localTimeSeconds)):cityTime)
                 for listModel in weatherModel.list {
                     let offset = city?.timezone?.gmtTimeOffset
-                    self.formatter.timeZone = TimeZone(secondsFromGMT: Int(offset!*60))
-                    let dateString = self.formatter.string(from: Date(timeIntervalSince1970: listModel.dt.toDouble()))
-                    print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
-                    if let hourDate = self.formatter.date(from: dateString) {
-                        if hourDate.hour > cityDate.hour {
-                            isCallBack = true
-                            let temp:Int = Int(listModel.temp.toFloat())
-                            let code:Int = listModel.code.toInt()
-                            let text:String = listModel.stateText
-                            responseBlock(id,temp , code, text)
-                            break
+                    if let unpackedOffset = offset{
+                        self.formatter.timeZone = TimeZone(secondsFromGMT: Int(unpackedOffset*60))
+                        let dateString = self.formatter.string(from: Date(timeIntervalSince1970: listModel.dt.toDouble()))
+                        print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
+                        if let hourDate = self.formatter.date(from: dateString) {
+                            if hourDate.hour > cityDate.hour {
+                                isCallBack = true
+                                let temp:Int = Int(listModel.temp.toFloat())
+                                let code:Int = listModel.code.toInt()
+                                let text:String = listModel.stateText
+                                responseBlock(id,temp , code, text)
+                                break
+                            }
                         }
                     }
                 }
@@ -134,15 +136,17 @@ class WeatherNetworkApiManager: NSObject {
                     let cityDate = Date(timeIntervalSince1970: cityTime==0 ? (Date().timeIntervalSince1970-Double(localTimeSeconds)):cityTime)
                     for model in listModel{
                         let offset = city?.timezone?.gmtTimeOffset
-                        self.formatter.timeZone = TimeZone(secondsFromGMT: Int(offset!*60))
-                        let dateString = self.formatter.string(from: Date(timeIntervalSince1970: model.dt.toDouble()))
-                        print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
-                        if let hourDate = self.formatter.date(from: dateString) {
-                            if hourDate.hour > cityDate.hour {
-                                temp = model.temp.toFloat()
-                                code = model.code.toInt()
-                                text = model.stateText;
-                                break
+                        if let unpackedOffset = offset{
+                            self.formatter.timeZone = TimeZone(secondsFromGMT: Int(unpackedOffset*60))
+                            let dateString = self.formatter.string(from: Date(timeIntervalSince1970: model.dt.toDouble()))
+                            print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
+                            if let hourDate = self.formatter.date(from: dateString) {
+                                if hourDate.hour > cityDate.hour {
+                                    temp = model.temp.toFloat()
+                                    code = model.code.toInt()
+                                    text = model.stateText;
+                                    break
+                                }
                             }
                         }
                     }
@@ -196,55 +200,33 @@ class WeatherNetworkApiManager: NSObject {
         return listModel
     }
     
+    
     func getWeatherStatusCode(code:Int) -> WeatherStatusIcon {
-        if [800].contains(code) {
-            return WeatherStatusIcon.clearNight;
+        if 800 == code {
+            return .clearNight;
+        } else if 801 == code {
+            return .partlyCloudyNight
+        } else if [802,803,804].contains(code) {
+            return .cloudy
+        } else if 900 == code {
+            return .tornado
+        } else if 901 == code {
+            return .typhoon
+        } else if 902 == code {
+            return .hurricane
+        } else if 905 == code || (code >= 952 && code<=959){
+            return .windy;
+        } else if [960,200,201,202,210,211,212,221,230,231,232].contains(code) {
+            return .stormy;
+        } else if [600,601,602,611,612,615,616,620,621,622].contains(code) {
+            return .snow;
+        } else if [701,711,721,741,761].contains(code) {
+            return .fog;
+        } else if [300,301,302,310,311,500].contains(code) {
+            return .rainLight;
+        } else if [312,313,314,321,501,502,503,504,511,520,521,522,531].contains(code) {
+            return .rainHeavy;
         }
-        
-        if [801].contains(code) {
-            return WeatherStatusIcon.partlyCloudyNight
-        }
-        
-        if [802,803,804].contains(code) {
-            return WeatherStatusIcon.cloudy
-        }
-        
-        if [900].contains(code) {
-            return WeatherStatusIcon.tornado
-        }
-        
-        if [901].contains(code) {
-            return WeatherStatusIcon.typhoon
-        }
-        
-        if [902].contains(code) {
-            return WeatherStatusIcon.hurricane
-        }
-        
-        if [905].contains(code) || (code >= 952 && code<=959){
-            return WeatherStatusIcon.windy;
-        }
-        
-        if [960,200,201,202,210,211,212,221,230,231,232].contains(code) {
-            return WeatherStatusIcon.stormy;
-        }
-        
-        if [600,601,602,611,612,615,616,620,621,622].contains(code) {
-            return WeatherStatusIcon.snow;
-        }
-        
-        if [701,711,721,741,761].contains(code) {
-            return WeatherStatusIcon.fog;
-        }
-        
-        if [300,301,302,310,311,500].contains(code) {
-            return WeatherStatusIcon.rainLight;
-        }
-        
-        if [312,313,314,321,501,502,503,504,511,520,521,522,531].contains(code) {
-            return WeatherStatusIcon.rainHeavy;
-        }
-        
-        return WeatherStatusIcon.invalidData
+        return .invalidData
     }
 }

@@ -46,7 +46,6 @@ class TimerViewController: UIViewController {
             switch indexPath.row{
             case 0:
                 self.timerViewModel.syncCountDownTimer()
-                break
             case 1:
                 self.timerPicker.setDate(Calendar.current.date(bySettingHour: 0, minute: 1, second: 0, of: Date())!, animated: true)
                 self.timerViewModel.countdownTime = 1

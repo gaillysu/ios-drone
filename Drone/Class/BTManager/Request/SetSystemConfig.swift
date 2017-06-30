@@ -101,6 +101,7 @@ class SetSystemConfig: DroneRequest {
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
         case .compassTimeout:
             let values :[UInt8] = [0x80,SetSystemConfig.HEADER(),systemConfig.rawValue,0x01,UInt8(duration&0xFF),0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+//            [128, 15, 19, 1, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
             return [Data(bytes: UnsafePointer<UInt8>(values), count: values.count)]
         }
     }

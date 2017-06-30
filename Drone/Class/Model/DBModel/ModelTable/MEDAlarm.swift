@@ -17,7 +17,7 @@ class MEDAlarm: MEDBaseModel {
     dynamic var minute = 0
     
     dynamic var label:String = "Alarm"
-    dynamic var enabled:Bool = false
+    dynamic var enabled:Bool = true
     dynamic var snoozable:Bool = false
     
     let daysInWeek = List<MEDWeekDayNumber>()

@@ -272,8 +272,8 @@ extension AppDelegate{
       self.setGoal()
       print("setGoal")
       
-      self.isSaveWorldClock()
-      print("isSaveWorldClock")
+      self.setWorldClock()
+      print("setWorldClock")
       
       self.setNotification()
       print("setNotification")
@@ -303,11 +303,6 @@ extension AppDelegate{
          let updateRequest = UpdateNotificationRequest(operation: notification.state ? 1 : 2, package: notification.bundleIdentifier)
          AppDelegate.getAppDelegate().sendRequest(updateRequest)
       }
-   }
-   
-   func isSaveWorldClock() {
-      let realm = try! Realm()
-      setWorldClock(Array(realm.objects(City.self).filter("selected = true")))
    }
    
    func setNavigation(state:Bool) {

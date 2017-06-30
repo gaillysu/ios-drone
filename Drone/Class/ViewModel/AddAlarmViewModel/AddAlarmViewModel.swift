@@ -16,6 +16,8 @@ class AddAlarmViewModel{
     private let alarm:MEDAlarm
     
     let inEditMode:Bool
+    var mustSync = false
+
     
     let data:Variable<[SectionModel<String, (title:String,detail:String)>]>
     var notificationToken:NotificationToken?
@@ -37,8 +39,13 @@ class AddAlarmViewModel{
         set {
             let hour  = newValue.hour
             let minute  = newValue.minute
-            if hour < 24 { alarm.update(operation: { $0.hour = hour }) }
-            if minute < 60 { alarm.update(operation: { $0.minute = minute }) }
+            if hour < 24 && minute < 60  {
+                alarm.update(operation: {
+                    $0.hour = hour
+                    $0.minute = minute
+                })
+                self.mustSync = true
+            }
         }
         get {
             return (alarm.hour, alarm.minute)
@@ -47,13 +54,18 @@ class AddAlarmViewModel{
     
     init(alarm:MEDAlarm = MEDAlarm(), inEditMode:Bool = false) {
         self.alarm = alarm
-        
         self.inEditMode = inEditMode
+        if !inEditMode{
+            mustSync = true
+        }
+        
+        
         data = Variable([SectionModel(model: "", items: [("Repeat",""),
                                                          ("Label",alarm.label),
                                                          ("Snooze","")])])
         self.alarm.update(operation: { _ in })
         notificationToken = self.alarm.addNotificationBlock { object in
+            self.mustSync = true
             self.data.value[0].items[0].detail = alarm.repeatLabel()
         }
         if inEditMode{
@@ -71,6 +83,14 @@ class AddAlarmViewModel{
     
     func repeatViewModel() -> RepeatAlarmViewModel{
         return RepeatAlarmViewModel(alarm: alarm)
+    }
+    
+    func syncAlarms(){
+        if mustSync{
+            AppDelegate.getAppDelegate().sendRequest(SetDailyAlarmRequest(alarmWeekDay: MEDAlarm.byFilter("enabled = \(true)")))
+        }else{
+            print("Not really needed to sync.")
+        }
     }
     
 }

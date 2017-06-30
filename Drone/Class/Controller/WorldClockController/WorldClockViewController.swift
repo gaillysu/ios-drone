@@ -24,10 +24,6 @@ class WorldClockViewController: BaseViewController{
     fileprivate var localCityArray: [City] = []
     fileprivate let realm:Realm
     
-    var enableEditingFirstRow = false
-    var previousSelectedIndexPath: IndexPath?
-    
-    
     init() {
         realm = try! Realm()
         super.init(nibName: "WorldClockViewController", bundle: Bundle.main)
@@ -44,8 +40,8 @@ class WorldClockViewController: BaseViewController{
         self.dateLabel.text = "\(DateFormatter().normalDateString())"
         let results:Results<City> = realm.objects(City.self).filter("name CONTAINS[c] '\(DateFormatter().localCityName())'")
         results.forEach({ localCityArray.append($0) })
-        updateWorldClockArrayWithOrder(reload: true)
         
+        updateWorldClockArrayWithOrder(reload: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,57 +50,15 @@ class WorldClockViewController: BaseViewController{
     }
     
     fileprivate func updateWorldClockArrayWithOrder(reload:Bool){
-        worldClockArray = []
-        homeCityArray = []
-        var selectedCityOrder = DTUserDefaults.selectedCityOrder
-        if selectedCityOrder.isEmpty {
-            realm.objects(City.self)
-                .filter("selected = true")
-                .sorted(by: {
-                    ($0.timezone?.getOffsetFromUTC())! < ($1.timezone?.getOffsetFromUTC())!})
-                .forEach({
-                    if $0.id == DTUserDefaults.homeTimeId{
-                        homeCityArray.append($0)
-                    } else {
-                        worldClockArray.append($0)
-                    }})
-        } else {
-            let selectedCtities = Array(realm.objects(City.self).filter("selected = true"))
-            if selectedCtities.count != selectedCityOrder.count{
-                if selectedCtities.count > selectedCityOrder.count {
-                    selectedCtities.forEach({ city in
-                        if !selectedCityOrder.contains(where: { $0 == city.id }){
-                            selectedCityOrder.append(city.id)
-                            DTUserDefaults.selectedCityOrder = selectedCityOrder
-                        }
-                    })
-                }else{
-                    selectedCtities.forEach({ city in
-                        if !selectedCityOrder.contains(where: { $0 == city.id }){
-                            if let index = selectedCityOrder.index(where: { $0 == city.id }){
-                                selectedCityOrder.remove(at: index)
-                            }
-                        }
-                    })
-                }
-            }
-            selectedCityOrder.forEach({ cityId in
-                if let city = realm.object(ofType: City.self, forPrimaryKey: cityId){
-                    if city.selected{
-                        if city.id == DTUserDefaults.homeTimeId {
-                            homeCityArray.append(city)
-                        }else{
-                            worldClockArray.append(city)
-                        }
-                    }
-                }
-            })
+        worldClockArray = City.worldClockCities
+        homeCityArray.removeAll()
+        if let homeTime = City.homeTime{
+            homeCityArray.append(homeTime)
         }
-        
         if reload {
             self.tableView.reloadData()
         }
-        AppDelegate.getAppDelegate().setWorldClock(Array(homeCityArray + worldClockArray))
+        AppDelegate.getAppDelegate().setWorldClock()
     }
 }
 
@@ -133,18 +87,10 @@ extension WorldClockViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        previousSelectedIndexPath = indexPath
-        if homeCityArray.count  >= 1 && previousSelectedIndexPath?.section == 1 {
-            enableEditingFirstRow = true
-        }else if homeCityArray.count == 0 {
-            enableEditingFirstRow = true
-        } else{
-            enableEditingFirstRow = false
+        if indexPath.section == 1 && indexPath.row == 0 {
+            self.present(self.makeStandardUINavigationController(AddWorldClockViewController(forHomeTime: true)), animated: true, completion: nil)
         }
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -190,46 +136,19 @@ extension WorldClockViewController: UITableViewDelegate, UITableViewDataSource{
         cell.cityModel = city
         return cell;
     }
- }
+}
 
 extension WorldClockViewController:TableViewReorderDelegate{
+    
     func tableView(_ tableView: UITableView, canReorderRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 {
-            return false
-        } else if indexPath.section == 1 && !enableEditingFirstRow{
-            return false
-        }
-        return true
+        return (indexPath.section == 0 || indexPath.section == 1)  ? false : true
     }
     
     func tableView(_ tableView: UITableView, reorderRowAt s: IndexPath, to d: IndexPath) {
-        if s.section > d.section {
-            let city = worldClockArray[s.row]
-            homeCityArray.insert(city, at: d.row)
-            worldClockArray.remove(at: s.row)
-            DTUserDefaults.homeTimeId = city.id
-            if !DTUserDefaults.syncLocalTime {
-                getAppDelegate().setAnalogTime(forceCurrentTime: false)
-                print("Not forcing current time")
-            }
-            
-        } else if d.section > s.section {
-            let city = homeCityArray[s.row]
-            worldClockArray.insert(city, at: d.row)
-            homeCityArray.remove(at: s.row)
-            DTUserDefaults.homeTimeId = -1
-            print("Forcing current time")
-            getAppDelegate().setAnalogTime(forceCurrentTime: true)
-        } else {
-            let destination = s.row
-            let source = d.row
-            if(s.section == 1) {
-                (homeCityArray[source], homeCityArray[destination]) = (homeCityArray[destination], homeCityArray[source])
-            } else if(s.section == 2) {
-                (worldClockArray[source], worldClockArray[destination]) = (worldClockArray[destination], worldClockArray[source])
-            }
-            DTUserDefaults.selectedCityOrder = homeCityArray.map({ $0.id }) + worldClockArray.map({ $0.id })
-        }
+        let destination = s.row
+        let source = d.row
+        (worldClockArray[source], worldClockArray[destination]) = (worldClockArray[destination], worldClockArray[source])
+        DTUserDefaults.selectedCityOrder = homeCityArray.map({ $0.id }) + worldClockArray.map({ $0.id })
     }
     
     func tableViewDidFinishReordering(_ tableView: UITableView) {
@@ -237,7 +156,3 @@ extension WorldClockViewController:TableViewReorderDelegate{
         updateWorldClockArrayWithOrder(reload: true)
     }
 }
-
-
-
-

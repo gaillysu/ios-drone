@@ -20,6 +20,7 @@ class AlarmViewController: UITableViewController {
     let identifier = "AlarmTableViewCell"
     
     let alarmViewModel = AlarmViewModel()
+    var syncNotificationToken:NotificationToken?
     
     override func viewDidLoad() {
         
@@ -28,6 +29,14 @@ class AlarmViewController: UITableViewController {
         self.tableView.separatorColor = .white
         self.tableView.rowHeight = 88.0
         self.tableView.sectionHeaderHeight = 0.0
+        let realm = try! Realm()
+        syncNotificationToken = realm.objects(MEDAlarm.self).addNotificationBlock { collection in
+            switch collection {
+            case .update(_, _, _, _):
+                self.alarmViewModel.syncAlarms()
+            default: break
+            }
+        }
         
         navigationController?.navigationItem.rightBarButtonItem = self.editButtonItem
         let dataSource = RxTableViewSectionedAnimatedDataSource<AlarmSectionViewModel>()
@@ -45,7 +54,7 @@ class AlarmViewController: UITableViewController {
         alarmViewModel.data.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
-
+        
         tableView.rx.itemSelected.subscribe{ event in
             if let indexPath = event.element{
                 if let alarm = self.alarmViewModel.getAlarmFor(index: indexPath.row) {
@@ -53,14 +62,18 @@ class AlarmViewController: UITableViewController {
                     self.navigationController?.pushViewController(AddAlarmViewController(viewModel: viewModel), animated: true)
                 }
             }
-        }.addDisposableTo(disposeBag)
+            }.addDisposableTo(disposeBag)
         
         tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
         
         if let tabBarController = tabBarController {
             self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: tabBarController.tabBar.frame.height, right: 0.0)
         }
-        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        if let token = syncNotificationToken{
+            token.stop()
+        }
     }
 }
 // Delegates This section does not work actually but I want to make it work :@
@@ -71,9 +84,9 @@ extension AlarmViewController{
             self.tableView(tableView, commit: .delete, forRowAt: indexPath)
         })]
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         self.alarmViewModel.delete(index: indexPath.row)
     }
- 
+    
 }

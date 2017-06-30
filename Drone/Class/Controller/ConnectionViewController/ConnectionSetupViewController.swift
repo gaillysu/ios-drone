@@ -89,7 +89,7 @@ class ConnectionSetupViewController: UIViewController {
     @IBAction func buttonActionManager(_ sender: AnyObject) {
         if sender.isEqual(nextButton) {
             AppDelegate.getAppDelegate().setUserProfile()
-            self.navigationController?.pushViewController(CalibrateHourViewController(), animated: true)
+            self.navigationController?.pushViewController(SelectNewHomeTimeViewController(), animated: true)
         }
         if sender.isEqual(retryButton) {
             self.navigationItem.setHidesBackButton(true, animated: true)

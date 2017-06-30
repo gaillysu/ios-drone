@@ -23,7 +23,7 @@ extension AppDelegate {
         sendRequest(SetSystemConfig(configtype: .enabled, isAvailable: .enabled))
         sendRequest(SetSystemConfig(configtype: .clockFormat, format: .format24h))
         sendRequest(SetSystemConfig(autoStart: Date().timeIntervalSince1970, autoEnd: Date.tomorrow().timeIntervalSince1970, configtype: .sleepConfig, mode: .auto))
-     }
+    }
     
     func setCompassAutoMotionDetection(){
         if let obj = Compass.getAll().first, let compass = obj as? Compass{
@@ -105,25 +105,26 @@ extension AppDelegate {
     }
     
     func setAppConfig() {
-        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.worldClock, state: AppConfigAppState.on))
-        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.activityTracking, state: AppConfigAppState.on))
-        sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.weather, state: AppConfigAppState.on))
+        sendRequest(SetAppConfigRequest(appid: .worldClock, state: .on))
+        sendRequest(SetAppConfigRequest(appid: .activityTracking, state: .on))
+        sendRequest(SetAppConfigRequest(appid: .weather, state: .on))
         if DTUserDefaults.compassState {
-            sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.on))
+            sendRequest(SetAppConfigRequest(appid: .compass, state: .on))
         }else{
-            sendRequest(SetAppConfigRequest(appid: AppConfigApplicationID.compass, state: AppConfigAppState.off))
+            sendRequest(SetAppConfigRequest(appid: .compass, state: .off))
         }
-        
+        sendRequest(SetAppConfigRequest(appid: .timer, state: .on))
+        sendRequest(SetAppConfigRequest(appid: .stopwatch, state: .on))
     }
     
     func setGoal() {
-            let goalArray = UserGoal.getAll()
-            if goalArray.count>0 {
-                let goal:UserGoal = goalArray.first as! UserGoal
-                sendRequest(SetGoalRequest(goal: goal))
-            }else{
-                sendRequest(SetGoalRequest(steps: 10000))
-            }
+        let goalArray = UserGoal.getAll()
+        if goalArray.count>0 {
+            let goal:UserGoal = goalArray.first as! UserGoal
+            sendRequest(SetGoalRequest(goal: goal))
+        }else{
+            sendRequest(SetGoalRequest(steps: 10000))
+        }
     }
     
     func setUserProfile() {
@@ -140,9 +141,15 @@ extension AppDelegate {
         }
     }
     
-    func setWorldClock(_ cities:[City]) {
+    func setWorldClock() {
+        let cities = City.findAll()
+        var worldClocks = City.worldClockCities
+        if let homeCityIndex = cities.index(where: { $0.id == DTUserDefaults.homeTimeId }) {
+            worldClocks.insert(cities[homeCityIndex], at: 0)
+        }
+        
         var convertedWorldClockArray:[(cityName:String,gmtOffset:Float)] = []
-        for city:City in cities {
+        for city:City in worldClocks {
             if let timezone = city.timezone{
                 convertedWorldClockArray.append((city.name,Float(timezone.getOffsetFromUTC()/60)))
             }
@@ -150,6 +157,7 @@ extension AppDelegate {
         sendRequest(SetWorldClockRequest(worldClockArray: convertedWorldClockArray))
         self.setWeather(cityname: DTUserDefaults.lastSyncedWeatherCity)
     }
+
     
     func startConnect(){
         let userDevice = DataBaseManager.manager.getAllDevice()
@@ -298,7 +306,7 @@ extension AppDelegate {
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
                 DTUserDefaults.lastSyncedWeatherCity = locationInfo.cityName
                 self.setWeather(cityname: locationInfo.cityName)
-            } 
+            }
         }
     }
     

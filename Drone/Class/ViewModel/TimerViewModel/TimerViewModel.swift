@@ -15,12 +15,8 @@ class TimerViewModel {
         set { DTUserDefaults.countdownTime = newValue}
     }
     
-    init() {
-            
-    }
-    
     func syncCountDownTimer(){
-        
+        AppDelegate.getAppDelegate().sendRequest(SetCountdownTimerRequest(countdown: DTUserDefaults.countdownTime))
     }
     
 }
