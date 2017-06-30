@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import SwiftyJSON
 
-class City: Object {
+class City: MEDBaseModel {
     
     dynamic var id = 0
     

@@ -116,7 +116,9 @@ public class DTUserDefaults: NSObject {
             if let object = UserDefaults().object(forKey: LAST_SYNC_WEATHER_DATE), let date = object as? Date{
                 return date
             }
-            return Date()
+            let lastDate = Date(timeIntervalSince1970: Date().timeIntervalSince1970-syncWeatherInterval)
+            UserDefaults().set(lastDate, forKey: LAST_SYNC_WEATHER_DATE)
+            return lastDate
         }
         set{
             UserDefaults().set(newValue, forKey: LAST_SYNC_WEATHER_DATE)
@@ -180,5 +182,13 @@ public class DTUserDefaults: NSObject {
         }
     }
     
-    
+    public static var localLanguage:String {
+        get{
+            let languages:[String] = UserDefaults.standard.object(forKey: "AppleLanguages") as! [String]
+            if let value = languages.first {
+                return value
+            }
+            return ""
+        }
+    }
 }
