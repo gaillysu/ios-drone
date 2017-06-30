@@ -13,11 +13,19 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
 
     fileprivate let indexes:[String]
     fileprivate var cities:[String:[City]] = [:]
-    fileprivate var searchController:UISearchController?
     fileprivate var searchList:[String:[(name:String, id:Int)]] = [:]
     fileprivate var searchCityController:SearchCityController = SearchCityController()
     @IBOutlet weak var cityTableView: UITableView!
     fileprivate let realm:Realm
+    fileprivate lazy var searchController: UISearchController = {
+        $0.delegate = self
+        $0.searchResultsUpdater = self;
+        $0.searchBar.tintColor = .getBaseColor()
+        $0.searchBar.barTintColor = .getBaseColor()
+        $0.searchResultsUpdater = self;
+        $0.hidesNavigationBarDuringPresentation = false;
+        return $0
+    }(UISearchController(searchResultsController: self.searchCityController))
     
     init() {
         realm = try! Realm()
@@ -47,17 +55,13 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
         
         self.addCloseButton(#selector(close))
         
-        searchController = UISearchController(searchResultsController: searchCityController)
         searchCityController.mDelegate = self
-        searchController?.delegate = self
-        searchController?.searchResultsUpdater = self;
-        searchController?.searchBar.tintColor = UIColor.white
-        searchController?.searchBar.barTintColor = UIColor(patternImage: UIImage(named: "gradually")!)
-        searchController?.hidesNavigationBarDuringPresentation = false;
-        let searchView:UIView = UIView(frame: CGRect(x: 0,y: 0,width: UIScreen.main.bounds.size.width,height: searchController!.searchBar.frame.size.height))
-        searchView.backgroundColor = UIColor(patternImage: UIImage(named: "gradually")!)
-        searchView.addSubview(searchController!.searchBar)
+        let searchView:UIView = UIView(frame: CGRect(x: 0,y: 0,width: UIScreen.main.bounds.size.width,height: searchController.searchBar.frame.size.height))
+        searchView.backgroundColor = UIColor.white
+        searchView.addSubview(searchController.searchBar)
         cityTableView.tableHeaderView = searchView
+        
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.white], for: UIControlState.normal)
     }
     
     func close(){
@@ -71,8 +75,8 @@ class AddWorldClockViewController: BaseViewController, UITableViewDelegate, UITa
     // MARK: - UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController) {
         NSLog("updateSearchResultsForSearchController")
-        if self.searchController!.searchBar.text != nil {
-            let searchString:String = self.searchController!.searchBar.text!
+        if self.searchController.searchBar.text != nil {
+            let searchString:String = self.searchController.searchBar.text!
             //过滤数据
             searchList.removeAll()
             for cityWithIndex:(String, [City]) in self.cities {
@@ -164,7 +168,7 @@ extension AddWorldClockViewController:DidSelectedDelegate {
                 let alert:UIAlertController = UIAlertController(title: "Add City", message: NSLocalizedString("add_city", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
                 }))
-                self.searchController?.isActive = false
+                self.searchController.isActive = false
                 self.present(alert, animated: true, completion:nil)
                 return
             }
@@ -175,7 +179,7 @@ extension AddWorldClockViewController:DidSelectedDelegate {
                 }
             })
             AppDelegate.getAppDelegate().setWorldClock(Array(selectedCities))
-            self.searchController?.isActive = false
+            self.searchController.isActive = false
             dismiss(animated: true, completion: nil)
         } else{
             let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
