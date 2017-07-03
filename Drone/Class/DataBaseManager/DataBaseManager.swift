@@ -136,6 +136,9 @@ class DataBaseManager: NSObject {
                 }
             })
         }
+        if let homeCity = City.homeTime{
+            worldClockArray.append(homeCity)
+        }
         return worldClockArray
     }
 }

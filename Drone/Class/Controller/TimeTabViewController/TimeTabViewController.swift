@@ -78,7 +78,13 @@ class TimeTabViewController: UITabBarController {
             self.present(alert, animated: true, completion: nil)
              return
         }
-        self.present(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
+        let selectCityController: AddWorldClockViewController = AddWorldClockViewController()
+        let navigationController: UINavigationController = UINavigationController(rootViewController: selectCityController)
+        navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        present(navigationController, animated: true, completion: nil)
+        //self.present(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
     }
     
     func addAlarm(){

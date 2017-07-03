@@ -29,7 +29,12 @@ class TimerViewController: UIViewController {
         timerPicker.countDownDuration = TimeInterval(timerViewModel.countdownTime)
         pickerTableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         let countDownTime = timerViewModel.countdownTime
-        self.timerPicker.setDate(Calendar.current.date(bySettingHour: Int(countDownTime/60), minute: countDownTime%60, second: 0, of: Date())!, animated: true)
+        if countDownTime < 1439{
+            self.timerPicker.setDate(Calendar.current.date(bySettingHour: Int(countDownTime/60), minute: countDownTime%60, second: 0, of: Date())!, animated: true)
+        }else{
+            timerViewModel.countdownTime = 1
+            self.timerPicker.setDate(Calendar.current.date(bySettingHour: 0, minute: 1, second: 0, of: Date())!, animated: true)
+        }
         self.timerViewModel.countdownTime = timerViewModel.countdownTime
         
         data.bind(to: pickerTableView.rx.items(cellIdentifier: identifier)) { index, model, cell in
@@ -45,6 +50,7 @@ class TimerViewController: UIViewController {
             self.pickerTableView.deselectRow(at: indexPath, animated: true)
             switch indexPath.row{
             case 0:
+                self.timerViewModel.countdownTime = Int(self.timerPicker.countDownDuration/60)
                 self.timerViewModel.syncCountDownTimer()
             case 1:
                 self.timerPicker.setDate(Calendar.current.date(bySettingHour: 0, minute: 1, second: 0, of: Date())!, animated: true)

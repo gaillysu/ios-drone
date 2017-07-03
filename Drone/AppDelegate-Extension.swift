@@ -275,8 +275,19 @@ extension AppDelegate {
         var cityArray:[City] = DataBaseManager.manager.getCitySelected()
         if let name = cityname {
             DTUserDefaults.lastSyncedWeatherDate = Date()
-            let city:City = City()
-            city.name = name
+            let language = DTUserDefaults.localLanguage
+            var transformCity = name
+            if language.contains("zh-Hans") || language.contains("zh-Hant") {
+                transformCity = name.chineseTransform()
+            }
+            
+            let cityObject = City.getFilter("name CONTAINS[c] '\(transformCity)'")
+            var city:City = City()
+            if cityObject.count>0 {
+                city = cityObject.last as! City
+            }else{
+                city.name = name
+            }
             cityArray.append(city)
         }
         

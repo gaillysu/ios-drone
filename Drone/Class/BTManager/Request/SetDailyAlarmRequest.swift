@@ -23,6 +23,7 @@ class SetDailyAlarmRequest: DroneRequest {
     
     override func getRawDataEx() -> [Data] {
         var values :[UInt8] = [SetDailyAlarmRequest.HEADER()]
+        values += [UInt8(alarmWeekDay.count&0xFF)]
         alarmWeekDay.forEach({ alarm in
             var weekDay = ["0","0","0","0","0","0","0","0","0"]
             alarm.daysInWeek.forEach({ dayInWeek in

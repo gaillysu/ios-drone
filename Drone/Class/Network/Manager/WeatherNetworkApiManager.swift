@@ -81,20 +81,21 @@ class WeatherNetworkApiManager: NSObject {
                 
                 let cityDate = Date(timeIntervalSince1970: cityTime==0 ? (Date().timeIntervalSince1970-Double(localTimeSeconds)):cityTime)
                 for listModel in weatherModel.list {
-                    let offset = city?.timezone?.gmtTimeOffset
-                    if let unpackedOffset = offset{
-                        self.formatter.timeZone = TimeZone(secondsFromGMT: Int(unpackedOffset*60))
-                        let dateString = self.formatter.string(from: Date(timeIntervalSince1970: listModel.dt.toDouble()))
-                        print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
-                        if let hourDate = self.formatter.date(from: dateString) {
-                            if hourDate.hour > cityDate.hour {
-                                isCallBack = true
-                                let temp:Int = Int(listModel.temp.toFloat())
-                                let code:Int = listModel.code.toInt()
-                                let text:String = listModel.stateText
-                                responseBlock(id,temp , code, text)
-                                break
-                            }
+                    
+                    if let offset = city?.timezone?.gmtTimeOffset {
+                        self.formatter.timeZone = TimeZone(secondsFromGMT: Int(offset*60))
+                    }
+                    
+                    let dateString = self.formatter.string(from: Date(timeIntervalSince1970: listModel.dt.toDouble()))
+                    print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
+                    if let hourDate = self.formatter.date(from: dateString) {
+                        if hourDate.hour > cityDate.hour {
+                            isCallBack = true
+                            let temp:Int = Int(listModel.temp.toFloat())
+                            let code:Int = listModel.code.toInt()
+                            let text:String = listModel.stateText
+                            responseBlock(id,temp , code, text)
+                            break
                         }
                     }
                 }
@@ -135,18 +136,17 @@ class WeatherNetworkApiManager: NSObject {
                     
                     let cityDate = Date(timeIntervalSince1970: cityTime==0 ? (Date().timeIntervalSince1970-Double(localTimeSeconds)):cityTime)
                     for model in listModel{
-                        let offset = city?.timezone?.gmtTimeOffset
-                        if let unpackedOffset = offset{
-                            self.formatter.timeZone = TimeZone(secondsFromGMT: Int(unpackedOffset*60))
-                            let dateString = self.formatter.string(from: Date(timeIntervalSince1970: model.dt.toDouble()))
-                            print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
-                            if let hourDate = self.formatter.date(from: dateString) {
-                                if hourDate.hour > cityDate.hour {
-                                    temp = model.temp.toFloat()
-                                    code = model.code.toInt()
-                                    text = model.stateText;
-                                    break
-                                }
+                        if let offset = city?.timezone?.gmtTimeOffset {
+                            self.formatter.timeZone = TimeZone(secondsFromGMT: Int(offset*60))
+                        }
+                        let dateString = self.formatter.string(from: Date(timeIntervalSince1970: model.dt.toDouble()))
+                        print("cityDate:\(cityDate.stringFromFormat("yyyy-MM-dd HH:mm:ss"))")
+                        if let hourDate = self.formatter.date(from: dateString) {
+                            if hourDate.hour > cityDate.hour {
+                                temp = model.temp.toFloat()
+                                code = model.code.toInt()
+                                text = model.stateText;
+                                break
                             }
                         }
                     }

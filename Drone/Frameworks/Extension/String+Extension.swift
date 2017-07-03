@@ -70,4 +70,18 @@ extension String {
         }
         return sum
     }
+    
+    func chineseTransform() -> String {
+        let pinyin = NSMutableString(string: self.replacingOccurrences(of: "市", with: "")) as CFMutableString
+        var range = CFRangeMake(0, CFStringGetLength(pinyin))
+        if CFStringTransform(pinyin ,&range, kCFStringTransformToLatin, false) {
+            CFStringTransform(pinyin ,&range, kCFStringTransformStripCombiningMarks, false)
+            var formatString = pinyin as String
+            formatString = formatString.replacingOccurrences(of: " ", with: "")
+            return formatString
+        }
+        let formatString = pinyin as String
+        return formatString
+    }
+    
 }
