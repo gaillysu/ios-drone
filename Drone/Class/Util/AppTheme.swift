@@ -56,6 +56,31 @@ class AppTheme {
         return nil
     }
     
+    class func getTodayWeatherInfoCache(_ name:String) ->Any? {
+        let pathArray:[String] = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
+        let path:String = pathArray.first!
+        let filename:String = path.appendingFormat("/%@.data",name)
+        
+        let flierManager:Bool = FileManager.default.fileExists(atPath: filename as String)
+        if(flierManager){
+            do {
+                let object = try FileManager.default.attributesOfItem(atPath: filename)
+                if let date = object[FileAttributeKey.modificationDate] {
+                    let modificationDate = (date as? Date) == nil ?Date():(date as? Date)
+                    let todayDate = Date().stringFromFormat("yyyyMMdd").toInt()
+                    let cacheDate = modificationDate!.stringFromFormat("yyyyMMdd").toInt()
+                    if todayDate>cacheDate {
+                        return nil
+                    }
+                }
+            } catch let error {
+                NSLog("error:\(error)")
+            }
+            return NSKeyedUnarchiver.unarchiveObject(withFile: filename as String)
+        }
+        return nil
+    }
+    
      /**
      Get the FW build-in version by parse the file name
      BLE file: imaze_20150512_v29.hex ,keyword:_v, .hex
@@ -183,18 +208,6 @@ class AppTheme {
             return String(format:"%d m",minutes)
         }
         return String(format:"%d h %d m",hours,minutes)
-    }
-    
-    class func toJSONString(_ object:AnyObject!)->NSString{
-        do{
-            let data = try JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions.prettyPrinted)
-            var strJson=NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-            strJson = strJson?.replacingOccurrences(of: "\n", with: "") as NSString?
-            strJson = strJson?.replacingOccurrences(of: " ", with: "") as NSString?
-            return strJson!
-        }catch{
-            return ""
-        }
     }
 
     class func realmISFirstCopy(findKey:ActionType)->Bool {

@@ -26,6 +26,7 @@
 		61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */; };
 		61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */; };
 		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
+		6120B43E1F09F19900C94D77 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120B43D1F09F19900C94D77 /* Array+Extension.swift */; };
 		61352C951EF108D700F82907 /* GoogleMapNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */; };
 		61352C981EF121EE00F82907 /* GoogleMapsGeocodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C971EF121EE00F82907 /* GoogleMapsGeocodeModel.swift */; };
 		613928F01EA99DD900450284 /* WeatherCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928EF1EA99DD900450284 /* WeatherCacheModel.swift */; };
@@ -361,6 +362,7 @@
 		61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		6120B43D1F09F19900C94D77 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapNetworkManager.swift; sourceTree = "<group>"; };
 		61352C971EF121EE00F82907 /* GoogleMapsGeocodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsGeocodeModel.swift; sourceTree = "<group>"; };
 		613928EF1EA99DD900450284 /* WeatherCacheModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCacheModel.swift; sourceTree = "<group>"; };
@@ -1407,6 +1409,7 @@
 		61C28C891EA600CF0019F574 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				6120B43D1F09F19900C94D77 /* Array+Extension.swift */,
 				613928F81EAA026B00450284 /* Double+Extension.swift */,
 				613928F91EAA026B00450284 /* Float+Extension.swift */,
 				613928FA1EAA026B00450284 /* Int+Extension.swift */,
@@ -2260,6 +2263,7 @@
 				61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */,
 				61078DC61E48249C00898A0D /* NSDate+Timepiece.swift in Sources */,
 				CB15497C1EC01E5700090242 /* HotKeySectionModel.swift in Sources */,
+				6120B43E1F09F19900C94D77 /* Array+Extension.swift in Sources */,
 				61C28BE71EA46F810019F574 /* AnalysisStepsChartView.swift in Sources */,
 				61C28BCB1EA46F810019F574 /* GetStepsGoalRequest.swift in Sources */,
 				CB9F65401EA85CB6007982B0 /* TimeTabViewController.swift in Sources */,
