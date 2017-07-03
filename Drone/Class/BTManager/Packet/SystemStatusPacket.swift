@@ -14,7 +14,8 @@ enum SystemStatus:Int {
     goalCompleted = 4,
     activityDataAvailable = 5,
     subscribedToNotifications = 7,
-    systemReset = 8
+    systemReset = 8,
+    weatherDataNeeded = 9
 }
 
 class SystemStatusPacket: NSObject {
