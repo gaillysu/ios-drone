@@ -75,6 +75,7 @@ class AppTheme {
                 }
             } catch let error {
                 NSLog("error:\(error)")
+                return nil
             }
             return NSKeyedUnarchiver.unarchiveObject(withFile: filename as String)
         }
