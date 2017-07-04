@@ -17,7 +17,7 @@ class WeatherNetworkApiManager: NSObject {
     fileprivate static let baseURL = "http://api.openweathermap.org/"
     static let manager:WeatherNetworkApiManager = WeatherNetworkApiManager()
     
-    fileprivate var cityid:[String:Int] = [:]
+    fileprivate var cityid:[Int:String] = [:]
     
     fileprivate var tempValue:Int = 0
     fileprivate var weatherStatusText:String = ""
@@ -61,14 +61,13 @@ class WeatherNetworkApiManager: NSObject {
     
     func getWeatherInfo(regionName:String, id:Int, responseBlock: @escaping (_ id:Int,_ temp:Int, _ code:Int, _ statusText:String?) -> Void) {
         
-        cityid[regionName] = id
+        cityid[id] = regionName
         let cityArray:[City] = DataBaseManager.manager.getCitySelected()
         
-        if let cache = AppTheme.LoadKeyedArchiverName(SYNC_WEATHER_INFOKEY+regionName) {
+        if let cache = AppTheme.getTodayWeatherInfoCache(SYNC_WEATHER_INFOKEY+"\(id)") {
             let weatherModel:WeatherCacheModel = cache as! WeatherCacheModel
-            let cacheDate:TimeInterval = weatherModel.syncDate.toDouble()
             let cityName:String = weatherModel.city.name
-            if Date(timeIntervalSince1970: cacheDate) == Date.today()&&cityName.hasPrefix(regionName) {
+            if cityName.hasPrefix(regionName) {
                 var isCallBack:Bool = false
                 
                 let city = cityArray.filter({$0.name.hasPrefix(cityName)}).last
@@ -100,7 +99,7 @@ class WeatherNetworkApiManager: NSObject {
                     }
                 }
                 if isCallBack {
-                    self.cityid.removeValue(forKey: regionName)
+                    self.cityid.removeValue(forKey: id)
                     return
                 }
             }
@@ -155,13 +154,13 @@ class WeatherNetworkApiManager: NSObject {
                     self.weatherStatusText = text
                     
                     for (key,value) in self.cityid {
-                        if key.hasPrefix(name) {
-                            responseBlock(value,self.tempValue , code, self.weatherStatusText)
+                        if value.hasPrefix(name) {
+                            responseBlock(key,self.tempValue , code, self.weatherStatusText)
+                            _ = AppTheme.KeyedArchiverName(SYNC_WEATHER_INFOKEY+"\(key)", andObject: weatherModel)
                             self.cityid.removeValue(forKey: key)
                             break;
                         }
                     }
-                    _ = AppTheme.KeyedArchiverName(SYNC_WEATHER_INFOKEY+cityModel.id, andObject: weatherModel)
                 }else{
                     responseBlock(0,0, 0, nil);
                 }

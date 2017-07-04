@@ -50,16 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
       self.startLocation()
       
-      let config = Realm.Configuration(schemaVersion: 6, migrationBlock: { migration, oldSchemaVersion in
-         migration.enumerateObjects(ofType: Compass.className()) { oldObject, newObject in
-            // combine name fields into a single field
-            let activeTime = oldObject!["activeTime"] as! Int
-            newObject!["autoMotionDetection"] = activeTime
-         }
-         
-      })
-      Realm.Configuration.defaultConfiguration = config
-      
       _ = DataBaseManager.manager
       _ = NetworkManager.manager
       
@@ -118,6 +108,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                
             }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                self.getActivity()
+            }else if(systemStatus == SystemStatus.weatherDataNeeded.rawValue){
+               /**
+                sync every hour weather data
+                */
+               if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+                  if let location = LocationManager.manager.currentLocation {
+                     self.setGPSLocalWeather(location: location)
+                  }
+               }
             }else if(systemStatus != SystemStatus.lowMemory.rawValue && systemStatus != SystemStatus.subscribedToNotifications.rawValue) {
                if let date = DTUserDefaults.rtcDate {
                   if (Date().timeIntervalSince1970 - date.timeIntervalSince1970) > 60 {
@@ -150,6 +149,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             
             if(eventCommandStatus == SystemEventStatus.batteryStatusChanged.rawValue) {
                sendRequest(GetBatteryRequest())
+            }
+            
+            if(eventCommandStatus == SystemEventStatus.weatherDataExpired.rawValue) {
+               if let location = LocationManager.manager.currentLocation {
+                  self.setGPSLocalWeather(location: location)
+               }
             }
          }
          

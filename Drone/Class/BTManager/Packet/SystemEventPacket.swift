@@ -12,7 +12,8 @@ enum SystemEventStatus:Int {
     case goalCompleted = 1,
     lowMemory = 2,
     activityDataAvailable = 3,
-    batteryStatusChanged = 5
+    batteryStatusChanged = 5,
+    weatherDataExpired = 9
 }
 
 class SystemEventPacket: NSObject {
