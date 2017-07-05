@@ -26,7 +26,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
     @IBOutlet weak var lastMiles: UILabel!
     @IBOutlet weak var lastCalories: UILabel!
     @IBOutlet weak var lastActiveTime: UILabel!
-    @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var stepsButton: UIButton!
     @IBOutlet weak var backgroundImage: UIImageView!
     
     @IBOutlet weak var barChart: StepsBarChartView!
@@ -85,14 +85,15 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         }
         
         self.initTitleView()
-        
         percentageLabel.text = String(format:"Goal: %d",(goal.goalSteps))
         self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
-        stepsLabel.text = "0"
-        
+        stepsButton.setTitle(String(format:"%d",0), for: .normal)
         self.getLoclSmallSyncData(nil)
         addCloseButton(#selector(dismissViewController))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Set Goal", style: .plain, target: self, action: #selector(setGoal))
+    }
+    @IBAction func stepsButtonAction(_ sender: Any) {
+        AppDelegate.getAppDelegate().getGoal()
     }
     
     func setGoal(){
@@ -260,8 +261,7 @@ extension StepsViewController {
     
     func setCircleProgress(_ stepsValue:Int,goalValue:Int) {
         circleProgressView.setProgress(Double(stepsValue)/Double(goalValue), animated: true)
-        stepsLabel.text = String(format:"%d",stepsValue)
-        
+        stepsButton.setTitle(String(format:"%d",stepsValue), for: .normal)
     }
     
     func bulidChart(_ todayDate:Foundation.Date) {

@@ -22,17 +22,17 @@ class CalibrateHourViewController: BaseViewController {
         self.navigationItem.title = "Calibrate"
         self.navigationItem.setHidesBackButton(true, animated: false)
         getAppDelegate().startCalibrateHands()
+
         nextButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
             self.navigationController?.pushViewController(CalibrateMinuteViewController(), animated: true)
         }.addDisposableTo(disposeBag)
+        
         counterClockwiseButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
             self.getAppDelegate().calibrateHands(operation: .hourReverseOneStep)
-            print("Karl touch up inside")
         }.addDisposableTo(disposeBag)
         
         clockwiseButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe { _ in
             self.getAppDelegate().calibrateHands(operation: .hourAdvanceOneStep)
-            print("Karl touch up inside")
         }.addDisposableTo(disposeBag)
         clockwiseButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressClockwise)))
         counterClockwiseButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressCounterClockwise)))

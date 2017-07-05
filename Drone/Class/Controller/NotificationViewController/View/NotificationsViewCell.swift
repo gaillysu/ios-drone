@@ -11,32 +11,33 @@ import SwiftyJSON
 
 class NotificationsViewCell: UITableViewCell {
     @IBOutlet weak var notificationSwicth: UISwitch!
-    var switchCallback: ((Bool, String) -> Void)?
+    var switchCallback: ((_ state:Bool, _ identifier:String?, _ hasApp:Bool) -> Void)?
     var app:Notification? {
         didSet{
-            self.setSwicth(on: app!.state)
+            if let app = app{
+                self.setSwicth(on: app.state)
+            }
+            
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor.transparent()
-        let selectedView:UIView = UIView()
-        selectedView.backgroundColor = UIColor.getBaseColor()
-        selectedBackgroundView = selectedView
         textLabel?.textColor = UIColor.white
-        textLabel?.font = UIFont.systemFont(ofSize: 20)
-        separatorInset = UIEdgeInsets.zero
-        preservesSuperviewLayoutMargins = false
-        layoutMargins = UIEdgeInsets.zero
     }
     
     @IBAction func notificationSwicthAction(_ sender: UISwitch) {
-        let updateRequest = UpdateNotificationRequest(operation: sender.isOn ? 1 : 2, package: app!.bundleIdentifier)
-        AppDelegate.getAppDelegate().sendRequest(updateRequest)
-        if let callback = switchCallback{
-            callback(sender.isOn, app!.bundleIdentifier)
+        if let app = self.app{
+            
+            if let callback = switchCallback{
+                callback(sender.isOn, app.bundleIdentifier, true)
+            }
+        }else{
+            if let callback = switchCallback{
+                callback(sender.isOn, nil, false)
+            }
         }
+        
     }
     
     func delay(seconds:Double, completion: @escaping ()-> Void) {

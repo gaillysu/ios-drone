@@ -29,7 +29,8 @@ public class DTUserDefaults: NSObject {
     
     private static let HOUR_FORMAT_KEY = "HOUR_FORMAT_KEY"
     
-    
+    private static let ENABLED_ALL_NOTIFICATIONS_KEY = "ENABLED_ALL_NOTIFICATIONS_KEY"
+
     
     // MARK: Setup
     public static var setupKey:Bool {
@@ -179,6 +180,16 @@ public class DTUserDefaults: NSObject {
         }
         set{
             UserDefaults().set(newValue, forKey: TOP_KEY_KEY)
+        }
+    }
+    
+    // MARK: Menu
+    public static var enabledAllNotifications:Bool {
+        get{
+            return UserDefaults().bool(forKey: ENABLED_ALL_NOTIFICATIONS_KEY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: ENABLED_ALL_NOTIFICATIONS_KEY)
         }
     }
     

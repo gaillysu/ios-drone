@@ -102,8 +102,6 @@
 		61C28BE21EA46F810019F574 /* UpdateNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B221EA46F800019F574 /* UpdateNotificationRequest.swift */; };
 		61C28BE31EA46F810019F574 /* UpdateWeatherInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B231EA46F800019F574 /* UpdateWeatherInfoRequest.swift */; };
 		61C28BE41EA46F810019F574 /* WriteSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B241EA46F800019F574 /* WriteSettingRequest.swift */; };
-		61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B271EA46F800019F574 /* AnalysisViewController.swift */; };
-		61C28BE61EA46F810019F574 /* AnalysisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B281EA46F800019F574 /* AnalysisViewController.xib */; };
 		61C28BE71EA46F810019F574 /* AnalysisStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B2A1EA46F800019F574 /* AnalysisStepsChartView.swift */; };
 		61C28BEB1EA46F810019F574 /* CheckEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B301EA46F800019F574 /* CheckEmailController.swift */; };
 		61C28BEC1EA46F810019F574 /* CheckEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B311EA46F800019F574 /* CheckEmailController.xib */; };
@@ -437,8 +435,6 @@
 		61C28B221EA46F800019F574 /* UpdateNotificationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateNotificationRequest.swift; sourceTree = "<group>"; };
 		61C28B231EA46F800019F574 /* UpdateWeatherInfoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateWeatherInfoRequest.swift; sourceTree = "<group>"; };
 		61C28B241EA46F800019F574 /* WriteSettingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteSettingRequest.swift; sourceTree = "<group>"; };
-		61C28B271EA46F800019F574 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
-		61C28B281EA46F800019F574 /* AnalysisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalysisViewController.xib; sourceTree = "<group>"; };
 		61C28B2A1EA46F800019F574 /* AnalysisStepsChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisStepsChartView.swift; sourceTree = "<group>"; };
 		61C28B301EA46F800019F574 /* CheckEmailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckEmailController.swift; sourceTree = "<group>"; };
 		61C28B311EA46F800019F574 /* CheckEmailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckEmailController.xib; sourceTree = "<group>"; };
@@ -970,7 +966,6 @@
 		61C28B251EA46F800019F574 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				61C28B261EA46F800019F574 /* ActivityViewController */,
 				CB4ADFE91EF7D17D00EFA956 /* AddAlarmViewController */,
 				CB715FAC1EA5E6BF005B5C22 /* AddWorldClockViewController */,
 				CBF6D2181EF3D4CC0080375E /* AlarmViewController */,
@@ -1009,15 +1004,6 @@
 				CBE8FDF91F062DCE004A60B4 /* SelectNewHomeTimeViewController */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		61C28B261EA46F800019F574 /* ActivityViewController */ = {
-			isa = PBXGroup;
-			children = (
-				61C28B271EA46F800019F574 /* AnalysisViewController.swift */,
-				61C28B281EA46F800019F574 /* AnalysisViewController.xib */,
-			);
-			path = ActivityViewController;
 			sourceTree = "<group>";
 		};
 		61C28B291EA46F800019F574 /* BaseViewController */ = {
@@ -2068,7 +2054,6 @@
 				61C28BFE1EA46F810019F574 /* MenuViewController.xib in Resources */,
 				61C28C001EA46F810019F574 /* MenuViewCell.xib in Resources */,
 				61C28C081EA46F810019F574 /* ProfileSetupViewController.xib in Resources */,
-				61C28BE61EA46F810019F574 /* AnalysisViewController.xib in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				61C28BF61EA46F810019F574 /* DeviceTableViewCellHeader.xib in Resources */,
 				CB8AD9F71F04E797001C8D86 /* TimerViewController.xib in Resources */,
@@ -2333,7 +2318,6 @@
 				6152085A1EFBA1D700F3F551 /* SetDailyAlarmRequest.swift in Sources */,
 				61C28BD51EA46F810019F574 /* SetClearConnectionWatch.swift in Sources */,
 				61352C981EF121EE00F82907 /* GoogleMapsGeocodeModel.swift in Sources */,
-				61C28BE51EA46F810019F574 /* AnalysisViewController.swift in Sources */,
 				CB4ADFEC1EF7D1A400EFA956 /* AddAlarmViewController.swift in Sources */,
 				61C28BBC1EA46F810019F574 /* ConnectionControllerImpl.swift in Sources */,
 				CBB892511EB33BAB006F7031 /* CompassSectionModelItem.swift in Sources */,

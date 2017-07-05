@@ -18,21 +18,24 @@ import BRYXBanner
 
 class NotificationViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
-    let reuseIdentifier = "Notifications_Identifier"
+    let reuseIdentifier = "NotificationsViewCell"
+    let tableViewIdentifier = "UITableViewCell"
     var realm:Realm?
+    
     fileprivate var realmApps:[Notification] = []
+    fileprivate var allApps:[String] = ["All Apps"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = try! Realm()
         self.navigationItem.title = "Notifications"
-        self.tableView.separatorColor = UIColor.clear
-        self.tableView.rowHeight = 60.0
-        self.tableView.register(UINib(nibName: "NotificationsViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        self.tableView.separatorColor = .white
+        self.tableView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: tableViewIdentifier)
+        
         let plist:[String : Any] = SandboxManager().readDataWithName(type: "", fileName: "NotificationTypeFile.plist") as! [String : Any]
         let apps = plist["NotificationType"] as! [String:Any]
-        
-        if  realm!.objects(Notification.self).isEmpty{
+        if realm!.objects(Notification.self).isEmpty{
             for app in apps{
                 let plistApp = apps[app.key] as! [String : Any]?
                 let notification = Notification()
@@ -40,11 +43,9 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
                 if let bundleid = plistApp!["bundleId"] {
                     notification.bundleIdentifier = bundleid as! String
                 }
-                
                 try! realm!.write ({
                     realm!.add(notification)
                 })
-                
             }
         }
         realm!.objects(Notification.self).forEach { notification in
@@ -63,31 +64,71 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
     }
     
-    func callback(isOn:Bool, bundleIdentifier:String){
-        for realmApp in realmApps{
-            if realmApp.bundleIdentifier == bundleIdentifier {
+    func callback(isOn:Bool, bundleIdentifier:String?, hasApp:Bool){
+        if hasApp{
+            if let notification = realmApps.filter({  $0.bundleIdentifier == bundleIdentifier }).first{
                 try! realm?.write ({
-                    realmApp.state = isOn
-                    realm?.add(realmApp, update: true)
+                    notification.state = isOn
+                    realm?.add(notification, update: true)
                 })
-                return
+                AppDelegate.getAppDelegate().sendRequest(UpdateNotificationRequest(operation: isOn ? 1 : 2, package: notification.bundleIdentifier))
             }
-            
+        }else{
+            DTUserDefaults.enabledAllNotifications = isOn
+            AppDelegate.getAppDelegate().updateNotification()
+            tableView.reloadSections([1], animationStyle: .automatic)
+
         }
+        
     }
 }
 
 extension NotificationViewController{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Turn notifications on for all apps"
+        }
+        
+        if !DTUserDefaults.enabledAllNotifications && section == 1 {
+            return "Turn on notifications for only selected apps"
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section == 0 {
+            return "Turn notifications on for all apps."
+        }
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return allApps.count
+        }
+        if DTUserDefaults.enabledAllNotifications && section == 1{
+            return 0
+        }
         return realmApps.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:NotificationsViewCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! NotificationsViewCell
-        let app = realmApps[indexPath.row]
-        cell.textLabel?.text = app.appName
-        cell.app = app
-        cell.switchCallback = callback
+        let cell:NotificationsViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        if indexPath.section == 0 {
+            cell.textLabel?.text = allApps[indexPath.row]
+            cell.notificationSwicth.setOn(DTUserDefaults.enabledAllNotifications, animated: false)
+            cell.switchCallback = callback
+            cell.app = nil
+        } else {
+            let app = realmApps[indexPath.row]
+            cell.textLabel?.text = app.appName
+            cell.app = app
+            cell.switchCallback = callback
+        }
         return cell
     }
     

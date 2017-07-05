@@ -292,18 +292,21 @@ extension AppDelegate{
       if (force){
          DTUserDefaults.setupKey = false
       }
-      let notificationRequest = SetNotificationRequest(mode: 1, force:  force ? 1 : 0)
-      sendRequest(notificationRequest)
+      sendRequest(SetNotificationRequest(mode: 1, force:  force ? 1 : 0))
    }
    
    func updateNotification() {
-      let realm = try! Realm()
-      let notifications = realm.objects(Notification.self)
-      for notification in notifications {
-         let updateRequest = UpdateNotificationRequest(operation: notification.state ? 1 : 2, package: notification.bundleIdentifier)
-         AppDelegate.getAppDelegate().sendRequest(updateRequest)
+      if DTUserDefaults.enabledAllNotifications {
+         sendRequest(SetNotificationRequest(mode: 0, force: 1))
+      } else {
+         sendRequest(SetNotificationRequest(mode: 1, force: 0))
+         Notification.findAll().forEach({ notification in
+            let updateRequest = UpdateNotificationRequest(operation: notification.state ? 1 : 2, package: notification.bundleIdentifier)
+            AppDelegate.getAppDelegate().sendRequest(updateRequest)
+         })
       }
    }
+   
    
    func setNavigation(state:Bool) {
       isNavigation = state

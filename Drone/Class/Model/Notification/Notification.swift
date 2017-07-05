@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Notification: Object{
+class Notification: MEDBaseModel{
     
     dynamic var bundleIdentifier = ""
     dynamic var appName = ""
