@@ -294,7 +294,7 @@ extension AppDelegate {
         var weatherArray:[WeatherLocationModel] = []
         for (index,city) in cityArray.reversed().enumerated() {
             let cityid:UInt8 = UInt8(index+10)
-            let model:WeatherLocationModel = WeatherLocationModel(id: cityid, titleString: city.name)
+            let model:WeatherLocationModel = WeatherLocationModel(id: cityid, city: city)
             weatherArray.append(model)
         }
         
@@ -303,8 +303,10 @@ extension AppDelegate {
             sendRequest(setWeatherRequest)
             
             for model in weatherArray {
-                WeatherNetworkApiManager.manager.getWeatherInfo(regionName: model.getWeatherInfo().title, id: Int(model.getWeatherInfo().id)) { (cityid, temp, code, statusText) in
-                    let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: code))
+                
+                WeatherNetworkApiManager.manager.getWeatherInfo(coordinate:(model.title, latitude: model.latitude, longitude: model.longitude), id: Int(model.id)) { (cityid, temp, icon) in
+                    let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(icon: icon))
+                    
                     let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: [updateModel])
                     self.sendRequest(updateWeatherRequest)
                 }

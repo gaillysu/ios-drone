@@ -15,4 +15,11 @@ extension Bundle {
             return mainDictionary?["GoogleMapKey"] as? String
         }
     }
+    
+    static var darkSkyKey:String? {
+        get{
+            let mainDictionary = self.main.infoDictionary
+            return mainDictionary?["DarkskyKey"] as? String
+        }
+    }
 }

@@ -33,7 +33,6 @@ target 'Drone' do
     pod 'RxDataSources'
     pod 'RxRealm'
     pod 'RxRealmDataSources'
-
 end
 
 post_install do |installer|

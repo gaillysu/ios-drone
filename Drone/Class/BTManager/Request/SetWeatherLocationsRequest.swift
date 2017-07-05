@@ -26,9 +26,9 @@ class SetWeatherLocationsRequest: DroneRequest {
         
         for weather in splitEntries {
             let weatherModel:WeatherLocationModel = weather
-            let id:UInt8 = weatherModel.getWeatherInfo().id
-            let length:UInt8 = weatherModel.getWeatherInfo().length
-            let titleHex:[UInt8] = Constants.NSData2Bytes(weatherModel.getWeatherInfo().title.data(using: String.Encoding.utf8)!)
+            let id:UInt8 = weatherModel.id
+            let length:UInt8 = weatherModel.length
+            let titleHex:[UInt8] = Constants.NSData2Bytes(weatherModel.title.data(using: String.Encoding.utf8)!)
             values.append(id)
             values.append(length)
             values = values+titleHex

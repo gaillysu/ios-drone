@@ -6,56 +6,33 @@
 //  Copyright © 2017年 Cloud. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import SwiftyJSON
 
-class WeatherCacheModel: NSObject,NSCoding {
+struct WeatherCacheModel {
+    let latitude:Double
+    let longitude:Double
+    let timezone:String
+    let offset:Int
+    let syncDate:Date
+    let list:[EveryHourWeatherModel]
     
-    var cod:String = ""
-    var message:String = ""
-    var cnt:String = ""
-    var list:[EveryHourWeatherModel] = []
-    var city:WeatherCityModel = WeatherCityModel()
-    var syncDate:String = ""
-    
-    override init() {
-        super.init()
-    }
-    
-    func encode(with aCoder:NSCoder) {
-        NSLog("aCoder:\(cod),message:\(message),cnt:\(cnt),list:\(list),city:\(city),syncDate:\(syncDate)")
-        aCoder.encode(cod, forKey:"cod")
-        aCoder.encode(message, forKey:"message")
-        aCoder.encode(cnt, forKey:"cnt")
-        aCoder.encode(list, forKey:"list")
-        aCoder.encode(city, forKey:"city")
-        aCoder.encode(syncDate, forKey:"syncDate")
-        NSLog("aCoder:\(aCoder)")
-    }
-    
-    required init(coder aDecoder:NSCoder) {
-        super.init()
-        if let cCod = aDecoder.decodeObject(forKey:"cod") {
-            cod = cCod as! String
+    init(json:JSON) {
+        latitude = json["latitude"].doubleValue
+        longitude = json["longitude"].doubleValue
+        timezone = json["timezone"].stringValue
+        offset = json["offset"].intValue
+        syncDate = Date()
+        
+        let hourlyData = json["offset"]["data"].arrayValue
+        var everyHourData:[EveryHourWeatherModel] = []
+        
+        hourlyData.forEach { (dataJson) in
+            let hourWeatherModel:EveryHourWeatherModel = EveryHourWeatherModel(json: dataJson)
+            everyHourData.append(hourWeatherModel)
         }
         
-        if let cMessage = aDecoder.decodeObject(forKey:"message") {
-            message = cMessage as! String
-        }
-        
-        if let cCnt = aDecoder.decodeObject(forKey:"cnt") {
-            cnt = cCnt as! String
-        }
-        
-        if let cList = aDecoder.decodeObject(forKey:"list") {
-            list = cList as! [EveryHourWeatherModel]
-        }
-        
-        if let cCity = aDecoder.decodeObject(forKey:"city") {
-            city = cCity as! WeatherCityModel
-        }
-        
-        if let cSyncDate = aDecoder.decodeObject(forKey:"syncDate") {
-            syncDate = cSyncDate as! String
-        }
+        list = everyHourData
     }
 }
+
