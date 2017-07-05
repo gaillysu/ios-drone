@@ -73,10 +73,11 @@ class StepsManager: NSObject {
                 yVals.append(hourData);
             }
             
-            let dailySteps = AppTheme.toJSONString(yVals as AnyObject!)
+            let dailySteps = yVals.toJSONString()
+
             let date:Date = dayDate
             let dateString = date.stringFromFormat("yyyy-MM-dd")
-            dayData[dateString] = "\(dailySteps)"
+            dayData[dateString] = dailySteps
             dayTime.append(activeTime)
             cidArray.append(cid)
         }

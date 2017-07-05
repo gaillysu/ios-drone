@@ -12,7 +12,7 @@ import RealmSwift
 class DataBaseManager: NSObject {
     static let manager:DataBaseManager = DataBaseManager()
     
-    fileprivate let schemaVersion:UInt64 = 5
+    fileprivate let schemaVersion:UInt64 = 6
     
     fileprivate override init() {
         super.init()
@@ -36,10 +36,12 @@ class DataBaseManager: NSObject {
     }
     
     fileprivate func updateRelam() {
-        var config = Realm.Configuration(
-            schemaVersion: schemaVersion,
-            migrationBlock: { migration, oldSchemaVersion in
-                
+        var config = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: { migration, oldSchemaVersion in
+            migration.enumerateObjects(ofType: Compass.className()) { oldObject, newObject in
+                // combine name fields into a single field
+                let activeTime = oldObject!["activeTime"] as! Int
+                newObject!["autoMotionDetection"] = activeTime
+            }
         })
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
