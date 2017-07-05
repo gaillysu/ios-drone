@@ -182,10 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
             let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
             SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket))
-            
-            /**
-             sync every hour weather data
-             */
+
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
                if let location = LocationManager.manager.currentLocation {
                   self.setGPSLocalWeather(location: location)
@@ -201,7 +198,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          }
          
          if(packet.getHeader() == SetGoalRequest.HEADER()){
-            // Just callback for initialization.
             SwiftEventBus.post(SWIFTEVENT_BUS_INITIALIZATION_COMPLETED, sender:nil)
          }
          

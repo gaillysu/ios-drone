@@ -17,7 +17,7 @@ class DataBaseManager: NSObject {
     fileprivate override init() {
         super.init()
         
-        updateRelam()
+        updateRealm()
         
         copyBundleRealmToDocumentFolder()
 
@@ -35,7 +35,7 @@ class DataBaseManager: NSObject {
         }
     }
     
-    fileprivate func updateRelam() {
+    fileprivate func updateRealm() {
         var config = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: { migration, oldSchemaVersion in
             migration.enumerateObjects(ofType: Compass.className()) { oldObject, newObject in
                 // combine name fields into a single field
@@ -43,7 +43,7 @@ class DataBaseManager: NSObject {
                 newObject!["autoMotionDetection"] = activeTime
             }
         })
-        config.deleteRealmIfMigrationNeeded = true
+        config.deleteRealmIfMigrationNeeded = false
         Realm.Configuration.defaultConfiguration = config
     }
 

@@ -88,17 +88,6 @@ extension NotificationViewController{
         return 2
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Turn notifications on for all apps"
-        }
-        
-        if !DTUserDefaults.enabledAllNotifications && section == 1 {
-            return "Turn on notifications for only selected apps"
-        }
-        return nil
-    }
-    
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0 {
             return "Turn notifications on for all apps."
