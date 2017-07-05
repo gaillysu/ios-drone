@@ -88,7 +88,11 @@ extension WorldClockViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row == 0 {
-            self.present(self.makeStandardUINavigationController(AddWorldClockViewController(forHomeTime: true)), animated: true, completion: nil)
+            let navigationController: UINavigationController = UINavigationController(rootViewController: AddWorldClockViewController(forHomeTime: true))
+            navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+            let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
+            navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+            self.present(navigationController, animated: true, completion: nil)
         }
         self.tableView.deselectRow(at: indexPath, animated: true)
     }

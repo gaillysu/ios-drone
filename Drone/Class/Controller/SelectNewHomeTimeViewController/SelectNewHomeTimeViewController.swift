@@ -28,8 +28,13 @@ class SelectNewHomeTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home Time"
+        self.navigationItem.setHidesBackButton(true, animated: false)
         selectButton.rx.tap.subscribe({ _ in
-            self.present(self.makeStandardUINavigationController(AddWorldClockViewController(forHomeTime: true)), animated: true, completion: nil)
+            let navigationController: UINavigationController = UINavigationController(rootViewController: AddWorldClockViewController(forHomeTime: true))
+            navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
+            let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
+            navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+            self.present(navigationController, animated: true, completion: nil)
         }).addDisposableTo(disposeBag)
         
         nextButton.rx.tap.subscribe({ _ in

@@ -84,7 +84,6 @@ class TimeTabViewController: UITabBarController {
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         present(navigationController, animated: true, completion: nil)
-        //self.present(self.makeStandardUINavigationController(AddWorldClockViewController()), animated: true, completion: nil)
     }
     
     func addAlarm(){
