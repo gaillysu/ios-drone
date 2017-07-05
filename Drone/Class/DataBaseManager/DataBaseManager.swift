@@ -39,8 +39,6 @@ class DataBaseManager: NSObject {
         var config = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: { migration, oldSchemaVersion in
             migration.enumerateObjects(ofType: Compass.className()) { oldObject, newObject in
                 // combine name fields into a single field
-                let activeTime = oldObject!["activeTime"] as! Int
-                newObject!["autoMotionDetection"] = activeTime
             }
         })
         config.deleteRealmIfMigrationNeeded = false
