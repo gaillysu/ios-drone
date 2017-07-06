@@ -72,6 +72,7 @@ class MenuViewController: BaseViewController  {
             for steps in stepsArray{
                 let userSteps:UserSteps = steps as! UserSteps
                 let date:Date = Date(timeIntervalSince1970: userSteps.date).beginningOfDay
+                
                 dayDateArray.append(date)
             }
             

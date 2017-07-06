@@ -173,7 +173,7 @@ class StepsBarChartView: BarChartView {
         
         for i in 0 ..< 24 {
             let dayDate:Date = date
-            let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
+            let dayTime:TimeInterval = Date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: i, minute: 0, second: 0).timeIntervalSince1970
             let hours = UserSteps.getFilter("date >= \(dayTime) AND date <= \(dayTime+3600-1)")
             
             var hourData:Double = 0

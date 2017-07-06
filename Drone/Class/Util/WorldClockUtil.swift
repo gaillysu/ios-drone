@@ -30,10 +30,10 @@ class WorldClockUtil: NSObject {
         let dateInUTC = Calendar.current.date(from: utcComp)!
 
         if let unpackedTime = time.dateFromFormat("HH:mm:ss.SSS"){
-            return dateInUTC.change(year: dateInUTC.year, month: month, day: dateInMonth, hour: unpackedTime.hour, minute: unpackedTime.minute, second: 0)
+            return dateInUTC.changed(year: dateInUTC.year, month: month, day: dateInMonth, hour: unpackedTime.hour, minute: unpackedTime.minute, second: 0)!
         }else{
             print("Couldn't parse Time in timezone!!")
-            return dateInUTC.change(year: dateInUTC.year, month: month, day: dateInMonth, hour: 0, minute: 0, second: 0)
+            return dateInUTC.changed(year: dateInUTC.year, month: month, day: dateInMonth, hour: 0, minute: 0, second: 0)!
         }
     }
     

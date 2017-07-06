@@ -18,13 +18,6 @@
 		00982CCA1C868C8A003DA5E2 /* RawPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD41C868C89003DA5E2 /* RawPacket.swift */; };
 		00982CCB1C868C8A003DA5E2 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD51C868C8A003DA5E2 /* Request.swift */; };
 		00982D201C86BB2F003DA5E2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
-		61078DC21E48249C00898A0D /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBA1E48249C00898A0D /* Duration.swift */; };
-		61078DC31E48249C00898A0D /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBB1E48249C00898A0D /* Int+Timepiece.swift */; };
-		61078DC41E48249C00898A0D /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBC1E48249C00898A0D /* NSCalendar+Timepiece.swift */; };
-		61078DC51E48249C00898A0D /* NSCalendarUnit+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBD1E48249C00898A0D /* NSCalendarUnit+Timepiece.swift */; };
-		61078DC61E48249C00898A0D /* NSDate+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBE1E48249C00898A0D /* NSDate+Timepiece.swift */; };
-		61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */; };
-		61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */; };
 		61078DC91E48249C00898A0D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
 		6120B43E1F09F19900C94D77 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120B43D1F09F19900C94D77 /* Array+Extension.swift */; };
 		61352C951EF108D700F82907 /* GoogleMapNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */; };
@@ -233,6 +226,7 @@
 		61C8927E1F0CB32A00725D25 /* WeatherUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892791F0CB32A00725D25 /* WeatherUnits.swift */; };
 		61C892821F0CC06100725D25 /* WeatherPrecipitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892811F0CC06100725D25 /* WeatherPrecipitation.swift */; };
 		61C892841F0CD28A00725D25 /* WeatherFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892831F0CD28A00725D25 /* WeatherFlags.swift */; };
+		61C892861F0E2E3800725D25 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892851F0E2E3800725D25 /* Date+Extension.swift */; };
 		61D1EF5D1EF0DFD5006D73BE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
 		61D1EF5F1EF0E011006D73BE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
 		61D1EF611EF0E1D5006D73BE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
@@ -356,13 +350,6 @@
 		00982BD51C868C8A003DA5E2 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		00982CDB1C868E0B003DA5E2 /* Drone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Drone-Bridging-Header.h"; sourceTree = "<group>"; };
 		00982D1F1C86BB2F003DA5E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		61078DBA1E48249C00898A0D /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
-		61078DBB1E48249C00898A0D /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
-		61078DBC1E48249C00898A0D /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
-		61078DBD1E48249C00898A0D /* NSCalendarUnit+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendarUnit+Timepiece.swift"; sourceTree = "<group>"; };
-		61078DBE1E48249C00898A0D /* NSDate+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Timepiece.swift"; sourceTree = "<group>"; };
-		61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
-		61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Timepiece.swift"; sourceTree = "<group>"; };
 		61078DC11E48249C00898A0D /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
 		6120B43D1F09F19900C94D77 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapNetworkManager.swift; sourceTree = "<group>"; };
@@ -571,6 +558,7 @@
 		61C892791F0CB32A00725D25 /* WeatherUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherUnits.swift; sourceTree = "<group>"; };
 		61C892811F0CC06100725D25 /* WeatherPrecipitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherPrecipitation.swift; sourceTree = "<group>"; };
 		61C892831F0CD28A00725D25 /* WeatherFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherFlags.swift; sourceTree = "<group>"; };
+		61C892851F0E2E3800725D25 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
 		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
 		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -815,13 +803,6 @@
 		61078DB91E48249C00898A0D /* OldTimepiece */ = {
 			isa = PBXGroup;
 			children = (
-				61078DBA1E48249C00898A0D /* Duration.swift */,
-				61078DBB1E48249C00898A0D /* Int+Timepiece.swift */,
-				61078DBC1E48249C00898A0D /* NSCalendar+Timepiece.swift */,
-				61078DBD1E48249C00898A0D /* NSCalendarUnit+Timepiece.swift */,
-				61078DBE1E48249C00898A0D /* NSDate+Timepiece.swift */,
-				61078DBF1E48249C00898A0D /* NSDateComponents+Timepiece.swift */,
-				61078DC01E48249C00898A0D /* NSTimeInterval+Timepiece.swift */,
 				61078DC11E48249C00898A0D /* String+Timepiece.swift */,
 			);
 			path = OldTimepiece;
@@ -1402,6 +1383,7 @@
 		61C28C891EA600CF0019F574 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				61C892851F0E2E3800725D25 /* Date+Extension.swift */,
 				6120B43D1F09F19900C94D77 /* Array+Extension.swift */,
 				613928F81EAA026B00450284 /* Double+Extension.swift */,
 				613928F91EAA026B00450284 /* Float+Extension.swift */,
@@ -2173,7 +2155,6 @@
 				CB9F65481EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.swift in Sources */,
 				CBB8923B1EB304BE006F7031 /* DidSelectedDelegate.swift in Sources */,
 				61C28BF91EA46F810019F574 /* WelcomeViewController.swift in Sources */,
-				61078DC71E48249C00898A0D /* NSDateComponents+Timepiece.swift in Sources */,
 				61C28BE41EA46F810019F574 /* WriteSettingRequest.swift in Sources */,
 				61FAB9C51EC064EA00513E97 /* MKPlacemark+Extension.swift in Sources */,
 				CB9F65241EA610C5007982B0 /* Compass.swift in Sources */,
@@ -2226,7 +2207,6 @@
 				61FAB9C71EC15E9B00513E97 /* CLGeocoder+Extension.swift in Sources */,
 				61C28BF51EA46F810019F574 /* DeviceTableViewCellHeader.swift in Sources */,
 				61C28BCC1EA46F810019F574 /* GetSystemConfig.swift in Sources */,
-				61078DC31E48249C00898A0D /* Int+Timepiece.swift in Sources */,
 				61C28BD11EA46F810019F574 /* ReadDailyTracker.swift in Sources */,
 				CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */,
 				61C28C4B1EA46F810019F574 /* StepsManager.swift in Sources */,
@@ -2265,8 +2245,6 @@
 				61FAB9C31EBC670800513E97 /* LocationManager.swift in Sources */,
 				CB9F654F1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift in Sources */,
 				CB9F65301EA70CCB007982B0 /* CalibrateMinuteViewController.swift in Sources */,
-				61078DC81E48249C00898A0D /* NSTimeInterval+Timepiece.swift in Sources */,
-				61078DC61E48249C00898A0D /* NSDate+Timepiece.swift in Sources */,
 				CB15497C1EC01E5700090242 /* HotKeySectionModel.swift in Sources */,
 				6120B43E1F09F19900C94D77 /* Array+Extension.swift in Sources */,
 				61C28BE71EA46F810019F574 /* AnalysisStepsChartView.swift in Sources */,
@@ -2277,6 +2255,7 @@
 				CB4ADFDA1EF7626200EFA956 /* AlarmTableViewCell.swift in Sources */,
 				61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */,
 				61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */,
+				61C892861F0E2E3800725D25 /* Date+Extension.swift in Sources */,
 				61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */,
 				61C28BDC1EA46F810019F574 /* SetUserProfileRequest.swift in Sources */,
 				61C28BDA1EA46F810019F574 /* SetStepsToWatchReuqest.swift in Sources */,
@@ -2290,7 +2269,6 @@
 				61C28BCD1EA46F810019F574 /* GetSystemStatus.swift in Sources */,
 				61C28C2C1EA46F810019F574 /* CompassMenuItem.swift in Sources */,
 				CB9F65441EA86303007982B0 /* TimeSettingsViewController.swift in Sources */,
-				61078DC21E48249C00898A0D /* Duration.swift in Sources */,
 				613928FE1EAA026B00450284 /* Float+Extension.swift in Sources */,
 				61C48FB31EF22E27007A0709 /* GoogleMapsRoutesModel.swift in Sources */,
 				61C28C361EA46F810019F574 /* WeatherUpdateModel.swift in Sources */,
@@ -2313,7 +2291,6 @@
 				61BE84B31DE42224002C7C96 /* AppDelegate-Extension.swift in Sources */,
 				61C28C7A1EA5A03C0019F574 /* StepsCreateRequest.swift in Sources */,
 				61C28BF11EA46F810019F574 /* DeviceViewController.swift in Sources */,
-				61078DC41E48249C00898A0D /* NSCalendar+Timepiece.swift in Sources */,
 				00982A6A1C868B15003DA5E2 /* AppDelegate.swift in Sources */,
 				61C28BCE1EA46F810019F574 /* GetTrainingRecordRequest.swift in Sources */,
 				61C28BCF1EA46F810019F574 /* GetUserProfileRequest.swift in Sources */,
@@ -2410,7 +2387,6 @@
 				CB1549811EC029A700090242 /* HotKeyTableViewCell.swift in Sources */,
 				61352C951EF108D700F82907 /* GoogleMapNetworkManager.swift in Sources */,
 				61C28C731EA5A03C0019F574 /* BaseNetworkRequest.swift in Sources */,
-				61078DC51E48249C00898A0D /* NSCalendarUnit+Timepiece.swift in Sources */,
 				61C48FC81EF3BE65007A0709 /* FindMyPhonePacket.swift in Sources */,
 				613929241EB18C9200450284 /* WatchInfoModel.swift in Sources */,
 				61C28C721EA5A03C0019F574 /* BaseGetRequest.swift in Sources */,

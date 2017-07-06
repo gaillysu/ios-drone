@@ -70,6 +70,7 @@ class AppTheme {
                     let todayDate = Date().stringFromFormat("yyyyMMdd").toInt()
                     let cacheDate = modificationDate!.stringFromFormat("yyyyMMdd").toInt()
                     if todayDate>cacheDate {
+                        try FileManager.default.removeItem(atPath: filename)
                         return nil
                     }
                 }
@@ -203,8 +204,8 @@ class AppTheme {
     }
     
     class func timerFormatValue(value:Double)->String {
-        let hours:Int = Int(value).hours.value
-        let minutes:Int = Int((value-Double(hours))*60).minutes.value
+        let hours:Int = Int(value).hours.hour!
+        let minutes:Int = Int((value-Double(hours))*60).minutes.minute!
         if hours == 0 {
             return String(format:"%d m",minutes)
         }

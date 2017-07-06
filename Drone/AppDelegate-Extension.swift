@@ -185,7 +185,7 @@ extension AppDelegate {
     
     func setStepsToWatch() {
         let dayDate:Date = Date()
-        let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+        let dayTime:TimeInterval = Date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
         let query:String = String(format: "date > %f AND date < %f", dayTime ,dayTime+86400)
         let dayStepsArray = UserSteps.getFilter(query)
         var daySteps:Int = 0

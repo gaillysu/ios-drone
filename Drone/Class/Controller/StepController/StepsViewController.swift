@@ -309,7 +309,7 @@ extension StepsViewController {
         for i in 0 ..< 7 {
             let dayTimeInterval:TimeInterval = todayDate.beginningOfWeek.timeIntervalSince1970+(oneDaySeconds*Double(i))
             let dayDate:Foundation.Date = Foundation.Date(timeIntervalSince1970: dayTimeInterval)
-            let dayTime:TimeInterval = Foundation.Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+            let dayTime:TimeInterval = Date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
             let hours = UserSteps.getFilter("date >= \(dayTime) AND date <= \(dayTime+oneDaySeconds-1)")
             var hourData:Double = 0
             for userSteps in hours {
@@ -585,7 +585,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
         /// No data for the selected date available.
         
         let dayDate:Foundation.Date = dayView.date!.convertedDate(calendar: Calendar.current)!
-        let dayTime:TimeInterval = Foundation.Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+        let dayTime:TimeInterval = Date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
         didSelectedDate = Foundation.Date(timeIntervalSince1970: dayTime)
         
         self.bulidChart(Foundation.Date(timeIntervalSince1970: dayTime))
