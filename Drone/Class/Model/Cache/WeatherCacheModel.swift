@@ -24,7 +24,7 @@ struct WeatherCacheModel {
         offset = json["offset"].intValue
         syncDate = Date()
         
-        let hourlyData = json["offset"]["data"].arrayValue
+        let hourlyData = json["hourly"]["data"].arrayValue
         var everyHourData:[EveryHourWeatherModel] = []
         
         hourlyData.forEach { (dataJson) in

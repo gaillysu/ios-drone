@@ -285,7 +285,11 @@ extension AppDelegate{
       self.setStepsToWatch()
       print("setStepsToWatch")
       
-      self.setWeather(cityname: DTUserDefaults.lastSyncedWeatherCity)
+      if let location = LocationManager.manager.currentLocation {
+         self.setGPSLocalWeather(location: location)
+      }else{
+         self.setWeather(cityname: DTUserDefaults.lastSyncedWeatherCity)
+      }
    }
    
    func setNotification() {

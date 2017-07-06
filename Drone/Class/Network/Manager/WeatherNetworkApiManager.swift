@@ -49,7 +49,7 @@ class WeatherNetworkApiManager: NSObject {
         switch response.result {
         case .success(let data):
             let json = JSON(data)
-            if(json["list"].arrayValue.count == 0){
+            if(json["hourly"].dictionaryValue.count == 0){
                 return (false,json, nil)
             }else{
                 return (true, json, nil)
@@ -64,14 +64,14 @@ class WeatherNetworkApiManager: NSObject {
         cityid[id] = coordinate
         //let cache = AppTheme.getTodayWeatherInfoCache(SYNC_WEATHER_INFOKEY+"\(id)")
 
-        let weatherRequest:WeatherInfoRequest = WeatherInfoRequest(latitude: coordinate.latitude, longitude: coordinate.longitude, language: nil, units: WeatherUnits.auto) { (success, json, error) in
+        let weatherRequest:WeatherInfoRequest = WeatherInfoRequest(latitude: coordinate.latitude, longitude: coordinate.longitude, language: nil, units: WeatherUnits.si) { (success, json, error) in
             if success {
                 if let weatherJSON = json {
                     let weatherModel:WeatherCacheModel = WeatherCacheModel(json: weatherJSON)
                     var temp:Float = 0
                     
                     let localTimeSeconds = TimeZone.current.secondsFromGMT()
-                    let cityTimeInterval = Date().timeIntervalSince1970-Double(localTimeSeconds)+Double(weatherModel.offset*60);
+                    let cityTimeInterval = Date().timeIntervalSince1970-Double(localTimeSeconds)+Double(weatherModel.offset*60*60);
                     let cityDate = Date(timeIntervalSince1970: cityTimeInterval)
                     
                     var isCallBack:Bool = false
@@ -90,7 +90,7 @@ class WeatherNetworkApiManager: NSObject {
                                     
                                     self.cityid.removeValue(forKey: key)
                                     
-                                    _ = AppTheme.KeyedArchiverName(SYNC_WEATHER_INFOKEY+"\(key)", andObject: weatherModel)
+                                    //_ = AppTheme.KeyedArchiverName(SYNC_WEATHER_INFOKEY+"\(key)", andObject: weatherModel)
                                     break
                                 }
                             }
@@ -100,6 +100,7 @@ class WeatherNetworkApiManager: NSObject {
                             }
                         }
                     }
+                    responseBlock(0, 0, .clearDay);
                 }else{
                     responseBlock(0, 0, .clearDay);
                 }
@@ -111,35 +112,23 @@ class WeatherNetworkApiManager: NSObject {
     }
     
     func getWeatherStatusCode(icon:WeatherIcon) -> WeatherStatusIcon {
-        let code = -12
         if icon == .clearDay {
             return .clearDay
-        }
-        if icon == .clearNight {
+        } else if icon == .clearNight {
             return .clearNight;
         } else if icon == .partlyCloudyNight {
             return .partlyCloudyNight
         } else if icon == .cloudy {
             return .cloudy
-        } else if 900 == code {
-            return .tornado
-        } else if 901 == code {
-            return .typhoon
-        } else if 902 == code {
-            return .hurricane
         } else if icon == .wind {
             return .windy;
-        } else if [960,200,201,202,210,211,212,221,230,231,232].contains(code) {
-            return .stormy;
         } else if icon == .snow {
             return .snow;
         } else if icon == .fog {
             return .fog;
         } else if icon == .rain {
             return .rainLight;
-        } else if [312,313,314,321,501,502,503,504,511,520,521,522,531].contains(code) {
-            return .rainHeavy;
-        }else if icon == .partlyCloudyDay {
+        } else if icon == .partlyCloudyDay {
             return .partlyCloudyDay;
         }
         return .invalidData
