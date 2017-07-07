@@ -45,7 +45,7 @@ class AddAlarmViewController: UIViewController {
             title = "Add Alarm"
         }
         let now = Date()
-        self.datePicker.setDate(now.change(year: nil, month: nil, day: nil, hour: viewModel.time.hour, minute: viewModel.time.minute, second: nil), animated: true)
+        self.datePicker.setDate(now.changed(hour: viewModel.time.hour, minute: viewModel.time.minute)!, animated: true)
         snoozeSwitch.onTintColor = .getTintColor()
         
         datePicker.rx.date.subscribe { event in

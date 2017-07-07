@@ -6,47 +6,43 @@
 //  Copyright © 2017年 Cloud. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import SwiftyJSON
 
-class EveryHourWeatherModel: NSObject,NSCoding {
-    var dt:String =  ""
-    var temp:String = ""
-    var code:String = ""
-    var stateText:String = ""
-    var dt_txt:String = ""
+struct EveryHourWeatherModel {
+    let time:Double
+    let summary:String
+    let icon:WeatherIcon
+    let precipIntensity:Float
+    let precipProbability:Float
+    let temperature:Float
+    let apparentTemperature:Float
+    let dewPoint:Float
+    let humidity:Float
+    let windSpeed:Float
+    let windGust:Float
+    let windBearing:Float
+    let cloudCover:Float
+    let pressure:Float
+    let ozone:Float
+    let uvIndex:Int
     
-    override init() {
-        super.init()
-    }
-    
-    func encode(with aCoder:NSCoder) {
-        aCoder.encode(dt, forKey:"dt")
-        aCoder.encode(temp, forKey:"temp")
-        aCoder.encode(code, forKey:"code")
-        aCoder.encode(stateText, forKey:"stateText")
-        aCoder.encode(dt_txt, forKey:"dt_txt")
-    }
-    
-    required init(coder aDecoder:NSCoder) {
-        super.init()
-        if let cDt = aDecoder.decodeObject(forKey:"dt") {
-            dt = cDt as! String
-        }
-        
-        if let ctemp = aDecoder.decodeObject(forKey:"temp") {
-            temp = ctemp as! String
-        }
-        
-        if let ccode = aDecoder.decodeObject(forKey:"code") {
-            code = ccode as! String
-        }
-        
-        if let cText = aDecoder.decodeObject(forKey:"stateText") {
-            stateText = cText as! String
-        }
-        
-        if let cDt_txt = aDecoder.decodeObject(forKey:"dt_txt") {
-            dt_txt = cDt_txt as! String
-        }
+    init(json:JSON) {
+        time = json["time"].doubleValue
+        summary = json["summary"].stringValue
+        icon = WeatherIcon(rawValue: json["icon"].stringValue)!
+        precipIntensity = json["precipIntensity"].floatValue
+        precipProbability = json["precipProbability"].floatValue
+        temperature = json["temperature"].floatValue
+        apparentTemperature = json["apparentTemperature"].floatValue
+        dewPoint = json["dewPoint"].floatValue
+        humidity = json["humidity"].floatValue
+        windSpeed = json["windSpeed"].floatValue
+        windGust = json["windGust"].floatValue
+        windBearing = json["windBearing"].floatValue
+        cloudCover = json["cloudCover"].floatValue
+        pressure = json["pressure"].floatValue
+        ozone = json["ozone"].floatValue
+        uvIndex = json["uvIndex"].intValue
     }
 }

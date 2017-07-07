@@ -8,21 +8,27 @@
 
 import UIKit
 
-class WeatherLocationModel: NSObject {
+struct WeatherLocationModel {
     static let MAXENTRY:Int = 6;
-    fileprivate var identification :UInt8 = 0
-    fileprivate var length:UInt8 = 0;
-    fileprivate var title:String = "";
+    let id:UInt8
+    let length: UInt8
+    let title: String
+    let latitude: Double
+    let longitude: Double
     
-    init(id:UInt8,titleString:String) {
-        super.init()
-        identification = id
-        title = titleString
-        length = UInt8(titleString.length)
-    
-    }
-    
-    func getWeatherInfo() ->(id:UInt8,length:UInt8,title:String)  {
-        return (identification,length,title)
+    init(id:UInt8,city:City?) {
+        self.id = id
+        if let object = city {
+            title = object.name
+            length = UInt8(title.length)
+            latitude = object.lat
+            longitude = object.lng
+        }else{
+            title = ""
+            length = UInt8(title.length)
+            latitude = 0
+            longitude = 0
+        }
     }
 }
+

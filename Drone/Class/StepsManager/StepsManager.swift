@@ -22,7 +22,8 @@ class StepsManager: NSObject {
     func syncLastSevenDaysData() {
         var dayDateArray:[Date] = []
         for index in 0..<7 {
-            dayDateArray.append(Date().beginningOfDay-index.day)
+            
+            dayDateArray.append(Date(timeIntervalSince1970: Date().beginningOfDay.timeIntervalSince1970 - Double(index).day))
         }
         self.syncServiceDayData(dayDateArray)
     }
@@ -39,7 +40,7 @@ class StepsManager: NSObject {
             let dayDate:Date = day
             var cid:Int = 0
             for hour:Int in 0 ..< 24 {
-                let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: hour, minute: 0, second: 0).timeIntervalSince1970
+                let dayTime:TimeInterval = Date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: hour, minute: 0, second: 0).timeIntervalSince1970
                 let hours = UserSteps.getFilter("date >= \(dayTime) AND date <= \(dayTime+3600)")//one hour = 3600s
                 var hourData:[Double] = [0,0,0,0,0,0,0,0,0,0,0,0]
                 var timer:Double = 0

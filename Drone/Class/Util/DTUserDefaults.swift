@@ -8,7 +8,7 @@
 
 import Foundation
 
-let syncWeatherInterval:Double = 1800 //seconds
+let syncWeatherInterval:Double = 300 //seconds
 public class DTUserDefaults: NSObject {
     
     private static let SETUP_KEY = "SETUP_KEY"

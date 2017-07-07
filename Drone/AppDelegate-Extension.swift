@@ -154,8 +154,16 @@ extension AppDelegate {
                 convertedWorldClockArray.append((city.name,Float(timezone.getOffsetFromUTC()/60)))
             }
         }
+        
         sendRequest(SetWorldClockRequest(worldClockArray: convertedWorldClockArray))
-        self.setWeather(cityname: DTUserDefaults.lastSyncedWeatherCity)
+        
+        if let location = LocationManager.manager.currentLocation {
+            self.setGPSLocalWeather(location: location)
+        }else{
+            if let name = DTUserDefaults.lastSyncedWeatherCity {
+                self.setWeather(cityname: name)
+            }
+        }
     }
 
     
@@ -177,7 +185,7 @@ extension AppDelegate {
     
     func setStepsToWatch() {
         let dayDate:Date = Date()
-        let dayTime:TimeInterval = Date.date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
+        let dayTime:TimeInterval = Date(year: dayDate.year, month: dayDate.month, day: dayDate.day, hour: 0, minute: 0, second: 0).timeIntervalSince1970
         let query:String = String(format: "date > %f AND date < %f", dayTime ,dayTime+86400)
         let dayStepsArray = UserSteps.getFilter(query)
         var daySteps:Int = 0
@@ -271,30 +279,31 @@ extension AppDelegate {
         }
     }
     
+    
+    /// 根据城市名设置手表天气
+    ///
+    /// - Parameter cityname: 根据城市名来查询本地城市列表后再设置手表天气
     func setWeather(cityname:String?) {
         var cityArray:[City] = DataBaseManager.manager.getCitySelected()
+        DTUserDefaults.lastSyncedWeatherDate = Date()
+        let language = DTUserDefaults.localLanguage
         if let name = cityname {
-            DTUserDefaults.lastSyncedWeatherDate = Date()
-            let language = DTUserDefaults.localLanguage
             var transformCity = name
             if language.contains("zh-Hans") || language.contains("zh-Hant") {
-                transformCity = name.chineseTransform()
+                transformCity = transformCity.chineseTransform()
             }
             
-            let cityObject = City.getFilter("name CONTAINS[c] '\(transformCity)'")
-            var city:City = City()
-            if cityObject.count>0 {
-                city = cityObject.last as! City
-            }else{
-                city.name = name
+            let queryCityObject = City.getFilter("name CONTAINS[c] '\(transformCity)'")
+            if queryCityObject.count>0 {
+                let city = queryCityObject.last as! City
+                cityArray.append(city)
             }
-            cityArray.append(city)
         }
         
         var weatherArray:[WeatherLocationModel] = []
         for (index,city) in cityArray.reversed().enumerated() {
             let cityid:UInt8 = UInt8(index+10)
-            let model:WeatherLocationModel = WeatherLocationModel(id: cityid, titleString: city.name)
+            let model:WeatherLocationModel = WeatherLocationModel(id: cityid, city: city)
             weatherArray.append(model)
         }
         
@@ -303,8 +312,57 @@ extension AppDelegate {
             sendRequest(setWeatherRequest)
             
             for model in weatherArray {
-                WeatherNetworkApiManager.manager.getWeatherInfo(regionName: model.getWeatherInfo().title, id: Int(model.getWeatherInfo().id)) { (cityid, temp, code, statusText) in
-                    let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(code: code))
+                
+                WeatherNetworkApiManager.manager.getWeatherInfo(coordinate:(model.title, latitude: model.latitude, longitude: model.longitude), id: Int(model.id)) { (cityid, temp, icon) in
+                    let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(icon: icon))
+                    
+                    let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: [updateModel])
+                    self.sendRequest(updateWeatherRequest)
+                }
+            }
+        }
+    }
+    
+    
+    /// 根据城市经纬度设置天气
+    ///
+    /// - Parameter cityObject: 定位城市的位置信息
+    func setWeather(cityObject:(cityname:String,longitude:Double,latitude:Double)) {
+        var cityArray:[City] = DataBaseManager.manager.getCitySelected()
+        DTUserDefaults.lastSyncedWeatherDate = Date()
+        let language = DTUserDefaults.localLanguage
+        var transformCity = cityObject.cityname
+        if language.contains("zh-Hans") || language.contains("zh-Hant") {
+            transformCity = transformCity.chineseTransform()
+        }
+        
+        let city = City()
+        city.name = transformCity
+        city.lng = cityObject.longitude
+        city.lat = cityObject.latitude
+        cityArray.append(city)
+        
+        setWeatherRequest(cityArray: cityArray)
+    }
+    
+    func setWeatherRequest(cityArray:[City]) {
+        var weatherArray:[WeatherLocationModel] = []
+        for (index,city) in cityArray.reversed().enumerated() {
+            let cityid:UInt8 = UInt8(index+10)
+            let model:WeatherLocationModel = WeatherLocationModel(id: cityid, city: city)
+            weatherArray.append(model)
+        }
+        
+        if weatherArray.count>0 {
+            let setWeatherRequest:SetWeatherLocationsRequest = SetWeatherLocationsRequest(entries: weatherArray)
+            sendRequest(setWeatherRequest)
+            
+            for model in weatherArray {
+                let coordinateLatitude = model.latitude.roundTo(8)
+                let coordinateLongitude = model.longitude.roundTo(8)
+                WeatherNetworkApiManager.manager.getWeatherInfo(coordinate:(model.title, latitude: coordinateLatitude, longitude: coordinateLongitude), id: Int(model.id)) { (cityid, temp, icon) in
+                    let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(icon: icon))
+                    
                     let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: [updateModel])
                     self.sendRequest(updateWeatherRequest)
                 }
@@ -316,7 +374,9 @@ extension AppDelegate {
         CLGeocoder().reverseGeocodeLocationInfo(location: location) {(locationInfo, error) in
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
                 DTUserDefaults.lastSyncedWeatherCity = locationInfo.cityName
-                self.setWeather(cityname: locationInfo.cityName)
+                if let name = locationInfo.cityName {
+                    self.setWeather(cityObject: (name, location.coordinate.longitude, location.coordinate.latitude))
+                }
             }
         }
     }
@@ -325,12 +385,15 @@ extension AppDelegate {
         LocationManager.manager.startLocation()
         
         LocationManager.manager.didUpdateLocations = { location in
-            let locationArray = location as [CLLocation]
+            //let locationArray = location as [CLLocation]
+        }
+        
+        Timer.every(2.minutes) {
             /**
-             sync every 30 min weather data
+             sync every 5 min weather data
              */
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
-                if let location = locationArray.last {
+                if let location = LocationManager.manager.currentLocation {
                     self.setGPSLocalWeather(location: location)
                 }
             }

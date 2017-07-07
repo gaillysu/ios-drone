@@ -83,5 +83,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>DarkskyKey</key>
+	<string>29fa9213f8b40d5a75c820af96fc8d43</string>
 </dict>
 </plist>
