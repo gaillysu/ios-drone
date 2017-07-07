@@ -385,12 +385,15 @@ extension AppDelegate {
         LocationManager.manager.startLocation()
         
         LocationManager.manager.didUpdateLocations = { location in
-            let locationArray = location as [CLLocation]
+            //let locationArray = location as [CLLocation]
+        }
+        
+        Timer.every(2.minutes) {
             /**
-             sync every 30 min weather data
+             sync every 5 min weather data
              */
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
-                if let location = locationArray.last {
+                if let location = LocationManager.manager.currentLocation {
                     self.setGPSLocalWeather(location: location)
                 }
             }
