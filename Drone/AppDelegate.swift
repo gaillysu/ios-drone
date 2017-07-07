@@ -33,10 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
    
    fileprivate var isNavigation:Bool = false
-   
+   var timer:Timer?
    static let RESET_STATE = "RESET_STATE"
    static let RESET_STATE_DATE = "RESET_STATE_DATE"
    let SETUP_KEY = "SETUP_KEY"
+   
    
    
    class func getAppDelegate()->AppDelegate {
@@ -45,9 +46,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       Fabric.with([Crashlytics.self])
+      DTUserDefaults.getStringArrayLog(key: "weather_check").forEach({
+         print($0)
+      })
+      print("Restore State = ")
+      DTUserDefaults.getStringArrayLog(key: "RestoreState").forEach({
+         print($0)
+      })
+      print("pingpingsound = ")
+      DTUserDefaults.getStringArrayLog(key: "pingpingsound").forEach({
+         print($0)
+      })
+      print("update_from_timer = ")
+      DTUserDefaults.getStringArrayLog(key: "update_from_timer").forEach({
+         print($0)
+      })
       
       configGooleMap()
-
+      
       self.startLocation()
       
       _ = DataBaseManager.manager
@@ -67,6 +83,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       nav.isNavigationBarHidden = true
       self.window?.rootViewController = nav
       self.window?.makeKeyAndVisible()
+      
+      print(5.minutes.value)
+      self.timer = Timer(timeInterval: 300, target: self, selector: #selector(updateWeather), userInfo: nil, repeats: true)
+      self.timer?.fire()
       return true
    }
    
@@ -182,7 +202,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
             let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
             SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket))
-
+            
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
                if let location = LocationManager.manager.currentLocation {
                   self.setGPSLocalWeather(location: location)
@@ -193,6 +213,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          if packet.getHeader() == FindMyPhonePacket.HEADER() {
             let findPhonePacket = FindMyPhonePacket(data: packet.getRawData())
             if findPhonePacket.getFindMyPhoneState() == FindMyPhoneState.enable {
+               DTUserDefaults.saveLog(message: "Ping ping", key: "pingpingsound")
                NotificationAlertSoundController.manager.playSound()
             }
          }
@@ -213,7 +234,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                self.getActivity()
             }else{
                SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
-               
             }
          }
          
@@ -237,8 +257,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    }
    
    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:String) {
-      let mcuver = AppTheme.GET_SOFTWARE_VERSION()
-      let blever = AppTheme.GET_FIRMWARE_VERSION()
+      let _ = AppTheme.GET_SOFTWARE_VERSION()
+      let _ = AppTheme.GET_FIRMWARE_VERSION()
       if whichfirmware == DfuFirmwareTypes.application {
          let versionData:PostWatchVersionData = PostWatchVersionData(version: version, type: "BLE")
          SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:versionData)
@@ -285,6 +305,7 @@ extension AppDelegate{
       self.setStepsToWatch()
       print("setStepsToWatch")
       
+
       if let location = LocationManager.manager.currentLocation {
          self.setGPSLocalWeather(location: location)
       }else{
@@ -312,6 +333,10 @@ extension AppDelegate{
       }
    }
    
+   func updateWeather(){
+      readsystemStatus()
+      DTUserDefaults.saveLog(message: "Update Weather", key: "weather_check")
+   }
    
    func setNavigation(state:Bool) {
       isNavigation = state

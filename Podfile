@@ -27,13 +27,12 @@ target 'Drone' do
     pod 'Pulley'
     pod 'PKHUD', '~> 4.0'
     pod 'Polyline', '~> 4.0'
+    pod 'iOSDFULibrary'
 
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'RxDataSources'
-    pod 'RxRealm'
-    pod 'RxRealmDataSources'
-    
+    pod 'RxRealm'    
     pod 'Timepiece'
 end
 

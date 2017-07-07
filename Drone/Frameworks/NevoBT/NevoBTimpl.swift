@@ -82,7 +82,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         
         mProfile = acceptableDevice
         
-        mManager=CBCentralManager(delegate:self, queue:nil)
+        mManager = CBCentralManager(delegate:self, queue:nil)
         
         mManager?.delegate = self
     }
@@ -99,9 +99,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
      Invoked when the central discovers a compatible device while scanning.
      */
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber){
-        
         self.matchingPeripheralFound(peripheral)
-        
     }
     
     /**
@@ -236,7 +234,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 mSoftwareVersion = version
                 print("Version: \(version)")
                 mDelegate?.firmwareVersionReceived(DfuFirmwareTypes.softdevice, version: version)
-                
             }
         }
     }
@@ -496,6 +493,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     }
     
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
-        
+        DTUserDefaults.saveLog(message: "RestoreState", key: "RestoreState")
     }
 }

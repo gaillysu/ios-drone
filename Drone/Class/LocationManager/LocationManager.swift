@@ -26,6 +26,8 @@ class LocationManager: NSObject {
     typealias  didFailWithErrorCallBack=(_ error: Error)->Void
     typealias  didChangeAuthorizationCallBack=(_ status: CLAuthorizationStatus)->Void
     
+    fileprivate var timer:Timer?
+    
     var didUpdateLocations:didUpdateLocationsCallBack?
     var didFailWithError:didFailWithErrorCallBack?
     var didChangeAuthorization:didChangeAuthorizationCallBack?
@@ -55,29 +57,43 @@ class LocationManager: NSObject {
         if CLLocationManager.headingAvailable() && locationEnabled {
             _locationManager = CLLocationManager()
             _locationManager?.delegate = self
-            _locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-            _locationManager?.distanceFilter = kCLLocationAccuracyKilometer
-            _locationManager?.requestWhenInUseAuthorization()
-        }else{
-            let banner = Banner(title: NSLocalizedString("GPS use of infor", comment: ""), subtitle: "GPS devices do not available", image: nil, backgroundColor:UIColor.getBaseColor())
-            banner.dismissesOnTap = true
-            banner.show(duration: 1.2)
+            _locationManager?.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+            _locationManager?.activityType = .other
+            _locationManager?.allowsBackgroundLocationUpdates = true
+            _locationManager?.pausesLocationUpdatesAutomatically = false
+            _locationManager?.requestAlwaysAuthorization()
         }
     }
     
     func startLocation() {
+        print("Karl: Start Location woohoo")
         if locationEnabled {
             _locationManager?.startUpdatingLocation()
-        }else{
-            let banner = Banner(title: "Location services is not open", subtitle: nil , image: nil, backgroundColor:UIColor.getBaseColor())
+        } else {
+            let banner = Banner(title: "Location services is not enabled", subtitle: nil , image: nil, backgroundColor:UIColor.getBaseColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
         }
     }
     
     func stopLocation() {
+        print("Karl: stopLocation")
         if locationEnabled {
             _locationManager?.stopUpdatingLocation()
+        }
+    }
+    
+    func startWithTimer(interval:TimeInterval){
+        print("Karl: Start with timer")
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(startLocation), userInfo: nil, repeats: true)
+    }
+    
+    func stopWithTimer(){
+        print("Karl: Stop with timer")
+        if let _ = timer {
+            stopLocation()
+            timer?.invalidate()
+            timer = nil
         }
     }
 }
@@ -88,9 +104,14 @@ extension LocationManager:CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        print("Karl: Did Location Update = \(Date().iso8601)")
         didUpdateLocations?(locations);
         if currentLocation == nil {
             location = locations.last
+        }
+        if let _ = timer {
+            DTUserDefaults.saveLog(message: Date().iso8601, key: "update_from_timer")
+            stopLocation()
         }
     }
     

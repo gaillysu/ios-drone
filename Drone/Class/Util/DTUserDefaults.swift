@@ -28,9 +28,10 @@ public class DTUserDefaults: NSObject {
     private static let SYNC_ANALOG_TIME_KEY = "SYNC_ANALOG_TIME_KEY"
     
     private static let HOUR_FORMAT_KEY = "HOUR_FORMAT_KEY"
-    
+    private static let LANGUAGE_KEY = "AppleLanguages"
     private static let ENABLED_ALL_NOTIFICATIONS_KEY = "ENABLED_ALL_NOTIFICATIONS_KEY"
-
+    private static let LAST_VISITED_CITIES_KEY = "LAST_VISITED_CITIES_KEY"
+    
     
     // MARK: Setup
     public static var setupKey:Bool {
@@ -195,11 +196,46 @@ public class DTUserDefaults: NSObject {
     
     public static var localLanguage:String {
         get{
-            let languages:[String] = UserDefaults.standard.object(forKey: "AppleLanguages") as! [String]
-            if let value = languages.first {
-                return value
+            if let languages:[String] = UserDefaults.standard.object(forKey: LANGUAGE_KEY) as? [String]{
+                if let value = languages.first {
+                    return value
+                }
             }
             return ""
         }
+    }
+    
+    public static var lastVisitedCities:[String] {
+        get{
+            if let cities:[String] = UserDefaults.standard.object(forKey: LAST_VISITED_CITIES_KEY) as? [String]{
+                return cities
+            }
+            return []
+        }
+        set { UserDefaults().set(newValue, forKey: LAST_VISITED_CITIES_KEY) }
+    }
+    
+    
+    public static func saveLog(message:String, key:String){
+        let defaults = UserDefaults.standard
+        if let stringArray = defaults.stringArray(forKey: key){
+            var newArray = stringArray
+            if newArray.count > 20 {
+                newArray.remove(at: 0)
+            }
+            newArray.append("\(Date().iso8601) ->")
+            newArray.append(message)
+            defaults.set(newArray, forKey: key)
+        } else {
+            defaults.set(["\(Date().iso8601) ->", message], forKey: key)
+        }
+    }
+    
+    public static func getStringArrayLog(key:String) -> [String]{
+        let defaults = UserDefaults.standard
+        if let array = defaults.array(forKey: key), let stringArray = array as? [String]{
+            return stringArray
+        }
+        return []
     }
 }

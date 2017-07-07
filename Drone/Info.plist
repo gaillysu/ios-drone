@@ -61,7 +61,9 @@
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>The heatl update usage is to update the stored health data which is collected by the smart product.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Drone needs your location to set the weather. </string>
+	<string>Dayton App needs your location to set the weather. </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Dayton App needs your location to keep track of the visited cities.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
