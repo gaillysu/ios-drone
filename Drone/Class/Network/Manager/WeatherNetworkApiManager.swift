@@ -62,45 +62,20 @@ class WeatherNetworkApiManager: NSObject {
     func getWeatherInfo(coordinate:(cityName:String, latitude: Double, longitude: Double), id:Int, responseBlock: @escaping (_ id:Int,_ temp:Int, _ icon:WeatherIcon) -> Void) {
         
         cityid[id] = coordinate
-        //let cache = AppTheme.getTodayWeatherInfoCache(SYNC_WEATHER_INFOKEY+"\(id)")
-
+        
+        if let cache = AppTheme.getTodayWeatherInfoCache(SYNC_WEATHER_INFOKEY+"\(id)") {
+            let json = JSON(cache)
+            self.parseWeatherData(weatherJSON: json, responseBlock: responseBlock)
+        }else{
+            networkWeatherRequest(coordinate, responseBlock: responseBlock)
+        }
+    }
+    
+    fileprivate func networkWeatherRequest(_ coordinate:(cityName:String, latitude: Double, longitude: Double), responseBlock: @escaping (_ id:Int,_ temp:Int, _ icon:WeatherIcon) -> Void) {
         let weatherRequest:WeatherInfoRequest = WeatherInfoRequest(latitude: coordinate.latitude, longitude: coordinate.longitude, language: nil, units: WeatherUnits.si) { (success, json, error) in
             if success {
                 if let weatherJSON = json {
-                    let weatherModel:WeatherCacheModel = WeatherCacheModel(json: weatherJSON)
-                    var temp:Float = 0
-                    
-                    let localTimeSeconds = TimeZone.current.secondsFromGMT()
-                    let cityTimeInterval = Date().timeIntervalSince1970-Double(localTimeSeconds)+Double(weatherModel.offset*60*60);
-                    let cityDate = Date(timeIntervalSince1970: cityTimeInterval)
-                    
-                    var isCallBack:Bool = false
-
-                    for (key,value) in self.cityid {
-                        if weatherModel.latitude == value.1 && weatherModel.longitude == value.2 {
-                            self.formatter.timeZone = TimeZone(secondsFromGMT: Int(weatherModel.offset*60))
-                            for model in weatherModel.list {
-                                let hourDate = Date(timeIntervalSince1970: model.time)
-                                if hourDate.hour >= cityDate.hour {
-                                    isCallBack = true
-
-                                    temp = model.temperature
-
-                                    responseBlock(key,Int(temp) , model.icon)
-                                    
-                                    self.cityid.removeValue(forKey: key)
-                                    
-                                    //_ = AppTheme.KeyedArchiverName(SYNC_WEATHER_INFOKEY+"\(key)", andObject: weatherModel)
-                                    break
-                                }
-                            }
-                            
-                            if isCallBack {
-                                return
-                            }
-                        }
-                    }
-                    responseBlock(0, 0, .clearDay);
+                    self.parseWeatherData(weatherJSON: weatherJSON, responseBlock: responseBlock)
                 }else{
                     responseBlock(0, 0, .clearDay);
                 }
@@ -109,6 +84,54 @@ class WeatherNetworkApiManager: NSObject {
             }
         }
         executeMEDRequest(request: weatherRequest)
+    }
+    
+    fileprivate func parseWeatherData(weatherJSON:JSON, responseBlock: @escaping (_ id:Int,_ temp:Int, _ icon:WeatherIcon) -> Void) {
+        let weatherModel:WeatherCacheModel = WeatherCacheModel(json: weatherJSON)
+        var temp:Float = 0
+        
+        let localTimeSeconds = TimeZone.current.secondsFromGMT()
+        let cityTimeInterval = Date().timeIntervalSince1970-Double(localTimeSeconds)+Double(weatherModel.offset*60*60)
+        let cityDate = Date(timeIntervalSince1970: cityTimeInterval)
+        var isCallBack:Bool = false
+        
+        for (key,value) in self.cityid {
+            if weatherModel.latitude == value.1 && weatherModel.longitude == value.2 {
+                self.formatter.timeZone = TimeZone(identifier: weatherModel.timezone)
+                for model in weatherModel.list {
+                    let hourlyDate = Date(timeIntervalSince1970: model.time)
+                    let dateDetailed = hourlyDate.fromatDate(timeZone: TimeZone(identifier: weatherModel.timezone)!)
+                    let hour = dateDetailed.hour != nil ? dateDetailed.hour!:-1
+                    
+                    if hour >= cityDate.hour {
+                        isCallBack = true
+                        
+                        temp = model.temperature
+                        
+                        responseBlock(key,Int(temp) , model.icon)
+                        
+                        self.cityid.removeValue(forKey: key)
+                        
+                        do{
+                            let data = try weatherJSON.rawData()
+                            _ = AppTheme.KeyedArchiverName(SYNC_WEATHER_INFOKEY+"\(key)", andObject: data)
+                        }catch (let error){
+                            NSLog("error:\(error)")
+                        }
+                        
+                        break
+                    }
+                }
+                
+                if isCallBack {
+                    return
+                }
+            }else{
+                networkWeatherRequest((value.0,value.1,value.2), responseBlock: responseBlock)
+            }
+        }
+        
+        responseBlock(0, 0, .clearDay);
     }
     
     func getWeatherStatusCode(icon:WeatherIcon) -> WeatherStatusIcon {

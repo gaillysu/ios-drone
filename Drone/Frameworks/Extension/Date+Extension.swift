@@ -93,4 +93,23 @@ extension Date {
         formatter.timeStyle = .short
         return formatter.string(from: self)
     }
+    
+    func fromatDate(timeZone:TimeZone) -> (hour:Int?,minutes:Int?,seconds:Int?) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.timeZone = timeZone
+        
+        let dateString = formatter.string(from: self)
+        let dateArray = dateString.components(separatedBy: " ")
+        
+        var hour:Int?
+        var minutes:Int?
+        var seconds:Int?
+        if let date = dateArray.last?.components(separatedBy: ":") {
+            hour = date[0].toInt()
+            minutes = date[1].toInt()
+            seconds = date[2].toInt()
+        }
+        return (hour,minutes,seconds);
+    }
 }
