@@ -216,15 +216,17 @@ public class DTUserDefaults: NSObject {
     }
     
     
-    public static func saveLog(message:String, key:String){
+    public static func saveLog(message:String, key:String, reset:Bool = false){
+        
         let defaults = UserDefaults.standard
         if let stringArray = defaults.stringArray(forKey: key){
             var newArray = stringArray
             if newArray.count > 20 {
                 newArray.remove(at: 0)
+            }else if reset {
+                newArray.removeAll()
             }
-            newArray.append("\(Date().iso8601) ->")
-            newArray.append(message)
+            newArray.append("\(Date().iso8601) -> \(message)")
             defaults.set(newArray, forKey: key)
         } else {
             defaults.set(["\(Date().iso8601) ->", message], forKey: key)

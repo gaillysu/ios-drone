@@ -72,6 +72,8 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     
     fileprivate var redRssiTimer:Timer = Timer()
     
+    fileprivate var restoreKey = "DroneRestoreKey"
+    
     /**
      Basic constructor, just a Delegate handsake
      */
@@ -82,7 +84,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         
         mProfile = acceptableDevice
         
-        mManager = CBCentralManager(delegate:self, queue:nil)
+        mManager = CBCentralManager(delegate:self, queue:nil, options: [CBCentralManagerOptionRestoreIdentifierKey:restoreKey])
         
         mManager?.delegate = self
     }
@@ -493,6 +495,14 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
     }
     
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
-        DTUserDefaults.saveLog(message: "RestoreState", key: "RestoreState")
+        if let array = dict[CBCentralManagerRestoredStatePeripheralsKey], let peripherals = array as? [CBPeripheral]{
+            for peripheral in peripherals{
+                // Should always be one but its ok. Let's just loop it.
+                if (peripheral.state == CBPeripheralState.disconnected) {
+                    central.connect(peripheral, options: nil)
+                }
+                peripheral.delegate = self
+            }
+        }
     }
 }

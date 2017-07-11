@@ -65,10 +65,10 @@ class AppTheme {
         if(flierManager){
             do {
                 let object = try FileManager.default.attributesOfItem(atPath: filename)
-                if let date = object[FileAttributeKey.modificationDate] {
+                if let date = object[FileAttributeKey.creationDate] {
                     let modificationDate = (date as? Date) == nil ?Date():(date as? Date)
-                    let todayDate = Date().stringFromFormat("yyyyMMdd").toInt()
-                    let cacheDate = modificationDate!.stringFromFormat("yyyyMMdd").toInt()
+                    let todayDate = Date().stringFromFormat("yyyyMMddHH").toInt()
+                    let cacheDate = modificationDate!.stringFromFormat("yyyyMMddHH").toInt()
                     if todayDate>cacheDate {
                         try FileManager.default.removeItem(atPath: filename)
                         return nil

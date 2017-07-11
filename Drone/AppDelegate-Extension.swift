@@ -165,7 +165,7 @@ extension AppDelegate {
             }
         }
     }
-
+    
     
     func startConnect(){
         let userDevice = DataBaseManager.manager.getAllDevice()
@@ -386,22 +386,17 @@ extension AppDelegate {
         LocationManager.manager.startWithTimer(interval: 300)
         
         LocationManager.manager.didUpdateLocations = { location in
-            //let locationArray = location as [CLLocation]
-        }
-        
-        Timer.every(2.minutes) {
-            /**
-             sync every 5 min weather data
-             */
-
-            let locationArray = location as [CLLocation]
-
-            if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
-                if let location = LocationManager.manager.currentLocation {
-                    self.setGPSLocalWeather(location: location)
+            
+            Timer.every(2.minutes) {
+                /**
+                 sync every 5 min weather data
+                 */
+                if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+                    if let location = LocationManager.manager.currentLocation {
+                        self.setGPSLocalWeather(location: location)
+                    }
                 }
             }
         }
     }
-    
 }

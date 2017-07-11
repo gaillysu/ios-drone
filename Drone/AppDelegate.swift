@@ -46,23 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       Fabric.with([Crashlytics.self])
-      DTUserDefaults.getStringArrayLog(key: "weather_check").forEach({
-         print($0)
-      })
-      print("Restore State = ")
-      DTUserDefaults.getStringArrayLog(key: "RestoreState").forEach({
-         print($0)
-      })
-      print("pingpingsound = ")
-      DTUserDefaults.getStringArrayLog(key: "pingpingsound").forEach({
-         print($0)
-      })
-      print("update_from_timer = ")
-      DTUserDefaults.getStringArrayLog(key: "update_from_timer").forEach({
-         print($0)
-      })
-      
-      configGooleMap()
+      configGoogleMap()
       
       self.startLocation()
       
@@ -94,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
    }
    
-   func configGooleMap() {
+   func configGoogleMap() {
       if let googleMapAppKey = Bundle.googleMapKey {
          GMSServices.provideAPIKey(googleMapAppKey)
          GMSPlacesClient.provideAPIKey(googleMapAppKey)
