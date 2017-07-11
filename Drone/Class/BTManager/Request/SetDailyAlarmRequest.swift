@@ -25,14 +25,14 @@ class SetDailyAlarmRequest: DroneRequest {
         var values :[UInt8] = [SetDailyAlarmRequest.HEADER()]
         values += [UInt8(alarmWeekDay.count&0xFF)]
         alarmWeekDay.forEach({ alarm in
-            var weekDay = ["0","0","0","0","0","0","0","0","0"]
+            var weekDay = ["0","0","0","0","0","0","0","0"]
             alarm.daysInWeek.forEach({ dayInWeek in
                 weekDay[dayInWeek.weekDay] = "1"
             })
             if alarm.snoozable{
                 weekDay[7] = "1"
             }
-            values += [UInt8(alarm.hour&0xFF),UInt8(alarm.minute&0xFF),UInt8(weekDay.joined().binary2dec()&0xFF)]
+            values += [UInt8(alarm.hour&0xFF),UInt8(alarm.minute&0xFF),UInt8(weekDay.reversed().joined().binary2dec() & 0xFF)]
         })
         return Constants.splitPacketConverter(data: values)
     }

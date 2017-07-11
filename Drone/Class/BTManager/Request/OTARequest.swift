@@ -10,7 +10,7 @@ import UIKit
 
 enum OTAMode:UInt8 {
     case ble    = 0x01
-    case mcu    = 0x02
+    case mcu    = 0x02 // MCU is currently not used for OTA.
 }
 
 class OTARequest: DroneRequest {

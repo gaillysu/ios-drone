@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class MEDWeekDayNumber:MEDBaseModel {
-    
+    // Starts with Sunday. 
     dynamic var weekDay = 0
 }
 
