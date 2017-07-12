@@ -8,7 +8,7 @@
 
 import Foundation
 
-let syncWeatherInterval:Double = 300 //seconds
+let syncWeatherInterval:Double = 100 //seconds
 public class DTUserDefaults: NSObject {
     
     private static let SETUP_KEY = "SETUP_KEY"
@@ -24,6 +24,8 @@ public class DTUserDefaults: NSObject {
     private static let TOP_KEY_KEY = "TOP_KEY_KEY"
     private static let COMPASS_KEY = "COMPASS_KEY"
     private static let PAIR_PRESENT_KEY = "PAIR_PRESENT_KEY"
+    private static let STOPWATCH_ENABLED = "STOPWATCH_ENABLED_KEY"
+    private static let TIMER_ENABLED = "TIMER_ENABLED_key"
     private static let SYNC_LOCAL_TIME_KEY = "SYNC_LOCAL_TIME_KEY"
     private static let SYNC_ANALOG_TIME_KEY = "SYNC_ANALOG_TIME_KEY"
     
@@ -145,6 +147,26 @@ public class DTUserDefaults: NSObject {
         }
     }
     
+    
+    public static var stopwatchEnabled:Bool {
+        get{
+            return UserDefaults().bool(forKey: STOPWATCH_ENABLED)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: STOPWATCH_ENABLED)
+        }
+    }
+    
+    
+    public static var timerEnabled:Bool {
+        get{
+            return UserDefaults().bool(forKey: TIMER_ENABLED)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: TIMER_ENABLED)
+        }
+    }
+    
     public static var hourFormat:Int {
         get{
             return UserDefaults().integer(forKey: HOUR_FORMAT_KEY)
@@ -155,7 +177,7 @@ public class DTUserDefaults: NSObject {
     }
     
     // MARK: Compass
-    public static var compassState:Bool {
+    public static var compassEnabled:Bool {
         get{
             return UserDefaults().bool(forKey: COMPASS_KEY)
         }

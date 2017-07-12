@@ -12,7 +12,14 @@ class ClockSettingsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var settingsTextField: UITextField!
     @IBOutlet weak var settingsLabel: UILabel!
-
+    var item:TimeSettingsSectionItem?{
+        didSet{
+            if let item = item{
+                self.settingsLabel.text = item.label
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

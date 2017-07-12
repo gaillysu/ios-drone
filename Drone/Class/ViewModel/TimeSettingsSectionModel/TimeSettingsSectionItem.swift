@@ -10,8 +10,15 @@ import UIKit
 
 struct TimeSettingsSectionItem {
     var label: String
+    var enabled:Bool?
     
     init(label:String) {
         self.label = label
+        self.enabled = nil
+    }
+    
+    init(label:String, enabled:Bool) {
+        self.label = label
+        self.enabled = enabled
     }
 }

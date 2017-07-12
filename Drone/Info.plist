@@ -23,7 +23,9 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>7</string>
+	<key>DarkskyKey</key>
+	<string>29fa9213f8b40d5a75c820af96fc8d43</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -60,10 +62,10 @@
 	<string>The health share usage is used to add the data into health and share it. This data is collected by the smart product.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>The heatl update usage is to update the stored health data which is collected by the smart product.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Dayton App needs your location to set the weather. </string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Dayton App needs your location to keep track of the visited cities.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Dayton App needs your location to set the weather. </string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -85,7 +87,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>DarkskyKey</key>
-	<string>29fa9213f8b40d5a75c820af96fc8d43</string>
 </dict>
 </plist>

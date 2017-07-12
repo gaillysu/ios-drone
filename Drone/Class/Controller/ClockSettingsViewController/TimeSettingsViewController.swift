@@ -32,9 +32,11 @@ class TimeSettingsViewController: BaseViewController {
         self.tableView.register(UINib(nibName: identifier, bundle: Bundle.main), forCellReuseIdentifier: identifier)
         let section = Variable(
             [TimeSettingsSectionModel(header: "Analog Time Display", footer: "Sync the time of your watch with local or home time If you don't turn on Analog Time Syncing, the time on your watch will never change.", items: [
-                TimeSettingsSectionItem(label: "Analog Time Syncing"),
+                TimeSettingsSectionItem(label: "Analog Time Syncing", enabled: DTUserDefaults.syncAnalogTime),
                 TimeSettingsSectionItem(label: "Sync Time"),
-                TimeSettingsSectionItem(label: "24 Hour Format")]),
+                TimeSettingsSectionItem(label: "24 Hour Format", enabled: DTUserDefaults.hourFormat == 1 ? true : false),
+                TimeSettingsSectionItem(label: "Stopwatch", enabled: DTUserDefaults.stopwatchEnabled),
+                TimeSettingsSectionItem(label: "Timer", enabled: DTUserDefaults.timerEnabled)]),
              TimeSettingsSectionModel(header: "Calibration", footer: "", items: [
                 TimeSettingsSectionItem(label: "Recalibrate hands")])])
         
@@ -42,49 +44,60 @@ class TimeSettingsViewController: BaseViewController {
         
         dataSource.configureCell = { (dataSource, table, indexPath, _) in
             let item = dataSource[indexPath]
-            if indexPath.row == 0 && indexPath.section == 0 {
+            if let _ = item.enabled{
                 let cell:ClockSettingsTableViewCellSwitch  = table.dequeueReusableCell(forIndexPath: indexPath)
-                let item = dataSource[indexPath]
-                cell.settingLabel.text = item.label
-                cell.settingSwitch.setOn(DTUserDefaults.syncAnalogTime, animated: true)
-                cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
-                    let isOn = cell.settingSwitch.isOn
-                    DTUserDefaults.syncAnalogTime = isOn
-                    if let localTimeCell = self.tableView.cellForRow(at: IndexPath(item: 1, section: 0)){
-                        localTimeCell.enable(on: isOn)
-                    }
-                    if isOn {
-                        self.getAppDelegate().setRTC(force: false)
-                        self.getAppDelegate().setAnalogTime(forceCurrentTime: false)
-                    }
-                }).addDisposableTo(self.disposeBag)
+                cell.item = item
+                switch (indexPath.row, indexPath.section){
+                case (0,0):
+                    cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
+                        let isOn = cell.settingSwitch.isOn
+                        DTUserDefaults.syncAnalogTime = isOn
+                        if let localTimeCell = self.tableView.cellForRow(at: IndexPath(item: 1, section: 0)){
+                            localTimeCell.enable(on: isOn)
+                        }
+                        if isOn {
+                            self.getAppDelegate().setRTC(force: false)
+                            self.getAppDelegate().setAnalogTime(forceCurrentTime: false)
+                        }
+                    }).addDisposableTo(self.disposeBag)
+                case (2,0):
+                    cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
+                        DTUserDefaults.hourFormat = cell.settingSwitch.isOn ? 1 : 0
+                        self.getAppDelegate().setTimeFormat()
+                    }).addDisposableTo(self.disposeBag)
+                case (3,0):
+                    cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
+                        DTUserDefaults.hourFormat = cell.settingSwitch.isOn ? 1 : 0
+                        self.getAppDelegate().setTimeFormat()
+                    }).addDisposableTo(self.disposeBag)
+                case (4,0):
+                    cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
+                        DTUserDefaults.stopwatchEnabled = cell.settingSwitch.isOn
+                        self.getAppDelegate().setStopwatch()
+                    }).addDisposableTo(self.disposeBag)
+                case (5,0):
+                    cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
+                        DTUserDefaults.timerEnabled = cell.settingSwitch.isOn
+                        self.getAppDelegate().setTimer()
+                    }).addDisposableTo(self.disposeBag)
+                default: break
+                }
                 return cell
-            } else if indexPath.row == 1 && indexPath.section == 0 {
+            }else{
                 let cell:ClockSettingsTableViewCell = table.dequeueReusableCell(forIndexPath: indexPath)
-                cell.settingsLabel.text = item.label
-                cell.settingsTextField.inputView = self.pickerView
-                cell.settingsTextField.text = DTUserDefaults.syncLocalTime ? self.syncTimeItems[0] : self.syncTimeItems[1]
-                cell.enable(on: DTUserDefaults.syncAnalogTime)
-                cell.selectionStyle = .none
-                return cell
-            } else if indexPath.row == 2 && indexPath.section == 0 {
-                let cell:ClockSettingsTableViewCellSwitch  = table.dequeueReusableCell(forIndexPath: indexPath)
-                let item = dataSource[indexPath]
-                cell.settingLabel.text = item.label
-                cell.settingSwitch.setOn(DTUserDefaults.hourFormat == 1 ? true : false, animated: true)
-                cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
-                    let isOn = cell.settingSwitch.isOn
-                    DTUserDefaults.hourFormat = isOn ? 1 : 0
-                    self.getAppDelegate().setTimeFormat()
-                }).addDisposableTo(self.disposeBag)
+                cell.item = item
+                switch (indexPath.row, indexPath.section) {
+                case (1,0):
+                    cell.settingsTextField.inputView = self.pickerView
+                    cell.settingsTextField.text = DTUserDefaults.syncLocalTime ? self.syncTimeItems[0] : self.syncTimeItems[1]
+                    cell.enable(on: DTUserDefaults.syncAnalogTime)
+                    cell.selectionStyle = .none
+                default:
+                    cell.settingsTextField.isEnabled = false
+                    cell.accessoryType = .disclosureIndicator
+                }
                 return cell
             }
-            
-            let cell:ClockSettingsTableViewCell = table.dequeueReusableCell(forIndexPath: indexPath)
-            cell.settingsLabel.text = item.label
-            cell.settingsTextField.isEnabled = false
-            cell.accessoryType = .disclosureIndicator
-            return cell
         }
         
         

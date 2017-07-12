@@ -76,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    func applicationDidEnterBackground(_ application: UIApplication) {
       UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
+      }
    }
    
    func configGoogleMap() {
@@ -113,13 +114,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                self.getActivity()
             }else if(systemStatus == SystemStatus.weatherDataNeeded.rawValue){
-               /**
-                sync every hour weather data
-                */
                if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
-                  if let location = LocationManager.manager.currentLocation {
-                     self.setGPSLocalWeather(location: location)
-                  }
+                  self.startLocation()
                }
             }else if(systemStatus != SystemStatus.lowMemory.rawValue && systemStatus != SystemStatus.subscribedToNotifications.rawValue) {
                if let date = DTUserDefaults.rtcDate {
@@ -156,7 +152,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
             
             if(eventCommandStatus == SystemEventStatus.weatherDataExpired.rawValue) {
+               DTUserDefaults.saveLog(message: "Weather expired.", key: "willRestoreState")
                if let location = LocationManager.manager.currentLocation {
+                  DTUserDefaults.saveLog(message: "We got a location.", key: "willRestoreState")
                   self.setGPSLocalWeather(location: location)
                }
             }

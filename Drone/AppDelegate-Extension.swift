@@ -67,6 +67,14 @@ extension AppDelegate {
         }
     }
     
+    func setStopwatch(){
+        sendRequest(SetAppConfigRequest(appid: .stopwatch, enabled: DTUserDefaults.stopwatchEnabled))
+    }
+    
+    func setTimer(){
+        sendRequest(SetAppConfigRequest(appid: .timer, enabled: DTUserDefaults.timerEnabled))
+    }
+    
     // 1 = 24 hour, 0 = pussy shit
     func setTimeFormat(){
         sendRequest(SetSystemConfig(configtype: .clockFormat, format: DTUserDefaults.hourFormat == 0 ? .format12h : .format24h))
@@ -108,13 +116,9 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: .worldClock, state: .on))
         sendRequest(SetAppConfigRequest(appid: .activityTracking, state: .on))
         sendRequest(SetAppConfigRequest(appid: .weather, state: .on))
-        if DTUserDefaults.compassState {
-            sendRequest(SetAppConfigRequest(appid: .compass, state: .on))
-        }else{
-            sendRequest(SetAppConfigRequest(appid: .compass, state: .off))
-        }
-        sendRequest(SetAppConfigRequest(appid: .timer, state: .on))
-        sendRequest(SetAppConfigRequest(appid: .stopwatch, state: .on))
+        sendRequest(SetAppConfigRequest(appid: .compass, enabled: DTUserDefaults.compassEnabled))
+        setTimer()
+        setStopwatch()
     }
     
     func setGoal() {
@@ -386,17 +390,11 @@ extension AppDelegate {
         
         LocationManager.manager.startLocation()
         LocationManager.manager.didUpdateLocations = { location in
-            
-            Timer.every(2.minutes) {
-                /**
-                 sync every 5 min weather data
-                 */
-                if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
-                    if let location = LocationManager.manager.currentLocation {
-                        self.setGPSLocalWeather(location: location)
-                    }
+            if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+                if let location = LocationManager.manager.currentLocation {
+                    self.setGPSLocalWeather(location: location)
                 }
-            }
+            }   
         }
     }
 }

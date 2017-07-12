@@ -96,25 +96,25 @@ class CompassViewController: BaseViewController {
                     self.activeValues = self.screenTimeoutValues
                     self.activeIndexPath = indexPath
                 case 2:
-//                    if !(self.getAppDelegate().getMconnectionController()?.isConnected())!{
-//                        let banner = Banner(title: "Watch is disconnected, connect to calibrate.", subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
-//                        banner.dismissesOnTap = true
-//                        banner.show(duration: 1.2)
-//                    } else if !DTUserDefaults.compassState {
-//                        let banner = Banner(title: "Compass is disabled, enable to calibrate.", subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
-//                        banner.dismissesOnTap = true
-//                        banner.show(duration: 1.2)
-//                    }else{
+                    if !(self.getAppDelegate().getMconnectionController()?.isConnected())!{
+                        let banner = Banner(title: "Watch is disconnected, connect to calibrate.", subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                        banner.dismissesOnTap = true
+                        banner.show(duration: 1.2)
+                    } else if !DTUserDefaults.compassEnabled {
+                        let banner = Banner(title: "Compass is disabled, enable to calibrate.", subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+                        banner.dismissesOnTap = true
+                        banner.show(duration: 1.2)
+                    }else{
                         self.present(self.makeStandardUINavigationController(CompassCalibrationViewController()), animated: true, completion: nil)
-//                    }
+                    }
                 default: break
                 }
             }
             }.addDisposableTo(disposeBag)
-        self.compassSwitch.isOn = DTUserDefaults.compassState
+        self.compassSwitch.isOn = DTUserDefaults.compassEnabled
         
         self.compassSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe { event in
-            DTUserDefaults.compassState = self.compassSwitch.isOn
+            DTUserDefaults.compassEnabled = self.compassSwitch.isOn
             self.getAppDelegate().setAppConfig()
             }.addDisposableTo(disposeBag)
         self.addCloseButton(#selector(dismissViewController))

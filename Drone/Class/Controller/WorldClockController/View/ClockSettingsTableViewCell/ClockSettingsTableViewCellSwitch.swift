@@ -12,6 +12,18 @@ class ClockSettingsTableViewCellSwitch: UITableViewCell {
 
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var settingSwitch: UISwitch!
+    var item:TimeSettingsSectionItem?{
+        didSet{
+            if let item = item{
+                self.settingLabel.text = item.label
+                if let  status = item.enabled{
+                    settingSwitch.setOn(status, animated: true)
+                }else{
+                    settingSwitch.isHidden = true
+                }
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
