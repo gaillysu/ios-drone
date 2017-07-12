@@ -383,8 +383,8 @@ extension AppDelegate {
     }
     
     func startLocation() {
-        LocationManager.manager.startWithTimer(interval: 300)
         
+        LocationManager.manager.startLocation()
         LocationManager.manager.didUpdateLocations = { location in
             
             Timer.every(2.minutes) {
