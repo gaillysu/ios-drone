@@ -35,8 +35,9 @@ class TimeSettingsViewController: BaseViewController {
                 TimeSettingsSectionItem(label: "Analog Time Syncing", enabled: DTUserDefaults.syncAnalogTime),
                 TimeSettingsSectionItem(label: "Sync Time"),
                 TimeSettingsSectionItem(label: "24 Hour Format", enabled: DTUserDefaults.hourFormat == 1 ? true : false),
-                TimeSettingsSectionItem(label: "Stopwatch", enabled: DTUserDefaults.stopwatchEnabled),
-                TimeSettingsSectionItem(label: "Timer", enabled: DTUserDefaults.timerEnabled)]),
+                TimeSettingsSectionItem(label: "Timer", enabled: DTUserDefaults.timerEnabled),
+                TimeSettingsSectionItem(label: "Stopwatch", enabled: DTUserDefaults.stopwatchEnabled)
+                ]),
              TimeSettingsSectionModel(header: "Calibration", footer: "", items: [
                 TimeSettingsSectionItem(label: "Recalibrate hands")])])
         
@@ -64,21 +65,19 @@ class TimeSettingsViewController: BaseViewController {
                     cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
                         DTUserDefaults.hourFormat = cell.settingSwitch.isOn ? 1 : 0
                         self.getAppDelegate().setTimeFormat()
+                        print("Hour format")
                     }).addDisposableTo(self.disposeBag)
                 case (3,0):
                     cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
-                        DTUserDefaults.hourFormat = cell.settingSwitch.isOn ? 1 : 0
-                        self.getAppDelegate().setTimeFormat()
+                        DTUserDefaults.timerEnabled = cell.settingSwitch.isOn
+                        self.getAppDelegate().setTimer()
+                        print("setTimer")
                     }).addDisposableTo(self.disposeBag)
                 case (4,0):
                     cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
                         DTUserDefaults.stopwatchEnabled = cell.settingSwitch.isOn
                         self.getAppDelegate().setStopwatch()
-                    }).addDisposableTo(self.disposeBag)
-                case (5,0):
-                    cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
-                        DTUserDefaults.timerEnabled = cell.settingSwitch.isOn
-                        self.getAppDelegate().setTimer()
+                        print("setStopwatch")
                     }).addDisposableTo(self.disposeBag)
                 default: break
                 }

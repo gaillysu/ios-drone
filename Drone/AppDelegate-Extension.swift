@@ -75,6 +75,10 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: .timer, enabled: DTUserDefaults.timerEnabled))
     }
     
+    func setCompass(){
+        sendRequest(SetAppConfigRequest(appid: .compass, enabled: DTUserDefaults.compassEnabled))
+    }
+    
     // 1 = 24 hour, 0 = pussy shit
     func setTimeFormat(){
         sendRequest(SetSystemConfig(configtype: .clockFormat, format: DTUserDefaults.hourFormat == 0 ? .format12h : .format24h))
@@ -116,7 +120,8 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: .worldClock, state: .on))
         sendRequest(SetAppConfigRequest(appid: .activityTracking, state: .on))
         sendRequest(SetAppConfigRequest(appid: .weather, state: .on))
-        sendRequest(SetAppConfigRequest(appid: .compass, enabled: DTUserDefaults.compassEnabled))
+        setTimeFormat()
+        setCompass()
         setTimer()
         setStopwatch()
     }
@@ -163,10 +168,8 @@ extension AppDelegate {
         
         if let location = LocationManager.manager.currentLocation {
             self.setGPSLocalWeather(location: location)
-        }else{
-            if let name = DTUserDefaults.lastSyncedWeatherCity {
-                self.setWeather(cityname: name)
-            }
+        }else {
+            self.setWeather(cityname: DTUserDefaults.lastSyncedWeatherCity)
         }
     }
     
@@ -366,9 +369,7 @@ extension AppDelegate {
                 let coordinateLongitude = model.longitude.roundTo(8)
                 WeatherNetworkApiManager.manager.getWeatherInfo(coordinate:(model.title, latitude: coordinateLatitude, longitude: coordinateLongitude), id: Int(model.id)) { (cityid, temp, icon) in
                     let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(icon: icon))
-                    
-                    let updateWeatherRequest:UpdateWeatherInfoRequest = UpdateWeatherInfoRequest(entries: [updateModel])
-                    self.sendRequest(updateWeatherRequest)
+                    self.sendRequest(UpdateWeatherInfoRequest(entries: [updateModel]))
                 }
             }
         }
@@ -379,22 +380,19 @@ extension AppDelegate {
         CLGeocoder().reverseGeocodeLocationInfo(location: location) {(locationInfo, error) in
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
                 DTUserDefaults.lastSyncedWeatherCity = locationInfo.cityName
-                if let name = locationInfo.cityName {
-                    self.setWeather(cityObject: (name, location.coordinate.longitude, location.coordinate.latitude))
-                }
+                self.setWeather(cityObject: ("Local Weather", location.coordinate.longitude, location.coordinate.latitude))
             }
         }
     }
     
     func startLocation() {
-        
         LocationManager.manager.startLocation()
         LocationManager.manager.didUpdateLocations = { location in
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
                 if let location = LocationManager.manager.currentLocation {
                     self.setGPSLocalWeather(location: location)
                 }
-            }   
+            }
         }
     }
 }

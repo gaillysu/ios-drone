@@ -8,7 +8,7 @@
 
 import Foundation
 
-let syncWeatherInterval:Double = 100 //seconds
+let syncWeatherInterval:Double = 300 //seconds
 public class DTUserDefaults: NSObject {
     
     private static let SETUP_KEY = "SETUP_KEY"
@@ -25,7 +25,7 @@ public class DTUserDefaults: NSObject {
     private static let COMPASS_KEY = "COMPASS_KEY"
     private static let PAIR_PRESENT_KEY = "PAIR_PRESENT_KEY"
     private static let STOPWATCH_ENABLED = "STOPWATCH_ENABLED_KEY"
-    private static let TIMER_ENABLED = "TIMER_ENABLED_key"
+    private static let TIMER_ENABLED = "TIMER_ENABLED_KEY"
     private static let SYNC_LOCAL_TIME_KEY = "SYNC_LOCAL_TIME_KEY"
     private static let SYNC_ANALOG_TIME_KEY = "SYNC_ANALOG_TIME_KEY"
     

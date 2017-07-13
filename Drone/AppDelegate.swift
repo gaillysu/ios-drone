@@ -75,8 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    }
    
    func applicationDidEnterBackground(_ application: UIApplication) {
-      UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
-      }
+      UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })  
    }
    
    func configGoogleMap() {
@@ -166,7 +165,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          }
          
          if(packet.getHeader() == SetSystemConfig.HEADER()) {
-            self.watchConfig()
+            let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
+//            self.watchConfig()
          }
          
          if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
@@ -286,13 +286,6 @@ extension AppDelegate{
       
       self.setStepsToWatch()
       print("setStepsToWatch")
-      
-
-      if let location = LocationManager.manager.currentLocation {
-         self.setGPSLocalWeather(location: location)
-      }else{
-         self.setWeather(cityname: DTUserDefaults.lastSyncedWeatherCity)
-      }
    }
    
    func setNotification() {

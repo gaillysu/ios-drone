@@ -115,7 +115,7 @@ class CompassViewController: BaseViewController {
         
         self.compassSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe { event in
             DTUserDefaults.compassEnabled = self.compassSwitch.isOn
-            self.getAppDelegate().setAppConfig()
+            self.getAppDelegate().setCompass()
             }.addDisposableTo(disposeBag)
         self.addCloseButton(#selector(dismissViewController))
     }
