@@ -21,6 +21,8 @@ class WatchInfoModel: NSObject {
         var versionString:String = "\(AppDelegate.getAppDelegate().getFirmwareVersion())"
         if versionString.isEmpty {
             versionString = "Not Connected"
+        } else {
+            versionString = "\(DTUserDefaults.lastKnownWatchVersion)"
         }
         
         if battery == nil {

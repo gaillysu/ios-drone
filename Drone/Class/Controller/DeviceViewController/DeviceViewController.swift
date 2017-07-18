@@ -9,16 +9,16 @@
 import Foundation
 import UIKit
 import SwiftEventBus
-import MSCellAccessory
 import SceneKit
+import BRYXBanner
 
 class DeviceViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var leftRightButtonsNeeded = true;
     
     @IBOutlet weak var deviceTableView: UITableView!
-    fileprivate final let identifier = "device_table_view_cell"
-    fileprivate final let identifier_header = "device_table_view_cell_header"
+    fileprivate final let deviceTableViewCellIdentifier = "DeviceTableViewCell"
+    fileprivate final let deviceTableViewCellHeaderIdentifier = "DeviceTableViewCellHeader"
     
     fileprivate var batteryStatus:[PostBatteryStatus] = []
     init() {
@@ -31,8 +31,8 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        deviceTableView.register(UINib(nibName: "DeviceTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: identifier)
-        deviceTableView.register(UINib(nibName: "DeviceTableViewCellHeader", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: identifier_header)
+        deviceTableView.register(UINib(nibName: deviceTableViewCellIdentifier, bundle: nil), forCellReuseIdentifier: deviceTableViewCellIdentifier)
+        deviceTableView.register(UINib(nibName: deviceTableViewCellHeaderIdentifier, bundle: nil), forHeaderFooterViewReuseIdentifier: deviceTableViewCellHeaderIdentifier)
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BATTERY_STATUS_CHANGED) { [weak self](notification) -> Void in
             
@@ -57,20 +57,24 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (deviceTableView.frame.height - 254.0)
+        return (deviceTableView.frame.height - 254.0)/2
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedForgetWatch()
+        if indexPath.row == 0{
+            upgradeWatch()
+        }else if indexPath.row == 1{
+            forgetWatch()
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let  headerCell: DeviceTableViewCellHeader = deviceTableView.dequeueReusableHeaderFooterView(withIdentifier: identifier_header) as! DeviceTableViewCellHeader
+        let headerCell: DeviceTableViewCellHeader = deviceTableView.dequeueReusableHeaderFooterView(withIdentifier: deviceTableViewCellHeaderIdentifier) as! DeviceTableViewCellHeader
         if batteryStatus.count>0 {
             let battery:PostBatteryStatus = batteryStatus.first!
             headerCell.watchInfo = WatchInfoModel(batteryLevel: battery);
@@ -83,33 +87,53 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: DeviceTableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! DeviceTableViewCell
-        cell.accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
-        cell.titleLabel.text = "Forget this watch"
-        cell.separatorInset = UIEdgeInsets.zero
-        cell.preservesSuperviewLayoutMargins = false
-        cell.layoutMargins = UIEdgeInsets.zero
+        let cell: DeviceTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        if indexPath.row == 0 {
+            cell.titleLabel.text = "OTA Upgrade"
+        }else if indexPath.row == 1{
+            cell.titleLabel.text = "Forget this watch"
+        }
         return cell
     }
     
-    fileprivate func selectedForgetWatch() {
-        let alertView:UIAlertController = UIAlertController(title: NSLocalizedString("forget_watch", comment: ""), message: NSLocalizedString("forget_watch_message", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        
-        alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+    fileprivate func forgetWatch() {
+        let alertView = UIAlertController(title: NSLocalizedString("forget_watch", comment: ""), message: NSLocalizedString("forget_watch_message", comment: ""), preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (action) in
             AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
             AppDelegate.getAppDelegate().disconnect()
             _ = UserDevice.removeAll()
-            print(UserDevice.getAll().count)
-            let resetModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)
-            _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: resetModel)
+            _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: ResetCacheModel(reState: true, date: Date().timeIntervalSince1970))
             if self.navigationController?.popViewController(animated: true)==nil {
                 self.dismiss(animated: true, completion: nil)
             }
         }))
-        
-        alertView.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.cancel, handler: nil))
-
+        alertView.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
         self.present(alertView, animated: true, completion: nil)
+    }
+    
+    fileprivate func upgradeWatch(){
+        guard let url = AppTheme.GET_FIRMWARE_FILES("DFUFirmware").first else{
+            fatalError("Could not open Firmware file for some reason")
+        }
+        let firmwareVersion = AppTheme.firmwareVersionFrom(path: url)
+        let currentVersion = DTUserDefaults.lastKnownWatchVersion
+        
+        if !AppDelegate.getAppDelegate().isConnected(){
+            let banner = Banner(title: "Watch is not connected", subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
+            banner.dismissesOnTap = true
+            banner.show(duration: 1.2)
+            return
+        }
+        if firmwareVersion >= currentVersion{
+            let alertView = UIAlertController(title: "Newest Version", message: "You already got the newest version, do you wish to proceed?", preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                self.navigationController?.pushViewController(OTAViewController(), animated: true)
+            }))
+            alertView.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alertView, animated: true, completion: nil)
+        }else{
+            self.navigationController?.pushViewController(OTAViewController(), animated: true)
+        }
     }
 }
 

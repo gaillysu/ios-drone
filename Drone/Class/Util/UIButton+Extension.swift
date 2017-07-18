@@ -18,4 +18,9 @@ extension UIButton{
         UIGraphicsEndImageContext()
         self.setBackgroundImage(colorImage, for: forState)
     }
+    
+    func enable(bool:Bool){
+        self.isEnabled = bool
+        self.alpha = bool ? 1.0 : 0.5
+    }
 }

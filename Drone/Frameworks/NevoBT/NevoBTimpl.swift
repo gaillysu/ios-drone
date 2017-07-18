@@ -335,13 +335,11 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                         for charac:CBCharacteristic in characteristics {
                             
                             if(charac.uuid == request.getTargetProfile().CONTROL_CHARACTERISTIC) {
-                                
-                                if request.getRawDataEx().count == 0
-                                {
+                                if request.getRawDataEx().count == 0 {
                                     // debugPrint("Request raw data :\(request.getRawData())")
                                     //OTA control CHAR, need a response
                                     mPeripheral?.writeValue(request.getRawData(), for:charac,type:CBCharacteristicWriteType.withoutResponse)
-                                }else{
+                                } else {
                                     for data in request.getRawDataEx() {
                                         debugPrint("Request raw data Ex:\(Constants.NSData2Bytes(data))")
                                         mPeripheral?.writeValue(data, for:charac,type:CBCharacteristicWriteType.withoutResponse)
@@ -349,13 +347,9 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                                 }
                             }
                         }
-                    } else {
-                        // debugPrint("No Characteristics found for : \(service.uuid.uuidString), can't send packet")
                     }
-                    
                 }
             }
-            
         } else {
             
             if(mPeripheral != nil) {

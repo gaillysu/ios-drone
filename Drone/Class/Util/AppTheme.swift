@@ -140,12 +140,11 @@ class AppTheme {
 
      :returns: Return path array
      */
-    class func GET_FIRMWARE_FILES(_ folderName:String) -> NSArray {
-
-        let AllFilesNames:NSMutableArray = NSMutableArray()
+    class func GET_FIRMWARE_FILES(_ folderName:String) -> [URL] {
+        var fileUrls:[URL] = []
         let appPath:NSString  = Bundle.main.resourcePath! as NSString
         let firmwaresDirectoryPath:NSString = appPath.appendingPathComponent(folderName) as NSString
-
+        print("\(firmwaresDirectoryPath)")
         var  fileNames:[String] = []
         do {
             fileNames = try FileManager.default.contentsOfDirectory(atPath: firmwaresDirectoryPath as String)
@@ -154,13 +153,13 @@ class AppTheme {
                 NSLog("Found file in directory: \(fileName)");
                 let filePath:String = firmwaresDirectoryPath.appendingPathComponent(fileName)
                 let fileURL:URL = URL(fileURLWithPath: filePath)
-                AllFilesNames.add(fileURL)
+                fileUrls.append(fileURL)
             }
-            return AllFilesNames.copy() as! NSArray
         }catch{
             NSLog("GET_FIRMWARE_FILES error in opening directory path: \(firmwaresDirectoryPath)");
-            return NSArray()
+            return []
         }
+        return fileUrls
     }
     
     class func hexString(_ data:Data) -> NSString {
@@ -178,8 +177,6 @@ class AppTheme {
         let fileArray = GET_FIRMWARE_FILES(fileName)
         for tmpfile in fileArray {
             let selectedFile = tmpfile as! URL
-            //let fileName:NSString? = (selectedFile.path! as NSString).lastPathComponent
-            //let fileExtension:String? = selectedFile.pathExtension
             fileURL.append(selectedFile)
         }
         return fileURL
@@ -211,7 +208,25 @@ class AppTheme {
         }
         return String(format:"%d h %d m",hours,minutes)
     }
-
+    
+    class func firmwareVersionFrom(path:URL) -> Double{
+        let str = path.absoluteString
+        let begin = str.range(of: "dayton_SW_")!.lowerBound
+        let range = begin..<str.endIndex
+        
+        let fileName = str.substring(with: range)
+        
+        let start = fileName.index(fileName.startIndex, offsetBy: 11)
+        let end = fileName.index(fileName.endIndex, offsetBy: -4)
+        var versionName = fileName.substring(with: start..<end)
+        versionName.insert(".", at: versionName.range(of: "0")!.upperBound)
+        guard let version = Double(versionName) else{
+            fatalError("Could not parse version for some reason.")
+        }
+        return version
+    }
+    
+    
     class func realmISFirstCopy(findKey:ActionType)->Bool {
         if findKey == .get {
             if let value = UserDefaults.standard.object(forKey: "ISFirstCopy") {

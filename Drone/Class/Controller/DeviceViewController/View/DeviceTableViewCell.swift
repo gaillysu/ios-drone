@@ -8,11 +8,16 @@
 
 import Foundation
 import UIKit
+import MSCellAccessory
+
 class DeviceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
-        
+        separatorInset = UIEdgeInsets.zero
+        preservesSuperviewLayoutMargins = false
+        layoutMargins = UIEdgeInsets.zero
+        accessoryView = MSCellAccessory(type: DISCLOSURE_INDICATOR, color: UIColor.getTintColor())
     }
 }

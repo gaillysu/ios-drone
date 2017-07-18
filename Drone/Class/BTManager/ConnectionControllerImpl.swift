@@ -18,7 +18,6 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
      Called when a peripheral connects or disconnects
      */
     
-    
     fileprivate var mNevoBT:NevoBT?
     fileprivate var mDelegate:ConnectionControllerDelegate?
     
@@ -49,7 +48,6 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
      */
     override init() {
         super.init()
-        
         mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
         setOTAMode(false,Disconnect:true)
     }
@@ -190,11 +188,11 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
         {
             //cancel reconnect timer, make sure OTA can do connect by OTAcontroller
             disconnect()
+        }else {
+            //We don't set the profile on the NevoBT, because it could create too many issues
+            //So we destroy the previous instance and recreate one
+            mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
         }
-        
-        //We don't set the profile on the NevoBT, because it could create too many issues
-        //So we destroy the previous instance and recreate one
-        mNevoBT = NevoBTImpl(externalDelegate: self, acceptableDevice: DroneProfile())
         
     }
     

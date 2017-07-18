@@ -255,6 +255,8 @@
 		CB4ADFEC1EF7D1A400EFA956 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFEA1EF7D1A400EFA956 /* AddAlarmViewController.swift */; };
 		CB4ADFED1EF7D1A400EFA956 /* AddAlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */; };
 		CB4ADFF21EF9143A00EFA956 /* AddAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFF11EF9143A00EFA956 /* AddAlarmViewModel.swift */; };
+		CB4F13A11F186C1300D3D1D6 /* OTAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4F13A01F186C1300D3D1D6 /* OTAViewModel.swift */; };
+		CB4F13A31F18954500D3D1D6 /* FirmwareNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4F13A21F18954500D3D1D6 /* FirmwareNetworkManager.swift */; };
 		CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */; };
 		CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
 		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
@@ -281,6 +283,9 @@
 		CB9F654F1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F654D1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift */; };
 		CB9F65501EA8AB51007982B0 /* ClockSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */; };
 		CB9F65591EA9FC19007982B0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */; };
+		CBB375BF1F1C477800B9DD1D /* NordicDFUController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB375BE1F1C477800B9DD1D /* NordicDFUController.swift */; };
+		CBB375C21F1C88EA00B9DD1D /* NordicDFUDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB375C11F1C88EA00B9DD1D /* NordicDFUDelegate.swift */; };
+		CBB375C91F1C9C4A00B9DD1D /* DFUFirmware in Resources */ = {isa = PBXBuildFile; fileRef = CBB375C81F1C9C4A00B9DD1D /* DFUFirmware */; };
 		CBB892311EADB5B6006F7031 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */; };
 		CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */; };
 		CBB892371EB30491006F7031 /* AddWorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892361EB30491006F7031 /* AddWorldClockViewController.swift */; };
@@ -585,6 +590,8 @@
 		CB4ADFEA1EF7D1A400EFA956 /* AddAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmViewController.swift; path = AddAlarmViewController/AddAlarmViewController.swift; sourceTree = "<group>"; };
 		CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddAlarmViewController.xib; path = AddAlarmViewController/AddAlarmViewController.xib; sourceTree = "<group>"; };
 		CB4ADFF11EF9143A00EFA956 /* AddAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmViewModel.swift; path = ViewModel/AddAlarmViewModel/AddAlarmViewModel.swift; sourceTree = "<group>"; };
+		CB4F13A01F186C1300D3D1D6 /* OTAViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTAViewModel.swift; path = ViewModel/OTAViewModel/OTAViewModel.swift; sourceTree = "<group>"; };
+		CB4F13A21F18954500D3D1D6 /* FirmwareNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirmwareNetworkManager.swift; sourceTree = "<group>"; };
 		CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassViewController.swift; path = CompassViewController/CompassViewController.swift; sourceTree = "<group>"; };
 		CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassViewController.xib; path = CompassViewController/CompassViewController.xib; sourceTree = "<group>"; };
 		CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassTableViewCell.swift; sourceTree = "<group>"; };
@@ -611,6 +618,9 @@
 		CB9F654D1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockSettingsTableViewCell.swift; path = ClockSettingsTableViewCell/ClockSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockSettingsTableViewCell.xib; path = ClockSettingsTableViewCell/ClockSettingsTableViewCell.xib; sourceTree = "<group>"; };
 		CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		CBB375BE1F1C477800B9DD1D /* NordicDFUController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NordicDFUController.swift; sourceTree = "<group>"; };
+		CBB375C11F1C88EA00B9DD1D /* NordicDFUDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NordicDFUDelegate.swift; sourceTree = "<group>"; };
+		CBB375C81F1C9C4A00B9DD1D /* DFUFirmware */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DFUFirmware; sourceTree = "<group>"; };
 		CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CBB892361EB30491006F7031 /* AddWorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockViewController.swift; path = AddWorldClockViewController/AddWorldClockViewController.swift; sourceTree = "<group>"; };
@@ -740,6 +750,7 @@
 		00982BD01C868C89003DA5E2 /* NevoBT */ = {
 			isa = PBXGroup;
 			children = (
+				CBB375C01F1C88D600B9DD1D /* NordicDFUController */,
 				618322FD1EA0A2B90054966D /* Constants.swift */,
 				00982BD11C868C89003DA5E2 /* NevoBT.swift */,
 				00982BD21C868C89003DA5E2 /* NevoBTimpl.swift */,
@@ -753,6 +764,7 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CBB375C81F1C9C4A00B9DD1D /* DFUFirmware */,
 				61C48FC41EF3BCCE007A0709 /* Sounds */,
 				61C28CAE1EA76C680019F574 /* DefaultRealm */,
 				61C28C8C1EA617070019F574 /* Image */,
@@ -1321,6 +1333,7 @@
 				61C28C5D1EA5A03C0019F574 /* WeatherNetworkApiManager.swift */,
 				61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */,
 				61C826BE1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift */,
+				CB4F13A21F18954500D3D1D6 /* FirmwareNetworkManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1575,6 +1588,14 @@
 			name = AddAlarmViewModel;
 			sourceTree = "<group>";
 		};
+		CB4F139F1F186BFD00D3D1D6 /* OTAViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB4F13A01F186C1300D3D1D6 /* OTAViewModel.swift */,
+			);
+			name = OTAViewModel;
+			sourceTree = "<group>";
+		};
 		CB65CBDE1EB8573400D40EDD /* ProfileTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1741,6 +1762,7 @@
 		CB9F65511EA9F327007982B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CB4F139F1F186BFD00D3D1D6 /* OTAViewModel */,
 				CB4ADFF01EF9142300EFA956 /* AddAlarmViewModel */,
 				CB4ADFE21EF767C600EFA956 /* AlarmViewModel */,
 				CBB892441EB33B3D006F7031 /* CompassSectionModel */,
@@ -1750,6 +1772,15 @@
 				CBB892471EB33B3D006F7031 /* TimeSettingsSectionModel */,
 			);
 			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		CBB375C01F1C88D600B9DD1D /* NordicDFUController */ = {
+			isa = PBXGroup;
+			children = (
+				CBB375BE1F1C477800B9DD1D /* NordicDFUController.swift */,
+				CBB375C11F1C88EA00B9DD1D /* NordicDFUDelegate.swift */,
+			);
+			name = NordicDFUController;
 			sourceTree = "<group>";
 		};
 		CBB8923E1EB32692006F7031 /* Notification */ = {
@@ -2035,6 +2066,7 @@
 				CBBB5E5E1F0F22700020A037 /* OTAViewController.xib in Resources */,
 				613929121EAEE92600450284 /* default.realm in Resources */,
 				CB9192701EBC7DC300BA14E6 /* HotKeysViewController.xib in Resources */,
+				CBB375C91F1C9C4A00B9DD1D /* DFUFirmware in Resources */,
 				61C28C1A1EA46F810019F574 /* WorldClockCell.xib in Resources */,
 				CB9F652D1EA70CA9007982B0 /* CalibrateHourViewController.xib in Resources */,
 				61C28BFE1EA46F810019F574 /* MenuViewController.xib in Resources */,
@@ -2161,12 +2193,14 @@
 				61C28BD61EA46F810019F574 /* SetContactsFilterRequest.swift in Sources */,
 				CBB892501EB33BAB006F7031 /* CompassSectionModel.swift in Sources */,
 				CB91926F1EBC7DC300BA14E6 /* HotKeysViewController.swift in Sources */,
+				CB4F13A31F18954500D3D1D6 /* FirmwareNetworkManager.swift in Sources */,
 				CBF2E13D1EC04E4D00CBD61C /* UIButton+Extension.swift in Sources */,
 				61C28C7B1EA5A03C0019F574 /* StepsGetRequest.swift in Sources */,
 				61C28C261EA46F810019F574 /* UserSteps.swift in Sources */,
 				00982CC71C868C8A003DA5E2 /* NevoBT.swift in Sources */,
 				CB4ADFE61EF767F900EFA956 /* AlarmSectionViewModel.swift in Sources */,
 				CB15497A1EC01E0900090242 /* HotKeySectionModelItem.swift in Sources */,
+				CB4F13A11F186C1300D3D1D6 /* OTAViewModel.swift in Sources */,
 				615208601EFBA5B000F3F551 /* ReadCountdownTimerRequest.swift in Sources */,
 				CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */,
 				61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */,
@@ -2252,6 +2286,7 @@
 				61C28C361EA46F810019F574 /* WeatherUpdateModel.swift in Sources */,
 				61C48FBD1EF38100007A0709 /* NotificationAlertSoundController.swift in Sources */,
 				61C28BC31EA46F810019F574 /* SystemStatusPacket.swift in Sources */,
+				CBB375BF1F1C477800B9DD1D /* NordicDFUController.swift in Sources */,
 				61C28C781EA5A03C0019F574 /* NetworkRequest.swift in Sources */,
 				61C28BC21EA46F810019F574 /* SystemEventPacket.swift in Sources */,
 				61FAB9B01EBC203300513E97 /* MapTableViewController.swift in Sources */,
@@ -2348,6 +2383,7 @@
 				61C28C221EA46F810019F574 /* MEDDataBaseRequest.swift in Sources */,
 				61C28BC01EA46F810019F574 /* DronePacket.swift in Sources */,
 				61C892841F0CD28A00725D25 /* WeatherFlags.swift in Sources */,
+				CBB375C21F1C88EA00B9DD1D /* NordicDFUDelegate.swift in Sources */,
 				CBB892371EB30491006F7031 /* AddWorldClockViewController.swift in Sources */,
 				61C28C031EA46F810019F574 /* NotificationViewController.swift in Sources */,
 				61C28C4C1EA46F810019F574 /* AppTheme.swift in Sources */,

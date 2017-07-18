@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
    
-   fileprivate var isNavigation:Bool = false
+   fileprivate var isNavigation = false
+   var forcedWeatherSync = false
    var timer:Timer?
    static let RESET_STATE = "RESET_STATE"
    static let RESET_STATE_DATE = "RESET_STATE_DATE"
@@ -67,10 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       nav.isNavigationBarHidden = true
       self.window?.rootViewController = nav
       self.window?.makeKeyAndVisible()
-      
-      print(5.minutes.value)
-      self.timer = Timer(timeInterval: 300, target: self, selector: #selector(updateWeather), userInfo: nil, repeats: true)
-      self.timer?.fire()
       return true
    }
    
@@ -113,7 +110,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                self.getActivity()
             }else if(systemStatus == SystemStatus.weatherDataNeeded.rawValue){
-               if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
+               if let location = LocationManager.manager.currentLocation {
+                  self.setGPSLocalWeather(location: location)
+               }else{
+                  forcedWeatherSync = true
                   self.startLocation()
                }
             }else if(systemStatus != SystemStatus.lowMemory.rawValue && systemStatus != SystemStatus.subscribedToNotifications.rawValue) {
@@ -151,9 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
             
             if(eventCommandStatus == SystemEventStatus.weatherDataExpired.rawValue) {
-               DTUserDefaults.saveLog(message: "Weather expired.", key: "willRestoreState")
                if let location = LocationManager.manager.currentLocation {
-                  DTUserDefaults.saveLog(message: "We got a location.", key: "willRestoreState")
                   self.setGPSLocalWeather(location: location)
                }
             }
@@ -165,8 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          }
          
          if(packet.getHeader() == SetSystemConfig.HEADER()) {
-            let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
-//            self.watchConfig()
+
          }
          
          if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
@@ -188,6 +185,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
                if let location = LocationManager.manager.currentLocation {
                   self.setGPSLocalWeather(location: location)
+               }else{
+                  forcedWeatherSync = true
+                  self.startLocation()
                }
             }
          }
@@ -243,6 +243,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       let _ = AppTheme.GET_FIRMWARE_VERSION()
       if whichfirmware == DfuFirmwareTypes.application {
          let versionData:PostWatchVersionData = PostWatchVersionData(version: version, type: "BLE")
+         if let version = Double(versionData.watchVersion){
+            DTUserDefaults.lastKnownWatchVersion = version
+         }
          SwiftEventBus.post(SWIFTEVENT_BUS_FIRMWARE_VERSION_RECEIVED_KEY, sender:versionData)
       }
    }

@@ -10,8 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OTAViewController" customModule="Drone" customModuleProvider="target">
             <connections>
+                <outlet property="progressView" destination="p3B-zg-4aE" id="Qhb-Ki-OMf"/>
                 <outlet property="startButton" destination="fgd-PL-heM" id="U1f-Q5-B8J"/>
                 <outlet property="statusLabel" destination="w7K-84-alx" id="y6m-JF-dD8"/>
+                <outlet property="versionLabel" destination="VPA-Xg-SUq" id="lAA-ko-CwZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,17 +52,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QL3-Ab-tyh">
-                    <rect key="frame" x="165.5" y="84" width="44.5" height="23"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="23" id="ZSD-zt-uKf"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready to perform." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7K-84-alx">
-                    <rect key="frame" x="114.5" y="115" width="146" height="23"/>
+                    <rect key="frame" x="35" y="125" width="305" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="eFo-fF-IYd"/>
                     </constraints>
@@ -68,22 +61,40 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Version: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPA-Xg-SUq">
+                    <rect key="frame" x="35" y="84" width="305" height="17"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p3B-zg-4aE">
+                    <rect key="frame" x="84" y="223" width="207" height="2"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="progressTintColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </progressView>
             </subviews>
             <color key="backgroundColor" red="0.89411764709999997" green="0.7725490196" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="QL3-Ab-tyh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1Vn-LM-OUb"/>
                 <constraint firstItem="fgd-PL-heM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7Mq-E7-VGT"/>
+                <constraint firstItem="fgd-PL-heM" firstAttribute="trailing" secondItem="p3B-zg-4aE" secondAttribute="trailing" id="8uu-2W-uyS"/>
                 <constraint firstItem="G09-b6-gCJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="FO6-RZ-SpT"/>
+                <constraint firstItem="w7K-84-alx" firstAttribute="trailing" secondItem="G09-b6-gCJ" secondAttribute="trailing" id="G0H-Za-TSF"/>
+                <constraint firstItem="fgd-PL-heM" firstAttribute="leading" secondItem="p3B-zg-4aE" secondAttribute="leading" id="Inm-lC-OTe"/>
                 <constraint firstAttribute="trailing" secondItem="G09-b6-gCJ" secondAttribute="trailing" constant="35" id="J3c-H4-vYa"/>
+                <constraint firstItem="VPA-Xg-SUq" firstAttribute="leading" secondItem="G09-b6-gCJ" secondAttribute="leading" id="X9M-aD-8Q0"/>
                 <constraint firstItem="w7K-84-alx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XV2-fX-Cr7"/>
-                <constraint firstItem="QL3-Ab-tyh" firstAttribute="top" secondItem="G09-b6-gCJ" secondAttribute="bottom" constant="8" id="YsE-ZU-0HN"/>
                 <constraint firstItem="fgd-PL-heM" firstAttribute="top" secondItem="IVu-dx-fFP" secondAttribute="bottom" constant="44" id="b6o-Wc-AKU"/>
                 <constraint firstItem="IVu-dx-fFP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="dOv-dR-BY0"/>
                 <constraint firstItem="IVu-dx-fFP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ihC-s6-K1n"/>
+                <constraint firstItem="w7K-84-alx" firstAttribute="leading" secondItem="G09-b6-gCJ" secondAttribute="leading" id="j6J-VP-uqz"/>
                 <constraint firstItem="G09-b6-gCJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="jJW-Hh-4j2"/>
-                <constraint firstItem="w7K-84-alx" firstAttribute="top" secondItem="QL3-Ab-tyh" secondAttribute="bottom" constant="8" id="y36-wY-hNQ"/>
+                <constraint firstItem="VPA-Xg-SUq" firstAttribute="trailing" secondItem="G09-b6-gCJ" secondAttribute="trailing" id="keE-s9-ccz"/>
+                <constraint firstItem="w7K-84-alx" firstAttribute="top" secondItem="VPA-Xg-SUq" secondAttribute="bottom" constant="24" id="khD-an-RG9"/>
+                <constraint firstItem="IVu-dx-fFP" firstAttribute="top" secondItem="p3B-zg-4aE" secondAttribute="bottom" constant="24" id="p2q-Ji-DZ0"/>
+                <constraint firstItem="VPA-Xg-SUq" firstAttribute="top" secondItem="G09-b6-gCJ" secondAttribute="bottom" constant="8" id="pcw-S2-eqY"/>
             </constraints>
-            <point key="canvasLocation" x="-387.5" y="147.5"/>
+            <point key="canvasLocation" x="-388.5" y="146.5"/>
         </view>
     </objects>
     <resources>

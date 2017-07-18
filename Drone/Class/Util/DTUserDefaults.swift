@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RxSwift
 
-let syncWeatherInterval:Double = 300 //seconds
+let syncWeatherInterval:Double = 100 //seconds
 public class DTUserDefaults: NSObject {
     
     private static let SETUP_KEY = "SETUP_KEY"
@@ -34,6 +35,9 @@ public class DTUserDefaults: NSObject {
     private static let ENABLED_ALL_NOTIFICATIONS_KEY = "ENABLED_ALL_NOTIFICATIONS_KEY"
     private static let LAST_VISITED_CITIES_KEY = "LAST_VISITED_CITIES_KEY"
     
+    private static let LAST_OTA_VERSION_CHECK_KEY = "LAST_OTA_VERSION_CHECK_KEY"
+    private static let LAST_KNOWN_WATCH_VERSION_KEY = "LAST_KNOWN_WATCH_VERSION_KEY"
+    private static let LAST_KNOWN_OTA_VERSION_KEY = "LAST_KNOWN_OTA_VERSION_KEY"
     
     // MARK: Setup
     public static var setupKey:Bool {
@@ -237,6 +241,43 @@ public class DTUserDefaults: NSObject {
         set { UserDefaults().set(newValue, forKey: LAST_VISITED_CITIES_KEY) }
     }
     
+    public static var lastKnownWatchVersion:Double {
+        get{ return UserDefaults().double(forKey: LAST_KNOWN_WATCH_VERSION_KEY) }
+        set { UserDefaults().set(newValue, forKey: LAST_KNOWN_WATCH_VERSION_KEY) }
+    }
+    
+    public static var lastKnownWatchVersionObservable:Observable<Double?> {
+        get{ return UserDefaults().rx.observe(Double.self, LAST_KNOWN_WATCH_VERSION_KEY) }
+    }
+    
+    
+    
+    public static var lastOtaVersionCheck:Date{
+        get{
+            if let date = UserDefaults().object(forKey: LAST_OTA_VERSION_CHECK_KEY) as? Date{
+                return date
+            }
+            return Date(timeIntervalSince1970: 0)
+        }
+        set{ UserDefaults().set(newValue, forKey: LAST_OTA_VERSION_CHECK_KEY) }
+    }
+    
+    public static var lastOtaVersionCheckObservable:Observable<Date?> {
+        get{ return UserDefaults().rx.observe(Date.self, LAST_OTA_VERSION_CHECK_KEY) }
+    }
+    
+    public static var lastKnownOtaVersion:Float{
+        get{ return UserDefaults().float(forKey: LAST_KNOWN_WATCH_VERSION_KEY) }
+        set { UserDefaults().set(newValue, forKey: LAST_KNOWN_WATCH_VERSION_KEY) }
+    }
+    
+    public static var lastKnownOtaVersionObservable:Observable<Float?> {
+        get{ return UserDefaults().rx.observe(Float.self, LAST_KNOWN_WATCH_VERSION_KEY) }
+    }
+}
+
+// BS
+extension DTUserDefaults{
     
     public static func saveLog(message:String, key:String, reset:Bool = false){
         

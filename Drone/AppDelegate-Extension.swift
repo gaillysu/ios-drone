@@ -388,8 +388,9 @@ extension AppDelegate {
     func startLocation() {
         LocationManager.manager.startLocation()
         LocationManager.manager.didUpdateLocations = { location in
-            if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
-                if let location = LocationManager.manager.currentLocation {
+            if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval  || self.forcedWeatherSync{
+                if let location = LocationManager.manager.currentLocation{
+                    self.forcedWeatherSync = false
                     self.setGPSLocalWeather(location: location)
                 }
             }
