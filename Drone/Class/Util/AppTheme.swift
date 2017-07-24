@@ -83,56 +83,6 @@ class AppTheme {
         return nil
     }
     
-     /**
-     Get the FW build-in version by parse the file name
-     BLE file: imaze_20150512_v29.hex ,keyword:_v, .hex
-     return: 29
-     */
-    class func GET_FIRMWARE_VERSION() ->Int
-    {
-        var buildinFirmwareVersion:Int  = 0
-        let fileArray = GET_FIRMWARE_FILES("Firmwares")
-        for tmpfile in fileArray {
-            let selectedFile:URL = tmpfile as! URL
-            let fileName:NSString? = (selectedFile.path as NSString).lastPathComponent as NSString?
-            let fileExtension:String? = selectedFile.pathExtension
-
-            if fileExtension == "hex"
-            {
-                let ran:NSRange = fileName!.range(of: "_v")
-                let ran2:NSRange = fileName!.range(of: ".hex")
-                let string:String = fileName!.substring(with: NSRange(location: ran.location + ran.length,length: ran2.location-ran.location-ran.length))
-                buildinFirmwareVersion = Int(string)!
-                break
-            }
-        }
-
-        return buildinFirmwareVersion
-    }
-    /**
-     Get the FW build-in version by parse the file name
-     MCU file: iMaze_v12.bin ,keyword:_v, .bin
-     return: 12
-     */
-    class func GET_SOFTWARE_VERSION() ->Int {
-        var buildinSoftwareVersion:Int  = 0
-        let fileArray = GET_FIRMWARE_FILES("Firmwares")
-        for tmpfile in fileArray {
-            let selectedFile = tmpfile as! URL
-            let fileName:NSString? = (selectedFile.path as NSString).lastPathComponent as NSString?
-            let fileExtension:String? = selectedFile.pathExtension
-
-            if fileExtension == "bin" {
-                let ran:NSRange = fileName!.range(of: "_v")
-                let ran2:NSRange = fileName!.range(of: ".bin")
-                let string:String = fileName!.substring(with: NSRange(location: ran.location + ran.length,length: ran2.location-ran.location-ran.length))
-                buildinSoftwareVersion = Int(string)!
-                break
-            }
-        }
-
-        return buildinSoftwareVersion
-    }
     /**
      Get or get the resource path of the array
 
@@ -170,18 +120,7 @@ class AppTheme {
         }
         return str
     }
-
-
-    class func GET_RESOURCES_FILE(_ fileName:String) ->[URL]  {
-        var fileURL:[URL]  = []
-        let fileArray = GET_FIRMWARE_FILES(fileName)
-        for tmpfile in fileArray {
-            let selectedFile = tmpfile as! URL
-            fileURL.append(selectedFile)
-        }
-        return fileURL
-    }
-
+ 
     class func isEmail(_ email:String)->Bool{
         let currObject:String = email
         let predicateStr:String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
@@ -200,16 +139,7 @@ class AppTheme {
         return object.isEmpty
     }
     
-    class func timerFormatValue(value:Double)->String {
-        let hours:Int = Int(value).hours.hour!
-        let minutes:Int = Int((value-Double(hours))*60).minutes.minute!
-        if hours == 0 {
-            return String(format:"%d m",minutes)
-        }
-        return String(format:"%d h %d m",hours,minutes)
-    }
-    
-    class func firmwareVersionFrom(path:URL) -> Double{
+    class func firmwareVersionFrom(path:URL) -> Double {
         let str = path.absoluteString
         let begin = str.range(of: "dayton_SW_")!.lowerBound
         let range = begin..<str.endIndex
@@ -225,7 +155,6 @@ class AppTheme {
         }
         return version
     }
-    
     
     class func realmISFirstCopy(findKey:ActionType)->Bool {
         if findKey == .get {

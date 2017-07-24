@@ -23,23 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    var window: UIWindow?
    //Let's sync every days
-   let SYNC_INTERVAL:TimeInterval = 0*30*60 //unit is second in iOS, every 30min, do sync
-   let LAST_SYNC_DATE_KEY = "LAST_SYNC_DATE_KEY"
    fileprivate var mConnectionController : ConnectionControllerImpl?
    fileprivate var currentDay:UInt8 = 0
-   fileprivate var mAlertUpdateFW = false
-   fileprivate var masterCockroaches:[UUID:Int] = [:]
    
    fileprivate var worldclockDatabaseHelper: WorldClockDatabaseHelper?
    
    fileprivate var isNavigation = false
    var forcedWeatherSync = false
+
    var timer:Timer?
    static let RESET_STATE = "RESET_STATE"
-   static let RESET_STATE_DATE = "RESET_STATE_DATE"
-   let SETUP_KEY = "SETUP_KEY"
-   
-   
    
    class func getAppDelegate()->AppDelegate {
       return UIApplication.shared.delegate as! AppDelegate
@@ -163,7 +156,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          }
          
          if(packet.getHeader() == SetSystemConfig.HEADER()) {
-
+            if (DTUserDefaults.setupKey){
+               self.watchConfig()
+            }
          }
          
          if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
@@ -239,8 +234,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    }
    
    func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:String) {
-      let _ = AppTheme.GET_SOFTWARE_VERSION()
-      let _ = AppTheme.GET_FIRMWARE_VERSION()
       if whichfirmware == DfuFirmwareTypes.application {
          let versionData:PostWatchVersionData = PostWatchVersionData(version: version, type: "BLE")
          if let version = Double(versionData.watchVersion){
@@ -289,14 +282,11 @@ extension AppDelegate{
       
       self.setStepsToWatch()
       print("setStepsToWatch")
+      DTUserDefaults.setupKey = false
    }
    
    func setNotification() {
-      let force = DTUserDefaults.setupKey
-      if (force){
-         DTUserDefaults.setupKey = false
-      }
-      sendRequest(SetNotificationRequest(mode: 1, force:  force ? 1 : 0))
+      sendRequest(SetNotificationRequest(mode: 1, force: DTUserDefaults.setupKey ? 1 : 0))
    }
    
    func updateNotification() {

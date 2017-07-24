@@ -23,7 +23,7 @@ class SandboxManager: NSObject {
         let fileResources = AppTheme.GET_FIRMWARE_FILES(folderName)
         if fileResources.count > 0 {
             let documentPath:String = self.documentPath().appending("/\(projectName)/")
-            let url:URL = fileResources[0] as! URL
+            let url = fileResources[0] 
             let localDict:NSDictionary = NSDictionary(contentsOf: url)!
             let fileManager:FileManager  = FileManager.default;
             if !fileManager.isExecutableFile(atPath: documentPath) {

@@ -35,7 +35,7 @@ class FirmwareNetworkManager: NSObject {
             .responseJSON { response in
                 if response.result.error == nil {
                     let response = JSON(response.result.value as? NSDictionary ?? [:])
-                    if let version = response["version"].double, let description = response["description"].string, let dateString = response["date"].string, let filename = response["filename"].string {
+                    if let version = response["version"].double, let description = response["description"].string, let _ = response["date"].string, let filename = response["filename"].string {
                         
                         DTUserDefaults.lastOtaVersionCheck = Date()
                         DTUserDefaults.lastKnownOtaVersion = Double(version)

@@ -21,7 +21,7 @@ class GoogleMapRoadsNetworkManager: NSObject {
     fileprivate func executeMEDRequest(request :NetworkRequest){
         if let urlPart = request.url, let encoding = request.encoding, let method = request.method {
             let url = GoogleMapRoadsNetworkManager.baseURL + urlPart
-            let datarequest = Alamofire.request(url, method: method, parameters: request.parameters, encoding: encoding, headers: request.headers).responseJSON(completionHandler: { response in
+            _ = Alamofire.request(url, method: method, parameters: request.parameters, encoding: encoding, headers: request.headers).responseJSON(completionHandler: { response in
                 let result = self.isValidResponse(response: response)
                 request.response(result.success, result.json, result.error)
             })

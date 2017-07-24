@@ -39,9 +39,9 @@ extension UIViewController {
     }
     
     fileprivate func createBarButtonItem(withAction action:Selector, withImage image:UIImage) -> UIBarButtonItem{
-        let button: UIButton = UIButton(type: UIButtonType.custom)
+        let button: UIButton = UIButton(type: .custom)
         button.setImage(image, for: UIControlState())
-        button.addTarget(self, action: action, for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: action, for: .touchUpInside)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         return UIBarButtonItem(customView: button)
     }
@@ -51,8 +51,8 @@ extension UIViewController {
         navigationController.navigationBar.setBackgroundImage(UIImage(named: "gradually"), for: UIBarMetrics.default)
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
         navigationController.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
-        navigationController.navigationBar.barTintColor = UIColor.getBaseColor()
-        navigationController.navigationBar.tintColor = UIColor.white
+        navigationController.navigationBar.barTintColor = .getBaseColor()
+        navigationController.navigationBar.tintColor = .white
         navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.isHidden = false
         navigationController.navigationItem.setHidesBackButton(false, animated: true)

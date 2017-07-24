@@ -29,7 +29,8 @@ class WorldClockUtil: NSObject {
         // not sure if this works
         let dateInUTC = Calendar.current.date(from: utcComp)!
 
-        if let unpackedTime = time.dateFromFormat("HH:mm:ss.SSS"){
+        
+        if let unpackedTime = time.dateFromFormat("HH:mm:ss.SSS", locale: Locale.current){
             return dateInUTC.changed(year: dateInUTC.year, month: month, day: dateInMonth, hour: unpackedTime.hour, minute: unpackedTime.minute, second: 0)!
         }else{
             print("Couldn't parse Time in timezone!!")

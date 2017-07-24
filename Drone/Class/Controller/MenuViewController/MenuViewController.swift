@@ -49,11 +49,6 @@ class MenuViewController: BaseViewController  {
             StepsManager.sharedInstance.syncLastSevenDaysData()
         }
         
-        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY) { (notification) -> Void in
-            let data:[UInt8] = Constants.NSData2Bytes((notification.object as! RawPacketImpl).getRawData())
-            NSLog("SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY  :\(data)")
-        }
-        
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
             if(connectionState){
@@ -71,7 +66,7 @@ class MenuViewController: BaseViewController  {
             var dayDateArray:[Date] = []
             for steps in stepsArray{
                 let userSteps:UserSteps = steps as! UserSteps
-                let date:Date = Date(timeIntervalSince1970: userSteps.date).beginningOfDay
+                let date = Date(timeIntervalSince1970: userSteps.date).beginningOfDay
                 
                 dayDateArray.append(date)
             }
@@ -83,20 +78,19 @@ class MenuViewController: BaseViewController  {
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
             let data:PostActivityData = notification.object as! PostActivityData
-            let steps:Int = data.step
-            let timerInterval:Int = data.stepsDate
+            let steps = data.step
+            let timerInterval = data.stepsDate
             if (steps != 0) {
                 let stepsArray = UserSteps.getFilter("date == \(timerInterval)")
                 if(stepsArray.count>0) {
                     let step:UserSteps = stepsArray[0] as! UserSteps
-                    NSLog("Data that has been saved····")
                     let realm = try! Realm()
                     try! realm.write({
                         step.steps = steps
                         step.date = TimeInterval(timerInterval)
                         step.syncnext = true
                     })
-                }else {
+                } else {
                     let stepsModel:UserSteps = UserSteps()
                     stepsModel.id = Int(Date().timeIntervalSince1970)
                     stepsModel.distance = 0
@@ -176,7 +170,7 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        collectionView.cellForItem(at: indexPath)?.backgroundColor = UIColor.white
+        collectionView.cellForItem(at: indexPath)?.backgroundColor = .white
     }
 }
 

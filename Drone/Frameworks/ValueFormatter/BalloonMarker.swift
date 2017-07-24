@@ -46,7 +46,7 @@ open class BalloonMarker:NSUIView, IMarker
     
     public init(color: UIColor, font: UIFont, insets: UIEdgeInsets) {
         super.init(frame: CGRect(x: 0, y: 0, width: 50, height: 35))
-            
+        
         self.color = color
         self.font = font
         self.insets = insets
@@ -90,7 +90,7 @@ open class BalloonMarker:NSUIView, IMarker
     }
     
     open var size: CGSize { return _size; }
-
+    
     open func draw(context: CGContext, point: CGPoint) {
         if (labelns == nil) {
             return
@@ -151,13 +151,19 @@ open class BalloonMarker:NSUIView, IMarker
         #endif
     }
     
-    open  func refreshContent(entry: ChartDataEntry, highlight: Highlight)
-    {
+    open  func refreshContent(entry: ChartDataEntry, highlight: Highlight){
         let label = entry.y.description
         if markerType == .stepsChartType {
             labelns = String(format: "%d", label.toInt())
         }else{
-            labelns = String(format: "%@", AppTheme.timerFormatValue(value: label.toDouble()))
+            let value = label.toDouble()
+            let hours:Int = Int(value).hours.hour!
+            let minutes:Int = Int((value-Double(hours))*60).minutes.minute!
+            if hours == 0 {
+                labelns = String(format:"%d m",minutes)
+            }else {
+                labelns = String(format:"%d h %d m",hours,minutes)
+            }
         }
         
         _drawAttributes.removeAll()

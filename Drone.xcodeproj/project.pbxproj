@@ -500,12 +500,12 @@
 		61C28B991EA46F810019F574 /* Timezone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timezone.swift; sourceTree = "<group>"; };
 		61C28BAE1EA46F810019F574 /* StepsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsManager.swift; sourceTree = "<group>"; };
 		61C28BB01EA46F810019F574 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
-		61C28BB11EA46F810019F574 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		61C28BB11EA46F810019F574 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "../../Class/Util/UIColor+Extension.swift"; sourceTree = "<group>"; };
 		61C28BB21EA46F810019F574 /* DTUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTUserDefaults.swift; sourceTree = "<group>"; };
 		61C28BB31EA46F810019F574 /* EventBusKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusKeys.swift; sourceTree = "<group>"; };
 		61C28BB61EA46F810019F574 /* SyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
 		61C28BB71EA46F810019F574 /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
-		61C28BB81EA46F810019F574 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		61C28BB81EA46F810019F574 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "../../Class/Util/UIView+Extension.swift"; sourceTree = "<group>"; };
 		61C28BBA1EA46F810019F574 /* WorldClockUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockUtil.swift; sourceTree = "<group>"; };
 		61C28C5A1EA5A03C0019F574 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		61C28C5B1EA5A03C0019F574 /* StepsNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsNetworkManager.swift; sourceTree = "<group>"; };
@@ -558,14 +558,14 @@
 		61C892851F0E2E3800725D25 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGeocodeRequest.swift; sourceTree = "<group>"; };
 		61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsBaseRequest.swift; sourceTree = "<group>"; };
-		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bundle+Extension.swift"; path = "../../Class/Util/Bundle+Extension.swift"; sourceTree = "<group>"; };
 		61D4709E1DE2E07700620BD0 /* SandboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxManager.swift; sourceTree = "<group>"; };
 		61D470A01DE2E47E00620BD0 /* NotificationTypeFile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NotificationTypeFile; sourceTree = "<group>"; };
 		61FAB9A81EBC177000513E97 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		61FAB9AE1EBC203300513E97 /* MapTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewController.swift; sourceTree = "<group>"; };
 		61FAB9B31EBC241D00513E97 /* MapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewCell.swift; sourceTree = "<group>"; };
 		61FAB9B41EBC241D00513E97 /* MapViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewCell.xib; sourceTree = "<group>"; };
-		61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PulleyViewController+Extension.swift"; sourceTree = "<group>"; };
+		61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PulleyViewController+Extension.swift"; path = "../../Class/Util/PulleyViewController+Extension.swift"; sourceTree = "<group>"; };
 		61FAB9BA1EBC4E2D00513E97 /* MapNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNavigationViewController.swift; sourceTree = "<group>"; };
 		61FAB9C21EBC670800513E97 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		61FAB9C41EC064EA00513E97 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
@@ -619,12 +619,12 @@
 		CB9F65471EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockSettingsTableViewCellSwitch.xib; path = ClockSettingsTableViewCell/ClockSettingsTableViewCellSwitch.xib; sourceTree = "<group>"; };
 		CB9F654D1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockSettingsTableViewCell.swift; path = ClockSettingsTableViewCell/ClockSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClockSettingsTableViewCell.xib; path = ClockSettingsTableViewCell/ClockSettingsTableViewCell.xib; sourceTree = "<group>"; };
-		CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Extension.swift"; path = "../../Class/Util/UITableView+Extension.swift"; sourceTree = "<group>"; };
 		CBB375BE1F1C477800B9DD1D /* NordicDFUController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NordicDFUController.swift; sourceTree = "<group>"; };
 		CBB375C11F1C88EA00B9DD1D /* NordicDFUDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NordicDFUDelegate.swift; sourceTree = "<group>"; };
 		CBB375C81F1C9C4A00B9DD1D /* DFUFirmware */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DFUFirmware; sourceTree = "<group>"; };
-		CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
-		CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableViewCell+Extension.swift"; path = "../../Class/Util/UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionViewCell+Extension.swift"; path = "../../Class/Util/UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CBB892361EB30491006F7031 /* AddWorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockViewController.swift; path = AddWorldClockViewController/AddWorldClockViewController.swift; sourceTree = "<group>"; };
 		CBB892381EB3049A006F7031 /* AddWorldClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWorldClockViewController.xib; path = AddWorldClockViewController/AddWorldClockViewController.xib; sourceTree = "<group>"; };
 		CBB8923A1EB304BE006F7031 /* DidSelectedDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DidSelectedDelegate.swift; path = AddWorldClockViewController/DidSelectedDelegate.swift; sourceTree = "<group>"; };
@@ -647,7 +647,7 @@
 		CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassCalibrationViewController.xib; path = CompassCalibrationViewController/CompassCalibrationViewController.xib; sourceTree = "<group>"; };
 		CBE8FDF51F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectNewHomeTimeViewController.swift; path = SelectNewHomeTimeViewController/SelectNewHomeTimeViewController.swift; sourceTree = "<group>"; };
 		CBE8FDF61F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectNewHomeTimeViewController.xib; path = SelectNewHomeTimeViewController/SelectNewHomeTimeViewController.xib; sourceTree = "<group>"; };
-		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Extension.swift"; path = "../../Class/Util/UIButton+Extension.swift"; sourceTree = "<group>"; };
 		CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmViewController.swift; path = AlarmViewController/AlarmViewController.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1312,16 +1312,8 @@
 				61C28BB31EA46F810019F574 /* EventBusKeys.swift */,
 				61C28BB61EA46F810019F574 /* SyncQueue.swift */,
 				61C28BB71EA46F810019F574 /* TimeUtil.swift */,
-				61C28BB11EA46F810019F574 /* UIColor+Extension.swift */,
-				CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */,
-				CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */,
-				61C28BB81EA46F810019F574 /* UIView+Extension.swift */,
 				61C28BBA1EA46F810019F574 /* WorldClockUtil.swift */,
-				CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */,
 				CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */,
-				CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */,
-				61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */,
-				61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */,
 				CB56F0521F2590B4007D66E3 /* FirmwareStorage.swift */,
 			);
 			path = Util;
@@ -1371,16 +1363,24 @@
 		61C28C891EA600CF0019F574 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				61C892851F0E2E3800725D25 /* Date+Extension.swift */,
 				6120B43D1F09F19900C94D77 /* Array+Extension.swift */,
+				61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */,
+				61FAB9C61EC15E9B00513E97 /* CLGeocoder+Extension.swift */,
+				61C892851F0E2E3800725D25 /* Date+Extension.swift */,
+				613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */,
 				613928F81EAA026B00450284 /* Double+Extension.swift */,
 				613928F91EAA026B00450284 /* Float+Extension.swift */,
 				613928FA1EAA026B00450284 /* Int+Extension.swift */,
-				613928FB1EAA026B00450284 /* String+Extension.swift */,
-				61C28CB11EA83FFB0019F574 /* URL+Extension.swift */,
-				613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */,
 				61FAB9C41EC064EA00513E97 /* MKPlacemark+Extension.swift */,
-				61FAB9C61EC15E9B00513E97 /* CLGeocoder+Extension.swift */,
+				61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */,
+				613928FB1EAA026B00450284 /* String+Extension.swift */,
+				CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */,
+				CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */,
+				61C28BB11EA46F810019F574 /* UIColor+Extension.swift */,
+				CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */,
+				CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */,
+				61C28BB81EA46F810019F574 /* UIView+Extension.swift */,
+				61C28CB11EA83FFB0019F574 /* URL+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1967,7 +1967,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Cloud;
 				TargetAttributes = {
 					00982A651C868B15003DA5E2 = {
@@ -2556,6 +2556,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2580,6 +2581,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDE2361127B9E9E04C9E2D15 /* Pods-Drone.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
