@@ -112,11 +112,6 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     fileprivate func upgradeWatch(){
-        guard let url = AppTheme.GET_FIRMWARE_FILES("DFUFirmware").first else{
-            fatalError("Could not open Firmware file for some reason")
-        }
-        let firmwareVersion = AppTheme.firmwareVersionFrom(path: url)
-        let currentVersion = DTUserDefaults.lastKnownWatchVersion
         
         if !AppDelegate.getAppDelegate().isConnected(){
             let banner = Banner(title: "Watch is not connected", subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
@@ -124,16 +119,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             banner.show(duration: 1.2)
             return
         }
-        if firmwareVersion >= currentVersion{
-            let alertView = UIAlertController(title: "Newest Version", message: "You already got the newest version, do you wish to proceed?", preferredStyle: .alert)
-            alertView.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-                self.navigationController?.pushViewController(OTAViewController(), animated: true)
-            }))
-            alertView.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-            self.present(alertView, animated: true, completion: nil)
-        }else{
-            self.navigationController?.pushViewController(OTAViewController(), animated: true)
-        }
+        self.navigationController?.pushViewController(OTAViewController(), animated: true)
     }
 }
 

@@ -289,7 +289,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 }
             }
         }
-        
     }
     
     /**

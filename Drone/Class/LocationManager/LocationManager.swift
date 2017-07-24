@@ -67,7 +67,6 @@ class LocationManager: NSObject {
     }
     
     func startLocation() {
-        print("Karl: Start Location woohoo")
         if locationEnabled {
             _locationManager?.startUpdatingLocation()
         } else {
@@ -78,23 +77,8 @@ class LocationManager: NSObject {
     }
     
     func stopLocation() {
-        print("Karl: stopLocation")
         if locationEnabled {
             _locationManager?.stopUpdatingLocation()
-        }
-    }
-    
-    func startWithTimer(interval:TimeInterval){
-        print("Karl: Start with timer")
-        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(startLocation), userInfo: nil, repeats: true)
-    }
-    
-    func stopWithTimer(){
-        print("Karl: Stop with timer")
-        if let _ = timer {
-            stopLocation()
-            timer?.invalidate()
-            timer = nil
         }
     }
 }
@@ -105,7 +89,6 @@ extension LocationManager:CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        print("Karl: Did Location Update = \(Date().iso8601)")
         didUpdateLocations?(locations);
         if currentLocation == nil {
             location = locations.last

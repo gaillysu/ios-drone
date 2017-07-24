@@ -266,13 +266,13 @@ public class DTUserDefaults: NSObject {
         get{ return UserDefaults().rx.observe(Date.self, LAST_OTA_VERSION_CHECK_KEY) }
     }
     
-    public static var lastKnownOtaVersion:Float{
-        get{ return UserDefaults().float(forKey: LAST_KNOWN_WATCH_VERSION_KEY) }
+    public static var lastKnownOtaVersion:Double{
+        get{ return UserDefaults().double(forKey: LAST_KNOWN_WATCH_VERSION_KEY) }
         set { UserDefaults().set(newValue, forKey: LAST_KNOWN_WATCH_VERSION_KEY) }
     }
     
-    public static var lastKnownOtaVersionObservable:Observable<Float?> {
-        get{ return UserDefaults().rx.observe(Float.self, LAST_KNOWN_WATCH_VERSION_KEY) }
+    public static var lastKnownOtaVersionObservable:Observable<Double?> {
+        get{ return UserDefaults().rx.observe(Double.self, LAST_KNOWN_WATCH_VERSION_KEY) }
     }
 }
 

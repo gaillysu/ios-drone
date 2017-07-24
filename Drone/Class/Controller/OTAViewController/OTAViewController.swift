@@ -24,34 +24,78 @@ class OTAViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "OTA"
         startButton.rx.tap.subscribe({ _ in
             self.startButton.enable(bool: false)
             self.navigationItem.hidesBackButton = true
+            
             self.otaViewModel
                 .statusObservable
                 .map({ state -> String in
-                    if state == DFUState.completed || state == DFUState.aborted {
+                    if state.status == DFUState.completed.rawValue || state.status == DFUState.aborted.rawValue {
                         self.navigationItem.hidesBackButton = false
                         AppDelegate.getAppDelegate().setAppConfig()
+                    }else if state.status == -1 {
+                        self.navigationItem.hidesBackButton = false
+                        self.startButton.titleLabel?.text = "Try again"
+                    }else if state.status == -2 {
+                        self.showNoInternetDialog()
                     }
-                return state.description()
+                    return state.message
                 })
                 .bind(to: self.statusLabel.rx.text)
                 .addDisposableTo(self.disposeBag)
             self.otaViewModel.startDfu()
         }).addDisposableTo(disposeBag)
         
-        self.versionLabel.text = otaViewModel.versionStatusString
+        otaViewModel
+            .versionStatusString
+            .bind(to: versionLabel.rx.text)
+            .addDisposableTo(disposeBag)
         
-        otaViewModel.uploadProcessObservable.subscribe { event in
-            if let progress = event.element{
-                self.progressView.setProgress(Float(progress)/100.0, animated: true)
-            }
-        }.addDisposableTo(disposeBag)
+        otaViewModel
+            .uploadProcessObservable.subscribe { event in
+                if let progress = event.element{
+                    self.progressView.setProgress(Float(progress)/100.0, animated: true)
+                }
+            }.addDisposableTo(disposeBag)
     }
     
     func closeButtonAction(){
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func showNoInternetDialog(){
+        let alertView = UIAlertController(title: "No network connection", message: "Cannot get the newest firmware. Would you like to use the local firmware to do OTA?", preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            self.checkLocalDFU()
+        }))
+        alertView.addAction(UIAlertAction(title: "No", style: .cancel, handler: { _ in
+            self.navigationItem.hidesBackButton = false
+            self.startButton.titleLabel?.text = "Start"
+            self.startButton.enable(bool: true)
+        }))
+        self.present(alertView, animated: true, completion: nil)
+
+    }
+    
+    func checkLocalDFU(){
+        guard let url = AppTheme.GET_FIRMWARE_FILES("DFUFirmware").first else{
+            fatalError("Could not open Firmware file for some reason")
+        }
+        let firmwareVersion = AppTheme.firmwareVersionFrom(path: url)
+        let currentVersion = DTUserDefaults.lastKnownWatchVersion
+        
+        if firmwareVersion >= currentVersion{
+            let alertView = UIAlertController(title: "Newest Version", message: "You already got the newest or a newer version, do you wish to proceed?", preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                self.otaViewModel.startDfu()
+            }))
+            alertView.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alertView, animated: true, completion: nil)
+        }else{
+            self.otaViewModel.startDfu()
+        }
+    }
+    
 }

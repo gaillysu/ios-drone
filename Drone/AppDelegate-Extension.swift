@@ -262,11 +262,11 @@ extension AppDelegate {
     }
     
     // MARK: - ConnectionController protocol
-    func  getFirmwareVersion() -> String{
+    func  getFirmwareVersion() -> String {
         return isConnected() ? self.getMconnectionController()!.getFirmwareVersion() : "0"
     }
     
-    func  getSoftwareVersion() -> String{
+    func  getSoftwareVersion() -> String {
         return isConnected() ? self.getMconnectionController()!.getSoftwareVersion() : "0"
     }
     
@@ -317,9 +317,7 @@ extension AppDelegate {
         if weatherArray.count>0 {
             let setWeatherRequest:SetWeatherLocationsRequest = SetWeatherLocationsRequest(entries: weatherArray)
             sendRequest(setWeatherRequest)
-            
             for model in weatherArray {
-                
                 WeatherNetworkApiManager.manager.getWeatherInfo(coordinate:(model.title, latitude: model.latitude, longitude: model.longitude), id: Int(model.id)) { (cityid, temp, icon) in
                     let updateModel:WeatherUpdateModel = WeatherUpdateModel(id: UInt8(cityid), temp: temp, statusIcon: WeatherNetworkApiManager.manager.getWeatherStatusCode(icon: icon))
                     

@@ -257,6 +257,7 @@
 		CB4ADFF21EF9143A00EFA956 /* AddAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFF11EF9143A00EFA956 /* AddAlarmViewModel.swift */; };
 		CB4F13A11F186C1300D3D1D6 /* OTAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4F13A01F186C1300D3D1D6 /* OTAViewModel.swift */; };
 		CB4F13A31F18954500D3D1D6 /* FirmwareNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4F13A21F18954500D3D1D6 /* FirmwareNetworkManager.swift */; };
+		CB56F0531F2590B4007D66E3 /* FirmwareStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F0521F2590B4007D66E3 /* FirmwareStorage.swift */; };
 		CB715FAA1EA5CDF4005B5C22 /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */; };
 		CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
 		CB715FB41EA5F20E005B5C22 /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
@@ -592,6 +593,7 @@
 		CB4ADFF11EF9143A00EFA956 /* AddAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmViewModel.swift; path = ViewModel/AddAlarmViewModel/AddAlarmViewModel.swift; sourceTree = "<group>"; };
 		CB4F13A01F186C1300D3D1D6 /* OTAViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTAViewModel.swift; path = ViewModel/OTAViewModel/OTAViewModel.swift; sourceTree = "<group>"; };
 		CB4F13A21F18954500D3D1D6 /* FirmwareNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirmwareNetworkManager.swift; sourceTree = "<group>"; };
+		CB56F0521F2590B4007D66E3 /* FirmwareStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirmwareStorage.swift; sourceTree = "<group>"; };
 		CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassViewController.swift; path = CompassViewController/CompassViewController.swift; sourceTree = "<group>"; };
 		CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassViewController.xib; path = CompassViewController/CompassViewController.xib; sourceTree = "<group>"; };
 		CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompassTableViewCell.swift; sourceTree = "<group>"; };
@@ -1320,6 +1322,7 @@
 				CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */,
 				61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */,
 				61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */,
+				CB56F0521F2590B4007D66E3 /* FirmwareStorage.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -2172,6 +2175,7 @@
 				61FAB9C51EC064EA00513E97 /* MKPlacemark+Extension.swift in Sources */,
 				CB9F65241EA610C5007982B0 /* Compass.swift in Sources */,
 				CB4ADFE41EF767E700EFA956 /* AlarmViewModel.swift in Sources */,
+				CB56F0531F2590B4007D66E3 /* FirmwareStorage.swift in Sources */,
 				61C28BD01EA46F810019F574 /* GetWorldClockRequest.swift in Sources */,
 				61C28C741EA5A03C0019F574 /* BasePostRequest.swift in Sources */,
 				61C28C531EA46F810019F574 /* TimeUtil.swift in Sources */,
