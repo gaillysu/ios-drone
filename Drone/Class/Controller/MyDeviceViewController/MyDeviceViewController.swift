@@ -50,22 +50,17 @@ class MyDeviceViewController: BaseViewController {
         }
         
         for cont in viewControllers {
-            print("2")
             view.willRemoveSubview(cont.view!)
             cont.removeFromParentViewController()
-            
         }
-        print("3")
         viewControllers.removeAll()
         for _ in UserDevice.findAll() {
-            print("4")
             let viewController = DeviceViewController()
             viewController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.devicesView.frame.size.height)
             viewControllers.append(viewController)
         }
         
         if(viewControllers.count > 0){
-            print("5")
             viewControllers[0].leftRightButtonsNeeded = false
             let options = PagingMenuOptions(controllers: viewControllers)
             pagingMenuController = PagingMenuController(options: options)
