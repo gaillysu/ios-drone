@@ -43,36 +43,43 @@ class MyDeviceViewController: BaseViewController {
     }
     
     func reloadDeviceControllers() {
-        
         if let pagingMenuController = self.pagingMenuController{
             pagingMenuController.removeFromParentViewController()
+            view.willRemoveSubview((self.pagingMenuController?.view)!)
+            self.pagingMenuController = nil
         }
+        
         for cont in viewControllers {
+            print("2")
+            view.willRemoveSubview(cont.view!)
             cont.removeFromParentViewController()
+            
         }
+        print("3")
         viewControllers.removeAll()
         for _ in UserDevice.findAll() {
+            print("4")
             let viewController = DeviceViewController()
             viewController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.devicesView.frame.size.height)
             viewControllers.append(viewController)
         }
         
         if(viewControllers.count > 0){
-            viewControllers[0].leftRightButtonsNeeded = false;
+            print("5")
+            viewControllers[0].leftRightButtonsNeeded = false
             let options = PagingMenuOptions(controllers: viewControllers)
             pagingMenuController = PagingMenuController(options: options)
             if let pagingMenuController = self.pagingMenuController{
-            pagingMenuController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.noDeviceView.frame.height - 67)
-            addChildViewController(pagingMenuController)
-            view.addSubview(pagingMenuController.view)
-            pagingMenuController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-            pagingMenuController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-            pagingMenuController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-            pagingMenuController.view.bottomAnchor.constraint(equalTo: addButton.topAnchor).isActive = true
-            pagingMenuController.didMove(toParentViewController: self)
-            self.noDeviceView.isHidden = true
+                pagingMenuController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.noDeviceView.frame.height)
+                addChildViewController(pagingMenuController)
+                devicesView.addSubview(pagingMenuController.view)
+                pagingMenuController.view.leftAnchor.constraint(equalTo: self.devicesView.leftAnchor).isActive = true
+                pagingMenuController.view.topAnchor.constraint(equalTo: self.devicesView.topAnchor).isActive = true
+                pagingMenuController.view.rightAnchor.constraint(equalTo: self.devicesView.rightAnchor).isActive = true
+                pagingMenuController.view.bottomAnchor.constraint(equalTo: self.devicesView.bottomAnchor).isActive = true
+                self.noDeviceView.isHidden = true
             }
-        }else{
+        } else {
             self.noDeviceView.isHidden = false
         }
     }
@@ -96,10 +103,5 @@ class MyDeviceViewController: BaseViewController {
         var componentType: ComponentType {
             return .pagingController(pagingControllers: controllers)
         }
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.noDeviceView.isHidden = false
-
     }
 }
