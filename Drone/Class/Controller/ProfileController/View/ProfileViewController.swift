@@ -44,55 +44,47 @@ class ProfileViewController:BaseViewController, UITableViewDelegate, UITableView
         self.navigationItem.leftBarButtonItem = closeButton
         self.navigationItem.rightBarButtonItem = saveButton
         self.profileTableView.allowsSelection  = false;
-
+        
     }
-
+    
     func save(){
-        if NetworkManager.manager.getNetworkState() {
-            if !AppDelegate.getAppDelegate().isConnected() {
-                let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
-                view?.setTintColor(UIColor.getBaseColor())
-                Timer.after(0.6.second) {
-                    view?.dismiss(true)
-                }
-                return
-            }
-            
-            _ = dismissKeyboard()
-            
-            // sync goal to watch
-            AppDelegate.getAppDelegate().setGoal()
-            
-            /**
-             *  change profile to database sync profile with watch
-             *
-             */
-            AppDelegate.getAppDelegate().setUserProfile()
-            
-            
-            loadingIndicator = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
-            loadingIndicator.setTintColor(UIColor.getBaseColor())
-            
-            UserNetworkManager.updateUser(profile: profile, completion: { (success, optionalProfile) in
-                if success, let _ = optionalProfile {
-                    self.loadingIndicator.dismiss(true, completion: { 
-                        self.dismiss(animated: true)
-                    })
-                }else{
-                    debugPrint("Could not update profile.");
-                    self.loadingIndicator.dismiss(true)
-                    let banner:Banner = Banner(title: NSLocalizedString("not_update", comment: ""), subtitle: "", image: nil, backgroundColor: UIColor.getBaseColor(), didTapBlock: nil)
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 2)
-                }
-            })
-        }else{
-            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
+        if !AppDelegate.getAppDelegate().isConnected() {
+            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: NSLocalizedString("no_watch_connected", comment: ""), mode: MRProgressOverlayViewMode.cross, animated: true)
             view?.setTintColor(UIColor.getBaseColor())
-            let _:Timer = Timer.after(0.6.seconds, {
-                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-            })
+            Timer.after(0.6.second) {
+                view?.dismiss(true)
+            }
+            return
         }
+        
+        _ = dismissKeyboard()
+        
+        // sync goal to watch
+        AppDelegate.getAppDelegate().setGoal()
+        
+        /**
+         *  change profile to database sync profile with watch
+         *
+         */
+        AppDelegate.getAppDelegate().setUserProfile()
+        
+        
+        loadingIndicator = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Please wait...", mode: MRProgressOverlayViewMode.indeterminate, animated: true)
+        loadingIndicator.setTintColor(UIColor.getBaseColor())
+        
+        UserNetworkManager.updateUser(profile: profile, completion: { (success, optionalProfile) in
+            if success, let _ = optionalProfile {
+                self.loadingIndicator.dismiss(true, completion: {
+                    self.dismiss(animated: true)
+                })
+            }else{
+                debugPrint("Could not update profile.");
+                self.loadingIndicator.dismiss(true)
+                let banner:Banner = Banner(title: NSLocalizedString("not_update", comment: ""), subtitle: "", image: nil, backgroundColor: UIColor.getBaseColor(), didTapBlock: nil)
+                banner.dismissesOnTap = true
+                banner.show(duration: 2)
+            }
+        })
     }
     
     func close(){

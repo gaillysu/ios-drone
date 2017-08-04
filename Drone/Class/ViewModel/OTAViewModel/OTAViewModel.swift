@@ -43,13 +43,6 @@ class OTAViewModel {
                 self.updateVersion(current: DTUserDefaults.lastKnownWatchVersion, new: version)
             }
             }.addDisposableTo(disposeBag)
-        if !NetworkManager.manager.getNetworkState(){
-            self.statusObservable.onNext((-2,"No internet connection"))
-        }else{
-            FirmwareNetworkManager.updateOtaVersion(completion: firmwareInformationReceived(version:description:date:fileName:)) { error in
-                self.statusObservable.onNext((-1,"Error, couldn't download firmware info."))
-            }
-        }
     }
     
     func startDfu(){
@@ -75,7 +68,7 @@ class OTAViewModel {
             AppDelegate.getAppDelegate().getMconnectionController()?.setOTAMode(true, Disconnect: true)
             self.dfuController = NordicDFUController(delegate: self)
             self.dfuController?.startDiscovery()
-
+            
         }
         
     }

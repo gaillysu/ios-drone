@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class StepsCreateRequest: BaseGetRequest {
+class StepsCreateRequest: BasePostRequest {
     
     init(uid:Int, value:String, date:String, activeTime:Int, responseBlock: @escaping (_ bool:Bool, _ json:JSON?, _ error:Error?) -> Void) {
         super.init(response: responseBlock)

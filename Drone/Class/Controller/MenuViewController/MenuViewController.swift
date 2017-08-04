@@ -45,9 +45,7 @@ class MenuViewController: BaseViewController  {
         menuCollectionView.register(UINib(nibName: "MenuViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: identifier)
         menuCollectionView.clipsToBounds = true
         AppDelegate.getAppDelegate().startConnect()
-        if NetworkManager.manager.getNetworkState() {
             StepsManager.sharedInstance.syncLastSevenDaysData()
-        }
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
             let connectionState:Bool = notification.object as! Bool
@@ -71,9 +69,7 @@ class MenuViewController: BaseViewController  {
                 dayDateArray.append(date)
             }
             
-            if NetworkManager.manager.getNetworkState() {
                 StepsManager.sharedInstance.syncServiceDayData(dayDateArray)
-            }
         }
         
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in

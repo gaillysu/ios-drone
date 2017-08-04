@@ -29,14 +29,10 @@ class NetworkManager: NSObject {
             debugPrint("Network Status Changed: \(status)")
         }
     }
-    
-    func getNetworkState() -> Bool {
-        return networkState.isReachable
-    }
-
 }
 
 extension NetworkManager {
+    
     class func execute(request :NetworkRequest){
         if let urlPart = request.url, let encoding = request.encoding, let method = request.method {
             let url = NetworkManager.baseUrl + urlPart
@@ -44,8 +40,7 @@ extension NetworkManager {
                 let result = isValidResponse(response: response)
                 request.response(result.success, result.json, result.error)
             })
-            
-        }else{
+        } else {
             debugPrint("URL/METHOD/ENCODING IS WRONGLY/NOT SPECIFIED IN THE REQUEST. DID NOT EXECUTE NETWORK REQUEST!")
         }
     }
@@ -58,6 +53,7 @@ extension NetworkManager {
                 return (true, json, nil)
             }else{
                 print("Request was successful but, status was smaller then 0.")
+                print(json)                
                 return (false,nil, nil)
             }
             

@@ -94,7 +94,6 @@ class ProfileSetupViewController: BaseViewController {
     }
     
     func registerRequest() {
-        if NetworkManager.manager.getNetworkState() {
             if(AppTheme.isNull(birthdayTextField!.text!) || AppTheme.isEmail(heightTextField!.text!) || AppTheme.isEmail(weightTextField!.text!) || AppTheme.isNull(firstNameTextField.text!) || AppTheme.isNull(lastNameTextField.text!)) {
                 let banner = Banner(title: NSLocalizedString("One of the fields are empty.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true
@@ -128,13 +127,6 @@ class ProfileSetupViewController: BaseViewController {
                 banner.dismissesOnTap = true
                 banner.show(duration: 1.2)
             })
-        }else{
-            let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "No internet", mode: MRProgressOverlayViewMode.cross, animated: true)
-            view?.setTintColor(UIColor.getBaseColor())
-            _ = Timer.after(0.6.seconds, {
-                MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-            })
-        }
     }
     
     func dateFormattedStringWithFormat(_ date: Date) -> String {
