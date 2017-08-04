@@ -11,6 +11,7 @@ import RealmSwift
 import RxSwift
 import iOSDFULibrary
 import CoreBluetooth
+import SwiftEventBus
 
 class OTAViewModel {
     
@@ -22,7 +23,8 @@ class OTAViewModel {
     var latestFirmwareUrl:URL
     var fileName:String?
     let disposeBag = DisposeBag()
-    
+    var initiationSuccess = false
+    var timer:Timer?
     init(){
         guard let url = AppTheme.GET_FIRMWARE_FILES("DFUFirmware").first else{
             fatalError("Could not open Firmware file for some reason")
@@ -69,9 +71,13 @@ class OTAViewModel {
     fileprivate func initiateDFU(){
         self.statusObservable.onNext((status: 9, message: "Initiating DFU"))
         AppDelegate.getAppDelegate().sendRequest(OTARequest(mode: .ble))
-        AppDelegate.getAppDelegate().getMconnectionController()?.setOTAMode(true, Disconnect: true)
-        self.dfuController = NordicDFUController(delegate: self)
-        self.dfuController?.startDiscovery()
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_OTA_PACKET_RECEIVED) { _ in
+            AppDelegate.getAppDelegate().getMconnectionController()?.setOTAMode(true, Disconnect: true)
+            self.dfuController = NordicDFUController(delegate: self)
+            self.dfuController?.startDiscovery()
+
+        }
+        
     }
     
     private func updateVersion(current:Double, new:Double){

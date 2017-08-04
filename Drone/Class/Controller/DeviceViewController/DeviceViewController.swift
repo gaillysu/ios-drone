@@ -98,7 +98,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
     
     fileprivate func forgetWatch() {
         let alertView = UIAlertController(title: NSLocalizedString("forget_watch", comment: ""), message: NSLocalizedString("forget_watch_message", comment: ""), preferredStyle: .alert)
-        alertView.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (action) in
+        alertView.addAction(UIAlertAction(title: "Yes and go to settings", style: .default, handler: { (action) in
             AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
             AppDelegate.getAppDelegate().disconnect()
             _ = UserDevice.removeAll()
@@ -106,6 +106,13 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             if self.navigationController?.popViewController(animated: true)==nil {
                 self.dismiss(animated: true, completion: nil)
             }
+            let url:URL = URL(string: "App-Prefs:root=Bluetooth")!
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: Dictionary(), completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+
         }))
         alertView.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil))
         self.present(alertView, animated: true, completion: nil)

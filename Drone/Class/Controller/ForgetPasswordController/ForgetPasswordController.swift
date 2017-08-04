@@ -74,8 +74,6 @@ class ForgetPasswordController: UIViewController {
                         banner.show(duration: 1.2)
                     }
                 })
-            }else{
-                print("How could id not be an int..")
             }
         }else{
             let view = MRProgressOverlayView.showOverlayAdded(to: self.navigationController!.view, title: "Your new password cannot be empty", mode: MRProgressOverlayViewMode.cross, animated: true)

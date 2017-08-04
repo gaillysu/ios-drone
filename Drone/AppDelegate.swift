@@ -85,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          //We just received a full response, so we can safely send the next request
          SyncQueue.sharedInstance.next()
          
-         SwiftEventBus.post(SWIFTEVENT_BUS_RAWPACKET_DATA_KEY, sender:packet as! RawPacketImpl)
          debugPrint("RawPacketImpl :\(Constants.NSData2Bytes(packet.getRawData()))")
          if(packet.getHeader() == GetSystemStatus.HEADER()) {
             let systemStatus:Int = SystemStatusPacket(data: packet.getRawData()).getSystemStatus()
@@ -120,19 +119,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                   self.watchConfig()
                }
             }
-            SwiftEventBus.post(SWIFTEVENT_BUS_GET_SYSTEM_STATUS_KEY, sender:packet as! RawPacketImpl)
          }
          
          if(packet.getHeader() == SystemEventPacket.HEADER()) {
             let eventCommandStatus:Int = SystemEventPacket(data: packet.getRawData()).getSystemEventStatus()
             debugPrint("eventCommandStatus :\(eventCommandStatus)")
-            if(eventCommandStatus == SystemEventStatus.goalCompleted.rawValue) {
-               SwiftEventBus.post(SWIFTEVENT_BUS_GOAL_COMPLETED, sender:nil)
-            }
-            
-            if(eventCommandStatus == SystemEventStatus.lowMemory.rawValue) {
-               SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_SMALL_SYNCACTIVITY, sender:nil)
-            }
             
             if(eventCommandStatus == SystemEventStatus.activityDataAvailable.rawValue) {
                SwiftEventBus.post(SWIFTEVENT_BUS_BEGIN_BIG_SYNCACTIVITY, sender:nil)
@@ -148,6 +139,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                   self.setGPSLocalWeather(location: location)
                }
             }
+            
+            
+         }
+         
+         if(packet.getHeader() == OTARequest.HEADER()) {
+            SwiftEventBus.post(SWIFTEVENT_OTA_PACKET_RECEIVED, sender:nil)
          }
          
          if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
@@ -247,7 +244,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
     *  Receiving the current device signal strength value
     */
    func receivedRSSIValue(_ number:NSNumber){
-      SwiftEventBus.post(SWIFTEVENT_BUS_RECEIVED_RSSI_VALUE_KEY, sender:number)
    }
    
    func getMconnectionController()->ConnectionControllerImpl?{
@@ -258,31 +254,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
 
 extension AppDelegate{
    func watchConfig() {
-      //setp2:start set RTCs
+      print("start watchConfig")
       self.setRTC(force: true)
-      print("setRTC")
-      //setp3:start set AppConfig
       self.setAppConfig()
-      print("setAppConfig")
-      //step4: start set user profile
       self.setUserProfile()
-      print("setUserProfile")
-      //step5: start set user default goal
       self.setGoal()
-      print("setGoal")
-      
       self.setWorldClock()
-      print("setWorldClock")
-      
       self.setNotification()
-      print("setNotification")
-      
       self.updateNotification()
-      print("updateNotification")
-      
       self.setStepsToWatch()
-      print("setStepsToWatch")
       DTUserDefaults.setupKey = false
+      print("end watchConfig")
    }
    
    func setNotification() {
@@ -300,12 +282,7 @@ extension AppDelegate{
          })
       }
    }
-   
-   func updateWeather(){
-      readsystemStatus()
-      DTUserDefaults.saveLog(message: "Update Weather", key: "weather_check")
-   }
-   
+      
    func setNavigation(state:Bool) {
       isNavigation = state
    }

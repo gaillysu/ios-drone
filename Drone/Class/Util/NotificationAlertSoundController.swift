@@ -33,8 +33,6 @@ class NotificationAlertSoundController: NSObject, AVAudioPlayerDelegate {
                 print("Couldn't play sound. Error: \(error.localizedDescription)")
                 print("Couldn't play sound. Code : \(error.code)")
             }
-        }else{
-        
         }
     }
     

@@ -170,7 +170,7 @@ extension AddWorldClockViewController:DidSelectedDelegate {
     
     fileprivate func addCity(_ city:City){
         let selectedCities = City.byFilter("selected = true")
-        if selectedCities.count < 5 {
+        if selectedCities.count < 4 {
             if selectedCities.contains(where: { $0.id == city.id }) && !forHomeTime {
                 let alert:UIAlertController = UIAlertController(title: "Add City", message: NSLocalizedString("add_city", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in

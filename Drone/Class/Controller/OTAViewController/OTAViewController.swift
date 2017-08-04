@@ -37,9 +37,11 @@ class OTAViewController: UIViewController {
                         AppDelegate.getAppDelegate().setAppConfig()
                     }else if state.status == -1 {
                         self.navigationItem.hidesBackButton = false
-                        self.startButton.titleLabel?.text = "Try again"
+                        self.startButton.setTitle("Try again", for: .normal)
+                        self.startButton.enable(bool: true)
                     }else if state.status == -2 {
                         self.showNoInternetDialog()
+                        self.startButton.enable(bool: true)
                     }
                     return state.message
                 })
@@ -54,11 +56,9 @@ class OTAViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
         otaViewModel
-            .uploadProcessObservable.subscribe { event in
-                if let progress = event.element{
-                    self.progressView.setProgress(Float(progress)/100.0, animated: true)
-                }
-            }.addDisposableTo(disposeBag)
+            .uploadProcessObservable
+            .subscribe(onNext: { self.progressView.setProgress(Float($0)/100.0, animated: true) })
+            .addDisposableTo(disposeBag)
     }
     
     func closeButtonAction(){
@@ -76,7 +76,7 @@ class OTAViewController: UIViewController {
             self.startButton.enable(bool: true)
         }))
         self.present(alertView, animated: true, completion: nil)
-
+        
     }
     
     func checkLocalDFU(){
