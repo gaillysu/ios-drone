@@ -19,9 +19,10 @@ class WorldClockViewController: BaseViewController{
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate let identifier:String = "WorldClockCell"
-    fileprivate var worldClockArray: [City] = []
-    fileprivate var homeCityArray: [City] = []
+    
     fileprivate var localCityArray: [City] = []
+    fileprivate var homeCityArray: [City] = []
+    fileprivate var worldClockArray: [City] = []
     fileprivate let realm:Realm
     
     init() {
@@ -38,8 +39,15 @@ class WorldClockViewController: BaseViewController{
         tableView.register(UINib(nibName: identifier,bundle: Bundle.main), forCellReuseIdentifier: identifier)
         tableView.reorder.delegate = self
         self.dateLabel.text = "\(DateFormatter().normalDateString())"
-        let results:Results<City> = realm.objects(City.self).filter("name CONTAINS[c] '\(DateFormatter().localCityName())'")
-        results.forEach({ localCityArray.append($0) })
+        if let city = City
+            .byFilter("name LIKE[c] '\(DateFormatter().localCityName())'")
+            .first {
+            localCityArray.append(city)
+        }else if let city = City
+            .byFilter("name CONTAINS[c] '\(DateFormatter().localCityName())'")
+            .first {
+            localCityArray.append(city)
+        }
         
         updateWorldClockArrayWithOrder(reload: true)
     }
@@ -58,7 +66,7 @@ class WorldClockViewController: BaseViewController{
         if reload {
             self.tableView.reloadData()
         }
-        AppDelegate.getAppDelegate().setWorldClock()
+        getAppDelegate().setWorldClock()
     }
 }
 
@@ -118,6 +126,13 @@ extension WorldClockViewController: UITableViewDelegate, UITableViewDataSource{
             let city:City = worldClockArray[indexPath.row]
             try! realm.write({
                 city.selected = false
+                var cityOrder = DTUserDefaults.selectedCityOrder
+                if !cityOrder.isEmpty{
+                    if let index = cityOrder.index(where: {$0 == city.id}){
+                        cityOrder.remove(at: index)
+                        DTUserDefaults.selectedCityOrder = cityOrder
+                    }
+                }
             })
             updateWorldClockArrayWithOrder(reload: false)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -128,7 +143,7 @@ extension WorldClockViewController: UITableViewDelegate, UITableViewDataSource{
         if let spacer = tableView.reorder.spacerCell(for: indexPath) {
             return spacer
         }
-        let cell:WorldClockCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! WorldClockCell
+        let cell:WorldClockCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         var city:City?
         if indexPath.section == 0 {
             city = localCityArray.first
@@ -152,11 +167,11 @@ extension WorldClockViewController:TableViewReorderDelegate{
         let destination = s.row
         let source = d.row
         (worldClockArray[source], worldClockArray[destination]) = (worldClockArray[destination], worldClockArray[source])
-        DTUserDefaults.selectedCityOrder = homeCityArray.map({ $0.id }) + worldClockArray.map({ $0.id })
+        DTUserDefaults.selectedCityOrder = worldClockArray.map({ $0.id })
+        getAppDelegate().setWorldClock()
     }
     
     func tableViewDidFinishReordering(_ tableView: UITableView) {
-        Array(homeCityArray + worldClockArray).forEach { print("\($0.name)") }
         updateWorldClockArrayWithOrder(reload: true)
     }
 }
