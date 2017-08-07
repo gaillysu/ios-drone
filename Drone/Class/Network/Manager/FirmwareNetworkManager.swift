@@ -26,10 +26,6 @@ class FirmwareNetworkManager: NSObject {
         }
     }
     
-    func getNetworkState() -> Bool {
-        return networkState.isReachable
-    }
-    
     class func updateOtaVersion(completion:@escaping ((_ version:Double, _ description:String, _ date:Date, _ fileName:String) -> Void), error:@escaping ((_ error:Error) -> Void)){
         Alamofire.request(URL(string: "\(baseUrl)/firmware.json")!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             .responseJSON { response in
