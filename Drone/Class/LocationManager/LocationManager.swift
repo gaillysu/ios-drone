@@ -61,7 +61,7 @@ class LocationManager: NSObject {
             _locationManager?.allowDeferredLocationUpdates(untilTraveled: 3000.0, timeout: 30.0)
             _locationManager?.activityType = .other
             _locationManager?.allowsBackgroundLocationUpdates = true
-            _locationManager?.pausesLocationUpdatesAutomatically = false
+            _locationManager?.pausesLocationUpdatesAutomatically = true
             _locationManager?.requestAlwaysAuthorization()
         }
     }

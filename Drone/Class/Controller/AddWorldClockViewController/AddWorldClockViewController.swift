@@ -185,7 +185,9 @@ extension AddWorldClockViewController:DidSelectedDelegate {
                 try! realm.write({
                     city.selected = true
                     if !DTUserDefaults.selectedCityOrder.isEmpty{
-                        DTUserDefaults.selectedCityOrder.append(city.id)
+                        if !DTUserDefaults.selectedCityOrder.contains(city.id){
+                            DTUserDefaults.selectedCityOrder.append(city.id)
+                        }
                     }
                 })
             }

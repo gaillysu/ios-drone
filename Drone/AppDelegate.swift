@@ -68,6 +68,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })  
    }
    
+   func applicationSignificantTimeChange(_ application: UIApplication) {
+      
+      print("applicationSignificantTimeChange")
+      if (mConnectionController?.isConnected())!{
+         watchConfig()
+      }else{
+         DTUserDefaults.setupKey = true
+      }
+   }
+   
    func configGoogleMap() {
       if let googleMapAppKey = Bundle.googleMapKey {
          GMSServices.provideAPIKey(googleMapAppKey)
@@ -94,7 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                DTUserDefaults.setupKey = true
                DTUserDefaults.hourFormat = 1
                self.setSystemConfig()
-               print("SetupKey = (\(DTUserDefaults.setupKey))")
                //Records need to use 0x30
                let cacheModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)
                _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
@@ -263,6 +272,7 @@ extension AppDelegate{
       self.setNotification()
       self.updateNotification()
       self.setStepsToWatch()
+      self.setAnalogTime(forceCurrentTime: false)
       DTUserDefaults.setupKey = false
       print("end watchConfig")
    }

@@ -62,9 +62,11 @@ class City: MEDBaseModel {
     
     static var worldClockCities:[City]{
         let cities = City.findAll()
+        
         var worldClocks = cities
             .filter({ $0.selected })
             .sorted(by: { ($0.timezone?.getOffsetFromUTC())! < ($1.timezone?.getOffsetFromUTC())!})
+//        worldClocks.forEach({print($0.name)})
         var order = DTUserDefaults.selectedCityOrder
         if !order.isEmpty{
             if worldClocks.count > order.count{
