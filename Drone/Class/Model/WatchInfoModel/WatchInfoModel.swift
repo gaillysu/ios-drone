@@ -18,13 +18,6 @@ class WatchInfoModel: NSObject {
     }
     
     func getWatchInfo() -> (version:String,stateText:String,battery:String) {
-        var versionString:String = "\(AppDelegate.getAppDelegate().getFirmwareVersion())"
-        if versionString.isEmpty {
-            versionString = "Not Connected"
-        } else {
-            versionString = "\(DTUserDefaults.lastKnownWatchVersion)"
-        }
-        
         if battery == nil {
             battery = PostBatteryStatus(state: -1, percent: 0)
         }
@@ -36,6 +29,6 @@ class WatchInfoModel: NSObject {
             state = "Not Connected"
         }
         
-        return (versionString,state,battery!.getStateString())
+        return ("\(DTUserDefaults.lastKnownWatchVersion)",state,battery!.getStateString())
     }
 }

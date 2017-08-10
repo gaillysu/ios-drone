@@ -70,7 +70,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
      */
     fileprivate var mSoftwareVersion:String = ""
     
-    fileprivate var redRssiTimer:Timer = Timer()
     
     fileprivate var restoreKey = "DroneRestoreKey"
     
@@ -123,10 +122,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         //We do so by forgetting them
         mTryingToConnectPeripherals = []
         
-        if(redRssiTimer.isValid){
-            redRssiTimer.invalidate()
-        }
-        redRssiTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(NevoBTImpl.redRSSI(_:)), userInfo: nil, repeats: true)
     }
     
     /**
@@ -144,10 +139,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
                 setPeripheral(nil)
                 mDelegate?.connectionStateChanged(false, fromAddress: aPeripheral.identifier)
             }
-        }
-        
-        if(redRssiTimer.isValid){
-            redRssiTimer.invalidate()
         }
     }
     
@@ -249,10 +240,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
             // debugPrint("Failed to write value for characteristic \(characteristic), reason: \(error)")
         }
         
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?){
-        mDelegate?.receivedRSSIValue(RSSI)
     }
     
     func scanAndConnect(){
@@ -386,25 +373,6 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         return mProfile!
     }
     
-    /**
-     See NevoBT protocol
-     */
-    func getFirmwareVersion() -> String {
-        return mFirmwareVersion
-    }
-    
-    /**
-     See NevoBT protocol
-     */
-    func getSoftwareVersion() -> String {
-        return mSoftwareVersion
-    }
-    
-    // MARK: - Red RSSI NSTimer
-    func redRSSI(_ timer:Timer){
-        getRSSI()
-    }
-    
     // MARK: -This class of private function
     /**
      This peripheral is a good candidate, it has the right Services and hence we try to connect to it
@@ -457,14 +425,7 @@ class NevoBTImpl : NSObject, NevoBT, CBCentralManagerDelegate, CBPeripheralDeleg
         mManager?.stopScan()
          // debugPrint("Scan stopped.")
     }
-    
-    /**
-     Get the current connection device of RSSI values
-     */
-    func getRSSI(){
-        mPeripheral?.readRSSI()
-    }
-    
+
     /**
      Uses CBCentralManager to check whether the current platform/hardware supports Bluetooth LE. An alert is raised if Bluetooth LE is not enabled or is not supported.
      */

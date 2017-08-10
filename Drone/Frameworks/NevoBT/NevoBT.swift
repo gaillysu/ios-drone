@@ -59,20 +59,7 @@ protocol NevoBT {
     */
     func isBluetoothEnabled() -> Bool
     
-    /**
-    get Nevo 's ble firmware version
-    */
-    func  getFirmwareVersion() -> String
-    
-    /**
-    get Nevo 's MCU software version
-    */
-    func  getSoftwareVersion() -> String
-
-    /**
-    Get the current connection device of RSSI values
-    */
-    func getRSSI()
+  
  
 }
 
@@ -97,9 +84,4 @@ protocol NevoBTDelegate {
      */
     func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:String)
 
-    
-    /**
-    *  Receiving the current device signal strength value
-    */
-    func receivedRSSIValue(_ number:NSNumber)
 }

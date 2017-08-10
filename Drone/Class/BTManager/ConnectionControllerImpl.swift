@@ -116,15 +116,6 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     }
     
     /**
-     Receiving the current device signal strength value
-     
-     :param: number, Signal strength value
-     */
-    func receivedRSSIValue(_ number:NSNumber) {
-        mDelegate?.receivedRSSIValue(number)
-    }
-    
-    /**
      See ConnectionController protocol
      */
     func disconnect() {
@@ -148,22 +139,6 @@ class ConnectionControllerImpl : NSObject, ConnectionController, NevoBTDelegate 
     func sendRequest(_ request:Request) {
         
         mNevoBT?.sendRequest(request)
-    }
-    
-    /**
-     See ConnectionController protocol
-     */
-    func  getFirmwareVersion() -> String
-    {
-        return mNevoBT!.getFirmwareVersion()
-    }
-    
-    /**
-     See ConnectionController protocol
-     */
-    func  getSoftwareVersion() -> String
-    {
-        return mNevoBT!.getSoftwareVersion()
     }
     
     

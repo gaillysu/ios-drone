@@ -260,16 +260,7 @@ extension AppDelegate {
     func ReadBatteryLevel() {
         sendRequest(GetBatteryRequest())
     }
-    
-    // MARK: - ConnectionController protocol
-    func  getFirmwareVersion() -> String {
-        return isConnected() ? self.getMconnectionController()!.getFirmwareVersion() : "0"
-    }
-    
-    func  getSoftwareVersion() -> String {
-        return isConnected() ? self.getMconnectionController()!.getSoftwareVersion() : "0"
-    }
-    
+         
     func disconnect() {
         self.getMconnectionController()?.disconnect()
     }

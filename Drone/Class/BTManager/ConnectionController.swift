@@ -45,15 +45,6 @@ protocol ConnectionController {
     */
     func isBluetoothEnabled() -> Bool
     
-    /**
-    get Nevo 's ble firmware version
-    */
-    func  getFirmwareVersion() -> String
-    
-    /**
-    get Nevo 's MCU software version
-    */
-    func  getSoftwareVersion() -> String
     
 }
 
@@ -71,9 +62,5 @@ protocol ConnectionControllerDelegate {
     
     
     func firmwareVersionReceived(_ whichfirmware:DfuFirmwareTypes, version:String)
-
-    /**
-    *  Receiving the current device signal strength value
-    */
-    func receivedRSSIValue(_ number:NSNumber)
+ 
 }
