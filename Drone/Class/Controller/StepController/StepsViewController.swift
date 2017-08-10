@@ -546,6 +546,10 @@ extension StepsViewController {
 // MARK: - CVCalendarViewDelegate, CVCalendarMenuViewDelegate
 extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
+    func latestSelectableDate() -> Date {
+        return Date()
+    }
+    
     func delay(_ delay:Double, closure:@escaping ()->()) {
         DispatchQueue.main.asyncAfter(
             deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
@@ -570,7 +574,7 @@ extension StepsViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
     
     func shouldAnimateResizing() -> Bool {
-        return true // Default value is true
+        return true
     }
     
     func shouldAutoSelectDayOnMonthChange() -> Bool {

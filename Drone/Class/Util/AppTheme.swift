@@ -56,7 +56,7 @@ class AppTheme {
         return nil
     }
     
-    class func getTodayWeatherInfoCache(_ name:String) ->Any? {
+    class func  getTodayWeatherInfoCache(_ name:String) ->Any? {
         let pathArray:[String] = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
         let path:String = pathArray.first!
         let filename:String = path.appendingFormat("/%@.data",name)

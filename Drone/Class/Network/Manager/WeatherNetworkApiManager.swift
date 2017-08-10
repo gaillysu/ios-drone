@@ -66,7 +66,7 @@ class WeatherNetworkApiManager: NSObject {
         if let cache = AppTheme.getTodayWeatherInfoCache(SYNC_WEATHER_INFOKEY+"\(id)") {
             let json = JSON(cache)
             self.parseWeatherData(weatherJSON: json, responseBlock: responseBlock)
-        }else{
+        } else {
             networkWeatherRequest(coordinate, responseBlock: responseBlock)
         }
     }
@@ -134,7 +134,7 @@ class WeatherNetworkApiManager: NSObject {
         responseBlock(0, 0, .clearDay);
     }
     
-    func getWeatherStatusCode(icon:WeatherIcon) -> WeatherStatusIcon {
+    func getWeatherStatusCode(icon:WeatherIcon) -> WeatherUpdateModel.WeatherStatusIcon {
         if icon == .clearDay {
             return .clearDay
         } else if icon == .clearNight {

@@ -45,75 +45,21 @@ class MenuViewController: BaseViewController  {
         menuCollectionView.register(UINib(nibName: "MenuViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: identifier)
         menuCollectionView.clipsToBounds = true
         AppDelegate.getAppDelegate().startConnect()
-            StepsManager.sharedInstance.syncLastSevenDaysData()
-        
-        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
-            let connectionState:Bool = notification.object as! Bool
-            if(connectionState){
-                let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-                DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-                    AppDelegate.getAppDelegate().readsystemStatus()
-                })
-            }
-        }
-        
-        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
-            MRProgressOverlayView.dismissAllOverlays(for: self.navigationController!.view, animated: true)
-            
-            let stepsArray = UserSteps.getFilter("syncnext == \(false)")
-            var dayDateArray:[Date] = []
-            for steps in stepsArray{
-                let userSteps:UserSteps = steps as! UserSteps
-                let date = Date(timeIntervalSince1970: userSteps.date).beginningOfDay
-                
-                dayDateArray.append(date)
-            }
-            
-                StepsManager.sharedInstance.syncServiceDayData(dayDateArray)
-        }
-        
-        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
-            let data:PostActivityData = notification.object as! PostActivityData
-            let steps = data.step
-            let timerInterval = data.stepsDate
-            if (steps != 0) {
-                let stepsArray = UserSteps.getFilter("date == \(timerInterval)")
-                if(stepsArray.count>0) {
-                    let step:UserSteps = stepsArray[0] as! UserSteps
-                    let realm = try! Realm()
-                    try! realm.write({
-                        step.steps = steps
-                        step.date = TimeInterval(timerInterval)
-                        step.syncnext = true
-                    })
-                } else {
-                    let stepsModel:UserSteps = UserSteps()
-                    stepsModel.id = Int(Date().timeIntervalSince1970)
-                    stepsModel.distance = 0
-                    stepsModel.steps = steps
-                    stepsModel.date = TimeInterval(timerInterval)
-                    stepsModel.syncnext = false
-                    _ = stepsModel.add()
-                }
-            }
-        }
+        StepsManager.sharedInstance.syncLastSevenDaysData()
         setupRx()
     }
     
     func reloadMenuItems() {
+        var item:MenuItem = LoginMenuItem()
         if UserProfile.getAll().count>0 {
-            if self.menuItems.value.count>7 {
-                self.menuItems.value.replaceSubrange(6..<7, with: [ProfileMenuItem()])
-            }else{
-                self.menuItems.value.insert(ProfileMenuItem(), at: 6)
-            }
-        }else{
-            if self.menuItems.value.count>7 {
-                self.menuItems.value.replaceSubrange(6..<7, with: [LoginMenuItem()])
-            }else{
-                self.menuItems.value.insert(LoginMenuItem(), at: 6)
-            }
+            item = ProfileMenuItem()
         }
+        if self.menuItems.value.count>7 {
+            self.menuItems.value.replaceSubrange(6..<7, with: [item])
+        }else{
+            self.menuItems.value.insert(item, at: 6)
+        }
+        
     }
     
     func setupRx(){

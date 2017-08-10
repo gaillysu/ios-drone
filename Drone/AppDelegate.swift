@@ -61,11 +61,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       nav.isNavigationBarHidden = true
       self.window?.rootViewController = nav
       self.window?.makeKeyAndVisible()
+      
+      
+      _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_CONNECTION_STATE_CHANGED_KEY) { (notification) -> Void in
+         let connectionState:Bool = notification.object as! Bool
+         if(connectionState){
+            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+               AppDelegate.getAppDelegate().readsystemStatus()
+            })
+         }
+      }
+      
+      _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY) { (notification) in
+         let stepsArray = UserSteps.byFilter("syncnext == \(false)")
+         StepsManager.sharedInstance.syncServiceDayData(stepsArray.map({ Date(timeIntervalSince1970: $0.date).beginningOfDay }))
+      }
+      
+      _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA) { (notification) in
+         if let data = notification.object as? PostActivityData{
+            let timerInterval = data.stepsDate
+            if (data.step != 0) {
+               var stepsModel = UserSteps()
+               stepsModel.id = timerInterval
+               if let stepsFromDatabase = UserSteps.byFilter("date == \(timerInterval)").first {
+                  stepsModel = stepsFromDatabase
+               }
+               stepsModel.update(operation: { stepsModel in
+                  stepsModel.steps = data.step
+                  stepsModel.distance = 0
+                  stepsModel.date = TimeInterval(timerInterval)
+                  stepsModel.syncnext = true
+               })
+               print("Karl: Updated steps.")
+            }
+         }
+         
+      }
       return true
    }
    
    func applicationDidEnterBackground(_ application: UIApplication) {
-      UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })  
+      UIApplication.shared.beginBackgroundTask (expirationHandler: { () -> Void in })
    }
    
    func applicationSignificantTimeChange(_ application: UIApplication) {
@@ -206,10 +243,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          }
          
          if(packet.getHeader() == GetActivityRequest.HEADER()) {
-            let syncStatus:[UInt8] = Constants.NSData2Bytes(packet.getRawData())
-            let status:Int = Int(syncStatus[8])
-            let activityPacket:ActivityPacket = ActivityPacket(data: packet.getRawData())
-            let postData:PostActivityData = PostActivityData(steps: activityPacket.getStepCount(), date: activityPacket.gettimerInterval(), state: status)
+            let status = Int(Constants.NSData2Bytes(packet.getRawData())[8])
+            let activityPacket = ActivityPacket(data: packet.getRawData())
+            let postData = PostActivityData(steps: activityPacket.getStepCount(), date: activityPacket.gettimerInterval(), state: status)
             SwiftEventBus.post(SWIFTEVENT_BUS_BIG_SYNCACTIVITY_DATA, sender:postData)
             
             //Download more data

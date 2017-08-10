@@ -181,7 +181,6 @@ class StepsBarChartView: BarChartView {
                 let hSteps:UserSteps = userSteps as! UserSteps
                 hourData += Double(hSteps.steps)
                 if hSteps.steps>0 {
-                    debugPrint("Hour Steps:\(hSteps.steps)")
                     lastTimeframe += 5
                 }
                 if index == hours.count-1 {
