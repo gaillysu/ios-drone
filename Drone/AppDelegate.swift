@@ -233,7 +233,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          if packet.getHeader() == FindMyPhonePacket.HEADER() {
             let findPhonePacket = FindMyPhonePacket(data: packet.getRawData())
             if findPhonePacket.getFindMyPhoneState() == FindMyPhoneState.enable {
-               DTUserDefaults.saveLog(message: "Ping ping", key: "pingpingsound")
                NotificationAlertSoundController.manager.playSound()
             }
          }

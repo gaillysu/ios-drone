@@ -2,9 +2,11 @@ platform :ios, '9.0'
 use_frameworks!
 
 source 'https://github.com/CocoaPods/Specs.git'
+source 'git@gitlab.com:imazeapp/med-ios-pods.git'
 
 
 target 'Drone' do
+    
     pod 'Alamofire'
     pod 'Charts'
     pod 'PagingMenuController'
@@ -34,6 +36,9 @@ target 'Drone' do
     pod 'RxDataSources'
     pod 'RxRealm'    
     pod 'Timepiece'
+    
+    pod 'med-ios-sounds'
+    pod 'med-ios-extension'
 end
 
 post_install do |installer|
