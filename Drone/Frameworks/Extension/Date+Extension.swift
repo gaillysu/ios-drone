@@ -37,14 +37,14 @@ extension Date {
     }
     
     var beginningOfDay: Date {
-        return self.changed(hour: 0, minute: 0, second: 0)!
+        return self.truncated([.hour, .minute, .second, .nanosecond])!
     }
     var endOfDay: Date {
-        return self.changed(hour: 23, minute: 59, second: 59)!
+        return self.changed(hour: 23, minute: 59, second: 59, nanosecond: 999)!
     }
     
     var beginningOfHour: Date {
-        return self.changed(minute: 0, second: 0)!
+        return self.truncated([.minute, .second, .nanosecond])!
     }
     var endOfHour: Date {
         return self.changed(minute: 59, second: 59)!

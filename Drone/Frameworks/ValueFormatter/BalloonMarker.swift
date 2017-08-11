@@ -159,11 +159,7 @@ open class BalloonMarker:NSUIView, IMarker
             let value = label.toDouble()
             let hours:Int = Int(value).hours.hour!
             let minutes:Int = Int((value-Double(hours))*60).minutes.minute!
-            if hours == 0 {
-                labelns = String(format:"%d m",minutes)
-            }else {
-                labelns = String(format:"%d h %d m",hours,minutes)
-            }
+            labelns = String(format:"\(hours) steps")
         }
         
         _drawAttributes.removeAll()

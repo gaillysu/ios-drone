@@ -193,11 +193,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             SwiftEventBus.post(SWIFTEVENT_OTA_PACKET_RECEIVED, sender:nil)
          }
          
-         if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
-            let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
-            SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket as AnyObject))
-         }
-         
          if(packet.getHeader() == SetSystemConfig.HEADER()) {
             if (DTUserDefaults.setupKey){
                self.watchConfig()

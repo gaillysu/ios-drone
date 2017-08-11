@@ -13,6 +13,7 @@ import CVCalendar
 import SwiftEventBus
 import MRProgress
 import RealmSwift
+import Timepiece
 
 let SMALL_SYNC_LASTDATA:String = "SMALL_SYNC_LASTDATA"
 let IS_SEND_0X30_COMMAND:String = "IS_SEND_0X30_COMMAND"
@@ -133,7 +134,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         if let obj = UserGoal.getAll().first, let goal = obj as? UserGoal{
             let realm = try! Realm()
             try! realm.write {
-                goal.goalSteps = steps                
+                goal.goalSteps = steps
             }
             getAppDelegate().setGoal()
             percentageLabel.text = String(format:"Goal: %d",(steps))
@@ -264,7 +265,7 @@ extension StepsViewController {
         stepsButton.setTitle(String(format:"%d",stepsValue), for: .normal)
     }
     
-    func bulidChart(_ todayDate:Foundation.Date) {
+    func bulidChart(_ todayDate:Date) {
         lastWeekChart.reset()
         lastMonthChart.reset()
         thisWeekChart.reset()
@@ -280,17 +281,16 @@ extension StepsViewController {
         }
         
         if lastSteps>0 {
-            calculationData(lastTimeframe,steps: lastSteps, completionData: { (miles, calories) in
-                self.lastMiles.text = miles
-                self.lastCalories.text = calories
-                let timer:String = String(format: "%.2f",Double(lastTimeframe)/60)
-                let timerArray = timer.components(separatedBy: ".")
-                if timerArray[0].toInt() > 0 {
-                    self.lastActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
-                }else{
-                    self.lastActiveTime.text = "\(lastTimeframe)m"
-                }
-            })
+            let distanceAndCalories = calculationData(activeTime: lastTimeframe,steps: lastSteps)
+            self.lastMiles.text = distanceAndCalories.miles
+            self.lastCalories.text = distanceAndCalories.calories
+            let timer:String = String(format: "%.2f",Double(lastTimeframe)/60)
+            let timerArray = timer.components(separatedBy: ".")
+            if timerArray[0].toInt() > 0 {
+                self.lastActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
+            }else{
+                self.lastActiveTime.text = "\(lastTimeframe)m"
+            }
         }else{
             self.lastMiles.text = "0"
             self.lastCalories.text = "0"
@@ -327,17 +327,16 @@ extension StepsViewController {
         }
         
         if thisWeekSteps>0 {
-            calculationData(thisWeekTime,steps: thisWeekSteps, completionData: { (miles, calories) in
-                self.thisWeekMiles.text = miles
-                self.thisWeekCalories.text = calories
-                let timer:String = String(format: "%.2f",Double(thisWeekTime)/60)
-                let timerArray = timer.components(separatedBy: ".")
-                if timerArray[0].toInt()>0 {
-                    self.thisWeekActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
-                }else{
-                    self.thisWeekActiveTime.text = "\(timerArray[1])m"
-                }
-            })
+            let distanceAndCalories = calculationData(activeTime: thisWeekTime,steps: thisWeekSteps)
+            self.thisWeekMiles.text = distanceAndCalories.miles
+            self.thisWeekCalories.text = distanceAndCalories.calories
+            let timer:String = String(format: "%.2f",Double(thisWeekTime)/60)
+            let timerArray = timer.components(separatedBy: ".")
+            if timerArray[0].toInt()>0 {
+                self.thisWeekActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
+            }else{
+                self.thisWeekActiveTime.text = "\(timerArray[1])m"
+            }
         }else{
             self.thisWeekMiles.text = "0"
             self.thisWeekCalories.text = "0"
@@ -366,17 +365,16 @@ extension StepsViewController {
         }
         
         if lastWeekSteps>0 {
-            calculationData(lastWeekTime,steps: lastWeekSteps, completionData: { (miles, calories) in
-                self.lastWeekMiles.text = miles
-                self.lastWeekCalories.text = calories
-                let timer:String = String(format: "%.2f",Double(lastWeekTime)/60)
-                let timerArray = timer.components(separatedBy: ".")
-                if timerArray[0].toInt()>0 {
-                    self.lastWeekActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
-                }else{
-                    self.lastWeekActiveTime.text = "\(timerArray[1])m"
-                }
-            })
+            let distanceAndCalories = calculationData(activeTime: lastWeekTime, steps: lastWeekSteps)
+            self.lastWeekMiles.text = distanceAndCalories.miles
+            self.lastWeekCalories.text = distanceAndCalories.calories
+            let timer:String = String(format: "%.2f",Double(lastWeekTime)/60)
+            let timerArray = timer.components(separatedBy: ".")
+            if timerArray[0].toInt()>0 {
+                self.lastWeekActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
+            }else{
+                self.lastWeekActiveTime.text = "\(timerArray[1])m"
+            }
         }else{
             self.lastWeekMiles.text = "0"
             self.lastWeekCalories.text = "0"
@@ -407,17 +405,18 @@ extension StepsViewController {
         }
         
         if lastMonthSteps>0 {
-            calculationData(lastMonthTime,steps: lastMonthSteps, completionData: { (miles, calories) in
-                self.lastMonthMiles.text = miles
-                self.lastMonthCalories.text = calories
-                let timer:String = String(format: "%.2f",Double(lastMonthTime)/60)
-                let timerArray = timer.components(separatedBy: ".")
-                if timerArray[0].toInt() > 0 {
-                    self.lastMonthActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
-                }else{
-                    self.lastMonthActiveTime.text = "\(timerArray[1])m"
-                }
-            })
+            let distanceAndCalories = calculationData(activeTime: lastMonthTime, steps: lastMonthSteps)
+            
+            self.lastMonthMiles.text = distanceAndCalories.miles
+            self.lastMonthCalories.text = distanceAndCalories.calories
+            let timer:String = String(format: "%.2f",Double(lastMonthTime)/60)
+            let timerArray = timer.components(separatedBy: ".")
+            if timerArray[0].toInt() > 0 {
+                self.lastMonthActiveTime.text = "\(timerArray[0])h \(String(format: "%.0f",Double("0."+timerArray[1])!*60))m"
+            }else{
+                self.lastMonthActiveTime.text = "\(timerArray[1])m"
+            }
+            
         }else{
             self.lastMonthMiles.text = "0"
             self.lastMonthCalories.text = "0"
@@ -435,16 +434,15 @@ extension StepsViewController {
 
 extension StepsViewController {
     
-    func calculationData(_ activeTimer:Int,steps:Int,completionData:((_ miles:String,_ calories:String) -> Void)) {
-        let profile = UserProfile.getAll()
-        if(profile.count > 0){
-            let userProfile:UserProfile = profile.first as! UserProfile
-            let strideLength:Double = Double(userProfile.length)*0.415/100
-            let miles:Double = strideLength*Double(steps)/1000
-            //Formula's = (2.0 X persons KG X 3.5)/200 = calories per minute
-            let calories:Double = (2.0*Double(userProfile.weight)*3.5)/200*Double(activeTimer)
-            completionData(String(format: "%.2f",miles), String(format: "%.2f",calories))
+    func calculationData(activeTime:Int,steps:Int) -> (miles:String,calories:String)  {
+        var profile = UserProfile()
+        if let dbProfile = UserProfile.findAll().first{
+            profile = dbProfile
         }
+        let strideLength:Double = Double(profile.length)*0.415/100
+        let miles:Double = strideLength*Double(steps)/1000
+        let calories:Double = (2.0*Double(profile.weight)*3.5)/200 * Double(activeTime)
+        return (String(format: "%.2f",miles), String(format: "%.2f",calories))
     }
 }
 
