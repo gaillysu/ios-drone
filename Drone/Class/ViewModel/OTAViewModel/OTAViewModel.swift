@@ -43,6 +43,10 @@ class OTAViewModel {
                 self.updateVersion(current: DTUserDefaults.lastKnownWatchVersion, new: version)
             }
             }.addDisposableTo(disposeBag)
+        
+        FirmwareNetworkManager.updateOtaVersion(completion: self.firmwareInformationReceived) { error in
+            self.statusObservable.onNext((-1,"Error, Failed to download firmware info"))
+        }
     }
     
     func startDfu(){
@@ -68,13 +72,19 @@ class OTAViewModel {
             AppDelegate.getAppDelegate().getMconnectionController()?.setOTAMode(true, Disconnect: true)
             self.dfuController = NordicDFUController(delegate: self)
             self.dfuController?.startDiscovery()
-            
         }
-        
     }
     
     private func updateVersion(current:Double, new:Double){
         versionStatusString.onNext("Current: \(current), New: \(new)")
+    }
+    
+    func retry() {
+        if let controller = self.dfuController{
+            controller.startDiscovery()
+        }else{
+            self.initiateDFU()
+        }
     }
 }
 

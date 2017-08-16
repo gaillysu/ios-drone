@@ -250,8 +250,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
             }
          }
          
-      }else{
-         SwiftEventBus.post(SWIFTEVENT_BUS_END_BIG_SYNCACTIVITY, sender:nil)
       }
    }
    

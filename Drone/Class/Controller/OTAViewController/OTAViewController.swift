@@ -22,33 +22,41 @@ class OTAViewController: UIViewController {
     let otaViewModel = OTAViewModel()
     var disposeBag = DisposeBag()
     
+    var tryAgainMode = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "OTA"
         startButton.rx.tap.subscribe({ _ in
             self.startButton.enable(bool: false)
             self.navigationItem.hidesBackButton = true
-            
-            self.otaViewModel
-                .statusObservable
-                .map({ state -> String in
-                    if state.status == DFUState.completed.rawValue || state.status == DFUState.aborted.rawValue {
-                        self.navigationItem.hidesBackButton = false
-                        AppDelegate.getAppDelegate().setAppConfig()
-                    }else if state.status == -1 {
-                        self.navigationItem.hidesBackButton = false
-                        self.startButton.setTitle("Try again", for: .normal)
-                        self.startButton.enable(bool: true)
-                    }else if state.status == -2 {
-                        self.showNoInternetDialog()
-                        self.startButton.enable(bool: true)
-                    }
-                    return state.message
-                })
-                .bind(to: self.statusLabel.rx.text)
-                .addDisposableTo(self.disposeBag)
-            self.otaViewModel.startDfu()
+            if self.tryAgainMode{
+                self.tryAgainMode = false
+                self.otaViewModel.retry()
+            }else{
+                self.otaViewModel.startDfu()
+            }
         }).addDisposableTo(disposeBag)
+        
+        otaViewModel
+            .statusObservable
+            .map({ state -> String in
+                if state.status == DFUState.completed.rawValue || state.status == DFUState.aborted.rawValue {
+                    self.navigationItem.hidesBackButton = false
+                    AppDelegate.getAppDelegate().setAppConfig()
+                }else if state.status == -1 {
+                    self.navigationItem.hidesBackButton = false
+                    self.startButton.setTitle("Try again", for: .normal)
+                    self.tryAgainMode = true
+                    self.startButton.enable(bool: true)
+                }else if state.status == -2 {
+                    self.showNoInternetDialog()
+                    self.startButton.enable(bool: true)
+                }
+                return state.message
+            })
+            .bind(to: self.statusLabel.rx.text)
+            .addDisposableTo(self.disposeBag)
         
         otaViewModel
             .versionStatusString
