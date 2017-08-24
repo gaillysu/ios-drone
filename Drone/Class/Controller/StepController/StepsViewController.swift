@@ -150,11 +150,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA) { (notification) in
             if self.didSelectedDate.beginningOfDay == Date().beginningOfDay {
                 let rawGoalPacket:StepsGoalPacket = notification.object as! StepsGoalPacket
-                let lastCache:SyncLastDataCache = SyncLastDataCache()
-                lastCache.steps = rawGoalPacket.getDailySteps()
-                lastCache.date = Date().timeIntervalSince1970
-                lastCache.goal = rawGoalPacket.getGoal()
-                _ = AppTheme.KeyedArchiverName(SMALL_SYNC_LASTDATA, andObject: lastCache)
+                DTUserDefaults.setLastSmallSync(steps: rawGoalPacket.getDailySteps(), goal: rawGoalPacket.getGoal(), timeinterval: Date().timeIntervalSince1970)
                 self.getLoclSmallSyncData(lastCache)
             }
         }
@@ -224,37 +220,32 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         }
     }
     
-    func getLoclSmallSyncData(_ data:SyncLastDataCache?){
-        if let unpackeddata  = AppTheme.LoadKeyedArchiverName(SMALL_SYNC_LASTDATA){
-            if unpackeddata is SyncLastDataCache {
-                let lastData:SyncLastDataCache = unpackeddata as! SyncLastDataCache
-                let smallDate = Date(timeIntervalSince1970: lastData.date)
-                let dailySteps:Int = lastData.steps
-                let stepsGoal:Int = lastData.goal
-                
-                if smallDate.beginningOfDay == Date().beginningOfDay {
-                    if let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) {
-                        if last0X30Data is SendStepsToWatchCache {
-                            let cacheSendSteps:SendStepsToWatchCache = last0X30Data as! SendStepsToWatchCache
-                            let date:Date = Date(timeIntervalSince1970: cacheSendSteps.date)
-                            if date.beginningOfDay == Date().beginningOfDay {
-                                DispatchQueue.main.async(execute: {
-                                    // do something
-                                    let daySteps:Int = cacheSendSteps.steps + dailySteps
-                                    self.setCircleProgress(daySteps, goalValue: stepsGoal)
-                                })
-                                
-                            }else{
-                                self.setCircleProgress(dailySteps , goalValue: stepsGoal)
-                            }
-                        }
+    func getLoclSmallSyncData(){
+        let lastSynced = DTUserDefaults.lastSmallSync()
+        let smallDate = Date(timeIntervalSince1970: lastSynced.timeInterval)
+        let dailySteps:Int = lastSynced.steps
+        let stepsGoal:Int = lastSynced.goal
+        if smallDate.beginningOfDay == Date().beginningOfDay {
+            if let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) {
+                if last0X30Data is SendStepsToWatchCache {
+                    let cacheSendSteps:SendStepsToWatchCache = last0X30Data as! SendStepsToWatchCache
+                    let date:Date = Date(timeIntervalSince1970: cacheSendSteps.date)
+                    if date.beginningOfDay == Date().beginningOfDay {
+                        DispatchQueue.main.async(execute: {
+                            // do something
+                            let daySteps:Int = cacheSendSteps.steps + dailySteps
+                            self.setCircleProgress(daySteps, goalValue: stepsGoal)
+                        })
+                        
                     }else{
-                        self.setCircleProgress(dailySteps, goalValue: stepsGoal)
+                        self.setCircleProgress(dailySteps , goalValue: stepsGoal)
                     }
                 }
+            }else{
+                self.setCircleProgress(dailySteps, goalValue: stepsGoal)
             }
-            
         }
+        
     }
 }
 

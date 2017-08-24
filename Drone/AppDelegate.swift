@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       configGoogleMap()
       
       self.startLocation()
-      
+      AppTheme.GET_FIRMWARE_FILES("VeliGear")
       _ = DataBaseManager.manager
       _ = NetworkManager.manager
       
@@ -93,10 +93,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                   stepsModel.date = TimeInterval(timerInterval)
                   stepsModel.syncnext = true
                })
-               print("Karl: Updated steps.")
             }
          }
-         
       }
       return true
    }

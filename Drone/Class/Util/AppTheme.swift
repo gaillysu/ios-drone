@@ -100,7 +100,8 @@ class AppTheme {
                 let fileURL:URL = URL(fileURLWithPath: filePath)
                 fileUrls.append(fileURL)
             }
-        }catch{
+        }catch let error{
+            print("Error!! \(error)")
             NSLog("GET_FIRMWARE_FILES error in opening directory path: \(firmwaresDirectoryPath)");
             return []
         }

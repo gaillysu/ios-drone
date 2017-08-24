@@ -199,7 +199,6 @@
 		61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA61EA756C70019F574 /* ResetCacheModel.swift */; };
 		61C28CA91EA75A620019F574 /* PostWatchVersionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */; };
 		61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */; };
-		61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */; };
 		61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CB11EA83FFB0019F574 /* URL+Extension.swift */; };
 		61C48FAD1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FAC1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift */; };
 		61C48FAF1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FAE1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift */; };
@@ -370,7 +369,6 @@
 		CB91DBEF1F4D335F00C8B5CE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB11EA46F810019F574 /* UIColor+Extension.swift */; };
 		CB91DBF01F4D335F00C8B5CE /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */; };
 		CB91DBF11F4D335F00C8B5CE /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB61EA46F810019F574 /* SyncQueue.swift */; };
-		CB91DBF21F4D335F00C8B5CE /* SyncLastDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */; };
 		CB91DBF31F4D335F00C8B5CE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892851F0E2E3800725D25 /* Date+Extension.swift */; };
 		CB91DBF41F4D335F00C8B5CE /* ResetCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA61EA756C70019F574 /* ResetCacheModel.swift */; };
 		CB91DBF51F4D335F00C8B5CE /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B1C1EA46F800019F574 /* SetUserProfileRequest.swift */; };
@@ -612,10 +610,10 @@
 		CBC0931F1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */; };
 		CBCD36661ED3E2BA0041EABA /* CompassCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */; };
 		CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
-		CBCFC1B21F4EA02700DF5A68 /* Stealth in Resources */ = {isa = PBXBuildFile; fileRef = CBCFC1B01F4EA01E00DF5A68 /* Stealth */; };
-		CBCFC1B41F4EA03300DF5A68 /* VeliGear in Resources */ = {isa = PBXBuildFile; fileRef = CBCFC1B31F4EA03300DF5A68 /* VeliGear */; };
+		CBCFC1B71F4EA66E00DF5A68 /* VeliGear in Resources */ = {isa = PBXBuildFile; fileRef = CBCFC1B61F4EA66E00DF5A68 /* VeliGear */; };
 		CBE8FDF71F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8FDF51F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift */; };
 		CBE8FDF81F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE8FDF61F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib */; };
+		CBF0D3EC1F4ECEC9007F6ECA /* Stealth in Resources */ = {isa = PBXBuildFile; fileRef = CBF0D3EB1F4ECEC9007F6ECA /* Stealth */; };
 		CBF2E13D1EC04E4D00CBD61C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */; };
 		CBF6D2171EF3D4C70080375E /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
@@ -838,7 +836,6 @@
 		61C28CA61EA756C70019F574 /* ResetCacheModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetCacheModel.swift; sourceTree = "<group>"; };
 		61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostWatchVersionData.swift; sourceTree = "<group>"; };
 		61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendStepsToWatchCache.swift; sourceTree = "<group>"; };
-		61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncLastDataCache.swift; sourceTree = "<group>"; };
 		61C28CB11EA83FFB0019F574 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		61C48FAC1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsDirectionsRequest.swift; sourceTree = "<group>"; };
 		61C48FAE1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsDirectionsModel.swift; sourceTree = "<group>"; };
@@ -951,10 +948,10 @@
 		CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatAlarmViewModel.swift; path = ViewModel/RepeatAlarmViewModel/RepeatAlarmViewModel.swift; sourceTree = "<group>"; };
 		CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassCalibrationViewController.swift; path = CompassCalibrationViewController/CompassCalibrationViewController.swift; sourceTree = "<group>"; };
 		CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassCalibrationViewController.xib; path = CompassCalibrationViewController/CompassCalibrationViewController.xib; sourceTree = "<group>"; };
-		CBCFC1B01F4EA01E00DF5A68 /* Stealth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Stealth; sourceTree = "<group>"; };
-		CBCFC1B31F4EA03300DF5A68 /* VeliGear */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VeliGear; sourceTree = "<group>"; };
+		CBCFC1B61F4EA66E00DF5A68 /* VeliGear */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VeliGear; sourceTree = "<group>"; };
 		CBE8FDF51F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectNewHomeTimeViewController.swift; path = SelectNewHomeTimeViewController/SelectNewHomeTimeViewController.swift; sourceTree = "<group>"; };
 		CBE8FDF61F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectNewHomeTimeViewController.xib; path = SelectNewHomeTimeViewController/SelectNewHomeTimeViewController.xib; sourceTree = "<group>"; };
+		CBF0D3EB1F4ECEC9007F6ECA /* Stealth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Stealth; sourceTree = "<group>"; };
 		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Extension.swift"; path = "../../Class/Util/UIButton+Extension.swift"; sourceTree = "<group>"; };
 		CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmViewController.swift; path = AlarmViewController/AlarmViewController.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1086,8 +1083,8 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CBCFC1B31F4EA03300DF5A68 /* VeliGear */,
-				CBCFC1B01F4EA01E00DF5A68 /* Stealth */,
+				CBF0D3EB1F4ECEC9007F6ECA /* Stealth */,
+				CBCFC1B61F4EA66E00DF5A68 /* VeliGear */,
 				61C48FC41EF3BCCE007A0709 /* Sounds */,
 				61C28CAE1EA76C680019F574 /* DefaultRealm */,
 				61C28C8C1EA617070019F574 /* Image */,
@@ -1741,7 +1738,6 @@
 			children = (
 				61C28CA61EA756C70019F574 /* ResetCacheModel.swift */,
 				61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */,
-				61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */,
 				613928EF1EA99DD900450284 /* WeatherCacheModel.swift */,
 				613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */,
 				61C892831F0CD28A00725D25 /* WeatherFlags.swift */,
@@ -2369,8 +2365,9 @@
 			files = (
 				619A9F131EC1B9CE006D65C4 /* MapTableViewController.xib in Resources */,
 				61C28BF21EA46F810019F574 /* DeviceViewController.xib in Resources */,
-				CBCFC1B41F4EA03300DF5A68 /* VeliGear in Resources */,
+				CBCFC1B71F4EA66E00DF5A68 /* VeliGear in Resources */,
 				61C28C9C1EA706A50019F574 /* mapImage.png in Resources */,
+				CBF0D3EC1F4ECEC9007F6ECA /* Stealth in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
 				CBC093141EFA1746001213F4 /* AddAlarmTableViewCell.xib in Resources */,
 				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
@@ -2455,7 +2452,6 @@
 				CB91DC841F4D335F00C8B5CE /* DeviceTableViewCell.xib in Resources */,
 				CB91DC851F4D335F00C8B5CE /* AddAlarmTableViewCell.xib in Resources */,
 				CB91DC861F4D335F00C8B5CE /* CompassViewController.xib in Resources */,
-				CBCFC1B21F4EA02700DF5A68 /* Stealth in Resources */,
 				CB91DC871F4D335F00C8B5CE /* AlarmTableViewCell.xib in Resources */,
 				CB91DC881F4D335F00C8B5CE /* NavigationController.xib in Resources */,
 				CB91DC891F4D335F00C8B5CE /* TimeSettingsViewController.xib in Resources */,
@@ -2874,7 +2870,6 @@
 				61C28C4D1EA46F810019F574 /* UIColor+Extension.swift in Sources */,
 				CB4ADFDA1EF7626200EFA956 /* AlarmTableViewCell.swift in Sources */,
 				61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */,
-				61C28CAD1EA765410019F574 /* SyncLastDataCache.swift in Sources */,
 				61C892861F0E2E3800725D25 /* Date+Extension.swift in Sources */,
 				61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */,
 				61C28BDC1EA46F810019F574 /* SetUserProfileRequest.swift in Sources */,
@@ -3138,7 +3133,6 @@
 				CB91DBEF1F4D335F00C8B5CE /* UIColor+Extension.swift in Sources */,
 				CB91DBF01F4D335F00C8B5CE /* AlarmTableViewCell.swift in Sources */,
 				CB91DBF11F4D335F00C8B5CE /* SyncQueue.swift in Sources */,
-				CB91DBF21F4D335F00C8B5CE /* SyncLastDataCache.swift in Sources */,
 				CB91DBF31F4D335F00C8B5CE /* Date+Extension.swift in Sources */,
 				CB91DBF41F4D335F00C8B5CE /* ResetCacheModel.swift in Sources */,
 				CB91DBF51F4D335F00C8B5CE /* SetUserProfileRequest.swift in Sources */,

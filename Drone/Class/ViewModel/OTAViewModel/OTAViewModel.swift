@@ -27,6 +27,7 @@ class OTAViewModel {
     var timer:Timer?
     init(){
         if AppTheme.hasGearbox(){
+            
             guard let url = AppTheme.GET_FIRMWARE_FILES("VeliGear").first else{
                 fatalError("Could not open Firmware file for some reason")
             }

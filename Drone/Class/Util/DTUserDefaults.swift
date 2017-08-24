@@ -39,6 +39,8 @@ public class DTUserDefaults: NSObject {
     private static let LAST_KNOWN_WATCH_VERSION_KEY = "LAST_KNOWN_WATCH_VERSION_KEY"
     private static let LAST_KNOWN_OTA_VERSION_KEY = "LAST_KNOWN_OTA_VERSION_KEY"
     
+    private static let LAST_SYNC_STEPS_CACHE_KEY = "LAST_SYNC_STEPS_CACHE_KEY"
+    
     // MARK: Setup
     public static var setupKey:Bool {
         get{
@@ -248,6 +250,25 @@ public class DTUserDefaults: NSObject {
     
     public static var lastKnownWatchVersionObservable:Observable<Double?> {
         get{ return UserDefaults().rx.observe(Double.self, LAST_KNOWN_WATCH_VERSION_KEY) }
+    }
+    
+    
+    public static func lastSmallSync() -> (steps:Int, goal:Int, timeInterval:TimeInterval){
+        if let dictionary = UserDefaults().dictionary(forKey: LAST_SYNC_STEPS_CACHE_KEY){
+            if let steps = dictionary["steps"] as? Int,
+                let goal = dictionary["goal"] as? Int,
+                let doubleTimeInterval = dictionary["timeinterval"] as? Double{
+                let timeInterval = TimeInterval(doubleTimeInterval)
+                if Date(timeIntervalSince1970: timeInterval).beginningOfDay == Date().beginningOfDay{
+                    return (steps:steps, goal:goal, timeInterval:timeInterval)
+                }
+            }
+        }
+        return (steps:0, goal:0, timeInterval:TimeInterval(0))
+    }
+    
+    public static func setLastSmallSync(steps:Int, goal:Int, timeinterval:Double){
+        UserDefaults().set(["steps":steps, "goal":goal, "timeinterval":timeinterval], forKey: LAST_SYNC_STEPS_CACHE_KEY)
     }
     
     

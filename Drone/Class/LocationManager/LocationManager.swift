@@ -62,7 +62,7 @@ class LocationManager: NSObject {
             _locationManager?.activityType = .other
             _locationManager?.allowsBackgroundLocationUpdates = true
             _locationManager?.pausesLocationUpdatesAutomatically = true
-            _locationManager?.requestAlwaysAuthorization()
+            _locationManager?.requestWhenInUseAuthorization()
         }
     }
     
