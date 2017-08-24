@@ -26,11 +26,21 @@ class OTAViewModel {
     var initiationSuccess = false
     var timer:Timer?
     init(){
-        guard let url = AppTheme.GET_FIRMWARE_FILES("DFUFirmware").first else{
-            fatalError("Could not open Firmware file for some reason")
+        if AppTheme.hasGearbox(){
+            guard let url = AppTheme.GET_FIRMWARE_FILES("VeliGear").first else{
+                fatalError("Could not open Firmware file for some reason")
+            }
+            latestFirmwareUrl = url
+        }else {
+            let plist = AppTheme.GET_FIRMWARE_FILES("NotificationTypeFile")
+            let url = AppTheme.GET_FIRMWARE_FILES("Stealth")
+            guard url == nil else{
+            
+                fatalError("Could not open Firmware file for some reason")
+            }
+            latestFirmwareUrl = URL(fileURLWithPath: "")
         }
-        latestFirmwareUrl = url
-        versionStatusString = BehaviorSubject<String>(value: "Current: \(DTUserDefaults.lastKnownWatchVersion), New: \(AppTheme.firmwareVersionFrom(path: url))")
+        versionStatusString = BehaviorSubject<String>(value: "Current: \(DTUserDefaults.lastKnownWatchVersion), New: \(AppTheme.firmwareVersionFrom(path: latestFirmwareUrl))")
         
         DTUserDefaults.lastKnownWatchVersionObservable.subscribe { event in
             if let element = event.element, let version = element{
@@ -44,12 +54,18 @@ class OTAViewModel {
             }
             }.addDisposableTo(disposeBag)
         
-        FirmwareNetworkManager.updateOtaVersion(completion: self.firmwareInformationReceived) { error in
-            self.statusObservable.onNext((-1,"Error, Failed to download firmware info"))
+        if AppTheme.hasGearbox(){
+            FirmwareNetworkManager.updateOtaVersion(completion: self.firmwareInformationReceived) { error in
+                self.statusObservable.onNext((-1,"Error, Failed to download firmware info"))
+            }
         }
     }
     
     func startDfu(){
+        if !AppTheme.hasGearbox(){
+            initiateDFU()
+            return
+        }
         if let fileName = self.fileName{
             statusObservable.onNext((status: 8, message: "Downloading"))
             FirmwareNetworkManager.getOtaFile(version: DTUserDefaults.lastKnownOtaVersion, filename: fileName, process: { progress in

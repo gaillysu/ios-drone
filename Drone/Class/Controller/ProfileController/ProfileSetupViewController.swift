@@ -94,7 +94,7 @@ class ProfileSetupViewController: BaseViewController {
     }
     
     func registerRequest() {
-            if(AppTheme.isNull(birthdayTextField!.text!) || AppTheme.isEmail(heightTextField!.text!) || AppTheme.isEmail(weightTextField!.text!) || AppTheme.isNull(firstNameTextField.text!) || AppTheme.isNull(lastNameTextField.text!)) {
+            if((birthdayTextField!.text!).isEmpty || (heightTextField!.text!).isEmpty || (weightTextField!.text!).isEmpty || (firstNameTextField.text!).isEmpty || (lastNameTextField.text!).isEmpty) {
                 let banner = Banner(title: NSLocalizedString("One of the fields are empty.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true
                 banner.show(duration: 0.6)

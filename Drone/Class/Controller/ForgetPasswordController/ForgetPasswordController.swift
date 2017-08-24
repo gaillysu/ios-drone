@@ -47,7 +47,7 @@ class ForgetPasswordController: UIViewController {
     }
     
     func ChangePassword() {
-        if newTextField2.text != nil && newTextField.text != nil{
+        if !(newTextField2.text?.isEmpty)! && !(newTextField.text?.isEmpty)! {
             if newTextField.text != newTextField2.text {
                 let banner = Banner(title: NSLocalizedString("Passwords don't match with each other.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true

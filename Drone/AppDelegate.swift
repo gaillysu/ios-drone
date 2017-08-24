@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
    
    fileprivate var isNavigation = false
    var forcedWeatherSync = false
-
+   
    var timer:Timer?
    static let RESET_STATE = "RESET_STATE"
    
@@ -214,7 +214,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          if(packet.getHeader() == GetStepsGoalRequest.HEADER()) {
             let rawGoalPacket:StepsGoalPacket = StepsGoalPacket(data: packet.getRawData())
             SwiftEventBus.post(SWIFTEVENT_BUS_SMALL_SYNCACTIVITY_DATA, sender:(rawGoalPacket))
-            
             if Date().timeIntervalSince1970-DTUserDefaults.lastSyncedWeatherDate.timeIntervalSince1970 > syncWeatherInterval {
                if let location = LocationManager.manager.currentLocation {
                   self.setGPSLocalWeather(location: location)
@@ -300,7 +299,9 @@ extension AppDelegate{
       self.setNotification()
       self.updateNotification()
       self.setStepsToWatch()
-      self.setAnalogTime(forceCurrentTime: false)
+      if AppTheme.hasGearbox(){
+         self.setAnalogTime(forceCurrentTime: false)
+      }
       DTUserDefaults.setupKey = false
       print("end watchConfig")
    }
@@ -320,7 +321,7 @@ extension AppDelegate{
          })
       }
    }
-      
+   
    func setNavigation(state:Bool) {
       isNavigation = state
    }

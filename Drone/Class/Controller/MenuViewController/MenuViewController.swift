@@ -24,8 +24,8 @@ class MenuViewController: BaseViewController  {
     
     let identifier = "menu_cell_identifier"
     var disposeBag = DisposeBag()
-    var menuItems: Variable<[MenuItem]> = Variable([StepsMenuItem(), TimeMenuItem(),CityNavigationMenuItem(), CompassMenuItem(), HotKeyMenuItem(), NotificationsMenuItem(),DeviceMenuItem()])
-    
+    var menuItems: Variable<[MenuItem]> = Variable([])
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     init() {
         super.init(nibName: "MenuViewController", bundle: Bundle.main)
     }
@@ -33,8 +33,21 @@ class MenuViewController: BaseViewController  {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if menuItems.value.isEmpty{
+        menuItems.value.append(StepsMenuItem())
+        menuItems.value.append(TimeMenuItem())
+        if AppTheme.hasGearbox() {
+            menuItems.value.append(CityNavigationMenuItem())
+            menuItems.value.append(CompassMenuItem())
+            menuItems.value.append(HotKeyMenuItem())
+        }
+        menuItems.value.append(NotificationsMenuItem())
+        menuItems.value.append(DeviceMenuItem())
+        }
+
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         reloadMenuItems()
     }
@@ -47,6 +60,12 @@ class MenuViewController: BaseViewController  {
         AppDelegate.getAppDelegate().startConnect()
         StepsManager.sharedInstance.syncLastSevenDaysData()
         setupRx()
+        if !AppTheme.hasGearbox(){
+            let newConstraint = self.heightConstraint.constraintWithMultiplier(0.517)
+            self.view.removeConstraint(self.heightConstraint)
+            self.view.addConstraint(newConstraint)
+            self.view.layoutIfNeeded()
+        }
     }
     
     func reloadMenuItems() {
@@ -54,10 +73,12 @@ class MenuViewController: BaseViewController  {
         if UserProfile.getAll().count>0 {
             item = ProfileMenuItem()
         }
-        if self.menuItems.value.count>7 {
-            self.menuItems.value.replaceSubrange(6..<7, with: [item])
-        }else{
-            self.menuItems.value.insert(item, at: 6)
+        let min = AppTheme.hasGearbox() ? 6 : 3
+        let max = AppTheme.hasGearbox() ? 7 : 4
+        if self.menuItems.value.count > max {
+            self.menuItems.value.replaceSubrange(min..<max, with: [item])
+        } else {
+            self.menuItems.value.insert(item, at: min)
         }
         
     }
@@ -69,10 +90,16 @@ class MenuViewController: BaseViewController  {
                 row, menuItem, cell in
                 cell.menuItem = menuItem
                 cell.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 0)
-                if row == 0 {
-                    cell.roundCorners(corners: .topLeft, radius: 10)
-                } else if row == 1 {
+                if row == 0  && AppTheme.hasGearbox(){
+                    cell.roundCorners(corners: [.topLeft], radius: 10)
+                } else if row == 0 && !AppTheme.hasGearbox(){
+                    cell.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+                } else if row == 1 && AppTheme.hasGearbox() {
                     cell.roundCorners(corners: .topRight, radius: 10)
+                } else if row == 3 && !AppTheme.hasGearbox() {
+                    cell.roundCorners(corners: .bottomLeft, radius: 10)
+                } else if row == 4 && !AppTheme.hasGearbox() {
+                    cell.roundCorners(corners: .bottomRight, radius: 10)
                 } else if row == 6 {
                     cell.roundCorners(corners: .bottomLeft, radius: 10)
                 } else if row == 7 {
@@ -86,6 +113,9 @@ class MenuViewController: BaseViewController  {
 extension MenuViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthAndHeight = (collectionView.layer.bounds.width - 12) / 2
+        if !AppTheme.hasGearbox() && indexPath.row == 0 {
+            return CGSize(width: (widthAndHeight * 2 ) + 4, height: widthAndHeight)
+        }
         return CGSize(width: widthAndHeight, height: widthAndHeight)
     }
     
@@ -93,15 +123,19 @@ extension MenuViewController: UICollectionViewDelegateFlowLayout{
         return 4.0
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 4.0
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let item:MenuItem = self.menuItems.value[indexPath.row]
         let controller = item.viewController()
         controller.navigationItem.title = item.title()
         let navigationViewController = makeStandardUINavigationController(controller)
-        if indexPath.row == 6 && UserProfile.getAll().first == nil {
+        let stealthOffset = AppTheme.hasGearbox() ? 6 : 3
+        if indexPath.row == stealthOffset && UserProfile.getAll().first == nil {
             navigationViewController.navigationBar.isHidden = true
-        } else if indexPath.row == 7 {
+        } else if indexPath.row == (stealthOffset + 1) {
             DTUserDefaults.presentMenu = false
         }
         self.present(navigationViewController, animated: true, completion: nil)

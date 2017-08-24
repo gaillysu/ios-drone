@@ -74,7 +74,7 @@ class RegisterViewController: BaseViewController {
 
         if nextB.isEqual(sender) {
             let profile:ProfileSetupViewController = ProfileSetupViewController()
-            if(AppTheme.isNull(passwordT.text!) || AppTheme.isNull(emailT.text!)) {
+            if((passwordT.text?.isEmpty)! || (emailT.text?.isEmpty)!) {
                 let banner = Banner(title: "Email or password is empty", subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
                 banner.dismissesOnTap = true
                 banner.show(duration: 0.7)

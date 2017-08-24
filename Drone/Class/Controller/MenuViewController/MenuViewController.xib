@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController" customModule="Drone" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController" customModule="Stealth" customModuleProvider="target">
             <connections>
+                <outlet property="heightConstraint" destination="arv-c5-c2K" id="fg0-bg-fNu"/>
                 <outlet property="menuCollectionView" destination="hF0-iz-5cW" id="Gan-WE-5zX"/>
                 <outlet property="view" destination="rLu-wu-3SO" id="2g8-cY-dO7"/>
             </connections>
@@ -20,13 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hF0-iz-5cW">
-                    <rect key="frame" x="80" y="148" width="254" height="504"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1000" contentMode="scaleToFill" bounces="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hF0-iz-5cW">
+                    <rect key="frame" x="80" y="114" width="254" height="508"/>
                     <color key="backgroundColor" red="0.59215686270000001" green="0.44705882349999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="hF0-iz-5cW" secondAttribute="height" multiplier="127:252" id="e7i-ne-1PI"/>
-                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BV5-jB-vB3">
                         <size key="itemSize" width="100" height="100"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -40,23 +38,22 @@
                     </userDefinedRuntimeAttributes>
                 </collectionView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drone_logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="0B1-qg-VY1">
-                    <rect key="frame" x="80" y="59" width="254" height="61"/>
+                    <rect key="frame" x="80" y="45" width="254" height="61"/>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="0B1-qg-VY1" secondAttribute="height" multiplier="129:31" id="FdQ-yV-YOz"/>
+                        <constraint firstAttribute="height" constant="61" id="8uO-Ab-5e6"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.75294117650000003" green="0.56862745100000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="hF0-iz-5cW" secondAttribute="trailing" constant="80" id="Afn-Jq-h1A"/>
-                <constraint firstItem="0B1-qg-VY1" firstAttribute="leading" secondItem="hF0-iz-5cW" secondAttribute="leading" id="F4f-p9-j0x"/>
-                <constraint firstItem="0B1-qg-VY1" firstAttribute="top" secondItem="rLu-wu-3SO" secondAttribute="top" constant="59" id="IGb-7f-eo2"/>
-                <constraint firstItem="0B1-qg-VY1" firstAttribute="trailing" secondItem="hF0-iz-5cW" secondAttribute="trailing" id="WJ2-5z-ax6"/>
-                <constraint firstItem="hF0-iz-5cW" firstAttribute="top" secondItem="0B1-qg-VY1" secondAttribute="bottom" constant="28" id="XUb-Z2-Xv4"/>
-                <constraint firstItem="0B1-qg-VY1" firstAttribute="centerX" secondItem="rLu-wu-3SO" secondAttribute="centerX" id="cJa-Yi-Wzu"/>
-                <constraint firstItem="hF0-iz-5cW" firstAttribute="leading" secondItem="rLu-wu-3SO" secondAttribute="leading" constant="80" id="cRM-Cn-xIc"/>
-                <constraint firstItem="0B1-qg-VY1" firstAttribute="top" secondItem="rLu-wu-3SO" secondAttribute="top" constant="59" id="njb-D7-hID"/>
+                <constraint firstItem="hF0-iz-5cW" firstAttribute="centerX" secondItem="rLu-wu-3SO" secondAttribute="centerX" id="856-Pm-hjq"/>
+                <constraint firstItem="hF0-iz-5cW" firstAttribute="width" secondItem="rLu-wu-3SO" secondAttribute="width" multiplier="0.615" id="DRM-9v-3KN"/>
+                <constraint firstItem="hF0-iz-5cW" firstAttribute="leading" secondItem="0B1-qg-VY1" secondAttribute="leading" id="OaW-Xm-TGC"/>
+                <constraint firstItem="hF0-iz-5cW" firstAttribute="height" secondItem="rLu-wu-3SO" secondAttribute="height" multiplier="0.69" id="arv-c5-c2K"/>
+                <constraint firstItem="hF0-iz-5cW" firstAttribute="centerY" secondItem="rLu-wu-3SO" secondAttribute="centerY" id="gKC-lf-d82"/>
+                <constraint firstItem="hF0-iz-5cW" firstAttribute="trailing" secondItem="0B1-qg-VY1" secondAttribute="trailing" id="vfy-la-2DU"/>
+                <constraint firstItem="hF0-iz-5cW" firstAttribute="top" secondItem="0B1-qg-VY1" secondAttribute="bottom" constant="8" id="x6x-v1-YTJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

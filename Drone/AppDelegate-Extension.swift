@@ -121,9 +121,11 @@ extension AppDelegate {
         sendRequest(SetAppConfigRequest(appid: .activityTracking, state: .on))
         sendRequest(SetAppConfigRequest(appid: .weather, state: .on))
         setTimeFormat()
-        setCompass()
-        setTimer()
-        setStopwatch()
+        if AppTheme.hasGearbox(){
+            setCompass()
+            setTimer()
+            setStopwatch()
+        }
     }
     
     func setGoal() {
@@ -165,7 +167,6 @@ extension AppDelegate {
         }
         
         sendRequest(SetWorldClockRequest(worldClockArray: convertedWorldClockArray))
-        
         if let location = LocationManager.manager.currentLocation {
             self.setGPSLocalWeather(location: location)
         }else {
@@ -260,7 +261,7 @@ extension AppDelegate {
     func ReadBatteryLevel() {
         sendRequest(GetBatteryRequest())
     }
-         
+    
     func disconnect() {
         self.getMconnectionController()?.disconnect()
     }

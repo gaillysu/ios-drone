@@ -38,7 +38,12 @@ class SelectNewHomeTimeViewController: UIViewController {
         }).addDisposableTo(disposeBag)
         
         nextButton.rx.tap.subscribe({ _ in
-            self.navigationController?.pushViewController(CalibrateHourViewController(), animated: true)
+            if AppTheme.hasGearbox(){
+                self.navigationController?.pushViewController(CalibrateHourViewController(), animated: true)
+            }else{
+                self.present(self.makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
+            }
+            
         }).addDisposableTo(disposeBag)
     }
     

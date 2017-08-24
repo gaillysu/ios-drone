@@ -14,23 +14,11 @@ enum ActionType {
     case set
 }
 
-var countryCode:String?{
-    let currentLocale:Locale = Locale.current
-    let countryCode = currentLocale.regionCode
-    return countryCode
-}
-
-var localLanguage:String? {
-    let currentLocale:Locale = Locale.current
-    let language = currentLocale.languageCode
-    return language
-}
 
 class AppTheme {
 
     /**
     *	@brief	The archive All current data
-    *
     */
     class func KeyedArchiverName(_ name:String,andObject object:Any) ->Bool{
         let pathArray:[String] = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)
@@ -39,6 +27,13 @@ class AppTheme {
         let filename:String = path.appendingFormat("/%@.data", name)
         let result = NSKeyedArchiver.archiveRootObject(object, toFile: filename)
         return result
+    }
+    
+    class func hasGearbox() -> Bool {
+        if let any = Bundle.main.object(forInfoDictionaryKey: "Gearbox"), let value = any as? Bool{
+            return value
+        }
+        return false
     }
 
     /**
@@ -134,10 +129,7 @@ class AppTheme {
         let predicate =  NSPredicate(format: "SELF MATCHES %@" ,predicateStr)
         return predicate.evaluate(with: currObject)
     }
-
-    class func isNull(_ object:String)->Bool{
-        return object.isEmpty
-    }
+ 
     
     class func firmwareVersionFrom(path:URL) -> Double {
         let str = path.absoluteString

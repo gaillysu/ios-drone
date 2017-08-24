@@ -40,6 +40,14 @@ class TimeSettingsViewController: BaseViewController {
                 ]),
              TimeSettingsSectionModel(header: "Calibration", footer: "", items: [
                 TimeSettingsSectionItem(label: "Recalibrate hands")])])
+        if !AppTheme.hasGearbox() {
+            section.value.remove(at: 1)
+            section.value[0].items.remove(at: 4)
+            section.value[0].items.remove(at: 3)
+            section.value[0].items.remove(at: 1)
+            section.value[0].items.remove(at: 0)
+        }
+        
         
         let dataSource = RxTableViewSectionedReloadDataSource<TimeSettingsSectionModel>()
         
@@ -50,23 +58,25 @@ class TimeSettingsViewController: BaseViewController {
                 cell.item = item
                 switch (indexPath.row, indexPath.section){
                 case (0,0):
-                    cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
-                        let isOn = cell.settingSwitch.isOn
-                        DTUserDefaults.syncAnalogTime = isOn
-                        if let localTimeCell = self.tableView.cellForRow(at: IndexPath(item: 1, section: 0)){
-                            localTimeCell.enable(on: isOn)
-                        }
-                        if isOn {
-                            self.getAppDelegate().setRTC(force: false)
-                            self.getAppDelegate().setAnalogTime(forceCurrentTime: false)
-                        }
-                    }).addDisposableTo(self.disposeBag)
+                    if !AppTheme.hasGearbox() {
+                        self.subscribeToHourFormat(cell: cell)
+                    }else{
+                        cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
+                            let isOn = cell.settingSwitch.isOn
+                            DTUserDefaults.syncAnalogTime = isOn
+                            if let localTimeCell = self.tableView.cellForRow(at: IndexPath(item: 1, section: 0)){
+                                localTimeCell.enable(on: isOn)
+                            }
+                            if isOn {
+                                self.getAppDelegate().setRTC(force: false)
+                                self.getAppDelegate().setAnalogTime(forceCurrentTime: false)
+                            }
+                        }).addDisposableTo(self.disposeBag)
+                    }
                 case (2,0):
-                    cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
-                        DTUserDefaults.hourFormat = cell.settingSwitch.isOn ? 1 : 0
-                        self.getAppDelegate().setTimeFormat()
-                        print("Hour format")
-                    }).addDisposableTo(self.disposeBag)
+                    if AppTheme.hasGearbox() {
+                        self.subscribeToHourFormat(cell: cell)
+                    }
                 case (3,0):
                     cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
                         DTUserDefaults.timerEnabled = cell.settingSwitch.isOn
@@ -128,6 +138,14 @@ class TimeSettingsViewController: BaseViewController {
                 }
             }
             }.addDisposableTo(self.disposeBag)
+    }
+    
+    func subscribeToHourFormat(cell:ClockSettingsTableViewCellSwitch){
+        cell.settingSwitch.rx.controlEvent(UIControlEvents.valueChanged).subscribe({ _ in
+            DTUserDefaults.hourFormat = cell.settingSwitch.isOn ? 1 : 0
+            self.getAppDelegate().setTimeFormat()
+        }).addDisposableTo(self.disposeBag)
+        
     }
 }
 

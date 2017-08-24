@@ -19,7 +19,7 @@ class GoogleMapsBaseRequest: NetworkRequest {
     var parameters:Parameters
     
     init(response: @escaping (_ bool:Bool, _ json:JSON?, _ error:Error?) -> Void){
-        self.parameters = ["key":Bundle.googleMapKey ?? "","units":"metric","region":countryCode ?? "ua","language":localLanguage ?? "en"]
+        self.parameters = ["key":Bundle.googleMapKey ?? "","units":"metric","region":Locale.current.regionCode ?? "ua","language":Locale.current.languageCode ?? "en"]
         self.method = .get
         self.encoding = URLEncoding.default
         self.response = response

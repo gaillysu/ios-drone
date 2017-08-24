@@ -22,23 +22,28 @@ class TimeTabViewController: UITabBarController {
         super.viewWillAppear(animated)
         tabBar.backgroundColor = UIColor.white
         tabBar.tintColor = UIColor.getBaseColor()
+        self.viewControllers = []
         // Create Tab two
-        let worldClockTab = worldClockViewController
+        let worldClockController = WorldClockViewController()
         let worldClockTabItem = UITabBarItem(title: "World Clock", image: UIImage(named: "icon_world_clock_tab")!, selectedImage: UIImage(named: "icon_world_clock_tab")!)
-        worldClockTab.tabBarItem = worldClockTabItem
-        
-        let alarmViewController = AlarmViewController()
-        let alarmTab = UITabBarItem(title: "Alarm", image: UIImage(named: "icon_alarm")!, selectedImage: UIImage(named: "icon_alarm")!)
-        alarmViewController.tabBarItem = alarmTab
-        
-        let timerViewController = TimerViewController()
-        let timerTab = UITabBarItem(title: "Timer", image: UIImage(named: "icon_timer")!, selectedImage: UIImage(named: "icon_timer")!)
-        timerViewController.tabBarItem = timerTab
-        
+        worldClockController.tabBarItem = worldClockTabItem
+        self.viewControllers = [worldClockController]
+        if AppTheme.hasGearbox(){
+            let alarmViewController = AlarmViewController()
+            let alarmTab = UITabBarItem(title: "Alarm", image: UIImage(named: "icon_alarm")!, selectedImage: UIImage(named: "icon_alarm")!)
+            alarmViewController.tabBarItem = alarmTab
+            self.viewControllers?.append(alarmViewController)
+            
+            let timerViewController = TimerViewController()
+            let timerTab = UITabBarItem(title: "Timer", image: UIImage(named: "icon_timer")!, selectedImage: UIImage(named: "icon_timer")!)
+            timerViewController.tabBarItem = timerTab
+            self.viewControllers?.append(timerViewController)
+        }
         let timeSettingsViewController = TimeSettingsViewController()
         let timeSettingsTab = UITabBarItem(title: "Settings", image: UIImage(named: "icon_settings")!, selectedImage: UIImage(named: "icon_settings")!)
         timeSettingsViewController.tabBarItem = timeSettingsTab
-        self.viewControllers = [worldClockTab, alarmViewController, timerViewController, timeSettingsViewController]
+        self.viewControllers?.append(timeSettingsViewController)
+        
         self.addCloseButton(#selector(dismissTabViewController))
         if firstTimeInitialize {
             firstTimeInitialize = false
@@ -53,7 +58,11 @@ class TimeTabViewController: UITabBarController {
             case 0:
                 self.addPlusButton(#selector(addWorldClock))
             case 1:
-                self.addPlusButton(#selector(addAlarm))
+                if AppTheme.hasGearbox() {
+                    self.addPlusButton(#selector(addAlarm))
+                }else{
+                    self.navigationItem.rightBarButtonItem = nil
+                }
             default:
                 self.navigationItem.rightBarButtonItem = nil
                 break
@@ -76,7 +85,7 @@ class TimeTabViewController: UITabBarController {
             let alert:UIAlertController = UIAlertController(title: "World Clock", message: NSLocalizedString("only_5_world_clock", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-             return
+            return
         }
         let selectCityController: AddWorldClockViewController = AddWorldClockViewController()
         let navigationController: UINavigationController = UINavigationController(rootViewController: selectCityController)

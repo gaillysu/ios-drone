@@ -81,14 +81,14 @@ class LoginViewController: UIViewController {
     }
     
     func loginRequest() {
-        if(AppTheme.isNull(usernameT!.text!) || !AppTheme.isEmail(usernameT!.text!)) {
+        if (usernameT!.text!).isEmpty{
             let banner = Banner(title: NSLocalizedString("Email is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)
             return
         }
         
-        if AppTheme.isNull(passwordT!.text!) || AppTheme.isPassword(passwordT!.text!) {
+        if (passwordT!.text!).isEmpty{
             let banner = Banner(title: NSLocalizedString("Password is not filled in.", comment: ""), subtitle: nil, image: nil, backgroundColor:UIColor.getBaseColor())
             banner.dismissesOnTap = true
             banner.show(duration: 1.2)

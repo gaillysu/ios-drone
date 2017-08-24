@@ -81,7 +81,7 @@ class CompassViewController: BaseViewController {
             .bind(to: compassTableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
         
-        compassTableView.rx.modelSelected(Drone.CompassSectionModelItem.self).subscribe { _ in
+        compassTableView.rx.modelSelected(CompassSectionModelItem.self).subscribe { _ in
             if let indexPath = self.compassTableView.indexPathForSelectedRow{
                 self.compassTableView.deselectRow(at: indexPath, animated: true)
                 switch indexPath.row{

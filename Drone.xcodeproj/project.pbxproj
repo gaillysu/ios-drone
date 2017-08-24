@@ -267,6 +267,310 @@
 		CB8AD9FD1F04EBE8001C8D86 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8AD9FC1F04EBE8001C8D86 /* TimerViewModel.swift */; };
 		CB91926F1EBC7DC300BA14E6 /* HotKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91926D1EBC7DC300BA14E6 /* HotKeysViewController.swift */; };
 		CB9192701EBC7DC300BA14E6 /* HotKeysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB91926E1EBC7DC300BA14E6 /* HotKeysViewController.xib */; };
+		CB91DB8B1F4D335F00C8B5CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B471EA46F800019F574 /* LoginViewController.swift */; };
+		CB91DB8C1F4D335F00C8B5CE /* ClockSettingsTableViewCellSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65461EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.swift */; };
+		CB91DB8D1F4D335F00C8B5CE /* DidSelectedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8923A1EB304BE006F7031 /* DidSelectedDelegate.swift */; };
+		CB91DB8E1F4D335F00C8B5CE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B441EA46F800019F574 /* WelcomeViewController.swift */; };
+		CB91DB8F1F4D335F00C8B5CE /* WriteSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B241EA46F800019F574 /* WriteSettingRequest.swift */; };
+		CB91DB901F4D335F00C8B5CE /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9C41EC064EA00513E97 /* MKPlacemark+Extension.swift */; };
+		CB91DB911F4D335F00C8B5CE /* Compass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65231EA610C5007982B0 /* Compass.swift */; };
+		CB91DB921F4D335F00C8B5CE /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE31EF767E700EFA956 /* AlarmViewModel.swift */; };
+		CB91DB931F4D335F00C8B5CE /* FirmwareStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F0521F2590B4007D66E3 /* FirmwareStorage.swift */; };
+		CB91DB941F4D335F00C8B5CE /* GetWorldClockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B101EA46F800019F574 /* GetWorldClockRequest.swift */; };
+		CB91DB951F4D335F00C8B5CE /* BasePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C621EA5A03C0019F574 /* BasePostRequest.swift */; };
+		CB91DB961F4D335F00C8B5CE /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB71EA46F810019F574 /* TimeUtil.swift */; };
+		CB91DB971F4D335F00C8B5CE /* RequestPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C671EA5A03C0019F574 /* RequestPasswordRequest.swift */; };
+		CB91DB981F4D335F00C8B5CE /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892761F0CB32A00725D25 /* WeatherIcon.swift */; };
+		CB91DB991F4D335F00C8B5CE /* MEDWeekDayNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFDE1EF7669C00EFA956 /* MEDWeekDayNumber.swift */; };
+		CB91DB9A1F4D335F00C8B5CE /* TimeMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B931EA46F810019F574 /* TimeMenuItem.swift */; };
+		CB91DB9B1F4D335F00C8B5CE /* UpdateNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B221EA46F800019F574 /* UpdateNotificationRequest.swift */; };
+		CB91DB9C1F4D335F00C8B5CE /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F81EAA026B00450284 /* Double+Extension.swift */; };
+		CB91DB9D1F4D335F00C8B5CE /* MEDAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFDC1EF7665500EFA956 /* MEDAlarm.swift */; };
+		CB91DB9E1F4D335F00C8B5CE /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C5C1EA5A03C0019F574 /* UserNetworkManager.swift */; };
+		CB91DB9F1F4D335F00C8B5CE /* MapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9B31EBC241D00513E97 /* MapViewCell.swift */; };
+		CB91DBA01F4D335F00C8B5CE /* WorldClockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BBA1EA46F810019F574 /* WorldClockUtil.swift */; };
+		CB91DBA11F4D335F00C8B5CE /* BasePutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C631EA5A03C0019F574 /* BasePutRequest.swift */; };
+		CB91DBA21F4D335F00C8B5CE /* RoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A9F171EC2AF6F006D65C4 /* RoutesController.swift */; };
+		CB91DBA31F4D335F00C8B5CE /* TimeSettingsSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892531EB33BB2006F7031 /* TimeSettingsSectionItem.swift */; };
+		CB91DBA41F4D335F00C8B5CE /* GoogleMapsDirectionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FAC1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift */; };
+		CB91DBA51F4D335F00C8B5CE /* DRHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB71EF26F1F007A0709 /* DRHUD.swift */; };
+		CB91DBA61F4D335F00C8B5CE /* SetContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B161EA46F800019F574 /* SetContactsFilterRequest.swift */; };
+		CB91DBA71F4D335F00C8B5CE /* CompassSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8924E1EB33BAB006F7031 /* CompassSectionModel.swift */; };
+		CB91DBA81F4D335F00C8B5CE /* HotKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91926D1EBC7DC300BA14E6 /* HotKeysViewController.swift */; };
+		CB91DBA91F4D335F00C8B5CE /* FirmwareNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4F13A21F18954500D3D1D6 /* FirmwareNetworkManager.swift */; };
+		CB91DBAA1F4D335F00C8B5CE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */; };
+		CB91DBAB1F4D335F00C8B5CE /* StepsGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C691EA5A03C0019F574 /* StepsGetRequest.swift */; };
+		CB91DBAC1F4D335F00C8B5CE /* UserSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B831EA46F810019F574 /* UserSteps.swift */; };
+		CB91DBAD1F4D335F00C8B5CE /* NevoBT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD11C868C89003DA5E2 /* NevoBT.swift */; };
+		CB91DBAE1F4D335F00C8B5CE /* AlarmSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE51EF767F900EFA956 /* AlarmSectionViewModel.swift */; };
+		CB91DBAF1F4D335F00C8B5CE /* HotKeySectionModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1549791EC01E0900090242 /* HotKeySectionModelItem.swift */; };
+		CB91DBB01F4D335F00C8B5CE /* OTAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4F13A01F186C1300D3D1D6 /* OTAViewModel.swift */; };
+		CB91DBB11F4D335F00C8B5CE /* ReadCountdownTimerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152085F1EFBA5B000F3F551 /* ReadCountdownTimerRequest.swift */; };
+		CB91DBB21F4D335F00C8B5CE /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */; };
+		CB91DBB31F4D335F00C8B5CE /* RoutesStepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */; };
+		CB91DBB41F4D335F00C8B5CE /* WhichDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B791EA46F810019F574 /* WhichDeviceViewController.swift */; };
+		CB91DBB51F4D335F00C8B5CE /* AddAlarmDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC093161EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift */; };
+		CB91DBB61F4D335F00C8B5CE /* SendStepsToWatchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */; };
+		CB91DBB71F4D335F00C8B5CE /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFD1EA46F800019F574 /* ActivityPacket.swift */; };
+		CB91DBB81F4D335F00C8B5CE /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
+		CB91DBB91F4D335F00C8B5CE /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928FA1EAA026B00450284 /* Int+Extension.swift */; };
+		CB91DBBA1F4D335F00C8B5CE /* AddressGeocodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5C1EF0DFD5006D73BE /* AddressGeocodeRequest.swift */; };
+		CB91DBBB1F4D335F00C8B5CE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B821EA46F810019F574 /* UserProfile.swift */; };
+		CB91DBBC1F4D335F00C8B5CE /* RepeatAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */; };
+		CB91DBBD1F4D335F00C8B5CE /* TimeSettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892521EB33BB2006F7031 /* TimeSettingsSectionModel.swift */; };
+		CB91DBBE1F4D335F00C8B5CE /* SearchCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B331EA46F800019F574 /* SearchCityController.swift */; };
+		CB91DBBF1F4D335F00C8B5CE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B4A1EA46F800019F574 /* MenuViewController.swift */; };
+		CB91DBC01F4D335F00C8B5CE /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61078DC11E48249C00898A0D /* String+Timepiece.swift */; };
+		CB91DBC11F4D335F00C8B5CE /* CLGeocoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9C61EC15E9B00513E97 /* CLGeocoder+Extension.swift */; };
+		CB91DBC21F4D335F00C8B5CE /* DeviceTableViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B3E1EA46F800019F574 /* DeviceTableViewCellHeader.swift */; };
+		CB91DBC31F4D335F00C8B5CE /* GetSystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B0C1EA46F800019F574 /* GetSystemConfig.swift */; };
+		CB91DBC41F4D335F00C8B5CE /* ReadDailyTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B111EA46F800019F574 /* ReadDailyTracker.swift */; };
+		CB91DBC51F4D335F00C8B5CE /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FA81EA5CDF4005B5C22 /* CompassViewController.swift */; };
+		CB91DBC61F4D335F00C8B5CE /* StepsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BAE1EA46F810019F574 /* StepsManager.swift */; };
+		CB91DBC71F4D335F00C8B5CE /* SetRTCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B191EA46F800019F574 /* SetRTCRequest.swift */; };
+		CB91DBC81F4D335F00C8B5CE /* WeatherPrecipitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892811F0CC06100725D25 /* WeatherPrecipitation.swift */; };
+		CB91DBC91F4D335F00C8B5CE /* BaseDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C5F1EA5A03C0019F574 /* BaseDeleteRequest.swift */; };
+		CB91DBCA1F4D335F00C8B5CE /* UpdateContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B211EA46F800019F574 /* UpdateContactsFilterRequest.swift */; };
+		CB91DBCB1F4D335F00C8B5CE /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF601EF0E1D5006D73BE /* Bundle+Extension.swift */; };
+		CB91DBCC1F4D335F00C8B5CE /* GoogleWaypointsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB01EF22DAE007A0709 /* GoogleWaypointsModel.swift */; };
+		CB91DBCD1F4D335F00C8B5CE /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C651EA5A03C0019F574 /* LoginRequest.swift */; };
+		CB91DBCE1F4D335F00C8B5CE /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B4D1EA46F800019F574 /* MenuViewCell.swift */; };
+		CB91DBCF1F4D335F00C8B5CE /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B591EA46F800019F574 /* ProfileSetupViewController.swift */; };
+		CB91DBD01F4D335F00C8B5CE /* OTARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929201EB0640D00450284 /* OTARequest.swift */; };
+		CB91DBD11F4D335F00C8B5CE /* CompassCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */; };
+		CB91DBD21F4D335F00C8B5CE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B631EA46F800019F574 /* RegisterViewController.swift */; };
+		CB91DBD31F4D335F00C8B5CE /* GetConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B081EA46F800019F574 /* GetConfigRequest.swift */; };
+		CB91DBD41F4D335F00C8B5CE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892411EB32717006F7031 /* Notification.swift */; };
+		CB91DBD51F4D335F00C8B5CE /* UserDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B801EA46F810019F574 /* UserDevice.swift */; };
+		CB91DBD61F4D335F00C8B5CE /* StepsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B6C1EA46F810019F574 /* StepsTitleView.swift */; };
+		CB91DBD71F4D335F00C8B5CE /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */; };
+		CB91DBD81F4D335F00C8B5CE /* GoogleSnapRoadsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826C01EF779EC00B25A6A /* GoogleSnapRoadsModel.swift */; };
+		CB91DBD91F4D335F00C8B5CE /* UserUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C6C1EA5A03C0019F574 /* UserUpdateRequest.swift */; };
+		CB91DBDA1F4D335F00C8B5CE /* WeatherLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B951EA46F810019F574 /* WeatherLocationModel.swift */; };
+		CB91DBDB1F4D335F00C8B5CE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B981EA46F810019F574 /* City.swift */; };
+		CB91DBDC1F4D335F00C8B5CE /* ForgetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B411EA46F800019F574 /* ForgetPasswordController.swift */; };
+		CB91DBDD1F4D335F00C8B5CE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB81EA46F810019F574 /* UIView+Extension.swift */; };
+		CB91DBDE1F4D335F00C8B5CE /* ProfileMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B911EA46F810019F574 /* ProfileMenuItem.swift */; };
+		CB91DBDF1F4D335F00C8B5CE /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B661EA46F800019F574 /* SplashScreenViewController.swift */; };
+		CB91DBE01F4D335F00C8B5CE /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B5C1EA46F800019F574 /* ProfileTableViewCell.swift */; };
+		CB91DBE11F4D335F00C8B5CE /* NevoBTimpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD21C868C89003DA5E2 /* NevoBTimpl.swift */; };
+		CB91DBE21F4D335F00C8B5CE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C5A1EA5A03C0019F574 /* NetworkManager.swift */; };
+		CB91DBE31F4D335F00C8B5CE /* GoogleMapsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1EF5E1EF0E011006D73BE /* GoogleMapsBaseRequest.swift */; };
+		CB91DBE41F4D335F00C8B5CE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD31C868C89003DA5E2 /* Profile.swift */; };
+		CB91DBE51F4D335F00C8B5CE /* DeviceMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8C1EA46F810019F574 /* DeviceMenuItem.swift */; };
+		CB91DBE61F4D335F00C8B5CE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9C21EBC670800513E97 /* LocationManager.swift */; };
+		CB91DBE71F4D335F00C8B5CE /* ClockSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F654D1EA8AB51007982B0 /* ClockSettingsTableViewCell.swift */; };
+		CB91DBE81F4D335F00C8B5CE /* CalibrateMinuteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F652E1EA70CCB007982B0 /* CalibrateMinuteViewController.swift */; };
+		CB91DBE91F4D335F00C8B5CE /* HotKeySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497B1EC01E5700090242 /* HotKeySectionModel.swift */; };
+		CB91DBEA1F4D335F00C8B5CE /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120B43D1F09F19900C94D77 /* Array+Extension.swift */; };
+		CB91DBEB1F4D335F00C8B5CE /* AnalysisStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B2A1EA46F800019F574 /* AnalysisStepsChartView.swift */; };
+		CB91DBEC1F4D335F00C8B5CE /* GetStepsGoalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B0B1EA46F800019F574 /* GetStepsGoalRequest.swift */; };
+		CB91DBED1F4D335F00C8B5CE /* TimeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F653F1EA85CB6007982B0 /* TimeTabViewController.swift */; };
+		CB91DBEE1F4D335F00C8B5CE /* WorldClockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B721EA46F810019F574 /* WorldClockCell.swift */; };
+		CB91DBEF1F4D335F00C8B5CE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB11EA46F810019F574 /* UIColor+Extension.swift */; };
+		CB91DBF01F4D335F00C8B5CE /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */; };
+		CB91DBF11F4D335F00C8B5CE /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB61EA46F810019F574 /* SyncQueue.swift */; };
+		CB91DBF21F4D335F00C8B5CE /* SyncLastDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAC1EA765410019F574 /* SyncLastDataCache.swift */; };
+		CB91DBF31F4D335F00C8B5CE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892851F0E2E3800725D25 /* Date+Extension.swift */; };
+		CB91DBF41F4D335F00C8B5CE /* ResetCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA61EA756C70019F574 /* ResetCacheModel.swift */; };
+		CB91DBF51F4D335F00C8B5CE /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B1C1EA46F800019F574 /* SetUserProfileRequest.swift */; };
+		CB91DBF61F4D335F00C8B5CE /* SetStepsToWatchReuqest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B1A1EA46F800019F574 /* SetStepsToWatchReuqest.swift */; };
+		CB91DBF71F4D335F00C8B5CE /* GoogleMapsDirectionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FAE1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift */; };
+		CB91DBF81F4D335F00C8B5CE /* CounterClockwiseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F653A1EA72D37007982B0 /* CounterClockwiseButton.swift */; };
+		CB91DBF91F4D335F00C8B5CE /* ReadDailyAlarmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152085B1EFBA1F000F3F551 /* ReadDailyAlarmRequest.swift */; };
+		CB91DBFA1F4D335F00C8B5CE /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AF91EA46F800019F574 /* ConnectionController.swift */; };
+		CB91DBFB1F4D335F00C8B5CE /* StepsMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B921EA46F810019F574 /* StepsMenuItem.swift */; };
+		CB91DBFC1F4D335F00C8B5CE /* DroneProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFB1EA46F800019F574 /* DroneProfile.swift */; };
+		CB91DBFD1F4D335F00C8B5CE /* GetContactsFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B091EA46F800019F574 /* GetContactsFilterRequest.swift */; };
+		CB91DBFE1F4D335F00C8B5CE /* GetSystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B0D1EA46F800019F574 /* GetSystemStatus.swift */; };
+		CB91DBFF1F4D335F00C8B5CE /* CompassMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8B1EA46F810019F574 /* CompassMenuItem.swift */; };
+		CB91DC001F4D335F00C8B5CE /* TimeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65421EA86303007982B0 /* TimeSettingsViewController.swift */; };
+		CB91DC011F4D335F00C8B5CE /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F91EAA026B00450284 /* Float+Extension.swift */; };
+		CB91DC021F4D335F00C8B5CE /* GoogleMapsRoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB21EF22E27007A0709 /* GoogleMapsRoutesModel.swift */; };
+		CB91DC031F4D335F00C8B5CE /* WeatherUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B961EA46F810019F574 /* WeatherUpdateModel.swift */; };
+		CB91DC041F4D335F00C8B5CE /* NotificationAlertSoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FBC1EF38100007A0709 /* NotificationAlertSoundController.swift */; };
+		CB91DC051F4D335F00C8B5CE /* SystemStatusPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B021EA46F800019F574 /* SystemStatusPacket.swift */; };
+		CB91DC061F4D335F00C8B5CE /* NordicDFUController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB375BE1F1C477800B9DD1D /* NordicDFUController.swift */; };
+		CB91DC071F4D335F00C8B5CE /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C661EA5A03C0019F574 /* NetworkRequest.swift */; };
+		CB91DC081F4D335F00C8B5CE /* SystemEventPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B011EA46F800019F574 /* SystemEventPacket.swift */; };
+		CB91DC091F4D335F00C8B5CE /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9AE1EBC203300513E97 /* MapTableViewController.swift */; };
+		CB91DC0A1F4D335F00C8B5CE /* AddAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC093111EFA1746001213F4 /* AddAlarmTableViewCell.swift */; };
+		CB91DC0B1F4D335F00C8B5CE /* PulleyViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9B71EBC2C5600513E97 /* PulleyViewController+Extension.swift */; };
+		CB91DC0C1F4D335F00C8B5CE /* ReadWeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B131EA46F800019F574 /* ReadWeatherRequest.swift */; };
+		CB91DC0D1F4D335F00C8B5CE /* ForgetPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C641EA5A03C0019F574 /* ForgetPasswordRequest.swift */; };
+		CB91DC0E1F4D335F00C8B5CE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B601EA46F800019F574 /* ProfileViewController.swift */; };
+		CB91DC0F1F4D335F00C8B5CE /* WeatherCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928EF1EA99DD900450284 /* WeatherCacheModel.swift */; };
+		CB91DC101F4D335F00C8B5CE /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B3C1EA46F800019F574 /* DeviceTableViewCell.swift */; };
+		CB91DC111F4D335F00C8B5CE /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8AD9F41F04E797001C8D86 /* TimerViewController.swift */; };
+		CB91DC121F4D335F00C8B5CE /* HotKeyTableViewCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC3ACA1EC174EC009282E8 /* HotKeyTableViewCellButton.swift */; };
+		CB91DC131F4D335F00C8B5CE /* ReadDailyTrackerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B121EA46F800019F574 /* ReadDailyTrackerInfo.swift */; };
+		CB91DC141F4D335F00C8B5CE /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */; };
+		CB91DC151F4D335F00C8B5CE /* AppDelegate-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE84B21DE42224002C7C96 /* AppDelegate-Extension.swift */; };
+		CB91DC161F4D335F00C8B5CE /* StepsCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C681EA5A03C0019F574 /* StepsCreateRequest.swift */; };
+		CB91DC171F4D335F00C8B5CE /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B391EA46F800019F574 /* DeviceViewController.swift */; };
+		CB91DC181F4D335F00C8B5CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982A691C868B15003DA5E2 /* AppDelegate.swift */; };
+		CB91DC191F4D335F00C8B5CE /* GetTrainingRecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B0E1EA46F800019F574 /* GetTrainingRecordRequest.swift */; };
+		CB91DC1A1F4D335F00C8B5CE /* GetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B0F1EA46F800019F574 /* GetUserProfileRequest.swift */; };
+		CB91DC1B1F4D335F00C8B5CE /* WeatherUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892791F0CB32A00725D25 /* WeatherUnits.swift */; };
+		CB91DC1C1F4D335F00C8B5CE /* SetGoalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B171EA46F800019F574 /* SetGoalRequest.swift */; };
+		CB91DC1D1F4D335F00C8B5CE /* EventBusKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB31EA46F810019F574 /* EventBusKeys.swift */; };
+		CB91DC1E1F4D335F00C8B5CE /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8AD9FC1F04EBE8001C8D86 /* TimerViewModel.swift */; };
+		CB91DC1F1F4D335F00C8B5CE /* ChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B541E7F838300B4AD7C /* ChartFormatter.swift */; };
+		CB91DC201F4D335F00C8B5CE /* AlarmSectionViewModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE71EF7680800EFA956 /* AlarmSectionViewModelItem.swift */; };
+		CB91DC211F4D335F00C8B5CE /* DroneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B051EA46F800019F574 /* DroneRequest.swift */; };
+		CB91DC221F4D335F00C8B5CE /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE4B5B1E7F851C00B4AD7C /* BalloonMarker.swift */; };
+		CB91DC231F4D335F00C8B5CE /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9A81EBC177000513E97 /* NavigationController.swift */; };
+		CB91DC241F4D335F00C8B5CE /* WeatherLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892781F0CB32A00725D25 /* WeatherLanguage.swift */; };
+		CB91DC251F4D335F00C8B5CE /* PostWatchVersionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */; };
+		CB91DC261F4D335F00C8B5CE /* WorldClockDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B851EA46F810019F574 /* WorldClockDatabaseHelper.swift */; };
+		CB91DC271F4D335F00C8B5CE /* StepsUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C6A1EA5A03C0019F574 /* StepsUpdateRequest.swift */; };
+		CB91DC281F4D335F00C8B5CE /* ClearConnectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B041EA46F800019F574 /* ClearConnectionRequest.swift */; };
+		CB91DC291F4D335F00C8B5CE /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8F1EA46F810019F574 /* MenuItem.swift */; };
+		CB91DC2A1F4D335F00C8B5CE /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */; };
+		CB91DC2B1F4D335F00C8B5CE /* CheckEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B301EA46F800019F574 /* CheckEmailController.swift */; };
+		CB91DC2C1F4D335F00C8B5CE /* ClockwiseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F653C1EA72D4D007982B0 /* ClockwiseButton.swift */; };
+		CB91DC2D1F4D335F00C8B5CE /* SetSystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B1B1EA46F800019F574 /* SetSystemConfig.swift */; };
+		CB91DC2E1F4D335F00C8B5CE /* NotificationsMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B901EA46F810019F574 /* NotificationsMenuItem.swift */; };
+		CB91DC2F1F4D335F00C8B5CE /* CalibrateHourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F652A1EA70CA9007982B0 /* CalibrateHourViewController.swift */; };
+		CB91DC301F4D335F00C8B5CE /* RawPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD41C868C89003DA5E2 /* RawPacket.swift */; };
+		CB91DC311F4D335F00C8B5CE /* UserCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C6B1EA5A03C0019F574 /* UserCreateRequest.swift */; };
+		CB91DC321F4D335F00C8B5CE /* MapNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB9BA1EBC4E2D00513E97 /* MapNavigationViewController.swift */; };
+		CB91DC331F4D335F00C8B5CE /* SetDailyAlarmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615208591EFBA1D700F3F551 /* SetDailyAlarmRequest.swift */; };
+		CB91DC341F4D335F00C8B5CE /* WeatherBaseGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892751F0CB32A00725D25 /* WeatherBaseGetRequest.swift */; };
+		CB91DC351F4D335F00C8B5CE /* SetClearConnectionWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B151EA46F800019F574 /* SetClearConnectionWatch.swift */; };
+		CB91DC361F4D335F00C8B5CE /* GoogleMapsGeocodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C971EF121EE00F82907 /* GoogleMapsGeocodeModel.swift */; };
+		CB91DC371F4D335F00C8B5CE /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFEA1EF7D1A400EFA956 /* AddAlarmViewController.swift */; };
+		CB91DC381F4D335F00C8B5CE /* ConnectionControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFA1EA46F800019F574 /* ConnectionControllerImpl.swift */; };
+		CB91DC391F4D335F00C8B5CE /* CompassSectionModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8924F1EB33BAB006F7031 /* CompassSectionModelItem.swift */; };
+		CB91DC3A1F4D335F00C8B5CE /* GetNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B0A1EA46F800019F574 /* GetNotificationRequest.swift */; };
+		CB91DC3B1F4D335F00C8B5CE /* MEDBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B7E1EA46F810019F574 /* MEDBaseModel.swift */; };
+		CB91DC3C1F4D335F00C8B5CE /* ProfileTableViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B5E1EA46F800019F574 /* ProfileTableViewCellHeader.swift */; };
+		CB91DC3D1F4D335F00C8B5CE /* GetActivityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B061EA46F800019F574 /* GetActivityRequest.swift */; };
+		CB91DC3E1F4D335F00C8B5CE /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B691EA46F800019F574 /* StepsViewController.swift */; };
+		CB91DC3F1F4D335F00C8B5CE /* CompassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB715FB21EA5F20E005B5C22 /* CompassTableViewCell.swift */; };
+		CB91DC401F4D335F00C8B5CE /* DTUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB21EA46F810019F574 /* DTUserDefaults.swift */; };
+		CB91DC411F4D335F00C8B5CE /* WorldClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B841EA46F810019F574 /* WorldClock.swift */; };
+		CB91DC421F4D335F00C8B5CE /* PostBatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */; };
+		CB91DC431F4D335F00C8B5CE /* WeatherNetworkApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C5D1EA5A03C0019F574 /* WeatherNetworkApiManager.swift */; };
+		CB91DC441F4D335F00C8B5CE /* MyDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B501EA46F800019F574 /* MyDeviceViewController.swift */; };
+		CB91DC451F4D335F00C8B5CE /* SetNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B181EA46F800019F574 /* SetNotificationRequest.swift */; };
+		CB91DC461F4D335F00C8B5CE /* UserGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B811EA46F810019F574 /* UserGoal.swift */; };
+		CB91DC471F4D335F00C8B5CE /* AddAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFF11EF9143A00EFA956 /* AddAlarmViewModel.swift */; };
+		CB91DC481F4D335F00C8B5CE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6139290D1EADDD3900450284 /* BaseViewController.swift */; };
+		CB91DC491F4D335F00C8B5CE /* PostRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A9F1B1EC2B7B7006D65C4 /* PostRoutes.swift */; };
+		CB91DC4A1F4D335F00C8B5CE /* GoogleRoadsAPIBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826BC1EF7776400B25A6A /* GoogleRoadsAPIBaseRequest.swift */; };
+		CB91DC4B1F4D335F00C8B5CE /* ConnectionSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B361EA46F800019F574 /* ConnectionSetupViewController.swift */; };
+		CB91DC4C1F4D335F00C8B5CE /* GoogleMapRoadsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826BE1EF7789E00B25A6A /* GoogleMapRoadsNetworkManager.swift */; };
+		CB91DC4D1F4D335F00C8B5CE /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */; };
+		CB91DC4E1F4D335F00C8B5CE /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B761EA46F810019F574 /* WorldClockViewController.swift */; };
+		CB91DC4F1F4D335F00C8B5CE /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CB11EA83FFB0019F574 /* URL+Extension.swift */; };
+		CB91DC501F4D335F00C8B5CE /* SetWeatherLocationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B1D1EA46F800019F574 /* SetWeatherLocationsRequest.swift */; };
+		CB91DC511F4D335F00C8B5CE /* StepsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C5B1EA5A03C0019F574 /* StepsNetworkManager.swift */; };
+		CB91DC521F4D335F00C8B5CE /* GoogleMapSnaptoRoadsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C826BA1EF7770400B25A6A /* GoogleMapSnaptoRoadsRequest.swift */; };
+		CB91DC531F4D335F00C8B5CE /* EveryHourWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */; };
+		CB91DC541F4D335F00C8B5CE /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA31EA73F4C0019F574 /* DataBaseManager.swift */; };
+		CB91DC551F4D335F00C8B5CE /* LoginMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8E1EA46F810019F574 /* LoginMenuItem.swift */; };
+		CB91DC561F4D335F00C8B5CE /* UrbanNavigationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6143C01C1EC45DEB00420647 /* UrbanNavigationRequest.swift */; };
+		CB91DC571F4D335F00C8B5CE /* SetAppConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B141EA46F800019F574 /* SetAppConfigRequest.swift */; };
+		CB91DC581F4D335F00C8B5CE /* MEDBaseModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFE01EF7673800EFA956 /* MEDBaseModel+Extension.swift */; };
+		CB91DC591F4D335F00C8B5CE /* SetWorldClockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B1E1EA46F800019F574 /* SetWorldClockRequest.swift */; };
+		CB91DC5A1F4D335F00C8B5CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618322FD1EA0A2B90054966D /* Constants.swift */; };
+		CB91DC5B1F4D335F00C8B5CE /* SelectNewHomeTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8FDF51F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift */; };
+		CB91DC5C1F4D335F00C8B5CE /* UpdateContactsApplicationsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B201EA46F800019F574 /* UpdateContactsApplicationsRequest.swift */; };
+		CB91DC5D1F4D335F00C8B5CE /* CityNavigationMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8A1EA46F810019F574 /* CityNavigationMenuItem.swift */; };
+		CB91DC5E1F4D335F00C8B5CE /* CalibrateSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65321EA70CDA007982B0 /* CalibrateSecondViewController.swift */; };
+		CB91DC5F1F4D335F00C8B5CE /* UpdateWeatherInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B231EA46F800019F574 /* UpdateWeatherInfoRequest.swift */; };
+		CB91DC601F4D335F00C8B5CE /* StepsGoalPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B001EA46F800019F574 /* StepsGoalPacket.swift */; };
+		CB91DC611F4D335F00C8B5CE /* HotKeyMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B8D1EA46F810019F574 /* HotKeyMenuItem.swift */; };
+		CB91DC621F4D335F00C8B5CE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00982BD51C868C8A003DA5E2 /* Request.swift */; };
+		CB91DC631F4D335F00C8B5CE /* NotificationsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B561EA46F800019F574 /* NotificationsViewCell.swift */; };
+		CB91DC641F4D335F00C8B5CE /* MEDDataBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B7F1EA46F810019F574 /* MEDDataBaseRequest.swift */; };
+		CB91DC651F4D335F00C8B5CE /* DronePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFF1EA46F800019F574 /* DronePacket.swift */; };
+		CB91DC661F4D335F00C8B5CE /* WeatherFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892831F0CD28A00725D25 /* WeatherFlags.swift */; };
+		CB91DC671F4D335F00C8B5CE /* NordicDFUDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB375C11F1C88EA00B9DD1D /* NordicDFUDelegate.swift */; };
+		CB91DC681F4D335F00C8B5CE /* AddWorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892361EB30491006F7031 /* AddWorldClockViewController.swift */; };
+		CB91DC691F4D335F00C8B5CE /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B531EA46F800019F574 /* NotificationViewController.swift */; };
+		CB91DC6A1F4D335F00C8B5CE /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB01EA46F810019F574 /* AppTheme.swift */; };
+		CB91DC6B1F4D335F00C8B5CE /* SetCountdownTimerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152085D1EFBA41B00F3F551 /* SetCountdownTimerRequest.swift */; };
+		CB91DC6C1F4D335F00C8B5CE /* RepeatAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0931B1EFBB96F001213F4 /* RepeatAlarmViewController.swift */; };
+		CB91DC6D1F4D335F00C8B5CE /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */; };
+		CB91DC6E1F4D335F00C8B5CE /* AutocompleteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618323071EA459F00054966D /* AutocompleteField.swift */; };
+		CB91DC6F1F4D335F00C8B5CE /* StartSystemSettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B1F1EA46F800019F574 /* StartSystemSettingRequest.swift */; };
+		CB91DC701F4D335F00C8B5CE /* WeatherInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892771F0CB32A00725D25 /* WeatherInfoRequest.swift */; };
+		CB91DC711F4D335F00C8B5CE /* OTAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBB5E5B1F0F22700020A037 /* OTAViewController.swift */; };
+		CB91DC721F4D335F00C8B5CE /* PostActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C9E1EA73E920019F574 /* PostActivityData.swift */; };
+		CB91DC731F4D335F00C8B5CE /* Timezone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B991EA46F810019F574 /* Timezone.swift */; };
+		CB91DC741F4D335F00C8B5CE /* HotKeyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497F1EC029A700090242 /* HotKeyTableViewCell.swift */; };
+		CB91DC751F4D335F00C8B5CE /* GoogleMapNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61352C941EF108D700F82907 /* GoogleMapNetworkManager.swift */; };
+		CB91DC761F4D335F00C8B5CE /* BaseNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C611EA5A03C0019F574 /* BaseNetworkRequest.swift */; };
+		CB91DC771F4D335F00C8B5CE /* FindMyPhonePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FC71EF3BE65007A0709 /* FindMyPhonePacket.swift */; };
+		CB91DC781F4D335F00C8B5CE /* WatchInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929231EB18C9200450284 /* WatchInfoModel.swift */; };
+		CB91DC791F4D335F00C8B5CE /* BaseGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C601EA5A03C0019F574 /* BaseGetRequest.swift */; };
+		CB91DC7A1F4D335F00C8B5CE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928FB1EAA026B00450284 /* String+Extension.swift */; };
+		CB91DC7B1F4D335F00C8B5CE /* GetBatteryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B071EA46F800019F574 /* GetBatteryRequest.swift */; };
+		CB91DC7D1F4D335F00C8B5CE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46981CCF223500411997 /* Fabric.framework */; };
+		CB91DC7E1F4D335F00C8B5CE /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0B46991CCF223500411997 /* Crashlytics.framework */; };
+		CB91DC7F1F4D335F00C8B5CE /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
+		CB91DC811F4D335F00C8B5CE /* MapTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619A9F121EC1B9CE006D65C4 /* MapTableViewController.xib */; };
+		CB91DC821F4D335F00C8B5CE /* DeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B3A1EA46F800019F574 /* DeviceViewController.xib */; };
+		CB91DC831F4D335F00C8B5CE /* mapImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 61C28C9B1EA706A50019F574 /* mapImage.png */; };
+		CB91DC841F4D335F00C8B5CE /* DeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B3D1EA46F800019F574 /* DeviceTableViewCell.xib */; };
+		CB91DC851F4D335F00C8B5CE /* AddAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC093121EFA1746001213F4 /* AddAlarmTableViewCell.xib */; };
+		CB91DC861F4D335F00C8B5CE /* CompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FA91EA5CDF4005B5C22 /* CompassViewController.xib */; };
+		CB91DC871F4D335F00C8B5CE /* AlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4ADFD91EF7626200EFA956 /* AlarmTableViewCell.xib */; };
+		CB91DC881F4D335F00C8B5CE /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619A9F141EC1B9D8006D65C4 /* NavigationController.xib */; };
+		CB91DC891F4D335F00C8B5CE /* TimeSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F65431EA86303007982B0 /* TimeSettingsViewController.xib */; };
+		CB91DC8A1F4D335F00C8B5CE /* CalibrateMinuteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F652F1EA70CCB007982B0 /* CalibrateMinuteViewController.xib */; };
+		CB91DC8B1F4D335F00C8B5CE /* CheckEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B311EA46F800019F574 /* CheckEmailController.xib */; };
+		CB91DC8C1F4D335F00C8B5CE /* WorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B771EA46F810019F574 /* WorldClockViewController.xib */; };
+		CB91DC8D1F4D335F00C8B5CE /* AddWorldClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBB892381EB3049A006F7031 /* AddWorldClockViewController.xib */; };
+		CB91DC8E1F4D335F00C8B5CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00982D1E1C86BB2F003DA5E2 /* Localizable.strings */; };
+		CB91DC8F1F4D335F00C8B5CE /* ForgetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B421EA46F800019F574 /* ForgetPasswordController.xib */; };
+		CB91DC901F4D335F00C8B5CE /* RoutesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619A9F181EC2AF6F006D65C4 /* RoutesController.xib */; };
+		CB91DC911F4D335F00C8B5CE /* ClockSettingsTableViewCellSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F65471EA87A8B007982B0 /* ClockSettingsTableViewCellSwitch.xib */; };
+		CB91DC921F4D335F00C8B5CE /* StepsTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B6D1EA46F810019F574 /* StepsTitleView.xib */; };
+		CB91DC931F4D335F00C8B5CE /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B641EA46F800019F574 /* RegisterViewController.xib */; };
+		CB91DC941F4D335F00C8B5CE /* ProfileTableViewCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B5F1EA46F800019F574 /* ProfileTableViewCellHeader.xib */; };
+		CB91DC951F4D335F00C8B5CE /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B5D1EA46F800019F574 /* ProfileTableViewCell.xib */; };
+		CB91DC961F4D335F00C8B5CE /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B451EA46F800019F574 /* WelcomeViewController.xib */; };
+		CB91DC971F4D335F00C8B5CE /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B541EA46F800019F574 /* NotificationViewController.xib */; };
+		CB91DC981F4D335F00C8B5CE /* WhichDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B7A1EA46F810019F574 /* WhichDeviceViewController.xib */; };
+		CB91DC991F4D335F00C8B5CE /* timezones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535811D5C20CA00CB6A01 /* timezones.json */; };
+		CB91DC9A1F4D335F00C8B5CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */; };
+		CB91DC9B1F4D335F00C8B5CE /* CompassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB715FB31EA5F20E005B5C22 /* CompassTableViewCell.xib */; };
+		CB91DC9C1F4D335F00C8B5CE /* CalibrateSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F65331EA70CDA007982B0 /* CalibrateSecondViewController.xib */; };
+		CB91DC9D1F4D335F00C8B5CE /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B481EA46F800019F574 /* LoginViewController.xib */; };
+		CB91DC9E1F4D335F00C8B5CE /* SplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B671EA46F800019F574 /* SplashScreenViewController.xib */; };
+		CB91DC9F1F4D335F00C8B5CE /* AddAlarmDeleteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC093171EFA5215001213F4 /* AddAlarmDeleteTableViewCell.xib */; };
+		CB91DCA01F4D335F00C8B5CE /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FAB9B41EBC241D00513E97 /* MapViewCell.xib */; };
+		CB91DCA11F4D335F00C8B5CE /* StepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B6A1EA46F810019F574 /* StepsViewController.xib */; };
+		CB91DCA21F4D335F00C8B5CE /* SelectNewHomeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE8FDF61F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib */; };
+		CB91DCA31F4D335F00C8B5CE /* welcome_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929021EADABEB00450284 /* welcome_2.png */; };
+		CB91DCA41F4D335F00C8B5CE /* AddAlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */; };
+		CB91DCA51F4D335F00C8B5CE /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535821D5C20CA00CB6A01 /* cities.json */; };
+		CB91DCA61F4D335F00C8B5CE /* ClockSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */; };
+		CB91DCA71F4D335F00C8B5CE /* NotificationTypeFile in Resources */ = {isa = PBXBuildFile; fileRef = 61D470A01DE2E47E00620BD0 /* NotificationTypeFile */; };
+		CB91DCA81F4D335F00C8B5CE /* HotKeyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1549801EC029A700090242 /* HotKeyTableViewCell.xib */; };
+		CB91DCA91F4D335F00C8B5CE /* SearchCityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B341EA46F800019F574 /* SearchCityController.xib */; };
+		CB91DCAA1F4D335F00C8B5CE /* background_steps.png in Resources */ = {isa = PBXBuildFile; fileRef = 61C28C991EA6FDBA0019F574 /* background_steps.png */; };
+		CB91DCAB1F4D335F00C8B5CE /* MyDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B511EA46F800019F574 /* MyDeviceViewController.xib */; };
+		CB91DCAC1F4D335F00C8B5CE /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B611EA46F800019F574 /* ProfileViewController.xib */; };
+		CB91DCAD1F4D335F00C8B5CE /* ConnectionSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B371EA46F800019F574 /* ConnectionSetupViewController.xib */; };
+		CB91DCAE1F4D335F00C8B5CE /* OTAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBBB5E5C1F0F22700020A037 /* OTAViewController.xib */; };
+		CB91DCAF1F4D335F00C8B5CE /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 613929111EAEE92600450284 /* default.realm */; };
+		CB91DCB01F4D335F00C8B5CE /* HotKeysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB91926E1EBC7DC300BA14E6 /* HotKeysViewController.xib */; };
+		CB91DCB21F4D335F00C8B5CE /* WorldClockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B731EA46F810019F574 /* WorldClockCell.xib */; };
+		CB91DCB31F4D335F00C8B5CE /* CalibrateHourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F652B1EA70CA9007982B0 /* CalibrateHourViewController.xib */; };
+		CB91DCB41F4D335F00C8B5CE /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B4B1EA46F800019F574 /* MenuViewController.xib */; };
+		CB91DCB51F4D335F00C8B5CE /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B4E1EA46F800019F574 /* MenuViewCell.xib */; };
+		CB91DCB61F4D335F00C8B5CE /* ProfileSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B5A1EA46F800019F574 /* ProfileSetupViewController.xib */; };
+		CB91DCB71F4D335F00C8B5CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00982A701C868B15003DA5E2 /* Assets.xcassets */; };
+		CB91DCB81F4D335F00C8B5CE /* DeviceTableViewCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B3F1EA46F800019F574 /* DeviceTableViewCellHeader.xib */; };
+		CB91DCB91F4D335F00C8B5CE /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8AD9F51F04E797001C8D86 /* TimerViewController.xib */; };
+		CB91DCBA1F4D335F00C8B5CE /* welcome_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929011EADABEB00450284 /* welcome_1.png */; };
+		CB91DCBB1F4D335F00C8B5CE /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61C48FC51EF3BCCE007A0709 /* bell.wav */; };
+		CB91DCBC1F4D335F00C8B5CE /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
+		CB91DCBD1F4D335F00C8B5CE /* NotificationsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B571EA46F800019F574 /* NotificationsViewCell.xib */; };
 		CB9F65241EA610C5007982B0 /* Compass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65231EA610C5007982B0 /* Compass.swift */; };
 		CB9F652C1EA70CA9007982B0 /* CalibrateHourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F652A1EA70CA9007982B0 /* CalibrateHourViewController.swift */; };
 		CB9F652D1EA70CA9007982B0 /* CalibrateHourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F652B1EA70CA9007982B0 /* CalibrateHourViewController.xib */; };
@@ -286,7 +590,6 @@
 		CB9F65591EA9FC19007982B0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */; };
 		CBB375BF1F1C477800B9DD1D /* NordicDFUController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB375BE1F1C477800B9DD1D /* NordicDFUController.swift */; };
 		CBB375C21F1C88EA00B9DD1D /* NordicDFUDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB375C11F1C88EA00B9DD1D /* NordicDFUDelegate.swift */; };
-		CBB375C91F1C9C4A00B9DD1D /* DFUFirmware in Resources */ = {isa = PBXBuildFile; fileRef = CBB375C81F1C9C4A00B9DD1D /* DFUFirmware */; };
 		CBB892311EADB5B6006F7031 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */; };
 		CBB892331EADECDA006F7031 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */; };
 		CBB892371EB30491006F7031 /* AddWorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB892361EB30491006F7031 /* AddWorldClockViewController.swift */; };
@@ -309,6 +612,8 @@
 		CBC0931F1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */; };
 		CBCD36661ED3E2BA0041EABA /* CompassCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */; };
 		CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
+		CBCFC1B21F4EA02700DF5A68 /* Stealth in Resources */ = {isa = PBXBuildFile; fileRef = CBCFC1B01F4EA01E00DF5A68 /* Stealth */; };
+		CBCFC1B41F4EA03300DF5A68 /* VeliGear in Resources */ = {isa = PBXBuildFile; fileRef = CBCFC1B31F4EA03300DF5A68 /* VeliGear */; };
 		CBE8FDF71F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8FDF51F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift */; };
 		CBE8FDF81F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE8FDF61F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib */; };
 		CBF2E13D1EC04E4D00CBD61C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */; };
@@ -334,11 +639,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00982A661C868B15003DA5E2 /* Drone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00982A661C868B15003DA5E2 /* VeliGear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeliGear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A691C868B15003DA5E2 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00982A701C868B15003DA5E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00982A731C868B15003DA5E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		00982A751C868B15003DA5E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00982A751C868B15003DA5E2 /* VeliGear.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = VeliGear.plist; sourceTree = "<group>"; };
 		00982A7A1C868B16003DA5E2 /* DroneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DroneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00982A7E1C868B16003DA5E2 /* DroneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneTests.swift; sourceTree = "<group>"; };
 		00982A801C868B16003DA5E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -603,6 +908,8 @@
 		CB8AD9FC1F04EBE8001C8D86 /* TimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		CB91926D1EBC7DC300BA14E6 /* HotKeysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeysViewController.swift; path = HotKeysViewController/HotKeysViewController.swift; sourceTree = "<group>"; };
 		CB91926E1EBC7DC300BA14E6 /* HotKeysViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotKeysViewController.xib; path = HotKeysViewController/HotKeysViewController.xib; sourceTree = "<group>"; };
+		CB91DCC41F4D335F00C8B5CE /* Stealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB91DCC51F4D336000C8B5CE /* Stealth.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Stealth.plist; path = "/Users/Karl/Projects/ios-drone/Stealth.plist"; sourceTree = "<absolute>"; };
 		CB9F65231EA610C5007982B0 /* Compass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compass.swift; sourceTree = "<group>"; };
 		CB9F652A1EA70CA9007982B0 /* CalibrateHourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalibrateHourViewController.swift; path = CalibrateHourViewController/CalibrateHourViewController.swift; sourceTree = "<group>"; };
 		CB9F652B1EA70CA9007982B0 /* CalibrateHourViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalibrateHourViewController.xib; path = CalibrateHourViewController/CalibrateHourViewController.xib; sourceTree = "<group>"; };
@@ -622,7 +929,6 @@
 		CB9F65581EA9FC19007982B0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Extension.swift"; path = "../../Class/Util/UITableView+Extension.swift"; sourceTree = "<group>"; };
 		CBB375BE1F1C477800B9DD1D /* NordicDFUController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NordicDFUController.swift; sourceTree = "<group>"; };
 		CBB375C11F1C88EA00B9DD1D /* NordicDFUDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NordicDFUDelegate.swift; sourceTree = "<group>"; };
-		CBB375C81F1C9C4A00B9DD1D /* DFUFirmware */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DFUFirmware; sourceTree = "<group>"; };
 		CBB892301EADB5B6006F7031 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableViewCell+Extension.swift"; path = "../../Class/Util/UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CBB892321EADECDA006F7031 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionViewCell+Extension.swift"; path = "../../Class/Util/UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CBB892361EB30491006F7031 /* AddWorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWorldClockViewController.swift; path = AddWorldClockViewController/AddWorldClockViewController.swift; sourceTree = "<group>"; };
@@ -645,6 +951,8 @@
 		CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatAlarmViewModel.swift; path = ViewModel/RepeatAlarmViewModel/RepeatAlarmViewModel.swift; sourceTree = "<group>"; };
 		CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassCalibrationViewController.swift; path = CompassCalibrationViewController/CompassCalibrationViewController.swift; sourceTree = "<group>"; };
 		CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassCalibrationViewController.xib; path = CompassCalibrationViewController/CompassCalibrationViewController.xib; sourceTree = "<group>"; };
+		CBCFC1B01F4EA01E00DF5A68 /* Stealth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Stealth; sourceTree = "<group>"; };
+		CBCFC1B31F4EA03300DF5A68 /* VeliGear */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VeliGear; sourceTree = "<group>"; };
 		CBE8FDF51F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectNewHomeTimeViewController.swift; path = SelectNewHomeTimeViewController/SelectNewHomeTimeViewController.swift; sourceTree = "<group>"; };
 		CBE8FDF61F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectNewHomeTimeViewController.xib; path = SelectNewHomeTimeViewController/SelectNewHomeTimeViewController.xib; sourceTree = "<group>"; };
 		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Extension.swift"; path = "../../Class/Util/UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -677,6 +985,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB91DC7C1F4D335F00C8B5CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB91DC7D1F4D335F00C8B5CE /* Fabric.framework in Frameworks */,
+				CB91DC7E1F4D335F00C8B5CE /* Crashlytics.framework in Frameworks */,
+				CB91DC7F1F4D335F00C8B5CE /* Pods_Drone.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -695,9 +1013,10 @@
 		00982A671C868B15003DA5E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				00982A661C868B15003DA5E2 /* Drone.app */,
+				00982A661C868B15003DA5E2 /* VeliGear.app */,
 				00982A7A1C868B16003DA5E2 /* DroneTests.xctest */,
 				00982A851C868B16003DA5E2 /* DroneUITests.xctest */,
+				CB91DCC41F4D335F00C8B5CE /* Stealth.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -713,7 +1032,8 @@
 				00982CDB1C868E0B003DA5E2 /* Drone-Bridging-Header.h */,
 				00982A701C868B15003DA5E2 /* Assets.xcassets */,
 				00982A721C868B15003DA5E2 /* LaunchScreen.storyboard */,
-				00982A751C868B15003DA5E2 /* Info.plist */,
+				00982A751C868B15003DA5E2 /* VeliGear.plist */,
+				CB91DCC51F4D336000C8B5CE /* Stealth.plist */,
 			);
 			path = Drone;
 			sourceTree = "<group>";
@@ -766,7 +1086,8 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CBB375C81F1C9C4A00B9DD1D /* DFUFirmware */,
+				CBCFC1B31F4EA03300DF5A68 /* VeliGear */,
+				CBCFC1B01F4EA01E00DF5A68 /* Stealth */,
 				61C48FC41EF3BCCE007A0709 /* Sounds */,
 				61C28CAE1EA76C680019F574 /* DefaultRealm */,
 				61C28C8C1EA617070019F574 /* Image */,
@@ -1903,9 +2224,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00982A651C868B15003DA5E2 /* Drone */ = {
+		00982A651C868B15003DA5E2 /* VeliGear */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00982A8E1C868B16003DA5E2 /* Build configuration list for PBXNativeTarget "Drone" */;
+			buildConfigurationList = 00982A8E1C868B16003DA5E2 /* Build configuration list for PBXNativeTarget "VeliGear" */;
 			buildPhases = (
 				1E46F9DC360EA2680C31D3ED /* [CP] Check Pods Manifest.lock */,
 				00982A621C868B15003DA5E2 /* Sources */,
@@ -1919,9 +2240,9 @@
 			);
 			dependencies = (
 			);
-			name = Drone;
+			name = VeliGear;
 			productName = Drone;
-			productReference = 00982A661C868B15003DA5E2 /* Drone.app */;
+			productReference = 00982A661C868B15003DA5E2 /* VeliGear.app */;
 			productType = "com.apple.product-type.application";
 		};
 		00982A791C868B16003DA5E2 /* DroneTests */ = {
@@ -1960,6 +2281,27 @@
 			productReference = 00982A851C868B16003DA5E2 /* DroneUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		CB91DB881F4D335F00C8B5CE /* Stealth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB91DCC11F4D335F00C8B5CE /* Build configuration list for PBXNativeTarget "Stealth" */;
+			buildPhases = (
+				CB91DB891F4D335F00C8B5CE /* [CP] Check Pods Manifest.lock */,
+				CB91DB8A1F4D335F00C8B5CE /* Sources */,
+				CB91DC7C1F4D335F00C8B5CE /* Frameworks */,
+				CB91DC801F4D335F00C8B5CE /* Resources */,
+				CB91DCBE1F4D335F00C8B5CE /* ShellScript */,
+				CB91DCBF1F4D335F00C8B5CE /* [CP] Embed Pods Frameworks */,
+				CB91DCC01F4D335F00C8B5CE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stealth;
+			productName = Drone;
+			productReference = CB91DCC41F4D335F00C8B5CE /* Stealth.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1990,6 +2332,9 @@
 						LastSwiftMigration = 0800;
 						TestTargetID = 00982A651C868B15003DA5E2;
 					};
+					CB91DB881F4D335F00C8B5CE = {
+						DevelopmentTeam = WEGPWR9LDA;
+					};
 				};
 			};
 			buildConfigurationList = 00982A611C868B15003DA5E2 /* Build configuration list for PBXProject "Drone" */;
@@ -2009,9 +2354,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				00982A651C868B15003DA5E2 /* Drone */,
+				00982A651C868B15003DA5E2 /* VeliGear */,
 				00982A791C868B16003DA5E2 /* DroneTests */,
 				00982A841C868B16003DA5E2 /* DroneUITests */,
+				CB91DB881F4D335F00C8B5CE /* Stealth */,
 			);
 		};
 /* End PBXProject section */
@@ -2023,6 +2369,7 @@
 			files = (
 				619A9F131EC1B9CE006D65C4 /* MapTableViewController.xib in Resources */,
 				61C28BF21EA46F810019F574 /* DeviceViewController.xib in Resources */,
+				CBCFC1B41F4EA03300DF5A68 /* VeliGear in Resources */,
 				61C28C9C1EA706A50019F574 /* mapImage.png in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
 				CBC093141EFA1746001213F4 /* AddAlarmTableViewCell.xib in Resources */,
@@ -2069,7 +2416,6 @@
 				CBBB5E5E1F0F22700020A037 /* OTAViewController.xib in Resources */,
 				613929121EAEE92600450284 /* default.realm in Resources */,
 				CB9192701EBC7DC300BA14E6 /* HotKeysViewController.xib in Resources */,
-				CBB375C91F1C9C4A00B9DD1D /* DFUFirmware in Resources */,
 				61C28C1A1EA46F810019F574 /* WorldClockCell.xib in Resources */,
 				CB9F652D1EA70CA9007982B0 /* CalibrateHourViewController.xib in Resources */,
 				61C28BFE1EA46F810019F574 /* MenuViewController.xib in Resources */,
@@ -2096,6 +2442,74 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB91DC801F4D335F00C8B5CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB91DC811F4D335F00C8B5CE /* MapTableViewController.xib in Resources */,
+				CB91DC821F4D335F00C8B5CE /* DeviceViewController.xib in Resources */,
+				CB91DC831F4D335F00C8B5CE /* mapImage.png in Resources */,
+				CB91DC841F4D335F00C8B5CE /* DeviceTableViewCell.xib in Resources */,
+				CB91DC851F4D335F00C8B5CE /* AddAlarmTableViewCell.xib in Resources */,
+				CB91DC861F4D335F00C8B5CE /* CompassViewController.xib in Resources */,
+				CBCFC1B21F4EA02700DF5A68 /* Stealth in Resources */,
+				CB91DC871F4D335F00C8B5CE /* AlarmTableViewCell.xib in Resources */,
+				CB91DC881F4D335F00C8B5CE /* NavigationController.xib in Resources */,
+				CB91DC891F4D335F00C8B5CE /* TimeSettingsViewController.xib in Resources */,
+				CB91DC8A1F4D335F00C8B5CE /* CalibrateMinuteViewController.xib in Resources */,
+				CB91DC8B1F4D335F00C8B5CE /* CheckEmailController.xib in Resources */,
+				CB91DC8C1F4D335F00C8B5CE /* WorldClockViewController.xib in Resources */,
+				CB91DC8D1F4D335F00C8B5CE /* AddWorldClockViewController.xib in Resources */,
+				CB91DC8E1F4D335F00C8B5CE /* Localizable.strings in Resources */,
+				CB91DC8F1F4D335F00C8B5CE /* ForgetPasswordController.xib in Resources */,
+				CB91DC901F4D335F00C8B5CE /* RoutesController.xib in Resources */,
+				CB91DC911F4D335F00C8B5CE /* ClockSettingsTableViewCellSwitch.xib in Resources */,
+				CB91DC921F4D335F00C8B5CE /* StepsTitleView.xib in Resources */,
+				CB91DC931F4D335F00C8B5CE /* RegisterViewController.xib in Resources */,
+				CB91DC941F4D335F00C8B5CE /* ProfileTableViewCellHeader.xib in Resources */,
+				CB91DC951F4D335F00C8B5CE /* ProfileTableViewCell.xib in Resources */,
+				CB91DC961F4D335F00C8B5CE /* WelcomeViewController.xib in Resources */,
+				CB91DC971F4D335F00C8B5CE /* NotificationViewController.xib in Resources */,
+				CB91DC981F4D335F00C8B5CE /* WhichDeviceViewController.xib in Resources */,
+				CB91DC991F4D335F00C8B5CE /* timezones.json in Resources */,
+				CB91DC9A1F4D335F00C8B5CE /* LaunchScreen.storyboard in Resources */,
+				CB91DC9B1F4D335F00C8B5CE /* CompassTableViewCell.xib in Resources */,
+				CB91DC9C1F4D335F00C8B5CE /* CalibrateSecondViewController.xib in Resources */,
+				CB91DC9D1F4D335F00C8B5CE /* LoginViewController.xib in Resources */,
+				CB91DC9E1F4D335F00C8B5CE /* SplashScreenViewController.xib in Resources */,
+				CB91DC9F1F4D335F00C8B5CE /* AddAlarmDeleteTableViewCell.xib in Resources */,
+				CB91DCA01F4D335F00C8B5CE /* MapViewCell.xib in Resources */,
+				CB91DCA11F4D335F00C8B5CE /* StepsViewController.xib in Resources */,
+				CB91DCA21F4D335F00C8B5CE /* SelectNewHomeTimeViewController.xib in Resources */,
+				CB91DCA31F4D335F00C8B5CE /* welcome_2.png in Resources */,
+				CB91DCA41F4D335F00C8B5CE /* AddAlarmViewController.xib in Resources */,
+				CB91DCA51F4D335F00C8B5CE /* cities.json in Resources */,
+				CB91DCA61F4D335F00C8B5CE /* ClockSettingsTableViewCell.xib in Resources */,
+				CB91DCA71F4D335F00C8B5CE /* NotificationTypeFile in Resources */,
+				CB91DCA81F4D335F00C8B5CE /* HotKeyTableViewCell.xib in Resources */,
+				CB91DCA91F4D335F00C8B5CE /* SearchCityController.xib in Resources */,
+				CB91DCAA1F4D335F00C8B5CE /* background_steps.png in Resources */,
+				CB91DCAB1F4D335F00C8B5CE /* MyDeviceViewController.xib in Resources */,
+				CB91DCAC1F4D335F00C8B5CE /* ProfileViewController.xib in Resources */,
+				CB91DCAD1F4D335F00C8B5CE /* ConnectionSetupViewController.xib in Resources */,
+				CB91DCAE1F4D335F00C8B5CE /* OTAViewController.xib in Resources */,
+				CB91DCAF1F4D335F00C8B5CE /* default.realm in Resources */,
+				CB91DCB01F4D335F00C8B5CE /* HotKeysViewController.xib in Resources */,
+				CB91DCB21F4D335F00C8B5CE /* WorldClockCell.xib in Resources */,
+				CB91DCB31F4D335F00C8B5CE /* CalibrateHourViewController.xib in Resources */,
+				CB91DCB41F4D335F00C8B5CE /* MenuViewController.xib in Resources */,
+				CB91DCB51F4D335F00C8B5CE /* MenuViewCell.xib in Resources */,
+				CB91DCB61F4D335F00C8B5CE /* ProfileSetupViewController.xib in Resources */,
+				CB91DCB71F4D335F00C8B5CE /* Assets.xcassets in Resources */,
+				CB91DCB81F4D335F00C8B5CE /* DeviceTableViewCellHeader.xib in Resources */,
+				CB91DCB91F4D335F00C8B5CE /* TimerViewController.xib in Resources */,
+				CB91DCBA1F4D335F00C8B5CE /* welcome_1.png in Resources */,
+				CB91DCBB1F4D335F00C8B5CE /* bell.wav in Resources */,
+				CB91DCBC1F4D335F00C8B5CE /* CompassCalibrationViewController.xib in Resources */,
+				CB91DCBD1F4D335F00C8B5CE /* NotificationsViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2225,6 +2639,130 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run bf39954f177ecf7d9d8a5efe2e1d624856f03464 e3f2da77dd42327a3c13b2223e31674c22e5a7c31ee0b6b80da61d310ae0a329";
+		};
+		CB91DB891F4D335F00C8B5CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Drone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB91DCBE1F4D335F00C8B5CE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run bf39954f177ecf7d9d8a5efe2e1d624856f03464 e3f2da77dd42327a3c13b2223e31674c22e5a7c31ee0b6b80da61d310ae0a329";
+		};
+		CB91DCBF1F4D335F00C8B5CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Drone/Pods-Drone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BRYXBanner/BRYXBanner.framework",
+				"${BUILT_PRODUCTS_DIR}/CVCalendar/CVCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CircleProgressView/CircleProgressView.framework",
+				"${BUILT_PRODUCTS_DIR}/Font-Awesome-Swift/Font_Awesome_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/MSCellAccessory/MSCellAccessory.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PagingMenuController/PagingMenuController.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/Pulley/Pulley.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftEventBus/SwiftEventBus.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftReorder/SwiftReorder.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
+				"${BUILT_PRODUCTS_DIR}/Timepiece/Timepiece.framework",
+				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDFULibrary/iOSDFULibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/med-ios-extension/med_ios_extension.framework",
+				"${BUILT_PRODUCTS_DIR}/med-ios-sounds/med_ios_sounds.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRYXBanner.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircleProgressView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Font_Awesome_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MSCellAccessory.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PagingMenuController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulley.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEventBus.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftReorder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Timepiece.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDFULibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/med_ios_extension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/med_ios_sounds.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Drone/Pods-Drone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB91DCC01F4D335F00C8B5CE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Drone/Pods-Drone-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Drone/Pods-Drone-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2493,17 +3031,265 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB91DB8A1F4D335F00C8B5CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB91DB8B1F4D335F00C8B5CE /* LoginViewController.swift in Sources */,
+				CB91DB8C1F4D335F00C8B5CE /* ClockSettingsTableViewCellSwitch.swift in Sources */,
+				CB91DB8D1F4D335F00C8B5CE /* DidSelectedDelegate.swift in Sources */,
+				CB91DB8E1F4D335F00C8B5CE /* WelcomeViewController.swift in Sources */,
+				CB91DB8F1F4D335F00C8B5CE /* WriteSettingRequest.swift in Sources */,
+				CB91DB901F4D335F00C8B5CE /* MKPlacemark+Extension.swift in Sources */,
+				CB91DB911F4D335F00C8B5CE /* Compass.swift in Sources */,
+				CB91DB921F4D335F00C8B5CE /* AlarmViewModel.swift in Sources */,
+				CB91DB931F4D335F00C8B5CE /* FirmwareStorage.swift in Sources */,
+				CB91DB941F4D335F00C8B5CE /* GetWorldClockRequest.swift in Sources */,
+				CB91DB951F4D335F00C8B5CE /* BasePostRequest.swift in Sources */,
+				CB91DB961F4D335F00C8B5CE /* TimeUtil.swift in Sources */,
+				CB91DB971F4D335F00C8B5CE /* RequestPasswordRequest.swift in Sources */,
+				CB91DB981F4D335F00C8B5CE /* WeatherIcon.swift in Sources */,
+				CB91DB991F4D335F00C8B5CE /* MEDWeekDayNumber.swift in Sources */,
+				CB91DB9A1F4D335F00C8B5CE /* TimeMenuItem.swift in Sources */,
+				CB91DB9B1F4D335F00C8B5CE /* UpdateNotificationRequest.swift in Sources */,
+				CB91DB9C1F4D335F00C8B5CE /* Double+Extension.swift in Sources */,
+				CB91DB9D1F4D335F00C8B5CE /* MEDAlarm.swift in Sources */,
+				CB91DB9E1F4D335F00C8B5CE /* UserNetworkManager.swift in Sources */,
+				CB91DB9F1F4D335F00C8B5CE /* MapViewCell.swift in Sources */,
+				CB91DBA01F4D335F00C8B5CE /* WorldClockUtil.swift in Sources */,
+				CB91DBA11F4D335F00C8B5CE /* BasePutRequest.swift in Sources */,
+				CB91DBA21F4D335F00C8B5CE /* RoutesController.swift in Sources */,
+				CB91DBA31F4D335F00C8B5CE /* TimeSettingsSectionItem.swift in Sources */,
+				CB91DBA41F4D335F00C8B5CE /* GoogleMapsDirectionsRequest.swift in Sources */,
+				CB91DBA51F4D335F00C8B5CE /* DRHUD.swift in Sources */,
+				CB91DBA61F4D335F00C8B5CE /* SetContactsFilterRequest.swift in Sources */,
+				CB91DBA71F4D335F00C8B5CE /* CompassSectionModel.swift in Sources */,
+				CB91DBA81F4D335F00C8B5CE /* HotKeysViewController.swift in Sources */,
+				CB91DBA91F4D335F00C8B5CE /* FirmwareNetworkManager.swift in Sources */,
+				CB91DBAA1F4D335F00C8B5CE /* UIButton+Extension.swift in Sources */,
+				CB91DBAB1F4D335F00C8B5CE /* StepsGetRequest.swift in Sources */,
+				CB91DBAC1F4D335F00C8B5CE /* UserSteps.swift in Sources */,
+				CB91DBAD1F4D335F00C8B5CE /* NevoBT.swift in Sources */,
+				CB91DBAE1F4D335F00C8B5CE /* AlarmSectionViewModel.swift in Sources */,
+				CB91DBAF1F4D335F00C8B5CE /* HotKeySectionModelItem.swift in Sources */,
+				CB91DBB01F4D335F00C8B5CE /* OTAViewModel.swift in Sources */,
+				CB91DBB11F4D335F00C8B5CE /* ReadCountdownTimerRequest.swift in Sources */,
+				CB91DBB21F4D335F00C8B5CE /* UICollectionViewCell+Extension.swift in Sources */,
+				CB91DBB31F4D335F00C8B5CE /* RoutesStepsModel.swift in Sources */,
+				CB91DBB41F4D335F00C8B5CE /* WhichDeviceViewController.swift in Sources */,
+				CB91DBB51F4D335F00C8B5CE /* AddAlarmDeleteTableViewCell.swift in Sources */,
+				CB91DBB61F4D335F00C8B5CE /* SendStepsToWatchCache.swift in Sources */,
+				CB91DBB71F4D335F00C8B5CE /* ActivityPacket.swift in Sources */,
+				CB91DBB81F4D335F00C8B5CE /* SandboxManager.swift in Sources */,
+				CB91DBB91F4D335F00C8B5CE /* Int+Extension.swift in Sources */,
+				CB91DBBA1F4D335F00C8B5CE /* AddressGeocodeRequest.swift in Sources */,
+				CB91DBBB1F4D335F00C8B5CE /* UserProfile.swift in Sources */,
+				CB91DBBC1F4D335F00C8B5CE /* RepeatAlarmViewModel.swift in Sources */,
+				CB91DBBD1F4D335F00C8B5CE /* TimeSettingsSectionModel.swift in Sources */,
+				CB91DBBE1F4D335F00C8B5CE /* SearchCityController.swift in Sources */,
+				CB91DBBF1F4D335F00C8B5CE /* MenuViewController.swift in Sources */,
+				CB91DBC01F4D335F00C8B5CE /* String+Timepiece.swift in Sources */,
+				CB91DBC11F4D335F00C8B5CE /* CLGeocoder+Extension.swift in Sources */,
+				CB91DBC21F4D335F00C8B5CE /* DeviceTableViewCellHeader.swift in Sources */,
+				CB91DBC31F4D335F00C8B5CE /* GetSystemConfig.swift in Sources */,
+				CB91DBC41F4D335F00C8B5CE /* ReadDailyTracker.swift in Sources */,
+				CB91DBC51F4D335F00C8B5CE /* CompassViewController.swift in Sources */,
+				CB91DBC61F4D335F00C8B5CE /* StepsManager.swift in Sources */,
+				CB91DBC71F4D335F00C8B5CE /* SetRTCRequest.swift in Sources */,
+				CB91DBC81F4D335F00C8B5CE /* WeatherPrecipitation.swift in Sources */,
+				CB91DBC91F4D335F00C8B5CE /* BaseDeleteRequest.swift in Sources */,
+				CB91DBCA1F4D335F00C8B5CE /* UpdateContactsFilterRequest.swift in Sources */,
+				CB91DBCB1F4D335F00C8B5CE /* Bundle+Extension.swift in Sources */,
+				CB91DBCC1F4D335F00C8B5CE /* GoogleWaypointsModel.swift in Sources */,
+				CB91DBCD1F4D335F00C8B5CE /* LoginRequest.swift in Sources */,
+				CB91DBCE1F4D335F00C8B5CE /* MenuViewCell.swift in Sources */,
+				CB91DBCF1F4D335F00C8B5CE /* ProfileSetupViewController.swift in Sources */,
+				CB91DBD01F4D335F00C8B5CE /* OTARequest.swift in Sources */,
+				CB91DBD11F4D335F00C8B5CE /* CompassCalibrationViewController.swift in Sources */,
+				CB91DBD21F4D335F00C8B5CE /* RegisterViewController.swift in Sources */,
+				CB91DBD31F4D335F00C8B5CE /* GetConfigRequest.swift in Sources */,
+				CB91DBD41F4D335F00C8B5CE /* Notification.swift in Sources */,
+				CB91DBD51F4D335F00C8B5CE /* UserDevice.swift in Sources */,
+				CB91DBD61F4D335F00C8B5CE /* StepsTitleView.swift in Sources */,
+				CB91DBD71F4D335F00C8B5CE /* HotKey.swift in Sources */,
+				CB91DBD81F4D335F00C8B5CE /* GoogleSnapRoadsModel.swift in Sources */,
+				CB91DBD91F4D335F00C8B5CE /* UserUpdateRequest.swift in Sources */,
+				CB91DBDA1F4D335F00C8B5CE /* WeatherLocationModel.swift in Sources */,
+				CB91DBDB1F4D335F00C8B5CE /* City.swift in Sources */,
+				CB91DBDC1F4D335F00C8B5CE /* ForgetPasswordController.swift in Sources */,
+				CB91DBDD1F4D335F00C8B5CE /* UIView+Extension.swift in Sources */,
+				CB91DBDE1F4D335F00C8B5CE /* ProfileMenuItem.swift in Sources */,
+				CB91DBDF1F4D335F00C8B5CE /* SplashScreenViewController.swift in Sources */,
+				CB91DBE01F4D335F00C8B5CE /* ProfileTableViewCell.swift in Sources */,
+				CB91DBE11F4D335F00C8B5CE /* NevoBTimpl.swift in Sources */,
+				CB91DBE21F4D335F00C8B5CE /* NetworkManager.swift in Sources */,
+				CB91DBE31F4D335F00C8B5CE /* GoogleMapsBaseRequest.swift in Sources */,
+				CB91DBE41F4D335F00C8B5CE /* Profile.swift in Sources */,
+				CB91DBE51F4D335F00C8B5CE /* DeviceMenuItem.swift in Sources */,
+				CB91DBE61F4D335F00C8B5CE /* LocationManager.swift in Sources */,
+				CB91DBE71F4D335F00C8B5CE /* ClockSettingsTableViewCell.swift in Sources */,
+				CB91DBE81F4D335F00C8B5CE /* CalibrateMinuteViewController.swift in Sources */,
+				CB91DBE91F4D335F00C8B5CE /* HotKeySectionModel.swift in Sources */,
+				CB91DBEA1F4D335F00C8B5CE /* Array+Extension.swift in Sources */,
+				CB91DBEB1F4D335F00C8B5CE /* AnalysisStepsChartView.swift in Sources */,
+				CB91DBEC1F4D335F00C8B5CE /* GetStepsGoalRequest.swift in Sources */,
+				CB91DBED1F4D335F00C8B5CE /* TimeTabViewController.swift in Sources */,
+				CB91DBEE1F4D335F00C8B5CE /* WorldClockCell.swift in Sources */,
+				CB91DBEF1F4D335F00C8B5CE /* UIColor+Extension.swift in Sources */,
+				CB91DBF01F4D335F00C8B5CE /* AlarmTableViewCell.swift in Sources */,
+				CB91DBF11F4D335F00C8B5CE /* SyncQueue.swift in Sources */,
+				CB91DBF21F4D335F00C8B5CE /* SyncLastDataCache.swift in Sources */,
+				CB91DBF31F4D335F00C8B5CE /* Date+Extension.swift in Sources */,
+				CB91DBF41F4D335F00C8B5CE /* ResetCacheModel.swift in Sources */,
+				CB91DBF51F4D335F00C8B5CE /* SetUserProfileRequest.swift in Sources */,
+				CB91DBF61F4D335F00C8B5CE /* SetStepsToWatchReuqest.swift in Sources */,
+				CB91DBF71F4D335F00C8B5CE /* GoogleMapsDirectionsModel.swift in Sources */,
+				CB91DBF81F4D335F00C8B5CE /* CounterClockwiseButton.swift in Sources */,
+				CB91DBF91F4D335F00C8B5CE /* ReadDailyAlarmRequest.swift in Sources */,
+				CB91DBFA1F4D335F00C8B5CE /* ConnectionController.swift in Sources */,
+				CB91DBFB1F4D335F00C8B5CE /* StepsMenuItem.swift in Sources */,
+				CB91DBFC1F4D335F00C8B5CE /* DroneProfile.swift in Sources */,
+				CB91DBFD1F4D335F00C8B5CE /* GetContactsFilterRequest.swift in Sources */,
+				CB91DBFE1F4D335F00C8B5CE /* GetSystemStatus.swift in Sources */,
+				CB91DBFF1F4D335F00C8B5CE /* CompassMenuItem.swift in Sources */,
+				CB91DC001F4D335F00C8B5CE /* TimeSettingsViewController.swift in Sources */,
+				CB91DC011F4D335F00C8B5CE /* Float+Extension.swift in Sources */,
+				CB91DC021F4D335F00C8B5CE /* GoogleMapsRoutesModel.swift in Sources */,
+				CB91DC031F4D335F00C8B5CE /* WeatherUpdateModel.swift in Sources */,
+				CB91DC041F4D335F00C8B5CE /* NotificationAlertSoundController.swift in Sources */,
+				CB91DC051F4D335F00C8B5CE /* SystemStatusPacket.swift in Sources */,
+				CB91DC061F4D335F00C8B5CE /* NordicDFUController.swift in Sources */,
+				CB91DC071F4D335F00C8B5CE /* NetworkRequest.swift in Sources */,
+				CB91DC081F4D335F00C8B5CE /* SystemEventPacket.swift in Sources */,
+				CB91DC091F4D335F00C8B5CE /* MapTableViewController.swift in Sources */,
+				CB91DC0A1F4D335F00C8B5CE /* AddAlarmTableViewCell.swift in Sources */,
+				CB91DC0B1F4D335F00C8B5CE /* PulleyViewController+Extension.swift in Sources */,
+				CB91DC0C1F4D335F00C8B5CE /* ReadWeatherRequest.swift in Sources */,
+				CB91DC0D1F4D335F00C8B5CE /* ForgetPasswordRequest.swift in Sources */,
+				CB91DC0E1F4D335F00C8B5CE /* ProfileViewController.swift in Sources */,
+				CB91DC0F1F4D335F00C8B5CE /* WeatherCacheModel.swift in Sources */,
+				CB91DC101F4D335F00C8B5CE /* DeviceTableViewCell.swift in Sources */,
+				CB91DC111F4D335F00C8B5CE /* TimerViewController.swift in Sources */,
+				CB91DC121F4D335F00C8B5CE /* HotKeyTableViewCellButton.swift in Sources */,
+				CB91DC131F4D335F00C8B5CE /* ReadDailyTrackerInfo.swift in Sources */,
+				CB91DC141F4D335F00C8B5CE /* DateFormatter+Extension.swift in Sources */,
+				CB91DC151F4D335F00C8B5CE /* AppDelegate-Extension.swift in Sources */,
+				CB91DC161F4D335F00C8B5CE /* StepsCreateRequest.swift in Sources */,
+				CB91DC171F4D335F00C8B5CE /* DeviceViewController.swift in Sources */,
+				CB91DC181F4D335F00C8B5CE /* AppDelegate.swift in Sources */,
+				CB91DC191F4D335F00C8B5CE /* GetTrainingRecordRequest.swift in Sources */,
+				CB91DC1A1F4D335F00C8B5CE /* GetUserProfileRequest.swift in Sources */,
+				CB91DC1B1F4D335F00C8B5CE /* WeatherUnits.swift in Sources */,
+				CB91DC1C1F4D335F00C8B5CE /* SetGoalRequest.swift in Sources */,
+				CB91DC1D1F4D335F00C8B5CE /* EventBusKeys.swift in Sources */,
+				CB91DC1E1F4D335F00C8B5CE /* TimerViewModel.swift in Sources */,
+				CB91DC1F1F4D335F00C8B5CE /* ChartFormatter.swift in Sources */,
+				CB91DC201F4D335F00C8B5CE /* AlarmSectionViewModelItem.swift in Sources */,
+				CB91DC211F4D335F00C8B5CE /* DroneRequest.swift in Sources */,
+				CB91DC221F4D335F00C8B5CE /* BalloonMarker.swift in Sources */,
+				CB91DC231F4D335F00C8B5CE /* NavigationController.swift in Sources */,
+				CB91DC241F4D335F00C8B5CE /* WeatherLanguage.swift in Sources */,
+				CB91DC251F4D335F00C8B5CE /* PostWatchVersionData.swift in Sources */,
+				CB91DC261F4D335F00C8B5CE /* WorldClockDatabaseHelper.swift in Sources */,
+				CB91DC271F4D335F00C8B5CE /* StepsUpdateRequest.swift in Sources */,
+				CB91DC281F4D335F00C8B5CE /* ClearConnectionRequest.swift in Sources */,
+				CB91DC291F4D335F00C8B5CE /* MenuItem.swift in Sources */,
+				CB91DC2A1F4D335F00C8B5CE /* AlarmViewController.swift in Sources */,
+				CB91DC2B1F4D335F00C8B5CE /* CheckEmailController.swift in Sources */,
+				CB91DC2C1F4D335F00C8B5CE /* ClockwiseButton.swift in Sources */,
+				CB91DC2D1F4D335F00C8B5CE /* SetSystemConfig.swift in Sources */,
+				CB91DC2E1F4D335F00C8B5CE /* NotificationsMenuItem.swift in Sources */,
+				CB91DC2F1F4D335F00C8B5CE /* CalibrateHourViewController.swift in Sources */,
+				CB91DC301F4D335F00C8B5CE /* RawPacket.swift in Sources */,
+				CB91DC311F4D335F00C8B5CE /* UserCreateRequest.swift in Sources */,
+				CB91DC321F4D335F00C8B5CE /* MapNavigationViewController.swift in Sources */,
+				CB91DC331F4D335F00C8B5CE /* SetDailyAlarmRequest.swift in Sources */,
+				CB91DC341F4D335F00C8B5CE /* WeatherBaseGetRequest.swift in Sources */,
+				CB91DC351F4D335F00C8B5CE /* SetClearConnectionWatch.swift in Sources */,
+				CB91DC361F4D335F00C8B5CE /* GoogleMapsGeocodeModel.swift in Sources */,
+				CB91DC371F4D335F00C8B5CE /* AddAlarmViewController.swift in Sources */,
+				CB91DC381F4D335F00C8B5CE /* ConnectionControllerImpl.swift in Sources */,
+				CB91DC391F4D335F00C8B5CE /* CompassSectionModelItem.swift in Sources */,
+				CB91DC3A1F4D335F00C8B5CE /* GetNotificationRequest.swift in Sources */,
+				CB91DC3B1F4D335F00C8B5CE /* MEDBaseModel.swift in Sources */,
+				CB91DC3C1F4D335F00C8B5CE /* ProfileTableViewCellHeader.swift in Sources */,
+				CB91DC3D1F4D335F00C8B5CE /* GetActivityRequest.swift in Sources */,
+				CB91DC3E1F4D335F00C8B5CE /* StepsViewController.swift in Sources */,
+				CB91DC3F1F4D335F00C8B5CE /* CompassTableViewCell.swift in Sources */,
+				CB91DC401F4D335F00C8B5CE /* DTUserDefaults.swift in Sources */,
+				CB91DC411F4D335F00C8B5CE /* WorldClock.swift in Sources */,
+				CB91DC421F4D335F00C8B5CE /* PostBatteryStatus.swift in Sources */,
+				CB91DC431F4D335F00C8B5CE /* WeatherNetworkApiManager.swift in Sources */,
+				CB91DC441F4D335F00C8B5CE /* MyDeviceViewController.swift in Sources */,
+				CB91DC451F4D335F00C8B5CE /* SetNotificationRequest.swift in Sources */,
+				CB91DC461F4D335F00C8B5CE /* UserGoal.swift in Sources */,
+				CB91DC471F4D335F00C8B5CE /* AddAlarmViewModel.swift in Sources */,
+				CB91DC481F4D335F00C8B5CE /* BaseViewController.swift in Sources */,
+				CB91DC491F4D335F00C8B5CE /* PostRoutes.swift in Sources */,
+				CB91DC4A1F4D335F00C8B5CE /* GoogleRoadsAPIBaseRequest.swift in Sources */,
+				CB91DC4B1F4D335F00C8B5CE /* ConnectionSetupViewController.swift in Sources */,
+				CB91DC4C1F4D335F00C8B5CE /* GoogleMapRoadsNetworkManager.swift in Sources */,
+				CB91DC4D1F4D335F00C8B5CE /* UITableView+Extension.swift in Sources */,
+				CB91DC4E1F4D335F00C8B5CE /* WorldClockViewController.swift in Sources */,
+				CB91DC4F1F4D335F00C8B5CE /* URL+Extension.swift in Sources */,
+				CB91DC501F4D335F00C8B5CE /* SetWeatherLocationsRequest.swift in Sources */,
+				CB91DC511F4D335F00C8B5CE /* StepsNetworkManager.swift in Sources */,
+				CB91DC521F4D335F00C8B5CE /* GoogleMapSnaptoRoadsRequest.swift in Sources */,
+				CB91DC531F4D335F00C8B5CE /* EveryHourWeatherModel.swift in Sources */,
+				CB91DC541F4D335F00C8B5CE /* DataBaseManager.swift in Sources */,
+				CB91DC551F4D335F00C8B5CE /* LoginMenuItem.swift in Sources */,
+				CB91DC561F4D335F00C8B5CE /* UrbanNavigationRequest.swift in Sources */,
+				CB91DC571F4D335F00C8B5CE /* SetAppConfigRequest.swift in Sources */,
+				CB91DC581F4D335F00C8B5CE /* MEDBaseModel+Extension.swift in Sources */,
+				CB91DC591F4D335F00C8B5CE /* SetWorldClockRequest.swift in Sources */,
+				CB91DC5A1F4D335F00C8B5CE /* Constants.swift in Sources */,
+				CB91DC5B1F4D335F00C8B5CE /* SelectNewHomeTimeViewController.swift in Sources */,
+				CB91DC5C1F4D335F00C8B5CE /* UpdateContactsApplicationsRequest.swift in Sources */,
+				CB91DC5D1F4D335F00C8B5CE /* CityNavigationMenuItem.swift in Sources */,
+				CB91DC5E1F4D335F00C8B5CE /* CalibrateSecondViewController.swift in Sources */,
+				CB91DC5F1F4D335F00C8B5CE /* UpdateWeatherInfoRequest.swift in Sources */,
+				CB91DC601F4D335F00C8B5CE /* StepsGoalPacket.swift in Sources */,
+				CB91DC611F4D335F00C8B5CE /* HotKeyMenuItem.swift in Sources */,
+				CB91DC621F4D335F00C8B5CE /* Request.swift in Sources */,
+				CB91DC631F4D335F00C8B5CE /* NotificationsViewCell.swift in Sources */,
+				CB91DC641F4D335F00C8B5CE /* MEDDataBaseRequest.swift in Sources */,
+				CB91DC651F4D335F00C8B5CE /* DronePacket.swift in Sources */,
+				CB91DC661F4D335F00C8B5CE /* WeatherFlags.swift in Sources */,
+				CB91DC671F4D335F00C8B5CE /* NordicDFUDelegate.swift in Sources */,
+				CB91DC681F4D335F00C8B5CE /* AddWorldClockViewController.swift in Sources */,
+				CB91DC691F4D335F00C8B5CE /* NotificationViewController.swift in Sources */,
+				CB91DC6A1F4D335F00C8B5CE /* AppTheme.swift in Sources */,
+				CB91DC6B1F4D335F00C8B5CE /* SetCountdownTimerRequest.swift in Sources */,
+				CB91DC6C1F4D335F00C8B5CE /* RepeatAlarmViewController.swift in Sources */,
+				CB91DC6D1F4D335F00C8B5CE /* UITableViewCell+Extension.swift in Sources */,
+				CB91DC6E1F4D335F00C8B5CE /* AutocompleteField.swift in Sources */,
+				CB91DC6F1F4D335F00C8B5CE /* StartSystemSettingRequest.swift in Sources */,
+				CB91DC701F4D335F00C8B5CE /* WeatherInfoRequest.swift in Sources */,
+				CB91DC711F4D335F00C8B5CE /* OTAViewController.swift in Sources */,
+				CB91DC721F4D335F00C8B5CE /* PostActivityData.swift in Sources */,
+				CB91DC731F4D335F00C8B5CE /* Timezone.swift in Sources */,
+				CB91DC741F4D335F00C8B5CE /* HotKeyTableViewCell.swift in Sources */,
+				CB91DC751F4D335F00C8B5CE /* GoogleMapNetworkManager.swift in Sources */,
+				CB91DC761F4D335F00C8B5CE /* BaseNetworkRequest.swift in Sources */,
+				CB91DC771F4D335F00C8B5CE /* FindMyPhonePacket.swift in Sources */,
+				CB91DC781F4D335F00C8B5CE /* WatchInfoModel.swift in Sources */,
+				CB91DC791F4D335F00C8B5CE /* BaseGetRequest.swift in Sources */,
+				CB91DC7A1F4D335F00C8B5CE /* String+Extension.swift in Sources */,
+				CB91DC7B1F4D335F00C8B5CE /* GetBatteryRequest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		00982A7C1C868B16003DA5E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00982A651C868B15003DA5E2 /* Drone */;
+			target = 00982A651C868B15003DA5E2 /* VeliGear */;
 			targetProxy = 00982A7B1C868B16003DA5E2 /* PBXContainerItemProxy */;
 		};
 		00982A871C868B16003DA5E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00982A651C868B15003DA5E2 /* Drone */;
+			target = 00982A651C868B15003DA5E2 /* VeliGear */;
 			targetProxy = 00982A861C868B16003DA5E2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2633,7 +3419,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Drone/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Drone/VeliGear.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medcorp.drone;
@@ -2657,7 +3443,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Drone/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Drone/VeliGear.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medcorp.drone;
@@ -2719,6 +3505,55 @@
 			};
 			name = Release;
 		};
+		CB91DCC21F4D335F00C8B5CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WEGPWR9LDA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Stealth.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.medcorp.drone.stealth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Drone/Drone-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		CB91DCC31F4D335F00C8B5CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDE2361127B9E9E04C9E2D15 /* Pods-Drone.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = WEGPWR9LDA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Stealth.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.medcorp.drone.stealth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Drone/Drone-Bridging-Header.h";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2731,7 +3566,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00982A8E1C868B16003DA5E2 /* Build configuration list for PBXNativeTarget "Drone" */ = {
+		00982A8E1C868B16003DA5E2 /* Build configuration list for PBXNativeTarget "VeliGear" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00982A8F1C868B16003DA5E2 /* Debug */,
@@ -2754,6 +3589,15 @@
 			buildConfigurations = (
 				00982A951C868B16003DA5E2 /* Debug */,
 				00982A961C868B16003DA5E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB91DCC11F4D335F00C8B5CE /* Build configuration list for PBXNativeTarget "Stealth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB91DCC21F4D335F00C8B5CE /* Debug */,
+				CB91DCC31F4D335F00C8B5CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
