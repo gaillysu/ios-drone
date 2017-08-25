@@ -99,15 +99,15 @@ class WelcomeViewController: BaseViewController {
             }.addDisposableTo(disposeBag)
         
         skipLoginButton.rx.tap.subscribe { _ in
-            if self.fromMenu {
-                self.dismiss(animated: true, completion: nil)
-            }else{
-                if UserDevice.getAll().isEmpty {
-                    self.present(self.makeStandardUINavigationController(WhichDeviceViewController(toMenu: false)), animated: true, completion: nil)
-                }else{
+//            if self.fromMenu {
+//                self.dismiss(animated: true, completion: nil)
+//            }else{
+//                if UserDevice.getAll().isEmpty {
+//                    self.present(self.makeStandardUINavigationController(WhichDeviceViewController(toMenu: false)), animated: true, completion: nil)
+//                }else{
                     self.present(self.makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
-                }
-            }
+//                }
+//            }
             }.addDisposableTo(disposeBag)
     }
 }

@@ -28,18 +28,15 @@ class OTAViewModel {
     init(){
         if AppTheme.hasGearbox(){
             
-            guard let url = AppTheme.GET_FIRMWARE_FILES("VeliGear").first else{
+            guard let url = AppTheme.GET_FIRMWARE_FILES("firmware_veligear").first else{
                 fatalError("Could not open Firmware file for some reason")
             }
             latestFirmwareUrl = url
         }else {
-            let plist = AppTheme.GET_FIRMWARE_FILES("NotificationTypeFile")
-            let url = AppTheme.GET_FIRMWARE_FILES("Stealth")
-            guard url == nil else{
-            
+            guard let url = AppTheme.GET_FIRMWARE_FILES("firmware_veligear").first else{
                 fatalError("Could not open Firmware file for some reason")
             }
-            latestFirmwareUrl = URL(fileURLWithPath: "")
+            latestFirmwareUrl = url
         }
         versionStatusString = BehaviorSubject<String>(value: "Current: \(DTUserDefaults.lastKnownWatchVersion), New: \(AppTheme.firmwareVersionFrom(path: latestFirmwareUrl))")
         

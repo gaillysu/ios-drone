@@ -89,7 +89,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         percentageLabel.text = String(format:"Goal: %d",(goal.goalSteps))
         self.navigationController?.navigationBar.backItem?.backBarButtonItem?.image = nil;
         stepsButton.setTitle(String(format:"%d",0), for: .normal)
-        self.getLoclSmallSyncData(nil)
+        self.getLoclSmallSyncData()
         addCloseButton(#selector(dismissViewController))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Set Goal", style: .plain, target: self, action: #selector(setGoal))
     }
@@ -151,7 +151,7 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             if self.didSelectedDate.beginningOfDay == Date().beginningOfDay {
                 let rawGoalPacket:StepsGoalPacket = notification.object as! StepsGoalPacket
                 DTUserDefaults.setLastSmallSync(steps: rawGoalPacket.getDailySteps(), goal: rawGoalPacket.getGoal(), timeinterval: Date().timeIntervalSince1970)
-                self.getLoclSmallSyncData(lastCache)
+                self.getLoclSmallSyncData()
             }
         }
         

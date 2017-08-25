@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
       configGoogleMap()
       
       self.startLocation()
-      AppTheme.GET_FIRMWARE_FILES("VeliGear")
+
       _ = DataBaseManager.manager
       _ = NetworkManager.manager
       

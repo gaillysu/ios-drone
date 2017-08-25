@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1000" contentMode="scaleToFill" bounces="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hF0-iz-5cW">
-                    <rect key="frame" x="80" y="150.66666666666663" width="254" height="508"/>
+                    <rect key="frame" x="80" y="151" width="254" height="508"/>
                     <color key="backgroundColor" red="0.59215686270000001" green="0.44705882349999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BV5-jB-vB3">
@@ -38,7 +38,7 @@
                     </userDefinedRuntimeAttributes>
                 </collectionView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drone_logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="0B1-qg-VY1">
-                    <rect key="frame" x="80" y="81.666666666666657" width="254" height="60.999999999999972"/>
+                    <rect key="frame" x="80" y="74" width="254" height="61"/>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="61" id="8uO-Ab-5e6"/>
@@ -53,7 +53,7 @@
                 <constraint firstItem="hF0-iz-5cW" firstAttribute="height" secondItem="rLu-wu-3SO" secondAttribute="height" multiplier="0.69" id="arv-c5-c2K"/>
                 <constraint firstItem="hF0-iz-5cW" firstAttribute="centerY" secondItem="rLu-wu-3SO" secondAttribute="centerY" multiplier="1.1" id="gKC-lf-d82"/>
                 <constraint firstItem="hF0-iz-5cW" firstAttribute="trailing" secondItem="0B1-qg-VY1" secondAttribute="trailing" id="vfy-la-2DU"/>
-                <constraint firstItem="hF0-iz-5cW" firstAttribute="top" secondItem="0B1-qg-VY1" secondAttribute="bottom" constant="8" id="x6x-v1-YTJ"/>
+                <constraint firstItem="hF0-iz-5cW" firstAttribute="top" secondItem="0B1-qg-VY1" secondAttribute="bottom" constant="16" id="x6x-v1-YTJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

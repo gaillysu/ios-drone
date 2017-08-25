@@ -602,6 +602,8 @@
 		CBBB5E5E1F0F22700020A037 /* OTAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBBB5E5C1F0F22700020A037 /* OTAViewController.xib */; };
 		CBBC3ACB1EC174EC009282E8 /* HotKeyTableViewCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC3ACA1EC174EC009282E8 /* HotKeyTableViewCellButton.swift */; };
 		CBBC3ACD1EC1BB96009282E8 /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */; };
+		CBBED7111F4FB89100A63E51 /* firmware_veligear in Resources */ = {isa = PBXBuildFile; fileRef = CBBED70F1F4FB89100A63E51 /* firmware_veligear */; };
+		CBBED7121F4FB89800A63E51 /* firmware_stealth in Resources */ = {isa = PBXBuildFile; fileRef = CBBED70E1F4FB89100A63E51 /* firmware_stealth */; };
 		CBC093131EFA1746001213F4 /* AddAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC093111EFA1746001213F4 /* AddAlarmTableViewCell.swift */; };
 		CBC093141EFA1746001213F4 /* AddAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC093121EFA1746001213F4 /* AddAlarmTableViewCell.xib */; };
 		CBC093181EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC093161EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift */; };
@@ -610,10 +612,8 @@
 		CBC0931F1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */; };
 		CBCD36661ED3E2BA0041EABA /* CompassCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */; };
 		CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
-		CBCFC1B71F4EA66E00DF5A68 /* VeliGear in Resources */ = {isa = PBXBuildFile; fileRef = CBCFC1B61F4EA66E00DF5A68 /* VeliGear */; };
 		CBE8FDF71F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8FDF51F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift */; };
 		CBE8FDF81F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE8FDF61F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib */; };
-		CBF0D3EC1F4ECEC9007F6ECA /* Stealth in Resources */ = {isa = PBXBuildFile; fileRef = CBF0D3EB1F4ECEC9007F6ECA /* Stealth */; };
 		CBF2E13D1EC04E4D00CBD61C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */; };
 		CBF6D2171EF3D4C70080375E /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */; };
 		E4A1E1A38E594C98EB6E1CF5 /* Pods_Drone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D195FFC82C8C862CA3C44 /* Pods_Drone.framework */; };
@@ -940,6 +940,8 @@
 		CBBB5E5C1F0F22700020A037 /* OTAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OTAViewController.xib; path = OTAViewController/OTAViewController.xib; sourceTree = "<group>"; };
 		CBBC3ACA1EC174EC009282E8 /* HotKeyTableViewCellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTableViewCellButton.swift; path = HoyKeyTableViewCellButton/HotKeyTableViewCellButton.swift; sourceTree = "<group>"; };
 		CBBC3ACC1EC1BB96009282E8 /* HotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
+		CBBED70E1F4FB89100A63E51 /* firmware_stealth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = firmware_stealth; sourceTree = "<group>"; };
+		CBBED70F1F4FB89100A63E51 /* firmware_veligear */ = {isa = PBXFileReference; lastKnownFileType = folder; path = firmware_veligear; sourceTree = "<group>"; };
 		CBC093111EFA1746001213F4 /* AddAlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmTableViewCell.swift; path = AddAlarmTableViewCell/AddAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		CBC093121EFA1746001213F4 /* AddAlarmTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddAlarmTableViewCell.xib; path = AddAlarmTableViewCell/AddAlarmTableViewCell.xib; sourceTree = "<group>"; };
 		CBC093161EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAlarmDeleteTableViewCell.swift; path = AddAlarmDeleteTableViewCell/AddAlarmDeleteTableViewCell.swift; sourceTree = "<group>"; };
@@ -948,10 +950,8 @@
 		CBC0931E1EFBBB1E001213F4 /* RepeatAlarmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatAlarmViewModel.swift; path = ViewModel/RepeatAlarmViewModel/RepeatAlarmViewModel.swift; sourceTree = "<group>"; };
 		CBCD36641ED3E2BA0041EABA /* CompassCalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompassCalibrationViewController.swift; path = CompassCalibrationViewController/CompassCalibrationViewController.swift; sourceTree = "<group>"; };
 		CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompassCalibrationViewController.xib; path = CompassCalibrationViewController/CompassCalibrationViewController.xib; sourceTree = "<group>"; };
-		CBCFC1B61F4EA66E00DF5A68 /* VeliGear */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VeliGear; sourceTree = "<group>"; };
 		CBE8FDF51F062DC8004A60B4 /* SelectNewHomeTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectNewHomeTimeViewController.swift; path = SelectNewHomeTimeViewController/SelectNewHomeTimeViewController.swift; sourceTree = "<group>"; };
 		CBE8FDF61F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectNewHomeTimeViewController.xib; path = SelectNewHomeTimeViewController/SelectNewHomeTimeViewController.xib; sourceTree = "<group>"; };
-		CBF0D3EB1F4ECEC9007F6ECA /* Stealth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Stealth; sourceTree = "<group>"; };
 		CBF2E13C1EC04E4D00CBD61C /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Extension.swift"; path = "../../Class/Util/UIButton+Extension.swift"; sourceTree = "<group>"; };
 		CBF6D2161EF3D4C70080375E /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmViewController.swift; path = AlarmViewController/AlarmViewController.swift; sourceTree = "<group>"; };
 		D4C608C2F3D7691BE21F9C9F /* Pods-Drone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drone/Pods-Drone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1083,8 +1083,8 @@
 		00982CE71C86A350003DA5E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CBF0D3EB1F4ECEC9007F6ECA /* Stealth */,
-				CBCFC1B61F4EA66E00DF5A68 /* VeliGear */,
+				CBBED70E1F4FB89100A63E51 /* firmware_stealth */,
+				CBBED70F1F4FB89100A63E51 /* firmware_veligear */,
 				61C48FC41EF3BCCE007A0709 /* Sounds */,
 				61C28CAE1EA76C680019F574 /* DefaultRealm */,
 				61C28C8C1EA617070019F574 /* Image */,
@@ -2365,9 +2365,7 @@
 			files = (
 				619A9F131EC1B9CE006D65C4 /* MapTableViewController.xib in Resources */,
 				61C28BF21EA46F810019F574 /* DeviceViewController.xib in Resources */,
-				CBCFC1B71F4EA66E00DF5A68 /* VeliGear in Resources */,
 				61C28C9C1EA706A50019F574 /* mapImage.png in Resources */,
-				CBF0D3EC1F4ECEC9007F6ECA /* Stealth in Resources */,
 				61C28BF41EA46F810019F574 /* DeviceTableViewCell.xib in Resources */,
 				CBC093141EFA1746001213F4 /* AddAlarmTableViewCell.xib in Resources */,
 				CB715FAB1EA5CDF4005B5C22 /* CompassViewController.xib in Resources */,
@@ -2401,6 +2399,7 @@
 				CBE8FDF81F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib in Resources */,
 				613929081EADABEB00450284 /* welcome_2.png in Resources */,
 				CB4ADFED1EF7D1A400EFA956 /* AddAlarmViewController.xib in Resources */,
+				CBBED7111F4FB89100A63E51 /* firmware_veligear in Resources */,
 				9E1535841D5C20CA00CB6A01 /* cities.json in Resources */,
 				CB9F65501EA8AB51007982B0 /* ClockSettingsTableViewCell.xib in Resources */,
 				61D470A11DE2E47E00620BD0 /* NotificationTypeFile in Resources */,
@@ -2452,6 +2451,7 @@
 				CB91DC841F4D335F00C8B5CE /* DeviceTableViewCell.xib in Resources */,
 				CB91DC851F4D335F00C8B5CE /* AddAlarmTableViewCell.xib in Resources */,
 				CB91DC861F4D335F00C8B5CE /* CompassViewController.xib in Resources */,
+				CBBED7121F4FB89800A63E51 /* firmware_stealth in Resources */,
 				CB91DC871F4D335F00C8B5CE /* AlarmTableViewCell.xib in Resources */,
 				CB91DC881F4D335F00C8B5CE /* NavigationController.xib in Resources */,
 				CB91DC891F4D335F00C8B5CE /* TimeSettingsViewController.xib in Resources */,

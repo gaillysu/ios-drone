@@ -88,7 +88,7 @@ class OTAViewController: UIViewController {
     }
     
     func checkLocalDFU(){
-        guard let url = AppTheme.GET_FIRMWARE_FILES("VeliGear").first else{
+        guard let url = AppTheme.GET_FIRMWARE_FILES("firmware_veligear").first else{
             fatalError("Could not open Firmware file for some reason")
         }
         let firmwareVersion = AppTheme.firmwareVersionFrom(path: url)

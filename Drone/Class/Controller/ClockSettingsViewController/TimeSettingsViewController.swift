@@ -46,6 +46,9 @@ class TimeSettingsViewController: BaseViewController {
             section.value[0].items.remove(at: 3)
             section.value[0].items.remove(at: 1)
             section.value[0].items.remove(at: 0)
+            section.value[0].header = "Hour Format"
+            section.value[0].footer = ""
+            
         }
         
         

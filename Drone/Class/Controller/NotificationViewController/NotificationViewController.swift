@@ -66,6 +66,7 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
     
     func callback(isOn:Bool, bundleIdentifier:String?, hasApp:Bool){
         if hasApp{
+            
             if let notification = realmApps.filter({  $0.bundleIdentifier == bundleIdentifier }).first{
                 try! realm?.write ({
                     notification.state = isOn
@@ -76,8 +77,7 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
         }else{
             DTUserDefaults.enabledAllNotifications = isOn
             AppDelegate.getAppDelegate().updateNotification()
-            tableView.reloadSections([1], animationStyle: .automatic)
-
+            tableView.reloadSections([2], animationStyle: .automatic)
         }
         
     }
@@ -85,42 +85,62 @@ class NotificationViewController: BaseViewController, UITableViewDataSource, UIT
 
 extension NotificationViewController{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if section == 0 {
+        if section == 0 && AppTheme.hasGearbox(){
+            return "Customize your watch's vibration pattern for notifications"
+        }else if section == 1 {
             return "Turn notifications on for all apps."
         }
         return nil
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 && AppTheme.hasGearbox(){
+            return 1
+        }else if section == 1 {
             return allApps.count
+        }else if !DTUserDefaults.enabledAllNotifications && section == 2{
+            return realmApps.count
         }
-        if DTUserDefaults.enabledAllNotifications && section == 1{
-            return 0
-        }
-        return realmApps.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:NotificationsViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-        if indexPath.section == 0 {
+        cell.textLabel?.textColor = UIColor.white
+        if indexPath.section == 0 && indexPath.row == 0 {
+            cell.textLabel?.text = "Vibration Patterns"
+            cell.app = nil
+            cell.accessoryType = .disclosureIndicator
+            cell.switchCallback = nil
+            cell.notificationSwicth.isHidden = true
+            cell.backgroundColor = UIColor("#C0913D")
+            cell.textLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+        }else if indexPath.section == 1 {
             cell.textLabel?.text = allApps[indexPath.row]
             cell.notificationSwicth.setOn(DTUserDefaults.enabledAllNotifications, animated: false)
             cell.switchCallback = callback
             cell.app = nil
-        } else {
+            cell.accessoryType = .none
+        } else if indexPath.section == 2 {
             let app = realmApps[indexPath.row]
             cell.textLabel?.text = app.appName
             cell.app = app
             cell.switchCallback = callback
+            cell.accessoryType = .none
+            cell.notificationSwicth.isHidden = false
         }
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if !AppTheme.hasGearbox() && section == 0 {
+            return 0.1
+        }
+        return 18
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true);
     }
