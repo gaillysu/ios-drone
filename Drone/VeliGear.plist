@@ -23,7 +23,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>12</string>
+	<string>13</string>
 	<key>DarkskyKey</key>
 	<string>29fa9213f8b40d5a75c820af96fc8d43</string>
 	<key>Fabric</key>
@@ -40,6 +40,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>Gearbox</key>
+	<true/>
 	<key>GoogleMapKey</key>
 	<string>AIzaSyBwjik9HS2CLT5n8yDxwRHjtT2num_G0eI</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -87,7 +89,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>Gearbox</key>
-	<true/>
 </dict>
 </plist>
