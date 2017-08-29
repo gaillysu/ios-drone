@@ -41,6 +41,9 @@ public class DTUserDefaults: NSObject {
     
     private static let LAST_SYNC_STEPS_CACHE_KEY = "LAST_SYNC_STEPS_CACHE_KEY"
     
+    private static let RESET_CACHE_KEY = "RESET_CACHE_KEY"
+    private static let SEND_STEPS_TO_WATCH_CACHE_KEY = "SEND_STEPS_TO_WATCH_CACHE_KEY"
+    
     // MARK: Setup
     public static var setupKey:Bool {
         get{
@@ -271,7 +274,33 @@ public class DTUserDefaults: NSObject {
         UserDefaults().set(["steps":steps, "goal":goal, "timeinterval":timeinterval], forKey: LAST_SYNC_STEPS_CACHE_KEY)
     }
     
+    public static func resetCache() -> (resetState:Bool, resetDate:TimeInterval){
+        if let dictionary = UserDefaults().dictionary(forKey: RESET_CACHE_KEY){
+            if let state = dictionary["resetState"] as? Bool,
+                let doubleTimeInterval = dictionary["timeinterval"] as? Double{
+                return (resetState:state, resetDate:TimeInterval(doubleTimeInterval))
+            }
+        }
+        return (resetState:true, resetDate:Date().timeIntervalSince1970)
+    }
     
+    public static func setResetCache(resetState:Bool, resetDate:TimeInterval){
+        UserDefaults().set(["resetState":resetState, "timeinterval":resetDate], forKey: RESET_CACHE_KEY)
+    }
+
+    public static func stepsToWatchCache() -> (steps:Int, date:TimeInterval){
+        if let dictionary = UserDefaults().dictionary(forKey: SEND_STEPS_TO_WATCH_CACHE_KEY){
+            if let steps = dictionary["steps"] as? Int,
+                let doubleTimeInterval = dictionary["date"] as? Double{
+                return (steps:steps, date:doubleTimeInterval)
+            }
+        }
+        return (steps:0, date:Date().timeIntervalSince1970)
+    }
+    
+    public static func setStepsToWatchCache(steps:Int, date:TimeInterval){
+        UserDefaults().set(["steps":steps, "date":date], forKey: SEND_STEPS_TO_WATCH_CACHE_KEY)
+    }
     
     public static var lastOtaVersionCheck:Date{
         get{
@@ -294,34 +323,5 @@ public class DTUserDefaults: NSObject {
     
     public static var lastKnownOtaVersionObservable:Observable<Double?> {
         get{ return UserDefaults().rx.observe(Double.self, LAST_KNOWN_WATCH_VERSION_KEY) }
-    }
-}
-
-// BS
-extension DTUserDefaults{
-    
-    public static func saveLog(message:String, key:String, reset:Bool = false){
-        
-        let defaults = UserDefaults.standard
-        if let stringArray = defaults.stringArray(forKey: key){
-            var newArray = stringArray
-            if newArray.count > 20 {
-                newArray.remove(at: 0)
-            }else if reset {
-                newArray.removeAll()
-            }
-            newArray.append("\(Date().iso8601) -> \(message)")
-            defaults.set(newArray, forKey: key)
-        } else {
-            defaults.set(["\(Date().iso8601) ->", message], forKey: key)
-        }
-    }
-    
-    public static func getStringArrayLog(key:String) -> [String]{
-        let defaults = UserDefaults.standard
-        if let array = defaults.array(forKey: key), let stringArray = array as? [String]{
-            return stringArray
-        }
-        return []
     }
 }

@@ -23,7 +23,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>4</string>
 	<key>DarkskyKey</key>
 	<string>29fa9213f8b40d5a75c820af96fc8d43</string>
 	<key>Fabric</key>
@@ -40,6 +40,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>Gearbox</key>
+	<false/>
 	<key>GoogleMapKey</key>
 	<string>AIzaSyBwjik9HS2CLT5n8yDxwRHjtT2num_G0eI</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -71,7 +73,6 @@
 		<string>audio</string>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
-		<string>external-accessory</string>
 		<string>fetch</string>
 		<string>location</string>
 	</array>
@@ -86,8 +87,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>Gearbox</key>
 	<false/>
 </dict>
 </plist>

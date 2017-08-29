@@ -169,15 +169,8 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
             self.bulidChart(Foundation.Date().beginningOfDay)
         }
         
-        if let unwrappedData = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND){
-            if unwrappedData is SendStepsToWatchCache {
-                let cacheSendSteps:SendStepsToWatchCache = unwrappedData as! SendStepsToWatchCache
-                let date:Date = Date(timeIntervalSince1970: cacheSendSteps.date)
-                if date == Date().beginningOfDay {
-                    AppDelegate.getAppDelegate().setStepsToWatch()
-                }
-            }
-            
+        if Date(timeIntervalSince1970: DTUserDefaults.stepsToWatchCache().date).beginningOfDay == Date().beginningOfDay {
+            AppDelegate.getAppDelegate().setStepsToWatch()
         }
         
         self.fireSmallSyncTimer()
@@ -226,26 +219,17 @@ class StepsViewController: BaseViewController,UIActionSheetDelegate {
         let dailySteps:Int = lastSynced.steps
         let stepsGoal:Int = lastSynced.goal
         if smallDate.beginningOfDay == Date().beginningOfDay {
-            if let last0X30Data = AppTheme.LoadKeyedArchiverName(IS_SEND_0X30_COMMAND) {
-                if last0X30Data is SendStepsToWatchCache {
-                    let cacheSendSteps:SendStepsToWatchCache = last0X30Data as! SendStepsToWatchCache
-                    let date:Date = Date(timeIntervalSince1970: cacheSendSteps.date)
-                    if date.beginningOfDay == Date().beginningOfDay {
-                        DispatchQueue.main.async(execute: {
-                            // do something
-                            let daySteps:Int = cacheSendSteps.steps + dailySteps
-                            self.setCircleProgress(daySteps, goalValue: stepsGoal)
-                        })
-                        
-                    }else{
-                        self.setCircleProgress(dailySteps , goalValue: stepsGoal)
-                    }
-                }
+            let cacheSendSteps = DTUserDefaults.stepsToWatchCache()
+            if Date(timeIntervalSince1970: cacheSendSteps.date).beginningOfDay == Date().beginningOfDay {
+                DispatchQueue.main.async(execute: {
+                    // do something
+                    let daySteps:Int = cacheSendSteps.steps + dailySteps
+                    self.setCircleProgress(daySteps, goalValue: stepsGoal)
+                })
             }else{
-                self.setCircleProgress(dailySteps, goalValue: stepsGoal)
+                self.setCircleProgress(dailySteps , goalValue: stepsGoal)
             }
         }
-        
     }
 }
 

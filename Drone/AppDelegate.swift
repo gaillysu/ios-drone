@@ -140,9 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
                DTUserDefaults.hourFormat = 1
                self.setSystemConfig()
                //Records need to use 0x30
-               let cacheModel:ResetCacheModel = ResetCacheModel(reState: true, date: Date().timeIntervalSince1970)
-               _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
-               
+               DTUserDefaults.setResetCache(resetState: true, resetDate: Date().timeIntervalSince1970)
             }else if(systemStatus == SystemStatus.activityDataAvailable.rawValue) {
                self.getActivity()
             }else if(systemStatus == SystemStatus.weatherDataNeeded.rawValue){
@@ -198,8 +196,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,ConnectionControllerDelega
          }
          
          if(packet.getHeader() == SetStepsToWatchReuqest.HEADER()) {
-            let cacheModel:ResetCacheModel = ResetCacheModel(reState: false, date: Date().timeIntervalSince1970)
-            _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: cacheModel)
+            DTUserDefaults.setResetCache(resetState: false, resetDate: Date().timeIntervalSince1970)
          }
          if(packet.getHeader() == GetBatteryRequest.HEADER()) {
             let data:[UInt8] = Constants.NSData2Bytes(packet.getRawData())

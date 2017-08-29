@@ -201,25 +201,11 @@ extension AppDelegate {
             let userSteps:UserSteps = steps as! UserSteps
             daySteps = daySteps+userSteps.steps
         }
-        
         if daySteps>0 {
-            if let unpackedData = AppTheme.LoadKeyedArchiverName(AppDelegate.RESET_STATE) {
-                let resetModel = unpackedData as! ResetCacheModel
-                let state:Bool = resetModel.resetState!
-                if  let obj = resetModel.resetDate {
-                    let date:Date = Date(timeIntervalSince1970: obj)
-                    if state && (date.beginningOfDay == Date().beginningOfDay){
-                        sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                        let cacheSendSteps:SendStepsToWatchCache = SendStepsToWatchCache(sendSteps: daySteps, sendDate: Date().timeIntervalSince1970)
-                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: cacheSendSteps)
-                    }
-                }else{
-                    if state {
-                        sendRequest(SetStepsToWatchReuqest(steps: daySteps))
-                        let cacheSendSteps:SendStepsToWatchCache = SendStepsToWatchCache(sendSteps: daySteps, sendDate: Date().timeIntervalSince1970)
-                        _ = AppTheme.KeyedArchiverName(IS_SEND_0X30_COMMAND, andObject: cacheSendSteps)
-                    }
-                }
+            let resetModel = DTUserDefaults.resetCache()
+            if resetModel.resetState && (Date(timeIntervalSince1970: resetModel.resetDate).beginningOfDay == Date().beginningOfDay){
+                sendRequest(SetStepsToWatchReuqest(steps: daySteps))
+                DTUserDefaults.setStepsToWatchCache(steps: daySteps, date: Date().timeIntervalSince1970)
             }
         }
     }

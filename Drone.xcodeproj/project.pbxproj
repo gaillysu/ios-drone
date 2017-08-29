@@ -196,9 +196,7 @@
 		61C28CA01EA73E920019F574 /* PostActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C9E1EA73E920019F574 /* PostActivityData.swift */; };
 		61C28CA11EA73E920019F574 /* PostBatteryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */; };
 		61C28CA41EA73F4C0019F574 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA31EA73F4C0019F574 /* DataBaseManager.swift */; };
-		61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA61EA756C70019F574 /* ResetCacheModel.swift */; };
 		61C28CA91EA75A620019F574 /* PostWatchVersionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */; };
-		61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */; };
 		61C28CB21EA83FFB0019F574 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CB11EA83FFB0019F574 /* URL+Extension.swift */; };
 		61C48FAD1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FAC1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift */; };
 		61C48FAF1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FAE1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift */; };
@@ -309,7 +307,6 @@
 		CB91DBB31F4D335F00C8B5CE /* RoutesStepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FB41EF22FE0007A0709 /* RoutesStepsModel.swift */; };
 		CB91DBB41F4D335F00C8B5CE /* WhichDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B791EA46F810019F574 /* WhichDeviceViewController.swift */; };
 		CB91DBB51F4D335F00C8B5CE /* AddAlarmDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC093161EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift */; };
-		CB91DBB61F4D335F00C8B5CE /* SendStepsToWatchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */; };
 		CB91DBB71F4D335F00C8B5CE /* ActivityPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28AFD1EA46F800019F574 /* ActivityPacket.swift */; };
 		CB91DBB81F4D335F00C8B5CE /* SandboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4709E1DE2E07700620BD0 /* SandboxManager.swift */; };
 		CB91DBB91F4D335F00C8B5CE /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928FA1EAA026B00450284 /* Int+Extension.swift */; };
@@ -370,7 +367,6 @@
 		CB91DBF01F4D335F00C8B5CE /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */; };
 		CB91DBF11F4D335F00C8B5CE /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28BB61EA46F810019F574 /* SyncQueue.swift */; };
 		CB91DBF31F4D335F00C8B5CE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C892851F0E2E3800725D25 /* Date+Extension.swift */; };
-		CB91DBF41F4D335F00C8B5CE /* ResetCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28CA61EA756C70019F574 /* ResetCacheModel.swift */; };
 		CB91DBF51F4D335F00C8B5CE /* SetUserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B1C1EA46F800019F574 /* SetUserProfileRequest.swift */; };
 		CB91DBF61F4D335F00C8B5CE /* SetStepsToWatchReuqest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C28B1A1EA46F800019F574 /* SetStepsToWatchReuqest.swift */; };
 		CB91DBF71F4D335F00C8B5CE /* GoogleMapsDirectionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C48FAE1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift */; };
@@ -833,9 +829,7 @@
 		61C28C9E1EA73E920019F574 /* PostActivityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostActivityData.swift; sourceTree = "<group>"; };
 		61C28C9F1EA73E920019F574 /* PostBatteryStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBatteryStatus.swift; sourceTree = "<group>"; };
 		61C28CA31EA73F4C0019F574 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
-		61C28CA61EA756C70019F574 /* ResetCacheModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetCacheModel.swift; sourceTree = "<group>"; };
 		61C28CA81EA75A620019F574 /* PostWatchVersionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostWatchVersionData.swift; sourceTree = "<group>"; };
-		61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendStepsToWatchCache.swift; sourceTree = "<group>"; };
 		61C28CB11EA83FFB0019F574 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		61C48FAC1EF21C99007A0709 /* GoogleMapsDirectionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsDirectionsRequest.swift; sourceTree = "<group>"; };
 		61C48FAE1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsDirectionsModel.swift; sourceTree = "<group>"; };
@@ -1736,8 +1730,6 @@
 		61C28CA51EA756950019F574 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				61C28CA61EA756C70019F574 /* ResetCacheModel.swift */,
-				61C28CAA1EA762AA0019F574 /* SendStepsToWatchCache.swift */,
 				613928EF1EA99DD900450284 /* WeatherCacheModel.swift */,
 				613928F31EA99F1B00450284 /* EveryHourWeatherModel.swift */,
 				61C892831F0CD28A00725D25 /* WeatherFlags.swift */,
@@ -2810,7 +2802,6 @@
 				61C48FB51EF22FE0007A0709 /* RoutesStepsModel.swift in Sources */,
 				61C28C1F1EA46F810019F574 /* WhichDeviceViewController.swift in Sources */,
 				CBC093181EFA5215001213F4 /* AddAlarmDeleteTableViewCell.swift in Sources */,
-				61C28CAB1EA762AA0019F574 /* SendStepsToWatchCache.swift in Sources */,
 				61C28BBE1EA46F810019F574 /* ActivityPacket.swift in Sources */,
 				61D4709F1DE2E07700620BD0 /* SandboxManager.swift in Sources */,
 				613928FF1EAA026B00450284 /* Int+Extension.swift in Sources */,
@@ -2871,7 +2862,6 @@
 				CB4ADFDA1EF7626200EFA956 /* AlarmTableViewCell.swift in Sources */,
 				61C28C521EA46F810019F574 /* SyncQueue.swift in Sources */,
 				61C892861F0E2E3800725D25 /* Date+Extension.swift in Sources */,
-				61C28CA71EA756C70019F574 /* ResetCacheModel.swift in Sources */,
 				61C28BDC1EA46F810019F574 /* SetUserProfileRequest.swift in Sources */,
 				61C28BDA1EA46F810019F574 /* SetStepsToWatchReuqest.swift in Sources */,
 				61C48FAF1EF22CD8007A0709 /* GoogleMapsDirectionsModel.swift in Sources */,
@@ -3073,7 +3063,6 @@
 				CB91DBB31F4D335F00C8B5CE /* RoutesStepsModel.swift in Sources */,
 				CB91DBB41F4D335F00C8B5CE /* WhichDeviceViewController.swift in Sources */,
 				CB91DBB51F4D335F00C8B5CE /* AddAlarmDeleteTableViewCell.swift in Sources */,
-				CB91DBB61F4D335F00C8B5CE /* SendStepsToWatchCache.swift in Sources */,
 				CB91DBB71F4D335F00C8B5CE /* ActivityPacket.swift in Sources */,
 				CB91DBB81F4D335F00C8B5CE /* SandboxManager.swift in Sources */,
 				CB91DBB91F4D335F00C8B5CE /* Int+Extension.swift in Sources */,
@@ -3134,7 +3123,6 @@
 				CB91DBF01F4D335F00C8B5CE /* AlarmTableViewCell.swift in Sources */,
 				CB91DBF11F4D335F00C8B5CE /* SyncQueue.swift in Sources */,
 				CB91DBF31F4D335F00C8B5CE /* Date+Extension.swift in Sources */,
-				CB91DBF41F4D335F00C8B5CE /* ResetCacheModel.swift in Sources */,
 				CB91DBF51F4D335F00C8B5CE /* SetUserProfileRequest.swift in Sources */,
 				CB91DBF61F4D335F00C8B5CE /* SetStepsToWatchReuqest.swift in Sources */,
 				CB91DBF71F4D335F00C8B5CE /* GoogleMapsDirectionsModel.swift in Sources */,

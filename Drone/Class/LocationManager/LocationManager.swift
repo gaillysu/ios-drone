@@ -60,7 +60,7 @@ class LocationManager: NSObject {
             _locationManager?.desiredAccuracy = kCLLocationAccuracyThreeKilometers
             _locationManager?.allowDeferredLocationUpdates(untilTraveled: 3000.0, timeout: 30.0)
             _locationManager?.activityType = .other
-            _locationManager?.allowsBackgroundLocationUpdates = true
+//            _locationManager?.allowsBackgroundLocationUpdates = true
             _locationManager?.pausesLocationUpdatesAutomatically = true
             _locationManager?.requestWhenInUseAuthorization()
         }
@@ -94,7 +94,6 @@ extension LocationManager:CLLocationManagerDelegate{
             location = locations.last
         }
         if let _ = timer {
-            DTUserDefaults.saveLog(message: Date().iso8601, key: "update_from_timer")
             stopLocation()
         }
     }

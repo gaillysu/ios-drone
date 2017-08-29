@@ -33,7 +33,7 @@ class OTAViewModel {
             }
             latestFirmwareUrl = url
         }else {
-            guard let url = AppTheme.GET_FIRMWARE_FILES("firmware_veligear").first else{
+            guard let url = AppTheme.GET_FIRMWARE_FILES("firmware_stealth").first else{
                 fatalError("Could not open Firmware file for some reason")
             }
             latestFirmwareUrl = url

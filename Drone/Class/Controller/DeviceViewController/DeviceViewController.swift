@@ -102,7 +102,7 @@ class DeviceViewController: BaseViewController, UITableViewDelegate, UITableView
             AppDelegate.getAppDelegate().sendRequest(ClearConnectionRequest())
             AppDelegate.getAppDelegate().disconnect()
             _ = UserDevice.removeAll()
-            _ = AppTheme.KeyedArchiverName(AppDelegate.RESET_STATE, andObject: ResetCacheModel(reState: true, date: Date().timeIntervalSince1970))
+            DTUserDefaults.setResetCache(resetState: true, resetDate: Date().timeIntervalSince1970)
             if self.navigationController?.popViewController(animated: true)==nil {
                 self.dismiss(animated: true, completion: nil)
             }

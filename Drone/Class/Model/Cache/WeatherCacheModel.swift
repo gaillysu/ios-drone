@@ -31,7 +31,6 @@ struct WeatherCacheModel {
             let hourWeatherModel:EveryHourWeatherModel = EveryHourWeatherModel(json: dataJson)
             everyHourData.append(hourWeatherModel)
         }
-        
         list = everyHourData
     }
 }
