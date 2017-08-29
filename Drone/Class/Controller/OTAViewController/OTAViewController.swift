@@ -69,6 +69,11 @@ class OTAViewController: UIViewController {
             .addDisposableTo(disposeBag)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        SwiftEventBus.unregister(otaViewModel)
+    }
+    
     func closeButtonAction(){
         self.dismiss(animated: true, completion: nil)
     }

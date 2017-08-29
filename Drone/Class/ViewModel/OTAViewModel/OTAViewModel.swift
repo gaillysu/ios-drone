@@ -57,6 +57,13 @@ class OTAViewModel {
                 self.statusObservable.onNext((-1,"Error, Failed to download firmware info"))
             }
         }
+        
+        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_OTA_PACKET_RECEIVED) { _ in
+            print("Eventbus triggered")
+            AppDelegate.getAppDelegate().getMconnectionController()?.setOTAMode(true, Disconnect: true)
+            self.dfuController = NordicDFUController(delegate: self)
+            self.dfuController?.startDiscovery()
+        }
     }
     
     func startDfu(){
@@ -79,14 +86,10 @@ class OTAViewModel {
         }
     }
     
+    
     fileprivate func initiateDFU(){
         self.statusObservable.onNext((status: 9, message: "Initiating DFU"))
         AppDelegate.getAppDelegate().sendRequest(OTARequest(mode: .ble))
-        _ = SwiftEventBus.onMainThread(self, name: SWIFTEVENT_OTA_PACKET_RECEIVED) { _ in
-            AppDelegate.getAppDelegate().getMconnectionController()?.setOTAMode(true, Disconnect: true)
-            self.dfuController = NordicDFUController(delegate: self)
-            self.dfuController?.startDiscovery()
-        }
     }
     
     private func updateVersion(current:Double, new:Double){
@@ -96,7 +99,7 @@ class OTAViewModel {
     func retry() {
         if let controller = self.dfuController{
             controller.startDiscovery()
-        }else{
+        } else {
             self.initiateDFU()
         }
     }

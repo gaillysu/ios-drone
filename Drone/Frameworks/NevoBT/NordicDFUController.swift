@@ -13,7 +13,6 @@ import iOSDFULibrary
 class NordicDFUController: NSObject{
     let legacyDfuServiceUUID  = CBUUID(string: "00001530-1212-EFDE-1523-785FEABCD123")
     let secureDfuServiceUUID  = CBUUID(string: "FE59")
-    let deviceInfoServiceUUID = CBUUID(string: "180A")
     
     
     var centralManager              : CBCentralManager
@@ -33,8 +32,7 @@ class NordicDFUController: NSObject{
             centralManager.delegate = self
             centralManager.scanForPeripherals(withServices: [
                 legacyDfuServiceUUID,
-                secureDfuServiceUUID,
-                deviceInfoServiceUUID])
+                secureDfuServiceUUID])
         }
     }
     
@@ -89,10 +87,6 @@ extension NordicDFUController:CBCentralManagerDelegate {
                 print("DFU: Found Legacy Peripheral: \(name)")
                 discoveredPeripherals.append(peripheral)
                 securePeripheralMarkers.append(false)
-            } else {
-                print("DFU: Found Peripheral: \(name)")
-                discoveredPeripherals.append(peripheral)
-                securePeripheralMarkers.append(nil)
             }
             delegate.deviceFound(peripherals: discoveredPeripherals)
         }
