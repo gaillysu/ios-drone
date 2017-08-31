@@ -28,8 +28,8 @@
 		613928FE1EAA026B00450284 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928F91EAA026B00450284 /* Float+Extension.swift */; };
 		613928FF1EAA026B00450284 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928FA1EAA026B00450284 /* Int+Extension.swift */; };
 		613929001EAA026B00450284 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613928FB1EAA026B00450284 /* String+Extension.swift */; };
-		613929071EADABEB00450284 /* welcome_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929011EADABEB00450284 /* welcome_1.png */; };
-		613929081EADABEB00450284 /* welcome_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929021EADABEB00450284 /* welcome_2.png */; };
+		613929071EADABEB00450284 /* suunto.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929011EADABEB00450284 /* suunto.png */; };
+		613929081EADABEB00450284 /* welcome_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929021EADABEB00450284 /* welcome_1.png */; };
 		6139290E1EADDD3900450284 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6139290D1EADDD3900450284 /* BaseViewController.swift */; };
 		613929121EAEE92600450284 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 613929111EAEE92600450284 /* default.realm */; };
 		613929141EAEF3BD00450284 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */; };
@@ -241,6 +241,8 @@
 		CB15497C1EC01E5700090242 /* HotKeySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497B1EC01E5700090242 /* HotKeySectionModel.swift */; };
 		CB1549811EC029A700090242 /* HotKeyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB15497F1EC029A700090242 /* HotKeyTableViewCell.swift */; };
 		CB1549821EC029A700090242 /* HotKeyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1549801EC029A700090242 /* HotKeyTableViewCell.xib */; };
+		CB2E28891F57B0A600D7E2A4 /* welcome_2.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E28881F57B0A600D7E2A4 /* welcome_2.png */; };
+		CB2E288A1F57B12200D7E2A4 /* welcome_2.png in Resources */ = {isa = PBXBuildFile; fileRef = CB2E28881F57B0A600D7E2A4 /* welcome_2.png */; };
 		CB4ADFDA1EF7626200EFA956 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */; };
 		CB4ADFDB1EF7626200EFA956 /* AlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4ADFD91EF7626200EFA956 /* AlarmTableViewCell.xib */; };
 		CB4ADFDD1EF7665500EFA956 /* MEDAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4ADFDC1EF7665500EFA956 /* MEDAlarm.swift */; };
@@ -539,7 +541,7 @@
 		CB91DCA01F4D335F00C8B5CE /* MapViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61FAB9B41EBC241D00513E97 /* MapViewCell.xib */; };
 		CB91DCA11F4D335F00C8B5CE /* StepsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B6A1EA46F810019F574 /* StepsViewController.xib */; };
 		CB91DCA21F4D335F00C8B5CE /* SelectNewHomeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE8FDF61F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib */; };
-		CB91DCA31F4D335F00C8B5CE /* welcome_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929021EADABEB00450284 /* welcome_2.png */; };
+		CB91DCA31F4D335F00C8B5CE /* welcome_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929021EADABEB00450284 /* welcome_1.png */; };
 		CB91DCA41F4D335F00C8B5CE /* AddAlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4ADFEB1EF7D1A400EFA956 /* AddAlarmViewController.xib */; };
 		CB91DCA51F4D335F00C8B5CE /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E1535821D5C20CA00CB6A01 /* cities.json */; };
 		CB91DCA61F4D335F00C8B5CE /* ClockSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9F654E1EA8AB51007982B0 /* ClockSettingsTableViewCell.xib */; };
@@ -561,7 +563,7 @@
 		CB91DCB71F4D335F00C8B5CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00982A701C868B15003DA5E2 /* Assets.xcassets */; };
 		CB91DCB81F4D335F00C8B5CE /* DeviceTableViewCellHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B3F1EA46F800019F574 /* DeviceTableViewCellHeader.xib */; };
 		CB91DCB91F4D335F00C8B5CE /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8AD9F51F04E797001C8D86 /* TimerViewController.xib */; };
-		CB91DCBA1F4D335F00C8B5CE /* welcome_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929011EADABEB00450284 /* welcome_1.png */; };
+		CB91DCBA1F4D335F00C8B5CE /* suunto.png in Resources */ = {isa = PBXBuildFile; fileRef = 613929011EADABEB00450284 /* suunto.png */; };
 		CB91DCBB1F4D335F00C8B5CE /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 61C48FC51EF3BCCE007A0709 /* bell.wav */; };
 		CB91DCBC1F4D335F00C8B5CE /* CompassCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBCD36651ED3E2BA0041EABA /* CompassCalibrationViewController.xib */; };
 		CB91DCBD1F4D335F00C8B5CE /* NotificationsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61C28B571EA46F800019F574 /* NotificationsViewCell.xib */; };
@@ -661,8 +663,8 @@
 		613928F91EAA026B00450284 /* Float+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		613928FA1EAA026B00450284 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		613928FB1EAA026B00450284 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		613929011EADABEB00450284 /* welcome_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_1.png; sourceTree = "<group>"; };
-		613929021EADABEB00450284 /* welcome_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_2.png; sourceTree = "<group>"; };
+		613929011EADABEB00450284 /* suunto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = suunto.png; sourceTree = "<group>"; };
+		613929021EADABEB00450284 /* welcome_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_1.png; sourceTree = "<group>"; };
 		6139290D1EADDD3900450284 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		613929111EAEE92600450284 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		613929131EAEF3BD00450284 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
@@ -876,6 +878,7 @@
 		CB15497B1EC01E5700090242 /* HotKeySectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeySectionModel.swift; path = Drone/Class/ViewModel/HotKeyModel/HotKeySectionModel.swift; sourceTree = SOURCE_ROOT; };
 		CB15497F1EC029A700090242 /* HotKeyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotKeyTableViewCell.swift; path = HoyKeyTableViewCell/HotKeyTableViewCell.swift; sourceTree = "<group>"; };
 		CB1549801EC029A700090242 /* HotKeyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotKeyTableViewCell.xib; path = HoyKeyTableViewCell/HotKeyTableViewCell.xib; sourceTree = "<group>"; };
+		CB2E28881F57B0A600D7E2A4 /* welcome_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_2.png; sourceTree = "<group>"; };
 		CB4ADFD81EF7626200EFA956 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmTableViewCell.swift; path = AlarmTableViewCell/AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		CB4ADFD91EF7626200EFA956 /* AlarmTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlarmTableViewCell.xib; path = AlarmTableViewCell/AlarmTableViewCell.xib; sourceTree = "<group>"; };
 		CB4ADFDC1EF7665500EFA956 /* MEDAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MEDAlarm.swift; path = ModelTable/MEDAlarm.swift; sourceTree = "<group>"; };
@@ -1700,8 +1703,9 @@
 		61C28C8C1EA617070019F574 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				613929011EADABEB00450284 /* welcome_1.png */,
-				613929021EADABEB00450284 /* welcome_2.png */,
+				613929011EADABEB00450284 /* suunto.png */,
+				613929021EADABEB00450284 /* welcome_1.png */,
+				CB2E28881F57B0A600D7E2A4 /* welcome_2.png */,
 				61C28C9B1EA706A50019F574 /* mapImage.png */,
 				61C28C991EA6FDBA0019F574 /* background_steps.png */,
 			);
@@ -2389,7 +2393,7 @@
 				61FAB9B61EBC241D00513E97 /* MapViewCell.xib in Resources */,
 				61C28C141EA46F810019F574 /* StepsViewController.xib in Resources */,
 				CBE8FDF81F062DC8004A60B4 /* SelectNewHomeTimeViewController.xib in Resources */,
-				613929081EADABEB00450284 /* welcome_2.png in Resources */,
+				613929081EADABEB00450284 /* welcome_1.png in Resources */,
 				CB4ADFED1EF7D1A400EFA956 /* AddAlarmViewController.xib in Resources */,
 				CBBED7111F4FB89100A63E51 /* firmware_veligear in Resources */,
 				9E1535841D5C20CA00CB6A01 /* cities.json in Resources */,
@@ -2409,10 +2413,11 @@
 				61C28BFE1EA46F810019F574 /* MenuViewController.xib in Resources */,
 				61C28C001EA46F810019F574 /* MenuViewCell.xib in Resources */,
 				61C28C081EA46F810019F574 /* ProfileSetupViewController.xib in Resources */,
+				CB2E28891F57B0A600D7E2A4 /* welcome_2.png in Resources */,
 				00982A711C868B15003DA5E2 /* Assets.xcassets in Resources */,
 				61C28BF61EA46F810019F574 /* DeviceTableViewCellHeader.xib in Resources */,
 				CB8AD9F71F04E797001C8D86 /* TimerViewController.xib in Resources */,
-				613929071EADABEB00450284 /* welcome_1.png in Resources */,
+				613929071EADABEB00450284 /* suunto.png in Resources */,
 				61C48FC61EF3BCCE007A0709 /* bell.wav in Resources */,
 				CBCD36671ED3E2BA0041EABA /* CompassCalibrationViewController.xib in Resources */,
 				61C28C061EA46F810019F574 /* NotificationsViewCell.xib in Resources */,
@@ -2448,6 +2453,7 @@
 				CB91DC881F4D335F00C8B5CE /* NavigationController.xib in Resources */,
 				CB91DC891F4D335F00C8B5CE /* TimeSettingsViewController.xib in Resources */,
 				CB91DC8A1F4D335F00C8B5CE /* CalibrateMinuteViewController.xib in Resources */,
+				CB2E288A1F57B12200D7E2A4 /* welcome_2.png in Resources */,
 				CB91DC8B1F4D335F00C8B5CE /* CheckEmailController.xib in Resources */,
 				CB91DC8C1F4D335F00C8B5CE /* WorldClockViewController.xib in Resources */,
 				CB91DC8D1F4D335F00C8B5CE /* AddWorldClockViewController.xib in Resources */,
@@ -2472,7 +2478,7 @@
 				CB91DCA01F4D335F00C8B5CE /* MapViewCell.xib in Resources */,
 				CB91DCA11F4D335F00C8B5CE /* StepsViewController.xib in Resources */,
 				CB91DCA21F4D335F00C8B5CE /* SelectNewHomeTimeViewController.xib in Resources */,
-				CB91DCA31F4D335F00C8B5CE /* welcome_2.png in Resources */,
+				CB91DCA31F4D335F00C8B5CE /* welcome_1.png in Resources */,
 				CB91DCA41F4D335F00C8B5CE /* AddAlarmViewController.xib in Resources */,
 				CB91DCA51F4D335F00C8B5CE /* cities.json in Resources */,
 				CB91DCA61F4D335F00C8B5CE /* ClockSettingsTableViewCell.xib in Resources */,
@@ -2494,7 +2500,7 @@
 				CB91DCB71F4D335F00C8B5CE /* Assets.xcassets in Resources */,
 				CB91DCB81F4D335F00C8B5CE /* DeviceTableViewCellHeader.xib in Resources */,
 				CB91DCB91F4D335F00C8B5CE /* TimerViewController.xib in Resources */,
-				CB91DCBA1F4D335F00C8B5CE /* welcome_1.png in Resources */,
+				CB91DCBA1F4D335F00C8B5CE /* suunto.png in Resources */,
 				CB91DCBB1F4D335F00C8B5CE /* bell.wav in Resources */,
 				CB91DCBC1F4D335F00C8B5CE /* CompassCalibrationViewController.xib in Resources */,
 				CB91DCBD1F4D335F00C8B5CE /* NotificationsViewCell.xib in Resources */,

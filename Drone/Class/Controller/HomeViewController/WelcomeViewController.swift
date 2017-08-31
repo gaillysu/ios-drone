@@ -17,6 +17,9 @@ class WelcomeViewController: BaseViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var forgetPasswordButton: UIButton!
     @IBOutlet weak var skipLoginButton: UIButton!
+    
+    let scrollImage:UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 359))
+    
     var fromMenu = false
     
     var disposeBag = DisposeBag()
@@ -32,21 +35,15 @@ class WelcomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageHeight:CGFloat = scrollView.frame.size.height
-        let imageWidth:CGFloat = scrollView.bounds.size.width
-        let scrollImage:UIScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
-        scrollImage.isPagingEnabled = true;
+        
         scrollView.addSubview(scrollImage)
-        scrollImage.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
-        scrollImage.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        scrollImage.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
-        scrollImage.bottomAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         setupRxSwift()
+        
     }
     
     override func viewDidLayoutSubviews() {
-        let imageName:[String] = ["welcome_1","welcome_2"]
         
+        let imageName:[String] = ["welcome_1","welcome_2"]
         var imageResources:[UIImage] = []
         imageName.forEach { name in
             let imagePath:String = Bundle.main.path(forResource: name, ofType: "png")!
@@ -56,58 +53,55 @@ class WelcomeViewController: BaseViewController {
         }
         
         let imageHeight:CGFloat = scrollView.frame.size.height
-        let imageWidth:CGFloat = scrollView.bounds.size.width
+        let imageWidth:CGFloat = UIScreen.main.bounds.size.width
         
-        var scrollImage:UIScrollView?
-        scrollView.subviews
-            .filter { ($0 is UIScrollView)}
-            .forEach { view in
-                scrollImage = view as? UIScrollView
-                view.subviews
-                    .filter({($0 is UIImageView) })
-                    .forEach({ imageView in
-                        (imageView as! UIImageView).image = nil
-                        imageView.removeFromSuperview()
-            })
+        scrollImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: imageHeight)
+        scrollImage.contentSize = CGSize(width: imageWidth*CGFloat(imageResources.count), height: imageHeight)
+        scrollImage.isPagingEnabled = true;
+        
+        scrollImage.subviews.forEach { view in
+            if view is UIImageView {
+                (view as! UIImageView).image = nil
+                view.removeFromSuperview()
+            }
         }
         
-        scrollImage?.contentSize = CGSize(width: imageWidth*CGFloat(imageResources.count), height: imageHeight)
         imageResources.enumerated().forEach { (index, image) in
             let imageView:UIImageView = UIImageView(image: image)
-            imageView.frame = CGRect(x: scrollView.bounds.size.width*CGFloat(index) + 60, y: 0, width: imageWidth - 120, height: imageHeight)
+            imageView.frame = CGRect(x: imageWidth*CGFloat(index), y: 0, width: imageWidth , height: imageHeight)
             imageView.contentMode = UIViewContentMode.scaleAspectFit
-            scrollImage?.addSubview(imageView)
+            scrollImage.addSubview(imageView)
         }
     }
     
     func setupRxSwift(){
         loginButton.rx.tap.subscribe { _ in
-                let login:LoginViewController = LoginViewController()
-                self.navigationController?.pushViewController(login, animated: true)
-                DTUserDefaults.presentMenu = true
+            let login:LoginViewController = LoginViewController()
+            self.navigationController?.pushViewController(login, animated: true)
+            DTUserDefaults.presentMenu = true
             }.addDisposableTo(disposeBag)
         
         registerButton.rx.tap.subscribe { _ in
-                let register:RegisterViewController = RegisterViewController()
-                self.navigationController?.pushViewController(register, animated: true)
+            let register:RegisterViewController = RegisterViewController()
+            self.navigationController?.pushViewController(register, animated: true)
             }.addDisposableTo(disposeBag)
         
         forgetPasswordButton.rx.tap.subscribe { _ in
-                let checkEmail:UINavigationController = UINavigationController(rootViewController: CheckEmailController())
-                checkEmail.isNavigationBarHidden = true
-                self.present(checkEmail, animated: true, completion: nil)
+            let checkEmail:UINavigationController = UINavigationController(rootViewController: CheckEmailController())
+            checkEmail.isNavigationBarHidden = true
+            self.present(checkEmail, animated: true, completion: nil)
             }.addDisposableTo(disposeBag)
         
         skipLoginButton.rx.tap.subscribe { _ in
-//            if self.fromMenu {
-//                self.dismiss(animated: true, completion: nil)
-//            }else{
-//                if UserDevice.getAll().isEmpty {
-//                    self.present(self.makeStandardUINavigationController(WhichDeviceViewController(toMenu: false)), animated: true, completion: nil)
-//                }else{
+            if self.fromMenu {
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                if UserDevice.getAll().isEmpty {
+                    self.present(self.makeStandardUINavigationController(WhichDeviceViewController(toMenu: false)), animated: true, completion: nil)
+                }else{
                     self.present(self.makeStandardUINavigationController(MenuViewController()), animated: true, completion: nil)
-//                }
-//            }
+                }
+            }
             }.addDisposableTo(disposeBag)
     }
 }
