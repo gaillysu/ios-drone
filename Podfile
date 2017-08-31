@@ -5,7 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'git@gitlab.com:imazeapp/med-ios-pods.git'
 
 
-target 'Drone' do
+def pods
     
     pod 'Alamofire'
     pod 'Charts'
@@ -39,6 +39,16 @@ target 'Drone' do
     
     pod 'med-ios-sounds'
     pod 'med-ios-extension'
+end
+
+
+target 'VeliGear' do
+    pods
+end
+
+
+target 'Stealth' do
+    pods
 end
 
 post_install do |installer|
