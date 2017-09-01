@@ -26,7 +26,10 @@ class DeviceTableViewCellHeader: UITableViewHeaderFooterView {
     }
     
     override func awakeFromNib() {
-        
+        if let imageName = DTUserDefaults.selectedWatchPicture{
+            guard let image = UIImage(named: imageName) else { return }
+            watchImage.image = image
+        }
     }
  
     func showLeftRightButtons(_ visible:Bool ){

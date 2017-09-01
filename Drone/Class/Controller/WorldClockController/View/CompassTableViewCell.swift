@@ -13,12 +13,10 @@ class CompassTableViewCell: UITableViewCell {
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var valueTextField: UITextField!
-    
     @IBOutlet weak var seperatorview: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         arrowImageView.setFAIconWithName(icon: .FAChevronRight, textColor: UIColor.white)
-    
     }
 }

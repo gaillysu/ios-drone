@@ -39,7 +39,7 @@ class CompassViewController: BaseViewController {
         let section = Variable([CompassSectionModel(header:"Compass Settings",footer:"",items:
             [CompassSectionModelItem(label: "Turn off auto motion detection"),
              CompassSectionModelItem(label: "Screen timeout"),
-             CompassSectionModelItem(label: "Start Compass Calibration")
+             CompassSectionModelItem(label: "Calibrate Compass")
             ])])
         
         let dataSource = RxTableViewSectionedReloadDataSource<CompassSectionModel>()
@@ -65,6 +65,7 @@ class CompassViewController: BaseViewController {
                     }).addDisposableTo(self.disposeBag)
                 case 2:
                     cell.valueTextField.isHidden = true
+                    cell.seperatorview.isHidden = true
                 default:
                     break
                 }

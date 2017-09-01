@@ -37,7 +37,7 @@ extension AppDelegate {
         if let obj = Compass.getAll().first, let compass = obj as? Compass{
             sendRequest(SetSystemConfig(configtype: .compassTimeout, autoOnDuration: compass.screenTimeout))
         }else{
-            sendRequest(SetSystemConfig(configtype: .compassTimeout, autoOnDuration: 20))
+            sendRequest(SetSystemConfig(configtype: .compassTimeout, autoOnDuration: 15))
         }
     }
     

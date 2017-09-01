@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompassViewController" customModule="Drone" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompassViewController" customModule="Stealth" customModuleProvider="target">
             <connections>
                 <outlet property="compassSwitch" destination="TP9-b5-s4J" id="V7h-YS-goJ"/>
                 <outlet property="compassTableView" destination="VOg-xE-k3F" id="d5a-4u-dv3"/>
@@ -22,17 +23,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_compass" translatesAutoresizingMaskIntoConstraints="NO" id="aUe-ez-QJa">
-                    <rect key="frame" x="70" y="54" width="235" height="235"/>
+                    <rect key="frame" x="75.5" y="24" width="225" height="225"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="aUe-ez-QJa" secondAttribute="height" multiplier="1:1" id="RFM-qs-1R6"/>
                     </constraints>
                 </imageView>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TP9-b5-s4J">
-                    <rect key="frame" x="163" y="319" width="51" height="31"/>
+                    <rect key="frame" x="163" y="279" width="51" height="31"/>
                     <color key="onTintColor" red="0.75294117647058822" green="0.56862745098039214" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compass Enabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLp-Sb-8mi">
-                    <rect key="frame" x="144" y="358" width="86" height="21"/>
+                    <rect key="frame" x="144" y="318" width="86" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="86" id="8fc-BY-kag"/>
                         <constraint firstAttribute="height" constant="21" id="slL-PL-HHq"/>
@@ -42,7 +43,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="VOg-xE-k3F">
-                    <rect key="frame" x="0.0" y="379" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="339" width="375" height="200"/>
                     <color key="backgroundColor" red="0.89411764709999997" green="0.7725490196" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="1MB-RK-eem"/>
@@ -56,15 +57,15 @@
                 <constraint firstAttribute="trailing" secondItem="VOg-xE-k3F" secondAttribute="trailing" id="7Ux-5g-rtL"/>
                 <constraint firstItem="iLp-Sb-8mi" firstAttribute="top" secondItem="TP9-b5-s4J" secondAttribute="bottom" constant="8" id="8lr-qu-Ep3"/>
                 <constraint firstItem="VOg-xE-k3F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9rV-3Y-16y"/>
-                <constraint firstItem="aUe-ez-QJa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="54" id="F2p-rM-QuR"/>
+                <constraint firstItem="aUe-ez-QJa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="F2p-rM-QuR"/>
                 <constraint firstItem="iLp-Sb-8mi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="GLr-Ag-rkj"/>
-                <constraint firstItem="aUe-ez-QJa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="70" id="PPf-ZO-uuk"/>
-                <constraint firstAttribute="trailing" secondItem="aUe-ez-QJa" secondAttribute="trailing" constant="70" id="r4j-6d-1H7"/>
+                <constraint firstItem="aUe-ez-QJa" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NSu-9J-qee"/>
+                <constraint firstItem="aUe-ez-QJa" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="dH6-xt-R1z"/>
                 <constraint firstItem="VOg-xE-k3F" firstAttribute="top" secondItem="iLp-Sb-8mi" secondAttribute="bottom" id="rML-Sf-DTc"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <point key="canvasLocation" x="-295" y="77"/>
+            <point key="canvasLocation" x="-295.5" y="76.5"/>
         </view>
     </objects>
     <resources>

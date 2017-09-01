@@ -29,6 +29,7 @@ class WhichDeviceViewController: BaseViewController {
         self.navigationItem.title = "Device"
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         addCloseButton(#selector(backButton))
+        DTUserDefaults.selectedWatchPicture = nil
     }
 
 
@@ -75,17 +76,18 @@ class WhichDeviceViewController: BaseViewController {
             let watchView:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height))
             watchView.tag = 1700
             watchView.contentMode = .scaleAspectFit
-            watchView.image = UIImage(named: String(format: "welcome_%d",(indexPath as NSIndexPath).row+1))
+            watchView.image = UIImage(named: String(format: "welcome_%d",indexPath.row+1))
             cell.contentView.addSubview(watchView)
         }else{
-            (view as! UIImageView).image = UIImage(named: String(format: "welcome_%d",(indexPath as NSIndexPath).row+1))
+            (view as! UIImageView).image = UIImage(named: String(format: "welcome_%d",indexPath.row+1))
         }
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         let connection:ConnectionSetupViewController = ConnectionSetupViewController(toMenu: toMenu)
-        connection.watchName = String(format: "welcome_%d",(indexPath as NSIndexPath).row+1)
+        connection.watchName = String(format: "welcome_%d",indexPath.row+1)
+        DTUserDefaults.selectedWatchPicture = String(format: "welcome_%d",indexPath.row+1)
         _ = UserDevice.removeAll()
         self.navigationController?.pushViewController(connection, animated: true)
     }

@@ -34,6 +34,7 @@ public class DTUserDefaults: NSObject {
     private static let LANGUAGE_KEY = "AppleLanguages"
     private static let ENABLED_ALL_NOTIFICATIONS_KEY = "ENABLED_ALL_NOTIFICATIONS_KEY"
     private static let LAST_VISITED_CITIES_KEY = "LAST_VISITED_CITIES_KEY"
+    private static let SELECTED_WATCH_PICTURE_KEY  = "SELECTED_WATCH_PICTURE_KEY"
     
     private static let LAST_OTA_VERSION_CHECK_KEY = "LAST_OTA_VERSION_CHECK_KEY"
     private static let LAST_KNOWN_WATCH_VERSION_KEY = "LAST_KNOWN_WATCH_VERSION_KEY"
@@ -224,6 +225,16 @@ public class DTUserDefaults: NSObject {
             UserDefaults().set(newValue, forKey: ENABLED_ALL_NOTIFICATIONS_KEY)
         }
     }
+    
+    public static var selectedWatchPicture:String? {
+        get{
+            return UserDefaults().string(forKey: SELECTED_WATCH_PICTURE_KEY)
+        }
+        set{
+            UserDefaults().set(newValue, forKey: SELECTED_WATCH_PICTURE_KEY)
+        }
+    }
+    
     
     public static var localLanguage:String {
         get{
